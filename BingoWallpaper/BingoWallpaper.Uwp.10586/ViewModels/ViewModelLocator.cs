@@ -3,6 +3,7 @@ using GalaSoft.MvvmLight.Messaging;
 using GalaSoft.MvvmLight.Views;
 using Microsoft.Practices.ServiceLocation;
 using Microsoft.Practices.Unity;
+using SoftwareKobo.Controls;
 
 namespace BingoWallpaper.Uwp.ViewModels
 {

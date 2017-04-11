@@ -3,8 +3,10 @@ using System.IO;
 using BingoWallpaper.Models;
 using BingoWallpaper.Models.LeanCloud;
 using BingoWallpaper.Services;
+using BingoWallpaper.Uwp.Messages;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
+using SoftwareKobo.Controls;
 
 namespace BingoWallpaper.Uwp.ViewModels
 {

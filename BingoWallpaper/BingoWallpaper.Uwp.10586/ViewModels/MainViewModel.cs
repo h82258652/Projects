@@ -5,6 +5,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using BingoWallpaper.Models.LeanCloud;
 using BingoWallpaper.Services;
+using BingoWallpaper.Uwp.Messages;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 

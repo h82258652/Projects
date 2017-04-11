@@ -146,7 +146,7 @@ namespace SoftwareKobo.Controls
                     else
                     {
                         Task<byte[]> imageDownloadTask;
-                        if (ImageDownloadTasks.TryGetValue(source, out imageDownloadTask) == false)
+                        if (!ImageDownloadTasks.TryGetValue(source, out imageDownloadTask))
                         {
                             imageDownloadTask = DownloadImageAsync(uriSource);
                             ImageDownloadTasks[source] = imageDownloadTask;
@@ -355,7 +355,7 @@ namespace SoftwareKobo.Controls
             Uri uriSource;
             if (Uri.TryCreate(source, UriKind.RelativeOrAbsolute, out uriSource))
             {
-                if (uriSource.IsAbsoluteUri == false)
+                if (!uriSource.IsAbsoluteUri)
                 {
                     Uri.TryCreate("pack://application:,,,/" + (source.StartsWith("/") ? source.Substring(1) : source), UriKind.Absolute, out uriSource);
                 }
