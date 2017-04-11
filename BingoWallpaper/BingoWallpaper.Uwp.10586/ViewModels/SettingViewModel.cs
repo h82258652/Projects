@@ -5,6 +5,7 @@ using BingoWallpaper.Uwp.Messages;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using SoftwareKobo.Controls;
+using SoftwareKobo.ViewModels;
 
 namespace BingoWallpaper.Uwp.ViewModels
 {

@@ -13,7 +13,7 @@ namespace BingoWallpaper.Services
 {
     public class LeanCloudWallpaperService : ILeanCloudWallpaperService
     {
-        public async Task<LeanCloudResultCollection<Archive>> GetArchivesAsync(int year, int month, string area)
+        public virtual async Task<LeanCloudResultCollection<Archive>> GetArchivesAsync(int year, int month, string area)
         {
             var viewMonth = new DateTime(year, month, 1);
             if (viewMonth < Constants.MinimumViewMonth)
@@ -50,7 +50,7 @@ namespace BingoWallpaper.Services
             }
         }
 
-        public async Task<Image> GetImageAsync(string objectId)
+        public virtual async Task<Image> GetImageAsync(string objectId)
         {
             if (objectId == null)
             {
@@ -70,7 +70,7 @@ namespace BingoWallpaper.Services
             }
         }
 
-        public async Task<LeanCloudResultCollection<Image>> GetImagesAsync(IEnumerable<string> objectIds)
+        public virtual async Task<LeanCloudResultCollection<Image>> GetImagesAsync(IEnumerable<string> objectIds)
         {
             if (objectIds == null)
             {
