@@ -3,6 +3,9 @@ using Windows.UI;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media;
+using BingoWallpaper.Uwp.Views;
+using SoftwareKobo.Controls;
+using SoftwareKobo.Icons.FontAwesome;
 
 namespace BingoWallpaper.Uwp.Services
 {

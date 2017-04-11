@@ -111,14 +111,28 @@
   <ItemGroup>
     <Compile Include="LocalizedStrings.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\BingoFileService.cs" />
+    <Compile Include="Services\BingoShareService.cs" />
+    <Compile Include="Services\IBingoFileService.cs" />
+    <Compile Include="Services\IBingoShareService.cs" />
+    <Compile Include="Services\ILauncherService.cs" />
     <Compile Include="Services\ILeanCloudWallpaperServiceWithCache.cs" />
+    <Compile Include="Services\ISystemSettingService.cs" />
+    <Compile Include="Services\ITileService.cs" />
+    <Compile Include="Services\LauncherService.cs" />
     <Compile Include="Services\LeanCloudWallpaperServiceWithCache.cs" />
+    <Compile Include="Services\SystemSettingService.cs" />
+    <Compile Include="Services\TileService.cs" />
     <EmbeddedResource Include="Properties\BingoWallpaper.Services.Uwp._10586.rd.xml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Libraries\SoftwareKobo.Utils\SoftwareKobo.Utils.csproj">
       <Project>{8b7de148-6811-4333-8a5b-4a046c6c3525}</Project>
       <Name>SoftwareKobo.Utils</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BingoWallpaper.Configuration\BingoWallpaper.Configuration.csproj">
+      <Project>{5B328B0F-853A-4C25-9CCC-8C087648F796}</Project>
+      <Name>BingoWallpaper.Configuration</Name>
     </ProjectReference>
     <ProjectReference Include="..\BingoWallpaper.Models\BingoWallpaper.Models.csproj">
       <Project>{8977e1e5-d12e-4c56-adb1-c6d5c87edf74}</Project>

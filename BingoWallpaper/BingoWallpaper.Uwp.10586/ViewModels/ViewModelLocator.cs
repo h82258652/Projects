@@ -1,4 +1,6 @@
 ﻿using BingoWallpaper.Services;
+using BingoWallpaper.Uwp.Services;
+using BingoWallpaper.Uwp.Views;
 using GalaSoft.MvvmLight.Messaging;
 using GalaSoft.MvvmLight.Views;
 using Microsoft.Practices.ServiceLocation;

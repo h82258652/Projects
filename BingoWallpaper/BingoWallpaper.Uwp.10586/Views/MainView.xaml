@@ -1,0 +1,382 @@
+﻿<views:BingoWallpaperViewBase x:Class="BingoWallpaper.Uwp.Views.MainView"
+                              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                              xmlns:behaviors="using:SoftwareKobo.Behaviors"
+                              xmlns:controls="using:SoftwareKobo.Controls"
+                              xmlns:converters="using:BingoWallpaper.Uwp.Converters"
+                              xmlns:core="using:Microsoft.Xaml.Interactions.Core"
+                              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                              xmlns:extensions="using:WinRTXamlToolkit.Controls.Extensions"
+                              xmlns:fontAwesome="using:SoftwareKobo.Icons.FontAwesome"
+                              xmlns:helpers="using:BingoWallpaper.Uwp.Helpers"
+                              xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
+                              xmlns:localBehaviors="using:BingoWallpaper.Uwp.Behaviors"
+                              xmlns:localControls="using:BingoWallpaper.Uwp.Controls"
+                              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                              xmlns:media="using:Microsoft.Xaml.Interactions.Media"
+                              xmlns:views="using:BingoWallpaper.Uwp.Views"
+                              DataContext="{Binding Source={StaticResource Locator},
+                                                    Path=Main}"
+                              Loaded="MainView_Loaded"
+                              NavigationCacheMode="Required"
+                              Unloaded="MainView_Unloaded"
+                              mc:Ignorable="d">
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Styles/BingoWallpaperBrushStyle.xaml" />
+                <ResourceDictionary Source="/Styles/BingoWallpaperFlipViewStyle.xaml" />
+                <ResourceDictionary Source="/Styles/BingoWallpaperScrollBarStyle.xaml" />
+                <ResourceDictionary Source="/Styles/BingoWallpaperTextBlockStyle.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+            <converters:BooleanNegationConverter x:Key="BooleanNegationConverter" />
+            <converters:MonthNameConverter x:Key="MonthNameConverter" />
+            <converters:WallpaperUrlConverter x:Key="WallpaperUrlConverter" />
+            <Storyboard x:Key="RefreshBusyStoryboard">
+                <DoubleAnimation RepeatBehavior="Forever"
+                                 Storyboard.TargetName="RefreshIconRotateTransform"
+                                 Storyboard.TargetProperty="Angle"
+                                 From="0"
+                                 To="360"
+                                 Duration="0:0:1" />
+            </Storyboard>
+            <Storyboard x:Key="ShowYearTextBlockStoryboard">
+                <DoubleAnimation Storyboard.TargetName="YearTextBlock"
+                                 Storyboard.TargetProperty="Opacity"
+                                 From="0"
+                                 To="1"
+                                 Duration="0:0:0.2" />
+                <DoubleAnimation Storyboard.TargetName="YearTextBlock"
+                                 Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.Y)"
+                                 From="8"
+                                 To="0"
+                                 Duration="0:0:0.2">
+                    <DoubleAnimation.EasingFunction>
+                        <QuinticEase EasingMode="EaseOut" />
+                    </DoubleAnimation.EasingFunction>
+                </DoubleAnimation>
+            </Storyboard>
+            <Storyboard x:Key="HideYearTextBlockStoryboard">
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetName="YearTextBlock"
+                                               Storyboard.TargetProperty="Opacity">
+                    <DiscreteDoubleKeyFrame KeyTime="0:0:0"
+                                            Value="0" />
+                </DoubleAnimationUsingKeyFrames>
+            </Storyboard>
+            <Storyboard x:Name="MonthIncreasedStoryboard">
+                <DoubleAnimation Storyboard.TargetName="OldMonthGrid"
+                                 Storyboard.TargetProperty="Opacity"
+                                 From="1"
+                                 To="0"
+                                 Duration="0:0:0.2" />
+                <DoubleAnimation Storyboard.TargetName="OldMonthGrid"
+                                 Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)"
+                                 From="0"
+                                 To="-12"
+                                 Duration="0:0:0.2" />
+                <DoubleAnimation Storyboard.TargetName="CurrentMonthGrid"
+                                 Storyboard.TargetProperty="Opacity"
+                                 From="0"
+                                 To="1"
+                                 Duration="0:0:0.2" />
+                <DoubleAnimation Storyboard.TargetName="CurrentMonthGrid"
+                                 Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)"
+                                 From="12"
+                                 To="0"
+                                 Duration="0:0:0.2" />
+            </Storyboard>
+            <Storyboard x:Name="MonthDecreasedStoryboard">
+                <DoubleAnimation Storyboard.TargetName="OldMonthGrid"
+                                 Storyboard.TargetProperty="Opacity"
+                                 From="1"
+                                 To="0"
+                                 Duration="0:0:0.2" />
+                <DoubleAnimation Storyboard.TargetName="OldMonthGrid"
+                                 Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)"
+                                 From="0"
+                                 To="12"
+                                 Duration="0:0:0.2" />
+                <DoubleAnimation Storyboard.TargetName="CurrentMonthGrid"
+                                 Storyboard.TargetProperty="Opacity"
+                                 From="0"
+                                 To="1"
+                                 Duration="0:0:0.2" />
+                <DoubleAnimation Storyboard.TargetName="CurrentMonthGrid"
+                                 Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)"
+                                 From="-12"
+                                 To="0"
+                                 Duration="0:0:0.2" />
+            </Storyboard>
+        </ResourceDictionary>
+    </Page.Resources>
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="AdaptiveStates">
+                <VisualState x:Name="Narrow">
+                    <VisualState.Setters>
+                        <Setter Target="NarrowMonthTextBlock.Visibility"
+                                Value="Visible" />
+                        <Setter Target="NarrowOldMonthTextBlock.Visibility"
+                                Value="Visible" />
+                        <Setter Target="WideMonthTextBlock.Visibility"
+                                Value="Collapsed" />
+                        <Setter Target="WideOldMonthTextBlock.Visibility"
+                                Value="Collapsed" />
+                    </VisualState.Setters>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0" />
+                    </VisualState.StateTriggers>
+                </VisualState>
+                <VisualState x:Name="Wide">
+                    <VisualState.Setters>
+                        <Setter Target="NarrowMonthTextBlock.Visibility"
+                                Value="Collapsed" />
+                        <Setter Target="NarrowOldMonthTextBlock.Visibility"
+                                Value="Collapsed" />
+                        <Setter Target="WideMonthTextBlock.Visibility"
+                                Value="Visible" />
+                        <Setter Target="WideOldMonthTextBlock.Visibility"
+                                Value="Visible" />
+                    </VisualState.Setters>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="400" />
+                    </VisualState.StateTriggers>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+        <FlipView Grid.Row="0"
+                  ItemsSource="{Binding Path=WallpaperCollections,
+                                        Mode=OneTime}"
+                  SelectedItem="{Binding Path=SelectedWallpaperCollection,
+                                         Mode=TwoWay}"
+                  Style="{StaticResource BingoWallpaperFlipViewStyle}">
+            <FlipView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <controls:ImageEx HorizontalAlignment="Center"
+                                          VerticalAlignment="Center"
+                                          Opacity="0.5"
+                                          Source="{Binding Path=[0],
+                                                           Converter={StaticResource WallpaperUrlConverter},
+                                                           ConverterParameter='1920x1080'}"
+                                          Stretch="UniformToFill" />
+                        <localControls:GridViewEx x:Name="GridViewEx"
+                                                  helpers:ScrollViewerHelper.VerticalScrollBarStyle="{StaticResource BingoWallpaperScrollBarStyle}"
+                                                  IsItemClickEnabled="True"
+                                                  ItemClick="GridViewEx_ItemClick"
+                                                  ItemPointerEntered="GridViewEx_ItemPointerEntered"
+                                                  ItemPointerExited="GridViewEx_ItemPointerExited"
+                                                  ItemsSource="{Binding}"
+                                                  Padding="1"
+                                                  ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                                                  ScrollViewer.VerticalScrollBarVisibility="Auto"
+                                                  SelectionMode="None">
+                            <localControls:GridViewEx.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid extensions:FrameworkElementExtensions.ClipToBounds="True">
+                                        <Viewbox Stretch="UniformToFill">
+                                            <Grid Width="800"
+                                                  Height="480" />
+                                        </Viewbox>
+                                        <controls:ImageEx Source="{Binding Path=Image, Converter={StaticResource WallpaperUrlConverter}, ConverterParameter='800x480'}"
+                                                          Stretch="UniformToFill">
+                                            <controls:ImageEx.LoadingTemplate>
+                                                <DataTemplate>
+                                                    <localControls:ImageLoadingControl />
+                                                </DataTemplate>
+                                            </controls:ImageEx.LoadingTemplate>
+                                        </controls:ImageEx>
+                                        <Border VerticalAlignment="Bottom"
+                                                Background="#80808080">
+                                            <TextBlock Margin="4"
+                                                       Foreground="White"
+                                                       Text="{Binding Path=Archive.Info}"
+                                                       TextWrapping="Wrap">
+                                                <TextBlock.RenderTransform>
+                                                    <TranslateTransform />
+                                                </TextBlock.RenderTransform></TextBlock>
+                                        </Border>
+                                    </Grid>
+                                </DataTemplate>
+                            </localControls:GridViewEx.ItemTemplate>
+                            <localControls:GridViewEx.ItemContainerStyle>
+                                <Style TargetType="GridViewItem">
+                                    <Setter Property="HorizontalContentAlignment"
+                                            Value="Stretch" />
+                                    <Setter Property="VerticalContentAlignment"
+                                            Value="Stretch" />
+                                    <Setter Property="Margin"
+                                            Value="1" />
+                                    <Setter Property="RenderTransformOrigin"
+                                            Value="0.5,0.5" />
+                                    <Setter Property="RenderTransform">
+                                        <Setter.Value>
+                                            <ScaleTransform />
+                                        </Setter.Value>
+                                    </Setter>
+                                </Style>
+                            </localControls:GridViewEx.ItemContainerStyle>
+                            <localControls:GridViewEx.ItemContainerTransitions>
+                                <TransitionCollection>
+                                    <AddDeleteThemeTransition />
+                                    <ContentThemeTransition />
+                                    <ReorderThemeTransition />
+                                    <EntranceThemeTransition IsStaggeringEnabled="True" />
+                                </TransitionCollection>
+                            </localControls:GridViewEx.ItemContainerTransitions>
+                            <localControls:GridViewEx.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <localControls:FirstDoubleSizePanel SizeChanged="FirstDoubleSizePanel_SizeChanged" />
+                                </ItemsPanelTemplate>
+                            </localControls:GridViewEx.ItemsPanel>
+                        </localControls:GridViewEx>
+                    </Grid>
+                </DataTemplate>
+            </FlipView.ItemTemplate>
+        </FlipView>
+        <AppBar x:Name="AppBar"
+                Grid.Row="1"
+                Background="{ThemeResource SystemAccentBrush}"
+                ClosedDisplayMode="Compact"
+                Foreground="#171717">
+            <interactivity:Interaction.Behaviors>
+                <core:DataTriggerBehavior Binding="{Binding ElementName=AppBar, Path=IsOpen}"
+                                          Value="True">
+                    <media:ControlStoryboardAction ControlStoryboardOption="Play"
+                                                   Storyboard="{StaticResource ShowYearTextBlockStoryboard}" />
+                    <core:ChangePropertyAction PropertyName="VerticalAlignment"
+                                               TargetObject="{Binding ElementName=MonthGrid}"
+                                               Value="Bottom" />
+                </core:DataTriggerBehavior>
+                <core:DataTriggerBehavior Binding="{Binding ElementName=AppBar, Path=IsOpen}"
+                                          Value="False">
+                    <media:ControlStoryboardAction ControlStoryboardOption="Play"
+                                                   Storyboard="{StaticResource HideYearTextBlockStoryboard}" />
+                    <core:ChangePropertyAction PropertyName="VerticalAlignment"
+                                               TargetObject="{Binding ElementName=MonthGrid}"
+                                               Value="Top" />
+                </core:DataTriggerBehavior>
+            </interactivity:Interaction.Behaviors>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0">
+                    <TextBlock x:Name="YearTextBlock"
+                               Margin="4,4,0,0"
+                               Opacity="0"
+                               Style="{StaticResource YearTextBlock}"
+                               Text="{Binding Path=SelectedWallpaperCollection.Year}">
+                        <TextBlock.RenderTransform>
+                            <TranslateTransform />
+                        </TextBlock.RenderTransform></TextBlock>
+                    <Grid x:Name="MonthGrid"
+                          Height="48"
+                          Margin="4,0,0,0"
+                          VerticalAlignment="Top">
+                        <Grid x:Name="OldMonthGrid"
+                              Opacity="0">
+                            <Grid.RenderTransform>
+                                <TranslateTransform />
+                            </Grid.RenderTransform>
+                            <TextBlock x:Name="NarrowOldMonthTextBlock"
+                                       Style="{StaticResource MonthTextBlock}"
+                                       Text="{Binding RelativeSource={RelativeSource Mode=Self},
+                                                      Path=DataContext,
+                                                      Converter={StaticResource MonthNameConverter}}"
+                                       Visibility="Visible" />
+                            <TextBlock x:Name="WideOldMonthTextBlock"
+                                       Style="{StaticResource MonthTextBlock}"
+                                       Text="{Binding RelativeSource={RelativeSource Mode=Self},
+                                                      Path=DataContext,
+                                                      Converter={StaticResource MonthNameConverter}}"
+                                       Visibility="Collapsed" />
+                        </Grid>
+                        <Grid x:Name="CurrentMonthGrid">
+                            <Grid.RenderTransform>
+                                <TranslateTransform />
+                            </Grid.RenderTransform>
+                            <TextBlock x:Name="NarrowMonthTextBlock"
+                                       Style="{StaticResource MonthTextBlock}"
+                                       Text="{Binding Path=SelectedWallpaperCollection.Month,
+                                                      Converter={StaticResource MonthNameConverter},
+                                                      ConverterParameter=Narrow}"
+                                       Visibility="Visible" />
+                            <TextBlock x:Name="WideMonthTextBlock"
+                                       Style="{StaticResource MonthTextBlock}"
+                                       Text="{Binding Path=SelectedWallpaperCollection.Month,
+                                                      Converter={StaticResource MonthNameConverter},
+                                                      ConverterParameter=Wide}"
+                                       Visibility="Collapsed" />
+                        </Grid>
+                    </Grid>
+                </Grid>
+                <AppBarButton x:Uid="/MainView/RefreshButton"
+                              Grid.Column="1"
+                              Command="{Binding Path=RefreshCommand}"
+                              Foreground="#171717"
+                              IsCompact="{Binding ElementName=AppBar,
+                                                  Path=IsOpen,
+                                                  Converter={StaticResource BooleanNegationConverter}}">
+                    <AppBarButton.Icon>
+                        <fontAwesome:FontAwesomeIcon RenderTransformOrigin="0.5,0.5"
+                                                     Symbol="Refresh">
+                            <FontIcon.RenderTransform>
+                                <RotateTransform x:Name="RefreshIconRotateTransform" />
+                            </FontIcon.RenderTransform>
+                        </fontAwesome:FontAwesomeIcon>
+                    </AppBarButton.Icon>
+                    <interactivity:Interaction.Behaviors>
+                        <core:DataTriggerBehavior Binding="{Binding Path=IsBusy}"
+                                                  Value="True">
+                            <localBehaviors:BeginOrResumeStoryboardAction Storyboard="{StaticResource RefreshBusyStoryboard}" />
+                        </core:DataTriggerBehavior>
+                        <core:DataTriggerBehavior Binding="{Binding Path=IsBusy}"
+                                                  Value="False">
+                            <media:ControlStoryboardAction ControlStoryboardOption="Pause"
+                                                           Storyboard="{StaticResource RefreshBusyStoryboard}" />
+                        </core:DataTriggerBehavior>
+                    </interactivity:Interaction.Behaviors>
+                </AppBarButton>
+                <AppBarButton x:Uid="/MainView/SettingButton"
+                              Grid.Column="2"
+                              Foreground="#171717"
+                              IsCompact="{Binding ElementName=AppBar,
+                                                  Path=IsOpen,
+                                                  Converter={StaticResource BooleanNegationConverter}}">
+                    <AppBarButton.Icon>
+                        <fontAwesome:FontAwesomeIcon Symbol="Cog" />
+                    </AppBarButton.Icon>
+                    <interactivity:Interaction.Behaviors>
+                        <core:EventTriggerBehavior EventName="Click">
+                            <behaviors:NavigateToPageAction TargetPage="BingoWallpaper.Uwp.Views.SettingView" />
+                        </core:EventTriggerBehavior>
+                    </interactivity:Interaction.Behaviors>
+                </AppBarButton>
+                <AppBarButton x:Uid="/MainView/AboutButton"
+                              Grid.Column="3"
+                              Foreground="#171717"
+                              IsCompact="{Binding ElementName=AppBar,
+                                                  Path=IsOpen,
+                                                  Converter={StaticResource BooleanNegationConverter}}">
+                    <AppBarButton.Icon>
+                        <FontIcon FontFamily="Segoe MDL2 Assets"
+                                  Glyph="&#xE946;" />
+                    </AppBarButton.Icon>
+                    <interactivity:Interaction.Behaviors>
+                        <core:EventTriggerBehavior EventName="Click">
+                            <behaviors:NavigateToPageAction TargetPage="BingoWallpaper.Uwp.Views.AboutView" />
+                        </core:EventTriggerBehavior>
+                    </interactivity:Interaction.Behaviors>
+                </AppBarButton>
+            </Grid>
+        </AppBar>
+    </Grid>
+</views:BingoWallpaperViewBase>

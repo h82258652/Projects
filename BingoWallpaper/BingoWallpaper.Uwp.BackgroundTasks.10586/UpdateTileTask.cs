@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Net.Http;
 using System.Text.RegularExpressions;
+using BingoWallpaper.Configuration;
 using BingoWallpaper.Services;
 using Microsoft.Practices.Unity;
 using Windows.ApplicationModel.Background;

@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using BingoWallpaper.Models;
+using BingoWallpaper.Services;
 using BingoWallpaper.Uwp.Messages;
+using BingoWallpaper.Uwp.Services;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using SoftwareKobo.Controls;
 using SoftwareKobo.ViewModels;
+using WinRTXamlToolkit.Tools;
 
 namespace BingoWallpaper.Uwp.ViewModels
 {

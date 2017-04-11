@@ -4,6 +4,8 @@ using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Navigation;
+using BingoWallpaper.Uwp.Utils;
+using BingoWallpaper.Uwp.Views;
 
 namespace BingoWallpaper.Uwp
 {
