@@ -1,11 +1,11 @@
-﻿using BingoWallpaper.Models;
-using BingoWallpaper.Models.Bing;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
+using BingoWallpaper.Models;
+using BingoWallpaper.Models.Bing;
 using Newtonsoft.Json;
-using System.Linq;
 
 namespace BingoWallpaper.Services
 {
@@ -84,7 +84,7 @@ namespace BingoWallpaper.Services
             {
                 throw new ArgumentNullException(nameof(image));
             }
-            if (GetSupportedWallpaperSizes().Contains(size) == false)
+            if (!GetSupportedWallpaperSizes().Contains(size))
             {
                 throw new NotSupportedException();
             }

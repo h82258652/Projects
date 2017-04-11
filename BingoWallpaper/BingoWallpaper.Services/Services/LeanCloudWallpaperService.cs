@@ -135,7 +135,7 @@ namespace BingoWallpaper.Services
             {
                 throw new ArgumentNullException(nameof(image));
             }
-            if (GetSupportedWallpaperSizes().Contains(size) == false)
+            if (!GetSupportedWallpaperSizes().Contains(size))
             {
                 throw new NotSupportedException();
             }

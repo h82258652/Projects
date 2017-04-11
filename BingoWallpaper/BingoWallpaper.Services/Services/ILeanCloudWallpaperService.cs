@@ -1,6 +1,6 @@
-﻿using BingoWallpaper.Models.LeanCloud;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using BingoWallpaper.Models.LeanCloud;
 
 namespace BingoWallpaper.Services
 {

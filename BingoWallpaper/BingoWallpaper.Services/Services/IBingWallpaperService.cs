@@ -1,5 +1,5 @@
-﻿using BingoWallpaper.Models.Bing;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
+using BingoWallpaper.Models.Bing;
 
 namespace BingoWallpaper.Services
 {

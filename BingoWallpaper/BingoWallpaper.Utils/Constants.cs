@@ -14,6 +14,10 @@ namespace BingoWallpaper
 
         public const string LeanCloudUrlBase = @"https://leancloud.cn";
 
+        public const string UmengAppKey = "56137ba2e0f55adb22005d2b";
+
+        public const string UpdateTileTaskName = "UpdateTileTask";
+
         public const string WebVersionAddress = "https://wp.bohan.co";
 
         public static readonly DateTimeOffset MinimumViewMonth = new DateTimeOffset(new DateTime(2015, 1, 1));
