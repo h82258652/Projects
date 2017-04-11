@@ -36,7 +36,7 @@ namespace SoftwareKobo.Services
 
                     var currentType = rootFrame.Content.GetType();
 
-                    if (PagesByKey.ContainsValue(currentType) == false)
+                    if (!PagesByKey.ContainsValue(currentType))
                     {
                         return UnknownPageKey;
                     }
@@ -86,7 +86,7 @@ namespace SoftwareKobo.Services
         {
             lock (PagesByKey)
             {
-                if (PagesByKey.ContainsKey(pageKey) == false)
+                if (!PagesByKey.ContainsKey(pageKey))
                 {
                     throw new ArgumentException($"No such page: {pageKey}. Did you forget to call NavigationService.Configure?", nameof(pageKey));
                 }

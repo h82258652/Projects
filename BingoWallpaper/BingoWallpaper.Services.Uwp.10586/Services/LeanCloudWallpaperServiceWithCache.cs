@@ -108,7 +108,7 @@ namespace BingoWallpaper.Services
             }
             catch (Exception)
             {
-                if (result == null || result.Any() == false)
+                if (result == null || !result.Any())
                 {
                     throw;
                 }

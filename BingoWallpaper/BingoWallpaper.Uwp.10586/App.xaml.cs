@@ -1,9 +1,9 @@
 ﻿using System;
+using UmengSDK;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Navigation;
-using UmengSDK;
 
 namespace BingoWallpaper.Uwp
 {
