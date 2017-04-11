@@ -123,6 +123,7 @@
     <Compile Include="Messages\SystemShareSelectedMessage.cs" />
     <Compile Include="Messages\WechatSelectedMessage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\AppToastService.cs" />
     <Compile Include="ViewModels\AboutViewModel.cs" />
     <Compile Include="ViewModels\DetailViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
