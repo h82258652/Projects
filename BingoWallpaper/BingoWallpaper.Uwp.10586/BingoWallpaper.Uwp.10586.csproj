@@ -17,7 +17,11 @@
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WindowsXamlEnableOverview>true</WindowsXamlEnableOverview>
-    <PackageCertificateKeyFile>BingoWallpaper.Uwp.10586_TemporaryKey.pfx</PackageCertificateKeyFile>
+    <PackageCertificateKeyFile>BingoWallpaper.Uwp.10586_StoreKey.pfx</PackageCertificateKeyFile>
+    <AppxAutoIncrementPackageRevision>False</AppxAutoIncrementPackageRevision>
+    <AppxBundle>Always</AppxBundle>
+    <AppxBundlePlatforms>x86|x64|arm</AppxBundlePlatforms>
+    <PackageCertificateThumbprint>1FC848FC542F880929012906D88ECB641062B574</PackageCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
     <DebugSymbols>true</DebugSymbols>
@@ -104,6 +108,7 @@
     <Content Include="Assets\Fonts\Roboto-ThinItalic.ttf" />
     <Content Include="Assets\Fonts\SourceHanSansSC-Bold.otf" />
     <Content Include="Assets\Fonts\SourceHanSansSC-Normal.otf" />
+    <None Include="BingoWallpaper.Uwp.10586_StoreKey.pfx" />
     <None Include="project.json" />
     <PRIResource Include="Strings\zh-CN\SettingView.resw" />
     <PRIResource Include="Strings\zh-CN\Resources.resw" />
@@ -204,6 +209,7 @@
     <Content Include="Assets\Images\Share\SinaWeibo.png" />
     <Content Include="Assets\Images\Share\SystemShare.png" />
     <Content Include="Assets\Images\Share\Wechat.png" />
+    <None Include="Package.StoreAssociation.xml" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />

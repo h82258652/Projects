@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest" xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10" IgnorableNamespaces="uap mp">
-  <Identity Name="18174h82258652.1989900E597FE" Publisher="CN=h8225" Version="2.0.2.0" />
-  <mp:PhoneIdentity PhoneProductId="27a44d3e-7ce1-4ec8-a957-566644754056" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
+  <Identity Name="18174h82258652.1989900E597FE" Publisher="CN=D8CBB42C-5DD4-4A02-8424-31AF9627DADA" Version="2.0.3.0" />
+  <mp:PhoneIdentity PhoneProductId="02d210a9-b54e-4a1d-b433-88768802416b" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
     <DisplayName>碧影壁纸</DisplayName>
     <PublisherDisplayName>h82258652</PublisherDisplayName>
@@ -21,6 +21,11 @@
         <uap:SplashScreen Image="Assets\SplashScreen.png" BackgroundColor="#E7E7E7" />
       </uap:VisualElements>
       <Extensions>
+        <Extension Category="windows.backgroundTasks" EntryPoint="BingoWallpaper.Uwp.BackgroundTasks.UpdateTileTask">
+          <BackgroundTasks>
+            <Task Type="timer" />
+          </BackgroundTasks>
+        </Extension>
         <uap:Extension Category="windows.fileTypeAssociation">
           <uap:FileTypeAssociation Name="wechat">
             <uap:SupportedFileTypes>
@@ -28,11 +33,6 @@
             </uap:SupportedFileTypes>
           </uap:FileTypeAssociation>
         </uap:Extension>
-        <Extension Category="windows.backgroundTasks" EntryPoint="BingoWallpaper.Uwp.BackgroundTasks.UpdateTileTask">
-          <BackgroundTasks>
-            <Task Type="timer" />
-          </BackgroundTasks>
-        </Extension>
       </Extensions>
     </Application>
   </Applications>
