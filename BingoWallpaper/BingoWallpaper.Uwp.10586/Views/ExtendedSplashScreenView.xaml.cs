@@ -1,13 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading.Tasks;
+using BingoWallpaper.Extensions;
+using BingoWallpaper.Uwp.BackgroundTasks;
+using SoftwareKobo.Helpers;
 using Windows.ApplicationModel.Activation;
 using Windows.ApplicationModel.Background;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.Foundation.Metadata;
 using Windows.Graphics.Display;
 using Windows.UI;
@@ -15,14 +13,7 @@ using Windows.UI.Core;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
-using BingoWallpaper.Uwp.BackgroundTasks;
 using WinRTXamlToolkit.AwaitableUI;
-using WinRTXamlToolkit.Imaging;
 
 namespace BingoWallpaper.Uwp.Views
 {
@@ -111,7 +102,7 @@ namespace BingoWallpaper.Uwp.Views
             builder.AddCondition(new SystemCondition(SystemConditionType.InternetAvailable));
 
             builder.Name = Constants.UpdateTileTaskName;
-            builder.TaskEntryPoint = "BingoWallpaper.Uwp.BackgroundTask.UpdateTileTask";
+            builder.TaskEntryPoint = "BingoWallpaper.Uwp.BackgroundTasks.UpdateTileTask";
             builder.SetTrigger(new TimeTrigger(15, false));
             _backgroundTaskRegistration = builder.Register();
         }

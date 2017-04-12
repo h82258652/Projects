@@ -1,6 +1,8 @@
 ﻿using System;
+using BingoWallpaper.Services;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
+using SoftwareKobo.Services;
 
 namespace BingoWallpaper.Uwp.ViewModels
 {

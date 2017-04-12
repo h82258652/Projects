@@ -145,6 +145,6 @@
                    HorizontalAlignment="Right"
                    VerticalAlignment="Bottom"
                    IsHitTestVisible="False"
-                   Text="MSDevUnion © 2015 - 2017" />
+                   Text="MSDevUnion © 2015 - 2016" />
     </Grid>
 </views:BingoWallpaperViewBase>

@@ -1,4 +1,5 @@
-﻿using BingoWallpaper.Services;
+﻿using BingoWallpaper.Configuration;
+using BingoWallpaper.Services;
 using BingoWallpaper.Uwp.Services;
 using BingoWallpaper.Uwp.Views;
 using GalaSoft.MvvmLight.Messaging;
@@ -6,6 +7,8 @@ using GalaSoft.MvvmLight.Views;
 using Microsoft.Practices.ServiceLocation;
 using Microsoft.Practices.Unity;
 using SoftwareKobo.Controls;
+using SoftwareKobo.Services;
+using SoftwareKobo.Support;
 
 namespace BingoWallpaper.Uwp.ViewModels
 {

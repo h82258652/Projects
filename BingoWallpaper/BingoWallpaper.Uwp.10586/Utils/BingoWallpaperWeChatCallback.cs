@@ -1,4 +1,5 @@
 ﻿using BingoWallpaper.Uwp.Services;
+using MicroMsg.sdk;
 
 namespace BingoWallpaper.Uwp.Utils
 {

@@ -20,6 +20,7 @@
             <converters:SaveLocationNameConverter x:Key="SaveLocationNameConverter" />
             <converters:StringFormatConverter x:Key="StringFormatConverter" />
             <converters:AreaToNameConverter x:Key="AreaToNameConverter" />
+            <converters:FileSizeToStringConverter x:Key="FileSizeToStringConverter" />
         </ResourceDictionary>
     </Page.Resources>
     <Grid>
@@ -179,7 +180,7 @@
                                 <TextBlock Margin="0,2,0,0"
                                            FontSize="16"
                                            Foreground="#2F2F2F"
-                                           Text="{Binding Path=CacheDataSizeString}" />
+                                           Text="{Binding Path=CacheDataSize, Converter={StaticResource FileSizeToStringConverter}}" />
                             </StackPanel>
                             <StackPanel Margin="4"
                                         Orientation="Vertical">
@@ -190,7 +191,7 @@
                                 <TextBlock Margin="0,2,0,0"
                                            FontSize="16"
                                            Foreground="#2F2F2F"
-                                           Text="{Binding Path=CacheImageSizeString}" />
+                                           Text="{Binding Path=CacheImageSize, Converter={StaticResource FileSizeToStringConverter}}" />
                             </StackPanel>
                             <Grid Margin="0,4,0,0">
                                 <controls:BingoWallpaperButton x:Uid="/SettingView/ClearCacheButton"

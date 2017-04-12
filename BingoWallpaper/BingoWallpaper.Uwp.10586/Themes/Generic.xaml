@@ -1,0 +1,8 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/Controls/BingoWallpaperButton.xaml" />
+        <ResourceDictionary Source="/Controls/ChooseShareControl.xaml" />
+        <ResourceDictionary Source="/Controls/EllipseMask.xaml" />
+        <ResourceDictionary Source="/Controls/ImageLoadingControl.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+</ResourceDictionary>

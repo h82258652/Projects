@@ -6,6 +6,7 @@ using BingoWallpaper.Configuration;
 using BingoWallpaper.Services;
 using Microsoft.Practices.Unity;
 using Windows.ApplicationModel.Background;
+using SoftwareKobo.Support;
 
 namespace BingoWallpaper.Uwp.BackgroundTasks
 {

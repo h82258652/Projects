@@ -1,9 +1,9 @@
-﻿using Windows.ApplicationModel;
+﻿using SoftwareKobo.Views;
+using Windows.ApplicationModel;
 using Windows.UI.Core;
 using Windows.UI.Input;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Navigation;
-using SoftwareKobo.Views;
 
 namespace BingoWallpaper.Uwp.Views
 {
@@ -13,7 +13,7 @@ namespace BingoWallpaper.Uwp.Views
 
         protected BingoWallpaperViewBase()
         {
-            if (!DesignMode.DesignModeEnabled)
+            if (DesignMode.DesignModeEnabled == false)
             {
                 _systemNavigationManager = SystemNavigationManager.GetForCurrentView();
             }

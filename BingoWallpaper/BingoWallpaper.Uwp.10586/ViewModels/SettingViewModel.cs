@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using BingoWallpaper.Configuration;
 using BingoWallpaper.Models;
 using BingoWallpaper.Services;
 using BingoWallpaper.Uwp.Messages;
@@ -43,9 +44,9 @@ namespace BingoWallpaper.Uwp.ViewModels
 
         public IReadOnlyList<string> Areas => _leanCloudWallpaperServiceWithCache.GetSupportedAreas();
 
-        public string CacheDataSizeString => _leanCloudWallpaperServiceWithCache.CalculateSizeString();
+        public long CacheDataSize => _leanCloudWallpaperServiceWithCache.CalculateSize();
 
-        public string CacheImageSizeString => _imageLoader.CalculateCacheSizeString();
+        public long CacheImageSize => _imageLoader.CalculateCacheSize();
 
         public RelayCommand ClearAuthenticationCommand
         {
@@ -90,8 +91,8 @@ namespace BingoWallpaper.Uwp.ViewModels
                     {
                         IsBusy = false;
                     }
-                    RaisePropertyChanged(nameof(CacheDataSizeString));
-                    RaisePropertyChanged(nameof(CacheImageSizeString));
+                    RaisePropertyChanged(nameof(CacheDataSize));
+                    RaisePropertyChanged(nameof(CacheImageSize));
                     _appToastService.ShowMessage(LocalizedStrings.ClearCacheFinish);
                 });
                 return _clearCacheCommand;

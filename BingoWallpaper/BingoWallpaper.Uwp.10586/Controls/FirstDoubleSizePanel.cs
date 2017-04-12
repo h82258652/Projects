@@ -306,7 +306,7 @@ namespace BingoWallpaper.Uwp.Controls
 
         private static void OnOrientationChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            if (!Enum.IsDefined(typeof(Orientation), e.NewValue))
+            if (Enum.IsDefined(typeof(Orientation), e.NewValue) == false)
             {
                 throw new ArgumentOutOfRangeException(nameof(Orientation));
             }

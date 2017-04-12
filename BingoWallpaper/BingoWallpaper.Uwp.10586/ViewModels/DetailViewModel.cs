@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using BingoWallpaper.Configuration;
 using BingoWallpaper.Models;
 using BingoWallpaper.Models.LeanCloud;
 using BingoWallpaper.Services;
@@ -8,6 +9,7 @@ using BingoWallpaper.Uwp.Services;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using SoftwareKobo.Controls;
+using SoftwareKobo.Social.SinaWeibo;
 using SoftwareKobo.ViewModels;
 
 namespace BingoWallpaper.Uwp.ViewModels
@@ -224,7 +226,7 @@ namespace BingoWallpaper.Uwp.ViewModels
             {
                 var image = Wallpaper.Image;
                 var selectedWallpaperSize = _settings.SelectedWallpaperSize;
-                if (!image.ExistWUXGA && selectedWallpaperSize == new WallpaperSize(1920, 1200))
+                if (image.ExistWUXGA == false && selectedWallpaperSize == new WallpaperSize(1920, 1200))
                 {
                     _appToastService.ShowInformation(LocalizedStrings.WallpaperSizeFallbackNotice);
                     return _wallpaperService.GetUrl(image, new WallpaperSize(1920, 1080));

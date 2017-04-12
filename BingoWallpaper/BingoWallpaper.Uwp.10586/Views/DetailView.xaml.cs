@@ -2,6 +2,10 @@
 using System.Collections;
 using System.Diagnostics;
 using System.Threading.Tasks;
+using BingoWallpaper.Models.LeanCloud;
+using BingoWallpaper.Uwp.Services;
+using BingoWallpaper.Uwp.ViewModels;
+using SoftwareKobo.Controls;
 using Windows.Devices.Input;
 using Windows.UI;
 using Windows.UI.Input;
@@ -9,9 +13,6 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media.Animation;
 using Windows.UI.Xaml.Navigation;
-using BingoWallpaper.Models.LeanCloud;
-using BingoWallpaper.Uwp.Services;
-using BingoWallpaper.Uwp.ViewModels;
 using WinRTXamlToolkit.AwaitableUI;
 
 namespace BingoWallpaper.Uwp.Views

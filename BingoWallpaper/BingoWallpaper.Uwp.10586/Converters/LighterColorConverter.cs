@@ -1,7 +1,7 @@
 ﻿using System;
+using BingoWallpaper.Extensions;
 using Windows.UI;
 using Windows.UI.Xaml.Data;
-using BingoWallpaper.Extensions;
 
 namespace BingoWallpaper.Uwp.Converters
 {

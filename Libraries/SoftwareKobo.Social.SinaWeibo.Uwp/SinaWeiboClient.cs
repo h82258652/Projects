@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
-using SoftwareKobo.Social.SinaWeibo.Helpers;
+using SoftwareKobo.Helpers;
 using SoftwareKobo.Social.SinaWeibo.Models;
 using Windows.Foundation;
 using Windows.Security.Authentication.Web;

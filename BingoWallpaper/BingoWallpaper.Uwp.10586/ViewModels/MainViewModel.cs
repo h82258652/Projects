@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
+using BingoWallpaper.Configuration;
 using BingoWallpaper.Models.LeanCloud;
 using BingoWallpaper.Services;
 using BingoWallpaper.Uwp.Messages;
@@ -33,7 +34,7 @@ namespace BingoWallpaper.Uwp.ViewModels
             _appToastService = appToastService;
 
             var wallpaperCollections = new List<WallpaperCollection>();
-            var date = BingoWallpaper.Constants.MinimumViewMonth;
+            var date = Constants.MinimumViewMonth;
             while (date < DateTimeOffset.Now)
             {
                 wallpaperCollections.Add(new WallpaperCollection(date.Year, date.Month));
