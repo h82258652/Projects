@@ -94,7 +94,7 @@ namespace SoftwareKobo.Social.SinaWeibo
                 throw new ArgumentNullException(nameof(parameters));
             }
 
-            if (requiredAuthorized && IsAuthorized == false)
+            if (requiredAuthorized && !IsAuthorized)
             {
                 await AuthorizeAsync();
             }
@@ -143,14 +143,14 @@ namespace SoftwareKobo.Social.SinaWeibo
                 throw new ArgumentNullException(nameof(parameters));
             }
 
-            if (requiredAuthorized && IsAuthorized == false)
+            if (requiredAuthorized && !IsAuthorized)
             {
                 await AuthorizeAsync();
             }
 
             parameters = PrepareParameters(parameters);
             HttpContent content;
-            if (parameters.Any(temp => temp.Value != null && temp.Value is string == false))
+            if (parameters.Any(temp => temp.Value != null && !(temp.Value is string)))
             {
                 var postContent = new MultipartFormDataContent();
                 foreach (var temp in parameters)
@@ -296,19 +296,19 @@ namespace SoftwareKobo.Social.SinaWeibo
                 throw new ArgumentNullException(nameof(parameters));
             }
 
-            if (parameters.ContainsKey("client_id") == false)
+            if (!parameters.ContainsKey("client_id"))
             {
                 parameters["client_id"] = AppKey as TValue;
             }
-            if (parameters.ContainsKey("client_secret") == false)
+            if (!parameters.ContainsKey("client_secret"))
             {
                 parameters["client_secret"] = AppSecret as TValue;
             }
-            if (parameters.ContainsKey("redirect_uri") == false)
+            if (!parameters.ContainsKey("redirect_uri"))
             {
                 parameters["redirect_uri"] = RedirectUri as TValue;
             }
-            if (parameters.ContainsKey("code") == false)
+            if (!parameters.ContainsKey("code"))
             {
                 parameters["access_token"] = AccessToken as TValue;
             }
