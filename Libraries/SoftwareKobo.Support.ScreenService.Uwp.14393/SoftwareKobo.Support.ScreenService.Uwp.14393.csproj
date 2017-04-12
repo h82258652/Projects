@@ -4,15 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{63E2C598-C4EE-4F06-8263-A2E367450BE2}</ProjectGuid>
+    <ProjectGuid>{D13EDB6B-4C36-423A-814E-B96728925C4C}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BingoWallpaper</RootNamespace>
-    <AssemblyName>BingoWallpaper.Services.Uwp.10586</AssemblyName>
+    <RootNamespace>SoftwareKobo.Support</RootNamespace>
+    <AssemblyName>SoftwareKobo.Support.ScreenService.Uwp.14393</AssemblyName>
     <DefaultLanguage>zh-CN</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
-    <TargetPlatformVersion>10.0.10586.0</TargetPlatformVersion>
-    <TargetPlatformMinVersion>10.0.10586.0</TargetPlatformMinVersion>
+    <TargetPlatformVersion>10.0.14393.0</TargetPlatformVersion>
+    <TargetPlatformMinVersion>10.0.14393.0</TargetPlatformMinVersion>
     <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -105,54 +105,16 @@
   <ItemGroup>
     <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
     <None Include="project.json" />
-    <PRIResource Include="Strings\zh-CN\Resources.resw" />
-    <PRIResource Include="Strings\en-US\Resources.resw" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="LocalizedStrings.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\BingoFileService.cs" />
-    <Compile Include="Services\BingoShareService.cs" />
-    <Compile Include="Services\IBingoFileService.cs" />
-    <Compile Include="Services\IBingoShareService.cs" />
-    <Compile Include="Services\ILauncherService.cs" />
-    <Compile Include="Services\ILeanCloudWallpaperServiceWithCache.cs" />
-    <Compile Include="Services\ISystemSettingService.cs" />
-    <Compile Include="Services\ITileService.cs" />
-    <Compile Include="Services\LauncherService.cs" />
-    <Compile Include="Services\LeanCloudWallpaperServiceWithCache.cs" />
-    <Compile Include="Services\SystemSettingService.cs" />
-    <Compile Include="Services\TileService.cs" />
-    <EmbeddedResource Include="Properties\BingoWallpaper.Services.Uwp._10586.rd.xml" />
+    <Compile Include="ScreenService.cs" />
+    <EmbeddedResource Include="Properties\SoftwareKobo.Support.ScreenService.Uwp._14393.rd.xml" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Libraries\SoftwareKobo.Social.SinaWeibo.Core\SoftwareKobo.Social.SinaWeibo.Core.csproj">
-      <Project>{3ca966f6-437a-4d9a-bd1a-cf5853219abd}</Project>
-      <Name>SoftwareKobo.Social.SinaWeibo.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Libraries\SoftwareKobo.Social.SinaWeibo.Uwp\SoftwareKobo.Social.SinaWeibo.Uwp.csproj">
-      <Project>{35afb302-54e9-4e5c-878a-17e45b9158dc}</Project>
-      <Name>SoftwareKobo.Social.SinaWeibo.Uwp</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Libraries\SoftwareKobo.Utils\SoftwareKobo.Utils.csproj">
-      <Project>{8b7de148-6811-4333-8a5b-4a046c6c3525}</Project>
-      <Name>SoftwareKobo.Utils</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\BingoWallpaper.Configuration\BingoWallpaper.Configuration.csproj">
-      <Project>{5B328B0F-853A-4C25-9CCC-8C087648F796}</Project>
-      <Name>BingoWallpaper.Configuration</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\BingoWallpaper.Models\BingoWallpaper.Models.csproj">
-      <Project>{8977e1e5-d12e-4c56-adb1-c6d5c87edf74}</Project>
-      <Name>BingoWallpaper.Models</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\BingoWallpaper.Services\BingoWallpaper.Services.csproj">
-      <Project>{c8815f4b-2ce7-4664-ac43-62d15ad8a189}</Project>
-      <Name>BingoWallpaper.Services</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\BingoWallpaper.Utils\BingoWallpaper.Utils.csproj">
-      <Project>{8439f303-451e-47bf-ab12-9c5a49d7a2f5}</Project>
-      <Name>BingoWallpaper.Utils</Name>
+    <ProjectReference Include="..\SoftwareKobo.Support.ScreenService\SoftwareKobo.Support.ScreenService.csproj">
+      <Project>{0df42436-f884-4671-92a4-e0e9306cdcf7}</Project>
+      <Name>SoftwareKobo.Support.ScreenService</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">

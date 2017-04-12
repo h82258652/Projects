@@ -4,6 +4,7 @@ using Windows.ApplicationModel.DataTransfer;
 using Windows.Foundation;
 using Windows.Storage.Streams;
 using MicroMsg.sdk;
+using SoftwareKobo.Social.SinaWeibo;
 
 namespace BingoWallpaper.Services
 {
