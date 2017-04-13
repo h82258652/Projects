@@ -1,0 +1,13 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard1.3</TargetFramework>
+    <RootNamespace>U148</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\U148.Models\U148.Models.csproj" />
+    <ProjectReference Include="..\U148.Utils\U148.Utils.csproj" />
+  </ItemGroup>
+
+</Project>

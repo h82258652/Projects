@@ -117,11 +117,13 @@
     <Compile Include="Extensions\StoryboardExtensions.cs" />
     <Compile Include="Helpers\DeviceFamilyHelper.cs" />
     <Compile Include="Helpers\ScrollViewerHelper.cs" />
+    <Compile Include="Models\VerifiableObservableObject.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\IStoreService.cs" />
     <Compile Include="Services\NavigationService.cs" />
     <Compile Include="Services\StoreService.cs" />
     <Compile Include="ViewModels\INavigable.cs" />
+    <Compile Include="ViewModels\VerifiableViewModelBase.cs" />
     <Compile Include="Views\BindablePage.cs" />
     <Compile Include="Views\IRootView.cs" />
     <Compile Include="Views\RootViewBase.cs" />
@@ -132,6 +134,12 @@
     <SDKReference Include="WindowsMobile, Version=10.0.10240.0">
       <Name>Windows Mobile Extensions for the UWP</Name>
     </SDKReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SoftwareKobo.Utils\SoftwareKobo.Utils.csproj">
+      <Project>{776a7d97-d3cc-4bcc-8047-7fc3b696dd79}</Project>
+      <Name>SoftwareKobo.Utils</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>

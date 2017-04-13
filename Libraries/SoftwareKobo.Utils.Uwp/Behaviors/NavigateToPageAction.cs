@@ -1,8 +1,8 @@
 ﻿using System.Linq;
+using Microsoft.Xaml.Interactivity;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Markup;
-using Microsoft.Xaml.Interactivity;
 using WinRTXamlToolkit.Controls.Extensions;
 
 namespace SoftwareKobo.Behaviors

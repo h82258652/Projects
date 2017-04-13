@@ -15,8 +15,7 @@ namespace SoftwareKobo.Controls
 
         public static readonly DependencyProperty IconProperty = DependencyProperty.Register(nameof(Icon), typeof(IconElement), typeof(ToastPrompt), new PropertyMetadata(default(IconElement)));
 
-        public static readonly DependencyProperty MessageProperty = DependencyProperty.Register(nameof(Message),
-            typeof(string), typeof(ToastPrompt), new PropertyMetadata(default(string)));
+        public static readonly DependencyProperty MessageProperty = DependencyProperty.Register(nameof(Message), typeof(string), typeof(ToastPrompt), new PropertyMetadata(default(string)));
 
         private const string ContainerTemplateName = "PART_Container";
 
@@ -161,7 +160,7 @@ namespace SoftwareKobo.Controls
 
             if (!value.HasTimeSpan)
             {
-                throw new ArgumentException(LocalizedStrings.DurationNotTimeSpan, nameof(Duration));
+                throw new ArgumentException(LocalizedStrings.DurationNotTimeSpanExceptionMessage, nameof(Duration));
             }
         }
     }

@@ -4,6 +4,6 @@ namespace SoftwareKobo.Controls
 {
     internal static class LocalizedStrings
     {
-        internal static string DurationNotTimeSpan => ResourceLoader.GetForCurrentView("SoftwareKobo.Controls.ToastPrompt.Uwp/Resources").GetString("DurationNotTimeSpan");
+        internal static string DurationNotTimeSpanExceptionMessage => ResourceLoader.GetForCurrentView("SoftwareKobo.Controls.ToastPrompt.Uwp/Resources").GetString("DurationNotTimeSpanExceptionMessage");
     }
 }

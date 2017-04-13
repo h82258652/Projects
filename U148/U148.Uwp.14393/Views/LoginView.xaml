@@ -1,0 +1,54 @@
+﻿<UserControl x:Class="U148.Uwp.Views.LoginView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             DataContext="{Binding Source={StaticResource Locator}, Path=Login}"
+             Loaded="LoginView_Loaded"
+             Unloaded="LoginView_Unloaded"
+             mc:Ignorable="d">
+    <Grid x:Name="RootGrid">
+        <Grid.RenderTransform>
+            <TranslateTransform />
+        </Grid.RenderTransform>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <StackPanel Orientation="Vertical">
+                    <!--  TODO  -->
+                    <AutoSuggestBox x:Name="EmailTextBox"
+                                    ItemsSource="{Binding Path=EmailSuggestions}"
+                                    QuerySubmitted="EmailTextBox_QuerySubmitted"
+                                    Text="{Binding Path=Email, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                    <!--  TODO  -->
+                    <PasswordBox x:Name="PasswordBox"
+                                 KeyDown="PasswordBox_KeyDown"
+                                 Password="{Binding Path=Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                        <PasswordBox.InputScope>
+                            <InputScope>
+                                <InputScope.Names>
+                                    <InputScopeName NameValue="Password" />
+                                </InputScope.Names>
+                            </InputScope>
+                        </PasswordBox.InputScope>
+                    </PasswordBox>
+                    <!--  TODO  -->
+                    <HyperlinkButton Content="没有账号？立刻注册"
+                                     NavigateUri="http://www.u148.net/user/register.html" />
+                </StackPanel>
+            </Grid>
+            <!--  TODO  -->
+            <Grid Grid.Row="1"
+                  Background="Red">
+                <AppBarButton x:Name="LoginButton"
+                              HorizontalAlignment="Center"
+                              Command="{Binding Path=LoginCommand}"
+                              Icon="Accept"
+                              Label="登录" />
+            </Grid>
+        </Grid>
+    </Grid>
+</UserControl>

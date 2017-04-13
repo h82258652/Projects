@@ -8,8 +8,6 @@
              xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:media="using:Microsoft.Xaml.Interactions.Media"
-             d:DesignHeight="300"
-             d:DesignWidth="400"
              mc:Ignorable="d">
     <UserControl.Resources>
         <ResourceDictionary>
