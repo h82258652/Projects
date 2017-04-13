@@ -1,5 +1,6 @@
 ﻿using System;
 using Windows.ApplicationModel.Activation;
+using Windows.UI.Xaml;
 
 namespace U148.Uwp.Views
 {
@@ -18,5 +19,12 @@ namespace U148.Uwp.Views
         }
 
         public event EventHandler Completed;
+
+        private void SplashScreenImage_ImageOpened(object sender, RoutedEventArgs e)
+        {
+            Window.Current.Activate();
+
+            Completed?.Invoke(this, EventArgs.Empty);
+        }
     }
 }

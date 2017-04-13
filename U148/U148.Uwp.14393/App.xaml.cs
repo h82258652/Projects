@@ -28,9 +28,9 @@ namespace U148.Uwp
         protected override async void OnLaunched(LaunchActivatedEventArgs e)
         {
             var rootView = Window.Current.Content as RootView;
-            if (rootView != null)
+            if (rootView == null)
             {
-                rootView = new RootView();
+                rootView = new RootView(e.SplashScreen);
 
                 Window.Current.Content = rootView;
             }
