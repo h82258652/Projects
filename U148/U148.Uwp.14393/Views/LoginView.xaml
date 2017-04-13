@@ -11,43 +11,83 @@
         <Grid.RenderTransform>
             <TranslateTransform />
         </Grid.RenderTransform>
-        <Grid>
+        <Grid Background="#E3E3E3">
             <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
                 <RowDefinition Height="*" />
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
-            <Grid Grid.Row="0">
-                <StackPanel Orientation="Vertical">
-                    <!--  TODO  -->
-                    <AutoSuggestBox x:Name="EmailTextBox"
-                                    ItemsSource="{Binding Path=EmailSuggestions}"
-                                    QuerySubmitted="EmailTextBox_QuerySubmitted"
-                                    Text="{Binding Path=Email, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
-                    <!--  TODO  -->
-                    <PasswordBox x:Name="PasswordBox"
-                                 KeyDown="PasswordBox_KeyDown"
-                                 Password="{Binding Path=Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
-                        <PasswordBox.InputScope>
-                            <InputScope>
-                                <InputScope.Names>
-                                    <InputScopeName NameValue="Password" />
-                                </InputScope.Names>
-                            </InputScope>
-                        </PasswordBox.InputScope>
-                    </PasswordBox>
-                    <!--  TODO  -->
-                    <HyperlinkButton Content="没有账号？立刻注册"
+            <Button Width="48"
+                    Height="48"
+                    Click="GoBackButton_Click"
+                    Style="{StaticResource NavigationBackButtonNormalStyle}" />
+            <Grid Grid.Row="1">
+                <StackPanel Width="300"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            Orientation="Vertical">
+                    <StackPanel Orientation="Vertical">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <SymbolIcon Grid.Column="0"
+                                        Symbol="Contact" />
+                            <AutoSuggestBox x:Name="EmailTextBox"
+                                            Grid.Column="1"
+                                            ItemsSource="{Binding Path=EmailSuggestions}"
+                                            PlaceholderText="邮箱"
+                                            QuerySubmitted="EmailTextBox_QuerySubmitted"
+                                            Text="{Binding Path=Email, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                        </Grid>
+                        <Border Height="1"
+                                Background="Gray" />
+                        <TextBlock Foreground="Red"
+                                   Text="{Binding Path=Errors[Email]}" />
+                    </StackPanel>
+                    <StackPanel Margin="0,12,0,0"
+                                Orientation="Vertical">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <FontIcon Grid.Column="0"
+                                      FontFamily="Segoe MDL2 Assets"
+                                      Glyph="&#xE1F6;" />
+                            <PasswordBox x:Name="PasswordBox"
+                                         Grid.Column="1"
+                                         KeyDown="PasswordBox_KeyDown"
+                                         Password="{Binding Path=Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                         PlaceholderText="密码">
+                                <PasswordBox.InputScope>
+                                    <InputScope>
+                                        <InputScope.Names>
+                                            <InputScopeName NameValue="Password" />
+                                        </InputScope.Names>
+                                    </InputScope>
+                                </PasswordBox.InputScope>
+                            </PasswordBox>
+                        </Grid>
+                        <Border Height="1"
+                                Background="Gray" />
+                        <TextBlock Foreground="Red"
+                                   Text="{Binding Path=Errors[Password]}" />
+                    </StackPanel>
+                    <HyperlinkButton Margin="0,20,0,0"
+                                     HorizontalAlignment="Center"
+                                     Content="没有账号？立刻注册"
                                      NavigateUri="http://www.u148.net/user/register.html" />
                 </StackPanel>
             </Grid>
-            <!--  TODO  -->
-            <Grid Grid.Row="1"
-                  Background="Red">
+            <Grid Grid.Row="2"
+                  Background="{ThemeResource U148AccentBrush}">
                 <AppBarButton x:Name="LoginButton"
+                              x:Uid="/LoginView/LoginButton"
                               HorizontalAlignment="Center"
                               Command="{Binding Path=LoginCommand}"
-                              Icon="Accept"
-                              Label="登录" />
+                              Icon="Accept" />
             </Grid>
         </Grid>
     </Grid>

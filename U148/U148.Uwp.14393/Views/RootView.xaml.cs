@@ -1,5 +1,8 @@
-﻿using System;
+﻿using GalaSoft.MvvmLight.Messaging;
+using System;
+using U148.Uwp.Messages;
 using Windows.ApplicationModel.Activation;
+using Windows.UI.Xaml;
 
 namespace U148.Uwp.Views
 {
@@ -21,6 +24,30 @@ namespace U148.Uwp.Views
             };
             extendedSplashScreenView.Completed += completedHandler;
             RootGrid.Children.Add(extendedSplashScreenView);
+        }
+
+        private void RootView_Loaded(object sender, RoutedEventArgs e)
+        {
+            Messenger.Default.Register<ShowLoginViewMessage>(this, message =>
+            {
+                var loginView = new LoginView();
+                LoginViewHost.Child = loginView;
+                loginView.Show();
+            });
+            Messenger.Default.Register<HideLoginViewMessage>(this, async message =>
+            {
+                var loginView = LoginViewHost.Child as LoginView;
+                if (loginView != null)
+                {
+                    await loginView.HideAsync();
+                }
+                LoginViewHost.Child = null;
+            });
+        }
+
+        private void RootView_Unloaded(object sender, RoutedEventArgs e)
+        {
+            Messenger.Default.Unregister(this);
         }
     }
 }

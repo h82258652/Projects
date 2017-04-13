@@ -74,6 +74,11 @@ namespace U148.Uwp.Views
             PasswordBox.Focus(FocusState.Programmatic);
         }
 
+        private void GoBackButton_Click(object sender, RoutedEventArgs e)
+        {
+            Messenger.Default.Send(new HideLoginViewMessage());
+        }
+
         private void LoginView_Loaded(object sender, RoutedEventArgs e)
         {
             Messenger.Default.Register<LoginFailedMessage>(this, message =>

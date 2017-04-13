@@ -29,6 +29,14 @@ namespace U148.Uwp.ViewModels
 
         public AboutViewModel About => ServiceLocator.Current.GetInstance<AboutViewModel>();
 
+        public ArticleViewModel Article
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<ArticleViewModel>();
+            }
+        }
+
         public CommentViewModel Comment => ServiceLocator.Current.GetInstance<CommentViewModel>();
 
         public DetailViewModel Detail => ServiceLocator.Current.GetInstance<DetailViewModel>();
@@ -56,6 +64,7 @@ namespace U148.Uwp.ViewModels
             unityContainer.RegisterType<SettingViewModel>();
             unityContainer.RegisterType<LoginViewModel>();
             unityContainer.RegisterType<AboutViewModel>();
+            unityContainer.RegisterType<ArticleViewModel>();
 
             return unityContainer;
         }

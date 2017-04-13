@@ -1,17 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
+using WinRTXamlToolkit.Controls.Extensions;
 
 namespace U148.Uwp.Views
 {
@@ -19,7 +9,23 @@ namespace U148.Uwp.Views
     {
         public ArticleView()
         {
-            this.InitializeComponent();
+            InitializeComponent();
+        }
+
+        private async void ScrollToTopButton_Click(object sender, RoutedEventArgs e)
+        {
+            var selectedItem = ArticlePivot.SelectedItem;
+            // TODO var name
+            if (selectedItem != null)
+            {
+                var pivotItem = ArticlePivot.ContainerFromItem(selectedItem);
+                var itemsControl = pivotItem?.GetFirstDescendantOfType<ItemsControl>();
+                var scrollViewer = itemsControl?.GetScrollViewer();
+                if (scrollViewer != null)
+                {
+                    await scrollViewer.ScrollToHorizontalOffsetWithAnimationAsync(0, TimeSpan.FromMilliseconds(200));
+                }
+            }
         }
     }
 }
