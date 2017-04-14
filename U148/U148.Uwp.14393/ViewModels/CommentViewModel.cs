@@ -33,9 +33,15 @@ namespace U148.Uwp.ViewModels
             _appToastService = appToastService;
             _u148Settings = u148Settings;
 
+            MessengerInstance.Register<LoginSuccessMessage>(this, message =>
+            {
+                RaisePropertyChanged(nameof(IsLogined));
+                SendCommentCommand.RaiseCanExecuteChanged();
+            });
             MessengerInstance.Register<LogoutMessage>(this, message =>
             {
-                throw new NotImplementedException();
+                RaisePropertyChanged(nameof(IsLogined));
+                SendCommentCommand.RaiseCanExecuteChanged();
             });
         }
 
@@ -57,7 +63,6 @@ namespace U148.Uwp.ViewModels
             {
                 Set(ref _isBusy, value);
                 SendCommentCommand.RaiseCanExecuteChanged();
-                // TODO raise command can execute.
             }
         }
 
@@ -127,7 +132,7 @@ namespace U148.Uwp.ViewModels
                     }
                 }, comment =>
                 {
-                    return !IsBusy;
+                    return IsLogined && !IsBusy;
                 });
                 return _sendCommentCommand;
             }
