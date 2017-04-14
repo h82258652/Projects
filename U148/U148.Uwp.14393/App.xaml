@@ -7,6 +7,7 @@
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Styles/U148ButtonStyle.xaml" />
                 <ResourceDictionary Source="/Styles/U148ColorStyle.xaml" />
                 <ResourceDictionary Source="/Styles/U148TextControlStyle.xaml" />
             </ResourceDictionary.MergedDictionaries>

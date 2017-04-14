@@ -98,6 +98,7 @@
     </Compile>
     <Compile Include="Controls\MasterDetailView.cs" />
     <Compile Include="Controls\MasterDetailViewState.cs" />
+    <Compile Include="Converters\ArticleCategoryNameConverter.cs" />
     <Compile Include="LocalizedStrings.cs" />
     <Compile Include="Messages\HideLoginViewMessage.cs" />
     <Compile Include="Messages\LoginFailedMessage.cs" />
@@ -114,6 +115,7 @@
     <Compile Include="ViewModels\DetailViewModel.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
+    <Compile Include="ViewModels\SearchViewModel.cs" />
     <Compile Include="ViewModels\SettingViewModel.cs" />
     <Compile Include="ViewModels\ViewModelLocator.cs" />
     <Compile Include="Views\AboutView.xaml.cs">
@@ -154,9 +156,11 @@
     <PRIResource Include="Strings\zh-CN\Resources.resw" />
     <PRIResource Include="Strings\zh-CN\LoginView.resw" />
     <PRIResource Include="Strings\zh-CN\SettingView.resw" />
+    <PRIResource Include="Strings\zh-CN\ArticleCategory.resw" />
     <None Include="U148.Uwp.14393_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\Images\hamburger_menu_background.jpg" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />
@@ -172,9 +176,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Converters\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\..\Libraries\SoftwareKobo.Controls.ImageEx.Uwp\SoftwareKobo.Controls.ImageEx.Uwp.csproj">
       <Project>{cdfbf869-6a2e-4c90-a9c1-2f5acb283404}</Project>
@@ -219,6 +221,11 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="Controls\MasterDetailView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Page>
+    <Page Include="Styles\Buttons\EmptyButtonStyle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

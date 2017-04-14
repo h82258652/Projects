@@ -158,7 +158,7 @@ namespace U148.Uwp.Controls
                     break;
 
                 case MasterDetailViewState.Detail:
-                    if (value == false)
+                    if (!value)
                     {
                         obj.ViewState = MasterDetailViewState.Master;
                     }
@@ -171,7 +171,7 @@ namespace U148.Uwp.Controls
             var obj = (MasterDetailView)d;
             var value = (MasterDetailViewState)e.NewValue;
 
-            if (Enum.IsDefined(typeof(MasterDetailViewState), value) == false)
+            if (!Enum.IsDefined(typeof(MasterDetailViewState), value))
             {
                 throw new ArgumentOutOfRangeException(nameof(ViewState));
             }

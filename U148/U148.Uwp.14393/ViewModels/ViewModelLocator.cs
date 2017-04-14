@@ -11,6 +11,8 @@ namespace U148.Uwp.ViewModels
     {
         public const string AboutViewKey = "About";
 
+        public const string ArticleViewKey = "Article";
+
         public const string CommentViewKey = "Comment";
 
         public const string DetailViewKey = "Detail";
@@ -18,6 +20,8 @@ namespace U148.Uwp.ViewModels
         public const string LoginViewKey = "Login";
 
         public const string MainViewKey = "Main";
+
+        public const string SearchViewKey = "Search";
 
         public const string SettingViewKey = "Setting";
 
@@ -45,6 +49,14 @@ namespace U148.Uwp.ViewModels
 
         public MainViewModel Main => ServiceLocator.Current.GetInstance<MainViewModel>();
 
+        public SearchViewModel Search
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<SearchViewModel>();
+            }
+        }
+
         public SettingViewModel Setting => ServiceLocator.Current.GetInstance<SettingViewModel>();
 
         private static IUnityContainer ConfigureUnityContainer()
@@ -59,12 +71,13 @@ namespace U148.Uwp.ViewModels
             unityContainer.RegisterType<IAppToastService, AppToastService>();
 
             unityContainer.RegisterType<MainViewModel>();
+            unityContainer.RegisterType<ArticleViewModel>();
             unityContainer.RegisterType<DetailViewModel>();
             unityContainer.RegisterType<CommentViewModel>();
+            unityContainer.RegisterType<SearchViewModel>();
             unityContainer.RegisterType<SettingViewModel>();
             unityContainer.RegisterType<LoginViewModel>();
             unityContainer.RegisterType<AboutViewModel>();
-            unityContainer.RegisterType<ArticleViewModel>();
 
             return unityContainer;
         }

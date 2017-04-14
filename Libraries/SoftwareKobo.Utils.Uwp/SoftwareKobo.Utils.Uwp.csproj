@@ -111,6 +111,7 @@
     <Compile Include="Behaviors\NavigateToPageAction.cs" />
     <Compile Include="Configuration\AppSettingsBase.cs" />
     <Compile Include="Configuration\IAppSettings.cs" />
+    <Compile Include="Converters\ItemClickEventArgsConverter.cs" />
     <Compile Include="Extensions\ButtonExtensions.cs" />
     <Compile Include="Extensions\FrameExtensions.cs" />
     <Compile Include="Extensions\RectExtensions.cs" />
