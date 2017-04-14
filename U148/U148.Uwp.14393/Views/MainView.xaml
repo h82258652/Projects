@@ -31,6 +31,18 @@
                             <Image Source="{Binding Path=UserInfo.Icon}" />
                             <Button Height="48"
                                     HorizontalAlignment="Stretch"
+                                    Command="{Binding Path=LogoutCommand}"
+                                    Content="登出">
+                                <interactivity:Interaction.Behaviors>
+                                    <core:EventTriggerBehavior EventName="Click">
+                                        <core:ChangePropertyAction PropertyName="IsPaneOpen"
+                                                                   TargetObject="{Binding ElementName=HamburgerMenu}"
+                                                                   Value="False" />
+                                    </core:EventTriggerBehavior>
+                                </interactivity:Interaction.Behaviors>
+                            </Button>
+                            <Button Height="48"
+                                    HorizontalAlignment="Stretch"
                                     Click="LoginMenuItem_Click"
                                     Content="登录">
                                 <interactivity:Interaction.Behaviors>

@@ -54,5 +54,12 @@ namespace U148.Uwp.ViewModels
                 return _u148Settings.UserInfo;
             }
         }
+
+        public override void Cleanup()
+        {
+            base.Cleanup();
+
+            MessengerInstance.Unregister(this);
+        }
     }
 }
