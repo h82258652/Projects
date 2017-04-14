@@ -114,8 +114,7 @@ namespace U148.Uwp.ViewModels
 
                             MessengerInstance.Send(new SendCommentSuccessMessage());
 
-                            // TODO refresh comments.
-                            throw new NotImplementedException();
+                            RefreshCommand.Execute(null);
                         }
                         else
                         {
