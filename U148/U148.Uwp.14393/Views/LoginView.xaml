@@ -39,7 +39,27 @@
                                             ItemsSource="{Binding Path=EmailSuggestions}"
                                             PlaceholderText="邮箱"
                                             QuerySubmitted="EmailTextBox_QuerySubmitted"
-                                            Text="{Binding Path=Email, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                                            Text="{Binding Path=Email, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                                <AutoSuggestBox.TextBoxStyle>
+                                    <Style TargetType="TextBox">
+                                        <Setter Property="Background"
+                                                Value="Transparent" />
+                                        <Setter Property="BorderBrush"
+                                                Value="Transparent" />
+                                        <Setter Property="BorderThickness"
+                                                Value="0" />
+                                        <Setter Property="InputScope">
+                                            <Setter.Value>
+                                                <InputScope>
+                                                    <InputScope.Names>
+                                                        <InputScopeName NameValue="EmailNameOrAddress" />
+                                                    </InputScope.Names>
+                                                </InputScope>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Style>
+                                </AutoSuggestBox.TextBoxStyle>
+                            </AutoSuggestBox>
                         </Grid>
                         <Border Height="1"
                                 Background="Gray" />
@@ -58,7 +78,11 @@
                                       Glyph="&#xE1F6;" />
                             <PasswordBox x:Name="PasswordBox"
                                          Grid.Column="1"
+                                         Background="Transparent"
+                                         BorderBrush="Transparent"
+                                         BorderThickness="0"
                                          KeyDown="PasswordBox_KeyDown"
+                                         MaxLength="16"
                                          Password="{Binding Path=Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                          PlaceholderText="密码">
                                 <PasswordBox.InputScope>
