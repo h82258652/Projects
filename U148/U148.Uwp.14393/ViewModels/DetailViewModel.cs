@@ -5,6 +5,7 @@ using GalaSoft.MvvmLight.Views;
 using SoftwareKobo.ViewModels;
 using U148.Models;
 using U148.Services;
+using U148.Uwp.Messages;
 using U148.Uwp.Services;
 
 namespace U148.Uwp.ViewModels
@@ -80,7 +81,7 @@ namespace U148.Uwp.ViewModels
                         var result = await _articleService.GetArticleDetailAsync(Article.Id);
                         if (result.ErrorCode == 0)
                         {
-                            throw new NotImplementedException();
+                            MessengerInstance.Send(new ArticleContentLoadedMessage(result.Data.Content));
                         }
                         else
                         {
@@ -103,6 +104,7 @@ namespace U148.Uwp.ViewModels
         public void Activate(object parameter)
         {
             Article = (Article)parameter;
+            LoadArticleDetail();
         }
 
         public void Deactivate(object parameter)
@@ -122,7 +124,7 @@ namespace U148.Uwp.ViewModels
                 var result = await _articleService.GetArticleDetailAsync(Article.Id);
                 if (result.ErrorCode == 0)
                 {
-                    throw new NotImplementedException();
+                    MessengerInstance.Send(new ArticleContentLoadedMessage(result.Data.Content));
                 }
                 else
                 {

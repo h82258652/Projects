@@ -4,6 +4,7 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 using GalaSoft.MvvmLight.Messaging;
+using U148.Uwp.Messages;
 
 namespace U148.Uwp.Views
 {
@@ -24,6 +25,14 @@ namespace U148.Uwp.Views
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
+
+            Messenger.Default.Register<ArticleContentLoadedMessage>(this, async message =>
+            {
+                await WebView.InvokeScriptAsync("setContent", new[]
+                {
+                    message.Content
+                });
+            });
         }
 
         private async void ScrollToTopButton_Click(object sender, RoutedEventArgs e)

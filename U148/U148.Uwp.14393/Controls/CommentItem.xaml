@@ -1,0 +1,17 @@
+﻿<UserControl x:Class="U148.Uwp.Controls.CommentItem"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:models="using:U148.Models"
+             d:DataContext="{d:DesignInstance Type=models:Comment}"
+             DataContextChanged="CommentItem_DataContextChanged"
+             mc:Ignorable="d">
+    <Grid>
+        <Image Source="{Binding Path=User.Icon}" />
+        <TextBlock Text="{Binding Path=User.Nickname}" />
+        <WebView x:Name="ContentHost"
+                 ScriptNotify="ContentHost_ScriptNotify" />
+        <TextBlock Text="{Binding Path=FloorNo}" />
+    </Grid>
+</UserControl>

@@ -33,50 +33,55 @@
                     <ScrollViewer VerticalScrollBarVisibility="Auto">
                         <Grid>
                             <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
                                 <RowDefinition Height="*" />
                                 <RowDefinition Height="Auto" />
                             </Grid.RowDefinitions>
-                            <Image Width="48"
-                                   Height="48"
-                                   Source="{Binding Path=UserInfo.Icon}"
-                                   Visibility="{Binding Path=UserInfo, Converter={StaticResource IsNullToVisibilityConverter}}" />
-                            <TextBlock Text="{Binding Path=UserInfo.Nickname}"
-                                       TextAlignment="Center"
-                                       Visibility="{Binding Path=UserInfo, Converter={StaticResource IsNullToVisibilityConverter}}" />
-                            <localControls:HamburgerMenuItem Height="48"
-                                                             HorizontalAlignment="Stretch"
-                                                             Command="{Binding Path=LogoutCommand}"
-                                                             Label="登出"
-                                                             Visibility="{Binding Path=UserInfo, Converter={StaticResource IsNullToVisibilityConverter}}">
-                                <interactivity:Interaction.Behaviors>
-                                    <core:EventTriggerBehavior EventName="Click">
-                                        <core:ChangePropertyAction PropertyName="IsPaneOpen"
-                                                                   TargetObject="{Binding ElementName=HamburgerMenu}"
-                                                                   Value="False" />
-                                    </core:EventTriggerBehavior>
-                                </interactivity:Interaction.Behaviors>
-                                <localControls:HamburgerMenuItem.Icon>
-                                    <FontIcon FontFamily="Segoe MDL2 Assets"
-                                              Glyph="&#xE8DE;" />
-                                </localControls:HamburgerMenuItem.Icon>
-                            </localControls:HamburgerMenuItem>
-                            <localControls:HamburgerMenuItem Height="48"
-                                                             HorizontalAlignment="Stretch"
-                                                             Click="LoginMenuItem_Click"
-                                                             Label="登录"
-                                                             Visibility="{Binding Path=UserInfo, Converter={StaticResource InversedIsNullToVisibilityConverter}}">
-                                <interactivity:Interaction.Behaviors>
-                                    <core:EventTriggerBehavior EventName="Click">
-                                        <core:ChangePropertyAction PropertyName="IsPaneOpen"
-                                                                   TargetObject="{Binding ElementName=HamburgerMenu}"
-                                                                   Value="False" />
-                                    </core:EventTriggerBehavior>
-                                </interactivity:Interaction.Behaviors>
-                                <localControls:HamburgerMenuItem.Icon>
-                                    <SymbolIcon Symbol="Contact" />
-                                </localControls:HamburgerMenuItem.Icon>
-                            </localControls:HamburgerMenuItem>
-                            <StackPanel Grid.Row="1"
+                            <StackPanel Grid.Row="0"
+                                        Visibility="{Binding Path=UserInfo, Converter={StaticResource IsNullToVisibilityConverter}}">
+                                <Image Width="48"
+                                       Height="48"
+                                       Source="{Binding Path=UserInfo.Icon}" />
+                                <TextBlock Text="{Binding Path=UserInfo.Nickname}"
+                                           TextAlignment="Center"
+                                           Visibility="{Binding Path=UserInfo, Converter={StaticResource IsNullToVisibilityConverter}}" />
+                                <localControls:HamburgerMenuItem Height="48"
+                                                                 HorizontalAlignment="Stretch"
+                                                                 Command="{Binding Path=LogoutCommand}"
+                                                                 Label="登出"
+                                                                 Visibility="{Binding Path=UserInfo, Converter={StaticResource IsNullToVisibilityConverter}}">
+                                    <interactivity:Interaction.Behaviors>
+                                        <core:EventTriggerBehavior EventName="Click">
+                                            <core:ChangePropertyAction PropertyName="IsPaneOpen"
+                                                                       TargetObject="{Binding ElementName=HamburgerMenu}"
+                                                                       Value="False" />
+                                        </core:EventTriggerBehavior>
+                                    </interactivity:Interaction.Behaviors>
+                                    <localControls:HamburgerMenuItem.Icon>
+                                        <FontIcon FontFamily="Segoe MDL2 Assets"
+                                                  Glyph="&#xE8DE;" />
+                                    </localControls:HamburgerMenuItem.Icon>
+                                </localControls:HamburgerMenuItem>
+                            </StackPanel>
+                            <StackPanel Grid.Row="0"
+                                        Visibility="{Binding Path=UserInfo, Converter={StaticResource InversedIsNullToVisibilityConverter}}">
+                                <localControls:HamburgerMenuItem Height="48"
+                                                                 HorizontalAlignment="Stretch"
+                                                                 Click="LoginMenuItem_Click"
+                                                                 Label="登录">
+                                    <interactivity:Interaction.Behaviors>
+                                        <core:EventTriggerBehavior EventName="Click">
+                                            <core:ChangePropertyAction PropertyName="IsPaneOpen"
+                                                                       TargetObject="{Binding ElementName=HamburgerMenu}"
+                                                                       Value="False" />
+                                        </core:EventTriggerBehavior>
+                                    </interactivity:Interaction.Behaviors>
+                                    <localControls:HamburgerMenuItem.Icon>
+                                        <SymbolIcon Symbol="Contact" />
+                                    </localControls:HamburgerMenuItem.Icon>
+                                </localControls:HamburgerMenuItem>
+                            </StackPanel>
+                            <StackPanel Grid.Row="2"
                                         Orientation="Vertical">
                                 <localControls:HamburgerMenuItem Label="设置">
                                     <interactivity:Interaction.Behaviors>
@@ -114,18 +119,8 @@
                            SourcePageType="views:ArticleView" />
                 </localControls:MasterDetailView.MasterContent>
                 <localControls:MasterDetailView.DetailContent>
-                    <Grid>
-                        <Frame x:Name="DetailFrame"
-                               SourcePageType="views:EmptyDetailView" />
-                        <StackPanel HorizontalAlignment="Center"
-                                    VerticalAlignment="Center">
-                            <TextBlock FontSize="20"
-                                       Text="你好，世界" />
-                            <TextBlock FontFamily="ms-appx:/Assets/Fonts/SourceHanSerifCN-Regular.otf#Source Han Serif CN"
-                                       FontSize="20"
-                                       Text="你好，世界" />
-                        </StackPanel>
-                    </Grid>
+                    <Frame x:Name="DetailFrame"
+                           SourcePageType="views:EmptyDetailView" />
                 </localControls:MasterDetailView.DetailContent>
             </localControls:MasterDetailView>
         </SplitView>

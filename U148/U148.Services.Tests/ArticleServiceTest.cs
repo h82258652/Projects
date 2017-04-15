@@ -28,5 +28,12 @@ namespace U148.Services.Tests
             var result = await _articleService.GetArticlesAsync(ArticleCategory.Home);
             Assert.AreEqual(result.ErrorCode, 0);
         }
+
+        [Test]
+        public async Task TestSearchAsync()
+        {
+            var result = await _articleService.SearchAsync(string.Empty);
+            Assert.AreEqual(result.ErrorCode, 0);
+        }
     }
 }

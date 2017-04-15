@@ -114,15 +114,24 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\ArticleItem.xaml.cs">
+      <DependentUpon>ArticleItem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\CommentItem.xaml.cs">
+      <DependentUpon>CommentItem.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\HamburgerMenuItem.cs" />
     <Compile Include="Controls\MasterDetailView.cs" />
     <Compile Include="Controls\MasterDetailViewState.cs" />
     <Compile Include="Converters\ArticleCategoryNameConverter.cs" />
+    <Compile Include="Converters\CommentCountConverter.cs" />
     <Compile Include="Converters\IsNullToVisibilityConverter.cs" />
     <Compile Include="Data\ArticleCollection.cs" />
     <Compile Include="Data\CommentCollection.cs" />
     <Compile Include="Data\IncrementalLoadingCollectionBase.cs" />
+    <Compile Include="Data\SearchArticleCollection.cs" />
     <Compile Include="LocalizedStrings.cs" />
+    <Compile Include="Messages\ArticleContentLoadedMessage.cs" />
     <Compile Include="Messages\HideLoginViewMessage.cs" />
     <Compile Include="Messages\LoginFailedMessage.cs" />
     <Compile Include="Messages\LoginSuccessMessage.cs" />
@@ -167,6 +176,9 @@
     </Compile>
     <Compile Include="Views\RootView.xaml.cs">
       <DependentUpon>RootView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SearchView.xaml.cs">
+      <DependentUpon>SearchView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\SettingView.xaml.cs">
       <DependentUpon>SettingView.xaml</DependentUpon>
@@ -299,8 +311,11 @@
     <Content Include="Assets\Html\bower_components\jquery\src\var\support.js" />
     <Content Include="Assets\Html\bower_components\jquery\src\var\toString.js" />
     <Content Include="Assets\Html\bower_components\jquery\src\wrap.js" />
+    <Content Include="Assets\Html\comment.html" />
     <Content Include="Assets\Html\css\article.css" />
+    <Content Include="Assets\Html\css\comment.css" />
     <Content Include="Assets\Html\js\article.js" />
+    <Content Include="Assets\Html\js\comment.js" />
     <Content Include="Assets\Images\hamburger_menu_background.jpg" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
@@ -361,6 +376,14 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Controls\ArticleItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\CommentItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controls\HamburgerMenuItem.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -372,6 +395,11 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Page>
     <Page Include="Styles\Buttons\EmptyButtonStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Page>
+    <Page Include="Styles\Buttons\RefreshButtonStyle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -428,6 +456,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\RootView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SearchView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
