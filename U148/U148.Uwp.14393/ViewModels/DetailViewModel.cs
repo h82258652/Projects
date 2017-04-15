@@ -65,7 +65,6 @@ namespace U148.Uwp.ViewModels
             private set
             {
                 Set(ref _isBusy, value);
-                throw new NotImplementedException();
             }
         }
 
@@ -73,9 +72,29 @@ namespace U148.Uwp.ViewModels
         {
             get
             {
-                _refreshCommand = _refreshCommand ?? new RelayCommand(() =>
+                _refreshCommand = _refreshCommand ?? new RelayCommand(async () =>
                 {
-                    throw new NotImplementedException();
+                    IsBusy = true;
+                    try
+                    {
+                        var result = await _articleService.GetArticleDetailAsync(Article.Id);
+                        if (result.ErrorCode == 0)
+                        {
+                            throw new NotImplementedException();
+                        }
+                        else
+                        {
+                            _appToastService.ShowError(result.ErrorMessage);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        _appToastService.ShowError(ex.Message);
+                    }
+                    finally
+                    {
+                        IsBusy = false;
+                    }
                 });
                 return _refreshCommand;
             }

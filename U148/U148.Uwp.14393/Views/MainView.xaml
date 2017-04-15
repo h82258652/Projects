@@ -114,8 +114,18 @@
                            SourcePageType="views:ArticleView" />
                 </localControls:MasterDetailView.MasterContent>
                 <localControls:MasterDetailView.DetailContent>
-                    <Frame x:Name="DetailFrame"
-                           SourcePageType="views:EmptyDetailView" />
+                    <Grid>
+                        <Frame x:Name="DetailFrame"
+                               SourcePageType="views:EmptyDetailView" />
+                        <StackPanel HorizontalAlignment="Center"
+                                    VerticalAlignment="Center">
+                            <TextBlock FontSize="20"
+                                       Text="你好，世界" />
+                            <TextBlock FontFamily="ms-appx:/Assets/Fonts/SourceHanSerifCN-Regular.otf#Source Han Serif CN"
+                                       FontSize="20"
+                                       Text="你好，世界" />
+                        </StackPanel>
+                    </Grid>
                 </localControls:MasterDetailView.DetailContent>
             </localControls:MasterDetailView>
         </SplitView>

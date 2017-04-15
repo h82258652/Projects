@@ -6,7 +6,9 @@
       DataContext="{Binding Source={StaticResource Locator}, Path=Detail}"
       mc:Ignorable="d">
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <WebView x:Name="WebView" />
-        <Button Command="{Binding Path=CommentCommand}"></Button>
+        <WebView x:Name="WebView"
+                 ScriptNotify="WebView_ScriptNotify" />
+        <Button Command="{Binding Path=CommentCommand}" />
+        <Button Click="ScrollToTopButton_Click" />
     </Grid>
 </Page>
