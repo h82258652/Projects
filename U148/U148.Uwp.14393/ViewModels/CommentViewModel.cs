@@ -51,6 +51,10 @@ namespace U148.Uwp.ViewModels
             {
                 throw new NotImplementedException();
             }
+            private set
+            {
+                throw new NotImplementedException();
+            }
         }
 
         public bool IsBusy
@@ -153,7 +157,6 @@ namespace U148.Uwp.ViewModels
 
         public void Deactivate(object parameter)
         {
-            throw new NotImplementedException();
         }
     }
 }
