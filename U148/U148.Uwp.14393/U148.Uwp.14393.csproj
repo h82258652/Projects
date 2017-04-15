@@ -100,6 +100,7 @@
     <Compile Include="Controls\MasterDetailView.cs" />
     <Compile Include="Controls\MasterDetailViewState.cs" />
     <Compile Include="Converters\ArticleCategoryNameConverter.cs" />
+    <Compile Include="Converters\IsNullToVisibilityConverter.cs" />
     <Compile Include="LocalizedStrings.cs" />
     <Compile Include="Messages\HideLoginViewMessage.cs" />
     <Compile Include="Messages\LoginFailedMessage.cs" />
