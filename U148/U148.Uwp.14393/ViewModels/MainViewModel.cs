@@ -9,11 +9,11 @@ namespace U148.Uwp.ViewModels
 {
     public class MainViewModel : ViewModelBase
     {
-        private IAppToastService _appToastService;
+        private readonly IAppToastService _appToastService;
+
+        private readonly IU148Settings _u148Settings;
 
         private RelayCommand _logoutCommand;
-
-        private IU148Settings _u148Settings;
 
         public MainViewModel(IU148Settings u148Settings, IAppToastService appToastService)
         {
@@ -47,13 +47,7 @@ namespace U148.Uwp.ViewModels
             }
         }
 
-        public UserInfo UserInfo
-        {
-            get
-            {
-                return _u148Settings.UserInfo;
-            }
-        }
+        public UserInfo UserInfo => _u148Settings.UserInfo;
 
         public override void Cleanup()
         {

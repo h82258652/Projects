@@ -1,5 +1,5 @@
-﻿using GalaSoft.MvvmLight.Messaging;
-using System;
+﻿using System;
+using GalaSoft.MvvmLight.Messaging;
 using U148.Uwp.Messages;
 using Windows.ApplicationModel.Activation;
 using Windows.UI.Xaml;

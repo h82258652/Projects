@@ -6,7 +6,7 @@ using WinRTXamlToolkit.Controls.Extensions;
 
 namespace U148.Uwp.Views
 {
-    public sealed partial class ArticleView : Page
+    public sealed partial class ArticleView
     {
         public ArticleView()
         {
@@ -22,16 +22,15 @@ namespace U148.Uwp.Views
 
         private async void ScrollToTopButton_Click(object sender, RoutedEventArgs e)
         {
-            var selectedItem = ArticlePivot.SelectedItem;
-            // TODO var name
-            if (selectedItem != null)
+            var articlePivotSelectedItem = ArticlePivot.SelectedItem;
+            if (articlePivotSelectedItem != null)
             {
-                var pivotItem = ArticlePivot.ContainerFromItem(selectedItem);
+                var pivotItem = ArticlePivot.ContainerFromItem(articlePivotSelectedItem);
                 var itemsControl = pivotItem?.GetFirstDescendantOfType<ItemsControl>();
                 var scrollViewer = itemsControl?.GetScrollViewer();
                 if (scrollViewer != null)
                 {
-                    await scrollViewer.ScrollToHorizontalOffsetWithAnimationAsync(0, TimeSpan.FromMilliseconds(200));
+                    await scrollViewer.ScrollToVerticalOffsetWithAnimationAsync(0, TimeSpan.FromMilliseconds(200));
                 }
             }
         }
