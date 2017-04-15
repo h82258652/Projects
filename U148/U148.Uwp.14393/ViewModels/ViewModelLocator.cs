@@ -33,13 +33,7 @@ namespace U148.Uwp.ViewModels
 
         public AboutViewModel About => ServiceLocator.Current.GetInstance<AboutViewModel>();
 
-        public ArticleViewModel Article
-        {
-            get
-            {
-                return ServiceLocator.Current.GetInstance<ArticleViewModel>();
-            }
-        }
+        public ArticleViewModel Article => ServiceLocator.Current.GetInstance<ArticleViewModel>();
 
         public CommentViewModel Comment => ServiceLocator.Current.GetInstance<CommentViewModel>();
 
@@ -49,13 +43,7 @@ namespace U148.Uwp.ViewModels
 
         public MainViewModel Main => ServiceLocator.Current.GetInstance<MainViewModel>();
 
-        public SearchViewModel Search
-        {
-            get
-            {
-                return ServiceLocator.Current.GetInstance<SearchViewModel>();
-            }
-        }
+        public SearchViewModel Search => ServiceLocator.Current.GetInstance<SearchViewModel>();
 
         public SettingViewModel Setting => ServiceLocator.Current.GetInstance<SettingViewModel>();
 

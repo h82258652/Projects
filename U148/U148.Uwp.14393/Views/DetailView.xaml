@@ -7,5 +7,6 @@
       mc:Ignorable="d">
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <WebView x:Name="WebView" />
+        <Button Command="{Binding Path=CommentCommand}"></Button>
     </Grid>
 </Page>

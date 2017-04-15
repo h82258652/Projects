@@ -5,5 +5,9 @@
       xmlns:local="using:U148.Uwp.Views"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       mc:Ignorable="d">
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" />
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Viewbox StretchDirection="DownOnly">
+            <Image Stretch="None" />
+        </Viewbox>
+    </Grid>
 </Page>
