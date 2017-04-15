@@ -8,7 +8,7 @@ namespace BingoWallpaper.Uwp.Converters
     {
         public object Convert(object value, Type targetType, object parameter, string language)
         {
-            if (value is int == false)
+            if (!(value is int))
             {
                 return null;
             }

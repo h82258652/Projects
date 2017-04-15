@@ -13,7 +13,7 @@ namespace BingoWallpaper.Uwp.Views
 
         protected BingoWallpaperViewBase()
         {
-            if (DesignMode.DesignModeEnabled == false)
+            if (!DesignMode.DesignModeEnabled)
             {
                 _systemNavigationManager = SystemNavigationManager.GetForCurrentView();
             }
