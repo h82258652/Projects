@@ -113,7 +113,7 @@
                     </ScrollViewer>
                 </Grid>
             </SplitView.Pane>
-            <localControls:MasterDetailView>
+            <localControls:MasterDetailView MasterPaneWidth="400">
                 <localControls:MasterDetailView.MasterContent>
                     <Frame x:Name="MasterFrame"
                            SourcePageType="views:ArticleView" />

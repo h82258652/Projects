@@ -3,13 +3,13 @@
                     xmlns:controls="using:U148.Uwp.Controls">
     <Style TargetType="controls:HamburgerMenuItem">
         <Setter Property="Background"
-                Value="{ThemeResource ButtonBackground}" />
+                Value="Transparent" />
         <Setter Property="Foreground"
                 Value="White" />
         <Setter Property="BorderBrush"
-                Value="{ThemeResource ButtonBorderBrush}" />
+                Value="Transparent" />
         <Setter Property="BorderThickness"
-                Value="{ThemeResource ButtonBorderThemeThickness}" />
+                Value="0" />
         <Setter Property="Padding"
                 Value="8,4,8,4" />
         <Setter Property="HorizontalAlignment"

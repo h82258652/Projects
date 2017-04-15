@@ -6,12 +6,15 @@
       xmlns:core="using:Microsoft.Xaml.Interactions.Core"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
+      xmlns:localConverters="using:U148.Uwp.Converters"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      x:Name="Root"
       DataContext="{Binding Source={StaticResource Locator}, Path=Article}"
       mc:Ignorable="d">
     <Page.Resources>
         <ResourceDictionary>
             <converters:ItemClickEventArgsConverter x:Key="ItemClickEventArgsConverter" />
+            <localConverters:ArticleCategoryNameConverter x:Key="ArticleCategoryNameConverter" />
         </ResourceDictionary>
     </Page.Resources>
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
@@ -50,17 +53,18 @@
                        ItemsSource="{Binding Path=Categories}">
                     <Pivot.HeaderTemplate>
                         <DataTemplate>
-                            <TextBlock Text="{Binding Path=Key}" />
+                            <TextBlock Text="{Binding Path=Key, Converter={StaticResource ArticleCategoryNameConverter}}" />
                         </DataTemplate>
                     </Pivot.HeaderTemplate>
                     <Pivot.ItemTemplate>
                         <DataTemplate>
                             <ListView IsItemClickEnabled="True"
-                                      SelectionMode="None"
-                                      ItemsSource="{Binding Path=Value}">
+                                      ItemsSource="{Binding Path=Value}"
+                                      SelectionMode="None">
                                 <interactivity:Interaction.Behaviors>
                                     <core:EventTriggerBehavior EventName="ItemClick">
-                                        <core:InvokeCommandAction InputConverter="{StaticResource ItemClickEventArgsConverter}" />
+                                        <core:InvokeCommandAction Command="{Binding ElementName=Root, Path=DataContext.ArticleClickCommand}"
+                                                                  InputConverter="{StaticResource ItemClickEventArgsConverter}" />
                                     </core:EventTriggerBehavior>
                                 </interactivity:Interaction.Behaviors>
                                 <ListView.ItemTemplate>
@@ -72,11 +76,19 @@
                                     <Style TargetType="ListViewItem">
                                         <Setter Property="HorizontalContentAlignment"
                                                 Value="Stretch" />
+                                        <Setter Property="Padding"
+                                                Value="12" />
                                     </Style>
                                 </ListView.ItemContainerStyle>
                             </ListView>
                         </DataTemplate>
                     </Pivot.ItemTemplate>
+                    <Pivot.ItemContainerStyle>
+                        <Style TargetType="PivotItem">
+                            <Setter Property="Margin"
+                                    Value="0" />
+                        </Style>
+                    </Pivot.ItemContainerStyle>
                 </Pivot>
                 <Button Margin="0,0,40,40"
                         Command="{Binding Path=RefreshCommand}"
