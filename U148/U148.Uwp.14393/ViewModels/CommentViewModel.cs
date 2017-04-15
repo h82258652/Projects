@@ -6,6 +6,7 @@ using SoftwareKobo.ViewModels;
 using U148.Configuration;
 using U148.Models;
 using U148.Services;
+using U148.Uwp.Data;
 using U148.Uwp.Messages;
 using U148.Uwp.Services;
 
@@ -20,6 +21,8 @@ namespace U148.Uwp.ViewModels
         private readonly IU148Settings _u148Settings;
 
         private Article _article;
+
+        private CommentCollection _comments;
 
         private bool _isBusy;
 
@@ -45,17 +48,7 @@ namespace U148.Uwp.ViewModels
             });
         }
 
-        public IEnumerable<Comment> Comments
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-            private set
-            {
-                throw new NotImplementedException();
-            }
-        }
+        public IEnumerable<Comment> Comments => _comments;
 
         public bool IsBusy
         {
@@ -78,7 +71,7 @@ namespace U148.Uwp.ViewModels
             {
                 _refreshCommand = _refreshCommand ?? new RelayCommand(() =>
                 {
-                    throw new NotImplementedException();
+                    _comments?.Refresh();
                 });
                 return _refreshCommand;
             }
@@ -133,10 +126,7 @@ namespace U148.Uwp.ViewModels
                     {
                         IsBusy = false;
                     }
-                }, comment =>
-                {
-                    return IsLogined && !IsBusy;
-                });
+                }, comment => IsLogined && !IsBusy);
                 return _sendCommentCommand;
             }
         }
@@ -145,7 +135,10 @@ namespace U148.Uwp.ViewModels
         {
             _article = (Article)parameter;
 
-            throw new NotImplementedException();
+            SetComments(new CommentCollection(_commentService, _article.Id, exception =>
+            {
+                _appToastService.ShowError(exception.Message);
+            }));
         }
 
         public override void Cleanup()
@@ -157,6 +150,15 @@ namespace U148.Uwp.ViewModels
 
         public void Deactivate(object parameter)
         {
+        }
+
+        private void SetComments(CommentCollection value)
+        {
+            if (_comments != value)
+            {
+                _comments = value;
+                RaisePropertyChanged(nameof(Comments));
+            }
         }
     }
 }

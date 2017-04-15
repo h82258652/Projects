@@ -119,6 +119,9 @@
     <Compile Include="Controls\MasterDetailViewState.cs" />
     <Compile Include="Converters\ArticleCategoryNameConverter.cs" />
     <Compile Include="Converters\IsNullToVisibilityConverter.cs" />
+    <Compile Include="Data\ArticleCollection.cs" />
+    <Compile Include="Data\CommentCollection.cs" />
+    <Compile Include="Data\IncrementalLoadingCollectionBase.cs" />
     <Compile Include="LocalizedStrings.cs" />
     <Compile Include="Messages\HideLoginViewMessage.cs" />
     <Compile Include="Messages\LoginFailedMessage.cs" />
