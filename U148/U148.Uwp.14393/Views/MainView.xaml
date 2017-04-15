@@ -4,6 +4,7 @@
       xmlns:behaviors="using:Microsoft.Toolkit.Uwp.UI.Animations.Behaviors"
       xmlns:core="using:Microsoft.Xaml.Interactions.Core"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:fontAwesome="using:SoftwareKobo.Icons.FontAwesome"
       xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
       xmlns:localControls="using:U148.Uwp.Controls"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -55,9 +56,17 @@
                             </Button>
                             <StackPanel Grid.Row="1"
                                         Orientation="Vertical">
-                                <Button Height="48"
-                                        HorizontalAlignment="Stretch"
-                                        Content="设置" />
+                                <localControls:HamburgerMenuItem Label="设置">
+                                    <localControls:HamburgerMenuItem.Icon>
+                                        <SymbolIcon Symbol="Setting" />
+                                    </localControls:HamburgerMenuItem.Icon>
+                                </localControls:HamburgerMenuItem>
+                                <localControls:HamburgerMenuItem Label="关于">
+                                    <localControls:HamburgerMenuItem.Icon>
+                                        <FontIcon FontFamily="Segoe MDL2 Assets"
+                                                  Glyph="&#xE946;" />
+                                    </localControls:HamburgerMenuItem.Icon>
+                                </localControls:HamburgerMenuItem>
                                 <Button Height="48"
                                         HorizontalAlignment="Stretch"
                                         Content="关于" />
