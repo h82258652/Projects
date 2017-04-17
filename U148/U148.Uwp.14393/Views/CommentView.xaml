@@ -52,7 +52,8 @@
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
             <TextBox x:Name="CommentTextBox"
-                     Grid.Column="0" />
+                     Grid.Column="0"
+                     PlaceholderText="写下你的评论" />
             <Button Grid.Column="1"
                     Command="{Binding Path=SendCommentCommand}"
                     CommandParameter="{Binding ElementName=CommentTextBox, Path=Text}"

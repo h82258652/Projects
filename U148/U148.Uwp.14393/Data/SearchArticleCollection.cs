@@ -15,7 +15,7 @@ namespace U148.Uwp.Data
 
         private readonly string _query;
 
-        private int _currentPage;
+        private int _currentPage = 1;
 
         public SearchArticleCollection(IArticleService articleService, string query, Action<Exception> onError = null)
         {
@@ -47,9 +47,17 @@ namespace U148.Uwp.Data
                 uint loadedCount = 0;
                 if (result.ErrorCode == 0)
                 {
-                    _currentPage++;
+                    var page = result.Data;
+                    if (_currentPage == page.End)
+                    {
+                        HasMoreItems = false;
+                    }
+                    else
+                    {
+                        _currentPage = page.Next;
+                    }
 
-                    foreach (var article in result.Data.Data)
+                    foreach (var article in page.Data)
                     {
                         if (this.All(temp => temp.Id != article.Id))
                         {
@@ -79,7 +87,7 @@ namespace U148.Uwp.Data
         {
             base.OnRefresh();
 
-            _currentPage = 0;
+            _currentPage = 1;
         }
     }
 }

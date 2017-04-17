@@ -38,6 +38,7 @@
                                             ItemsSource="{Binding Path=EmailSuggestions}"
                                             PlaceholderText="邮箱"
                                             QuerySubmitted="EmailTextBox_QuerySubmitted"
+                                            Style="{StaticResource LoginEmailTextBoxStyle}"
                                             Text="{Binding Path=Email, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
                                 <AutoSuggestBox.TextBoxStyle>
                                     <Style TargetType="TextBox">
@@ -83,7 +84,8 @@
                                          KeyDown="PasswordBox_KeyDown"
                                          MaxLength="16"
                                          Password="{Binding Path=Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                         PlaceholderText="密码">
+                                         PlaceholderText="密码"
+                                         Style="{StaticResource LoginPasswordBoxStyle}">
                                 <PasswordBox.InputScope>
                                     <InputScope>
                                         <InputScope.Names>

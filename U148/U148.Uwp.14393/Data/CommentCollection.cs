@@ -15,7 +15,7 @@ namespace U148.Uwp.Data
 
         private readonly Action<Exception> _onError;
 
-        private int _currentPage;
+        private int _currentPage = 1;
 
         public CommentCollection(ICommentService commentService, int articleId, Action<Exception> onError = null)
         {
@@ -39,13 +39,21 @@ namespace U148.Uwp.Data
             IsLoading = true;
             try
             {
-                var result = await _commentService.GetCommentsAsync(_articleId, _currentPage + 1);
+                var result = await _commentService.GetCommentsAsync(_articleId, _currentPage);
                 uint loadedCount = 0;
                 if (result.ErrorCode == 0)
                 {
-                    _currentPage++;
+                    var page = result.Data;
+                    if (_currentPage == page.End)
+                    {
+                        HasMoreItems = false;
+                    }
+                    else
+                    {
+                        _currentPage = page.Next;
+                    }
 
-                    foreach (var comment in result.Data.Data)
+                    foreach (var comment in page.Data)
                     {
                         if (this.All(temp => temp.Id != comment.Id))
                         {
@@ -75,7 +83,7 @@ namespace U148.Uwp.Data
         {
             base.OnRefresh();
 
-            _currentPage = 0;
+            _currentPage = 1;
         }
     }
 }
