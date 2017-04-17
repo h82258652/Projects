@@ -117,10 +117,7 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ClearImageCacheFinish" xml:space="preserve">
-    <value>清除图片缓存完成</value>
-  </data>
-  <data name="ClearSinaWeiboAuthenticationSuccess" xml:space="preserve">
-    <value>清除新浪微博授权完成</value>
+  <data name="LogoutSuccess" xml:space="preserve">
+    <value>登出成功</value>
   </data>
 </root>

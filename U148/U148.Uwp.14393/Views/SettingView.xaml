@@ -14,15 +14,17 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <Button Grid.Row="0"
-                HorizontalAlignment="Left"
-                Style="{StaticResource NavigationBackButtonStyle}">
-            <interactivity:Interaction.Behaviors>
-                <core:EventTriggerBehavior EventName="Click">
-                    <behaviors:GoBackAction />
-                </core:EventTriggerBehavior>
-            </interactivity:Interaction.Behaviors>
-        </Button>
+        <Grid Grid.Row="0"
+              Background="{ThemeResource U148AccentBrush}">
+            <Button HorizontalAlignment="Left"
+                    Style="{StaticResource NavigationBackButtonStyle}">
+                <interactivity:Interaction.Behaviors>
+                    <core:EventTriggerBehavior EventName="Click">
+                        <behaviors:GoBackAction />
+                    </core:EventTriggerBehavior>
+                </interactivity:Interaction.Behaviors>
+            </Button>
+        </Grid>
         <StackPanel Grid.Row="1"
                     Orientation="Vertical">
             <ComboBox Header="模拟设备"

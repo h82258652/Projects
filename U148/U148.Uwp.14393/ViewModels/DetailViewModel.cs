@@ -1,7 +1,10 @@
 ﻿using System;
+using System.Diagnostics;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Views;
+using SoftwareKobo.Controls;
+using SoftwareKobo.Social.SinaWeibo;
 using SoftwareKobo.ViewModels;
 using U148.Models;
 using U148.Services;
@@ -22,15 +25,25 @@ namespace U148.Uwp.ViewModels
 
         private RelayCommand _commentCommand;
 
+        private IImageLoader _imageLoader;
+
+        private bool _isBusy;
+
         private bool _isLoading;
 
         private RelayCommand _refreshCommand;
 
-        public DetailViewModel(IArticleService articleService, INavigationService navigationService, IAppToastService appToastService)
+        private RelayCommand _shareCommand;
+
+        private IU148ShareService _u148ShareService;
+
+        public DetailViewModel(IArticleService articleService, INavigationService navigationService, IAppToastService appToastService, IImageLoader imageLoader, IU148ShareService u148ShareService)
         {
             _articleService = articleService;
             _navigationService = navigationService;
             _appToastService = appToastService;
+            _imageLoader = imageLoader;
+            _u148ShareService = u148ShareService;
         }
 
         public Article Article
@@ -57,6 +70,18 @@ namespace U148.Uwp.ViewModels
             }
         }
 
+        public bool IsBusy
+        {
+            get
+            {
+                return _isBusy;
+            }
+            private set
+            {
+                Set(ref _isBusy, value);
+            }
+        }
+
         public bool IsLoading
         {
             get
@@ -78,6 +103,60 @@ namespace U148.Uwp.ViewModels
                     LoadArticleDetail(true);
                 });
                 return _refreshCommand;
+            }
+        }
+
+        public RelayCommand ShareCommand
+        {
+            get
+            {
+                _shareCommand = _shareCommand ?? new RelayCommand(async () =>
+                {
+                    if (IsBusy && Article == null)
+                    {
+                        return;
+                    }
+
+                    IsBusy = true;
+                    try
+                    {
+                        byte[] bytes;
+                        try
+                        {
+                            bytes = await _imageLoader.GetBytesAsync(Article.PicMid);
+                        }
+                        catch (Exception ex)
+                        {
+                            _appToastService.ShowError(ex.Message);
+                            return;
+                        }
+                        var text = Article.Title + string.Format(Constants.ArticleLink, Article.Id);
+                        try
+                        {
+                            var result = await _u148ShareService.ShareToSinaWeiboAsync(bytes, text);
+                            if (result.ErrorCode <= 0)
+                            {
+                                _appToastService.ShowMessage("分享成功");
+                            }
+                            else
+                            {
+                                _appToastService.ShowError(result.ErrorMessage);
+                            }
+                        }
+                        catch (UserCancelAuthorizeException)
+                        {
+                        }
+                        catch (Exception ex)
+                        {
+                            _appToastService.ShowError(ex.Message);
+                        }
+                    }
+                    finally
+                    {
+                        IsBusy = false;
+                    }
+                });
+                return _shareCommand;
             }
         }
 

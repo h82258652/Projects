@@ -18,6 +18,14 @@ namespace U148.Uwp
 
         internal static string ClearImageCacheFinish => ResourceLoader.GetForCurrentView(SettingViewReswName).GetString("ClearImageCacheFinish");
 
+        internal static string ClearSinaWeiboAuthenticationSuccess
+        {
+            get
+            {
+                return ResourceLoader.GetForCurrentView(SettingViewReswName).GetString("ClearSinaWeiboAuthenticationSuccess");
+            }
+        }
+
         internal static string EmailFormatError => ResourceLoader.GetForCurrentView(LoginViewReswName).GetString("EmailFormatError");
 
         internal static string EmailRequired => ResourceLoader.GetForCurrentView(LoginViewReswName).GetString("EmailRequired");
@@ -31,6 +39,7 @@ namespace U148.Uwp
         internal static string Image => ResourceLoader.GetForCurrentView(ArticleCategoryReswName).GetString("Image");
 
         internal static string LoginSuccess => ResourceLoader.GetForCurrentView(LoginViewReswName).GetString("LoginSuccess");
+
         internal static string LogoutSuccess => ResourceLoader.GetForCurrentView(MainViewReswName).GetString("LogoutSuccess");
 
         internal static string Mix => ResourceLoader.GetForCurrentView(ArticleCategoryReswName).GetString("Mix");

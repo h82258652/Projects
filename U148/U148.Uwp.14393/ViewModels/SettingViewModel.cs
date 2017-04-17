@@ -21,7 +21,7 @@ namespace U148.Uwp.ViewModels
 
         private readonly IU148ShareService _u148ShareService;
 
-        private RelayCommand _clearAuthenticationCommand;
+        private RelayCommand _clearSinaWeiboAuthenticationCommand;
 
         private RelayCommand _clearImageCacheCommand;
 
@@ -37,15 +37,17 @@ namespace U148.Uwp.ViewModels
 
         public long CacheImageSize => _imageLoader.CalculateCacheSize();
 
-        public RelayCommand ClearAuthenticationCommand
+        public RelayCommand ClearSinaWeiboAuthenticationCommand
         {
             get
             {
-                _clearAuthenticationCommand = _clearAuthenticationCommand ?? new RelayCommand(() =>
+                _clearSinaWeiboAuthenticationCommand = _clearSinaWeiboAuthenticationCommand ?? new RelayCommand(() =>
                 {
                     _u148ShareService.ClearSinaWeiboAuthorization();
+
+                    _appToastService.ShowMessage(LocalizedStrings.ClearSinaWeiboAuthenticationSuccess);
                 });
-                return _clearAuthenticationCommand;
+                return _clearSinaWeiboAuthenticationCommand;
             }
         }
 

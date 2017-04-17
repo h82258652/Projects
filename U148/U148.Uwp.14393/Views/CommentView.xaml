@@ -16,15 +16,17 @@
             <RowDefinition Height="*" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-        <Button Grid.Row="0"
-                HorizontalAlignment="Left"
-                Style="{StaticResource NavigationBackButtonStyle}">
-            <interactivity:Interaction.Behaviors>
-                <core:EventTriggerBehavior EventName="Click">
-                    <behaviors:GoBackAction />
-                </core:EventTriggerBehavior>
-            </interactivity:Interaction.Behaviors>
-        </Button>
+        <Grid Grid.Row="0"
+              Background="{ThemeResource U148AccentBrush}">
+            <Button HorizontalAlignment="Left"
+                    Style="{StaticResource NavigationBackButtonStyle}">
+                <interactivity:Interaction.Behaviors>
+                    <core:EventTriggerBehavior EventName="Click">
+                        <behaviors:GoBackAction />
+                    </core:EventTriggerBehavior>
+                </interactivity:Interaction.Behaviors>
+            </Button>
+        </Grid>
         <Grid Grid.Row="1">
             <ListView ItemsSource="{Binding Path=Comments}"
                       SelectionMode="None">
@@ -39,6 +41,10 @@
                                 Value="Stretch" />
                         <Setter Property="Padding"
                                 Value="12" />
+                        <Setter Property="BorderBrush"
+                                Value="Gray" />
+                        <Setter Property="BorderThickness"
+                                Value="0,0,0,1" />
                     </Style>
                 </ListView.ItemContainerStyle>
             </ListView>

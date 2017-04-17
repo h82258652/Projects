@@ -2,6 +2,8 @@
 {
     public static class Constants
     {
+        public const string ArticleLink = "http://www.u148.net/article/{0}.html";
+
         public const string SinaWeiboAppKey = "4154146479";
 
         public const string SinaWeiboAppSecret = "364ff74f03dc5b27f6e7c798ba495708";

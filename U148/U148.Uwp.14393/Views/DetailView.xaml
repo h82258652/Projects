@@ -5,6 +5,7 @@
                     xmlns:converters="using:U148.Uwp.Converters"
                     xmlns:core="using:Microsoft.Xaml.Interactions.Core"
                     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                    xmlns:fontawesome="using:SoftwareKobo.Icons.FontAwesome"
                     xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
                     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                     xmlns:views="using:SoftwareKobo.Views"
@@ -60,14 +61,18 @@
                 </Grid>
             </Button>
             <Button Grid.Column="3"
-                    Content="分享"
-                    Style="{StaticResource IconButtonStyle}" />
+                    Command="{Binding Path=ShareCommand}"
+                    Style="{StaticResource IconButtonStyle}">
+                <fontawesome:FontAwesomeIcon Symbol="ShareAlt" />
+            </Button>
         </Grid>
         <Grid Grid.Row="1">
             <WebView x:Name="WebView"
                      NewWindowRequested="WebView_NewWindowRequested"
                      ScriptNotify="WebView_ScriptNotify" />
-            <ProgressRing IsActive="{Binding Path=IsLoading}" />
+            <ProgressRing Width="96"
+                          Height="96"
+                          IsActive="{Binding Path=IsLoading}" />
             <Button Margin="0,0,40,40"
                     Command="{Binding Path=RefreshCommand}"
                     Style="{StaticResource RefreshButtonStyle}" />

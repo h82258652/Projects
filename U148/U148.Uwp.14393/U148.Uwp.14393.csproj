@@ -197,6 +197,8 @@
     <PRIResource Include="Strings\zh-CN\LoginView.resw" />
     <PRIResource Include="Strings\zh-CN\SettingView.resw" />
     <PRIResource Include="Strings\zh-CN\ArticleCategory.resw" />
+    <PRIResource Include="Strings\zh-CN\CommentView.resw" />
+    <PRIResource Include="Strings\zh-CN\MainView.resw" />
     <None Include="U148.Uwp.14393_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
@@ -350,6 +352,14 @@
     <ProjectReference Include="..\..\Libraries\SoftwareKobo.Icons\SoftwareKobo.Icons.csproj">
       <Project>{5f3c3804-e984-4d9e-a3e4-1ca534db28f2}</Project>
       <Name>SoftwareKobo.Icons</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Libraries\SoftwareKobo.Social.SinaWeibo.Core\SoftwareKobo.Social.SinaWeibo.Core.csproj">
+      <Project>{767f54a5-57c2-4d4c-8773-a5b1750fd39f}</Project>
+      <Name>SoftwareKobo.Social.SinaWeibo.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Libraries\SoftwareKobo.Social.SinaWeibo.Uwp\SoftwareKobo.Social.SinaWeibo.Uwp.csproj">
+      <Project>{35afb302-54e9-4e5c-878a-17e45b9158dc}</Project>
+      <Name>SoftwareKobo.Social.SinaWeibo.Uwp</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Libraries\SoftwareKobo.Utils.Uwp\SoftwareKobo.Utils.Uwp.csproj">
       <Project>{dff7cae2-1363-4c68-bb0f-5f909cc3f0a7}</Project>

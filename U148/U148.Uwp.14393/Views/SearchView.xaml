@@ -23,7 +23,8 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <Grid Grid.Row="0">
+        <Grid Grid.Row="0"
+              Background="{ThemeResource U148AccentBrush}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="*" />
@@ -37,6 +38,7 @@
                 </interactivity:Interaction.Behaviors>
             </Button>
             <AutoSuggestBox Grid.Column="1"
+                            VerticalAlignment="Stretch"
                             PlaceholderText="搜索">
                 <AutoSuggestBox.QueryIcon>
                     <SymbolIcon Symbol="Find" />
@@ -70,10 +72,15 @@
                                 Value="Stretch" />
                         <Setter Property="Padding"
                                 Value="12" />
+                        <Setter Property="BorderBrush"
+                                Value="Gray" />
+                        <Setter Property="BorderThickness"
+                                Value="0,0,0,1" />
                     </Style>
                 </ListView.ItemContainerStyle>
             </ListView>
             <ProgressBar VerticalAlignment="Top"
+                         Background="Transparent"
                          IsIndeterminate="{Binding Path=Articles.IsLoading}" />
         </Grid>
     </Grid>
