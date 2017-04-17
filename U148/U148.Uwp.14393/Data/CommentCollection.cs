@@ -39,7 +39,7 @@ namespace U148.Uwp.Data
             IsLoading = true;
             try
             {
-                var result = await _commentService.GetCommentsAsync(_articleId, _currentPage);
+                var result = await _commentService.GetCommentsAsync(_articleId, _currentPage + 1);
                 uint loadedCount = 0;
                 if (result.ErrorCode == 0)
                 {

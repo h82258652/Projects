@@ -18,6 +18,8 @@ namespace U148.Uwp.ViewModels
 
         private RelayCommand<ArticleCategory> _refreshCommand;
 
+        private RelayCommand _searchCommand;
+
         public ArticleViewModel(INavigationService navigationService, IArticleService articleService, IAppToastService appToastService)
         {
             _navigationService = navigationService;
@@ -59,6 +61,18 @@ namespace U148.Uwp.ViewModels
                     Categories[category].Refresh();
                 });
                 return _refreshCommand;
+            }
+        }
+
+        public RelayCommand SearchCommand
+        {
+            get
+            {
+                _searchCommand = _searchCommand ?? new RelayCommand(() =>
+                {
+                    _navigationService.NavigateTo(ViewModelLocator.SearchViewKey);
+                });
+                return _searchCommand;
             }
         }
     }

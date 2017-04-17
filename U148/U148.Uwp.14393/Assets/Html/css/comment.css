@@ -1,6 +1,11 @@
 ﻿* {
+    -ms-user-select: none;
     user-select: none;
     cursor: default;
+}
+
+body {
+    margin: 0;
 }
 
 blockquote {

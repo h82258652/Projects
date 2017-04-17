@@ -68,7 +68,7 @@ namespace U148.Uwp.ViewModels
             unityContainer.RegisterInstance(DefaultImageLoader.Instance);
 
             unityContainer.RegisterType<MainViewModel>();
-            unityContainer.RegisterType<ArticleViewModel>();
+            unityContainer.RegisterType<ArticleViewModel>(new ContainerControlledLifetimeManager());
             unityContainer.RegisterType<DetailViewModel>();
             unityContainer.RegisterType<CommentViewModel>();
             unityContainer.RegisterType<SearchViewModel>();

@@ -51,6 +51,18 @@ namespace U148.Uwp.Views
             }
         }
 
+        private void WebView_NewWindowRequested(WebView sender, WebViewNewWindowRequestedEventArgs args)
+        {
+            var url = args.Uri.OriginalString;
+            if (url.EndsWith(".jpg", StringComparison.OrdinalIgnoreCase)
+                || url.EndsWith(".jpeg", StringComparison.OrdinalIgnoreCase)
+                || url.EndsWith(".png", StringComparison.OrdinalIgnoreCase)
+                || url.EndsWith(".gif", StringComparison.OrdinalIgnoreCase))
+            {
+                // TODO
+            }
+        }
+
         private void WebView_ScriptNotify(object sender, NotifyEventArgs e)
         {
             var query = new WwwFormUrlDecoder(e.Value);

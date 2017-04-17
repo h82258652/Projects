@@ -34,9 +34,18 @@
                 <RowDefinition Height="*" />
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
-            <TextBlock Grid.Row="0"
-                       TextTrimming="CharacterEllipsis">
-                <Span Foreground="{ThemeResource U148AccentBrush}"><Run Text="[" /><Run Text="{Binding Path=Category, Converter={StaticResource ArticleCategoryNameConverter}}" /><Run Text="]" /></Span><Run Text="{Binding Path=Title}" /></TextBlock>
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0"
+                           Foreground="{ThemeResource U148AccentBrush}"><Run Text="[" /><Run Text="{Binding Path=Category, Converter={StaticResource ArticleCategoryNameConverter}}" /><Run Text="]" /></TextBlock>
+                <TextBlock Grid.Column="1"
+                           Margin="4,0,0,0"
+                           Text="{Binding Path=Title}"
+                           TextTrimming="CharacterEllipsis" />
+            </Grid>
             <TextBlock Grid.Row="1"
                        Margin="0,8,0,0"
                        Foreground="Gray"
@@ -51,14 +60,16 @@
                 <fontAwesome:FontAwesomeIcon VerticalAlignment="Center"
                                              Foreground="Gray"
                                              Symbol="Eye" />
-                <TextBlock VerticalAlignment="Center"
+                <TextBlock Margin="4,0,0,0"
+                           VerticalAlignment="Center"
                            Foreground="Gray"
                            Text="{Binding Path=CountBrowse}" />
                 <fontAwesome:FontAwesomeIcon Margin="8,0,0,0"
                                              VerticalAlignment="Center"
                                              Foreground="Gray"
                                              Symbol="Comment" />
-                <TextBlock VerticalAlignment="Center"
+                <TextBlock Margin="4,0,0,0"
+                           VerticalAlignment="Center"
                            Foreground="Gray"
                            Text="{Binding Path=CountReview}" />
             </StackPanel>
