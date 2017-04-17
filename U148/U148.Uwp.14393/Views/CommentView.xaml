@@ -44,6 +44,7 @@
                     </Style>
                 </ListView.ItemContainerStyle>
             </ListView>
+            <ProgressBar IsIndeterminate="{Binding Path=Comments.IsLoading}" />
         </Grid>
         <Grid Grid.Row="2">
             <Grid.ColumnDefinitions>

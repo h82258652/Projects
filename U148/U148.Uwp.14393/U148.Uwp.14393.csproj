@@ -124,6 +124,7 @@
     <Compile Include="Controls\MasterDetailView.cs" />
     <Compile Include="Controls\MasterDetailViewState.cs" />
     <Compile Include="Converters\ArticleCategoryNameConverter.cs" />
+    <Compile Include="Converters\AutoSuggestBoxQuerySubmittedEventArgsConverter.cs" />
     <Compile Include="Converters\CommentCountConverter.cs" />
     <Compile Include="Converters\IsNullOrEmptyStringToVisibilityConverter.cs" />
     <Compile Include="Converters\IsNullToVisibilityConverter.cs" />

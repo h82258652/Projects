@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using SoftwareKobo.ViewModels;
@@ -48,7 +47,17 @@ namespace U148.Uwp.ViewModels
             });
         }
 
-        public IEnumerable<Comment> Comments => _comments;
+        public CommentCollection Comments
+        {
+            get
+            {
+                return _comments;
+            }
+            private set
+            {
+                Set(ref _comments, value);
+            }
+        }
 
         public bool IsBusy
         {
@@ -135,10 +144,10 @@ namespace U148.Uwp.ViewModels
         {
             _article = (Article)parameter;
 
-            SetComments(new CommentCollection(_commentService, _article.Id, exception =>
+            Comments = new CommentCollection(_commentService, _article.Id, exception =>
             {
                 _appToastService.ShowError(exception.Message);
-            }));
+            });
         }
 
         public override void Cleanup()
@@ -150,15 +159,6 @@ namespace U148.Uwp.ViewModels
 
         public void Deactivate(object parameter)
         {
-        }
-
-        private void SetComments(CommentCollection value)
-        {
-            if (_comments != value)
-            {
-                _comments = value;
-                RaisePropertyChanged(nameof(Comments));
-            }
         }
     }
 }

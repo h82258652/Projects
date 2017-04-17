@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Views;
@@ -13,8 +12,6 @@ namespace U148.Uwp.ViewModels
 {
     public class ArticleViewModel : ViewModelBase
     {
-        private readonly IDictionary<ArticleCategory, ArticleCollection> _categories;
-
         private readonly INavigationService _navigationService;
 
         private RelayCommand<Article> _articleClickCommand;
@@ -33,7 +30,7 @@ namespace U148.Uwp.ViewModels
                     appToastService.ShowError(exception.Message);
                 });
             }
-            _categories = categories;
+            Categories = categories;
         }
 
         public RelayCommand<Article> ArticleClickCommand
@@ -48,12 +45,9 @@ namespace U148.Uwp.ViewModels
             }
         }
 
-        public IReadOnlyDictionary<ArticleCategory, IEnumerable<Article>> Categories
+        public IReadOnlyDictionary<ArticleCategory, ArticleCollection> Categories
         {
-            get
-            {
-                return _categories.ToDictionary(temp => temp.Key, temp => temp.Value as IEnumerable<Article>);
-            }
+            get;
         }
 
         public RelayCommand<ArticleCategory> RefreshCommand
@@ -62,7 +56,7 @@ namespace U148.Uwp.ViewModels
             {
                 _refreshCommand = _refreshCommand ?? new RelayCommand<ArticleCategory>(category =>
                 {
-                    _categories[category].Refresh();
+                    Categories[category].Refresh();
                 });
                 return _refreshCommand;
             }

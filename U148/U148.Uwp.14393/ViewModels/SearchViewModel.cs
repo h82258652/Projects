@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using GalaSoft.MvvmLight;
+﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Views;
 using U148.Models;
@@ -16,7 +15,7 @@ namespace U148.Uwp.ViewModels
 
         private RelayCommand<Article> _articleClickCommand;
 
-        private IEnumerable<Article> _articles;
+        private SearchArticleCollection _articles;
 
         private RelayCommand<string> _searchCommand;
 
@@ -38,7 +37,7 @@ namespace U148.Uwp.ViewModels
             }
         }
 
-        public IEnumerable<Article> Articles
+        public SearchArticleCollection Articles
         {
             get
             {

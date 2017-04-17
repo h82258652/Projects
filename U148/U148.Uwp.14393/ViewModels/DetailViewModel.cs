@@ -22,7 +22,7 @@ namespace U148.Uwp.ViewModels
 
         private RelayCommand _commentCommand;
 
-        private bool _isBusy;
+        private bool _isLoading;
 
         private RelayCommand _refreshCommand;
 
@@ -57,15 +57,15 @@ namespace U148.Uwp.ViewModels
             }
         }
 
-        public bool IsBusy
+        public bool IsLoading
         {
             get
             {
-                return _isBusy;
+                return _isLoading;
             }
             private set
             {
-                Set(ref _isBusy, value);
+                Set(ref _isLoading, value);
             }
         }
 
@@ -73,29 +73,9 @@ namespace U148.Uwp.ViewModels
         {
             get
             {
-                _refreshCommand = _refreshCommand ?? new RelayCommand(async () =>
+                _refreshCommand = _refreshCommand ?? new RelayCommand(() =>
                 {
-                    IsBusy = true;
-                    try
-                    {
-                        var result = await _articleService.GetArticleDetailAsync(Article.Id);
-                        if (result.ErrorCode == 0)
-                        {
-                            MessengerInstance.Send(new ArticleContentLoadedMessage(result.Data.Content));
-                        }
-                        else
-                        {
-                            _appToastService.ShowError(result.ErrorMessage);
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        _appToastService.ShowError(ex.Message);
-                    }
-                    finally
-                    {
-                        IsBusy = false;
-                    }
+                    LoadArticleDetail(true);
                 });
                 return _refreshCommand;
             }
@@ -111,20 +91,25 @@ namespace U148.Uwp.ViewModels
         {
         }
 
-        private async void LoadArticleDetail()
+        private async void LoadArticleDetail(bool isRefresh = false)
         {
-            if (IsBusy || Article == null)
+            if (IsLoading || Article == null)
             {
                 return;
             }
 
-            IsBusy = true;
+            IsLoading = true;
             try
             {
                 var result = await _articleService.GetArticleDetailAsync(Article.Id);
                 if (result.ErrorCode == 0)
                 {
                     MessengerInstance.Send(new ArticleContentLoadedMessage(result.Data.Content));
+
+                    if (isRefresh)
+                    {
+                        _appToastService.ShowMessage("刷新成功");
+                    }
                 }
                 else
                 {
@@ -137,7 +122,7 @@ namespace U148.Uwp.ViewModels
             }
             finally
             {
-                IsBusy = false;
+                IsLoading = false;
             }
         }
     }

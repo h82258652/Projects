@@ -58,29 +58,32 @@
                     </Pivot.HeaderTemplate>
                     <Pivot.ItemTemplate>
                         <DataTemplate>
-                            <ListView IsItemClickEnabled="True"
-                                      ItemsSource="{Binding Path=Value}"
-                                      SelectionMode="None">
-                                <interactivity:Interaction.Behaviors>
-                                    <core:EventTriggerBehavior EventName="ItemClick">
-                                        <core:InvokeCommandAction Command="{Binding ElementName=Root, Path=DataContext.ArticleClickCommand}"
-                                                                  InputConverter="{StaticResource ItemClickEventArgsConverter}" />
-                                    </core:EventTriggerBehavior>
-                                </interactivity:Interaction.Behaviors>
-                                <ListView.ItemTemplate>
-                                    <DataTemplate>
-                                        <controls:ArticleItem />
-                                    </DataTemplate>
-                                </ListView.ItemTemplate>
-                                <ListView.ItemContainerStyle>
-                                    <Style TargetType="ListViewItem">
-                                        <Setter Property="HorizontalContentAlignment"
-                                                Value="Stretch" />
-                                        <Setter Property="Padding"
-                                                Value="12" />
-                                    </Style>
-                                </ListView.ItemContainerStyle>
-                            </ListView>
+                            <Grid>
+                                <ListView IsItemClickEnabled="True"
+                                          ItemsSource="{Binding Path=Value}"
+                                          SelectionMode="None">
+                                    <interactivity:Interaction.Behaviors>
+                                        <core:EventTriggerBehavior EventName="ItemClick">
+                                            <core:InvokeCommandAction Command="{Binding ElementName=Root, Path=DataContext.ArticleClickCommand}"
+                                                                      InputConverter="{StaticResource ItemClickEventArgsConverter}" />
+                                        </core:EventTriggerBehavior>
+                                    </interactivity:Interaction.Behaviors>
+                                    <ListView.ItemTemplate>
+                                        <DataTemplate>
+                                            <controls:ArticleItem />
+                                        </DataTemplate>
+                                    </ListView.ItemTemplate>
+                                    <ListView.ItemContainerStyle>
+                                        <Style TargetType="ListViewItem">
+                                            <Setter Property="HorizontalContentAlignment"
+                                                    Value="Stretch" />
+                                            <Setter Property="Padding"
+                                                    Value="12" />
+                                        </Style>
+                                    </ListView.ItemContainerStyle>
+                                </ListView>
+                                <ProgressBar IsIndeterminate="{Binding Path=Value.IsLoading}" />
+                            </Grid>
                         </DataTemplate>
                     </Pivot.ItemTemplate>
                     <Pivot.ItemContainerStyle>
