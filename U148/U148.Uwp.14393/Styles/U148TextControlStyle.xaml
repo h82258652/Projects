@@ -1,3 +1,6 @@
-﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:local="using:U148.Uwp.Styles" />
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/Styles/TextControls/LoginEmailTextBoxStyle.xaml" />
+        <ResourceDictionary Source="/Styles/TextControls/LoginPasswordBoxStyle.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+</ResourceDictionary>
