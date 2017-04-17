@@ -55,7 +55,7 @@ namespace U148.Uwp.ViewModels
             {
                 _searchCommand = _searchCommand ?? new RelayCommand<string>(query =>
                 {
-                    if (string.IsNullOrEmpty(query) == false)
+                    if (!string.IsNullOrEmpty(query))
                     {
                         Articles = new SearchArticleCollection(_articleService, query);
                     }

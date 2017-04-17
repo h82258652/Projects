@@ -23,7 +23,7 @@ namespace U148.Uwp.Data
             {
                 throw new ArgumentNullException(nameof(articleService));
             }
-            if (Enum.IsDefined(typeof(ArticleCategory), category) == false)
+            if (!Enum.IsDefined(typeof(ArticleCategory), category))
             {
                 throw new ArgumentOutOfRangeException(nameof(category));
             }

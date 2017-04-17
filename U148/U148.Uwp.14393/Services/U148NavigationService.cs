@@ -36,7 +36,7 @@ namespace U148.Uwp.Services
                     }
 
                     var currentType = frame.Content.GetType();
-                    if (PagesByKey.ContainsValue(currentType) == false)
+                    if (!PagesByKey.ContainsValue(currentType))
                     {
                         return UnknownPageKey;
                     }
@@ -65,7 +65,7 @@ namespace U148.Uwp.Services
 
         public void Configure(string key, Type pageType, U148NavigationType navigationType)
         {
-            if (Enum.IsDefined(typeof(U148NavigationType), navigationType) == false)
+            if (!Enum.IsDefined(typeof(U148NavigationType), navigationType))
             {
                 throw new ArgumentOutOfRangeException(nameof(navigationType));
             }
@@ -114,7 +114,7 @@ namespace U148.Uwp.Services
         {
             lock (PagesByKey)
             {
-                if (PagesByKey.ContainsKey(pageKey) == false)
+                if (!PagesByKey.ContainsKey(pageKey))
                 {
                     throw new ArgumentException($"No such page: {pageKey}. Did you forget to call NavigationService.Configure?", nameof(pageKey));
                 }

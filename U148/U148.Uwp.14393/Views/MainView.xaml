@@ -16,6 +16,7 @@
             <converters:IsNullToVisibilityConverter x:Key="IsNullToVisibilityConverter" />
             <converters:IsNullToVisibilityConverter x:Key="InversedIsNullToVisibilityConverter"
                                                     IsInversed="True" />
+            <converters:IsDisplayDetailConverter x:Key="IsDisplayDetailConverter" />
         </ResourceDictionary>
     </Page.Resources>
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
@@ -115,7 +116,8 @@
                     </ScrollViewer>
                 </Grid>
             </SplitView.Pane>
-            <localControls:MasterDetailView MasterPaneWidth="400">
+            <localControls:MasterDetailView IsDisplayDetail="{Binding ElementName=DetailFrame, Path=Content, Converter={StaticResource IsDisplayDetailConverter}}"
+                                            MasterPaneWidth="400">
                 <localControls:MasterDetailView.MasterContent>
                     <Frame x:Name="MasterFrame"
                            SourcePageType="views:ArticleView" />
