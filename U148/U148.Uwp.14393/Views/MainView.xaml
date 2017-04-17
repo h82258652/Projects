@@ -67,7 +67,7 @@
                                         Visibility="{Binding Path=UserInfo, Converter={StaticResource InversedIsNullToVisibilityConverter}}">
                                 <localControls:HamburgerMenuItem Height="48"
                                                                  HorizontalAlignment="Stretch"
-                                                                 Click="LoginMenuItem_Click"
+                                                                 Command="{Binding Path=LoginCommand}"
                                                                  Label="登录">
                                     <interactivity:Interaction.Behaviors>
                                         <core:EventTriggerBehavior EventName="Click">
@@ -83,7 +83,7 @@
                             </StackPanel>
                             <StackPanel Grid.Row="2"
                                         Orientation="Vertical">
-                                <localControls:HamburgerMenuItem Click="SettingMenuItem_Click"
+                                <localControls:HamburgerMenuItem Command="{Binding Path=SettingCommand}"
                                                                  Label="设置">
                                     <interactivity:Interaction.Behaviors>
                                         <core:EventTriggerBehavior EventName="Click">
@@ -96,7 +96,7 @@
                                         <SymbolIcon Symbol="Setting" />
                                     </localControls:HamburgerMenuItem.Icon>
                                 </localControls:HamburgerMenuItem>
-                                <localControls:HamburgerMenuItem Click="AboutMenuItem_Click"
+                                <localControls:HamburgerMenuItem Command="{Binding Path=AboutCommand}"
                                                                  Label="关于">
                                     <interactivity:Interaction.Behaviors>
                                         <core:EventTriggerBehavior EventName="Click">

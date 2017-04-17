@@ -1,5 +1,6 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
+using GalaSoft.MvvmLight.Views;
 using U148.Configuration;
 using U148.Models;
 using U148.Uwp.Messages;
@@ -11,14 +12,23 @@ namespace U148.Uwp.ViewModels
     {
         private readonly IAppToastService _appToastService;
 
+        private readonly INavigationService _navigationService;
+
         private readonly IU148Settings _u148Settings;
+
+        private RelayCommand _aboutCommand;
+
+        private RelayCommand _loginCommand;
 
         private RelayCommand _logoutCommand;
 
-        public MainViewModel(IU148Settings u148Settings, IAppToastService appToastService)
+        private RelayCommand _settingCommand;
+
+        public MainViewModel(IU148Settings u148Settings, IAppToastService appToastService, INavigationService navigationService)
         {
             _u148Settings = u148Settings;
             _appToastService = appToastService;
+            _navigationService = navigationService;
 
             MessengerInstance.Register<LoginSuccessMessage>(this, message =>
             {
@@ -30,6 +40,30 @@ namespace U148.Uwp.ViewModels
                 RaisePropertyChanged(nameof(UserInfo));
                 LogoutCommand.RaiseCanExecuteChanged();
             });
+        }
+
+        public RelayCommand AboutCommand
+        {
+            get
+            {
+                _aboutCommand = _aboutCommand ?? new RelayCommand(() =>
+                {
+                    _navigationService.NavigateTo(ViewModelLocator.AboutViewKey);
+                });
+                return _aboutCommand;
+            }
+        }
+
+        public RelayCommand LoginCommand
+        {
+            get
+            {
+                _loginCommand = _loginCommand ?? new RelayCommand(() =>
+                {
+                    MessengerInstance.Send(new ShowLoginViewMessage());
+                });
+                return _loginCommand;
+            }
         }
 
         public RelayCommand LogoutCommand
@@ -44,6 +78,18 @@ namespace U148.Uwp.ViewModels
                     _appToastService.ShowMessage(LocalizedStrings.LogoutSuccess);
                 }, () => UserInfo != null);
                 return _logoutCommand;
+            }
+        }
+
+        public RelayCommand SettingCommand
+        {
+            get
+            {
+                _settingCommand = _settingCommand ?? new RelayCommand(() =>
+                {
+                    _navigationService.NavigateTo(ViewModelLocator.SettingViewKey);
+                });
+                return _settingCommand;
             }
         }
 
