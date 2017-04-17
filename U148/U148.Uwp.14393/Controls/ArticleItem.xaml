@@ -36,7 +36,7 @@
             </Grid.RowDefinitions>
             <TextBlock Grid.Row="0"
                        TextTrimming="CharacterEllipsis">
-                <Span Foreground="{ThemeResource U148AccentBrush}"> <Run Text="[" /><Run Text="{Binding Path=Category, Converter={StaticResource ArticleCategoryNameConverter}}" /><Run Text="]" /></Span><Run Text="{Binding Path=Title}" /></TextBlock>
+                <Span Foreground="{ThemeResource U148AccentBrush}"><Run Text="[" /><Run Text="{Binding Path=Category, Converter={StaticResource ArticleCategoryNameConverter}}" /><Run Text="]" /></Span><Run Text="{Binding Path=Title}" /></TextBlock>
             <TextBlock Grid.Row="1"
                        Margin="0,8,0,0"
                        Foreground="Gray"

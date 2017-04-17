@@ -13,9 +13,19 @@ namespace U148.Services
             client.ClearAuthorization();
         }
 
-        public Task<ModelBase> ShareToSinaWeiboAsync(byte[] image, string text)
+        public async Task<ModelBase> ShareToSinaWeiboAsync(byte[] image, string text)
         {
-            throw new NotImplementedException();
+            if (image == null)
+            {
+                throw new ArgumentNullException(nameof(image));
+            }
+            if (text == null)
+            {
+                throw new ArgumentNullException(nameof(text));
+            }
+
+            var client = new SinaWeiboClient(Constants.SinaWeiboAppKey, Constants.SinaWeiboAppSecret, Constants.SinaWeiboRedirectUri);
+            return await client.ShareAsync(text, image);
         }
     }
 }
