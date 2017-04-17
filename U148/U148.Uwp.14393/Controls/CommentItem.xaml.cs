@@ -3,6 +3,7 @@ using Windows.Foundation;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using U148.Models;
+using WinRTXamlToolkit.AwaitableUI;
 
 namespace U148.Uwp.Controls
 {
@@ -19,6 +20,7 @@ namespace U148.Uwp.Controls
             if (comment != null)
             {
                 var contents = comment.Contents;
+                await ContentHost.NavigateAsync(new Uri("ms-appx-web:///Assets/Html/comment.html"));
                 await ContentHost.InvokeScriptAsync("setContent", new[]
                 {
                     contents

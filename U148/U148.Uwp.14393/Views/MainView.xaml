@@ -83,7 +83,8 @@
                             </StackPanel>
                             <StackPanel Grid.Row="2"
                                         Orientation="Vertical">
-                                <localControls:HamburgerMenuItem Label="设置">
+                                <localControls:HamburgerMenuItem Click="SettingMenuItem_Click"
+                                                                 Label="设置">
                                     <interactivity:Interaction.Behaviors>
                                         <core:EventTriggerBehavior EventName="Click">
                                             <core:ChangePropertyAction PropertyName="IsPaneOpen"
@@ -95,7 +96,8 @@
                                         <SymbolIcon Symbol="Setting" />
                                     </localControls:HamburgerMenuItem.Icon>
                                 </localControls:HamburgerMenuItem>
-                                <localControls:HamburgerMenuItem Label="关于">
+                                <localControls:HamburgerMenuItem Click="AboutMenuItem_Click"
+                                                                 Label="关于">
                                     <interactivity:Interaction.Behaviors>
                                         <core:EventTriggerBehavior EventName="Click">
                                             <core:ChangePropertyAction PropertyName="IsPaneOpen"

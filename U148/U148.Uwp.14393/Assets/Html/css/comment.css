@@ -1,1 +1,8 @@
-﻿
+﻿* {
+    user-select: none;
+    cursor: default;
+}
+
+blockquote {
+    margin-bottom: 0;
+}

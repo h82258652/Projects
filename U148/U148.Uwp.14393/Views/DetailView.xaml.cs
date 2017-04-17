@@ -5,6 +5,7 @@ using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 using GalaSoft.MvvmLight.Messaging;
 using U148.Uwp.Messages;
+using WinRTXamlToolkit.AwaitableUI;
 
 namespace U148.Uwp.Views
 {
@@ -28,6 +29,7 @@ namespace U148.Uwp.Views
 
             Messenger.Default.Register<ArticleContentLoadedMessage>(this, async message =>
             {
+                await WebView.NavigateAsync(new Uri("ms-appx-web:///Assets/Html/article.html"));
                 await WebView.InvokeScriptAsync("setContent", new[]
                 {
                     message.Content

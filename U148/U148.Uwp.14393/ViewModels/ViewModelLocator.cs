@@ -86,6 +86,8 @@ namespace U148.Uwp.ViewModels
             navigationService.Configure(SearchViewKey, typeof(SearchView), U148NavigationType.Master);
             navigationService.Configure(DetailViewKey, typeof(DetailView), U148NavigationType.Detail);
             navigationService.Configure(CommentViewKey, typeof(CommentView), U148NavigationType.Detail);
+            navigationService.Configure(AboutViewKey, typeof(AboutView), U148NavigationType.Detail);
+            navigationService.Configure(SettingViewKey, typeof(SettingView), U148NavigationType.Detail);
             return navigationService;
         }
     }

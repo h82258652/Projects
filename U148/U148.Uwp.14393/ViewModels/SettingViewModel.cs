@@ -43,7 +43,7 @@ namespace U148.Uwp.ViewModels
             {
                 _clearAuthenticationCommand = _clearAuthenticationCommand ?? new RelayCommand(() =>
                 {
-                    _u148ShareService.ClearAuthorization();
+                    _u148ShareService.ClearSinaWeiboAuthorization();
                 });
                 return _clearAuthenticationCommand;
             }
