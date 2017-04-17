@@ -5,6 +5,7 @@ using GalaSoft.MvvmLight.Command;
 using SoftwareKobo.Controls;
 using U148.Configuration;
 using U148.Models;
+using U148.Services;
 using U148.Uwp.Services;
 using WinRTXamlToolkit.Tools;
 
@@ -18,17 +19,20 @@ namespace U148.Uwp.ViewModels
 
         private readonly IU148Settings _u148Settings;
 
+        private readonly IU148ShareService _u148ShareService;
+
         private RelayCommand _clearAuthenticationCommand;
 
         private RelayCommand _clearImageCacheCommand;
 
         private bool _isBusy;
 
-        public SettingViewModel(IU148Settings u148Settings, IImageLoader imageLoader, IAppToastService appToastService)
+        public SettingViewModel(IU148Settings u148Settings, IImageLoader imageLoader, IAppToastService appToastService, IU148ShareService u148ShareService)
         {
             _u148Settings = u148Settings;
             _imageLoader = imageLoader;
             _appToastService = appToastService;
+            _u148ShareService = u148ShareService;
         }
 
         public long CacheImageSize => _imageLoader.CalculateCacheSize();
@@ -39,7 +43,7 @@ namespace U148.Uwp.ViewModels
             {
                 _clearAuthenticationCommand = _clearAuthenticationCommand ?? new RelayCommand(() =>
                 {
-                    throw new NotImplementedException();
+                    _u148ShareService.ClearAuthorization();
                 });
                 return _clearAuthenticationCommand;
             }

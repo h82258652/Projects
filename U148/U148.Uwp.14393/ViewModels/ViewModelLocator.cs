@@ -1,6 +1,8 @@
 ﻿using GalaSoft.MvvmLight.Views;
 using Microsoft.Practices.ServiceLocation;
 using Microsoft.Practices.Unity;
+using SoftwareKobo.Controls;
+using SoftwareKobo.Services;
 using U148.Configuration;
 using U148.Services;
 using U148.Uwp.Services;
@@ -58,6 +60,12 @@ namespace U148.Uwp.ViewModels
             unityContainer.RegisterType<IUserService, UserService>();
             unityContainer.RegisterType<IU148Settings, U148UwpSettings>();
             unityContainer.RegisterType<IAppToastService, AppToastService>();
+            unityContainer.RegisterType<IU148ShareService, U148ShareService>();
+            unityContainer.RegisterType<IStoreService, StoreService>();
+
+            unityContainer.RegisterType<IU148Settings, U148UwpSettings>();
+
+            unityContainer.RegisterInstance(DefaultImageLoader.Instance);
 
             unityContainer.RegisterType<MainViewModel>();
             unityContainer.RegisterType<ArticleViewModel>();

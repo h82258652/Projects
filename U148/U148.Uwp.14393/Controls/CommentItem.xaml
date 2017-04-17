@@ -7,6 +7,13 @@
              d:DataContext="{d:DesignInstance Type=models:Comment}"
              DataContextChanged="CommentItem_DataContextChanged"
              mc:Ignorable="d">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Styles/U148ColorStyle.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto" />
@@ -22,7 +29,9 @@
             </Grid.RowDefinitions>
             <StackPanel Grid.Row="0"
                         Orientation="Horizontal">
-                <TextBlock Text="{Binding Path=User.Nickname}" />
+                <TextBlock Foreground="{ThemeResource U148AccentBrush}"
+                           Text="{Binding Path=User.Nickname}" />
+                <TextBlock Text="{Binding Path=CreateTime}" />
                 <TextBlock Text="{Binding Path=FloorNo}" />
             </StackPanel>
             <WebView x:Name="ContentHost"

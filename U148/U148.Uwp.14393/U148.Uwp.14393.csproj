@@ -369,6 +369,10 @@
       <Project>{86ea073d-0ba8-4c94-bfac-dedbbda07475}</Project>
       <Name>U148.Models</Name>
     </ProjectReference>
+    <ProjectReference Include="..\U148.Services.Uwp.14393\U148.Services.Uwp.14393.csproj">
+      <Project>{28e89a8b-8ab5-49da-a497-ae6145a7f347}</Project>
+      <Name>U148.Services.Uwp.14393</Name>
+    </ProjectReference>
     <ProjectReference Include="..\U148.Services\U148.Services.csproj">
       <Project>{e81d0687-3826-45e5-8cd6-7071ca510e10}</Project>
       <Name>U148.Services</Name>
