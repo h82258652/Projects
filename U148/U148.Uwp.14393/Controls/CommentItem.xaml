@@ -8,10 +8,26 @@
              DataContextChanged="CommentItem_DataContextChanged"
              mc:Ignorable="d">
     <Grid>
-        <Image Source="{Binding Path=User.Icon}" />
-        <TextBlock Text="{Binding Path=User.Nickname}" />
-        <WebView x:Name="ContentHost"
-                 ScriptNotify="ContentHost_ScriptNotify" />
-        <TextBlock Text="{Binding Path=FloorNo}" />
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Image Grid.Column="0"
+               VerticalAlignment="Top"
+               Source="{Binding Path=User.Icon}" />
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <StackPanel Grid.Row="0"
+                        Orientation="Horizontal">
+                <TextBlock Text="{Binding Path=User.Nickname}" />
+                <TextBlock Text="{Binding Path=FloorNo}" />
+            </StackPanel>
+            <WebView x:Name="ContentHost"
+                     Grid.Row="1"
+                     ScriptNotify="ContentHost_ScriptNotify" />
+        </Grid>
     </Grid>
 </UserControl>
