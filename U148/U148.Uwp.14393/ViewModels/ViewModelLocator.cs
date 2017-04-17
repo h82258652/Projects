@@ -4,6 +4,7 @@ using Microsoft.Practices.Unity;
 using U148.Configuration;
 using U148.Services;
 using U148.Uwp.Services;
+using U148.Uwp.Views;
 
 namespace U148.Uwp.ViewModels
 {
@@ -72,8 +73,11 @@ namespace U148.Uwp.ViewModels
 
         private static INavigationService CreateNavigationService()
         {
-            var navigationService = new NavigationService();
-            // TODO
+            var navigationService = new U148NavigationService();
+            navigationService.Configure(ArticleViewKey, typeof(ArticleView), U148NavigationType.Master);
+            navigationService.Configure(SearchViewKey, typeof(SearchView), U148NavigationType.Master);
+            navigationService.Configure(DetailViewKey, typeof(DetailView), U148NavigationType.Detail);
+            navigationService.Configure(CommentViewKey, typeof(CommentView), U148NavigationType.Detail);
             return navigationService;
         }
     }

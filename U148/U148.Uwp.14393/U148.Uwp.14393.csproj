@@ -142,6 +142,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\AppToastService.cs" />
     <Compile Include="Services\IAppToastService.cs" />
+    <Compile Include="Services\U148NavigationService.cs" />
+    <Compile Include="Services\U148NavigationType.cs" />
     <Compile Include="ViewModels\AboutViewModel.cs" />
     <Compile Include="ViewModels\ArticleViewModel.cs" />
     <Compile Include="ViewModels\CommentViewModel.cs" />

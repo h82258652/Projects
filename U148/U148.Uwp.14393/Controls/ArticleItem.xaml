@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:converters="using:U148.Uwp.Converters"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:fontAwesome="using:SoftwareKobo.Icons.FontAwesome"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:models="using:U148.Models"
              d:DataContext="{d:DesignInstance Type=models:Article}"
@@ -43,11 +44,24 @@
                        Text="{Binding Path=Summary}"
                        TextTrimming="CharacterEllipsis"
                        TextWrapping="Wrap" />
-            <TextBlock Grid.Row="2"
-                       Margin="0,8,0,0"
-                       Foreground="Gray"
-                       TextAlignment="Right">
-                <Run Text="{Binding Path=CountBrowse}" /><Run Text="人看过" /><Run Text="{Binding Path=CountReview}" /><Run Text="评论" /></TextBlock>
+            <StackPanel Grid.Row="2"
+                        Margin="0,8,0,0"
+                        HorizontalAlignment="Right"
+                        Orientation="Horizontal">
+                <fontAwesome:FontAwesomeIcon VerticalAlignment="Center"
+                                             Foreground="Gray"
+                                             Symbol="Eye" />
+                <TextBlock VerticalAlignment="Center"
+                           Foreground="Gray"
+                           Text="{Binding Path=CountBrowse}" />
+                <fontAwesome:FontAwesomeIcon Margin="8,0,0,0"
+                                             VerticalAlignment="Center"
+                                             Foreground="Gray"
+                                             Symbol="Comment" />
+                <TextBlock VerticalAlignment="Center"
+                           Foreground="Gray"
+                           Text="{Binding Path=CountReview}" />
+            </StackPanel>
         </Grid>
     </Grid>
 </UserControl>
