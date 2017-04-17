@@ -29,9 +29,7 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
             <Button Grid.Column="0"
-                    Width="48"
-                    Height="48"
-                    Style="{StaticResource NavigationBackButtonNormalStyle}">
+                    Style="{StaticResource NavigationBackButtonStyle}">
                 <interactivity:Interaction.Behaviors>
                     <core:EventTriggerBehavior EventName="Click">
                         <behaviors:GoBackAction />

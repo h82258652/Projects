@@ -17,10 +17,8 @@
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
         <Button Grid.Row="0"
-                Width="48"
-                Height="48"
                 HorizontalAlignment="Left"
-                Style="{StaticResource NavigationBackButtonNormalStyle}">
+                Style="{StaticResource NavigationBackButtonStyle}">
             <interactivity:Interaction.Behaviors>
                 <core:EventTriggerBehavior EventName="Click">
                     <behaviors:GoBackAction />

@@ -17,10 +17,9 @@
                 <RowDefinition Height="*" />
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
-            <Button Width="48"
-                    Height="48"
+            <Button Grid.Row="0"
                     Click="GoBackButton_Click"
-                    Style="{StaticResource NavigationBackButtonNormalStyle}" />
+                    Style="{StaticResource NavigationBackButtonStyle}" />
             <Grid Grid.Row="1">
                 <StackPanel Width="300"
                             HorizontalAlignment="Center"
