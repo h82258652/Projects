@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using NUnit.Framework;
 
 namespace U148.Services.Tests
@@ -17,6 +18,11 @@ namespace U148.Services.Tests
         [Test]
         public async Task TestGetCommentsAsync()
         {
+            Assert.ThrowsAsync<ArgumentOutOfRangeException>(async () =>
+            {
+                await _commentService.GetCommentsAsync(141135, 0);
+            });
+
             var result = await _commentService.GetCommentsAsync(141135);
             Assert.AreEqual(result.ErrorCode, 0);
         }
