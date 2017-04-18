@@ -78,9 +78,6 @@
                                       Glyph="&#xE1F6;" />
                             <PasswordBox x:Name="PasswordBox"
                                          Grid.Column="1"
-                                         Background="Transparent"
-                                         BorderBrush="Transparent"
-                                         BorderThickness="0"
                                          KeyDown="PasswordBox_KeyDown"
                                          MaxLength="16"
                                          Password="{Binding Path=Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"

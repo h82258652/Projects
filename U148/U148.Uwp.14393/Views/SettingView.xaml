@@ -32,7 +32,7 @@
                       SelectedItem="{Binding Path=SimulateDevice, Mode=TwoWay}" />
             <Button Command="{Binding Path=ClearImageCacheCommand}"
                     Content="清除图片缓存" />
-            <Button Command="{Binding Path=ClearAuthenticationCommand}"
+            <Button Command="{Binding Path=ClearSinaWeiboAuthenticationCommand}"
                     Content="清除微博授权" />
         </StackPanel>
     </Grid>

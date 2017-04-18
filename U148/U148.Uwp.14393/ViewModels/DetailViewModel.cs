@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Views;
@@ -19,13 +18,15 @@ namespace U148.Uwp.ViewModels
 
         private readonly IArticleService _articleService;
 
+        private readonly IImageLoader _imageLoader;
+
         private readonly INavigationService _navigationService;
+
+        private readonly IU148ShareService _u148ShareService;
 
         private Article _article;
 
         private RelayCommand _commentCommand;
-
-        private IImageLoader _imageLoader;
 
         private bool _isBusy;
 
@@ -34,8 +35,6 @@ namespace U148.Uwp.ViewModels
         private RelayCommand _refreshCommand;
 
         private RelayCommand _shareCommand;
-
-        private IU148ShareService _u148ShareService;
 
         public DetailViewModel(IArticleService articleService, INavigationService navigationService, IAppToastService appToastService, IImageLoader imageLoader, IU148ShareService u148ShareService)
         {

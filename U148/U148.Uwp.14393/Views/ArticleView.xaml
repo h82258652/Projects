@@ -33,11 +33,10 @@
                     <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
                 <Button Grid.Column="0"
-                        Width="48"
-                        Height="48"
                         Click="HamburgerMenuButton_Click"
                         Style="{StaticResource IconButtonStyle}">
-                    <SymbolIcon Symbol="AlignLeft" />
+                    <FontIcon FontFamily="Segoe MDL2 Assets"
+                              Glyph="&#xE700;" />
                 </Button>
                 <Button Grid.Column="1"
                         HorizontalAlignment="Stretch"
@@ -46,8 +45,6 @@
                         Content="有意思吧"
                         Style="{StaticResource EmptyButtonStyle}" />
                 <Button Grid.Column="2"
-                        Width="48"
-                        Height="48"
                         Command="{Binding Path=SearchCommand}"
                         Style="{StaticResource IconButtonStyle}">
                     <SymbolIcon Symbol="Find" />
