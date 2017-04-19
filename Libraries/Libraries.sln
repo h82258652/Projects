@@ -7,21 +7,19 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ImageEx", "ImageEx", "{1175
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoftwareKobo.Controls.ImageEx.Uwp.10240", "SoftwareKobo.Controls.ImageEx.Uwp.10240\SoftwareKobo.Controls.ImageEx.Uwp.10240.csproj", "{8CD7958C-9F86-4530-9FF9-92289631F606}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoftwareKobo.Controls.ImageEx.Core", "SoftwareKobo.Controls.ImageEx.Core\SoftwareKobo.Controls.ImageEx.Core.csproj", "{2378F097-7706-4C6C-B1C1-4C9910829095}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SoftwareKobo.Controls.ImageEx.Core", "SoftwareKobo.Controls.ImageEx.Core\SoftwareKobo.Controls.ImageEx.Core.csproj", "{2378F097-7706-4C6C-B1C1-4C9910829095}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoftwareKobo.Controls.ImageEx.Uwp", "SoftwareKobo.Controls.ImageEx.Uwp\SoftwareKobo.Controls.ImageEx.Uwp.csproj", "{CDFBF869-6A2E-4C90-A9C1-2F5ACB283404}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Utils", "Utils", "{E02CFE8C-49EF-444E-AD2D-16F8D360E66A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoftwareKobo.Utils", "SoftwareKobo.Utils\SoftwareKobo.Utils.csproj", "{776A7D97-D3CC-4BCC-8047-7FC3B696DD79}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SoftwareKobo.Utils", "SoftwareKobo.Utils\SoftwareKobo.Utils.csproj", "{776A7D97-D3CC-4BCC-8047-7FC3B696DD79}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoftwareKobo.Controls.ImageEx.Uwp.14393", "SoftwareKobo.Controls.ImageEx.Uwp.14393\SoftwareKobo.Controls.ImageEx.Uwp.14393.csproj", "{CD37E6CB-0326-439C-B790-A71B08268E44}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoftwareKobo.Controls.ImageEx.Wpf", "SoftwareKobo.Controls.ImageEx.Wpf\SoftwareKobo.Controls.ImageEx.Wpf.csproj", "{8EF3F4EB-62C4-4267-A3AB-AEE7148D4FF3}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Icons", "Icons", "{0D75E535-6655-413E-A50C-C900FDF03DC3}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoftwareKobo.Icons", "SoftwareKobo.Icons\SoftwareKobo.Icons.csproj", "{5F3C3804-E984-4D9E-A3E4-1CA534DB28F2}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ToastPrompt", "ToastPrompt", "{AD97817E-1BF4-4D34-89EE-1496D87A5B6C}"
 EndProject
@@ -31,7 +29,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Social", "Social", "{184FB1
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SinaWeibo", "SinaWeibo", "{91C78F97-E6D6-4873-9DA6-09DB8831F039}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoftwareKobo.Social.SinaWeibo.Core", "SoftwareKobo.Social.SinaWeibo.Core\SoftwareKobo.Social.SinaWeibo.Core.csproj", "{6218EAA1-7ABD-4FC7-8641-E1AB1ACC8696}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SoftwareKobo.Social.SinaWeibo.Core", "SoftwareKobo.Social.SinaWeibo.Core\SoftwareKobo.Social.SinaWeibo.Core.csproj", "{6218EAA1-7ABD-4FC7-8641-E1AB1ACC8696}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoftwareKobo.Social.SinaWeibo.Desktop", "SoftwareKobo.Social.SinaWeibo.Desktop\SoftwareKobo.Social.SinaWeibo.Desktop.csproj", "{446BCFE3-5E53-4A93-A4A1-4312BDEA8B89}"
 EndProject
@@ -39,7 +37,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Support", "Support", "{6BCA
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ScreenService", "ScreenService", "{5EF5BD3A-4E47-4F19-B20F-56D10A73C10E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoftwareKobo.Support.ScreenService", "SoftwareKobo.Support.ScreenService\SoftwareKobo.Support.ScreenService.csproj", "{0DF42436-F884-4671-92A4-E0E9306CDCF7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SoftwareKobo.Support.ScreenService", "SoftwareKobo.Support.ScreenService\SoftwareKobo.Support.ScreenService.csproj", "{0DF42436-F884-4671-92A4-E0E9306CDCF7}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoftwareKobo.Support.ScreenService.Desktop", "SoftwareKobo.Support.ScreenService.Desktop\SoftwareKobo.Support.ScreenService.Desktop.csproj", "{D27A61CE-7898-4CF6-85D8-AD1375F9F8D6}"
 EndProject
@@ -56,6 +54,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoftwareKobo.Utils.Uwp", "SoftwareKobo.Utils.Uwp\SoftwareKobo.Utils.Uwp.csproj", "{E325FCD6-2E6B-44FC-85D0-D49957258C98}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoftwareKobo.Social.SinaWeibo.Uwp", "SoftwareKobo.Social.SinaWeibo.Uwp\SoftwareKobo.Social.SinaWeibo.Uwp.csproj", "{CCA06B62-E020-43D7-A136-6BD9AA97F872}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoftwareKobo.Icons", "SoftwareKobo.Icons\SoftwareKobo.Icons.csproj", "{F9127F6D-C993-4071-B7D2-22C6A317D1D1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -165,22 +165,6 @@ Global
 		{8EF3F4EB-62C4-4267-A3AB-AEE7148D4FF3}.Release|x64.Build.0 = Release|Any CPU
 		{8EF3F4EB-62C4-4267-A3AB-AEE7148D4FF3}.Release|x86.ActiveCfg = Release|Any CPU
 		{8EF3F4EB-62C4-4267-A3AB-AEE7148D4FF3}.Release|x86.Build.0 = Release|Any CPU
-		{5F3C3804-E984-4D9E-A3E4-1CA534DB28F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5F3C3804-E984-4D9E-A3E4-1CA534DB28F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5F3C3804-E984-4D9E-A3E4-1CA534DB28F2}.Debug|ARM.ActiveCfg = Debug|ARM
-		{5F3C3804-E984-4D9E-A3E4-1CA534DB28F2}.Debug|ARM.Build.0 = Debug|ARM
-		{5F3C3804-E984-4D9E-A3E4-1CA534DB28F2}.Debug|x64.ActiveCfg = Debug|x64
-		{5F3C3804-E984-4D9E-A3E4-1CA534DB28F2}.Debug|x64.Build.0 = Debug|x64
-		{5F3C3804-E984-4D9E-A3E4-1CA534DB28F2}.Debug|x86.ActiveCfg = Debug|x86
-		{5F3C3804-E984-4D9E-A3E4-1CA534DB28F2}.Debug|x86.Build.0 = Debug|x86
-		{5F3C3804-E984-4D9E-A3E4-1CA534DB28F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5F3C3804-E984-4D9E-A3E4-1CA534DB28F2}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5F3C3804-E984-4D9E-A3E4-1CA534DB28F2}.Release|ARM.ActiveCfg = Release|ARM
-		{5F3C3804-E984-4D9E-A3E4-1CA534DB28F2}.Release|ARM.Build.0 = Release|ARM
-		{5F3C3804-E984-4D9E-A3E4-1CA534DB28F2}.Release|x64.ActiveCfg = Release|x64
-		{5F3C3804-E984-4D9E-A3E4-1CA534DB28F2}.Release|x64.Build.0 = Release|x64
-		{5F3C3804-E984-4D9E-A3E4-1CA534DB28F2}.Release|x86.ActiveCfg = Release|x86
-		{5F3C3804-E984-4D9E-A3E4-1CA534DB28F2}.Release|x86.Build.0 = Release|x86
 		{D34DD626-F540-4EE0-9B2E-61CB3623F5FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D34DD626-F540-4EE0-9B2E-61CB3623F5FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D34DD626-F540-4EE0-9B2E-61CB3623F5FE}.Debug|ARM.ActiveCfg = Debug|ARM
@@ -355,6 +339,22 @@ Global
 		{CCA06B62-E020-43D7-A136-6BD9AA97F872}.Release|x64.Build.0 = Release|x64
 		{CCA06B62-E020-43D7-A136-6BD9AA97F872}.Release|x86.ActiveCfg = Release|x86
 		{CCA06B62-E020-43D7-A136-6BD9AA97F872}.Release|x86.Build.0 = Release|x86
+		{F9127F6D-C993-4071-B7D2-22C6A317D1D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F9127F6D-C993-4071-B7D2-22C6A317D1D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F9127F6D-C993-4071-B7D2-22C6A317D1D1}.Debug|ARM.ActiveCfg = Debug|ARM
+		{F9127F6D-C993-4071-B7D2-22C6A317D1D1}.Debug|ARM.Build.0 = Debug|ARM
+		{F9127F6D-C993-4071-B7D2-22C6A317D1D1}.Debug|x64.ActiveCfg = Debug|x64
+		{F9127F6D-C993-4071-B7D2-22C6A317D1D1}.Debug|x64.Build.0 = Debug|x64
+		{F9127F6D-C993-4071-B7D2-22C6A317D1D1}.Debug|x86.ActiveCfg = Debug|x86
+		{F9127F6D-C993-4071-B7D2-22C6A317D1D1}.Debug|x86.Build.0 = Debug|x86
+		{F9127F6D-C993-4071-B7D2-22C6A317D1D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F9127F6D-C993-4071-B7D2-22C6A317D1D1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F9127F6D-C993-4071-B7D2-22C6A317D1D1}.Release|ARM.ActiveCfg = Release|ARM
+		{F9127F6D-C993-4071-B7D2-22C6A317D1D1}.Release|ARM.Build.0 = Release|ARM
+		{F9127F6D-C993-4071-B7D2-22C6A317D1D1}.Release|x64.ActiveCfg = Release|x64
+		{F9127F6D-C993-4071-B7D2-22C6A317D1D1}.Release|x64.Build.0 = Release|x64
+		{F9127F6D-C993-4071-B7D2-22C6A317D1D1}.Release|x86.ActiveCfg = Release|x86
+		{F9127F6D-C993-4071-B7D2-22C6A317D1D1}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -366,7 +366,6 @@ Global
 		{776A7D97-D3CC-4BCC-8047-7FC3B696DD79} = {E02CFE8C-49EF-444E-AD2D-16F8D360E66A}
 		{CD37E6CB-0326-439C-B790-A71B08268E44} = {11759603-49BA-4F66-8A27-76C3CD91A8F3}
 		{8EF3F4EB-62C4-4267-A3AB-AEE7148D4FF3} = {11759603-49BA-4F66-8A27-76C3CD91A8F3}
-		{5F3C3804-E984-4D9E-A3E4-1CA534DB28F2} = {0D75E535-6655-413E-A50C-C900FDF03DC3}
 		{D34DD626-F540-4EE0-9B2E-61CB3623F5FE} = {AD97817E-1BF4-4D34-89EE-1496D87A5B6C}
 		{91C78F97-E6D6-4873-9DA6-09DB8831F039} = {184FB19E-B9DE-4C26-92F2-DD94D3342CD2}
 		{6218EAA1-7ABD-4FC7-8641-E1AB1ACC8696} = {91C78F97-E6D6-4873-9DA6-09DB8831F039}
@@ -380,5 +379,6 @@ Global
 		{6007B89B-51DF-4FC4-AE66-97251E259A28} = {AD97817E-1BF4-4D34-89EE-1496D87A5B6C}
 		{E325FCD6-2E6B-44FC-85D0-D49957258C98} = {E02CFE8C-49EF-444E-AD2D-16F8D360E66A}
 		{CCA06B62-E020-43D7-A136-6BD9AA97F872} = {91C78F97-E6D6-4873-9DA6-09DB8831F039}
+		{F9127F6D-C993-4071-B7D2-22C6A317D1D1} = {0D75E535-6655-413E-A50C-C900FDF03DC3}
 	EndGlobalSection
 EndGlobal
