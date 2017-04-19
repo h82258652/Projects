@@ -1,1 +1,8 @@
-﻿
+﻿@font-face {
+    font-family: 'sourcehanserifcn-regular';
+    src: url('../../fonts/sourcehanserifcn-regular.otf') format('opentype');
+}
+
+html {
+    font-family: 'sourcehanserifcn-regular';
+}

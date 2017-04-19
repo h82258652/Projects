@@ -1,9 +1,18 @@
-﻿* {
+﻿@font-face {
+    font-family: 'sourcehanserifcn-regular';
+    src: url('../../fonts/sourcehanserifcn-regular.otf') format('opentype');
+}
+
+* {
     -moz-user-select: none;
     -ms-user-select: none;
     -webkit-user-select: none;
     user-select: none;
     cursor: default;
+}
+
+html {
+    font-family: 'sourcehanserifcn-regular';
 }
 
 body {
