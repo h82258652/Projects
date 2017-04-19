@@ -63,7 +63,8 @@
                         </Grid>
                         <Border Height="1"
                                 Background="Gray" />
-                        <TextBlock Foreground="Red"
+                        <TextBlock FontFamily="ms-appx:///Assets/Fonts/SourceHanSerifCN-Regular.otf#Source Han Serif CN"
+                                   Foreground="Red"
                                    Text="{Binding Path=Errors[Email]}" />
                     </StackPanel>
                     <StackPanel Margin="0,12,0,0"
@@ -94,7 +95,8 @@
                         </Grid>
                         <Border Height="1"
                                 Background="Gray" />
-                        <TextBlock Foreground="Red"
+                        <TextBlock FontFamily="ms-appx:///Assets/Fonts/SourceHanSerifCN-Regular.otf#Source Han Serif CN"
+                                   Foreground="Red"
                                    Text="{Binding Path=Errors[Password]}" />
                     </StackPanel>
                     <HyperlinkButton Margin="0,20,0,0"

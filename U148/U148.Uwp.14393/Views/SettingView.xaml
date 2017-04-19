@@ -25,15 +25,23 @@
                 </interactivity:Interaction.Behaviors>
             </Button>
         </Grid>
-        <StackPanel Grid.Row="1"
-                    Orientation="Vertical">
-            <ComboBox Header="模拟设备"
-                      ItemsSource="{Binding Path=SimulateDevices}"
-                      SelectedItem="{Binding Path=SimulateDevice, Mode=TwoWay}" />
-            <Button Command="{Binding Path=ClearImageCacheCommand}"
-                    Content="清除图片缓存" />
-            <Button Command="{Binding Path=ClearSinaWeiboAuthenticationCommand}"
-                    Content="清除微博授权" />
-        </StackPanel>
+        <ScrollViewer Grid.Row="1"
+                      VerticalScrollBarVisibility="Auto">
+            <StackPanel Orientation="Vertical">
+                <ComboBox Margin="4"
+                          FontFamily="ms-appx:///Assets/Fonts/SourceHanSerifCN-Regular.otf#Source Han Serif CN"
+                          Header="模拟设备"
+                          ItemsSource="{Binding Path=SimulateDevices}"
+                          SelectedItem="{Binding Path=SimulateDevice, Mode=TwoWay}" />
+                <Button Margin="4"
+                        Command="{Binding Path=ClearImageCacheCommand}"
+                        Content="清除图片缓存"
+                        FontFamily="ms-appx:///Assets/Fonts/SourceHanSerifCN-Regular.otf#Source Han Serif CN" />
+                <Button Margin="4"
+                        Command="{Binding Path=ClearSinaWeiboAuthenticationCommand}"
+                        Content="清除微博授权"
+                        FontFamily="ms-appx:///Assets/Fonts/SourceHanSerifCN-Regular.otf#Source Han Serif CN" />
+            </StackPanel>
+        </ScrollViewer>
     </Grid>
 </views:BindablePage>
