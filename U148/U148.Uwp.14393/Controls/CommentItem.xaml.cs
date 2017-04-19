@@ -1,8 +1,8 @@
 ﻿using System;
+using U148.Models;
 using Windows.Foundation;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using U148.Models;
 using WinRTXamlToolkit.AwaitableUI;
 
 namespace U148.Uwp.Controls

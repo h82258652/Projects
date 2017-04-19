@@ -65,6 +65,7 @@
                                              Symbol="Eye" />
                 <TextBlock Margin="4,0,0,0"
                            VerticalAlignment="Center"
+                           FontFamily="ms-appx:///Assets/Fonts/SourceHanSerifCN-Regular.otf#Source Han Serif CN"
                            Foreground="Gray"
                            Text="{Binding Path=CountBrowse}" />
                 <fontAwesome:FontAwesomeIcon Margin="8,0,0,0"
@@ -73,6 +74,7 @@
                                              Symbol="Comment" />
                 <TextBlock Margin="4,0,4,0"
                            VerticalAlignment="Center"
+                           FontFamily="ms-appx:///Assets/Fonts/SourceHanSerifCN-Regular.otf#Source Han Serif CN"
                            Foreground="Gray"
                            Text="{Binding Path=CountReview}" />
             </StackPanel>

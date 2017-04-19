@@ -18,13 +18,7 @@ namespace U148.Uwp
 
         internal static string ClearImageCacheFinish => ResourceLoader.GetForCurrentView(SettingViewReswName).GetString("ClearImageCacheFinish");
 
-        internal static string ClearSinaWeiboAuthenticationSuccess
-        {
-            get
-            {
-                return ResourceLoader.GetForCurrentView(SettingViewReswName).GetString("ClearSinaWeiboAuthenticationSuccess");
-            }
-        }
+        internal static string ClearSinaWeiboAuthenticationSuccess => ResourceLoader.GetForCurrentView(SettingViewReswName).GetString("ClearSinaWeiboAuthenticationSuccess");
 
         internal static string EmailFormatError => ResourceLoader.GetForCurrentView(LoginViewReswName).GetString("EmailFormatError");
 

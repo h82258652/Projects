@@ -1,6 +1,6 @@
-﻿using Windows.UI.Xaml.Navigation;
-using GalaSoft.MvvmLight.Messaging;
+﻿using GalaSoft.MvvmLight.Messaging;
 using U148.Uwp.Messages;
+using Windows.UI.Xaml.Navigation;
 
 namespace U148.Uwp.Views
 {
