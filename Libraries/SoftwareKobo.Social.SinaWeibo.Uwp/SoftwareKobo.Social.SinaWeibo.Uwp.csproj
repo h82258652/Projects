@@ -4,14 +4,14 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{35AFB302-54E9-4E5C-878A-17E45B9158DC}</ProjectGuid>
+    <ProjectGuid>{CCA06B62-E020-43D7-A136-6BD9AA97F872}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>SoftwareKobo.Social.SinaWeibo</RootNamespace>
     <AssemblyName>SoftwareKobo.Social.SinaWeibo.Uwp</AssemblyName>
     <DefaultLanguage>zh-CN</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
-    <TargetPlatformVersion>10.0.10240.0</TargetPlatformVersion>
+    <TargetPlatformVersion Condition=" '$(TargetPlatformVersion)' == '' ">10.0.10240.0</TargetPlatformVersion>
     <TargetPlatformMinVersion>10.0.10240.0</TargetPlatformMinVersion>
     <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
     <FileAlignment>512</FileAlignment>
@@ -102,10 +102,9 @@
     <UseVSHostingProcess>false</UseVSHostingProcess>
     <ErrorReport>prompt</ErrorReport>
   </PropertyGroup>
-  <ItemGroup>
-    <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
-    <None Include="project.json" />
-  </ItemGroup>
+  <PropertyGroup>
+    <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
+  </PropertyGroup>
   <ItemGroup>
     <Compile Include="AuthorizationException.cs" />
     <Compile Include="AuthorizeErrorHttpException.cs" />
@@ -117,12 +116,20 @@
     <EmbeddedResource Include="Properties\SoftwareKobo.Social.SinaWeibo.Uwp.rd.xml" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
+      <Version>5.3.2</Version>
+    </PackageReference>
+    <PackageReference Include="Newtonsoft.Json">
+      <Version>10.0.2</Version>
+    </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\SoftwareKobo.Social.SinaWeibo.Core\SoftwareKobo.Social.SinaWeibo.Core.csproj">
       <Project>{6218eaa1-7abd-4fc7-8641-e1ab1acc8696}</Project>
       <Name>SoftwareKobo.Social.SinaWeibo.Core</Name>
     </ProjectReference>
     <ProjectReference Include="..\SoftwareKobo.Utils.Uwp\SoftwareKobo.Utils.Uwp.csproj">
-      <Project>{DFF7CAE2-1363-4C68-BB0F-5F909CC3F0A7}</Project>
+      <Project>{e325fcd6-2e6b-44fc-85d0-d49957258c98}</Project>
       <Name>SoftwareKobo.Utils.Uwp</Name>
     </ProjectReference>
   </ItemGroup>

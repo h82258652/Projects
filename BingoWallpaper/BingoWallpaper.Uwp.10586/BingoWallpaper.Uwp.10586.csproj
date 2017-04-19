@@ -262,10 +262,6 @@
       <Project>{5966e8f2-5e4b-49c1-b331-ff9fa39b910e}</Project>
       <Name>SoftwareKobo.Support.ScreenService</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Libraries\SoftwareKobo.Utils.Uwp\SoftwareKobo.Utils.Uwp.csproj">
-      <Project>{dff7cae2-1363-4c68-bb0f-5f909cc3f0a7}</Project>
-      <Name>SoftwareKobo.Utils.Uwp</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\Libraries\SoftwareKobo.Utils\SoftwareKobo.Utils.csproj">
       <Project>{8b7de148-6811-4333-8a5b-4a046c6c3525}</Project>
       <Name>SoftwareKobo.Utils</Name>
