@@ -52,13 +52,19 @@
                          Background="Transparent"
                          IsIndeterminate="{Binding Path=Comments.IsLoading}" />
         </Grid>
-        <Grid Grid.Row="2">
+        <Grid Grid.Row="2"
+              BorderBrush="Gray"
+              BorderThickness="0,1,0,0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
             <TextBox x:Name="CommentTextBox"
                      Grid.Column="0"
+                     Background="Transparent"
+                     BorderBrush="Transparent"
+                     BorderThickness="0"
+                     FontFamily="ms-appx:///Assets/Fonts/SourceHanSerifCN-Regular.otf#Source Han Serif CN"
                      PlaceholderText="写下你的评论" />
             <Button Grid.Column="1"
                     Command="{Binding Path=SendCommentCommand}"

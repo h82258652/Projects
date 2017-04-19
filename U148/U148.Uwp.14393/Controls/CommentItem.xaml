@@ -34,9 +34,11 @@
             </Grid.RowDefinitions>
             <StackPanel Grid.Row="0"
                         Orientation="Horizontal">
-                <TextBlock Foreground="{ThemeResource U148AccentBrush}"
+                <TextBlock FontFamily="ms-appx:///Assets/Fonts/SourceHanSerifCN-Regular.otf#Source Han Serif CN"
+                           Foreground="{ThemeResource U148AccentBrush}"
                            Text="{Binding Path=User.Nickname}" />
                 <TextBlock Margin="8,0,0,0"
+                           FontFamily="ms-appx:///Assets/Fonts/SourceHanSerifCN-Regular.otf#Source Han Serif CN"
                            Text="{Binding Path=CreateTime, Converter={StaticResource StringFormatConverter}, ConverterParameter='{}{0:yyyy-MM-dd}'}" />
                 <TextBlock Margin="8,0,0,0"
                            Text="{Binding Path=FloorNo}" />
