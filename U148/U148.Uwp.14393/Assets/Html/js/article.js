@@ -11,6 +11,8 @@ function scrollToTop() {
 }
 
 $(function () {
+    $("a").attr("href", "javascript:void(0);");
+
     var hammertime = new Hammer(document.getElementsByTagName("html")[0]);
     hammertime.on("swipeleft", function (e) {
         if (e.pointerType !== "mouse") {
