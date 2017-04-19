@@ -40,14 +40,17 @@
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
                 <TextBlock Grid.Column="0"
+                           FontFamily="ms-appx:///Assets/Fonts/SourceHanSerifCN-Regular.otf#Source Han Serif CN"
                            Foreground="{ThemeResource U148AccentBrush}"><Run Text="[" /><Run Text="{Binding Path=Category, Converter={StaticResource ArticleCategoryNameConverter}}" /><Run Text="]" /></TextBlock>
                 <TextBlock Grid.Column="1"
                            Margin="4,0,0,0"
+                           FontFamily="ms-appx:///Assets/Fonts/SourceHanSerifCN-Regular.otf#Source Han Serif CN"
                            Text="{Binding Path=Title}"
                            TextTrimming="CharacterEllipsis" />
             </Grid>
             <TextBlock Grid.Row="1"
                        Margin="0,8,0,0"
+                       FontFamily="ms-appx:///Assets/Fonts/SourceHanSerifCN-Regular.otf#Source Han Serif CN"
                        Foreground="Gray"
                        MaxLines="3"
                        Text="{Binding Path=Summary}"
@@ -68,7 +71,7 @@
                                              VerticalAlignment="Center"
                                              Foreground="Gray"
                                              Symbol="Comment" />
-                <TextBlock Margin="4,0,0,0"
+                <TextBlock Margin="4,0,4,0"
                            VerticalAlignment="Center"
                            Foreground="Gray"
                            Text="{Binding Path=CountReview}" />

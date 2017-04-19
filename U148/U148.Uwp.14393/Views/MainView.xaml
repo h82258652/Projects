@@ -122,6 +122,18 @@
                     <Frame x:Name="MasterFrame"
                            SourcePageType="views:ArticleView" />
                 </localControls:MasterDetailView.MasterContent>
+                <localControls:MasterDetailView.Splitter>
+                    <Grid Width="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="48" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <Border Grid.Row="0"
+                                Background="{ThemeResource U148AccentBrush}" />
+                        <Border Grid.Row="1"
+                                Background="Gray" />
+                    </Grid>
+                </localControls:MasterDetailView.Splitter>
                 <localControls:MasterDetailView.DetailContent>
                     <Frame x:Name="DetailFrame"
                            SourcePageType="views:EmptyDetailView" />
