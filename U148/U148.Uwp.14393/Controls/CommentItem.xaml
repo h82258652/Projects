@@ -47,6 +47,7 @@
                      Grid.Row="1"
                      Margin="0,8,0,0"
                      VerticalAlignment="Top"
+                     IsHitTestVisible="False"
                      ScriptNotify="ContentHost_ScriptNotify" />
         </Grid>
     </Grid>
