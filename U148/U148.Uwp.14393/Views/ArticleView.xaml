@@ -43,6 +43,7 @@
                         VerticalAlignment="Stretch"
                         Click="ScrollToTopButton_Click"
                         Content="有意思吧"
+                        FontFamily="ms-appx:///Assets/Fonts/SourceHanSerifCN-Regular.otf#Source Han Serif CN"
                         Style="{StaticResource EmptyButtonStyle}" />
                 <Button Grid.Column="2"
                         Command="{Binding Path=SearchCommand}"

@@ -39,6 +39,10 @@ namespace U148.Configuration
             get
             {
                 var json = Get<string>(nameof(UserInfo), ApplicationDataLocality.Local, () => null);
+                if (json == null)
+                {
+                    return null;
+                }
                 try
                 {
                     return JsonConvert.DeserializeObject<UserInfo>(json);
