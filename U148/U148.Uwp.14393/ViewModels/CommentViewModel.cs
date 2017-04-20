@@ -114,15 +114,17 @@ namespace U148.Uwp.ViewModels
                         return;
                     }
 
+                    var comment = args.Comment;
+
                     IsBusy = true;
                     try
                     {
-                        var result = await _commentService.SendCommentAsync(_article.Id, userInfo.Token, replyContent, _u148Settings.SimulateDevice, args.Comment.Id);
+                        var result = await _commentService.SendCommentAsync(_article.Id, userInfo.Token, replyContent, _u148Settings.SimulateDevice, comment.Id);
                         if (result.ErrorCode == 0)
                         {
                             _appToastService.ShowMessage("回复成功");
 
-                            // TODO send message to clear textbox.
+                            MessengerInstance.Send(new ReplyCommentSuccessMessage(comment));
 
                             RefreshCommand.Execute(null);
                         }

@@ -1,8 +1,8 @@
 ﻿using System;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
 using GalaSoft.MvvmLight.Messaging;
 using U148.Uwp.Messages;
+using Windows.UI.Xaml;
+using Windows.UI.Xaml.Controls;
 using WinRTXamlToolkit.Controls.Extensions;
 
 namespace U148.Uwp.Views

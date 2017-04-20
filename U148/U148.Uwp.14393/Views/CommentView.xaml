@@ -32,7 +32,9 @@
                       SelectionMode="None">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <controls:CommentItem IsReplyEnabled="True">
+                        <controls:CommentItem IsReplyEnabled="True"
+                                              Loaded="CommentItem_Loaded"
+                                              Unloaded="CommentItem_Unloaded">
                             <interactivity:Interaction.Behaviors>
                                 <core:EventTriggerBehavior EventName="Reply">
                                     <core:InvokeCommandAction Command="{Binding ElementName=Root, Path=DataContext.ReplyCommentCommand}" />
