@@ -4,14 +4,14 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{63E2C598-C4EE-4F06-8263-A2E367450BE2}</ProjectGuid>
+    <ProjectGuid>{C6FFDC33-C8AF-4D10-A3A3-22E4A9088EC0}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>BingoWallpaper</RootNamespace>
     <AssemblyName>BingoWallpaper.Services.Uwp.10586</AssemblyName>
     <DefaultLanguage>zh-CN</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
-    <TargetPlatformVersion>10.0.10586.0</TargetPlatformVersion>
+    <TargetPlatformVersion Condition=" '$(TargetPlatformVersion)' == '' ">10.0.10586.0</TargetPlatformVersion>
     <TargetPlatformMinVersion>10.0.10586.0</TargetPlatformMinVersion>
     <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
     <FileAlignment>512</FileAlignment>
@@ -102,12 +102,9 @@
     <UseVSHostingProcess>false</UseVSHostingProcess>
     <ErrorReport>prompt</ErrorReport>
   </PropertyGroup>
-  <ItemGroup>
-    <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
-    <None Include="project.json" />
-    <PRIResource Include="Strings\zh-CN\Resources.resw" />
-    <PRIResource Include="Strings\en-US\Resources.resw" />
-  </ItemGroup>
+  <PropertyGroup>
+    <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
+  </PropertyGroup>
   <ItemGroup>
     <Compile Include="LocalizedStrings.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -126,12 +123,26 @@
     <EmbeddedResource Include="Properties\BingoWallpaper.Services.Uwp._10586.rd.xml" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
+      <Version>5.3.2</Version>
+    </PackageReference>
+    <PackageReference Include="WeChatSDK">
+      <Version>2.0.1</Version>
+    </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Strings\en-US\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Strings\zh-CN\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\..\Libraries\SoftwareKobo.Social.SinaWeibo.Core\SoftwareKobo.Social.SinaWeibo.Core.csproj">
       <Project>{3ca966f6-437a-4d9a-bd1a-cf5853219abd}</Project>
       <Name>SoftwareKobo.Social.SinaWeibo.Core</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Libraries\SoftwareKobo.Social.SinaWeibo.Uwp\SoftwareKobo.Social.SinaWeibo.Uwp.csproj">
-      <Project>{35afb302-54e9-4e5c-878a-17e45b9158dc}</Project>
+      <Project>{cca06b62-e020-43d7-a136-6bd9aa97f872}</Project>
       <Name>SoftwareKobo.Social.SinaWeibo.Uwp</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Libraries\SoftwareKobo.Utils\SoftwareKobo.Utils.csproj">
@@ -139,7 +150,7 @@
       <Name>SoftwareKobo.Utils</Name>
     </ProjectReference>
     <ProjectReference Include="..\BingoWallpaper.Configuration\BingoWallpaper.Configuration.csproj">
-      <Project>{5B328B0F-853A-4C25-9CCC-8C087648F796}</Project>
+      <Project>{5b328b0f-853a-4c25-9ccc-8c087648f796}</Project>
       <Name>BingoWallpaper.Configuration</Name>
     </ProjectReference>
     <ProjectReference Include="..\BingoWallpaper.Models\BingoWallpaper.Models.csproj">
