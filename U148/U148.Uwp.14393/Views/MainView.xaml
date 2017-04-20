@@ -1,24 +1,26 @@
-﻿<Page x:Class="U148.Uwp.Views.MainView"
-      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      xmlns:behaviors="using:Microsoft.Toolkit.Uwp.UI.Animations.Behaviors"
-      xmlns:converters="using:U148.Uwp.Converters"
-      xmlns:core="using:Microsoft.Xaml.Interactions.Core"
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-      xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
-      xmlns:localControls="using:U148.Uwp.Controls"
-      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-      xmlns:views="using:U148.Uwp.Views"
-      DataContext="{Binding Source={StaticResource Locator}, Path=Main}"
-      mc:Ignorable="d">
-    <Page.Resources>
+﻿<UserControl x:Class="U148.Uwp.Views.MainView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:behaviors="using:Microsoft.Toolkit.Uwp.UI.Animations.Behaviors"
+             xmlns:converters="using:U148.Uwp.Converters"
+             xmlns:core="using:Microsoft.Xaml.Interactions.Core"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
+             xmlns:localControls="using:U148.Uwp.Controls"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:views="using:U148.Uwp.Views"
+             DataContext="{Binding Source={StaticResource Locator}, Path=Main}"
+             Loaded="MainView_Loaded"
+             Unloaded="MainView_Unloaded"
+             mc:Ignorable="d">
+    <UserControl.Resources>
         <ResourceDictionary>
             <converters:IsNullToVisibilityConverter x:Key="IsNullToVisibilityConverter" />
             <converters:IsNullToVisibilityConverter x:Key="InversedIsNullToVisibilityConverter"
                                                     IsInversed="True" />
             <converters:IsDisplayDetailConverter x:Key="IsDisplayDetailConverter" />
         </ResourceDictionary>
-    </Page.Resources>
+    </UserControl.Resources>
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <SplitView x:Name="HamburgerMenu"
                    PaneBackground="Transparent">
@@ -141,4 +143,4 @@
             </localControls:MasterDetailView>
         </SplitView>
     </Grid>
-</Page>
+</UserControl>

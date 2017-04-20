@@ -120,6 +120,7 @@
     <Compile Include="Messages\LoginFailedMessage.cs" />
     <Compile Include="Messages\LoginSuccessMessage.cs" />
     <Compile Include="Messages\LogoutMessage.cs" />
+    <Compile Include="Messages\OpenHamburgerMenuMessage.cs" />
     <Compile Include="Messages\SendCommentSuccessMessage.cs" />
     <Compile Include="Messages\ShowLoginViewMessage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

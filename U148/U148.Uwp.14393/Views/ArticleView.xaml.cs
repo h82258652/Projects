@@ -1,7 +1,8 @@
 ﻿using System;
-using System.Linq;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using GalaSoft.MvvmLight.Messaging;
+using U148.Uwp.Messages;
 using WinRTXamlToolkit.Controls.Extensions;
 
 namespace U148.Uwp.Views
@@ -15,9 +16,7 @@ namespace U148.Uwp.Views
 
         private void HamburgerMenuButton_Click(object sender, RoutedEventArgs e)
         {
-            var mainView = this.GetFirstAncestorOfType<MainView>();
-            var hamburgerMenu = mainView.GetDescendantsOfType<SplitView>().FirstOrDefault(temp => temp.Name == "HamburgerMenu");
-            hamburgerMenu.IsPaneOpen = true;
+            Messenger.Default.Send(new OpenHamburgerMenuMessage());
         }
 
         private async void ScrollToTopButton_Click(object sender, RoutedEventArgs e)
