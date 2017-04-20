@@ -24,7 +24,17 @@
                 </interactivity:Interaction.Behaviors>
             </Button>
         </Grid>
-        <Button Grid.Row="1"
-                Command="{Binding Path=PraiseCommand}" />
+        <ScrollViewer Grid.Row="1"
+                      VerticalScrollBarVisibility="Auto">
+            <StackPanel>
+                <Viewbox StretchDirection="DownOnly">
+                    <Image Source="/Assets/Images/logo.png"
+                           Stretch="None" />
+                </Viewbox>
+                <TextBlock FontFamily="ms-appx:///Assets/Fonts/SourceHanSerifCN-Regular.otf#Source Han Serif CN"
+                           Text="有意思吧 Windows 10 第三方客户端"
+                           TextAlignment="Center" />
+            </StackPanel>
+        </ScrollViewer>
     </Grid>
 </views:BindablePage>
