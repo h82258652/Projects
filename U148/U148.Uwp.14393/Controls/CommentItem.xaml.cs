@@ -9,9 +9,23 @@ namespace U148.Uwp.Controls
 {
     public sealed partial class CommentItem
     {
+        public static readonly DependencyProperty IsReplyEnabledProperty = DependencyProperty.Register(nameof(IsReplyEnabled), typeof(bool), typeof(CommentItem), new PropertyMetadata(default(bool)));
+
         public CommentItem()
         {
             InitializeComponent();
+        }
+
+        public bool IsReplyEnabled
+        {
+            get
+            {
+                return (bool)GetValue(IsReplyEnabledProperty);
+            }
+            set
+            {
+                SetValue(IsReplyEnabledProperty, value);
+            }
         }
 
         private async void CommentItem_DataContextChanged(FrameworkElement sender, DataContextChangedEventArgs args)

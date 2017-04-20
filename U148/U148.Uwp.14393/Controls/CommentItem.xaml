@@ -1,10 +1,12 @@
 ﻿<UserControl x:Class="U148.Uwp.Controls.CommentItem"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:converters="using:Microsoft.Toolkit.Uwp.UI.Converters"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:models="using:U148.Models"
+             xmlns:uwpToolkitConverters="using:Microsoft.Toolkit.Uwp.UI.Converters"
+             xmlns:winrtXamlToolkitConverters="using:WinRTXamlToolkit.Converters"
+             x:Name="Root"
              d:DataContext="{d:DesignInstance Type=models:Comment}"
              DataContextChanged="CommentItem_DataContextChanged"
              mc:Ignorable="d">
@@ -13,42 +15,68 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/Styles/U148ColorStyle.xaml" />
             </ResourceDictionary.MergedDictionaries>
-            <converters:StringFormatConverter x:Key="StringFormatConverter" />
+            <uwpToolkitConverters:StringFormatConverter x:Key="StringFormatConverter" />
+            <winrtXamlToolkitConverters:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
         </ResourceDictionary>
     </UserControl.Resources>
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto" />
-            <ColumnDefinition Width="*" />
-        </Grid.ColumnDefinitions>
-        <Image Grid.Column="0"
-               Width="48"
-               Height="48"
-               VerticalAlignment="Top"
-               Source="{Binding Path=User.Icon}" />
-        <Grid Grid.Column="1"
-              Margin="8,0,0,0">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="*" />
-            </Grid.RowDefinitions>
-            <StackPanel Grid.Row="0"
-                        Orientation="Horizontal">
-                <TextBlock FontFamily="ms-appx:///Assets/Fonts/SourceHanSerifCN-Regular.otf#Source Han Serif CN"
-                           Foreground="{ThemeResource U148AccentBrush}"
-                           Text="{Binding Path=User.Nickname}" />
-                <TextBlock Margin="8,0,0,0"
-                           FontFamily="ms-appx:///Assets/Fonts/SourceHanSerifCN-Regular.otf#Source Han Serif CN"
-                           Text="{Binding Path=CreateTime, Converter={StaticResource StringFormatConverter}, ConverterParameter='{}{0:yyyy-MM-dd}'}" />
-                <TextBlock Margin="8,0,0,0"
-                           Text="{Binding Path=FloorNo}" />
-            </StackPanel>
-            <WebView x:Name="ContentHost"
-                     Grid.Row="1"
-                     Margin="0,8,0,0"
-                     VerticalAlignment="Top"
-                     IsHitTestVisible="False"
-                     ScriptNotify="ContentHost_ScriptNotify" />
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Image Grid.Column="0"
+                       Width="48"
+                       Height="48"
+                       VerticalAlignment="Top"
+                       Source="{Binding Path=User.Icon}" />
+                <Grid Grid.Column="1"
+                      Margin="8,0,0,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <StackPanel Grid.Row="0"
+                                Orientation="Horizontal">
+                        <TextBlock FontFamily="ms-appx:///Assets/Fonts/SourceHanSerifCN-Regular.otf#Source Han Serif CN"
+                                   Foreground="{ThemeResource U148AccentBrush}"
+                                   Text="{Binding Path=User.Nickname}" />
+                        <TextBlock Margin="8,0,0,0"
+                                   FontFamily="ms-appx:///Assets/Fonts/SourceHanSerifCN-Regular.otf#Source Han Serif CN"
+                                   Text="{Binding Path=CreateTime, Converter={StaticResource StringFormatConverter}, ConverterParameter='{}{0:yyyy-MM-dd}'}" />
+                        <TextBlock Margin="8,0,0,0"
+                                   Text="{Binding Path=FloorNo}" />
+                    </StackPanel>
+                    <WebView x:Name="ContentHost"
+                             Grid.Row="1"
+                             Margin="0,8,0,0"
+                             VerticalAlignment="Top"
+                             IsHitTestVisible="False"
+                             ScriptNotify="ContentHost_ScriptNotify" />
+                </Grid>
+            </Grid>
+            <ToggleButton x:Name="ReplyToggleButton"
+                          HorizontalAlignment="Stretch"
+                          VerticalAlignment="Stretch"
+                          IsEnabled="{Binding ElementName=Root, Path=IsReplyEnabled}"
+                          Style="{StaticResource EmptyButtonStyle}" />
+        </Grid>
+        <Grid Grid.Row="1"
+              Visibility="{Binding ElementName=ReplyToggleButton, Path=IsChecked, Converter={StaticResource BooleanToVisibilityConverter}}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <TextBox Grid.Column="0"
+                     FontFamily="ms-appx:///Assets/Fonts/SourceHanSerifCN-Regular.otf#Source Han Serif CN" />
+            <Button Grid.Column="1"
+                    Content="回复"
+                    FontFamily="ms-appx:///Assets/Fonts/SourceHanSerifCN-Regular.otf#Source Han Serif CN" />
         </Grid>
     </Grid>
 </UserControl>
