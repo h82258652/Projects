@@ -6,7 +6,8 @@
       mc:Ignorable="d">
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Viewbox StretchDirection="DownOnly">
-            <Image Stretch="None" />
+            <Image Source="/Assets/Images/logo.png"
+                   Stretch="None" />
         </Viewbox>
     </Grid>
 </Page>

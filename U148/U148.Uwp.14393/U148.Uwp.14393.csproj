@@ -323,6 +323,7 @@
     <Content Include="Assets\Html\js\article.js" />
     <Content Include="Assets\Html\js\comment.js" />
     <Content Include="Assets\Images\hamburger_menu_background.jpg" />
+    <Content Include="Assets\Images\logo.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />

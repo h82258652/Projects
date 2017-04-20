@@ -111,6 +111,7 @@
                               x:Uid="/LoginView/LoginButton"
                               HorizontalAlignment="Center"
                               Command="{Binding Path=LoginCommand}"
+                              FontFamily="ms-appx:///Assets/Fonts/SourceHanSerifCN-Regular.otf#Source Han Serif CN"
                               Icon="Accept" />
             </Grid>
         </Grid>

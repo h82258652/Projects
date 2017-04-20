@@ -53,6 +53,7 @@
                               Glyph="&#xE8BD;" />
                     <TextBlock HorizontalAlignment="Center"
                                VerticalAlignment="Center"
+                               FontFamily="ms-appx:///Assets/Fonts/SourceHanSerifCN-Regular.otf#Source Han Serif CN"
                                FontSize="9"
                                Text="{Binding Path=Article.CountReview, Converter={StaticResource CommentCountConverter}}">
                         <TextBlock.RenderTransform>

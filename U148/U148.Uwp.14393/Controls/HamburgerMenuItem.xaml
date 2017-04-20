@@ -17,7 +17,7 @@
         <Setter Property="VerticalAlignment"
                 Value="Center" />
         <Setter Property="FontFamily"
-                Value="{ThemeResource ContentControlThemeFontFamily}" />
+                Value="ms-appx:///Assets/Fonts/SourceHanSerifCN-Regular.otf#Source Han Serif CN" />
         <Setter Property="FontWeight"
                 Value="Normal" />
         <Setter Property="FontSize"
