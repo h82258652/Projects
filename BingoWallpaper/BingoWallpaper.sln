@@ -23,8 +23,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoftwareKobo.Icons", "..\Li
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoftwareKobo.Controls.ToastPrompt.Uwp", "..\Libraries\SoftwareKobo.Controls.ToastPrompt.Uwp\SoftwareKobo.Controls.ToastPrompt.Uwp.csproj", "{C48BD2CB-FB6A-4677-A2F0-B04F07360B6A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BingoWallpaper.Utils.Uwp.10586", "BingoWallpaper.Utils.Uwp.10586\BingoWallpaper.Utils.Uwp.10586.csproj", "{19B6E115-0412-4065-8670-C9177075BEC7}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SoftwareKobo.Controls.ImageEx.Core", "..\Libraries\SoftwareKobo.Controls.ImageEx.Core\SoftwareKobo.Controls.ImageEx.Core.csproj", "{FA15C86A-A432-4165-8D5B-6270CA26B811}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoftwareKobo.Social.SinaWeibo.Uwp", "..\Libraries\SoftwareKobo.Social.SinaWeibo.Uwp\SoftwareKobo.Social.SinaWeibo.Uwp.csproj", "{CCA06B62-E020-43D7-A136-6BD9AA97F872}"
@@ -48,6 +46,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BingoWallpaper.Configuration.Uwp.10586", "BingoWallpaper.Configuration.Uwp.10586\BingoWallpaper.Configuration.Uwp.10586.csproj", "{C2D7948B-15BA-4041-A68F-2D2C1C3C38E0}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BingoWallpaper.Services.Uwp.10586", "BingoWallpaper.Services.Uwp.10586\BingoWallpaper.Services.Uwp.10586.csproj", "{C6FFDC33-C8AF-4D10-A3A3-22E4A9088EC0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BingoWallpaper.Utils.Uwp.10586", "BingoWallpaper.Utils.Uwp.10586\BingoWallpaper.Utils.Uwp.10586.csproj", "{11CEED48-B14E-4883-A9E4-90DD3011861D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -221,22 +221,6 @@ Global
 		{C48BD2CB-FB6A-4677-A2F0-B04F07360B6A}.Release|x64.Build.0 = Release|x64
 		{C48BD2CB-FB6A-4677-A2F0-B04F07360B6A}.Release|x86.ActiveCfg = Release|x86
 		{C48BD2CB-FB6A-4677-A2F0-B04F07360B6A}.Release|x86.Build.0 = Release|x86
-		{19B6E115-0412-4065-8670-C9177075BEC7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{19B6E115-0412-4065-8670-C9177075BEC7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{19B6E115-0412-4065-8670-C9177075BEC7}.Debug|ARM.ActiveCfg = Debug|ARM
-		{19B6E115-0412-4065-8670-C9177075BEC7}.Debug|ARM.Build.0 = Debug|ARM
-		{19B6E115-0412-4065-8670-C9177075BEC7}.Debug|x64.ActiveCfg = Debug|x64
-		{19B6E115-0412-4065-8670-C9177075BEC7}.Debug|x64.Build.0 = Debug|x64
-		{19B6E115-0412-4065-8670-C9177075BEC7}.Debug|x86.ActiveCfg = Debug|x86
-		{19B6E115-0412-4065-8670-C9177075BEC7}.Debug|x86.Build.0 = Debug|x86
-		{19B6E115-0412-4065-8670-C9177075BEC7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{19B6E115-0412-4065-8670-C9177075BEC7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{19B6E115-0412-4065-8670-C9177075BEC7}.Release|ARM.ActiveCfg = Release|ARM
-		{19B6E115-0412-4065-8670-C9177075BEC7}.Release|ARM.Build.0 = Release|ARM
-		{19B6E115-0412-4065-8670-C9177075BEC7}.Release|x64.ActiveCfg = Release|x64
-		{19B6E115-0412-4065-8670-C9177075BEC7}.Release|x64.Build.0 = Release|x64
-		{19B6E115-0412-4065-8670-C9177075BEC7}.Release|x86.ActiveCfg = Release|x86
-		{19B6E115-0412-4065-8670-C9177075BEC7}.Release|x86.Build.0 = Release|x86
 		{FA15C86A-A432-4165-8D5B-6270CA26B811}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{FA15C86A-A432-4165-8D5B-6270CA26B811}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FA15C86A-A432-4165-8D5B-6270CA26B811}.Debug|ARM.ActiveCfg = Debug|Any CPU
@@ -415,6 +399,22 @@ Global
 		{C6FFDC33-C8AF-4D10-A3A3-22E4A9088EC0}.Release|x64.Build.0 = Release|x64
 		{C6FFDC33-C8AF-4D10-A3A3-22E4A9088EC0}.Release|x86.ActiveCfg = Release|x86
 		{C6FFDC33-C8AF-4D10-A3A3-22E4A9088EC0}.Release|x86.Build.0 = Release|x86
+		{11CEED48-B14E-4883-A9E4-90DD3011861D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{11CEED48-B14E-4883-A9E4-90DD3011861D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{11CEED48-B14E-4883-A9E4-90DD3011861D}.Debug|ARM.ActiveCfg = Debug|ARM
+		{11CEED48-B14E-4883-A9E4-90DD3011861D}.Debug|ARM.Build.0 = Debug|ARM
+		{11CEED48-B14E-4883-A9E4-90DD3011861D}.Debug|x64.ActiveCfg = Debug|x64
+		{11CEED48-B14E-4883-A9E4-90DD3011861D}.Debug|x64.Build.0 = Debug|x64
+		{11CEED48-B14E-4883-A9E4-90DD3011861D}.Debug|x86.ActiveCfg = Debug|x86
+		{11CEED48-B14E-4883-A9E4-90DD3011861D}.Debug|x86.Build.0 = Debug|x86
+		{11CEED48-B14E-4883-A9E4-90DD3011861D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{11CEED48-B14E-4883-A9E4-90DD3011861D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{11CEED48-B14E-4883-A9E4-90DD3011861D}.Release|ARM.ActiveCfg = Release|ARM
+		{11CEED48-B14E-4883-A9E4-90DD3011861D}.Release|ARM.Build.0 = Release|ARM
+		{11CEED48-B14E-4883-A9E4-90DD3011861D}.Release|x64.ActiveCfg = Release|x64
+		{11CEED48-B14E-4883-A9E4-90DD3011861D}.Release|x64.Build.0 = Release|x64
+		{11CEED48-B14E-4883-A9E4-90DD3011861D}.Release|x86.ActiveCfg = Release|x86
+		{11CEED48-B14E-4883-A9E4-90DD3011861D}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -278,10 +278,6 @@
       <Project>{c8815f4b-2ce7-4664-ac43-62d15ad8a189}</Project>
       <Name>BingoWallpaper.Services</Name>
     </ProjectReference>
-    <ProjectReference Include="..\BingoWallpaper.Utils.Uwp.10586\BingoWallpaper.Utils.Uwp.10586.csproj">
-      <Project>{19b6e115-0412-4065-8670-c9177075bec7}</Project>
-      <Name>BingoWallpaper.Utils.Uwp.10586</Name>
-    </ProjectReference>
     <ProjectReference Include="..\BingoWallpaper.Utils\BingoWallpaper.Utils.csproj">
       <Project>{8439f303-451e-47bf-ab12-9c5a49d7a2f5}</Project>
       <Name>BingoWallpaper.Utils</Name>
