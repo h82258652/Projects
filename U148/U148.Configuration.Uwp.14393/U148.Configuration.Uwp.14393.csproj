@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{35438273-7580-4E79-B9DE-567BA7C29226}</ProjectGuid>
+    <ProjectGuid>{504C8955-C107-4252-ADDF-24C71CF9E3F6}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>U148</RootNamespace>
@@ -102,10 +102,9 @@
     <UseVSHostingProcess>false</UseVSHostingProcess>
     <ErrorReport>prompt</ErrorReport>
   </PropertyGroup>
-  <ItemGroup>
-    <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
-    <None Include="project.json" />
-  </ItemGroup>
+  <PropertyGroup>
+    <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
+  </PropertyGroup>
   <ItemGroup>
     <Compile Include="Configuration\IU148UwpSettings.cs" />
     <Compile Include="Configuration\U148UwpSettings.cs" />
@@ -113,8 +112,16 @@
     <EmbeddedResource Include="Properties\U148.Configuration.Uwp._14393.rd.xml" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
+      <Version>5.3.2</Version>
+    </PackageReference>
+    <PackageReference Include="Newtonsoft.Json">
+      <Version>10.0.2</Version>
+    </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\..\Libraries\SoftwareKobo.Utils.Uwp\SoftwareKobo.Utils.Uwp.csproj">
-      <Project>{dff7cae2-1363-4c68-bb0f-5f909cc3f0a7}</Project>
+      <Project>{e325fcd6-2e6b-44fc-85d0-d49957258c98}</Project>
       <Name>SoftwareKobo.Utils.Uwp</Name>
     </ProjectReference>
     <ProjectReference Include="..\U148.Configuration\U148.Configuration.csproj">
@@ -122,7 +129,7 @@
       <Name>U148.Configuration</Name>
     </ProjectReference>
     <ProjectReference Include="..\U148.Models.Uwp\U148.Models.Uwp.csproj">
-      <Project>{c1d9d6de-42da-408d-b062-dc8552fcc7e2}</Project>
+      <Project>{fb5f4804-bc73-450a-a051-d1e8ed589466}</Project>
       <Name>U148.Models.Uwp</Name>
     </ProjectReference>
     <ProjectReference Include="..\U148.Models\U148.Models.csproj">

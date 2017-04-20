@@ -4,14 +4,14 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
-    <ProjectGuid>{9DF1AD76-777A-46E1-9862-E0DF00DBAD01}</ProjectGuid>
+    <ProjectGuid>{F8C99935-BEA9-46B4-A8B9-C4926BC90A84}</ProjectGuid>
     <OutputType>AppContainerExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>BingoWallpaper.Uwp</RootNamespace>
     <AssemblyName>BingoWallpaper.Uwp.10586</AssemblyName>
-    <DefaultLanguage>en-US</DefaultLanguage>
+    <DefaultLanguage>zh-CN</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
-    <TargetPlatformVersion>10.0.10586.0</TargetPlatformVersion>
+    <TargetPlatformVersion Condition=" '$(TargetPlatformVersion)' == '' ">10.0.10586.0</TargetPlatformVersion>
     <TargetPlatformMinVersion>10.0.10586.0</TargetPlatformMinVersion>
     <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
     <FileAlignment>512</FileAlignment>
@@ -21,7 +21,7 @@
     <AppxAutoIncrementPackageRevision>False</AppxAutoIncrementPackageRevision>
     <AppxBundle>Always</AppxBundle>
     <AppxBundlePlatforms>x86|x64|arm</AppxBundlePlatforms>
-    <PackageCertificateThumbprint>1FC848FC542F880929012906D88ECB641062B574</PackageCertificateThumbprint>
+    <PackageCertificateThumbprint>D1EA2475A62AF0864671850A16957AD72971742F</PackageCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
     <DebugSymbols>true</DebugSymbols>
@@ -92,41 +92,9 @@
     <Prefer32Bit>true</Prefer32Bit>
     <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
   </PropertyGroup>
-  <ItemGroup>
-    <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
-    <Content Include="Assets\Fonts\Roboto-Black.ttf" />
-    <Content Include="Assets\Fonts\Roboto-BlackItalic.ttf" />
-    <Content Include="Assets\Fonts\Roboto-Bold.ttf" />
-    <Content Include="Assets\Fonts\Roboto-BoldItalic.ttf" />
-    <Content Include="Assets\Fonts\Roboto-Italic.ttf" />
-    <Content Include="Assets\Fonts\Roboto-Light.ttf" />
-    <Content Include="Assets\Fonts\Roboto-LightItalic.ttf" />
-    <Content Include="Assets\Fonts\Roboto-Medium.ttf" />
-    <Content Include="Assets\Fonts\Roboto-MediumItalic.ttf" />
-    <Content Include="Assets\Fonts\Roboto-Regular.ttf" />
-    <Content Include="Assets\Fonts\Roboto-Thin.ttf" />
-    <Content Include="Assets\Fonts\Roboto-ThinItalic.ttf" />
-    <Content Include="Assets\Fonts\SourceHanSansSC-Bold.otf" />
-    <Content Include="Assets\Fonts\SourceHanSansSC-Normal.otf" />
-    <None Include="BingoWallpaper.Uwp.10586_StoreKey.pfx" />
-    <None Include="project.json" />
-    <PRIResource Include="Strings\zh-CN\SettingView.resw" />
-    <PRIResource Include="Strings\zh-CN\Resources.resw" />
-    <PRIResource Include="Strings\zh-CN\MainView.resw" />
-    <PRIResource Include="Strings\zh-CN\DetailView.resw" />
-    <PRIResource Include="Strings\zh-CN\Constants.resw" />
-    <PRIResource Include="Strings\zh-CN\ChooseShareControl.resw" />
-    <PRIResource Include="Strings\zh-CN\Area.resw" />
-    <PRIResource Include="Strings\zh-CN\AboutView.resw" />
-    <PRIResource Include="Strings\en-US\SettingView.resw" />
-    <PRIResource Include="Strings\en-US\Resources.resw" />
-    <PRIResource Include="Strings\en-US\MainView.resw" />
-    <PRIResource Include="Strings\en-US\DetailView.resw" />
-    <PRIResource Include="Strings\en-US\Constants.resw" />
-    <PRIResource Include="Strings\en-US\ChooseShareControl.resw" />
-    <PRIResource Include="Strings\en-US\Area.resw" />
-    <PRIResource Include="Strings\en-US\AboutView.resw" />
-  </ItemGroup>
+  <PropertyGroup>
+    <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
+  </PropertyGroup>
   <ItemGroup>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
@@ -192,23 +160,26 @@
     <AppxManifest Include="Package.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
+    <None Include="BingoWallpaper.Uwp.10586_StoreKey.pfx" />
     <None Include="BingoWallpaper.Uwp.10586_TemporaryKey.pfx" />
+    <PRIResource Include="Strings\zh-CN\SettingView.resw" />
+    <PRIResource Include="Strings\zh-CN\Resources.resw" />
+    <PRIResource Include="Strings\zh-CN\MainView.resw" />
+    <PRIResource Include="Strings\zh-CN\DetailView.resw" />
+    <PRIResource Include="Strings\zh-CN\Constants.resw" />
+    <PRIResource Include="Strings\zh-CN\ChooseShareControl.resw" />
+    <PRIResource Include="Strings\zh-CN\Area.resw" />
+    <PRIResource Include="Strings\zh-CN\AboutView.resw" />
+    <PRIResource Include="Strings\en-US\SettingView.resw" />
+    <PRIResource Include="Strings\en-US\Resources.resw" />
+    <PRIResource Include="Strings\en-US\MainView.resw" />
+    <PRIResource Include="Strings\en-US\DetailView.resw" />
+    <PRIResource Include="Strings\en-US\Constants.resw" />
+    <PRIResource Include="Strings\en-US\ChooseShareControl.resw" />
+    <PRIResource Include="Strings\en-US\Area.resw" />
+    <PRIResource Include="Strings\en-US\AboutView.resw" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Assets\Images\Flags\de-DE.png" />
-    <Content Include="Assets\Images\Flags\en-AU.png" />
-    <Content Include="Assets\Images\Flags\en-CA.png" />
-    <Content Include="Assets\Images\Flags\en-GB.png" />
-    <Content Include="Assets\Images\Flags\en-IN.png" />
-    <Content Include="Assets\Images\Flags\en-US.png" />
-    <Content Include="Assets\Images\Flags\fr-CA.png" />
-    <Content Include="Assets\Images\Flags\fr-FR.png" />
-    <Content Include="Assets\Images\Flags\ja-JP.png" />
-    <Content Include="Assets\Images\Flags\pt-BR.png" />
-    <Content Include="Assets\Images\Flags\zh-CN.png" />
-    <Content Include="Assets\Images\Share\SinaWeibo.png" />
-    <Content Include="Assets\Images\Share\SystemShare.png" />
-    <Content Include="Assets\Images\Share\Wechat.png" />
     <None Include="Package.StoreAssociation.xml" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
@@ -224,66 +195,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\Libraries\SoftwareKobo.Controls.ImageEx.Core\SoftwareKobo.Controls.ImageEx.Core.csproj">
-      <Project>{fa15c86a-a432-4165-8d5b-6270ca26b811}</Project>
-      <Name>SoftwareKobo.Controls.ImageEx.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Libraries\SoftwareKobo.Controls.ImageEx.Uwp.10240\SoftwareKobo.Controls.ImageEx.Uwp.10240.csproj">
-      <Project>{8cd7958c-9f86-4530-9ff9-92289631f606}</Project>
-      <Name>SoftwareKobo.Controls.ImageEx.Uwp.10240</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Libraries\SoftwareKobo.Controls.ImageEx.Uwp\SoftwareKobo.Controls.ImageEx.Uwp.csproj">
-      <Project>{CDFBF869-6A2E-4C90-A9C1-2F5ACB283404}</Project>
-      <Name>SoftwareKobo.Controls.ImageEx.Uwp</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Libraries\SoftwareKobo.Controls.ToastPrompt.Uwp\SoftwareKobo.Controls.ToastPrompt.Uwp.csproj">
-      <Project>{d34dd626-f540-4ee0-9b2e-61cb3623f5fe}</Project>
-      <Name>SoftwareKobo.Controls.ToastPrompt.Uwp</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Libraries\SoftwareKobo.Icons\SoftwareKobo.Icons.csproj">
-      <Project>{5f3c3804-e984-4d9e-a3e4-1ca534db28f2}</Project>
-      <Name>SoftwareKobo.Icons</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Libraries\SoftwareKobo.Social.SinaWeibo.Core\SoftwareKobo.Social.SinaWeibo.Core.csproj">
-      <Project>{3ca966f6-437a-4d9a-bd1a-cf5853219abd}</Project>
-      <Name>SoftwareKobo.Social.SinaWeibo.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Libraries\SoftwareKobo.Social.SinaWeibo.Uwp\SoftwareKobo.Social.SinaWeibo.Uwp.csproj">
-      <Project>{35AFB302-54E9-4E5C-878A-17E45B9158DC}</Project>
-      <Name>SoftwareKobo.Social.SinaWeibo.Uwp</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Libraries\SoftwareKobo.Support.ScreenService.Uwp.10240\SoftwareKobo.Support.ScreenService.Uwp.10240.csproj">
-      <Project>{4c0b854e-f980-4eee-bb01-fc28c49cc756}</Project>
-      <Name>SoftwareKobo.Support.ScreenService.Uwp.10240</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Libraries\SoftwareKobo.Support.ScreenService\SoftwareKobo.Support.ScreenService.csproj">
-      <Project>{5966e8f2-5e4b-49c1-b331-ff9fa39b910e}</Project>
-      <Name>SoftwareKobo.Support.ScreenService</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Libraries\SoftwareKobo.Utils\SoftwareKobo.Utils.csproj">
-      <Project>{8b7de148-6811-4333-8a5b-4a046c6c3525}</Project>
-      <Name>SoftwareKobo.Utils</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\BingoWallpaper.Configuration\BingoWallpaper.Configuration.csproj">
-      <Project>{5b328b0f-853a-4c25-9ccc-8c087648f796}</Project>
-      <Name>BingoWallpaper.Configuration</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\BingoWallpaper.Models\BingoWallpaper.Models.csproj">
-      <Project>{8977e1e5-d12e-4c56-adb1-c6d5c87edf74}</Project>
-      <Name>BingoWallpaper.Models</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\BingoWallpaper.Services\BingoWallpaper.Services.csproj">
-      <Project>{c8815f4b-2ce7-4664-ac43-62d15ad8a189}</Project>
-      <Name>BingoWallpaper.Services</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\BingoWallpaper.Utils\BingoWallpaper.Utils.csproj">
-      <Project>{8439f303-451e-47bf-ab12-9c5a49d7a2f5}</Project>
-      <Name>BingoWallpaper.Utils</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Page Include="Controls\BingoWallpaperButton.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -295,12 +206,12 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Page>
     <Page Include="Controls\DeviceFamily-Mobile\ChooseShareControl.xaml">
-      <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\DeviceFamily-Mobile\GearBackgroundControl.xaml">
-      <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\EllipseMask.xaml">
       <SubType>Designer</SubType>
@@ -380,6 +291,104 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
+      <Version>5.3.2</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Xaml.Behaviors.Uwp.Managed">
+      <Version>2.0.0</Version>
+    </PackageReference>
+    <PackageReference Include="MvvmLightLibs">
+      <Version>5.3.0</Version>
+    </PackageReference>
+    <PackageReference Include="PlatformSpecific.Analyzer">
+      <Version>2.0.3</Version>
+    </PackageReference>
+    <PackageReference Include="UmengPlusAnalytics">
+      <Version>3.1.0</Version>
+    </PackageReference>
+    <PackageReference Include="Unity">
+      <Version>4.0.1</Version>
+    </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Libraries\SoftwareKobo.Controls.ImageEx.Core\SoftwareKobo.Controls.ImageEx.Core.csproj">
+      <Project>{fa15c86a-a432-4165-8d5b-6270ca26b811}</Project>
+      <Name>SoftwareKobo.Controls.ImageEx.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Libraries\SoftwareKobo.Controls.ImageEx.Uwp.10240\SoftwareKobo.Controls.ImageEx.Uwp.10240.csproj">
+      <Project>{50e078c8-b2f1-4998-ba53-ef236b7762cd}</Project>
+      <Name>SoftwareKobo.Controls.ImageEx.Uwp.10240</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Libraries\SoftwareKobo.Controls.ImageEx.Uwp\SoftwareKobo.Controls.ImageEx.Uwp.csproj">
+      <Project>{3d0a2072-6b7c-4c2f-b350-38fbf3547899}</Project>
+      <Name>SoftwareKobo.Controls.ImageEx.Uwp</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Libraries\SoftwareKobo.Controls.ToastPrompt.Uwp\SoftwareKobo.Controls.ToastPrompt.Uwp.csproj">
+      <Project>{c48bd2cb-fb6a-4677-a2f0-b04f07360b6a}</Project>
+      <Name>SoftwareKobo.Controls.ToastPrompt.Uwp</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Libraries\SoftwareKobo.Icons\SoftwareKobo.Icons.csproj">
+      <Project>{f9127f6d-c993-4071-b7d2-22c6a317d1d1}</Project>
+      <Name>SoftwareKobo.Icons</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Libraries\SoftwareKobo.Social.SinaWeibo.Core\SoftwareKobo.Social.SinaWeibo.Core.csproj">
+      <Project>{3ca966f6-437a-4d9a-bd1a-cf5853219abd}</Project>
+      <Name>SoftwareKobo.Social.SinaWeibo.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Libraries\SoftwareKobo.Social.SinaWeibo.Uwp\SoftwareKobo.Social.SinaWeibo.Uwp.csproj">
+      <Project>{cca06b62-e020-43d7-a136-6bd9aa97f872}</Project>
+      <Name>SoftwareKobo.Social.SinaWeibo.Uwp</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Libraries\SoftwareKobo.Support.ScreenService.Uwp.10240\SoftwareKobo.Support.ScreenService.Uwp.10240.csproj">
+      <Project>{3a9c01bd-db77-409e-9bdb-a6b10195da54}</Project>
+      <Name>SoftwareKobo.Support.ScreenService.Uwp.10240</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Libraries\SoftwareKobo.Support.ScreenService\SoftwareKobo.Support.ScreenService.csproj">
+      <Project>{5966e8f2-5e4b-49c1-b331-ff9fa39b910e}</Project>
+      <Name>SoftwareKobo.Support.ScreenService</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Libraries\SoftwareKobo.Utils.Uwp\SoftwareKobo.Utils.Uwp.csproj">
+      <Project>{e325fcd6-2e6b-44fc-85d0-d49957258c98}</Project>
+      <Name>SoftwareKobo.Utils.Uwp</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Libraries\SoftwareKobo.Utils\SoftwareKobo.Utils.csproj">
+      <Project>{8b7de148-6811-4333-8a5b-4a046c6c3525}</Project>
+      <Name>SoftwareKobo.Utils</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BingoWallpaper.Configuration.Uwp.10586\BingoWallpaper.Configuration.Uwp.10586.csproj">
+      <Project>{c2d7948b-15ba-4041-a68f-2d2c1c3c38e0}</Project>
+      <Name>BingoWallpaper.Configuration.Uwp.10586</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BingoWallpaper.Configuration\BingoWallpaper.Configuration.csproj">
+      <Project>{5b328b0f-853a-4c25-9ccc-8c087648f796}</Project>
+      <Name>BingoWallpaper.Configuration</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BingoWallpaper.Models\BingoWallpaper.Models.csproj">
+      <Project>{8977e1e5-d12e-4c56-adb1-c6d5c87edf74}</Project>
+      <Name>BingoWallpaper.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BingoWallpaper.Services.Uwp.10586\BingoWallpaper.Services.Uwp.10586.csproj">
+      <Project>{c6ffdc33-c8af-4d10-a3a3-22e4a9088ec0}</Project>
+      <Name>BingoWallpaper.Services.Uwp.10586</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BingoWallpaper.Services\BingoWallpaper.Services.csproj">
+      <Project>{c8815f4b-2ce7-4664-ac43-62d15ad8a189}</Project>
+      <Name>BingoWallpaper.Services</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BingoWallpaper.Utils.Uwp.10586\BingoWallpaper.Utils.Uwp.10586.csproj">
+      <Project>{11ceed48-b14e-4883-a9e4-90dd3011861d}</Project>
+      <Name>BingoWallpaper.Utils.Uwp.10586</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BingoWallpaper.Utils\BingoWallpaper.Utils.csproj">
+      <Project>{8439f303-451e-47bf-ab12-9c5a49d7a2f5}</Project>
+      <Name>BingoWallpaper.Utils</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BingoWallpaper.Uwp.BackgroundTasks.10586\BingoWallpaper.Uwp.BackgroundTasks.10586.csproj">
+      <Project>{ead6a4a6-a202-4b50-8279-b216ce02672b}</Project>
+      <Name>BingoWallpaper.Uwp.BackgroundTasks.10586</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <SDKReference Include="WindowsMobile, Version=10.0.10586.0">
