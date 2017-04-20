@@ -4,14 +4,14 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{8CFE91FD-AD0B-4778-A3BE-4E9035D7765C}</ProjectGuid>
+    <ProjectGuid>{EAD6A4A6-A202-4B50-8279-B216CE02672B}</ProjectGuid>
     <OutputType>winmdobj</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>BingoWallpaper.Uwp.BackgroundTasks</RootNamespace>
     <AssemblyName>BingoWallpaper.Uwp.BackgroundTasks.10586</AssemblyName>
     <DefaultLanguage>zh-CN</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
-    <TargetPlatformVersion>10.0.10586.0</TargetPlatformVersion>
+    <TargetPlatformVersion Condition=" '$(TargetPlatformVersion)' == '' ">10.0.10586.0</TargetPlatformVersion>
     <TargetPlatformMinVersion>10.0.10586.0</TargetPlatformMinVersion>
     <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
     <FileAlignment>512</FileAlignment>
@@ -103,30 +103,49 @@
     <UseVSHostingProcess>false</UseVSHostingProcess>
     <ErrorReport>prompt</ErrorReport>
   </PropertyGroup>
-  <ItemGroup>
-    <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
-    <None Include="project.json" />
-  </ItemGroup>
+  <PropertyGroup>
+    <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
+  </PropertyGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UpdateTileTask.cs" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
+      <Version>5.3.2</Version>
+    </PackageReference>
+    <PackageReference Include="Unity">
+      <Version>4.0.1</Version>
+    </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\..\Libraries\SoftwareKobo.Support.ScreenService.Uwp.10240\SoftwareKobo.Support.ScreenService.Uwp.10240.csproj">
-      <Project>{4c0b854e-f980-4eee-bb01-fc28c49cc756}</Project>
+      <Project>{3a9c01bd-db77-409e-9bdb-a6b10195da54}</Project>
       <Name>SoftwareKobo.Support.ScreenService.Uwp.10240</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Libraries\SoftwareKobo.Support.ScreenService\SoftwareKobo.Support.ScreenService.csproj">
-      <Project>{5966E8F2-5E4B-49C1-B331-FF9FA39B910E}</Project>
+      <Project>{5966e8f2-5e4b-49c1-b331-ff9fa39b910e}</Project>
       <Name>SoftwareKobo.Support.ScreenService</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Libraries\SoftwareKobo.Utils.Uwp\SoftwareKobo.Utils.Uwp.csproj">
+      <Project>{e325fcd6-2e6b-44fc-85d0-d49957258c98}</Project>
+      <Name>SoftwareKobo.Utils.Uwp</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BingoWallpaper.Configuration.Uwp.10586\BingoWallpaper.Configuration.Uwp.10586.csproj">
+      <Project>{c2d7948b-15ba-4041-a68f-2d2c1c3c38e0}</Project>
+      <Name>BingoWallpaper.Configuration.Uwp.10586</Name>
+    </ProjectReference>
     <ProjectReference Include="..\BingoWallpaper.Configuration\BingoWallpaper.Configuration.csproj">
-      <Project>{5B328B0F-853A-4C25-9CCC-8C087648F796}</Project>
+      <Project>{5b328b0f-853a-4c25-9ccc-8c087648f796}</Project>
       <Name>BingoWallpaper.Configuration</Name>
     </ProjectReference>
     <ProjectReference Include="..\BingoWallpaper.Models\BingoWallpaper.Models.csproj">
       <Project>{8977e1e5-d12e-4c56-adb1-c6d5c87edf74}</Project>
       <Name>BingoWallpaper.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BingoWallpaper.Services.Uwp.10586\BingoWallpaper.Services.Uwp.10586.csproj">
+      <Project>{c6ffdc33-c8af-4d10-a3a3-22e4a9088ec0}</Project>
+      <Name>BingoWallpaper.Services.Uwp.10586</Name>
     </ProjectReference>
     <ProjectReference Include="..\BingoWallpaper.Services\BingoWallpaper.Services.csproj">
       <Project>{c8815f4b-2ce7-4664-ac43-62d15ad8a189}</Project>

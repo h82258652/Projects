@@ -282,10 +282,6 @@
       <Project>{8439f303-451e-47bf-ab12-9c5a49d7a2f5}</Project>
       <Name>BingoWallpaper.Utils</Name>
     </ProjectReference>
-    <ProjectReference Include="..\BingoWallpaper.Uwp.BackgroundTasks.10586\BingoWallpaper.Uwp.BackgroundTasks.10586.csproj">
-      <Project>{8cfe91fd-ad0b-4778-a3be-4e9035d7765c}</Project>
-      <Name>BingoWallpaper.Uwp.BackgroundTasks.10586</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Page Include="Controls\BingoWallpaperButton.xaml">
