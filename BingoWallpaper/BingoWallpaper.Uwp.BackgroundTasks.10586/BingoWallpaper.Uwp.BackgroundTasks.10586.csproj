@@ -120,10 +120,6 @@
       <Project>{5966E8F2-5E4B-49C1-B331-FF9FA39B910E}</Project>
       <Name>SoftwareKobo.Support.ScreenService</Name>
     </ProjectReference>
-    <ProjectReference Include="..\BingoWallpaper.Configuration.Uwp.10586\BingoWallpaper.Configuration.Uwp.10586.csproj">
-      <Project>{c5dc060e-2aaf-4de8-9614-cd7c551c492e}</Project>
-      <Name>BingoWallpaper.Configuration.Uwp.10586</Name>
-    </ProjectReference>
     <ProjectReference Include="..\BingoWallpaper.Configuration\BingoWallpaper.Configuration.csproj">
       <Project>{5B328B0F-853A-4C25-9CCC-8C087648F796}</Project>
       <Name>BingoWallpaper.Configuration</Name>
