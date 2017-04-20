@@ -67,7 +67,7 @@ namespace U148.Uwp.Controls
         {
             var comment = (Comment)DataContext;
             var content = ReplyTextBox.Text;
-            if (string.IsNullOrEmpty(content) == false)
+            if (!string.IsNullOrEmpty(content))
             {
                 Reply?.Invoke(this, new CommentItemReplyEventArgs(comment, content));
             }
