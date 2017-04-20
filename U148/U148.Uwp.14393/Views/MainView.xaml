@@ -133,7 +133,7 @@
                         <Border Grid.Row="0"
                                 Background="{ThemeResource U148AccentBrush}" />
                         <Border Grid.Row="1"
-                                Background="Gray" />
+                                Background="{ThemeResource U148DividerBrush}" />
                     </Grid>
                 </localControls:MasterDetailView.Splitter>
                 <localControls:MasterDetailView.DetailContent>

@@ -3,10 +3,13 @@
     <Color x:Key="U148AccentColor">#FF9900</Color>
     <Color x:Key="U148AccentLightColor">#FFB240</Color>
     <Color x:Key="U148AccentDarkColor">#BF8630</Color>
+    <Color x:Key="U148DividerColor">Gray</Color>
     <SolidColorBrush x:Key="U148AccentBrush"
                      Color="{ThemeResource U148AccentColor}" />
     <SolidColorBrush x:Key="U148AccentLightBrush"
                      Color="{ThemeResource U148AccentLightColor}" />
     <SolidColorBrush x:Key="U148AccentDarkBrush"
                      Color="{ThemeResource U148AccentDarkColor}" />
+    <SolidColorBrush x:Key="U148DividerBrush"
+                     Color="{ThemeResource U148DividerColor}" />
 </ResourceDictionary>

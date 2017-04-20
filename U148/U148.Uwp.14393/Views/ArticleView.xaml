@@ -53,7 +53,12 @@
             </Grid>
             <Grid Grid.Row="1">
                 <Pivot x:Name="ArticlePivot"
+                       Background="#e5e5e5"
                        ItemsSource="{Binding Path=Categories}">
+                    <Pivot.Resources>
+                        <Style BasedOn="{StaticResource U148PivotHeaderItem}"
+                               TargetType="PivotHeaderItem" />
+                    </Pivot.Resources>
                     <Pivot.HeaderTemplate>
                         <DataTemplate>
                             <TextBlock Text="{Binding Path=Key, Converter={StaticResource ArticleCategoryNameConverter}}" />
@@ -61,7 +66,7 @@
                     </Pivot.HeaderTemplate>
                     <Pivot.ItemTemplate>
                         <DataTemplate>
-                            <Grid>
+                            <Grid Background="#f0f0f0">
                                 <ListView IsItemClickEnabled="True"
                                           ItemsSource="{Binding Path=Value}"
                                           SelectionMode="None">
@@ -83,7 +88,7 @@
                                             <Setter Property="Padding"
                                                     Value="12" />
                                             <Setter Property="BorderBrush"
-                                                    Value="Gray" />
+                                                    Value="{ThemeResource U148DividerBrush}" />
                                             <Setter Property="BorderThickness"
                                                     Value="0,0,0,1" />
                                         </Style>

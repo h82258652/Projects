@@ -50,7 +50,7 @@
                         <Setter Property="Padding"
                                 Value="12" />
                         <Setter Property="BorderBrush"
-                                Value="Gray" />
+                                Value="{ThemeResource U148DividerBrush}" />
                         <Setter Property="BorderThickness"
                                 Value="0,0,0,1" />
                     </Style>

@@ -654,6 +654,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Styles\U148PivotStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Page>
     <Page Include="Styles\U148TextControlStyle.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -743,6 +748,10 @@
     <ProjectReference Include="..\U148.Configuration\U148.Configuration.csproj">
       <Project>{a4dfefb1-0dde-4f4a-a9ca-ff140babbf89}</Project>
       <Name>U148.Configuration</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\U148.Models.Uwp\U148.Models.Uwp.csproj">
+      <Project>{fb5f4804-bc73-450a-a051-d1e8ed589466}</Project>
+      <Name>U148.Models.Uwp</Name>
     </ProjectReference>
     <ProjectReference Include="..\U148.Models\U148.Models.csproj">
       <Project>{86ea073d-0ba8-4c94-bfac-dedbbda07475}</Project>
