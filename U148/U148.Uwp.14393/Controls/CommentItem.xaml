@@ -69,8 +69,8 @@
         <Grid Grid.Row="1"
               Visibility="{Binding ElementName=ReplyToggleButton, Path=IsChecked, Converter={StaticResource BooleanToVisibilityConverter}}">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
             <TextBox x:Name="ReplyTextBox"
                      Grid.Column="0"
