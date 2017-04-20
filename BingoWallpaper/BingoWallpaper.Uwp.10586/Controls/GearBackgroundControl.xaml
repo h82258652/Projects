@@ -12,7 +12,7 @@
     <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="/Styles/BingoWallpaperBrushStyle.xaml" />
+                <ResourceDictionary Source="/Styles/BingoWallpaperColorStyle.xaml" />
             </ResourceDictionary.MergedDictionaries>
             <Storyboard x:Key="GearStoryboard">
                 <DoubleAnimation RepeatBehavior="Forever"

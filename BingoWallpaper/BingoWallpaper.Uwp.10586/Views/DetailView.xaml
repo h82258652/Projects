@@ -18,7 +18,7 @@
     <Page.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="/Styles/BingoWallpaperBrushStyle.xaml" />
+                <ResourceDictionary Source="/Styles/BingoWallpaperColorStyle.xaml" />
                 <ResourceDictionary Source="/Styles/BingoWallpaperScrollViewerStyle.xaml" />
             </ResourceDictionary.MergedDictionaries>
             <Storyboard x:Key="ThumbnailImageOpenedStoryboard">

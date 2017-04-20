@@ -5,7 +5,7 @@
                     xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
                     xmlns:media="using:Microsoft.Xaml.Interactions.Media">
     <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="/Styles/BingoWallpaperBrushStyle.xaml" />
+        <ResourceDictionary Source="/Styles/BingoWallpaperColorStyle.xaml" />
     </ResourceDictionary.MergedDictionaries>
     <Style TargetType="controls:ImageLoadingControl">
         <Setter Property="HorizontalContentAlignment"

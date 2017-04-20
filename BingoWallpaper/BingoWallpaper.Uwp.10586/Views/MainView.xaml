@@ -24,10 +24,10 @@
     <Page.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="/Styles/BingoWallpaperBrushStyle.xaml" />
+                <ResourceDictionary Source="/Styles/BingoWallpaperColorStyle.xaml" />
                 <ResourceDictionary Source="/Styles/BingoWallpaperFlipViewStyle.xaml" />
                 <ResourceDictionary Source="/Styles/BingoWallpaperScrollBarStyle.xaml" />
-                <ResourceDictionary Source="/Styles/BingoWallpaperTextBlockStyle.xaml" />
+                <ResourceDictionary Source="/Styles/BingoWallpaperTextControlStyle.xaml" />
             </ResourceDictionary.MergedDictionaries>
             <converters:BooleanNegationConverter x:Key="BooleanNegationConverter" />
             <converters:MonthNameConverter x:Key="MonthNameConverter" />
