@@ -135,7 +135,7 @@ namespace U148.Uwp.ViewModels
                     {
                         IsBusy = false;
                     }
-                }, comment => IsLogined && !IsBusy);
+                }, comment => !IsBusy);
                 return _sendCommentCommand;
             }
         }
