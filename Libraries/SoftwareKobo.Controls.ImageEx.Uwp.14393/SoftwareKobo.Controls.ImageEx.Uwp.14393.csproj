@@ -132,7 +132,7 @@
       <Name>SoftwareKobo.Controls.ImageEx.Core</Name>
     </ProjectReference>
     <ProjectReference Include="..\SoftwareKobo.Controls.ImageEx.Uwp\SoftwareKobo.Controls.ImageEx.Uwp.csproj">
-      <Project>{cdfbf869-6a2e-4c90-a9c1-2f5acb283404}</Project>
+      <Project>{3d0a2072-6b7c-4c2f-b350-38fbf3547899}</Project>
       <Name>SoftwareKobo.Controls.ImageEx.Uwp</Name>
     </ProjectReference>
   </ItemGroup>
