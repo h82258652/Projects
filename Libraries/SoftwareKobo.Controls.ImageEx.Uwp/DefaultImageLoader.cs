@@ -61,7 +61,10 @@ namespace SoftwareKobo.Controls
         {
             await Task.Run(() =>
             {
-                Directory.Delete(CacheFolderPath, true);
+                if (Directory.Exists(CacheFolderPath))
+                {
+                    Directory.Delete(CacheFolderPath, true);
+                }
             });
         }
 
