@@ -32,7 +32,7 @@
                       SelectionMode="None">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <controls:CommentItem IsReplyEnabled="True"
+                        <controls:CommentItem IsReplyEnabled="{Binding ElementName=Root,Path=DataContext.IsLogined}"
                                               Loaded="CommentItem_Loaded"
                                               Unloaded="CommentItem_Unloaded">
                             <interactivity:Interaction.Behaviors>

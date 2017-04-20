@@ -9,7 +9,7 @@ namespace U148.Uwp.Controls
 {
     public sealed partial class CommentItem
     {
-        public static readonly DependencyProperty IsReplyEnabledProperty = DependencyProperty.Register(nameof(IsReplyEnabled), typeof(bool), typeof(CommentItem), new PropertyMetadata(default(bool)));
+        public static readonly DependencyProperty IsReplyEnabledProperty = DependencyProperty.Register(nameof(IsReplyEnabled), typeof(bool), typeof(CommentItem), new PropertyMetadata(default(bool), OnIsReplyEnabledChanged));
 
         public CommentItem()
         {
@@ -29,6 +29,17 @@ namespace U148.Uwp.Controls
             set
             {
                 SetValue(IsReplyEnabledProperty, value);
+            }
+        }
+
+        private static void OnIsReplyEnabledChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var obj = (CommentItem)d;
+            var value = (bool)e.NewValue;
+
+            if (value == false)
+            {
+                obj.ReplyToggleButton.IsChecked = false;
             }
         }
 
