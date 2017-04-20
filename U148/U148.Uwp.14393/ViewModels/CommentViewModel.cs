@@ -95,26 +95,36 @@ namespace U148.Uwp.ViewModels
             {
                 _replyCommentCommand = _replyCommentCommand ?? new RelayCommand<CommentItemReplyEventArgs>(async args =>
                 {
-                    throw new NotImplementedException();
-
-                    var userInfo = _u148Settings.UserInfo;
-                    if (userInfo == null)
+                    if (IsBusy)
                     {
                         return;
                     }
 
-                    if (IsBusy)
+                    var userInfo = _u148Settings.UserInfo;
+                    if (userInfo == null)
                     {
+                        MessengerInstance.Send(new ShowLoginViewMessage());
+                        return;
+                    }
+
+                    var replyContent = args.ReplyContent;
+                    if (string.IsNullOrEmpty(replyContent))
+                    {
+                        _appToastService.ShowInformation(LocalizedStrings.PleaseInputComment);
                         return;
                     }
 
                     IsBusy = true;
                     try
                     {
-                        var result = await _commentService.SendCommentAsync(_article.Id, userInfo.Token, args.Content, _u148Settings.SimulateDevice, args.Comment.Id);
+                        var result = await _commentService.SendCommentAsync(_article.Id, userInfo.Token, replyContent, _u148Settings.SimulateDevice, args.Comment.Id);
                         if (result.ErrorCode == 0)
                         {
-                            // TODO
+                            _appToastService.ShowMessage("回复成功");
+
+                            // TODO send message to clear textbox.
+
+                            RefreshCommand.Execute(null);
                         }
                         else
                         {

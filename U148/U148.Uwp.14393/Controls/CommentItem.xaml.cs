@@ -66,10 +66,10 @@ namespace U148.Uwp.Controls
         private void ReplyButton_Click(object sender, RoutedEventArgs e)
         {
             var comment = (Comment)DataContext;
-            var content = ReplyTextBox.Text;
-            if (!string.IsNullOrEmpty(content))
+            var replyContent = ReplyTextBox.Text;
+            if (!string.IsNullOrEmpty(replyContent))
             {
-                Reply?.Invoke(this, new CommentItemReplyEventArgs(comment, content));
+                Reply?.Invoke(this, new CommentItemReplyEventArgs(comment, replyContent));
             }
         }
     }

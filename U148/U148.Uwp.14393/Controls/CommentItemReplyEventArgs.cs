@@ -5,22 +5,22 @@ namespace U148.Uwp.Controls
 {
     public class CommentItemReplyEventArgs : EventArgs
     {
-        public CommentItemReplyEventArgs(Comment comment, string content)
+        public CommentItemReplyEventArgs(Comment comment, string replyContent)
         {
             if (comment == null)
             {
                 throw new ArgumentNullException(nameof(comment));
             }
-            if (content == null)
+            if (replyContent == null)
             {
-                throw new ArgumentNullException(nameof(content));
+                throw new ArgumentNullException(nameof(replyContent));
             }
 
             Comment = comment;
-            Content = content;
+            ReplyContent = replyContent;
         }
 
-        public string Content
+        public string ReplyContent
         {
             get;
         }
