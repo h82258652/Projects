@@ -101,6 +101,8 @@
     <Compile Include="Controls\CommentItem.xaml.cs">
       <DependentUpon>CommentItem.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\CommentItemReplyEventArgs.cs" />
+    <Compile Include="Controls\CommentItemReplyEventHandler.cs" />
     <Compile Include="Controls\HamburgerMenuItem.cs" />
     <Compile Include="Controls\MasterDetailView.cs" />
     <Compile Include="Controls\MasterDetailViewState.cs" />

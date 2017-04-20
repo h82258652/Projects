@@ -72,9 +72,11 @@
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-            <TextBox Grid.Column="0"
+            <TextBox x:Name="ReplyTextBox"
+                     Grid.Column="0"
                      FontFamily="ms-appx:///Assets/Fonts/SourceHanSerifCN-Regular.otf#Source Han Serif CN" />
             <Button Grid.Column="1"
+                    Click="ReplyButton_Click"
                     Content="回复"
                     FontFamily="ms-appx:///Assets/Fonts/SourceHanSerifCN-Regular.otf#Source Han Serif CN" />
         </Grid>

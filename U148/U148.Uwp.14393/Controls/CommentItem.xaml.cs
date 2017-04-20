@@ -16,6 +16,8 @@ namespace U148.Uwp.Controls
             InitializeComponent();
         }
 
+        public event CommentItemReplyEventHandler Reply;
+
         public bool IsReplyEnabled
         {
             get
@@ -58,6 +60,16 @@ namespace U148.Uwp.Controls
             }
             catch (ArgumentException)
             {
+            }
+        }
+
+        private void ReplyButton_Click(object sender, RoutedEventArgs e)
+        {
+            var comment = (Comment)DataContext;
+            var content = ReplyTextBox.Text;
+            if (string.IsNullOrEmpty(content) == false)
+            {
+                Reply?.Invoke(this, new CommentItemReplyEventArgs(comment, content));
             }
         }
     }

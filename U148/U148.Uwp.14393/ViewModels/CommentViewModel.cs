@@ -5,6 +5,7 @@ using SoftwareKobo.ViewModels;
 using U148.Configuration;
 using U148.Models;
 using U148.Services;
+using U148.Uwp.Controls;
 using U148.Uwp.Data;
 using U148.Uwp.Messages;
 using U148.Uwp.Services;
@@ -26,6 +27,8 @@ namespace U148.Uwp.ViewModels
         private bool _isBusy;
 
         private RelayCommand _refreshCommand;
+
+        private RelayCommand<CommentItemReplyEventArgs> _replyCommentCommand;
 
         private RelayCommand<string> _sendCommentCommand;
 
@@ -83,6 +86,51 @@ namespace U148.Uwp.ViewModels
                     _comments?.Refresh();
                 });
                 return _refreshCommand;
+            }
+        }
+
+        public RelayCommand<CommentItemReplyEventArgs> ReplyCommentCommand
+        {
+            get
+            {
+                _replyCommentCommand = _replyCommentCommand ?? new RelayCommand<CommentItemReplyEventArgs>(async args =>
+                {
+                    throw new NotImplementedException();
+
+                    var userInfo = _u148Settings.UserInfo;
+                    if (userInfo == null)
+                    {
+                        return;
+                    }
+
+                    if (IsBusy)
+                    {
+                        return;
+                    }
+
+                    IsBusy = true;
+                    try
+                    {
+                        var result = await _commentService.SendCommentAsync(_article.Id, userInfo.Token, args.Content, _u148Settings.SimulateDevice, args.Comment.Id);
+                        if (result.ErrorCode == 0)
+                        {
+                            // TODO
+                        }
+                        else
+                        {
+                            _appToastService.ShowError(result.ErrorMessage);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        _appToastService.ShowError(ex.Message);
+                    }
+                    finally
+                    {
+                        IsBusy = false;
+                    }
+                });
+                return _replyCommentCommand;
             }
         }
 
