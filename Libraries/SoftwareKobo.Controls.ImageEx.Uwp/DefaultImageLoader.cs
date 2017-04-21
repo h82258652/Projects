@@ -41,8 +41,15 @@ namespace SoftwareKobo.Controls
 
         public long CalculateCacheSize()
         {
-            return (from cacheFilePath in Directory.EnumerateFiles(CacheFolderPath)
-                    select new FileInfo(cacheFilePath).Length).Sum();
+            if (Directory.Exists(CacheFolderPath))
+            {
+                return (from cacheFilePath in Directory.EnumerateFiles(CacheFolderPath)
+                        select new FileInfo(cacheFilePath).Length).Sum();
+            }
+            else
+            {
+                return 0;
+            }
         }
 
         public bool ContainsCache(string source)

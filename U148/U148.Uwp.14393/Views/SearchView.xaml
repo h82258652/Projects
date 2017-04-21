@@ -38,7 +38,8 @@
                 </interactivity:Interaction.Behaviors>
             </Button>
             <AutoSuggestBox Grid.Column="1"
-                            VerticalAlignment="Stretch"
+                            VerticalAlignment="Center"
+                            FontFamily="ms-appx:///Assets/Fonts/SourceHanSerifCN-Regular.otf#Source Han Serif CN"
                             PlaceholderText="搜索">
                 <AutoSuggestBox.QueryIcon>
                     <SymbolIcon Symbol="Find" />
