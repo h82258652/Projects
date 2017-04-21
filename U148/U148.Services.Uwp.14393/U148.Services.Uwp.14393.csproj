@@ -121,6 +121,9 @@
     <PackageReference Include="Microsoft.Toolkit.Uwp">
       <Version>1.4.1</Version>
     </PackageReference>
+    <PackageReference Include="WeChatSDK">
+      <Version>2.0.1</Version>
+    </PackageReference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Libraries\SoftwareKobo.Social.SinaWeibo.Core\SoftwareKobo.Social.SinaWeibo.Core.csproj">

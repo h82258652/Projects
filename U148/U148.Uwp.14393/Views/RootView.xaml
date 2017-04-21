@@ -10,12 +10,11 @@
              mc:Ignorable="d">
     <UserControl.Resources>
         <ResourceDictionary>
-            <converters:IsNullConverter x:Key="InversedIsNullConverter"
-                                        IsInversed="True" />
+            <converters:IsNullConverter x:Key="IsNullConverter" />
         </ResourceDictionary>
     </UserControl.Resources>
     <Grid x:Name="RootGrid">
-        <Border IsHitTestVisible="{Binding ElementName=LoginViewHost, Path=Child, Converter={StaticResource InversedIsNullConverter}}">
+        <Border IsHitTestVisible="{Binding ElementName=LoginViewHost, Path=Child, Converter={StaticResource IsNullConverter}}">
             <views:MainView />
         </Border>
         <Border x:Name="LoginViewHost" />

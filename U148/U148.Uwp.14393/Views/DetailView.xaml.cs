@@ -23,10 +23,8 @@ namespace U148.Uwp.Views
             Messenger.Default.Unregister(this);
         }
 
-        protected override void OnNavigatedTo(NavigationEventArgs e)
+        protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
-            base.OnNavigatedTo(e);
-
             Messenger.Default.Register<ArticleContentLoadedMessage>(this, async message =>
             {
                 await WebView.NavigateAsync(new Uri("ms-appx-web:///Assets/Html/article.html"));
@@ -35,6 +33,12 @@ namespace U148.Uwp.Views
                     message.Content
                 });
             });
+
+            if (e.NavigationMode == NavigationMode.New)
+            {
+                await WebView.NavigateAsync(new Uri("about:blank"));
+                base.OnNavigatedTo(e);
+            }
         }
 
         private async void ScrollToTopButton_Click(object sender, RoutedEventArgs e)

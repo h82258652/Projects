@@ -32,9 +32,15 @@ namespace U148.Uwp.ViewModels
 
         private bool _isLoading;
 
+        private RelayCommand _qqShareCommand;
+
+        private RelayCommand _qzoneShareCommand;
+
         private RelayCommand _refreshCommand;
 
-        private RelayCommand _shareCommand;
+        private RelayCommand _sinaWeiboShareCommand;
+
+        private RelayCommand _wechatShareCommand;
 
         public DetailViewModel(IArticleService articleService, INavigationService navigationService, IAppToastService appToastService, IImageLoader imageLoader, IU148ShareService u148ShareService)
         {
@@ -93,6 +99,44 @@ namespace U148.Uwp.ViewModels
             }
         }
 
+        public RelayCommand QQShareCommand
+        {
+            get
+            {
+                _qqShareCommand = _qqShareCommand ?? new RelayCommand(async () =>
+                {
+                    var article = Article;
+                    if (article == null)
+                    {
+                        return;
+                    }
+
+                    var url = string.Format(Constants.ArticleLink, article.Id);
+                    await _u148ShareService.ShareToQQAsync(url, article.Title, article.Summary);
+                });
+                return _qqShareCommand;
+            }
+        }
+
+        public RelayCommand QZoneShareCommand
+        {
+            get
+            {
+                _qzoneShareCommand = _qzoneShareCommand ?? new RelayCommand(async () =>
+                {
+                    var article = Article;
+                    if (article == null)
+                    {
+                        return;
+                    }
+
+                    var url = string.Format(Constants.ArticleLink, article.Id);
+                    await _u148ShareService.ShareToQZoneAsync(url, article.Title, article.Summary);
+                });
+                return _qzoneShareCommand;
+            }
+        }
+
         public RelayCommand RefreshCommand
         {
             get
@@ -105,11 +149,11 @@ namespace U148.Uwp.ViewModels
             }
         }
 
-        public RelayCommand ShareCommand
+        public RelayCommand SinaWeiboShareCommand
         {
             get
             {
-                _shareCommand = _shareCommand ?? new RelayCommand(async () =>
+                _sinaWeiboShareCommand = _sinaWeiboShareCommand ?? new RelayCommand(async () =>
                 {
                     if (IsBusy && Article == null)
                     {
@@ -155,7 +199,26 @@ namespace U148.Uwp.ViewModels
                         IsBusy = false;
                     }
                 });
-                return _shareCommand;
+                return _sinaWeiboShareCommand;
+            }
+        }
+
+        public RelayCommand WechatShareCommand
+        {
+            get
+            {
+                _wechatShareCommand = _wechatShareCommand ?? new RelayCommand(async () =>
+                {
+                    var article = Article;
+                    if (article == null)
+                    {
+                        return;
+                    }
+
+                    var url = string.Format(Constants.ArticleLink, article.Id);
+                    await _u148ShareService.ShareToWechatAsync(url, article.Title, article.Summary);
+                });
+                return _wechatShareCommand;
             }
         }
 

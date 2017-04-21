@@ -7,6 +7,12 @@ namespace U148.Services
     {
         void ClearSinaWeiboAuthorization();
 
+        Task ShareToQQAsync(string url, string title, string summary);
+
+        Task ShareToQZoneAsync(string url, string title, string summary);
+
         Task<ModelBase> ShareToSinaWeiboAsync(byte[] image, string text);
+
+        Task ShareToWechatAsync(string url, string title, string summary);
     }
 }

@@ -98,6 +98,9 @@
     <Compile Include="Controls\ArticleItem.xaml.cs">
       <DependentUpon>ArticleItem.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\ChooseShareControl.xaml.cs">
+      <DependentUpon>ChooseShareControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\CommentItem.xaml.cs">
       <DependentUpon>CommentItem.xaml</DependentUpon>
     </Compile>
@@ -570,6 +573,10 @@
     <Content Include="Assets\Html\js\comment.js" />
     <Content Include="Assets\Images\hamburger_menu_background.jpg" />
     <Content Include="Assets\Images\logo.png" />
+    <Content Include="Assets\Images\qq.png" />
+    <Content Include="Assets\Images\qzone.png" />
+    <Content Include="Assets\Images\SinaWeibo.png" />
+    <Content Include="Assets\Images\wechat.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />
@@ -607,6 +614,10 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="Controls\ArticleItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\ChooseShareControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
