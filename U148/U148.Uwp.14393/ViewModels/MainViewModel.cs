@@ -1,6 +1,7 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Views;
+using SoftwareKobo.Services;
 using U148.Configuration;
 using U148.Models;
 using U148.Uwp.Messages;
@@ -14,6 +15,8 @@ namespace U148.Uwp.ViewModels
 
         private readonly INavigationService _navigationService;
 
+        private readonly IStoreService _storeService;
+
         private readonly IU148Settings _u148Settings;
 
         private RelayCommand _aboutCommand;
@@ -22,13 +25,16 @@ namespace U148.Uwp.ViewModels
 
         private RelayCommand _logoutCommand;
 
+        private RelayCommand _praiseCommand;
+
         private RelayCommand _settingCommand;
 
-        public MainViewModel(IU148Settings u148Settings, IAppToastService appToastService, INavigationService navigationService)
+        public MainViewModel(IU148Settings u148Settings, IAppToastService appToastService, INavigationService navigationService, IStoreService storeService)
         {
             _u148Settings = u148Settings;
             _appToastService = appToastService;
             _navigationService = navigationService;
+            _storeService = storeService;
 
             MessengerInstance.Register<LoginSuccessMessage>(this, message =>
             {
@@ -78,6 +84,18 @@ namespace U148.Uwp.ViewModels
                     _appToastService.ShowMessage(LocalizedStrings.LogoutSuccess);
                 }, () => UserInfo != null);
                 return _logoutCommand;
+            }
+        }
+
+        public RelayCommand PraiseCommand
+        {
+            get
+            {
+                _praiseCommand = _praiseCommand ?? new RelayCommand(async () =>
+                {
+                    await _storeService.OpenCurrentAppReviewPageAsync();
+                });
+                return _praiseCommand;
             }
         }
 

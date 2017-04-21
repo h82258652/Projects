@@ -86,6 +86,20 @@
                             </StackPanel>
                             <StackPanel Grid.Row="2"
                                         Orientation="Vertical">
+                                <localControls:HamburgerMenuItem Command="{Binding Path=PraiseCommand}"
+                                                                 Label="点赞">
+                                    <interactivity:Interaction.Behaviors>
+                                        <core:EventTriggerBehavior EventName="Click">
+                                            <core:ChangePropertyAction PropertyName="IsPaneOpen"
+                                                                       TargetObject="{Binding ElementName=HamburgerMenu}"
+                                                                       Value="False" />
+                                        </core:EventTriggerBehavior>
+                                    </interactivity:Interaction.Behaviors>
+                                    <localControls:HamburgerMenuItem.Icon>
+                                        <FontIcon FontFamily="Segoe MDL2 Assets"
+                                                  Glyph="&#xE006;" />
+                                    </localControls:HamburgerMenuItem.Icon>
+                                </localControls:HamburgerMenuItem>
                                 <localControls:HamburgerMenuItem Command="{Binding Path=SettingCommand}"
                                                                  Label="设置">
                                     <interactivity:Interaction.Behaviors>

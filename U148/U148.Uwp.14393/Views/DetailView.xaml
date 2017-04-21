@@ -5,7 +5,7 @@
                     xmlns:converters="using:U148.Uwp.Converters"
                     xmlns:core="using:Microsoft.Xaml.Interactions.Core"
                     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-                    xmlns:fontawesome="using:SoftwareKobo.Icons.FontAwesome"
+                    xmlns:dashicons="using:SoftwareKobo.Icons.Dashicons"
                     xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
                     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                     xmlns:views="using:SoftwareKobo.Views"
@@ -64,7 +64,7 @@
             <Button Grid.Column="3"
                     Command="{Binding Path=ShareCommand}"
                     Style="{StaticResource IconButtonStyle}">
-                <fontawesome:FontAwesomeIcon Symbol="ShareAlt" />
+                <dashicons:DashIcon Symbol="Share" />
             </Button>
         </Grid>
         <Grid Grid.Row="1">
