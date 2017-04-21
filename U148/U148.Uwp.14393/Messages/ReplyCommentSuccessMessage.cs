@@ -1,4 +1,5 @@
-﻿using GalaSoft.MvvmLight.Messaging;
+﻿using System;
+using GalaSoft.MvvmLight.Messaging;
 using U148.Models;
 
 namespace U148.Uwp.Messages
@@ -7,6 +8,11 @@ namespace U148.Uwp.Messages
     {
         public ReplyCommentSuccessMessage(Comment comment)
         {
+            if (comment == null)
+            {
+                throw new ArgumentNullException(nameof(comment));
+            }
+
             Comment = comment;
         }
 
