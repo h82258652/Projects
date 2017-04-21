@@ -39,14 +39,18 @@
                           Header="模拟设备"
                           ItemsSource="{Binding Path=SimulateDevices}"
                           SelectedItem="{Binding Path=SimulateDevice, Mode=TwoWay}" />
-                <TextBlock Text="{Binding Path=CacheImageSize, Converter={StaticResource FileSizeToStringConverter}}" />
-                <Button x:Uid="/SettingView/ClearImageCacheButton"
-                        Margin="4"
+                <Button Margin="4"
+                        BorderBrush="Transparent"
+                        BorderThickness="0"
                         Command="{Binding Path=ClearImageCacheCommand}"
-                        Content="清除图片缓存"
-                        FontFamily="ms-appx:///Assets/Fonts/SourceHanSerifCN-Regular.otf#Source Han Serif CN" />
+                        FontFamily="ms-appx:///Assets/Fonts/SourceHanSerifCN-Regular.otf#Source Han Serif CN">
+                    <TextBlock>
+                        <Run Text="清除图片缓存(" /><Run Text="{Binding Path=CacheImageSize, Converter={StaticResource FileSizeToStringConverter}}" /><Run Text=")" /></TextBlock>
+                </Button>
                 <Button x:Uid="/SettingView/ClearSinaWeiboAuthenticationButton"
                         Margin="4"
+                        BorderBrush="Transparent"
+                        BorderThickness="0"
                         Command="{Binding Path=ClearSinaWeiboAuthenticationCommand}"
                         Content="清除微博授权"
                         FontFamily="ms-appx:///Assets/Fonts/SourceHanSerifCN-Regular.otf#Source Han Serif CN" />

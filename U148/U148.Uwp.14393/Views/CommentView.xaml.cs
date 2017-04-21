@@ -32,9 +32,9 @@ namespace U148.Uwp.Views
 
         private void CommentItem_Loaded(object sender, RoutedEventArgs e)
         {
-            Messenger.Default.Register<ReplyCommentSuccessMessage>(sender, message =>
+            var commentItem = (CommentItem)sender;
+            Messenger.Default.Register<ReplyCommentSuccessMessage>(commentItem, message =>
             {
-                var commentItem = (CommentItem)sender;
                 if (commentItem.Comment.Id == message.Comment.Id)
                 {
                     commentItem.ClearReplyContent();
