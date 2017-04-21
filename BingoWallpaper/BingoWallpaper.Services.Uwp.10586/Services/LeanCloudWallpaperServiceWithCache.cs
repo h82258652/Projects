@@ -32,7 +32,11 @@ namespace BingoWallpaper.Services
         {
             await Task.Run(() =>
             {
-                Directory.Delete(GetCacheFolderPath(), true);
+                var cacheFolderPath = GetCacheFolderPath();
+                if (Directory.Exists(cacheFolderPath))
+                {
+                    Directory.Delete(cacheFolderPath, true);
+                }
             });
         }
 
