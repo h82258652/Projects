@@ -36,7 +36,6 @@
                 <ComboBox x:Uid="/SettingView/SimulateDeviceComboBox"
                           Margin="4"
                           FontFamily="ms-appx:///Assets/Fonts/SourceHanSerifCN-Regular.otf#Source Han Serif CN"
-                          Header="模拟设备"
                           ItemsSource="{Binding Path=SimulateDevices}"
                           SelectedItem="{Binding Path=SimulateDevice, Mode=TwoWay}" />
                 <StackPanel Margin="4"

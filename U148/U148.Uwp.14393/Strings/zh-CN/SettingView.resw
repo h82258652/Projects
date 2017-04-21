@@ -123,4 +123,7 @@
   <data name="ClearSinaWeiboAuthenticationSuccess" xml:space="preserve">
     <value>清除新浪微博授权完成</value>
   </data>
+  <data name="SimulateDeviceComboBox.Header" xml:space="preserve">
+    <value>模拟设备</value>
+  </data>
 </root>
