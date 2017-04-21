@@ -39,8 +39,7 @@ namespace U148.Uwp.Views
                 var commentItem = (CommentItem)sender;
                 if (commentItem.Comment.Id == message.Comment.Id)
                 {
-                    var replyTextBox = commentItem.GetFirstDescendantOfType<TextBox>();
-                    replyTextBox.Text = string.Empty;
+                    commentItem.ClearReplyContent();
                 }
             });
         }

@@ -32,6 +32,11 @@ namespace U148.Uwp.Controls
             }
         }
 
+        public void ClearReplyContent()
+        {
+            ReplyTextBox.Text = string.Empty;
+        }
+
         private static void OnIsReplyEnabledChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var obj = (CommentItem)d;
