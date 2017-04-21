@@ -46,10 +46,7 @@ namespace SoftwareKobo.Controls
                 return (from cacheFilePath in Directory.EnumerateFiles(CacheFolderPath)
                         select new FileInfo(cacheFilePath).Length).Sum();
             }
-            else
-            {
-                return 0;
-            }
+            return 0;
         }
 
         public bool ContainsCache(string source)
