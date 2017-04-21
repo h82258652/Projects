@@ -55,7 +55,7 @@ namespace U148.Uwp.ViewModels
             var unityContainer = new UnityContainer();
 
             unityContainer.RegisterInstance(CreateNavigationService());
-            unityContainer.RegisterType<IArticleService, ArticleService>();
+            unityContainer.RegisterType<IArticleService, ArticleServiceWithCache>();
             unityContainer.RegisterType<ICommentService, CommentService>();
             unityContainer.RegisterType<IUserService, UserService>();
             unityContainer.RegisterType<IU148Settings, U148UwpSettings>();
