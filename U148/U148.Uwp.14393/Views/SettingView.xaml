@@ -39,14 +39,28 @@
                           Header="模拟设备"
                           ItemsSource="{Binding Path=SimulateDevices}"
                           SelectedItem="{Binding Path=SimulateDevice, Mode=TwoWay}" />
-                <Button Margin="4"
-                        BorderBrush="Transparent"
-                        BorderThickness="0"
-                        Command="{Binding Path=ClearImageCacheCommand}"
-                        FontFamily="ms-appx:///Assets/Fonts/SourceHanSerifCN-Regular.otf#Source Han Serif CN">
-                    <TextBlock>
-                        <Run Text="清除图片缓存(" /><Run Text="{Binding Path=CacheImageSize, Converter={StaticResource FileSizeToStringConverter}}" /><Run Text=")" /></TextBlock>
-                </Button>
+                <StackPanel Margin="4"
+                            Orientation="Horizontal">
+                    <Button BorderBrush="Transparent"
+                            BorderThickness="0"
+                            Command="{Binding Path=ClearDataCacheCommand}"
+                            FontFamily="ms-appx:///Assets/Fonts/SourceHanSerifCN-Regular.otf#Source Han Serif CN">
+                        <TextBlock>
+                            <Run Text="清除数据缓存(" /><Run Text="{Binding Path=CacheDataSize, Converter={StaticResource FileSizeToStringConverter}}" /><Run Text=")" /></TextBlock>
+                    </Button>
+                    <ProgressRing IsActive="{Binding Path=IsCleaningDataCache}" />
+                </StackPanel>
+                <StackPanel Margin="4"
+                            Orientation="Horizontal">
+                    <Button BorderBrush="Transparent"
+                            BorderThickness="0"
+                            Command="{Binding Path=ClearImageCacheCommand}"
+                            FontFamily="ms-appx:///Assets/Fonts/SourceHanSerifCN-Regular.otf#Source Han Serif CN">
+                        <TextBlock>
+                            <Run Text="清除图片缓存(" /><Run Text="{Binding Path=CacheImageSize, Converter={StaticResource FileSizeToStringConverter}}" /><Run Text=")" /></TextBlock>
+                    </Button>
+                    <ProgressRing IsActive="{Binding Path=IsCleaningImageCache}" />
+                </StackPanel>
                 <Button x:Uid="/SettingView/ClearSinaWeiboAuthenticationButton"
                         Margin="4"
                         BorderBrush="Transparent"

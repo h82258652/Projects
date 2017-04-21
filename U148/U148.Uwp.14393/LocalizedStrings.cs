@@ -17,6 +17,14 @@ namespace U148.Uwp
 
         internal static string Audio => ResourceLoader.GetForCurrentView(ArticleCategoryReswName).GetString("Audio");
 
+        internal static string ClearDataCacheFinish
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+        }
+
         internal static string ClearImageCacheFinish => ResourceLoader.GetForCurrentView(SettingViewReswName).GetString("ClearImageCacheFinish");
 
         internal static string ClearSinaWeiboAuthenticationSuccess => ResourceLoader.GetForCurrentView(SettingViewReswName).GetString("ClearSinaWeiboAuthenticationSuccess");
@@ -47,15 +55,15 @@ namespace U148.Uwp
 
         internal static string PleaseInputComment => ResourceLoader.GetForCurrentView(CommentViewReswName).GetString("PleaseInputComment");
 
+        internal static string RefreshSuccess
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+        }
+
         internal static string SendCommentSuccess => ResourceLoader.GetForCurrentView(CommentViewReswName).GetString("SendCommentSuccess");
-
-        internal static string Tasty => ResourceLoader.GetForCurrentView(ArticleCategoryReswName).GetString("Tasty");
-
-        internal static string Text => ResourceLoader.GetForCurrentView(ArticleCategoryReswName).GetString("Text");
-
-        internal static string Video => ResourceLoader.GetForCurrentView(ArticleCategoryReswName).GetString("Video");
-
-        internal static string Weibo => ResourceLoader.GetForCurrentView(ArticleCategoryReswName).GetString("Weibo");
 
         internal static string ShareSuccess
         {
@@ -65,12 +73,12 @@ namespace U148.Uwp
             }
         }
 
-        internal static string RefreshSuccess
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-        }
+        internal static string Tasty => ResourceLoader.GetForCurrentView(ArticleCategoryReswName).GetString("Tasty");
+
+        internal static string Text => ResourceLoader.GetForCurrentView(ArticleCategoryReswName).GetString("Text");
+
+        internal static string Video => ResourceLoader.GetForCurrentView(ArticleCategoryReswName).GetString("Video");
+
+        internal static string Weibo => ResourceLoader.GetForCurrentView(ArticleCategoryReswName).GetString("Weibo");
     }
 }

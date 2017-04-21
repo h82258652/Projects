@@ -3,7 +3,7 @@
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="/Styles/U148ColorStyle.xaml" />
     </ResourceDictionary.MergedDictionaries>
-    <Style x:Key="U148PivotHeaderItem"
+    <Style x:Key="U148PivotHeaderItemStyle"
            TargetType="PivotHeaderItem">
         <Setter Property="FontSize"
                 Value="{ThemeResource PivotHeaderItemFontSize}" />

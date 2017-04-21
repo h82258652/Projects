@@ -42,7 +42,7 @@ namespace U148.Uwp.Controls
             var obj = (CommentItem)d;
             var value = (bool)e.NewValue;
 
-            if (value == false)
+            if (!value)
             {
                 obj.ReplyToggleButton.IsChecked = false;
             }

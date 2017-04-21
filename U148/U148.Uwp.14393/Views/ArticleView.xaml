@@ -56,7 +56,7 @@
                        Background="#e5e5e5"
                        ItemsSource="{Binding Path=Categories}">
                     <Pivot.Resources>
-                        <Style BasedOn="{StaticResource U148PivotHeaderItem}"
+                        <Style BasedOn="{StaticResource U148PivotHeaderItemStyle}"
                                TargetType="PivotHeaderItem" />
                     </Pivot.Resources>
                     <Pivot.HeaderTemplate>
@@ -96,6 +96,7 @@
                                 </ListView>
                                 <ProgressBar VerticalAlignment="Top"
                                              Background="Transparent"
+                                             Foreground="{ThemeResource U148AccentBrush}"
                                              IsIndeterminate="{Binding Path=Value.IsLoading}" />
                             </Grid>
                         </DataTemplate>

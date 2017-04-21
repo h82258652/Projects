@@ -82,6 +82,7 @@
             </ListView>
             <ProgressBar VerticalAlignment="Top"
                          Background="Transparent"
+                         Foreground="{ThemeResource U148AccentBrush}"
                          IsIndeterminate="{Binding Path=Articles.IsLoading}" />
         </Grid>
     </Grid>

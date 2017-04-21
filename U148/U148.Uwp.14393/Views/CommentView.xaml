@@ -32,7 +32,7 @@
                       SelectionMode="None">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <controls:CommentItem IsReplyEnabled="{Binding ElementName=Root,Path=DataContext.IsLogined}"
+                        <controls:CommentItem IsReplyEnabled="{Binding ElementName=Root, Path=DataContext.IsLogined}"
                                               Loaded="CommentItem_Loaded"
                                               Unloaded="CommentItem_Unloaded">
                             <interactivity:Interaction.Behaviors>
@@ -58,6 +58,7 @@
             </ListView>
             <ProgressBar VerticalAlignment="Top"
                          Background="Transparent"
+                         Foreground="{ThemeResource U148AccentBrush}"
                          IsIndeterminate="{Binding Path=Comments.IsLoading}" />
         </Grid>
         <Grid Grid.Row="2"
