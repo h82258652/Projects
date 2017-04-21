@@ -2,9 +2,7 @@
 using U148.Uwp.Controls;
 using U148.Uwp.Messages;
 using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
-using WinRTXamlToolkit.Controls.Extensions;
 
 namespace U148.Uwp.Views
 {

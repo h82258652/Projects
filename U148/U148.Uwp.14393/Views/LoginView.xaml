@@ -39,27 +39,7 @@
                                             PlaceholderText="邮箱"
                                             QuerySubmitted="EmailTextBox_QuerySubmitted"
                                             Style="{StaticResource LoginEmailTextBoxStyle}"
-                                            Text="{Binding Path=Email, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
-                                <AutoSuggestBox.TextBoxStyle>
-                                    <Style TargetType="TextBox">
-                                        <Setter Property="Background"
-                                                Value="Transparent" />
-                                        <Setter Property="BorderBrush"
-                                                Value="Transparent" />
-                                        <Setter Property="BorderThickness"
-                                                Value="0" />
-                                        <Setter Property="InputScope">
-                                            <Setter.Value>
-                                                <InputScope>
-                                                    <InputScope.Names>
-                                                        <InputScopeName NameValue="EmailNameOrAddress" />
-                                                    </InputScope.Names>
-                                                </InputScope>
-                                            </Setter.Value>
-                                        </Setter>
-                                    </Style>
-                                </AutoSuggestBox.TextBoxStyle>
-                            </AutoSuggestBox>
+                                            Text="{Binding Path=Email, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                         </Grid>
                         <Border Height="1"
                                 Background="Gray" />
@@ -83,15 +63,7 @@
                                          MaxLength="16"
                                          Password="{Binding Path=Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                          PlaceholderText="密码"
-                                         Style="{StaticResource LoginPasswordBoxStyle}">
-                                <PasswordBox.InputScope>
-                                    <InputScope>
-                                        <InputScope.Names>
-                                            <InputScopeName NameValue="Password" />
-                                        </InputScope.Names>
-                                    </InputScope>
-                                </PasswordBox.InputScope>
-                            </PasswordBox>
+                                         Style="{StaticResource LoginPasswordBoxStyle}" />
                         </Grid>
                         <Border Height="1"
                                 Background="Gray" />
