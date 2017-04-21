@@ -28,6 +28,7 @@ namespace U148.Uwp.Views
             var accentColor = (Color)Application.Current.Resources["U148AccentColor"];
             titleBar.BackgroundColor = accentColor;
             titleBar.ButtonBackgroundColor = accentColor;
+            titleBar.InactiveBackgroundColor = accentColor;
         }
 
         private void SplashScreenImage_ImageOpened(object sender, RoutedEventArgs e)

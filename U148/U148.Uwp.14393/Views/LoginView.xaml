@@ -102,6 +102,7 @@
                     <HyperlinkButton Margin="0,20,0,0"
                                      HorizontalAlignment="Center"
                                      Content="没有账号？立刻注册"
+                                     FontFamily="ms-appx:///Assets/Fonts/SourceHanSerifCN-Regular.otf#Source Han Serif CN"
                                      NavigateUri="http://www.u148.net/user/register.html" />
                 </StackPanel>
             </Grid>
