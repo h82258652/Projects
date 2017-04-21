@@ -35,8 +35,8 @@ namespace U148.Uwp.Views
                     await WebView.NavigateAsync(new Uri("ms-appx-web:///Assets/Html/article.html"));
                     await WebView.InvokeScriptAsync("setContent", new[]
                     {
-                    message.Content
-                });
+                        message.Content
+                    });
                 }
             });
 
