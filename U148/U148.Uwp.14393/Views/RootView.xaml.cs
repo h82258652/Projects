@@ -17,9 +17,10 @@ namespace U148.Uwp.Views
         {
             var extendedSplashScreenView = new ExtendedSplashScreenView(splashScreen);
             EventHandler completedHandler = null;
-            completedHandler = (sender, e) =>
+            completedHandler = async (sender, e) =>
             {
                 extendedSplashScreenView.Completed -= completedHandler;
+                await extendedSplashScreenView.DismissAsync();
                 RootGrid.Children.Remove(extendedSplashScreenView);
             };
             extendedSplashScreenView.Completed += completedHandler;
