@@ -35,7 +35,7 @@ namespace BingoWallpaper.Uwp
             base.OnFileActivated(args);
             try
             {
-                new BingoWallpaperWeChatCallback().Handle(args);
+                new BingoWallpaperWechatCallback().Handle(args);
             }
             catch (Exception)
             {

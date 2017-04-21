@@ -136,6 +136,7 @@
     <Compile Include="Services\IAppToastService.cs" />
     <Compile Include="Services\U148NavigationService.cs" />
     <Compile Include="Services\U148NavigationType.cs" />
+    <Compile Include="Utils\U148WechatCallback.cs" />
     <Compile Include="ViewModels\AboutViewModel.cs" />
     <Compile Include="ViewModels\ArticleViewModel.cs" />
     <Compile Include="ViewModels\CommentViewModel.cs" />

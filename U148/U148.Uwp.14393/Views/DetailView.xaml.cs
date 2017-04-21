@@ -5,6 +5,7 @@ using Windows.Foundation;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
+using U148.Uwp.ViewModels;
 using WinRTXamlToolkit.AwaitableUI;
 
 namespace U148.Uwp.Views
@@ -15,6 +16,8 @@ namespace U148.Uwp.Views
         {
             InitializeComponent();
         }
+
+        public DetailViewModel ViewModel => (DetailViewModel)DataContext;
 
         protected override void OnNavigatedFrom(NavigationEventArgs e)
         {
@@ -27,11 +30,14 @@ namespace U148.Uwp.Views
         {
             Messenger.Default.Register<ArticleContentLoadedMessage>(this, async message =>
             {
-                await WebView.NavigateAsync(new Uri("ms-appx-web:///Assets/Html/article.html"));
-                await WebView.InvokeScriptAsync("setContent", new[]
+                if (ViewModel.Article?.Id == message.Article.Id)
                 {
+                    await WebView.NavigateAsync(new Uri("ms-appx-web:///Assets/Html/article.html"));
+                    await WebView.InvokeScriptAsync("setContent", new[]
+                    {
                     message.Content
                 });
+                }
             });
 
             if (e.NavigationMode == NavigationMode.New)

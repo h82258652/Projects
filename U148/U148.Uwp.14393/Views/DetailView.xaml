@@ -3,11 +3,12 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:behaviors="using:SoftwareKobo.Behaviors"
                     xmlns:controls="using:U148.Uwp.Controls"
-                    xmlns:converters="using:U148.Uwp.Converters"
+                    xmlns:converters="using:WinRTXamlToolkit.Converters"
                     xmlns:core="using:Microsoft.Xaml.Interactions.Core"
                     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                     xmlns:dashicons="using:SoftwareKobo.Icons.Dashicons"
                     xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
+                    xmlns:localConverters="using:U148.Uwp.Converters"
                     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                     xmlns:views="using:SoftwareKobo.Views"
                     DataContext="{Binding Source={StaticResource Locator}, Path=Detail}"
@@ -15,109 +16,120 @@
                     mc:Ignorable="d">
     <Page.Resources>
         <ResourceDictionary>
-            <converters:CommentCountConverter x:Key="CommentCountConverter" />
+            <localConverters:CommentCountConverter x:Key="CommentCountConverter" />
+            <converters:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
         </ResourceDictionary>
     </Page.Resources>
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="48" />
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
-        <Grid Grid.Row="0"
-              Background="{ThemeResource U148AccentBrush}">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto" />
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="Auto" />
-                <ColumnDefinition Width="Auto" />
-            </Grid.ColumnDefinitions>
-            <Button Grid.Column="0"
-                    Style="{StaticResource NavigationBackButtonStyle}">
-                <interactivity:Interaction.Behaviors>
-                    <core:EventTriggerBehavior EventName="Click">
-                        <behaviors:GoBackAction />
-                    </core:EventTriggerBehavior>
-                </interactivity:Interaction.Behaviors>
-            </Button>
-            <Button Grid.Column="1"
-                    HorizontalAlignment="Stretch"
-                    VerticalAlignment="Stretch"
-                    Click="ScrollToTopButton_Click"
-                    Style="{StaticResource EmptyButtonStyle}" />
-            <Button Grid.Column="2"
-                    Command="{Binding Path=CommentCommand}"
-                    Style="{StaticResource IconButtonStyle}">
-                <Grid>
-                    <FontIcon HorizontalAlignment="Center"
-                              VerticalAlignment="Center"
-                              FontFamily="Segoe MDL2 Assets"
-                              Glyph="&#xE8BD;" />
-                    <TextBlock HorizontalAlignment="Center"
-                               VerticalAlignment="Center"
-                               FontFamily="ms-appx:///Assets/Fonts/SourceHanSerifCN-Regular.otf#Source Han Serif CN"
-                               FontSize="9"
-                               Text="{Binding Path=Article.CountReview, Converter={StaticResource CommentCountConverter}}">
-                        <TextBlock.RenderTransform>
-                            <TranslateTransform Y="-2" />
-                        </TextBlock.RenderTransform></TextBlock>
-                </Grid>
-            </Button>
-            <Button Grid.Column="3"
-                    Style="{StaticResource IconButtonStyle}">
-                <interactivity:Interaction.Behaviors>
-                    <core:EventTriggerBehavior EventName="Click">
-                        <core:ChangePropertyAction PropertyName="IsOpen"
-                                                   TargetObject="{Binding ElementName=SharePopup}"
-                                                   Value="True" />
-                    </core:EventTriggerBehavior>
-                </interactivity:Interaction.Behaviors>
-                <dashicons:DashIcon Symbol="Share" />
-            </Button>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="48" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0"
+                  Background="{ThemeResource U148AccentBrush}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <Button Grid.Column="0"
+                        Style="{StaticResource NavigationBackButtonStyle}">
+                    <interactivity:Interaction.Behaviors>
+                        <core:EventTriggerBehavior EventName="Click">
+                            <behaviors:GoBackAction />
+                        </core:EventTriggerBehavior>
+                    </interactivity:Interaction.Behaviors>
+                </Button>
+                <Button Grid.Column="1"
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Stretch"
+                        Click="ScrollToTopButton_Click"
+                        Style="{StaticResource EmptyButtonStyle}" />
+                <Button Grid.Column="2"
+                        Command="{Binding Path=CommentCommand}"
+                        Style="{StaticResource IconButtonStyle}">
+                    <Grid>
+                        <FontIcon HorizontalAlignment="Center"
+                                  VerticalAlignment="Center"
+                                  FontFamily="Segoe MDL2 Assets"
+                                  Glyph="&#xE8BD;" />
+                        <TextBlock HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"
+                                   FontFamily="ms-appx:///Assets/Fonts/SourceHanSerifCN-Regular.otf#Source Han Serif CN"
+                                   FontSize="9"
+                                   Text="{Binding Path=Article.CountReview, Converter={StaticResource CommentCountConverter}}">
+                            <TextBlock.RenderTransform>
+                                <TranslateTransform Y="-2" />
+                            </TextBlock.RenderTransform></TextBlock>
+                    </Grid>
+                </Button>
+                <Button Grid.Column="3"
+                        Style="{StaticResource IconButtonStyle}">
+                    <interactivity:Interaction.Behaviors>
+                        <core:EventTriggerBehavior EventName="Click">
+                            <core:ChangePropertyAction PropertyName="IsOpen"
+                                                       TargetObject="{Binding ElementName=SharePopup}"
+                                                       Value="True" />
+                        </core:EventTriggerBehavior>
+                    </interactivity:Interaction.Behaviors>
+                    <dashicons:DashIcon Symbol="Share" />
+                </Button>
+            </Grid>
+            <Grid Grid.Row="1">
+                <WebView x:Name="WebView"
+                         NewWindowRequested="WebView_NewWindowRequested"
+                         ScriptNotify="WebView_ScriptNotify" />
+                <ProgressRing Width="96"
+                              Height="96"
+                              Foreground="{ThemeResource U148AccentBrush}"
+                              IsActive="{Binding Path=IsLoading}" />
+                <Button Margin="0,0,40,40"
+                        Command="{Binding Path=RefreshCommand}"
+                        Style="{StaticResource RefreshButtonStyle}" />
+                <Popup x:Name="SharePopup"
+                       IsLightDismissEnabled="True">
+                    <Grid Width="{Binding ElementName=SharePopup, Path=ActualWidth}"
+                          Height="{Binding ElementName=SharePopup, Path=ActualHeight}">
+                        <controls:ChooseShareControl>
+                            <interactivity:Interaction.Behaviors>
+                                <core:EventTriggerBehavior EventName="QQShareRequested">
+                                    <core:ChangePropertyAction PropertyName="IsOpen"
+                                                               TargetObject="{Binding ElementName=SharePopup}"
+                                                               Value="False" />
+                                    <core:InvokeCommandAction Command="{Binding Path=QQShareCommand}" />
+                                </core:EventTriggerBehavior>
+                                <core:EventTriggerBehavior EventName="QZoneShareRequested">
+                                    <core:ChangePropertyAction PropertyName="IsOpen"
+                                                               TargetObject="{Binding ElementName=SharePopup}"
+                                                               Value="False" />
+                                    <core:InvokeCommandAction Command="{Binding Path=QZoneShareCommand}" />
+                                </core:EventTriggerBehavior>
+                                <core:EventTriggerBehavior EventName="SinaWeiboShareRequested">
+                                    <core:ChangePropertyAction PropertyName="IsOpen"
+                                                               TargetObject="{Binding ElementName=SharePopup}"
+                                                               Value="False" />
+                                    <core:InvokeCommandAction Command="{Binding Path=SinaWeiboShareCommand}" />
+                                </core:EventTriggerBehavior>
+                                <core:EventTriggerBehavior EventName="WechatShareRequested">
+                                    <core:ChangePropertyAction PropertyName="IsOpen"
+                                                               TargetObject="{Binding ElementName=SharePopup}"
+                                                               Value="False" />
+                                    <core:InvokeCommandAction Command="{Binding Path=WechatShareCommand}" />
+                                </core:EventTriggerBehavior>
+                            </interactivity:Interaction.Behaviors>
+                        </controls:ChooseShareControl>
+                    </Grid>
+                </Popup>
+            </Grid>
         </Grid>
-        <Grid Grid.Row="1">
-            <WebView x:Name="WebView"
-                     NewWindowRequested="WebView_NewWindowRequested"
-                     ScriptNotify="WebView_ScriptNotify" />
+        <Grid Background="#80000000"
+              Visibility="{Binding Path=IsBusy, Converter={StaticResource BooleanToVisibilityConverter}}">
             <ProgressRing Width="96"
                           Height="96"
-                          IsActive="{Binding Path=IsLoading}" />
-            <Button Margin="0,0,40,40"
-                    Command="{Binding Path=RefreshCommand}"
-                    Style="{StaticResource RefreshButtonStyle}" />
-            <Popup x:Name="SharePopup"
-                   IsLightDismissEnabled="True">
-                <Grid Width="{Binding ElementName=SharePopup, Path=ActualWidth}"
-                      Height="{Binding ElementName=SharePopup, Path=ActualHeight}">
-                    <controls:ChooseShareControl>
-                        <interactivity:Interaction.Behaviors>
-                            <core:EventTriggerBehavior EventName="QQShareRequested">
-                                <core:ChangePropertyAction PropertyName="IsOpen"
-                                                           TargetObject="{Binding ElementName=SharePopup}"
-                                                           Value="False" />
-                                <core:InvokeCommandAction Command="{Binding Path=QQShareCommand}" />
-                            </core:EventTriggerBehavior>
-                            <core:EventTriggerBehavior EventName="QZoneShareRequested">
-                                <core:ChangePropertyAction PropertyName="IsOpen"
-                                                           TargetObject="{Binding ElementName=SharePopup}"
-                                                           Value="False" />
-                                <core:InvokeCommandAction Command="{Binding Path=QZoneShareCommand}" />
-                            </core:EventTriggerBehavior>
-                            <core:EventTriggerBehavior EventName="SinaWeiboShareRequested">
-                                <core:ChangePropertyAction PropertyName="IsOpen"
-                                                           TargetObject="{Binding ElementName=SharePopup}"
-                                                           Value="False" />
-                                <core:InvokeCommandAction Command="{Binding Path=SinaWeiboShareCommand}" />
-                            </core:EventTriggerBehavior>
-                            <core:EventTriggerBehavior EventName="WechatShareRequested">
-                                <core:ChangePropertyAction PropertyName="IsOpen"
-                                                           TargetObject="{Binding ElementName=SharePopup}"
-                                                           Value="False" />
-                                <core:InvokeCommandAction Command="{Binding Path=WechatShareCommand}" />
-                            </core:EventTriggerBehavior>
-                        </interactivity:Interaction.Behaviors>
-                    </controls:ChooseShareControl>
-                </Grid>
-            </Popup>
+                          Foreground="{ThemeResource U148AccentBrush}"
+                          IsActive="{Binding Path=IsBusy}" />
         </Grid>
     </Grid>
 </views:BindablePage>

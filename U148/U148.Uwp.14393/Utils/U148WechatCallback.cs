@@ -1,14 +1,14 @@
-﻿using BingoWallpaper.Uwp.Services;
-using MicroMsg.sdk;
+﻿using MicroMsg.sdk;
 using Microsoft.Practices.ServiceLocation;
+using U148.Uwp.Services;
 
-namespace BingoWallpaper.Uwp.Utils
+namespace U148.Uwp.Utils
 {
-    internal sealed class BingoWallpaperWechatCallback : WXEntryBasePage
+    internal sealed class U148WechatCallback : WXEntryBasePage
     {
         private readonly IAppToastService _appToastService;
 
-        internal BingoWallpaperWechatCallback()
+        internal U148WechatCallback()
         {
             _appToastService = ServiceLocator.Current.GetInstance<IAppToastService>();
         }

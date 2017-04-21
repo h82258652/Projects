@@ -106,13 +106,25 @@ namespace U148.Uwp.ViewModels
                 _qqShareCommand = _qqShareCommand ?? new RelayCommand(async () =>
                 {
                     var article = Article;
-                    if (article == null)
+                    if (IsBusy || article == null)
                     {
                         return;
                     }
 
                     var url = string.Format(Constants.ArticleLink, article.Id);
-                    await _u148ShareService.ShareToQQAsync(url, article.Title, article.Summary);
+                    IsBusy = true;
+                    try
+                    {
+                        await _u148ShareService.ShareToQQAsync(url, article.Title, article.Summary);
+                    }
+                    catch (Exception ex)
+                    {
+                        _appToastService.ShowError(ex.Message);
+                    }
+                    finally
+                    {
+                        IsBusy = false;
+                    }
                 });
                 return _qqShareCommand;
             }
@@ -125,13 +137,25 @@ namespace U148.Uwp.ViewModels
                 _qzoneShareCommand = _qzoneShareCommand ?? new RelayCommand(async () =>
                 {
                     var article = Article;
-                    if (article == null)
+                    if (IsBusy || article == null)
                     {
                         return;
                     }
 
                     var url = string.Format(Constants.ArticleLink, article.Id);
-                    await _u148ShareService.ShareToQZoneAsync(url, article.Title, article.Summary);
+                    IsBusy = true;
+                    try
+                    {
+                        await _u148ShareService.ShareToQZoneAsync(url, article.Title, article.Summary);
+                    }
+                    catch (Exception ex)
+                    {
+                        _appToastService.ShowError(ex.Message);
+                    }
+                    finally
+                    {
+                        IsBusy = false;
+                    }
                 });
                 return _qzoneShareCommand;
             }
@@ -155,7 +179,7 @@ namespace U148.Uwp.ViewModels
             {
                 _sinaWeiboShareCommand = _sinaWeiboShareCommand ?? new RelayCommand(async () =>
                 {
-                    if (IsBusy && Article == null)
+                    if (IsBusy || Article == null)
                     {
                         return;
                     }
@@ -179,7 +203,7 @@ namespace U148.Uwp.ViewModels
                             var result = await _u148ShareService.ShareToSinaWeiboAsync(bytes, text);
                             if (result.ErrorCode <= 0)
                             {
-                                _appToastService.ShowMessage("分享成功");
+                                _appToastService.ShowMessage(LocalizedStrings.ShareSuccess);
                             }
                             else
                             {
@@ -210,13 +234,25 @@ namespace U148.Uwp.ViewModels
                 _wechatShareCommand = _wechatShareCommand ?? new RelayCommand(async () =>
                 {
                     var article = Article;
-                    if (article == null)
+                    if (IsBusy || article == null)
                     {
                         return;
                     }
 
                     var url = string.Format(Constants.ArticleLink, article.Id);
-                    await _u148ShareService.ShareToWechatAsync(url, article.Title, article.Summary);
+                    IsBusy = true;
+                    try
+                    {
+                        await _u148ShareService.ShareToWechatAsync(url, article.Title, article.Summary);
+                    }
+                    catch (Exception ex)
+                    {
+                        _appToastService.ShowError(ex.Message);
+                    }
+                    finally
+                    {
+                        IsBusy = false;
+                    }
                 });
                 return _wechatShareCommand;
             }
@@ -234,7 +270,8 @@ namespace U148.Uwp.ViewModels
 
         private async void LoadArticleDetail(bool isRefresh = false)
         {
-            if (IsLoading || Article == null)
+            var article = Article;
+            if (IsLoading || article == null)
             {
                 return;
             }
@@ -242,14 +279,14 @@ namespace U148.Uwp.ViewModels
             IsLoading = true;
             try
             {
-                var result = await _articleService.GetArticleDetailAsync(Article.Id);
+                var result = await _articleService.GetArticleDetailAsync(article.Id);
                 if (result.ErrorCode == 0)
                 {
-                    MessengerInstance.Send(new ArticleContentLoadedMessage(result.Data.Content));
+                    MessengerInstance.Send(new ArticleContentLoadedMessage(article, result.Data.Content));
 
                     if (isRefresh)
                     {
-                        _appToastService.ShowMessage("刷新成功");
+                        _appToastService.ShowMessage(LocalizedStrings.RefreshSuccess);
                     }
                 }
                 else

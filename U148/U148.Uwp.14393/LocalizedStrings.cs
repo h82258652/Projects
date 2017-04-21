@@ -1,4 +1,5 @@
-﻿using Windows.ApplicationModel.Resources;
+﻿using System;
+using Windows.ApplicationModel.Resources;
 
 namespace U148.Uwp
 {
@@ -55,5 +56,21 @@ namespace U148.Uwp
         internal static string Video => ResourceLoader.GetForCurrentView(ArticleCategoryReswName).GetString("Video");
 
         internal static string Weibo => ResourceLoader.GetForCurrentView(ArticleCategoryReswName).GetString("Weibo");
+
+        internal static string ShareSuccess
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        internal static string RefreshSuccess
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+        }
     }
 }

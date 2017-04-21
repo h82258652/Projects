@@ -5,6 +5,7 @@ using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Navigation;
+using U148.Uwp.Utils;
 
 namespace U148.Uwp
 {
@@ -22,6 +23,19 @@ namespace U148.Uwp
             base.OnActivated(args);
 
             await UmengAnalytics.StartTrackAsync(Constants.UmengAppKey);
+        }
+
+        protected override void OnFileActivated(FileActivatedEventArgs args)
+        {
+            base.OnFileActivated(args);
+            try
+            {
+                new U148WechatCallback().Handle(args);
+            }
+            catch (Exception)
+            {
+                // ignored
+            }
         }
 
         protected override async void OnLaunched(LaunchActivatedEventArgs e)
