@@ -1,11 +1,11 @@
 ﻿using System;
 using GalaSoft.MvvmLight.Messaging;
 using U148.Uwp.Messages;
+using U148.Uwp.ViewModels;
 using Windows.Foundation;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
-using U148.Uwp.ViewModels;
 using WinRTXamlToolkit.AwaitableUI;
 
 namespace U148.Uwp.Views

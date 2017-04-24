@@ -1,11 +1,11 @@
 ﻿using System;
+using U148.Uwp.Utils;
 using U148.Uwp.Views;
 using UmengSDK;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Navigation;
-using U148.Uwp.Utils;
 
 namespace U148.Uwp
 {
