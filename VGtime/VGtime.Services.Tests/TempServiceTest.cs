@@ -51,5 +51,13 @@ namespace VGtime.Services.Tests
             var result = await tempService.GetListByTagAsync(1);
             Assert.AreEqual(result.ErrorCode, HttpStatusCode.OK);
         }
+
+        [Test]
+        public async Task TestGetC()
+        {
+            var tempService = new TempService();
+            var result = await tempService.GetC(552341);
+            Assert.AreEqual(result.ErrorCode, HttpStatusCode.OK);
+        }
     }
 }

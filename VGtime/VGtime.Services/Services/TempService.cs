@@ -51,5 +51,14 @@ namespace VGtime.Services
                 return JsonConvert.DeserializeObject<ResultBase<object>>(json);
             }
         }
+
+        public async Task<ResultBase<object>> GetC(int postId)
+        {
+            using (var client = new HttpClient())
+            {
+                var json = await client.GetStringAsync($"http://app02.vgtime.com:8080/vgtime-app/api/v2/post/commentList.json?postId={postId}");
+                return JsonConvert.DeserializeObject<ResultBase<object>>(json);
+            }
+        }
     }
 }
