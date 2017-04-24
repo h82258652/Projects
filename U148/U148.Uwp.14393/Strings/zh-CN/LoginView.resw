@@ -123,11 +123,20 @@
   <data name="EmailRequired" xml:space="preserve">
     <value>请填写邮箱</value>
   </data>
+  <data name="EmailTextBox.PlaceholderText" xml:space="preserve">
+    <value>邮箱</value>
+  </data>
+  <data name="LoginButton.Content" xml:space="preserve">
+    <value>没有账号？立刻注册</value>
+  </data>
   <data name="LoginButton.Label" xml:space="preserve">
     <value>登录</value>
   </data>
   <data name="LoginSuccess" xml:space="preserve">
     <value>登录成功</value>
+  </data>
+  <data name="PasswordBox.PlaceholderText" xml:space="preserve">
+    <value>密码</value>
   </data>
   <data name="PasswordLengthError" xml:space="preserve">
     <value>密码最少 6 位</value>

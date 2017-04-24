@@ -37,10 +37,10 @@
                     </core:EventTriggerBehavior>
                 </interactivity:Interaction.Behaviors>
             </Button>
-            <AutoSuggestBox Grid.Column="1"
+            <AutoSuggestBox x:Uid="/SearchView/SearchTextBox"
+                            Grid.Column="1"
                             VerticalAlignment="Center"
-                            FontFamily="ms-appx:///Assets/Fonts/SourceHanSerifCN-Regular.otf#Source Han Serif CN"
-                            PlaceholderText="搜索">
+                            FontFamily="ms-appx:///Assets/Fonts/SourceHanSerifCN-Regular.otf#Source Han Serif CN">
                 <AutoSuggestBox.QueryIcon>
                     <SymbolIcon Symbol="Find" />
                 </AutoSuggestBox.QueryIcon>

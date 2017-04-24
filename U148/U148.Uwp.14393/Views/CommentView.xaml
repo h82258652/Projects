@@ -76,12 +76,12 @@
                     <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
                 <TextBox x:Name="CommentTextBox"
+                         x:Uid="/CommentView/CommentTextBox"
                          Grid.Column="0"
                          Background="Transparent"
                          BorderBrush="Transparent"
                          BorderThickness="0"
-                         FontFamily="ms-appx:///Assets/Fonts/SourceHanSerifCN-Regular.otf#Source Han Serif CN"
-                         PlaceholderText="写下你的评论" />
+                         FontFamily="ms-appx:///Assets/Fonts/SourceHanSerifCN-Regular.otf#Source Han Serif CN" />
                 <Button Grid.Column="1"
                         Command="{Binding Path=SendCommentCommand}"
                         CommandParameter="{Binding ElementName=CommentTextBox, Path=Text}"

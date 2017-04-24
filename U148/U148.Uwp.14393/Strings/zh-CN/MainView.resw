@@ -129,6 +129,9 @@
   <data name="LogoutSuccess" xml:space="preserve">
     <value>登出成功</value>
   </data>
+  <data name="PraiseMenuItem.Label" xml:space="preserve">
+    <value>点赞</value>
+  </data>
   <data name="SettingMenuItem.Label" xml:space="preserve">
     <value>设置</value>
   </data>

@@ -362,6 +362,8 @@
     <PRIResource Include="Strings\zh-CN\DetailView.resw" />
     <PRIResource Include="Strings\zh-CN\ChooseShareControl.resw" />
     <PRIResource Include="Strings\zh-CN\CommentItem.resw" />
+    <PRIResource Include="Strings\zh-CN\ArticleView.resw" />
+    <PRIResource Include="Strings\zh-CN\SearchView.resw" />
     <None Include="U148.Uwp.14393_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>

@@ -86,8 +86,8 @@
                             </StackPanel>
                             <StackPanel Grid.Row="2"
                                         Orientation="Vertical">
-                                <localControls:HamburgerMenuItem Command="{Binding Path=PraiseCommand}"
-                                                                 Label="点赞">
+                                <localControls:HamburgerMenuItem x:Uid="/MainView/PraiseMenuItem"
+                                                                 Command="{Binding Path=PraiseCommand}">
                                     <interactivity:Interaction.Behaviors>
                                         <core:EventTriggerBehavior EventName="Click">
                                             <core:ChangePropertyAction PropertyName="IsPaneOpen"

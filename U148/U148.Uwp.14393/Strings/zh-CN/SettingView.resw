@@ -123,6 +123,9 @@
   <data name="ClearImageCacheFinish" xml:space="preserve">
     <value>清除图片缓存完成</value>
   </data>
+  <data name="ClearSinaWeiboAuthenticationButton.Content" xml:space="preserve">
+    <value>清除微博授权</value>
+  </data>
   <data name="ClearSinaWeiboAuthenticationSuccess" xml:space="preserve">
     <value>清除新浪微博授权完成</value>
   </data>

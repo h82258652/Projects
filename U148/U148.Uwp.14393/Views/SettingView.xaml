@@ -65,7 +65,6 @@
                         BorderBrush="Transparent"
                         BorderThickness="0"
                         Command="{Binding Path=ClearSinaWeiboAuthenticationCommand}"
-                        Content="清除微博授权"
                         FontFamily="ms-appx:///Assets/Fonts/SourceHanSerifCN-Regular.otf#Source Han Serif CN" />
             </StackPanel>
         </ScrollViewer>

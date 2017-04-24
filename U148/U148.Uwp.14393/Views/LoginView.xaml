@@ -34,9 +34,9 @@
                             <SymbolIcon Grid.Column="0"
                                         Symbol="Contact" />
                             <AutoSuggestBox x:Name="EmailTextBox"
+                                            x:Uid="/LoginView/EmailTextBox"
                                             Grid.Column="1"
                                             ItemsSource="{Binding Path=EmailSuggestions}"
-                                            PlaceholderText="邮箱"
                                             QuerySubmitted="EmailTextBox_QuerySubmitted"
                                             Style="{StaticResource LoginEmailTextBoxStyle}"
                                             Text="{Binding Path=Email, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
@@ -58,11 +58,11 @@
                                       FontFamily="Segoe MDL2 Assets"
                                       Glyph="&#xE1F6;" />
                             <PasswordBox x:Name="PasswordBox"
+                                         x:Uid="/LoginView/PasswordBox"
                                          Grid.Column="1"
                                          KeyDown="PasswordBox_KeyDown"
                                          MaxLength="16"
                                          Password="{Binding Path=Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                         PlaceholderText="密码"
                                          Style="{StaticResource LoginPasswordBoxStyle}" />
                         </Grid>
                         <Border Height="1"
@@ -71,9 +71,9 @@
                                    Foreground="Red"
                                    Text="{Binding Path=Errors[Password]}" />
                     </StackPanel>
-                    <HyperlinkButton Margin="0,20,0,0"
+                    <HyperlinkButton x:Uid="/LoginView/LoginButton"
+                                     Margin="0,20,0,0"
                                      HorizontalAlignment="Center"
-                                     Content="没有账号？立刻注册"
                                      FontFamily="ms-appx:///Assets/Fonts/SourceHanSerifCN-Regular.otf#Source Han Serif CN"
                                      NavigateUri="http://www.u148.net/user/register.html" />
                 </StackPanel>

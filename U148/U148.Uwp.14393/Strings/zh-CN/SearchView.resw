@@ -117,16 +117,7 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="CommentTextBox.PlaceholderText" xml:space="preserve">
-    <value>写下您的评论</value>
-  </data>
-  <data name="PleaseInputComment" xml:space="preserve">
-    <value>请输入评论</value>
-  </data>
-  <data name="ReplyCommentSuccess" xml:space="preserve">
-    <value>回复成功</value>
-  </data>
-  <data name="SendCommentSuccess" xml:space="preserve">
-    <value>发送成功</value>
+  <data name="SearchTextBox.PlaceholderText" xml:space="preserve">
+    <value>搜索</value>
   </data>
 </root>

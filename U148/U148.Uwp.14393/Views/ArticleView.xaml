@@ -38,11 +38,11 @@
                     <FontIcon FontFamily="Segoe MDL2 Assets"
                               Glyph="&#xE700;" />
                 </Button>
-                <Button Grid.Column="1"
+                <Button x:Uid="/ArticleView/ScrollToTopButton"
+                        Grid.Column="1"
                         HorizontalAlignment="Stretch"
                         VerticalAlignment="Stretch"
                         Click="ScrollToTopButton_Click"
-                        Content="有意思吧"
                         FontFamily="ms-appx:///Assets/Fonts/SourceHanSerifCN-Regular.otf#Source Han Serif CN"
                         Style="{StaticResource EmptyButtonStyle}" />
                 <Button Grid.Column="2"
