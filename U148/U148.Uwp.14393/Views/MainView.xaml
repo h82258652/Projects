@@ -100,8 +100,8 @@
                                                   Glyph="&#xE006;" />
                                     </localControls:HamburgerMenuItem.Icon>
                                 </localControls:HamburgerMenuItem>
-                                <localControls:HamburgerMenuItem Command="{Binding Path=SettingCommand}"
-                                                                 Label="设置">
+                                <localControls:HamburgerMenuItem x:Uid="/MainView/SettingMenuItem"
+                                                                 Command="{Binding Path=SettingCommand}">
                                     <interactivity:Interaction.Behaviors>
                                         <core:EventTriggerBehavior EventName="Click">
                                             <core:ChangePropertyAction PropertyName="IsPaneOpen"
@@ -113,8 +113,8 @@
                                         <SymbolIcon Symbol="Setting" />
                                     </localControls:HamburgerMenuItem.Icon>
                                 </localControls:HamburgerMenuItem>
-                                <localControls:HamburgerMenuItem Command="{Binding Path=AboutCommand}"
-                                                                 Label="关于">
+                                <localControls:HamburgerMenuItem x:Uid="/MainView/AboutMenuItem"
+                                                                 Command="{Binding Path=AboutCommand}">
                                     <interactivity:Interaction.Behaviors>
                                         <core:EventTriggerBehavior EventName="Click">
                                             <core:ChangePropertyAction PropertyName="IsPaneOpen"
