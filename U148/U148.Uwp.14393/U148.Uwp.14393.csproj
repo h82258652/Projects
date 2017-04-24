@@ -359,6 +359,9 @@
     <None Include="Assets\Html\bower_components\tether\src\css\tether-theme-arrows.sass" />
     <None Include="Assets\Html\bower_components\tether\src\css\tether-theme-basic.sass" />
     <None Include="Assets\Html\bower_components\tether\src\css\tether.sass" />
+    <PRIResource Include="Strings\zh-CN\DetailView.resw" />
+    <PRIResource Include="Strings\zh-CN\ChooseShareControl.resw" />
+    <PRIResource Include="Strings\zh-CN\CommentItem.resw" />
     <None Include="U148.Uwp.14393_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>

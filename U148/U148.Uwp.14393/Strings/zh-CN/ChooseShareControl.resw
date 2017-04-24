@@ -117,16 +117,16 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ClearDataCacheFinish" xml:space="preserve">
-    <value>清除数据缓存完成</value>
+  <data name="QQShareTextBlock.Text" xml:space="preserve">
+    <value>QQ 分享</value>
   </data>
-  <data name="ClearImageCacheFinish" xml:space="preserve">
-    <value>清除图片缓存完成</value>
+  <data name="QZoneShareTextBlock.Text" xml:space="preserve">
+    <value>QQ 空间分享</value>
   </data>
-  <data name="ClearSinaWeiboAuthenticationSuccess" xml:space="preserve">
-    <value>清除新浪微博授权完成</value>
+  <data name="SinaWeiboShareTextBlock.Text" xml:space="preserve">
+    <value>微博分享</value>
   </data>
-  <data name="SimulateDeviceComboBox.Header" xml:space="preserve">
-    <value>模拟设备</value>
+  <data name="WechatShareTextBlock.Text" xml:space="preserve">
+    <value>微信分享</value>
   </data>
 </root>

@@ -34,10 +34,10 @@
                 <Image Width="96"
                        Height="96"
                        Source="/Assets/Images/qq.png" />
-                <TextBlock Margin="0,4,0,0"
+                <TextBlock x:Uid="/ChooseShareControl/QQShareTextBlock"
+                           Margin="0,4,0,0"
                            FontFamily="ms-appx:///Assets/Fonts/SourceHanSerifCN-Regular.otf#Source Han Serif CN"
                            Foreground="White"
-                           Text="QQ 分享"
                            TextAlignment="Center" />
             </StackPanel>
         </Button>
@@ -52,10 +52,10 @@
                 <Image Width="96"
                        Height="96"
                        Source="/Assets/Images/qzone.png" />
-                <TextBlock Margin="0,4,0,0"
+                <TextBlock x:Uid="/ChooseShareControl/QZoneShareTextBlock"
+                           Margin="0,4,0,0"
                            FontFamily="ms-appx:///Assets/Fonts/SourceHanSerifCN-Regular.otf#Source Han Serif CN"
                            Foreground="White"
-                           Text="QQ 空间分享"
                            TextAlignment="Center" />
             </StackPanel>
         </Button>
@@ -70,10 +70,10 @@
                 <Image Width="96"
                        Height="96"
                        Source="/Assets/Images/SinaWeibo.png" />
-                <TextBlock Margin="0,4,0,0"
+                <TextBlock x:Uid="/ChooseShareControl/SinaWeiboShareTextBlock"
+                           Margin="0,4,0,0"
                            FontFamily="ms-appx:///Assets/Fonts/SourceHanSerifCN-Regular.otf#Source Han Serif CN"
                            Foreground="White"
-                           Text="微博分享"
                            TextAlignment="Center" />
             </StackPanel>
         </Button>
@@ -88,10 +88,10 @@
                 <Image Width="96"
                        Height="96"
                        Source="/Assets/Images/wechat.png" />
-                <TextBlock Margin="0,4,0,0"
+                <TextBlock x:Uid="/ChooseShareControl/WechatShareTextBlock"
+                           Margin="0,4,0,0"
                            FontFamily="ms-appx:///Assets/Fonts/SourceHanSerifCN-Regular.otf#Source Han Serif CN"
                            Foreground="White"
-                           Text="微信分享"
                            TextAlignment="Center" />
             </StackPanel>
         </Button>

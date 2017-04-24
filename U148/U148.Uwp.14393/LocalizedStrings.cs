@@ -1,5 +1,4 @@
-﻿using System;
-using Windows.ApplicationModel.Resources;
+﻿using Windows.ApplicationModel.Resources;
 
 namespace U148.Uwp
 {
@@ -9,6 +8,8 @@ namespace U148.Uwp
 
         private const string CommentViewReswName = "CommentView";
 
+        private const string DetailViewReswName = "DetailView";
+
         private const string LoginViewReswName = "LoginView";
 
         private const string MainViewReswName = "MainView";
@@ -17,13 +18,7 @@ namespace U148.Uwp
 
         internal static string Audio => ResourceLoader.GetForCurrentView(ArticleCategoryReswName).GetString("Audio");
 
-        internal static string ClearDataCacheFinish
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-        }
+        internal static string ClearDataCacheFinish => ResourceLoader.GetForCurrentView(SettingViewReswName).GetString("ClearDataCacheFinish");
 
         internal static string ClearImageCacheFinish => ResourceLoader.GetForCurrentView(SettingViewReswName).GetString("ClearImageCacheFinish");
 
@@ -61,19 +56,15 @@ namespace U148.Uwp
 
         internal static string SendCommentSuccess => ResourceLoader.GetForCurrentView(CommentViewReswName).GetString("SendCommentSuccess");
 
-        internal static string ShareSuccess
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-        }
+        internal static string ShareSuccess => ResourceLoader.GetForCurrentView(DetailViewReswName).GetString("ShareSuccess");
 
         internal static string Tasty => ResourceLoader.GetForCurrentView(ArticleCategoryReswName).GetString("Tasty");
 
         internal static string Text => ResourceLoader.GetForCurrentView(ArticleCategoryReswName).GetString("Text");
 
         internal static string Video => ResourceLoader.GetForCurrentView(ArticleCategoryReswName).GetString("Video");
+
+        internal static string WechatShareNotSupportOnDesktop => ResourceLoader.GetForCurrentView(DetailViewReswName).GetString("WechatShareNotSupportOnDesktop");
 
         internal static string Weibo => ResourceLoader.GetForCurrentView(ArticleCategoryReswName).GetString("Weibo");
     }

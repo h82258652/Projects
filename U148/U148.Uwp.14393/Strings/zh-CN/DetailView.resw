@@ -117,16 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ClearDataCacheFinish" xml:space="preserve">
-    <value>清除数据缓存完成</value>
+  <data name="ShareSuccess" xml:space="preserve">
+    <value>分享成功</value>
   </data>
-  <data name="ClearImageCacheFinish" xml:space="preserve">
-    <value>清除图片缓存完成</value>
-  </data>
-  <data name="ClearSinaWeiboAuthenticationSuccess" xml:space="preserve">
-    <value>清除新浪微博授权完成</value>
-  </data>
-  <data name="SimulateDeviceComboBox.Header" xml:space="preserve">
-    <value>模拟设备</value>
+  <data name="WechatShareNotSupportOnDesktop" xml:space="preserve">
+    <value>抱歉，桌面端暂时不支持该功能</value>
   </data>
 </root>

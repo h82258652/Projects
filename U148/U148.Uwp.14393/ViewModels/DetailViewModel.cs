@@ -3,6 +3,7 @@ using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Views;
 using SoftwareKobo.Controls;
+using SoftwareKobo.Helpers;
 using SoftwareKobo.Social.SinaWeibo;
 using SoftwareKobo.ViewModels;
 using U148.Models;
@@ -238,6 +239,12 @@ namespace U148.Uwp.ViewModels
                     var article = Article;
                     if (IsBusy || article == null)
                     {
+                        return;
+                    }
+
+                    if (DeviceFamilyHelper.IsDesktop)
+                    {
+                        _appToastService.ShowError(LocalizedStrings.WechatShareNotSupportOnDesktop);
                         return;
                     }
 
