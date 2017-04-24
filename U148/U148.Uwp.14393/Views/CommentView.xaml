@@ -3,6 +3,7 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:behaviors="using:SoftwareKobo.Behaviors"
                     xmlns:controls="using:U148.Uwp.Controls"
+                    xmlns:converters="using:WinRTXamlToolkit.Converters"
                     xmlns:core="using:Microsoft.Xaml.Interactions.Core"
                     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                     xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
@@ -11,74 +12,88 @@
                     x:Name="Root"
                     DataContext="{Binding Source={StaticResource Locator}, Path=Comment}"
                     mc:Ignorable="d">
+    <Page.Resources>
+        <ResourceDictionary>
+            <converters:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+        </ResourceDictionary>
+    </Page.Resources>
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="Auto" />
-        </Grid.RowDefinitions>
-        <Grid Grid.Row="0"
-              Background="{ThemeResource U148AccentBrush}">
-            <Button Style="{StaticResource NavigationBackButtonStyle}">
-                <interactivity:Interaction.Behaviors>
-                    <core:EventTriggerBehavior EventName="Click">
-                        <behaviors:GoBackAction />
-                    </core:EventTriggerBehavior>
-                </interactivity:Interaction.Behaviors>
-            </Button>
-        </Grid>
-        <Grid Grid.Row="1">
-            <ListView ItemsSource="{Binding Path=Comments}"
-                      SelectionMode="None">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <controls:CommentItem IsReplyEnabled="{Binding ElementName=Root, Path=DataContext.IsLogined}"
-                                              Loaded="CommentItem_Loaded"
-                                              Unloaded="CommentItem_Unloaded">
-                            <interactivity:Interaction.Behaviors>
-                                <core:EventTriggerBehavior EventName="Reply">
-                                    <core:InvokeCommandAction Command="{Binding ElementName=Root, Path=DataContext.ReplyCommentCommand}" />
-                                </core:EventTriggerBehavior>
-                            </interactivity:Interaction.Behaviors>
-                        </controls:CommentItem>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-                <ListView.ItemContainerStyle>
-                    <Style TargetType="ListViewItem">
-                        <Setter Property="HorizontalContentAlignment"
-                                Value="Stretch" />
-                        <Setter Property="Padding"
-                                Value="12" />
-                        <Setter Property="BorderBrush"
-                                Value="{ThemeResource U148DividerBrush}" />
-                        <Setter Property="BorderThickness"
-                                Value="0,0,0,1" />
-                    </Style>
-                </ListView.ItemContainerStyle>
-            </ListView>
-            <ProgressBar VerticalAlignment="Top"
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0"
+                  Background="{ThemeResource U148AccentBrush}">
+                <Button Style="{StaticResource NavigationBackButtonStyle}">
+                    <interactivity:Interaction.Behaviors>
+                        <core:EventTriggerBehavior EventName="Click">
+                            <behaviors:GoBackAction />
+                        </core:EventTriggerBehavior>
+                    </interactivity:Interaction.Behaviors>
+                </Button>
+            </Grid>
+            <Grid Grid.Row="1">
+                <ListView ItemsSource="{Binding Path=Comments}"
+                          SelectionMode="None">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <controls:CommentItem IsReplyEnabled="{Binding ElementName=Root, Path=DataContext.IsLogined}"
+                                                  Loaded="CommentItem_Loaded"
+                                                  Unloaded="CommentItem_Unloaded">
+                                <interactivity:Interaction.Behaviors>
+                                    <core:EventTriggerBehavior EventName="Reply">
+                                        <core:InvokeCommandAction Command="{Binding ElementName=Root, Path=DataContext.ReplyCommentCommand}" />
+                                    </core:EventTriggerBehavior>
+                                </interactivity:Interaction.Behaviors>
+                            </controls:CommentItem>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                    <ListView.ItemContainerStyle>
+                        <Style TargetType="ListViewItem">
+                            <Setter Property="HorizontalContentAlignment"
+                                    Value="Stretch" />
+                            <Setter Property="Padding"
+                                    Value="12" />
+                            <Setter Property="BorderBrush"
+                                    Value="{ThemeResource U148DividerBrush}" />
+                            <Setter Property="BorderThickness"
+                                    Value="0,0,0,1" />
+                        </Style>
+                    </ListView.ItemContainerStyle>
+                </ListView>
+                <ProgressBar VerticalAlignment="Top"
+                             Background="Transparent"
+                             Foreground="{ThemeResource U148AccentBrush}"
+                             IsIndeterminate="{Binding Path=Comments.IsLoading}" />
+            </Grid>
+            <Grid Grid.Row="2"
+                  BorderBrush="Gray"
+                  BorderThickness="0,1,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <TextBox x:Name="CommentTextBox"
+                         Grid.Column="0"
                          Background="Transparent"
-                         Foreground="{ThemeResource U148AccentBrush}"
-                         IsIndeterminate="{Binding Path=Comments.IsLoading}" />
+                         BorderBrush="Transparent"
+                         BorderThickness="0"
+                         FontFamily="ms-appx:///Assets/Fonts/SourceHanSerifCN-Regular.otf#Source Han Serif CN"
+                         PlaceholderText="写下你的评论" />
+                <Button Grid.Column="1"
+                        Command="{Binding Path=SendCommentCommand}"
+                        CommandParameter="{Binding ElementName=CommentTextBox, Path=Text}"
+                        Content="发送" />
+            </Grid>
         </Grid>
-        <Grid Grid.Row="2"
-              BorderBrush="Gray"
-              BorderThickness="0,1,0,0">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="Auto" />
-            </Grid.ColumnDefinitions>
-            <TextBox x:Name="CommentTextBox"
-                     Grid.Column="0"
-                     Background="Transparent"
-                     BorderBrush="Transparent"
-                     BorderThickness="0"
-                     FontFamily="ms-appx:///Assets/Fonts/SourceHanSerifCN-Regular.otf#Source Han Serif CN"
-                     PlaceholderText="写下你的评论" />
-            <Button Grid.Column="1"
-                    Command="{Binding Path=SendCommentCommand}"
-                    CommandParameter="{Binding ElementName=CommentTextBox, Path=Text}"
-                    Content="发送" />
+        <Grid Background="#80000000"
+              Visibility="{Binding Path=IsBusy, Converter={StaticResource BooleanToVisibilityConverter}}">
+            <ProgressRing Width="96"
+                          Height="96"
+                          Foreground="{ThemeResource U148AccentBrush}"
+                          IsActive="{Binding Path=IsBusy}" />
         </Grid>
     </Grid>
 </views:BindablePage>
