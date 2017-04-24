@@ -179,7 +179,8 @@ namespace U148.Uwp.ViewModels
             {
                 _sinaWeiboShareCommand = _sinaWeiboShareCommand ?? new RelayCommand(async () =>
                 {
-                    if (IsBusy || Article == null)
+                    var article = Article;
+                    if (IsBusy || article == null)
                     {
                         return;
                     }
@@ -190,14 +191,15 @@ namespace U148.Uwp.ViewModels
                         byte[] bytes;
                         try
                         {
-                            bytes = await _imageLoader.GetBytesAsync(Article.PicMid);
+                            bytes = await _imageLoader.GetBytesAsync(article.PicMid);
                         }
                         catch (Exception ex)
                         {
                             _appToastService.ShowError(ex.Message);
                             return;
                         }
-                        var text = Article.Title + string.Format(Constants.ArticleLink, Article.Id);
+
+                        var text = article.Title + string.Format(Constants.ArticleLink, article.Id);
                         try
                         {
                             var result = await _u148ShareService.ShareToSinaWeiboAsync(bytes, text);

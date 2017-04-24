@@ -55,13 +55,7 @@ namespace U148.Uwp
 
         internal static string PleaseInputComment => ResourceLoader.GetForCurrentView(CommentViewReswName).GetString("PleaseInputComment");
 
-        internal static string RefreshSuccess
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-        }
+        internal static string RefreshSuccess => ResourceLoader.GetForCurrentView().GetString("RefreshSuccess");
 
         internal static string ReplyCommentSuccess => ResourceLoader.GetForCurrentView(CommentViewReswName).GetString("ReplyCommentSuccess");
 
