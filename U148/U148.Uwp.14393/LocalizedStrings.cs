@@ -63,6 +63,8 @@ namespace U148.Uwp
             }
         }
 
+        internal static string ReplyCommentSuccess => ResourceLoader.GetForCurrentView(CommentViewReswName).GetString("ReplyCommentSuccess");
+
         internal static string SendCommentSuccess => ResourceLoader.GetForCurrentView(CommentViewReswName).GetString("SendCommentSuccess");
 
         internal static string ShareSuccess
