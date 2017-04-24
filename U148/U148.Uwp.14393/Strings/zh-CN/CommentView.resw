@@ -121,7 +121,7 @@
     <value>请输入评论</value>
   </data>
   <data name="ReplyCommentSuccess" xml:space="preserve">
-    <value>ReplyCommentSuccess</value>
+    <value>回复成功</value>
   </data>
   <data name="SendCommentSuccess" xml:space="preserve">
     <value>发送成功</value>

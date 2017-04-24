@@ -48,10 +48,10 @@
                                 <TextBlock Text="{Binding Path=UserInfo.Nickname}"
                                            TextAlignment="Center"
                                            Visibility="{Binding Path=UserInfo, Converter={StaticResource IsNullToVisibilityConverter}}" />
-                                <localControls:HamburgerMenuItem Height="48"
+                                <localControls:HamburgerMenuItem x:Uid="/MainView/LogoutMenuItem"
+                                                                 Height="48"
                                                                  HorizontalAlignment="Stretch"
                                                                  Command="{Binding Path=LogoutCommand}"
-                                                                 Label="登出"
                                                                  Visibility="{Binding Path=UserInfo, Converter={StaticResource IsNullToVisibilityConverter}}">
                                     <interactivity:Interaction.Behaviors>
                                         <core:EventTriggerBehavior EventName="Click">
@@ -68,10 +68,10 @@
                             </StackPanel>
                             <StackPanel Grid.Row="0"
                                         Visibility="{Binding Path=UserInfo, Converter={StaticResource InversedIsNullToVisibilityConverter}}">
-                                <localControls:HamburgerMenuItem Height="48"
+                                <localControls:HamburgerMenuItem x:Uid="/MainView/LoginMenuItem"
+                                                                 Height="48"
                                                                  HorizontalAlignment="Stretch"
-                                                                 Command="{Binding Path=LoginCommand}"
-                                                                 Label="登录">
+                                                                 Command="{Binding Path=LoginCommand}">
                                     <interactivity:Interaction.Behaviors>
                                         <core:EventTriggerBehavior EventName="Click">
                                             <core:ChangePropertyAction PropertyName="IsPaneOpen"
