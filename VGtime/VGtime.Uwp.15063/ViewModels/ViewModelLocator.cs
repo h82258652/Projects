@@ -28,6 +28,7 @@ namespace VGtime.Uwp.ViewModels
 
             unityContainer.RegisterInstance(CreateNavigationService());
             unityContainer.RegisterType<IPostService, PostService>();
+            unityContainer.RegisterType<IDialogService, DialogService>();
 
             unityContainer.RegisterType<MainViewModel>();
             unityContainer.RegisterType<DetailViewModel>();

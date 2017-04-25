@@ -1,4 +1,7 @@
-﻿using GalaSoft.MvvmLight;
+﻿using System;
+using System.Collections.Generic;
+using System.Net;
+using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Views;
 using VGtime.Models;
@@ -8,22 +11,49 @@ namespace VGtime.Uwp.ViewModels
 {
     public class MainViewModel : ViewModelBase
     {
+        private readonly IDialogService _dialogService;
+
         private readonly INavigationService _navigationService;
 
         private readonly IPostService _postService;
 
+        private IEnumerable<Post> _headPosts;
+
+        private bool _isLoading;
+
         private RelayCommand<Post> _postClickCommand;
 
-        public MainViewModel(IPostService postService, INavigationService navigationService)
+        public MainViewModel(IPostService postService, INavigationService navigationService, IDialogService dialogService)
         {
             _postService = postService;
             _navigationService = navigationService;
+            _dialogService = dialogService;
+
+            LoadHeadPostsAsync();
         }
 
-        public Post[] HeadPosts
+        public IEnumerable<Post> HeadPosts
         {
-            get;
-            set;
+            get
+            {
+                return _headPosts;
+            }
+            private set
+            {
+                Set(ref _headPosts, value);
+            }
+        }
+
+        public bool IsLoading
+        {
+            get
+            {
+                return _isLoading;
+            }
+            private set
+            {
+                Set(ref _isLoading, value);
+            }
         }
 
         public RelayCommand<Post> PostClickCommand
@@ -42,6 +72,36 @@ namespace VGtime.Uwp.ViewModels
         {
             get;
             set;
+        }
+
+        public async void LoadHeadPostsAsync()
+        {
+            if (IsLoading)
+            {
+                return;
+            }
+
+            IsLoading = true;
+            try
+            {
+                var result = await _postService.GetHeadPicAsync();
+                if (result.ErrorCode == HttpStatusCode.OK)
+                {
+                    HeadPosts = result.Data.Data;
+                }
+                else
+                {
+                    await _dialogService.ShowError(result.ErrorMessage, string.Empty, null, null);
+                }
+            }
+            catch (Exception ex)
+            {
+                await _dialogService.ShowError(ex, string.Empty, null, null);
+            }
+            finally
+            {
+                IsLoading = false;
+            }
         }
     }
 }
