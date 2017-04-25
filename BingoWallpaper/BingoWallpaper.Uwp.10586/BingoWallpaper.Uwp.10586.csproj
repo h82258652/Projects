@@ -239,7 +239,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Styles\BingoWallpaperPivotHeaderItemStyle.xaml">
+    <Page Include="Styles\BingoWallpaperPivotStyle.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

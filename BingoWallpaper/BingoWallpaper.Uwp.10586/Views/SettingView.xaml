@@ -14,7 +14,7 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/Styles/BingoWallpaperColorStyle.xaml" />
                 <ResourceDictionary Source="/Styles/BingoWallpaperCheckBoxStyle.xaml" />
-                <ResourceDictionary Source="/Styles/BingoWallpaperPivotHeaderItemStyle.xaml" />
+                <ResourceDictionary Source="/Styles/BingoWallpaperPivotStyle.xaml" />
                 <ResourceDictionary Source="/Styles/BingoWallpaperScrollViewerStyle.xaml" />
             </ResourceDictionary.MergedDictionaries>
             <converters:SaveLocationNameConverter x:Key="SaveLocationNameConverter" />
