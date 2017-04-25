@@ -1,8 +1,9 @@
 ﻿using GalaSoft.MvvmLight;
+using SoftwareKobo.ViewModels;
 
 namespace VGtime.Uwp.ViewModels
 {
-    public class CommentViewModel : ViewModelBase
+    public class CommentViewModel : ViewModelBase, INavigable
     {
         public CommentViewModel()
         {

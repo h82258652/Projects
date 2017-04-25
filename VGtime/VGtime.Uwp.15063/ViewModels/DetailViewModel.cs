@@ -1,12 +1,13 @@
 ﻿using System.Net;
 using GalaSoft.MvvmLight;
+using SoftwareKobo.ViewModels;
 using VGtime.Models;
 using VGtime.Services;
 using VGtime.Uwp.Messages;
 
 namespace VGtime.Uwp.ViewModels
 {
-    public class DetailViewModel : ViewModelBase
+    public class DetailViewModel : ViewModelBase, INavigable
     {
         private readonly IPostService _postService;
 
