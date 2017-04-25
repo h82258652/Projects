@@ -1,7 +1,7 @@
 ﻿using System;
-using Windows.UI.Xaml.Navigation;
 using GalaSoft.MvvmLight.Messaging;
 using VGtime.Uwp.Messages;
+using Windows.UI.Xaml.Navigation;
 
 namespace VGtime.Uwp.Views
 {

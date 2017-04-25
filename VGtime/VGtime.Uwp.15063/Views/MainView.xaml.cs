@@ -1,6 +1,6 @@
 ﻿using System.Net;
-using Windows.UI.Xaml;
 using VGtime.Services;
+using Windows.UI.Xaml;
 
 namespace VGtime.Uwp.Views
 {
