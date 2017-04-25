@@ -53,10 +53,10 @@ namespace VGtime.Services.Tests
         }
 
         [Test]
-        public async Task TestGetC()
+        public async Task TestGetCommentListAsync()
         {
             var tempService = new TempService();
-            var result = await tempService.GetC(552341);
+            var result = await tempService.GetCommentListAsync(552341);
             Assert.AreEqual(result.ErrorCode, HttpStatusCode.OK);
         }
     }

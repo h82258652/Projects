@@ -1,4 +1,6 @@
-﻿using Newtonsoft.Json;
+﻿using System;
+using Newtonsoft.Json;
+using VGtime.Models.JsonConverters;
 
 namespace VGtime.Models
 {
@@ -27,9 +29,9 @@ namespace VGtime.Models
         }
 
         [JsonProperty("publishDate")]
-        public long PublishDate
+        [JsonConverter(typeof(UnixTimestampConverter))]
+        public DateTimeOffset PublishDate
         {
-#warning it should be DateTimeOffset
             get;
             set;
         }
@@ -91,7 +93,7 @@ namespace VGtime.Models
         }
 
         [JsonProperty("content")]
-        public object Content
+        public string Content
         {
             get;
             set;
@@ -126,21 +128,21 @@ namespace VGtime.Models
         }
 
         [JsonProperty("author")]
-        public object Author
+        public string Author
         {
             get;
             set;
         }
 
         [JsonProperty("editor")]
-        public object Editor
+        public string Editor
         {
             get;
             set;
         }
 
         [JsonProperty("isQuestion")]
-        public object IsQuestion
+        public bool? IsQuestion
         {
             get;
             set;
@@ -224,7 +226,7 @@ namespace VGtime.Models
         }
 
         [JsonProperty("ad")]
-        public object Ad
+        public Ad Ad
         {
             get;
             set;
@@ -266,7 +268,7 @@ namespace VGtime.Models
         }
 
         [JsonProperty("programList")]
-        public object[] programList
+        public object[] ProgramList
         {
             get;
             set;
@@ -287,7 +289,7 @@ namespace VGtime.Models
         }
 
         [JsonProperty("contentPage")]
-        public object ContentPage
+        public int? ContentPage
         {
             get;
             set;
@@ -301,7 +303,7 @@ namespace VGtime.Models
         }
 
         [JsonProperty("comments")]
-        public object[] Comments
+        public Comment[] Comments
         {
             get;
             set;
