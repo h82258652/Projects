@@ -13,6 +13,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VGtime.Utils", "VGtime.Util
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VGtime.Uwp.15063", "VGtime.Uwp.15063\VGtime.Uwp.15063.csproj", "{3E7EBB89-CB20-429C-B238-3686D859AFFA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoftwareKobo.Utils.Uwp", "..\Libraries\SoftwareKobo.Utils.Uwp\SoftwareKobo.Utils.Uwp.csproj", "{E325FCD6-2E6B-44FC-85D0-D49957258C98}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SoftwareKobo.Utils", "..\Libraries\SoftwareKobo.Utils\SoftwareKobo.Utils.csproj", "{5A2DCD3B-CCDA-449B-B6D9-929F9FD5455E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libraries", "Libraries", "{DC3C5043-506D-4314-BFBE-B2A7D44BFB4A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -109,8 +115,44 @@ Global
 		{3E7EBB89-CB20-429C-B238-3686D859AFFA}.Release|x86.ActiveCfg = Release|x86
 		{3E7EBB89-CB20-429C-B238-3686D859AFFA}.Release|x86.Build.0 = Release|x86
 		{3E7EBB89-CB20-429C-B238-3686D859AFFA}.Release|x86.Deploy.0 = Release|x86
+		{E325FCD6-2E6B-44FC-85D0-D49957258C98}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E325FCD6-2E6B-44FC-85D0-D49957258C98}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E325FCD6-2E6B-44FC-85D0-D49957258C98}.Debug|ARM.ActiveCfg = Debug|ARM
+		{E325FCD6-2E6B-44FC-85D0-D49957258C98}.Debug|ARM.Build.0 = Debug|ARM
+		{E325FCD6-2E6B-44FC-85D0-D49957258C98}.Debug|x64.ActiveCfg = Debug|x64
+		{E325FCD6-2E6B-44FC-85D0-D49957258C98}.Debug|x64.Build.0 = Debug|x64
+		{E325FCD6-2E6B-44FC-85D0-D49957258C98}.Debug|x86.ActiveCfg = Debug|x86
+		{E325FCD6-2E6B-44FC-85D0-D49957258C98}.Debug|x86.Build.0 = Debug|x86
+		{E325FCD6-2E6B-44FC-85D0-D49957258C98}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E325FCD6-2E6B-44FC-85D0-D49957258C98}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E325FCD6-2E6B-44FC-85D0-D49957258C98}.Release|ARM.ActiveCfg = Release|ARM
+		{E325FCD6-2E6B-44FC-85D0-D49957258C98}.Release|ARM.Build.0 = Release|ARM
+		{E325FCD6-2E6B-44FC-85D0-D49957258C98}.Release|x64.ActiveCfg = Release|x64
+		{E325FCD6-2E6B-44FC-85D0-D49957258C98}.Release|x64.Build.0 = Release|x64
+		{E325FCD6-2E6B-44FC-85D0-D49957258C98}.Release|x86.ActiveCfg = Release|x86
+		{E325FCD6-2E6B-44FC-85D0-D49957258C98}.Release|x86.Build.0 = Release|x86
+		{5A2DCD3B-CCDA-449B-B6D9-929F9FD5455E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A2DCD3B-CCDA-449B-B6D9-929F9FD5455E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A2DCD3B-CCDA-449B-B6D9-929F9FD5455E}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{5A2DCD3B-CCDA-449B-B6D9-929F9FD5455E}.Debug|ARM.Build.0 = Debug|Any CPU
+		{5A2DCD3B-CCDA-449B-B6D9-929F9FD5455E}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{5A2DCD3B-CCDA-449B-B6D9-929F9FD5455E}.Debug|x64.Build.0 = Debug|Any CPU
+		{5A2DCD3B-CCDA-449B-B6D9-929F9FD5455E}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{5A2DCD3B-CCDA-449B-B6D9-929F9FD5455E}.Debug|x86.Build.0 = Debug|Any CPU
+		{5A2DCD3B-CCDA-449B-B6D9-929F9FD5455E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A2DCD3B-CCDA-449B-B6D9-929F9FD5455E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A2DCD3B-CCDA-449B-B6D9-929F9FD5455E}.Release|ARM.ActiveCfg = Release|Any CPU
+		{5A2DCD3B-CCDA-449B-B6D9-929F9FD5455E}.Release|ARM.Build.0 = Release|Any CPU
+		{5A2DCD3B-CCDA-449B-B6D9-929F9FD5455E}.Release|x64.ActiveCfg = Release|Any CPU
+		{5A2DCD3B-CCDA-449B-B6D9-929F9FD5455E}.Release|x64.Build.0 = Release|Any CPU
+		{5A2DCD3B-CCDA-449B-B6D9-929F9FD5455E}.Release|x86.ActiveCfg = Release|Any CPU
+		{5A2DCD3B-CCDA-449B-B6D9-929F9FD5455E}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{E325FCD6-2E6B-44FC-85D0-D49957258C98} = {DC3C5043-506D-4314-BFBE-B2A7D44BFB4A}
+		{5A2DCD3B-CCDA-449B-B6D9-929F9FD5455E} = {DC3C5043-506D-4314-BFBE-B2A7D44BFB4A}
 	EndGlobalSection
 EndGlobal
