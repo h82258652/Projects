@@ -25,12 +25,12 @@ namespace VGtime.Services
             }
         }
 
-        public async Task<ResultBase<PostStatusHost>> GetDetailStatusAsync(int postId, int type)
+        public async Task<ResultBase<PostStatus>> GetDetailStatusAsync(int postId, int type)
         {
             using (var client = new HttpClient())
             {
                 var json = await client.GetStringAsync($"{Constants.UrlBase}/vgtime-app/api/v2/post/detailStatus.json?postId={postId}&type={type}");
-                return JsonConvert.DeserializeObject<ResultBase<PostStatusHost>>(json);
+                return JsonConvert.DeserializeObject<ResultBase<PostStatus>>(json);
             }
         }
 
