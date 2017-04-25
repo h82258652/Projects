@@ -28,7 +28,7 @@ namespace VGtime.Models
             set;
         }
 
-        [JsonProperty("publishDate")]
+        [JsonProperty("publishDate", NullValueHandling = NullValueHandling.Ignore)]
         [JsonConverter(typeof(UnixTimestampConverter))]
         public DateTimeOffset PublishDate
         {
@@ -36,35 +36,35 @@ namespace VGtime.Models
             set;
         }
 
-        [JsonProperty("commentNum")]
+        [JsonProperty("commentNum", NullValueHandling = NullValueHandling.Ignore)]
         public int CommentNum
         {
             get;
             set;
         }
 
-        [JsonProperty("shareNum")]
+        [JsonProperty("shareNum", NullValueHandling = NullValueHandling.Ignore)]
         public int ShareNum
         {
             get;
             set;
         }
 
-        [JsonProperty("likeNum")]
+        [JsonProperty("likeNum", NullValueHandling = NullValueHandling.Ignore)]
         public int LikeNum
         {
             get;
             set;
         }
 
-        [JsonProperty("isFavorited")]
+        [JsonProperty("isFavorited", NullValueHandling = NullValueHandling.Ignore)]
         public bool IsFavorited
         {
             get;
             set;
         }
 
-        [JsonProperty("isLiked")]
+        [JsonProperty("isLiked", NullValueHandling = NullValueHandling.Ignore)]
         public bool IsLiked
         {
             get;
@@ -106,7 +106,7 @@ namespace VGtime.Models
             set;
         }
 
-        [JsonProperty("isShort")]
+        [JsonProperty("isShort", NullValueHandling = NullValueHandling.Ignore)]
         public bool IsShort
         {
             get;
@@ -163,7 +163,7 @@ namespace VGtime.Models
         }
 
         [JsonProperty("remark")]
-        public object Remark
+        public string Remark
         {
             get;
             set;
@@ -205,21 +205,21 @@ namespace VGtime.Models
         }
 
         [JsonProperty("comment")]
-        public object Comment
+        public Temp Comment
         {
             get;
             set;
         }
 
-        [JsonProperty("detailType")]
+        [JsonProperty("detailType", NullValueHandling = NullValueHandling.Ignore)]
         public int DetailType
         {
             get;
             set;
         }
 
-        [JsonProperty("trueType")]
-        public object TrueType
+        [JsonProperty("trueType", NullValueHandling = NullValueHandling.Ignore)]
+        public int TrueType
         {
             get;
             set;

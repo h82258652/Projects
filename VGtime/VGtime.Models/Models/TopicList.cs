@@ -3,10 +3,10 @@
 namespace VGtime.Models
 {
     [JsonObject]
-    public class PostStatusHost
+    public class TopicList
     {
-        [JsonProperty("postStatus")]
-        public PostStatus Data
+        [JsonProperty("topicList")]
+        public Temp[] Data
         {
             get;
             set;

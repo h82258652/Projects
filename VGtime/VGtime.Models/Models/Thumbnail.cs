@@ -5,14 +5,14 @@ namespace VGtime.Models
     [JsonObject]
     public class Thumbnail
     {
-        [JsonProperty("width")]
+        [JsonProperty("width", NullValueHandling = NullValueHandling.Ignore)]
         public int Width
         {
             get;
             set;
         }
 
-        [JsonProperty("height")]
+        [JsonProperty("height", NullValueHandling = NullValueHandling.Ignore)]
         public int Height
         {
             get;

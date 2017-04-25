@@ -7,12 +7,12 @@ namespace VGtime.Services
 {
     public class TempService
     {
-        public async Task<ResultBase<object>> GetCommentListAsync(int postId)
+        public async Task<ResultBase<CommentList>> GetCommentListAsync(int postId, int type)
         {
             using (var client = new HttpClient())
             {
-                var json = await client.GetStringAsync($"{Constants.UrlBase}/vgtime-app/api/v2/post/commentList.json?postId={postId}");
-                return JsonConvert.DeserializeObject<ResultBase<object>>(json);
+                var json = await client.GetStringAsync($"{Constants.UrlBase}/vgtime-app/api/v2/post/commentList.json?postId={postId}&type={type}");
+                return JsonConvert.DeserializeObject<ResultBase<CommentList>>(json);
             }
         }
 
@@ -52,12 +52,12 @@ namespace VGtime.Services
             }
         }
 
-        public async Task<ResultBase<object>> GetListByTagAsync(int tags)
+        public async Task<ResultBase<TopicList>> GetListByTagAsync(int tags)
         {
             using (var client = new HttpClient())
             {
                 var json = await client.GetStringAsync($"{Constants.UrlBase}/vgtime-app/api/v2/homepage/listByTag.json?tags={tags}");
-                return JsonConvert.DeserializeObject<ResultBase<object>>(json);
+                return JsonConvert.DeserializeObject<ResultBase<TopicList>>(json);
             }
         }
     }
