@@ -5,7 +5,7 @@ using VGtime.Models.JsonConverters;
 namespace VGtime.Models
 {
     [JsonObject]
-    public class Temp
+    public class Post
     {
         [JsonProperty("user")]
         public User User
@@ -205,7 +205,7 @@ namespace VGtime.Models
         }
 
         [JsonProperty("comment")]
-        public Temp Comment
+        public Post Comment
         {
             get;
             set;

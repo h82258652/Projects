@@ -3,10 +3,10 @@
 namespace VGtime.Models
 {
     [JsonObject]
-    public class PushList<T>
+    public class PushList
     {
         [JsonProperty("pushList")]
-        public T[] Data
+        public Post[] Data
         {
             get;
             set;

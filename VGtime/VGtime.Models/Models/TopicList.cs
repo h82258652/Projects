@@ -6,7 +6,7 @@ namespace VGtime.Models
     public class TopicList
     {
         [JsonProperty("topicList")]
-        public Temp[] Data
+        public Post[] Data
         {
             get;
             set;

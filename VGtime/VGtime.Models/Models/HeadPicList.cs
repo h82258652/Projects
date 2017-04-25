@@ -6,7 +6,7 @@ namespace VGtime.Models
     public class HeadPicList
     {
         [JsonProperty("headPicList")]
-        public Temp[] Data
+        public Post[] Data
         {
             get;
             set;

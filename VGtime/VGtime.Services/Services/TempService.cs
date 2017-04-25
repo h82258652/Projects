@@ -43,12 +43,12 @@ namespace VGtime.Services
             }
         }
 
-        public async Task<ResultBase<PushList<Temp>>> GetListAsync()
+        public async Task<ResultBase<PushList>> GetListAsync()
         {
             using (var client = new HttpClient())
             {
                 var json = await client.GetStringAsync($"{Constants.UrlBase}/vgtime-app/api/v2/homepage/vglist.json");
-                return JsonConvert.DeserializeObject<ResultBase<PushList<Temp>>>(json);
+                return JsonConvert.DeserializeObject<ResultBase<PushList>>(json);
             }
         }
 

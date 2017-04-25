@@ -6,7 +6,7 @@ namespace VGtime.Models
     public class PostDetail
     {
         [JsonProperty("postDetail")]
-        public Temp Data
+        public Post Data
         {
             get;
             set;
