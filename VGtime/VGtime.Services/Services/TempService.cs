@@ -11,7 +11,7 @@ namespace VGtime.Services
         {
             using (var client = new HttpClient())
             {
-                var json = await client.GetStringAsync($"http://app02.vgtime.com:8080/vgtime-app/api/v2/post/commentList.json?postId={postId}");
+                var json = await client.GetStringAsync($"{Constants.UrlBase}/vgtime-app/api/v2/post/commentList.json?postId={postId}");
                 return JsonConvert.DeserializeObject<ResultBase<object>>(json);
             }
         }
@@ -25,12 +25,12 @@ namespace VGtime.Services
             }
         }
 
-        public async Task<ResultBase<object>> GetDetailStatusAsync(int postId, int type)
+        public async Task<ResultBase<PostStatusHost>> GetDetailStatusAsync(int postId, int type)
         {
             using (var client = new HttpClient())
             {
                 var json = await client.GetStringAsync($"{Constants.UrlBase}/vgtime-app/api/v2/post/detailStatus.json?postId={postId}&type={type}");
-                return JsonConvert.DeserializeObject<ResultBase<object>>(json);
+                return JsonConvert.DeserializeObject<ResultBase<PostStatusHost>>(json);
             }
         }
 
