@@ -141,8 +141,8 @@ namespace VGtime.Models
             set;
         }
 
-        [JsonProperty("isQuestion")]
-        public bool? IsQuestion
+        [JsonProperty("isQuestion", NullValueHandling = NullValueHandling.Ignore)]
+        public bool IsQuestion
         {
             get;
             set;
@@ -155,7 +155,7 @@ namespace VGtime.Models
             set;
         }
 
-        [JsonProperty("isVideo")]
+        [JsonProperty("isVideo", NullValueHandling = NullValueHandling.Ignore)]
         public bool IsVideo
         {
             get;
@@ -288,8 +288,8 @@ namespace VGtime.Models
             set;
         }
 
-        [JsonProperty("contentPage")]
-        public int? ContentPage
+        [JsonProperty("contentPage", NullValueHandling = NullValueHandling.Ignore)]
+        public int ContentPage
         {
             get;
             set;

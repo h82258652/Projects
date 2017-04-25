@@ -5,7 +5,7 @@ namespace VGtime.Models
     [JsonObject]
     public class User
     {
-        [JsonProperty("userId")]
+        [JsonProperty("userId", NullValueHandling = NullValueHandling.Ignore)]
         public int UserId
         {
             get;
@@ -26,7 +26,7 @@ namespace VGtime.Models
             set;
         }
 
-        [JsonProperty("relation")]
+        [JsonProperty("relation", NullValueHandling = NullValueHandling.Ignore)]
         public int Relation
         {
             get;

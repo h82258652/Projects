@@ -34,12 +34,12 @@ namespace VGtime.Services
             }
         }
 
-        public async Task<ResultBase<object>> GetHeadPicAsync()
+        public async Task<ResultBase<HeadPicList>> GetHeadPicAsync()
         {
             using (var client = new HttpClient())
             {
                 var json = await client.GetStringAsync($"{Constants.UrlBase}/vgtime-app/api/v2/homepage/headpic.json");
-                return JsonConvert.DeserializeObject<ResultBase<object>>(json);
+                return JsonConvert.DeserializeObject<ResultBase<HeadPicList>>(json);
             }
         }
 
