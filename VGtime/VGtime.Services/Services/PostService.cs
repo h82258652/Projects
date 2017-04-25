@@ -5,7 +5,7 @@ using VGtime.Models;
 
 namespace VGtime.Services
 {
-    public class TempService
+    public class PostService : IPostService
     {
         public async Task<ResultBase<CommentList>> GetCommentListAsync(int postId, int type)
         {
