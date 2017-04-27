@@ -1,6 +1,7 @@
 ﻿using System;
 using GalaSoft.MvvmLight.Messaging;
 using VGtime.Uwp.Messages;
+using Windows.UI.Xaml;
 using Windows.UI.Xaml.Navigation;
 using WinRTXamlToolkit.AwaitableUI;
 
@@ -32,6 +33,20 @@ namespace VGtime.Uwp.Views
                     message.Content
                 });
             });
+        }
+
+        private async void ScrollToTopButton_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                await WebView.InvokeScriptAsync("scrollToTop", new string[]
+                {
+                });
+            }
+            catch (Exception)
+            {
+                // ignored
+            }
         }
     }
 }

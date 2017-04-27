@@ -8,8 +8,10 @@
              d:DataContext="{d:DesignInstance Type=models:Post}"
              mc:Ignorable="d">
     <Grid>
-        <Image Source="{Binding Path=Thumbnail.Url}"
-               Stretch="Uniform" />
+        <Viewbox Stretch="UniformToFill"
+                 VerticalAlignment="Center">
+            <Image Source="{Binding Path=Thumbnail.Url}" />
+        </Viewbox>
         <Border>
             <Border.Background>
                 <LinearGradientBrush StartPoint="0.5,0"
@@ -17,9 +19,13 @@
                     <GradientStop Offset="0"
                                   Color="Transparent" />
                     <GradientStop Offset="1"
-                                  Color="Black" />
+                                  Color="#80000000" />
                 </LinearGradientBrush>
             </Border.Background>
         </Border>
+        <TextBlock Margin="12,0,0,12"
+                   VerticalAlignment="Bottom"
+                   Foreground="White"
+                   Text="{Binding Path=Title}" />
     </Grid>
 </UserControl>

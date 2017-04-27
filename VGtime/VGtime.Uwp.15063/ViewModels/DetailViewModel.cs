@@ -1,5 +1,8 @@
-﻿using System.Net;
+﻿using System;
+using System.Net;
 using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Command;
+using GalaSoft.MvvmLight.Views;
 using SoftwareKobo.ViewModels;
 using VGtime.Models;
 using VGtime.Services;
@@ -9,24 +12,71 @@ namespace VGtime.Uwp.ViewModels
 {
     public class DetailViewModel : ViewModelBase, INavigable
     {
+        private readonly INavigationService _navigationService;
+
         private readonly IPostService _postService;
 
-        public DetailViewModel(IPostService postService)
+        private RelayCommand _commentCommand;
+
+        private bool _isLoading;
+
+        private Post _post;
+
+        public DetailViewModel(IPostService postService, INavigationService navigationService)
         {
             _postService = postService;
+            _navigationService = navigationService;
+        }
+
+        public RelayCommand CommentCommand
+        {
+            get
+            {
+                _commentCommand = _commentCommand ?? new RelayCommand(() =>
+                {
+                    _navigationService.NavigateTo(ViewModelLocator.CommentViewKey, _post);
+                });
+                return _commentCommand;
+            }
+        }
+
+        public bool IsLoading
+        {
+            get
+            {
+                return _isLoading;
+            }
+            set
+            {
+                Set(ref _isLoading, value);
+            }
         }
 
         public async void Activate(object parameter)
         {
-            Post post = (Post)parameter;
+            _post = (Post)parameter;
 
-            var result = await _postService.GetDetailAsync(post.PostId, 0);
-            if (result.ErrorCode == HttpStatusCode.OK)
+            IsLoading = true;
+            try
             {
-                var dataData = result.Data.Data;
-                var dataDataContent = dataData.Content;
+                var result = await _postService.GetDetailAsync(_post.PostId, 0);
+                if (result.ErrorCode == HttpStatusCode.OK)
+                {
+                    var dataData = result.Data.Data;
+                    var dataDataContent = dataData.Content;
 
-                MessengerInstance.Send(new PostContentLoadedMessage(dataDataContent));
+                    MessengerInstance.Send(new PostContentLoadedMessage(dataDataContent));
+                }
+                else
+                {
+                }
+            }
+            catch (Exception ex)
+            {
+            }
+            finally
+            {
+                IsLoading = false;
             }
         }
 

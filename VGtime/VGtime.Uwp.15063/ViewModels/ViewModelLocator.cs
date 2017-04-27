@@ -8,6 +8,8 @@ namespace VGtime.Uwp.ViewModels
 {
     public class ViewModelLocator
     {
+        public const string CommentViewKey = "Comment";
+
         public const string DetailViewKey = "Detail";
 
         static ViewModelLocator()
@@ -41,6 +43,7 @@ namespace VGtime.Uwp.ViewModels
         {
             var navigationService = new NavigationService();
             navigationService.Configure(DetailViewKey, typeof(DetailView));
+            navigationService.Configure(CommentViewKey, typeof(CommentView));
             return navigationService;
         }
     }

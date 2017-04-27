@@ -8,11 +8,16 @@ namespace VGtime.Services
 {
     public class PostService : IPostService
     {
-        public async Task<ResultBase<CommentList>> GetCommentListAsync(int postId, int type)
+        public async Task<ResultBase<CommentList>> GetCommentListAsync(int postId, int type, int page = 1)
         {
+            if (page <= 0)
+            {
+                throw new ArgumentOutOfRangeException(nameof(page));
+            }
+
             using (var client = new HttpClient())
             {
-                var json = await client.GetStringAsync($"{Constants.UrlBase}/vgtime-app/api/v2/post/commentList.json?postId={postId}&type={type}");
+                var json = await client.GetStringAsync($"{Constants.UrlBase}/vgtime-app/api/v2/post/commentList.json?postId={postId}&type={type}&page={page}");
                 return JsonConvert.DeserializeObject<ResultBase<CommentList>>(json);
             }
         }

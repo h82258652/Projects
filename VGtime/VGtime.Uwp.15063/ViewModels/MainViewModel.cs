@@ -6,6 +6,7 @@ using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Views;
 using VGtime.Models;
 using VGtime.Services;
+using VGtime.Uwp.Data;
 
 namespace VGtime.Uwp.ViewModels
 {
@@ -29,6 +30,7 @@ namespace VGtime.Uwp.ViewModels
             _navigationService = navigationService;
             _dialogService = dialogService;
 
+            ListPosts = new ListPostCollection(postService);
             LoadHeadPostsAsync();
         }
 
@@ -56,6 +58,11 @@ namespace VGtime.Uwp.ViewModels
             }
         }
 
+        public ListPostCollection ListPosts
+        {
+            get;
+        }
+
         public RelayCommand<Post> PostClickCommand
         {
             get
@@ -68,10 +75,12 @@ namespace VGtime.Uwp.ViewModels
             }
         }
 
-        public Post[] TempPosts
+        public RelayCommand RefreshCommand
         {
-            get;
-            set;
+            get
+            {
+                throw new NotImplementedException();
+            }
         }
 
         public async void LoadHeadPostsAsync()

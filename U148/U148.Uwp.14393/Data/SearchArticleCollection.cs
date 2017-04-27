@@ -43,7 +43,7 @@ namespace U148.Uwp.Data
             IsLoading = true;
             try
             {
-                var result = await _articleService.SearchAsync(_query, _currentPage + 1);
+                var result = await _articleService.SearchAsync(_query, _currentPage);
                 uint loadedCount = 0;
                 if (result.ErrorCode == 0)
                 {

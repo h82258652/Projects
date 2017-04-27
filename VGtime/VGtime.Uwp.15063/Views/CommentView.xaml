@@ -7,11 +7,17 @@
       DataContext="{Binding Source={StaticResource Locator}, Path=Comment}"
       mc:Ignorable="d">
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <ListView>
+        <ListView SelectionMode="None">
             <ListView.ItemContainerStyle>
                 <Style TargetType="ListViewItem">
                     <Setter Property="HorizontalContentAlignment"
                             Value="Stretch" />
+                    <Setter Property="Padding"
+                            Value="12" />
+                    <Setter Property="BorderThickness"
+                            Value="0,0,0,1" />
+                    <Setter Property="BorderBrush"
+                            Value="Gray" />
                 </Style>
             </ListView.ItemContainerStyle>
         </ListView>

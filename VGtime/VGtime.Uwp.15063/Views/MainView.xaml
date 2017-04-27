@@ -1,14 +1,12 @@
 ﻿<Page x:Class="VGtime.Uwp.Views.MainView"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      xmlns:localControls="using:VGtime.Uwp.Controls"
       xmlns:converters="using:SoftwareKobo.Converters"
       xmlns:core="using:Microsoft.Xaml.Interactions.Core"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
+      xmlns:localControls="using:VGtime.Uwp.Controls"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-      xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
-      xmlns:loopingList="using:Telerik.UI.Xaml.Controls.Primitives.LoopingList"
       DataContext="{Binding Source={StaticResource Locator}, Path=Main}"
       Loaded="MainView_Loaded"
       mc:Ignorable="d">
@@ -34,71 +32,61 @@
                 <Button />
             </Pivot.RightHeader>
         </Pivot>-->
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="*" />
-            </Grid.RowDefinitions>
-            <Grid Grid.Row="0">
-                <loopingList:RadLoopingList ItemsSource="{Binding Path=HeadPosts}">
-                    <loopingList:RadLoopingList.ItemStyle>
-                        <Style TargetType="loopingList:LoopingListItem">
-                            <Setter Property="Content">
-                                <Setter.Value>
-                                    <localControls:HeadPostItem />
-                                </Setter.Value>
-                            </Setter>
-                        </Style>
-                    </loopingList:RadLoopingList.ItemStyle>
-                </loopingList:RadLoopingList>
-                <!--<controls:Carousel ItemsSource="{Binding Path=HeadPosts}"
-                                   ItemDepth="0">
-                    <controls:Carousel.EasingFunction>
-                        <CubicEase EasingMode="EaseOut"></CubicEase>
-                    </controls:Carousel.EasingFunction>
-                    <controls:Carousel.ItemTemplate>
-                        <DataTemplate>
-                            -->
-                <!--<Image Source="{Binding Path=Thumbnail.Url}" />-->
-                <!--
-                            <TextBlock Text="1234"></TextBlock>
-                            -->
-                <!--<controls:HeadPostItem />-->
-                <!--
-                        </DataTemplate>
-                    </controls:Carousel.ItemTemplate>
-                </controls:Carousel>-->
-                <!--<TextBlock VerticalAlignment="Bottom"
-                           Foreground="White"
-                           Text="Title" />
-                <TextBlock>
-                    <Run Text="Index" /><Run Text="/" /><Run Text="Count" /></TextBlock>-->
-            </Grid>
-            <ListView x:Name="ListView"
-                      Grid.Row="1"
-                      IsItemClickEnabled="True"
-                      ItemsSource="{Binding Path=TempPosts}"
-                      SelectionMode="None">
-                <interactivity:Interaction.Behaviors>
-                    <core:EventTriggerBehavior EventName="ItemClick">
-                        <core:InvokeCommandAction Command="{Binding Path=PostClickCommand}"
-                                                  InputConverter="{Binding Source={StaticResource ItemClickEventArgsConverter}}" />
-                    </core:EventTriggerBehavior>
-                </interactivity:Interaction.Behaviors>
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <localControls:ListPostItem />
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-                <ListView.ItemContainerStyle>
-                    <Style TargetType="ListViewItem">
-                        <Setter Property="HorizontalContentAlignment"
-                                Value="Stretch" />
-                        <Setter Property="BorderThickness"
-                                Value="0,0,0,1" />
-                    </Style>
-                </ListView.ItemContainerStyle>
-            </ListView>
-        </Grid>
+        <ListView IsItemClickEnabled="True"
+                  ItemsSource="{Binding Path=ListPosts}"
+                  SelectionMode="None">
+            <interactivity:Interaction.Behaviors>
+                <core:EventTriggerBehavior EventName="ItemClick">
+                    <core:InvokeCommandAction Command="{Binding Path=PostClickCommand}"
+                                              InputConverter="{Binding Source={StaticResource ItemClickEventArgsConverter}}" />
+                </core:EventTriggerBehavior>
+            </interactivity:Interaction.Behaviors>
+            <ListView.Header>
+                <Grid>
+                    <FlipView x:Name="HeadPostsFlipView"
+                              Height="300"
+                              ItemsSource="{Binding Path=HeadPosts}">
+                        <FlipView.ItemTemplate>
+                            <DataTemplate>
+                                <localControls:HeadPostItem />
+                            </DataTemplate>
+                        </FlipView.ItemTemplate>
+                    </FlipView>
+                    <Grid Width="32"
+                          Height="32"
+                          Margin="0,0,12,12"
+                          HorizontalAlignment="Right"
+                          VerticalAlignment="Bottom">
+                        <Border Background="#2abaca"
+                                RenderTransformOrigin="0.5,0.5">
+                            <Border.RenderTransform>
+                                <RotateTransform Angle="45" />
+                            </Border.RenderTransform>
+                        </Border>
+                        <TextBlock HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"
+                                   Foreground="White">
+                            <Run Text="{Binding ElementName=HeadPostsFlipView, Path=SelectedIndex}" /><Run Text="/" /><Run Text="{Binding Path=HeadPosts.Count}" /></TextBlock>
+                    </Grid>
+                </Grid>
+            </ListView.Header>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <localControls:ListPostItem />
+                </DataTemplate>
+            </ListView.ItemTemplate>
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="HorizontalContentAlignment"
+                            Value="Stretch" />
+                    <Setter Property="Padding"
+                            Value="12" />
+                    <Setter Property="BorderThickness"
+                            Value="0,0,0,1" />
+                    <Setter Property="BorderBrush"
+                            Value="Gray" />
+                </Style>
+            </ListView.ItemContainerStyle>
+        </ListView>
     </Grid>
 </Page>

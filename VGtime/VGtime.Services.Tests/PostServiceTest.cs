@@ -19,7 +19,7 @@ namespace VGtime.Services.Tests
         [Test]
         public async Task TestGetCommentListAsync()
         {
-            var result = await _postService.GetCommentListAsync(552341, 1);
+            var result = await _postService.GetCommentListAsync(556162, 1);
             Assert.AreEqual(result.ErrorCode, HttpStatusCode.OK);
         }
 

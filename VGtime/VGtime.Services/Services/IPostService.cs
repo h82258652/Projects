@@ -5,7 +5,7 @@ namespace VGtime.Services
 {
     public interface IPostService
     {
-        Task<ResultBase<CommentList>> GetCommentListAsync(int postId, int type);
+        Task<ResultBase<CommentList>> GetCommentListAsync(int postId, int type, int page = 1);
 
         Task<ResultBase<PostDetail>> GetDetailAsync(int postId, int type);
 
