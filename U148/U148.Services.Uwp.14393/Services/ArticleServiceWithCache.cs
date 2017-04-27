@@ -40,9 +40,6 @@ namespace U148.Services
 
         public override async Task<ResultBase<ArticleDetail>> GetArticleDetailAsync(int id)
         {
-#warning 测试
-            await Task.Delay(TimeSpan.FromSeconds(5));
-
             var cacheFolderPath = GetCacheFolderPath();
             var cacheFilePath = Path.Combine(cacheFolderPath, $"article_detail-{id}.json");
             ResultBase<ArticleDetail> result;

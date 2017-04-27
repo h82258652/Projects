@@ -49,8 +49,6 @@
                         <TextBlock Margin="8,0,0,0"
                                    FontFamily="ms-appx:///Assets/Fonts/SourceHanSerifCN-Regular.otf#Source Han Serif CN"
                                    Text="{Binding Path=CreateTime, Converter={StaticResource StringFormatConverter}, ConverterParameter='{}{0:yyyy-MM-dd}'}" />
-                        <TextBlock Margin="8,0,0,0"
-                                   Text="{Binding Path=FloorNo}" />
                     </StackPanel>
                     <WebView x:Name="ContentHost"
                              Grid.Row="1"

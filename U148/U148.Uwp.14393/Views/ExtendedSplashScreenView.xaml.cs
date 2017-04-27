@@ -81,13 +81,33 @@ namespace U148.Uwp.Views
             titleBar.BackgroundColor = accentColor;
             titleBar.ButtonBackgroundColor = accentColor;
             titleBar.InactiveBackgroundColor = accentColor;
+            titleBar.ButtonInactiveBackgroundColor = accentColor;
         }
 
-        private void SplashScreenImage_ImageOpened(object sender, RoutedEventArgs e)
+        private async Task ShowSplashScreenImageAsync()
         {
+            var storyboard = new Storyboard();
+            DoubleAnimation animation = new DoubleAnimation()
+            {
+                From = 0,
+                To = 1,
+                Duration = TimeSpan.FromSeconds(0.4)
+            };
+            Storyboard.SetTarget(animation, SplashScreenImage);
+            Storyboard.SetTargetProperty(animation, "Opacity");
+            storyboard.Children.Add(animation);
+            await storyboard.BeginAsync();
+        }
+
+        private async void SplashScreenImage_ImageOpened(object sender, RoutedEventArgs e)
+        {
+            InitializeTitleBar();
+
             Window.Current.Activate();
 
-            InitializeTitleBar();
+            await ShowSplashScreenImageAsync();
+
+            await Task.Delay(TimeSpan.FromSeconds(1));
 
             Completed?.Invoke(this, EventArgs.Empty);
         }

@@ -113,6 +113,7 @@
     <Compile Include="Converters\AutoSuggestBoxQuerySubmittedEventArgsConverter.cs" />
     <Compile Include="Converters\CommentCountConverter.cs" />
     <Compile Include="Converters\FileSizeToStringConverter.cs" />
+    <Compile Include="Converters\IntegerToVisibilityConverter.cs" />
     <Compile Include="Converters\IsDisplayDetailConverter.cs" />
     <Compile Include="Converters\IsNullConverter.cs" />
     <Compile Include="Converters\IsNullOrEmptyStringToVisibilityConverter.cs" />
@@ -578,6 +579,7 @@
     <Content Include="Assets\Html\css\comment.css" />
     <Content Include="Assets\Html\js\article.js" />
     <Content Include="Assets\Html\js\comment.js" />
+    <Content Include="Assets\Images\splash_screen.png" />
     <Content Include="Assets\Images\hamburger_menu_background.jpg" />
     <Content Include="Assets\Images\logo.png" />
     <Content Include="Assets\Images\qq.png" />

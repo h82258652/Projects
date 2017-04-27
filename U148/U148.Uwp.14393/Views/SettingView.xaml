@@ -34,13 +34,15 @@
                       VerticalScrollBarVisibility="Auto">
             <StackPanel Orientation="Vertical">
                 <ComboBox x:Uid="/SettingView/SimulateDeviceComboBox"
-                          Margin="4"
+                          Width="200"
+                          Margin="12,12,12,0"
                           FontFamily="ms-appx:///Assets/Fonts/SourceHanSerifCN-Regular.otf#Source Han Serif CN"
                           ItemsSource="{Binding Path=SimulateDevices}"
                           SelectedItem="{Binding Path=SimulateDevice, Mode=TwoWay}" />
-                <StackPanel Margin="4"
+                <StackPanel Margin="12,12,12,0"
                             Orientation="Horizontal">
-                    <Button BorderBrush="Transparent"
+                    <Button Width="200"
+                            BorderBrush="Transparent"
                             BorderThickness="0"
                             Command="{Binding Path=ClearDataCacheCommand}"
                             FontFamily="ms-appx:///Assets/Fonts/SourceHanSerifCN-Regular.otf#Source Han Serif CN">
@@ -49,9 +51,10 @@
                     </Button>
                     <ProgressRing IsActive="{Binding Path=IsCleaningDataCache}" />
                 </StackPanel>
-                <StackPanel Margin="4"
+                <StackPanel Margin="12,12,12,0"
                             Orientation="Horizontal">
-                    <Button BorderBrush="Transparent"
+                    <Button Width="200"
+                            BorderBrush="Transparent"
                             BorderThickness="0"
                             Command="{Binding Path=ClearImageCacheCommand}"
                             FontFamily="ms-appx:///Assets/Fonts/SourceHanSerifCN-Regular.otf#Source Han Serif CN">
@@ -61,7 +64,8 @@
                     <ProgressRing IsActive="{Binding Path=IsCleaningImageCache}" />
                 </StackPanel>
                 <Button x:Uid="/SettingView/ClearSinaWeiboAuthenticationButton"
-                        Margin="4"
+                        Width="200"
+                        Margin="12,12,12,0"
                         BorderBrush="Transparent"
                         BorderThickness="0"
                         Command="{Binding Path=ClearSinaWeiboAuthenticationCommand}"

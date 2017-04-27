@@ -7,6 +7,7 @@
                     xmlns:core="using:Microsoft.Xaml.Interactions.Core"
                     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                     xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
+                    xmlns:localConverters="using:U148.Uwp.Converters"
                     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                     xmlns:views="using:SoftwareKobo.Views"
                     x:Name="Root"
@@ -15,6 +16,10 @@
     <Page.Resources>
         <ResourceDictionary>
             <converters:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+            <converters:BooleanToVisibilityConverter x:Key="InversedBooleanToVisibilityConverter"
+                                                     IsInversed="True" />
+            <localConverters:IntegerToVisibilityConverter x:Key="InversedIntegerToVisibilityConverter"
+                                                          IsInversed="True" />
         </ResourceDictionary>
     </Page.Resources>
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
@@ -35,13 +40,12 @@
                 </Button>
             </Grid>
             <Grid Grid.Row="1">
-                <ListView ItemsSource="{Binding Path=Comments}"
+                <ListView x:Name="CommentsListView"
+                          ItemsSource="{Binding Path=Comments}"
                           SelectionMode="None">
                     <ListView.ItemTemplate>
                         <DataTemplate>
-                            <controls:CommentItem IsReplyEnabled="{Binding ElementName=Root, Path=DataContext.IsLogined}"
-                                                  Loaded="CommentItem_Loaded"
-                                                  Unloaded="CommentItem_Unloaded">
+                            <controls:CommentItem IsReplyEnabled="{Binding ElementName=Root, Path=DataContext.IsLogined}">
                                 <interactivity:Interaction.Behaviors>
                                     <core:EventTriggerBehavior EventName="Reply">
                                         <core:InvokeCommandAction Command="{Binding ElementName=Root, Path=DataContext.ReplyCommentCommand}" />
@@ -63,10 +67,20 @@
                         </Style>
                     </ListView.ItemContainerStyle>
                 </ListView>
+                <Grid Visibility="{Binding Path=Comments.IsLoading, Converter={StaticResource InversedBooleanToVisibilityConverter}, TargetNullValue=Collapsed}">
+                    <TextBlock x:Uid="/CommentView/NoCommentsTextBlock"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               Visibility="{Binding Path=Comments.Count, Converter={StaticResource InversedIntegerToVisibilityConverter}, TargetNullValue=Collapsed}" />
+                </Grid>
                 <ProgressBar VerticalAlignment="Top"
                              Background="Transparent"
                              Foreground="{ThemeResource U148AccentBrush}"
                              IsIndeterminate="{Binding Path=Comments.IsLoading}" />
+                <Button Margin="0,0,56,56"
+                        Click="RefreshButton_Click"
+                        Command="{Binding Path=RefreshCommand}"
+                        Style="{StaticResource RefreshButtonStyle}" />
             </Grid>
             <Grid Grid.Row="2"
                   BorderBrush="Gray"

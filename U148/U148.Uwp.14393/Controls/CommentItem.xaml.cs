@@ -35,6 +35,7 @@ namespace U148.Uwp.Controls
         public void ClearReplyContent()
         {
             ReplyTextBox.Text = string.Empty;
+            ReplyToggleButton.IsChecked = false;
         }
 
         private static void OnIsReplyEnabledChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)

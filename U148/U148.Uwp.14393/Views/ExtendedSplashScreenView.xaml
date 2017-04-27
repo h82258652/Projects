@@ -5,11 +5,13 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d">
     <Grid x:Name="RootGrid"
+          Background="{ThemeResource U148AccentBrush}"
           RenderTransformOrigin="0.5,0.5">
         <Grid.RenderTransform>
             <ScaleTransform />
         </Grid.RenderTransform>
-        <Image ImageOpened="SplashScreenImage_ImageOpened"
-               Source="https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/bd_logo1_31bdc765.png" />
+        <Image x:Name="SplashScreenImage"
+               ImageOpened="SplashScreenImage_ImageOpened"
+               Source="/Assets/Images/splash_screen.png" />
     </Grid>
 </UserControl>

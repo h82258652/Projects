@@ -120,6 +120,9 @@
   <data name="CommentTextBox.PlaceholderText" xml:space="preserve">
     <value>写下您的评论</value>
   </data>
+  <data name="NoCommentsTextBlock.Text" xml:space="preserve">
+    <value>此文章暂时还没有评论</value>
+  </data>
   <data name="PleaseInputComment" xml:space="preserve">
     <value>请输入评论</value>
   </data>

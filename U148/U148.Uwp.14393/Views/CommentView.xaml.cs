@@ -3,6 +3,7 @@ using U148.Uwp.Controls;
 using U148.Uwp.Messages;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Navigation;
+using WinRTXamlToolkit.Controls.Extensions;
 
 namespace U148.Uwp.Views
 {
@@ -28,23 +29,23 @@ namespace U148.Uwp.Views
             {
                 CommentTextBox.Text = string.Empty;
             });
-        }
-
-        private void CommentItem_Loaded(object sender, RoutedEventArgs e)
-        {
-            var commentItem = (CommentItem)sender;
-            Messenger.Default.Register<ReplyCommentSuccessMessage>(commentItem, message =>
+            Messenger.Default.Register<ReplyCommentSuccessMessage>(this, message =>
             {
-                if (commentItem.Comment.Id == message.Comment.Id)
-                {
-                    commentItem.ClearReplyContent();
-                }
+                ClearReplyContent();
             });
         }
 
-        private void CommentItem_Unloaded(object sender, RoutedEventArgs e)
+        private void ClearReplyContent()
         {
-            Messenger.Default.Unregister(sender);
+            foreach (CommentItem commentItem in CommentsListView.GetDescendantsOfType<CommentItem>())
+            {
+                commentItem.ClearReplyContent();
+            }
+        }
+
+        private void RefreshButton_Click(object sender, RoutedEventArgs e)
+        {
+            ClearReplyContent();
         }
     }
 }

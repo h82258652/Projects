@@ -44,8 +44,11 @@
                                         Visibility="{Binding Path=UserInfo, Converter={StaticResource IsNullToVisibilityConverter}}">
                                 <Image Width="48"
                                        Height="48"
+                                       Margin="0,12,0,0"
                                        Source="{Binding Path=UserInfo.Icon}" />
-                                <TextBlock Text="{Binding Path=UserInfo.Nickname}"
+                                <TextBlock Margin="0,4,0,0"
+                                           Foreground="#005737"
+                                           Text="{Binding Path=UserInfo.Nickname}"
                                            TextAlignment="Center"
                                            Visibility="{Binding Path=UserInfo, Converter={StaticResource IsNullToVisibilityConverter}}" />
                                 <localControls:HamburgerMenuItem x:Uid="/MainView/LogoutMenuItem"
