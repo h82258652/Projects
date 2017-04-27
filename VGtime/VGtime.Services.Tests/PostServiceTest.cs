@@ -1,4 +1,5 @@
-﻿using System.Net;
+﻿using System;
+using System.Net;
 using System.Threading.Tasks;
 using NUnit.Framework;
 
@@ -46,6 +47,11 @@ namespace VGtime.Services.Tests
         [Test]
         public async Task TestGetListAsync()
         {
+            Assert.ThrowsAsync<ArgumentOutOfRangeException>(async () =>
+            {
+                await _postService.GetListAsync(0);
+            });
+
             var result = await _postService.GetListAsync();
             Assert.AreEqual(result.ErrorCode, HttpStatusCode.OK);
         }

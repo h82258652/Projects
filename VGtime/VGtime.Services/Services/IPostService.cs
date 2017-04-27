@@ -13,7 +13,7 @@ namespace VGtime.Services
 
         Task<ResultBase<HeadPicList>> GetHeadPicAsync();
 
-        Task<ResultBase<PushList>> GetListAsync();
+        Task<ResultBase<PushList>> GetListAsync(int page = 1);
 
         Task<ResultBase<TopicList>> GetListByTagAsync(int tags);
     }
