@@ -2,6 +2,7 @@
 using GalaSoft.MvvmLight.Messaging;
 using VGtime.Uwp.Messages;
 using Windows.UI.Xaml.Navigation;
+using WinRTXamlToolkit.AwaitableUI;
 
 namespace VGtime.Uwp.Views
 {
@@ -25,6 +26,7 @@ namespace VGtime.Uwp.Views
 
             Messenger.Default.Register<PostContentLoadedMessage>(this, async message =>
             {
+                await WebView.NavigateAsync(new Uri("ms-appx-web:///Assets/Html/detail.html"));
                 await WebView.InvokeScriptAsync("setContent", new[]
                 {
                     message.Content

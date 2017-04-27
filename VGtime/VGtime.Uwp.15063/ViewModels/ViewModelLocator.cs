@@ -2,6 +2,7 @@
 using Microsoft.Practices.ServiceLocation;
 using Microsoft.Practices.Unity;
 using VGtime.Services;
+using VGtime.Uwp.Views;
 
 namespace VGtime.Uwp.ViewModels
 {
@@ -39,6 +40,7 @@ namespace VGtime.Uwp.ViewModels
         private static INavigationService CreateNavigationService()
         {
             var navigationService = new NavigationService();
+            navigationService.Configure(DetailViewKey, typeof(DetailView));
             return navigationService;
         }
     }
