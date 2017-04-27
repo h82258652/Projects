@@ -1,12 +1,17 @@
 ﻿<UserControl x:Class="VGtime.Uwp.Controls.ListPostItem"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:converters="using:VGtime.Uwp.Converters"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:local="using:VGtime.Uwp.Controls"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:models="using:VGtime.Models"
              d:DataContext="{d:DesignInstance Type=models:Post}"
              mc:Ignorable="d">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <converters:TimeAgoConverter x:Key="TimeAgoConverter" />
+        </ResourceDictionary>
+    </UserControl.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -19,26 +24,39 @@
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
-            <Ellipse>
+            <Ellipse Grid.Column="0"
+                     Width="24"
+                     Height="24"
+                     VerticalAlignment="Center">
                 <Ellipse.Fill>
                     <ImageBrush ImageSource="{Binding Path=User.AvatarUrl}" />
                 </Ellipse.Fill>
             </Ellipse>
             <TextBlock Grid.Column="1"
-                       Foreground="Gray"
+                       Margin="8,0,0,0"
+                       VerticalAlignment="Center"
+                       FontSize="14"
+                       Foreground="#9C9C9C"
                        Text="{Binding Path=User.Name}" />
             <TextBlock Grid.Column="2"
-                       Foreground="Gray"
-                       Text="{Binding Path=PublishDate}" />
+                       Margin="8,0,0,0"
+                       VerticalAlignment="Center"
+                       FontSize="14"
+                       Foreground="#9C9C9C"
+                       Text="{Binding Path=PublishDate, Converter={StaticResource TimeAgoConverter}}" />
             <StackPanel Grid.Column="3"
+                        VerticalAlignment="Center"
                         Orientation="Horizontal">
-                <TextBlock Foreground="SkyBlue"
+                <TextBlock FontSize="14"
+                           Foreground="#2ABACA"
                            Text="{Binding Path=Category}" />
                 <Border Width="1"
-                        Background="SkyBlue" />
+                        Margin="8,2,0,2"
+                        Background="#2ABACA" />
             </StackPanel>
         </Grid>
-        <Grid Grid.Row="1">
+        <Grid Grid.Row="1"
+              Margin="0,8,0,0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="Auto" />
@@ -49,14 +67,28 @@
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
                 <TextBlock Grid.Row="0"
+                           FontSize="16"
+                           Text="{Binding Path=Title}"
                            TextWrapping="Wrap" />
                 <StackPanel Grid.Row="1"
+                            HorizontalAlignment="Right"
                             Orientation="Horizontal">
-                    <SymbolIcon Symbol="Comment" />
-                    <TextBlock Text="{Binding Path=CommentNum}" />
+                    <Viewbox Width="18"
+                             Height="18"
+                             VerticalAlignment="Bottom">
+                        <SymbolIcon Foreground="#9C9C9C"
+                                    Symbol="Comment" />
+                    </Viewbox>
+                    <TextBlock Margin="4,0,0,0"
+                               VerticalAlignment="Bottom"
+                               FontSize="14"
+                               Foreground="#9C9C9C"
+                               Text="{Binding Path=CommentNum}" />
                 </StackPanel>
             </Grid>
             <Image Grid.Column="1"
+                   MaxWidth="90"
+                   Margin="8,0,0,0"
                    Source="{Binding Path=Thumbnail.Url}" />
         </Grid>
     </Grid>

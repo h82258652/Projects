@@ -45,7 +45,7 @@
                             Command="{Binding Path=ClearDataCacheCommand}"
                             FontFamily="ms-appx:///Assets/Fonts/SourceHanSerifCN-Regular.otf#Source Han Serif CN">
                         <TextBlock>
-                            <Run Text="清除数据缓存(" /><Run Text="{Binding Path=CacheDataSize, Converter={StaticResource FileSizeToStringConverter}}" /><Run Text=")" /></TextBlock>
+                            <Run x:Uid="/SettingView/ClearDataCacheTextElement" /><Run Text="(" /><Run Text="{Binding Path=CacheDataSize, Converter={StaticResource FileSizeToStringConverter}}" /><Run Text=")" /></TextBlock>
                     </Button>
                     <ProgressRing IsActive="{Binding Path=IsCleaningDataCache}" />
                 </StackPanel>
@@ -56,7 +56,7 @@
                             Command="{Binding Path=ClearImageCacheCommand}"
                             FontFamily="ms-appx:///Assets/Fonts/SourceHanSerifCN-Regular.otf#Source Han Serif CN">
                         <TextBlock>
-                            <Run Text="清除图片缓存(" /><Run Text="{Binding Path=CacheImageSize, Converter={StaticResource FileSizeToStringConverter}}" /><Run Text=")" /></TextBlock>
+                            <Run x:Uid="/SettingView/ClearImageCacheTextElement" /><Run Text="(" /><Run Text="{Binding Path=CacheImageSize, Converter={StaticResource FileSizeToStringConverter}}" /><Run Text=")" /></TextBlock>
                     </Button>
                     <ProgressRing IsActive="{Binding Path=IsCleaningImageCache}" />
                 </StackPanel>

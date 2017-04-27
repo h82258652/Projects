@@ -120,8 +120,14 @@
   <data name="ClearDataCacheFinish" xml:space="preserve">
     <value>清除数据缓存完成</value>
   </data>
+  <data name="ClearDataCacheTextElement.Text" xml:space="preserve">
+    <value>清除数据缓存</value>
+  </data>
   <data name="ClearImageCacheFinish" xml:space="preserve">
     <value>清除图片缓存完成</value>
+  </data>
+  <data name="ClearImageCacheTextElement.Text" xml:space="preserve">
+    <value>清除图片缓存</value>
   </data>
   <data name="ClearSinaWeiboAuthenticationButton.Content" xml:space="preserve">
     <value>清除微博授权</value>

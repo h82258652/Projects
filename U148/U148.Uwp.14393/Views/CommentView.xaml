@@ -82,10 +82,10 @@
                          BorderBrush="Transparent"
                          BorderThickness="0"
                          FontFamily="ms-appx:///Assets/Fonts/SourceHanSerifCN-Regular.otf#Source Han Serif CN" />
-                <Button Grid.Column="1"
+                <Button x:Uid="/CommentView/SendCommentCommand"
+                        Grid.Column="1"
                         Command="{Binding Path=SendCommentCommand}"
-                        CommandParameter="{Binding ElementName=CommentTextBox, Path=Text}"
-                        Content="发送" />
+                        CommandParameter="{Binding ElementName=CommentTextBox, Path=Text}" />
             </Grid>
         </Grid>
         <Grid Background="#80000000"

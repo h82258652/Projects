@@ -33,9 +33,9 @@
                     <Image Source="/Assets/Images/logo.png"
                            Stretch="None" />
                 </Viewbox>
-                <TextBlock Margin="0,8,0,0"
+                <TextBlock x:Uid="/AboutView/AppInfoTextBlock"
+                           Margin="0,8,0,0"
                            FontFamily="ms-appx:///Assets/Fonts/SourceHanSerifCN-Regular.otf#Source Han Serif CN"
-                           Text="有意思吧 Windows 10 第三方客户端"
                            TextAlignment="Center" />
             </StackPanel>
         </ScrollViewer>
