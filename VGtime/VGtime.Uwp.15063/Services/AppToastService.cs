@@ -1,11 +1,11 @@
 ﻿using System;
+using SoftwareKobo.Controls;
+using SoftwareKobo.Icons.FontAwesome;
+using VGtime.Uwp.Views;
 using Windows.UI;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media;
-using SoftwareKobo.Controls;
-using SoftwareKobo.Icons.FontAwesome;
-using VGtime.Uwp.Views;
 
 namespace VGtime.Uwp.Services
 {

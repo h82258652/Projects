@@ -28,6 +28,5 @@
   <Library Name="VGtime.Services.Uwp._15063">
 
   	<!--在此处为库添加指令-->
-
   </Library>
 </Directives>
