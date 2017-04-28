@@ -7,8 +7,8 @@
              d:DataContext="{d:DesignInstance Type=models:Post}"
              mc:Ignorable="d">
     <Grid>
-        <Viewbox Stretch="UniformToFill"
-                 VerticalAlignment="Center">
+        <Viewbox VerticalAlignment="Center"
+                 Stretch="UniformToFill">
             <Image Source="{Binding Path=Thumbnail.Url}" />
         </Viewbox>
         <Border>

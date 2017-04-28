@@ -11,9 +11,5 @@ namespace VGtime.Uwp.Views
         {
             InitializeComponent();
         }
-
-        private async void MainView_Loaded(object sender, RoutedEventArgs e)
-        {
-        }
     }
 }

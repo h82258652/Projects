@@ -8,15 +8,18 @@ using Windows.UI.Xaml.Navigation;
 
 namespace VGtime.Uwp
 {
-    /// <summary>
-    /// 提供特定于应用程序的行为，以补充默认的应用程序类。
-    /// </summary>
     public sealed partial class App : Application
     {
         public App()
         {
             InitializeComponent();
+            Resuming += OnResuming;
             Suspending += OnSuspending;
+        }
+
+        private void OnResuming(object sender, object e)
+        {
+            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -70,18 +73,16 @@ namespace VGtime.Uwp
             throw new Exception("Failed to load Page " + e.SourcePageType.FullName);
         }
 
-        /// <summary>
-        /// 在将要挂起应用程序执行时调用。  在不知道应用程序
-        /// 无需知道应用程序会被终止还是会恢复，
-        /// 并让内存内容保持不变。
-        /// </summary>
-        /// <param name="sender">挂起的请求的源。</param>
-        /// <param name="e">有关挂起请求的详细信息。</param>
         private void OnSuspending(object sender, SuspendingEventArgs e)
         {
             var deferral = e.SuspendingOperation.GetDeferral();
-            //TODO: 保存应用程序状态并停止任何后台活动
-            deferral.Complete();
+            try
+            {
+            }
+            finally
+            {
+                deferral.Complete();
+            }
         }
     }
 }

@@ -10,9 +10,11 @@ namespace VGtime.Uwp.Data
 {
     public class ListPostCollection : IncrementalLoadingCollectionBase<Post>
     {
+        private readonly Action<Exception> _onError;
+
         private readonly IPostService _postService;
 
-        private readonly Action<Exception> _onError;
+        private int _currentPage;
 
         public ListPostCollection(IPostService postService, Action<Exception> onError = null)
         {
@@ -24,8 +26,6 @@ namespace VGtime.Uwp.Data
             _postService = postService;
             _onError = onError;
         }
-
-        private int _currentPage = 0;
 
         protected override async Task<uint> LoadMoreItemsAsync(uint count, CancellationToken cancellationToken)
         {
@@ -73,6 +73,13 @@ namespace VGtime.Uwp.Data
             {
                 IsLoading = false;
             }
+        }
+
+        protected override void OnRefresh()
+        {
+            base.OnRefresh();
+
+            _currentPage = 0;
         }
     }
 }

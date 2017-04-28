@@ -8,7 +8,6 @@
       xmlns:localControls="using:VGtime.Uwp.Controls"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       DataContext="{Binding Source={StaticResource Locator}, Path=Main}"
-      Loaded="MainView_Loaded"
       mc:Ignorable="d">
     <Page.Resources>
         <ResourceDictionary>

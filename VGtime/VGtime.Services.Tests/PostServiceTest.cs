@@ -19,6 +19,15 @@ namespace VGtime.Services.Tests
         [Test]
         public async Task TestGetCommentListAsync()
         {
+            Assert.ThrowsAsync<ArgumentOutOfRangeException>(async () =>
+            {
+                await _postService.GetCommentListAsync(556162, 1, page: 0);
+            });
+            Assert.ThrowsAsync<ArgumentOutOfRangeException>(async () =>
+            {
+                await _postService.GetCommentListAsync(556162, 1, pageSize: 0);
+            });
+
             var result = await _postService.GetCommentListAsync(556162, 1);
             Assert.AreEqual(result.ErrorCode, HttpStatusCode.OK);
         }

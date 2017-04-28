@@ -79,6 +79,7 @@
             </Grid>
             <Grid Grid.Row="1">
                 <WebView x:Name="WebView"
+                         DefaultBackgroundColor="Transparent"
                          NewWindowRequested="WebView_NewWindowRequested"
                          ScriptNotify="WebView_ScriptNotify" />
                 <ProgressRing Width="96"

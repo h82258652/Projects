@@ -18,7 +18,7 @@ namespace VGtime.Uwp.ViewModels
 
         private readonly IPostService _postService;
 
-        private IEnumerable<Post> _headPosts;
+        private IReadOnlyList<Post> _headPosts;
 
         private bool _isLoading;
 
@@ -34,7 +34,7 @@ namespace VGtime.Uwp.ViewModels
             LoadHeadPostsAsync();
         }
 
-        public IEnumerable<Post> HeadPosts
+        public IReadOnlyList<Post> HeadPosts
         {
             get
             {

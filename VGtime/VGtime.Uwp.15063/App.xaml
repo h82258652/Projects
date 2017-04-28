@@ -6,6 +6,10 @@
              RequestedTheme="Light">
     <Application.Resources>
         <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Styles/VGtimeButtonStyle.xaml" />
+                <ResourceDictionary Source="/Styles/VGtimePivotStyle.xaml" />
+            </ResourceDictionary.MergedDictionaries>
             <viewModels:ViewModelLocator x:Key="Locator" />
         </ResourceDictionary>
     </Application.Resources>
