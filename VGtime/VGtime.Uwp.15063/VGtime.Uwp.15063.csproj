@@ -104,7 +104,7 @@
     <Compile Include="Controls\ListPostItem.xaml.cs">
       <DependentUpon>ListPostItem.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Converters\IntegerPlusConverter.cs" />
+    <Compile Include="Converters\AddConverter.cs" />
     <Compile Include="Converters\TimeAgoConverter.cs" />
     <Compile Include="Data\CommentCollection.cs" />
     <Compile Include="Data\IncrementalLoadingCollectionBase.cs" />

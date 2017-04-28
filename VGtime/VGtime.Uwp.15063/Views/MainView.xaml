@@ -6,12 +6,14 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
       xmlns:localControls="using:VGtime.Uwp.Controls"
+      xmlns:localConverters="using:VGtime.Uwp.Converters"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       DataContext="{Binding Source={StaticResource Locator}, Path=Main}"
       mc:Ignorable="d">
     <Page.Resources>
         <ResourceDictionary>
             <converters:ItemClickEventArgsConverter x:Key="ItemClickEventArgsConverter" />
+            <localConverters:AddConverter x:Key="AddConverter" />
         </ResourceDictionary>
     </Page.Resources>
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
@@ -59,7 +61,7 @@
                                     <TextBlock HorizontalAlignment="Center"
                                                VerticalAlignment="Center"
                                                Foreground="White">
-                                        <Run Text="{Binding ElementName=HeadPostsFlipView, Path=SelectedIndex}" /><Run Text="/" /><Run Text="{Binding Path=HeadPosts.Count}" /></TextBlock>
+                                        <Run Text="{Binding ElementName=HeadPostsFlipView, Path=SelectedIndex, Converter={StaticResource AddConverter}, ConverterParameter=1}" /><Run Text="/" /><Run Text="{Binding Path=HeadPosts.Length}" /></TextBlock>
                                 </Grid>
                             </Grid>
                         </ListView.Header>
@@ -91,6 +93,12 @@
             <Pivot.RightHeader>
                 <Button Content="搜索" />
             </Pivot.RightHeader>
+            <Pivot.ItemContainerStyle>
+                <Style TargetType="PivotItem">
+                    <Setter Property="Margin"
+                            Value="0" />
+                </Style>
+            </Pivot.ItemContainerStyle>
         </Pivot>
     </Grid>
 </Page>
