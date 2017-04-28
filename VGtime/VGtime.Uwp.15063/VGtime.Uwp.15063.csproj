@@ -95,6 +95,9 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\CommentItem.xaml.cs">
+      <DependentUpon>CommentItem.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\HeadPostItem.xaml.cs">
       <DependentUpon>HeadPostItem.xaml</DependentUpon>
     </Compile>
@@ -102,6 +105,7 @@
       <DependentUpon>ListPostItem.xaml</DependentUpon>
     </Compile>
     <Compile Include="Converters\TimeAgoConverter.cs" />
+    <Compile Include="Data\CommentCollection.cs" />
     <Compile Include="Data\IncrementalLoadingCollectionBase.cs" />
     <Compile Include="Data\ListPostCollection.cs" />
     <Compile Include="Messages\PostContentLoadedMessage.cs" />
@@ -286,6 +290,10 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Controls\CommentItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controls\HeadPostItem.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
