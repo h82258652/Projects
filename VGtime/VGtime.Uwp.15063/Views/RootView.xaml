@@ -6,7 +6,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d">
     <Grid>
-        <Frame x:Name="RootFrame" />
+        <Frame x:Name="RootFrame"
+               x:FieldModifier="internal" />
         <Grid x:Name="ToastPromptContainer"
               Padding="0,16,0,0"
               x:FieldModifier="internal" />
