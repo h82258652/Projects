@@ -64,26 +64,42 @@ namespace VGtime.Uwp.ViewModels
             {
                 _refreshCommand = _refreshCommand ?? new RelayCommand(() =>
                 {
-                    throw new NotImplementedException();
+                    LoadArticleDetail(true);
                 });
                 return _refreshCommand;
             }
         }
 
-        public async void Activate(object parameter)
+        public void Activate(object parameter)
         {
             _post = (Post)parameter;
+
+            LoadArticleDetail();
+        }
+
+        public void Deactivate(object parameter)
+        {
+        }
+
+        private async void LoadArticleDetail(bool isRefresh = false)
+        {
+            if (IsLoading || _post == null)
+            {
+                return;
+            }
 
             IsLoading = true;
             try
             {
-                var result = await _postService.GetDetailAsync(_post.PostId, 0);
+                var result = await _postService.GetDetailAsync(_post.PostId, _post.DetailType);
                 if (result.ErrorCode == HttpStatusCode.OK)
                 {
-                    var dataData = result.Data.Data;
-                    var dataDataContent = dataData.Content;
+                    MessengerInstance.Send(new PostContentLoadedMessage(result.Data.Data.Content));
 
-                    MessengerInstance.Send(new PostContentLoadedMessage(dataDataContent));
+                    if (isRefresh)
+                    {
+                        _appToastService.ShowMessage("刷新成功");
+                    }
                 }
                 else
                 {
@@ -98,10 +114,6 @@ namespace VGtime.Uwp.ViewModels
             {
                 IsLoading = false;
             }
-        }
-
-        public void Deactivate(object parameter)
-        {
         }
     }
 }
