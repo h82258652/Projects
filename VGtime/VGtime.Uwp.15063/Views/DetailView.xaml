@@ -32,11 +32,12 @@
             <Button Grid.Column="1"
                     HorizontalAlignment="Stretch"
                     VerticalAlignment="Stretch"
-                    Click="ScrollToTopButton_Click" />
+                    Click="ScrollToTopButton_Click"
+                    Style="{StaticResource EmptyButtonStyle}" />
         </Grid>
         <WebView x:Name="WebView"
-                 DefaultBackgroundColor="Transparent"
-                 Grid.Row="1" />
+                 Grid.Row="1"
+                 DefaultBackgroundColor="Transparent" />
         <Grid Grid.Row="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />

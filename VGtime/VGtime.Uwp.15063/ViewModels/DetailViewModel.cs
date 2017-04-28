@@ -12,6 +12,8 @@ namespace VGtime.Uwp.ViewModels
 {
     public class DetailViewModel : ViewModelBase, INavigable
     {
+        private readonly IDialogService _dialogService;
+
         private readonly INavigationService _navigationService;
 
         private readonly IPostService _postService;
@@ -22,10 +24,13 @@ namespace VGtime.Uwp.ViewModels
 
         private Post _post;
 
-        public DetailViewModel(IPostService postService, INavigationService navigationService)
+        private RelayCommand _refreshCommand;
+
+        public DetailViewModel(IPostService postService, INavigationService navigationService, IDialogService dialogService)
         {
             _postService = postService;
             _navigationService = navigationService;
+            _dialogService = dialogService;
         }
 
         public RelayCommand CommentCommand
@@ -52,6 +57,18 @@ namespace VGtime.Uwp.ViewModels
             }
         }
 
+        public RelayCommand RefreshCommand
+        {
+            get
+            {
+                _refreshCommand = _refreshCommand ?? new RelayCommand(() =>
+                {
+                    throw new NotImplementedException();
+                });
+                return _refreshCommand;
+            }
+        }
+
         public async void Activate(object parameter)
         {
             _post = (Post)parameter;
@@ -69,10 +86,12 @@ namespace VGtime.Uwp.ViewModels
                 }
                 else
                 {
+                    await _dialogService.ShowError(result.ErrorMessage, string.Empty, null, null);
                 }
             }
             catch (Exception ex)
             {
+                await _dialogService.ShowError(ex, string.Empty, null, null);
             }
             finally
             {

@@ -15,12 +15,73 @@
         </ResourceDictionary>
     </Page.Resources>
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <!--<Pivot>
+        <Pivot>
+            <Pivot.Resources>
+                <Style BasedOn="{StaticResource VGtimePivotHeaderItemStyle}"
+                       TargetType="PivotHeaderItem" />
+            </Pivot.Resources>
             <Pivot.LeftHeader>
-                <Button />
+                <Button Content="二维码" />
             </Pivot.LeftHeader>
             <Pivot.Items>
-                <PivotItem Header="首页"></PivotItem>
+                <PivotItem Header="首页">
+                    <ListView IsItemClickEnabled="True"
+                              ItemsSource="{Binding Path=ListPosts}"
+                              SelectionMode="None">
+                        <interactivity:Interaction.Behaviors>
+                            <core:EventTriggerBehavior EventName="ItemClick">
+                                <core:InvokeCommandAction Command="{Binding Path=PostClickCommand}"
+                                                          InputConverter="{Binding Source={StaticResource ItemClickEventArgsConverter}}" />
+                            </core:EventTriggerBehavior>
+                        </interactivity:Interaction.Behaviors>
+                        <ListView.Header>
+                            <Grid>
+                                <FlipView x:Name="HeadPostsFlipView"
+                                          Height="300"
+                                          ItemsSource="{Binding Path=HeadPosts}">
+                                    <FlipView.ItemTemplate>
+                                        <DataTemplate>
+                                            <localControls:HeadPostItem />
+                                        </DataTemplate>
+                                    </FlipView.ItemTemplate>
+                                </FlipView>
+                                <Grid Width="32"
+                                      Height="32"
+                                      Margin="0,0,12,12"
+                                      HorizontalAlignment="Right"
+                                      VerticalAlignment="Bottom">
+                                    <Border Background="#2abaca"
+                                            RenderTransformOrigin="0.5,0.5">
+                                        <Border.RenderTransform>
+                                            <RotateTransform Angle="45" />
+                                        </Border.RenderTransform>
+                                    </Border>
+                                    <TextBlock HorizontalAlignment="Center"
+                                               VerticalAlignment="Center"
+                                               Foreground="White">
+                                        <Run Text="{Binding ElementName=HeadPostsFlipView, Path=SelectedIndex}" /><Run Text="/" /><Run Text="{Binding Path=HeadPosts.Count}" /></TextBlock>
+                                </Grid>
+                            </Grid>
+                        </ListView.Header>
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <localControls:ListPostItem />
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                        <ListView.ItemContainerStyle>
+                            <Style TargetType="ListViewItem">
+                                <Setter Property="HorizontalContentAlignment"
+                                        Value="Stretch" />
+                                <Setter Property="Padding"
+                                        Value="12" />
+                                <Setter Property="BorderThickness"
+                                        Value="0,0,0,1" />
+                                <Setter Property="BorderBrush"
+                                        Value="Gray" />
+                            </Style>
+                        </ListView.ItemContainerStyle>
+                    </ListView>
+                </PivotItem>
                 <PivotItem Header="新闻" />
                 <PivotItem Header="评测" />
                 <PivotItem Header="视频" />
@@ -28,64 +89,8 @@
                 <PivotItem Header="专栏" />
             </Pivot.Items>
             <Pivot.RightHeader>
-                <Button />
+                <Button Content="搜索" />
             </Pivot.RightHeader>
-        </Pivot>-->
-        <ListView IsItemClickEnabled="True"
-                  ItemsSource="{Binding Path=ListPosts}"
-                  SelectionMode="None">
-            <interactivity:Interaction.Behaviors>
-                <core:EventTriggerBehavior EventName="ItemClick">
-                    <core:InvokeCommandAction Command="{Binding Path=PostClickCommand}"
-                                              InputConverter="{Binding Source={StaticResource ItemClickEventArgsConverter}}" />
-                </core:EventTriggerBehavior>
-            </interactivity:Interaction.Behaviors>
-            <ListView.Header>
-                <Grid>
-                    <FlipView x:Name="HeadPostsFlipView"
-                              Height="300"
-                              ItemsSource="{Binding Path=HeadPosts}">
-                        <FlipView.ItemTemplate>
-                            <DataTemplate>
-                                <localControls:HeadPostItem />
-                            </DataTemplate>
-                        </FlipView.ItemTemplate>
-                    </FlipView>
-                    <Grid Width="32"
-                          Height="32"
-                          Margin="0,0,12,12"
-                          HorizontalAlignment="Right"
-                          VerticalAlignment="Bottom">
-                        <Border Background="#2abaca"
-                                RenderTransformOrigin="0.5,0.5">
-                            <Border.RenderTransform>
-                                <RotateTransform Angle="45" />
-                            </Border.RenderTransform>
-                        </Border>
-                        <TextBlock HorizontalAlignment="Center"
-                                   VerticalAlignment="Center"
-                                   Foreground="White">
-                            <Run Text="{Binding ElementName=HeadPostsFlipView, Path=SelectedIndex}" /><Run Text="/" /><Run Text="{Binding Path=HeadPosts.Count}" /></TextBlock>
-                    </Grid>
-                </Grid>
-            </ListView.Header>
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <localControls:ListPostItem />
-                </DataTemplate>
-            </ListView.ItemTemplate>
-            <ListView.ItemContainerStyle>
-                <Style TargetType="ListViewItem">
-                    <Setter Property="HorizontalContentAlignment"
-                            Value="Stretch" />
-                    <Setter Property="Padding"
-                            Value="12" />
-                    <Setter Property="BorderThickness"
-                            Value="0,0,0,1" />
-                    <Setter Property="BorderBrush"
-                            Value="Gray" />
-                </Style>
-            </ListView.ItemContainerStyle>
-        </ListView>
+        </Pivot>
     </Grid>
 </Page>

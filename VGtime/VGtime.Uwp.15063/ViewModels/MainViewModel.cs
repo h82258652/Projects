@@ -24,6 +24,8 @@ namespace VGtime.Uwp.ViewModels
 
         private RelayCommand<Post> _postClickCommand;
 
+        private RelayCommand _refreshCommand;
+
         public MainViewModel(IPostService postService, INavigationService navigationService, IDialogService dialogService)
         {
             _postService = postService;
@@ -79,7 +81,11 @@ namespace VGtime.Uwp.ViewModels
         {
             get
             {
-                throw new NotImplementedException();
+                _refreshCommand = _refreshCommand ?? new RelayCommand(() =>
+                {
+                    throw new NotImplementedException();
+                });
+                return _refreshCommand;
             }
         }
 

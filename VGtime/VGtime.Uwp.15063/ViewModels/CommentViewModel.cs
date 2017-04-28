@@ -1,5 +1,6 @@
 ﻿using GalaSoft.MvvmLight;
 using SoftwareKobo.ViewModels;
+using VGtime.Models;
 using VGtime.Services;
 using VGtime.Uwp.Data;
 
@@ -30,6 +31,8 @@ namespace VGtime.Uwp.ViewModels
 
         public void Activate(object parameter)
         {
+            var post = (Post)parameter;
+            Comments = new CommentCollection(post.PostId, _postService);
         }
 
         public void Deactivate(object parameter)
