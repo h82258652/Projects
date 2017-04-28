@@ -135,6 +135,14 @@
       <SubType>Designer</SubType>
     </AppxManifest>
     <None Include="Assets\Html\bower.json" />
+    <None Include="Assets\Html\bower_components\hammerjs\.bower.json" />
+    <None Include="Assets\Html\bower_components\hammerjs\bower.json" />
+    <None Include="Assets\Html\bower_components\hammerjs\CHANGELOG.md" />
+    <None Include="Assets\Html\bower_components\hammerjs\CONTRIBUTING.md" />
+    <None Include="Assets\Html\bower_components\hammerjs\hammer.min.js.map" />
+    <None Include="Assets\Html\bower_components\hammerjs\hammer.min.map" />
+    <None Include="Assets\Html\bower_components\hammerjs\LICENSE.md" />
+    <None Include="Assets\Html\bower_components\hammerjs\README.md" />
     <None Include="Assets\Html\bower_components\jquery\.bower.json" />
     <None Include="Assets\Html\bower_components\jquery\bower.json" />
     <None Include="Assets\Html\bower_components\jquery\dist\jquery.min.map" />
@@ -146,6 +154,9 @@
     <None Include="VGtime.Uwp.15063_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\Html\bower_components\hammerjs\changelog.js" />
+    <Content Include="Assets\Html\bower_components\hammerjs\hammer.js" />
+    <Content Include="Assets\Html\bower_components\hammerjs\hammer.min.js" />
     <Content Include="Assets\Html\bower_components\jquery\AUTHORS.txt" />
     <Content Include="Assets\Html\bower_components\jquery\dist\core.js" />
     <Content Include="Assets\Html\bower_components\jquery\dist\jquery.js" />
