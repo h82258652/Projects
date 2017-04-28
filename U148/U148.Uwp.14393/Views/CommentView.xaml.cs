@@ -37,7 +37,7 @@ namespace U148.Uwp.Views
 
         private void ClearReplyContent()
         {
-            foreach (CommentItem commentItem in CommentsListView.GetDescendantsOfType<CommentItem>())
+            foreach (var commentItem in CommentsListView.GetDescendantsOfType<CommentItem>())
             {
                 commentItem.ClearReplyContent();
             }

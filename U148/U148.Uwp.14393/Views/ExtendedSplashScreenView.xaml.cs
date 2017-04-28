@@ -87,7 +87,7 @@ namespace U148.Uwp.Views
         private async Task ShowSplashScreenImageAsync()
         {
             var storyboard = new Storyboard();
-            DoubleAnimation animation = new DoubleAnimation()
+            var animation = new DoubleAnimation()
             {
                 From = 0,
                 To = 1,
