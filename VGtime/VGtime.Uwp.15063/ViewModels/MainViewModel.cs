@@ -7,12 +7,13 @@ using GalaSoft.MvvmLight.Views;
 using VGtime.Models;
 using VGtime.Services;
 using VGtime.Uwp.Data;
+using VGtime.Uwp.Services;
 
 namespace VGtime.Uwp.ViewModels
 {
     public class MainViewModel : ViewModelBase
     {
-        private readonly IDialogService _dialogService;
+        private readonly IAppToastService _appToastService;
 
         private readonly INavigationService _navigationService;
 
@@ -26,11 +27,11 @@ namespace VGtime.Uwp.ViewModels
 
         private RelayCommand _refreshCommand;
 
-        public MainViewModel(IPostService postService, INavigationService navigationService, IDialogService dialogService)
+        public MainViewModel(IPostService postService, INavigationService navigationService, IAppToastService appToastService)
         {
             _postService = postService;
             _navigationService = navigationService;
-            _dialogService = dialogService;
+            _appToastService = appToastService;
 
             ListPosts = new ListPostCollection(postService);
             LoadHeadPostsAsync();
@@ -83,7 +84,8 @@ namespace VGtime.Uwp.ViewModels
             {
                 _refreshCommand = _refreshCommand ?? new RelayCommand(() =>
                 {
-                    throw new NotImplementedException();
+                    LoadHeadPostsAsync();
+                    ListPosts.Refresh();
                 });
                 return _refreshCommand;
             }
@@ -106,12 +108,12 @@ namespace VGtime.Uwp.ViewModels
                 }
                 else
                 {
-                    await _dialogService.ShowError(result.ErrorMessage, string.Empty, null, null);
+                    _appToastService.ShowError(result.ErrorMessage);
                 }
             }
             catch (Exception ex)
             {
-                await _dialogService.ShowError(ex, string.Empty, null, null);
+                _appToastService.ShowError(ex.Message);
             }
             finally
             {

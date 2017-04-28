@@ -1,8 +1,8 @@
 ﻿namespace VGtime.Uwp.Views
 {
-    public sealed partial class MainView
+    public sealed partial class RootView
     {
-        public MainView()
+        public RootView()
         {
             InitializeComponent();
         }

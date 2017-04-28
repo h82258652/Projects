@@ -7,12 +7,13 @@ using SoftwareKobo.ViewModels;
 using VGtime.Models;
 using VGtime.Services;
 using VGtime.Uwp.Messages;
+using VGtime.Uwp.Services;
 
 namespace VGtime.Uwp.ViewModels
 {
     public class DetailViewModel : ViewModelBase, INavigable
     {
-        private readonly IDialogService _dialogService;
+        private readonly IAppToastService _appToastService;
 
         private readonly INavigationService _navigationService;
 
@@ -26,11 +27,11 @@ namespace VGtime.Uwp.ViewModels
 
         private RelayCommand _refreshCommand;
 
-        public DetailViewModel(IPostService postService, INavigationService navigationService, IDialogService dialogService)
+        public DetailViewModel(IPostService postService, INavigationService navigationService, IAppToastService appToastService)
         {
             _postService = postService;
             _navigationService = navigationService;
-            _dialogService = dialogService;
+            _appToastService = appToastService;
         }
 
         public RelayCommand CommentCommand
@@ -86,12 +87,12 @@ namespace VGtime.Uwp.ViewModels
                 }
                 else
                 {
-                    await _dialogService.ShowError(result.ErrorMessage, string.Empty, null, null);
+                    _appToastService.ShowError(result.ErrorMessage);
                 }
             }
             catch (Exception ex)
             {
-                await _dialogService.ShowError(ex, string.Empty, null, null);
+                _appToastService.ShowError(ex.Message);
             }
             finally
             {

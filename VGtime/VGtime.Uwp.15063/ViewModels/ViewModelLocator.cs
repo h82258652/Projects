@@ -2,6 +2,7 @@
 using Microsoft.Practices.ServiceLocation;
 using Microsoft.Practices.Unity;
 using VGtime.Services;
+using VGtime.Uwp.Services;
 using VGtime.Uwp.Views;
 
 namespace VGtime.Uwp.ViewModels
@@ -30,7 +31,7 @@ namespace VGtime.Uwp.ViewModels
 
             unityContainer.RegisterInstance(CreateNavigationService());
             unityContainer.RegisterType<IPostService, PostService>();
-            unityContainer.RegisterType<IDialogService, DialogService>();
+            unityContainer.RegisterType<IAppToastService, AppToastService>();
 
             unityContainer.RegisterType<MainViewModel>();
             unityContainer.RegisterType<DetailViewModel>();
