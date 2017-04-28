@@ -13,6 +13,8 @@ namespace VGtime.Uwp.ViewModels
 
         public const string DetailViewKey = "Detail";
 
+        public const string SearchViewKey = "Search";
+
         static ViewModelLocator()
         {
             var serviceLocator = new UnityServiceLocator(ConfigureUnityContainer());
@@ -25,6 +27,8 @@ namespace VGtime.Uwp.ViewModels
 
         public MainViewModel Main => ServiceLocator.Current.GetInstance<MainViewModel>();
 
+        public SearchViewModel Search => ServiceLocator.Current.GetInstance<SearchViewModel>();
+
         private static IUnityContainer ConfigureUnityContainer()
         {
             var unityContainer = new UnityContainer();
@@ -36,6 +40,7 @@ namespace VGtime.Uwp.ViewModels
             unityContainer.RegisterType<MainViewModel>();
             unityContainer.RegisterType<DetailViewModel>();
             unityContainer.RegisterType<CommentViewModel>();
+            unityContainer.RegisterType<SearchViewModel>();
 
             return unityContainer;
         }
