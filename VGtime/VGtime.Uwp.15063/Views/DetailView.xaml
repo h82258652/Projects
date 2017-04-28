@@ -20,6 +20,7 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
             <Button Grid.Column="0"
                     Style="{StaticResource NavigationBackButtonNormalStyle}">
@@ -34,6 +35,8 @@
                     VerticalAlignment="Stretch"
                     Click="ScrollToTopButton_Click"
                     Style="{StaticResource EmptyButtonStyle}" />
+            <Button Grid.Column="2"
+                    Content="分享" />
         </Grid>
         <WebView x:Name="WebView"
                  Grid.Row="1"
