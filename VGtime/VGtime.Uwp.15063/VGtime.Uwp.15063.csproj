@@ -307,6 +307,9 @@
     <PackageReference Include="Unity">
       <Version>4.0.1</Version>
     </PackageReference>
+    <PackageReference Include="WindowsAppStudio.Uwp">
+      <Version>1.5.3</Version>
+    </PackageReference>
   </ItemGroup>
   <ItemGroup>
     <Page Include="Controls\CommentItem.xaml">

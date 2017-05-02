@@ -8,6 +8,7 @@
       xmlns:localControls="using:VGtime.Uwp.Controls"
       xmlns:localConverters="using:VGtime.Uwp.Converters"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:controls="using:AppStudio.Uwp.Controls"
       DataContext="{Binding Source={StaticResource Locator}, Path=Main}"
       mc:Ignorable="d">
     <Page.Resources>
@@ -38,7 +39,14 @@
                         </interactivity:Interaction.Behaviors>
                         <ListView.Header>
                             <Grid>
-                                <FlipView x:Name="HeadPostsFlipView"
+                                <controls:Carousel ItemsSource="{Binding Path=HeadPosts}">
+                                    <controls:Carousel.ContentTemplate>
+                                        <DataTemplate>
+                                            <localControls:HeadPostItem />
+                                        </DataTemplate>
+                                    </controls:Carousel.ContentTemplate>
+                                </controls:Carousel>
+                                <!--<FlipView x:Name="HeadPostsFlipView"
                                           Height="300"
                                           ItemsSource="{Binding Path=HeadPosts}">
                                     <FlipView.ItemTemplate>
@@ -46,13 +54,14 @@
                                             <localControls:HeadPostItem />
                                         </DataTemplate>
                                     </FlipView.ItemTemplate>
-                                </FlipView>
+                                </FlipView>-->
                                 <Grid Width="32"
                                       Height="32"
                                       Margin="0,0,12,12"
                                       HorizontalAlignment="Right"
                                       VerticalAlignment="Bottom">
                                     <Border Background="#2abaca"
+                                            CornerRadius="2"
                                             RenderTransformOrigin="0.5,0.5">
                                         <Border.RenderTransform>
                                             <RotateTransform Angle="45" />
