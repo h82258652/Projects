@@ -133,6 +133,7 @@
     <Compile Include="Messages\ReplyCommentSuccessMessage.cs" />
     <Compile Include="Messages\SendCommentSuccessMessage.cs" />
     <Compile Include="Messages\ShowLoginViewMessage.cs" />
+    <Compile Include="Messages\ThemeModeChangedMessage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\AppToastService.cs" />
     <Compile Include="Services\IAppToastService.cs" />
