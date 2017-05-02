@@ -24,6 +24,8 @@ namespace U148.Uwp.ViewModels
 
         public const string MainViewKey = "Main";
 
+        public const string RootViewKey = "Root";
+
         public const string SearchViewKey = "Search";
 
         public const string SettingViewKey = "Setting";
@@ -45,6 +47,8 @@ namespace U148.Uwp.ViewModels
         public LoginViewModel Login => ServiceLocator.Current.GetInstance<LoginViewModel>();
 
         public MainViewModel Main => ServiceLocator.Current.GetInstance<MainViewModel>();
+
+        public RootViewModel Root => ServiceLocator.Current.GetInstance<RootViewModel>();
 
         public SearchViewModel Search => ServiceLocator.Current.GetInstance<SearchViewModel>();
 
@@ -68,6 +72,7 @@ namespace U148.Uwp.ViewModels
 
             unityContainer.RegisterInstance(DefaultImageLoader.Instance);
 
+            unityContainer.RegisterType<RootViewModel>();
             unityContainer.RegisterType<MainViewModel>();
             unityContainer.RegisterType<ArticleViewModel>(new ContainerControlledLifetimeManager());
             unityContainer.RegisterType<DetailViewModel>();

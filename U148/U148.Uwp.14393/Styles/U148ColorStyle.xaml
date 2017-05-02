@@ -1,6 +1,13 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    <Color x:Key="U148AccentColor">#FF9900</Color>
+    <ResourceDictionary.ThemeDictionaries>
+        <ResourceDictionary x:Key="Light">
+            <Color x:Key="U148AccentColor">#FF9900</Color>
+        </ResourceDictionary>
+        <ResourceDictionary x:Key="Dark">
+            <Color x:Key="U148AccentColor">#B26B00</Color>
+        </ResourceDictionary>
+    </ResourceDictionary.ThemeDictionaries>
     <Color x:Key="U148AccentLightColor">#FFB240</Color>
     <Color x:Key="U148AccentDarkColor">#BF8630</Color>
     <Color x:Key="U148DividerColor">Gray</Color>

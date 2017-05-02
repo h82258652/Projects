@@ -5,6 +5,7 @@
              xmlns:converters="using:U148.Uwp.Converters"
              xmlns:core="using:Microsoft.Xaml.Interactions.Core"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:fontAwesome="using:SoftwareKobo.Icons.FontAwesome"
              xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
              xmlns:localControls="using:U148.Uwp.Controls"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -89,6 +90,30 @@
                             </StackPanel>
                             <StackPanel Grid.Row="2"
                                         Orientation="Vertical">
+                                <localControls:HamburgerMenuItem Label="日间">
+                                    <interactivity:Interaction.Behaviors>
+                                        <core:EventTriggerBehavior EventName="Click">
+                                            <core:ChangePropertyAction PropertyName="IsPaneOpen"
+                                                                       TargetObject="{Binding ElementName=HamburgerMenu}"
+                                                                       Value="False" />
+                                        </core:EventTriggerBehavior>
+                                    </interactivity:Interaction.Behaviors>
+                                    <localControls:HamburgerMenuItem.Icon>
+                                        <fontAwesome:FontAwesomeIcon Symbol="SunOutline" />
+                                    </localControls:HamburgerMenuItem.Icon>
+                                </localControls:HamburgerMenuItem>
+                                <localControls:HamburgerMenuItem Label="夜间">
+                                    <interactivity:Interaction.Behaviors>
+                                        <core:EventTriggerBehavior EventName="Click">
+                                            <core:ChangePropertyAction PropertyName="IsPaneOpen"
+                                                                       TargetObject="{Binding ElementName=HamburgerMenu}"
+                                                                       Value="False" />
+                                        </core:EventTriggerBehavior>
+                                    </interactivity:Interaction.Behaviors>
+                                    <localControls:HamburgerMenuItem.Icon>
+                                        <fontAwesome:FontAwesomeIcon Symbol="MoonOutline" />
+                                    </localControls:HamburgerMenuItem.Icon>
+                                </localControls:HamburgerMenuItem>
                                 <localControls:HamburgerMenuItem x:Uid="/MainView/PraiseMenuItem"
                                                                  Command="{Binding Path=PraiseCommand}">
                                     <interactivity:Interaction.Behaviors>

@@ -98,7 +98,7 @@ namespace VGtime.Uwp.ViewModels
 
                     if (isRefresh)
                     {
-                        _appToastService.ShowMessage("刷新成功");
+                        _appToastService.ShowMessage(LocalizedStrings.RefreshSuccess);
                     }
                 }
                 else

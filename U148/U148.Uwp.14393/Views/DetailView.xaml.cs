@@ -39,6 +39,20 @@ namespace U148.Uwp.Views
                     });
                 }
             });
+            Messenger.Default.Register<ThemeModeChangedMessage>(this, async message =>
+            {
+                try
+                {
+                    await WebView.InvokeScriptAsync("setThemeMode", new[]
+                    {
+                        message.NewThemeMode.ToString()
+                    });
+                }
+                catch (Exception)
+                {
+                    // ignored
+                }
+            });
 
             if (e.NavigationMode == NavigationMode.New)
             {

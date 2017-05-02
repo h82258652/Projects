@@ -5,7 +5,9 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:views="using:U148.Uwp.Views"
+             DataContext="{Binding Source={StaticResource Locator}, Path=Root}"
              Loaded="RootView_Loaded"
+             RequestedTheme="{Binding Path=ThemeMode, Converter={StaticResource ThemeModeToRequestedThemeConverter}}"
              Unloaded="RootView_Unloaded"
              mc:Ignorable="d">
     <UserControl.Resources>

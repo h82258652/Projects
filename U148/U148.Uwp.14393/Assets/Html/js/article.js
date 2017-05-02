@@ -10,6 +10,16 @@ function scrollToTop() {
     }, "fast");
 }
 
+function setThemeMode(theme) {
+    theme = theme.toLowerCase();
+    if (theme === "night" || theme === "dark") {
+        document.getElementsByTagName("html")[0].setAttribute("class", "night");
+    }
+    else {
+        document.getElementsByTagName("html")[0].setAttribute("class", "");
+    }
+}
+
 $(function () {
     $("a").attr("href", "javascript:void(0);");
 

@@ -1,6 +1,7 @@
 ﻿<Page x:Class="VGtime.Uwp.Views.MainView"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:controls="using:AppStudio.Uwp.Controls"
       xmlns:converters="using:SoftwareKobo.Converters"
       xmlns:core="using:Microsoft.Xaml.Interactions.Core"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -8,7 +9,7 @@
       xmlns:localControls="using:VGtime.Uwp.Controls"
       xmlns:localConverters="using:VGtime.Uwp.Converters"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-      xmlns:controls="using:AppStudio.Uwp.Controls"
+      x:Name="Root"
       DataContext="{Binding Source={StaticResource Locator}, Path=Main}"
       mc:Ignorable="d">
     <Page.Resources>
@@ -39,10 +40,19 @@
                         </interactivity:Interaction.Behaviors>
                         <ListView.Header>
                             <Grid>
-                                <controls:Carousel ItemsSource="{Binding Path=HeadPosts}">
+                                <controls:Carousel x:Name="HeadPostsCarousel"
+                                                   ItemClickCommand="{Binding Path=PostClickCommand}"
+                                                   ItemsSource="{Binding Path=HeadPosts}"
+                                                   MaxItems="1"
+                                                   SelectedIndex="0"
+                                                   SlideInterval="5000">
                                     <controls:Carousel.ContentTemplate>
                                         <DataTemplate>
+                                            <!--<Button Command="{Binding ElementName=Root, Path=DataContext.PostClickCommand}"
+                                                    CommandParameter="{Binding}"
+                                                    Style="{StaticResource EmptyButtonStyle}">-->
                                             <localControls:HeadPostItem />
+                                            <!--</Button>-->
                                         </DataTemplate>
                                     </controls:Carousel.ContentTemplate>
                                 </controls:Carousel>
@@ -70,7 +80,7 @@
                                     <TextBlock HorizontalAlignment="Center"
                                                VerticalAlignment="Center"
                                                Foreground="White">
-                                        <Run Text="{Binding ElementName=HeadPostsFlipView, Path=SelectedIndex, Converter={StaticResource AddConverter}, ConverterParameter=1}" /><Run Text="/" /><Run Text="{Binding Path=HeadPosts.Length}" /></TextBlock>
+                                        <Run Text="{Binding ElementName=HeadPostsCarousel, Path=SelectedIndex, Converter={StaticResource AddConverter}, ConverterParameter=1}" /><Run Text="/" /><Run Text="{Binding Path=HeadPosts.Length}" /></TextBlock>
                                 </Grid>
                             </Grid>
                         </ListView.Header>

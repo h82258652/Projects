@@ -118,6 +118,7 @@
     <Compile Include="Converters\IsNullConverter.cs" />
     <Compile Include="Converters\IsNullOrEmptyStringToVisibilityConverter.cs" />
     <Compile Include="Converters\IsNullToVisibilityConverter.cs" />
+    <Compile Include="Converters\ThemeModeToRequestedThemeConverter.cs" />
     <Compile Include="Data\ArticleCollection.cs" />
     <Compile Include="Data\CommentCollection.cs" />
     <Compile Include="Data\IncrementalLoadingCollectionBase.cs" />
@@ -144,6 +145,7 @@
     <Compile Include="ViewModels\DetailViewModel.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
+    <Compile Include="ViewModels\RootViewModel.cs" />
     <Compile Include="ViewModels\SearchViewModel.cs" />
     <Compile Include="ViewModels\SettingViewModel.cs" />
     <Compile Include="ViewModels\ViewModelLocator.cs" />

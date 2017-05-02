@@ -22,7 +22,7 @@
                 </LinearGradientBrush>
             </Border.Background>
         </Border>
-        <TextBlock Margin="12,0,0,12"
+        <TextBlock Margin="16,0,0,16"
                    VerticalAlignment="Bottom"
                    Foreground="White"
                    Text="{Binding Path=Title}" />
