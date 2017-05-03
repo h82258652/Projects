@@ -254,7 +254,7 @@ namespace VGtime.Models
         }
 
         [JsonProperty("reviewScore")]
-        public object ReviewScore
+        public float? ReviewScore
         {
             get;
             set;

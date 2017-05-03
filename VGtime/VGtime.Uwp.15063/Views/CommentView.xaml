@@ -3,6 +3,7 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:behaviors="using:SoftwareKobo.Behaviors"
                     xmlns:controls="using:VGtime.Uwp.Controls"
+                    xmlns:converters="using:Microsoft.Toolkit.Uwp.UI.Converters"
                     xmlns:core="using:Microsoft.Xaml.Interactions.Core"
                     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                     xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
@@ -11,26 +12,42 @@
                     xmlns:views="using:SoftwareKobo.Views"
                     DataContext="{Binding Source={StaticResource Locator}, Path=Comment}"
                     mc:Ignorable="d">
+    <Page.Resources>
+        <ResourceDictionary>
+            <converters:StringFormatConverter x:Key="StringFormatConverter" />
+        </ResourceDictionary>
+    </Page.Resources>
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-        <Button Grid.Row="0"
-                Style="{StaticResource NavigationBackButtonNormalStyle}">
-            <interactivity:Interaction.Behaviors>
-                <core:EventTriggerBehavior EventName="Click">
-                    <behaviors:GoBackAction />
-                </core:EventTriggerBehavior>
-            </interactivity:Interaction.Behaviors>
-        </Button>
+        <Grid Grid.Row="0"
+              Background="{ThemeResource VGtimeAccentBrush}">
+            <Button Style="{StaticResource NavigationBackButtonNormalStyle}">
+                <interactivity:Interaction.Behaviors>
+                    <core:EventTriggerBehavior EventName="Click">
+                        <behaviors:GoBackAction />
+                    </core:EventTriggerBehavior>
+                </interactivity:Interaction.Behaviors>
+            </Button>
+            <TextBlock VerticalAlignment="Center"
+                       Foreground="White"
+                       Text="全部评论"
+                       TextAlignment="Center" />
+        </Grid>
         <ListView Grid.Row="1"
                   ItemsSource="{Binding Path=Comments}"
                   SelectionMode="None">
             <ListView.Header>
-                <TextBlock>
-                    <Run Text="全部评论" /><Run Text="142" /></TextBlock>
+                <Border Background="#f7f7f7"
+                        BorderBrush="Gray"
+                        BorderThickness="0,0,0,1">
+                    <TextBlock Margin="16,8,16,8"
+                               Foreground="Gray"
+                               Text="{Binding Path=Post.CommentNum, Converter={StaticResource StringFormatConverter}, ConverterParameter='全部评论 {0}'}" />
+                </Border>
             </ListView.Header>
             <ListView.ItemTemplate>
                 <DataTemplate>

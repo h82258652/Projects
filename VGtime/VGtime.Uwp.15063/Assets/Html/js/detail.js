@@ -4,6 +4,12 @@ function setContent(content) {
     $("#container").html(content);
 }
 
+function scrollToTop() {
+    $("body").animate({
+        scrollTop: 0
+    }, "fast");
+}
+
 $(function () {
     var hammertime = new Hammer(document.getElementsByTagName("html")[0]);
     hammertime.on("swipeleft", function (e) {

@@ -1,0 +1,10 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="using:VGtime.Uwp.Styles">
+    <Color x:Key="VGtimeAccentColor">#2ABACA</Color>
+    <Color x:Key="VGtimeAccentLightColor">#82D6E0</Color>
+    <SolidColorBrush x:Key="VGtimeAccentBrush"
+                     Color="{ThemeResource VGtimeAccentColor}" />
+    <SolidColorBrush x:Key="VGtimeAccentLightBrush"
+                     Color="{ThemeResource VGtimeAccentLightColor}" />
+</ResourceDictionary>

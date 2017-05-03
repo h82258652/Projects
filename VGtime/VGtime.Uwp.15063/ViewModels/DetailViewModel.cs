@@ -40,7 +40,7 @@ namespace VGtime.Uwp.ViewModels
             {
                 _commentCommand = _commentCommand ?? new RelayCommand(() =>
                 {
-                    _navigationService.NavigateTo(ViewModelLocator.CommentViewKey, _post);
+                    _navigationService.NavigateTo(ViewModelLocator.CommentViewKey, Post);
                 });
                 return _commentCommand;
             }
@@ -58,6 +58,18 @@ namespace VGtime.Uwp.ViewModels
             }
         }
 
+        public Post Post
+        {
+            get
+            {
+                return _post;
+            }
+            private set
+            {
+                Set(ref _post, value);
+            }
+        }
+
         public RelayCommand RefreshCommand
         {
             get
@@ -72,7 +84,7 @@ namespace VGtime.Uwp.ViewModels
 
         public void Activate(object parameter)
         {
-            _post = (Post)parameter;
+            Post = (Post)parameter;
 
             LoadArticleDetail();
         }
@@ -83,7 +95,8 @@ namespace VGtime.Uwp.ViewModels
 
         private async void LoadArticleDetail(bool isRefresh = false)
         {
-            if (IsLoading || _post == null)
+            var post = Post;
+            if (IsLoading || post == null)
             {
                 return;
             }
@@ -91,10 +104,12 @@ namespace VGtime.Uwp.ViewModels
             IsLoading = true;
             try
             {
-                var result = await _postService.GetDetailAsync(_post.PostId, _post.DetailType);
+                var result = await _postService.GetDetailAsync(post.PostId, post.DetailType);
                 if (result.ErrorCode == HttpStatusCode.OK)
                 {
-                    MessengerInstance.Send(new PostContentLoadedMessage(result.Data.Data.Content));
+                    post = result.Data.Data;
+                    Post = post;
+                    MessengerInstance.Send(new PostContentLoadedMessage(post.Content));
 
                     if (isRefresh)
                     {

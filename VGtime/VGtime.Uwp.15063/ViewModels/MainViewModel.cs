@@ -33,7 +33,14 @@ namespace VGtime.Uwp.ViewModels
             _appToastService = appToastService;
 
             ListPosts = new ListPostCollection(postService);
+            TopicPosts = new TagPostCollection(postService, 1);
+            EvalPosts = new TagPostCollection(postService, 4);
             LoadHeadPostsAsync();
+        }
+
+        public TagPostCollection EvalPosts
+        {
+            get;
         }
 
         public Post[] HeadPosts
@@ -61,6 +68,11 @@ namespace VGtime.Uwp.ViewModels
         }
 
         public ListPostCollection ListPosts
+        {
+            get;
+        }
+
+        public TagPostCollection TopicPosts
         {
             get;
         }

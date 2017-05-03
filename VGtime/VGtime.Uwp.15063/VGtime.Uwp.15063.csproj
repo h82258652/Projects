@@ -106,10 +106,13 @@
     </Compile>
     <Compile Include="Converters\AddConverter.cs" />
     <Compile Include="Converters\IntegerToVisibilityConverter.cs" />
+    <Compile Include="Converters\IsNullToVisibilityConverter.cs" />
+    <Compile Include="Converters\ReviewScoreToColorConverter.cs" />
     <Compile Include="Converters\TimeAgoConverter.cs" />
     <Compile Include="Data\CommentCollection.cs" />
     <Compile Include="Data\IncrementalLoadingCollectionBase.cs" />
     <Compile Include="Data\ListPostCollection.cs" />
+    <Compile Include="Data\TagPostCollection.cs" />
     <Compile Include="LocalizedStrings.cs" />
     <Compile Include="Messages\PostContentLoadedMessage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -331,7 +334,17 @@
       <Generator>MSBuild:Compile</Generator>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Page>
+    <Page Include="Styles\Buttons\VGtimeAccentButtonStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Page>
     <Page Include="Styles\VGtimeButtonStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Page>
+    <Page Include="Styles\VGtimeColorStyle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

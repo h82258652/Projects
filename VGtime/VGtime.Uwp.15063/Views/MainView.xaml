@@ -46,26 +46,13 @@
                                                    ItemsSource="{Binding Path=HeadPosts}"
                                                    MaxItems="1"
                                                    SelectedIndex="0"
-                                                   SlideInterval="5000">
+                                                   SlideInterval="4000">
                                     <controls:Carousel.ContentTemplate>
                                         <DataTemplate>
-                                            <!--<Button Command="{Binding ElementName=Root, Path=DataContext.PostClickCommand}"
-                                                    CommandParameter="{Binding}"
-                                                    Style="{StaticResource EmptyButtonStyle}">-->
                                             <localControls:HeadPostItem />
-                                            <!--</Button>-->
                                         </DataTemplate>
                                     </controls:Carousel.ContentTemplate>
                                 </controls:Carousel>
-                                <!--<FlipView x:Name="HeadPostsFlipView"
-                                          Height="300"
-                                          ItemsSource="{Binding Path=HeadPosts}">
-                                    <FlipView.ItemTemplate>
-                                        <DataTemplate>
-                                            <localControls:HeadPostItem />
-                                        </DataTemplate>
-                                    </FlipView.ItemTemplate>
-                                </FlipView>-->
                                 <Grid Width="32"
                                       Height="32"
                                       Margin="0,0,16,16"
@@ -85,6 +72,11 @@
                                 </Grid>
                             </Grid>
                         </ListView.Header>
+                        <ListView.Footer>
+                            <TextBlock Foreground="Gray"
+                                       Text="正在加载中..."
+                                       TextAlignment="Center" />
+                        </ListView.Footer>
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <localControls:ListPostItem />
@@ -104,14 +96,82 @@
                         </ListView.ItemContainerStyle>
                     </ListView>
                 </PivotItem>
-                <PivotItem Header="新闻" />
-                <PivotItem Header="评测" />
+                <PivotItem Header="新闻">
+                    <ListView IsItemClickEnabled="True"
+                              ItemsSource="{Binding Path=TopicPosts}"
+                              SelectionMode="None">
+                        <interactivity:Interaction.Behaviors>
+                            <core:EventTriggerBehavior EventName="ItemClick">
+                                <core:InvokeCommandAction Command="{Binding Path=PostClickCommand}"
+                                                          InputConverter="{Binding Source={StaticResource ItemClickEventArgsConverter}}" />
+                            </core:EventTriggerBehavior>
+                        </interactivity:Interaction.Behaviors>
+                        <ListView.Footer>
+                            <TextBlock Foreground="Gray"
+                                       Text="正在加载中..."
+                                       TextAlignment="Center" />
+                        </ListView.Footer>
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <localControls:ListPostItem />
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                        <ListView.ItemContainerStyle>
+                            <Style TargetType="ListViewItem">
+                                <Setter Property="HorizontalContentAlignment"
+                                        Value="Stretch" />
+                                <Setter Property="Padding"
+                                        Value="12" />
+                                <Setter Property="BorderThickness"
+                                        Value="0,0,0,1" />
+                                <Setter Property="BorderBrush"
+                                        Value="Gray" />
+                            </Style>
+                        </ListView.ItemContainerStyle>
+                    </ListView>
+                </PivotItem>
+                <PivotItem Header="评测">
+                    <ListView IsItemClickEnabled="True"
+                              ItemsSource="{Binding Path=EvalPosts}"
+                              SelectionMode="None">
+                        <interactivity:Interaction.Behaviors>
+                            <core:EventTriggerBehavior EventName="ItemClick">
+                                <core:InvokeCommandAction Command="{Binding Path=PostClickCommand}"
+                                                          InputConverter="{Binding Source={StaticResource ItemClickEventArgsConverter}}" />
+                            </core:EventTriggerBehavior>
+                        </interactivity:Interaction.Behaviors>
+                        <ListView.Footer>
+                            <TextBlock Foreground="Gray"
+                                       Text="正在加载中..."
+                                       TextAlignment="Center" />
+                        </ListView.Footer>
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <localControls:ListPostItem />
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                        <ListView.ItemContainerStyle>
+                            <Style TargetType="ListViewItem">
+                                <Setter Property="HorizontalContentAlignment"
+                                        Value="Stretch" />
+                                <Setter Property="Padding"
+                                        Value="12" />
+                                <Setter Property="BorderThickness"
+                                        Value="0,0,0,1" />
+                                <Setter Property="BorderBrush"
+                                        Value="Gray" />
+                            </Style>
+                        </ListView.ItemContainerStyle>
+                    </ListView>
+                </PivotItem>
                 <PivotItem Header="视频" />
                 <PivotItem Header="攻略" />
                 <PivotItem Header="专栏" />
             </Pivot.Items>
             <Pivot.RightHeader>
-                <Button Content="搜索" />
+                <Button>
+                    <SymbolIcon Symbol="Find" />
+                </Button>
             </Pivot.RightHeader>
             <Pivot.ItemContainerStyle>
                 <Style TargetType="PivotItem">

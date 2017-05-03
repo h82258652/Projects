@@ -11,6 +11,8 @@
         <ResourceDictionary>
             <converters:TimeAgoConverter x:Key="TimeAgoConverter" />
             <converters:IntegerToVisibilityConverter x:Key="IntegerToVisibilityConverter" />
+            <converters:ReviewScoreToColorConverter x:Key="ReviewScoreToColorConverter" />
+            <converters:IsNullToVisibilityConverter x:Key="IsNullToVisibilityConverter" />
         </ResourceDictionary>
     </UserControl.Resources>
     <Grid>
@@ -34,7 +36,7 @@
                 </Ellipse.Fill>
             </Ellipse>
             <TextBlock Grid.Column="1"
-                       Margin="8,0,0,0"
+                       Margin="12,0,0,0"
                        VerticalAlignment="Center"
                        FontSize="14"
                        Foreground="#9C9C9C"
@@ -88,10 +90,29 @@
                                Text="{Binding Path=CommentNum}" />
                 </StackPanel>
             </Grid>
-            <Image Grid.Column="1"
-                   MaxWidth="90"
-                   Margin="8,0,0,0"
-                   Source="{Binding Path=Thumbnail.Url}" />
+            <Grid Grid.Column="1"
+                  Width="90"
+                  Margin="12,0,0,0"
+                  Background="#f5f5f5">
+                <Image Source="{Binding Path=Thumbnail.Url}" />
+                <Border HorizontalAlignment="Right"
+                        VerticalAlignment="Top"
+                        Background="{Binding Path=ReviewScore, Converter={StaticResource ReviewScoreToColorConverter}}"
+                        Visibility="{Binding Path=ReviewScore, Converter={StaticResource IsNullToVisibilityConverter}}">
+                    <StackPanel Margin="0,2,0,2"
+                                Orientation="Horizontal">
+                        <TextBlock VerticalAlignment="Center"
+                                   FontSize="16"
+                                   FontWeight="Bold"
+                                   Foreground="White"
+                                   Text="{Binding Path=ReviewScore}" />
+                        <TextBlock VerticalAlignment="Center"
+                                   FontSize="12"
+                                   Foreground="White"
+                                   Text="分" />
+                    </StackPanel>
+                </Border>
+            </Grid>
         </Grid>
     </Grid>
 </UserControl>

@@ -12,6 +12,8 @@ namespace VGtime.Uwp.ViewModels
 
         private CommentCollection _comments;
 
+        private Post _post;
+
         public CommentViewModel(IPostService postService)
         {
             _postService = postService;
@@ -29,10 +31,22 @@ namespace VGtime.Uwp.ViewModels
             }
         }
 
+        public Post Post
+        {
+            get
+            {
+                return _post;
+            }
+            private set
+            {
+                Set(ref _post, value);
+            }
+        }
+
         public void Activate(object parameter)
         {
-            var post = (Post)parameter;
-            Comments = new CommentCollection(post.PostId, _postService);
+            Post = (Post)parameter;
+            Comments = new CommentCollection(Post.PostId, _postService);
         }
 
         public void Deactivate(object parameter)

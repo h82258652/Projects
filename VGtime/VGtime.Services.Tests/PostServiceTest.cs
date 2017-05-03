@@ -68,7 +68,16 @@ namespace VGtime.Services.Tests
         [Test]
         public async Task TestGetListByTagAsync()
         {
-            var result = await _postService.GetListByTagAsync(1);
+            Assert.ThrowsAsync<ArgumentOutOfRangeException>(async () =>
+            {
+                await _postService.GetListByTagAsync(1, page: 0);
+            });
+            Assert.ThrowsAsync<ArgumentOutOfRangeException>(async () =>
+            {
+                await _postService.GetListByTagAsync(1, pageSize: 0);
+            });
+
+            var result = await _postService.GetListByTagAsync(4);
             Assert.AreEqual(result.ErrorCode, HttpStatusCode.OK);
         }
     }
