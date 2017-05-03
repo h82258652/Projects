@@ -1,12 +1,18 @@
 ﻿<UserControl x:Class="VGtime.Uwp.Controls.CommentItem"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:converters="using:Microsoft.Toolkit.Uwp.UI.Converters"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="using:VGtime.Uwp.Controls"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:models="using:VGtime.Models"
              d:DataContext="{d:DesignInstance models:Post}"
              mc:Ignorable="d">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <converters:StringFormatConverter x:Key="StringFormatConverter" />
+        </ResourceDictionary>
+    </UserControl.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -18,8 +24,8 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
             <Ellipse Grid.Column="0"
-                     Width="24"
-                     Height="24"
+                     Width="32"
+                     Height="32"
                      VerticalAlignment="Center">
                 <Ellipse.Fill>
                     <ImageBrush ImageSource="{Binding Path=Comment.User.AvatarUrl}" />
@@ -33,14 +39,17 @@
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
                 <TextBlock Grid.Row="0"
+                           FontSize="14"
                            Text="{Binding Path=Comment.User.Name}" />
                 <TextBlock Grid.Row="1"
+                           FontSize="14"
                            Foreground="#9C9C9C"
-                           Text="{Binding Path=Comment.PublishDate}" />
+                           Text="{Binding Path=Comment.PublishDate, Converter={StaticResource StringFormatConverter}, ConverterParameter='{}{0:yyyy-MM-dd hh:mm:ss}'}" />
             </Grid>
         </Grid>
         <TextBlock Grid.Row="1"
                    Margin="0,8,0,0"
+                   FontSize="15"
                    Text="{Binding Path=Comment.Remark}"
                    TextWrapping="Wrap" />
     </Grid>
