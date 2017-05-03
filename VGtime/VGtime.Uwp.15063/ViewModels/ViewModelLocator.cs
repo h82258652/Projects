@@ -47,7 +47,7 @@ namespace VGtime.Uwp.ViewModels
 
         private static INavigationService CreateNavigationService()
         {
-            var navigationService = new NavigationService();
+            var navigationService = new SoftwareKobo.Services.NavigationService();
             navigationService.Configure(DetailViewKey, typeof(DetailView));
             navigationService.Configure(CommentViewKey, typeof(CommentView));
             return navigationService;
