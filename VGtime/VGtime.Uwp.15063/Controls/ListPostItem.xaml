@@ -10,6 +10,7 @@
     <UserControl.Resources>
         <ResourceDictionary>
             <converters:TimeAgoConverter x:Key="TimeAgoConverter" />
+            <converters:IntegerToVisibilityConverter x:Key="IntegerToVisibilityConverter" />
         </ResourceDictionary>
     </UserControl.Resources>
     <Grid>
@@ -50,7 +51,7 @@
                 <TextBlock FontSize="14"
                            Foreground="#2ABACA"
                            Text="{Binding Path=Category}" />
-                <Border Width="1"
+                <Border Width="2"
                         Margin="8,2,0,2"
                         Background="#2ABACA" />
             </StackPanel>
@@ -72,7 +73,8 @@
                            TextWrapping="Wrap" />
                 <StackPanel Grid.Row="1"
                             HorizontalAlignment="Right"
-                            Orientation="Horizontal">
+                            Orientation="Horizontal"
+                            Visibility="{Binding Path=CommentNum, Converter={StaticResource IntegerToVisibilityConverter}}">
                     <Viewbox Width="18"
                              Height="18"
                              VerticalAlignment="Bottom">
