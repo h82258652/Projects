@@ -32,10 +32,10 @@
                     </core:EventTriggerBehavior>
                 </interactivity:Interaction.Behaviors>
             </Button>
-            <TextBlock VerticalAlignment="Center"
+            <TextBlock HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
                        Foreground="White"
-                       Text="全部评论"
-                       TextAlignment="Center" />
+                       Text="全部评论" />
         </Grid>
         <ListView Grid.Row="1"
                   ItemsSource="{Binding Path=Comments}"
