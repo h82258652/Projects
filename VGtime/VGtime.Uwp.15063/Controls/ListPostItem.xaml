@@ -51,11 +51,11 @@
                         VerticalAlignment="Center"
                         Orientation="Horizontal">
                 <TextBlock FontSize="14"
-                           Foreground="#2ABACA"
+                           Foreground="{ThemeResource VGtimeAccentBrush}"
                            Text="{Binding Path=Category}" />
                 <Border Width="2"
                         Margin="8,2,0,2"
-                        Background="#2ABACA" />
+                        Background="{ThemeResource VGtimeAccentBrush}" />
             </StackPanel>
         </Grid>
         <Grid Grid.Row="1"
