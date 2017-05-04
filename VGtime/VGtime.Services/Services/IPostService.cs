@@ -5,7 +5,7 @@ namespace VGtime.Services
 {
     public interface IPostService
     {
-        Task<object> GetAdAsync();
+        Task<ResultBase<object>> GetAdAsync();
 
         Task<ResultBase<CommentList>> GetCommentListAsync(int postId, int type, int page = 1, int pageSize = 20);
 
@@ -21,8 +21,8 @@ namespace VGtime.Services
 
         Task<ResultBase<TopicList>> GetListByTagAsync(int tags, int page = 1, int pageSize = 20);
 
-        Task<object> GetStartPicAsync();
+        Task<ResultBase<object>> GetStartPicAsync();
 
-        Task<object> GetVersionAsync();
+        Task<ResultBase<object>> GetVersionAsync();
     }
 }

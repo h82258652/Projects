@@ -8,13 +8,13 @@ namespace VGtime.Services
 {
     public class PostService : IPostService
     {
-        public async Task<object> GetAdAsync()
+        public async Task<ResultBase<object>> GetAdAsync()
         {
             using (var client = new HttpClient())
             {
                 var json = await client.GetStringAsync($"{Constants.UrlBase}/vgtime-app/api/v2/init/ad.json");
+                return JsonConvert.DeserializeObject<ResultBase<object>>(json);
             }
-            throw new NotImplementedException();
         }
 
         public async Task<ResultBase<CommentList>> GetCommentListAsync(int postId, int type, int page = 1, int pageSize = 20)
@@ -103,22 +103,22 @@ namespace VGtime.Services
             }
         }
 
-        public async Task<object> GetStartPicAsync()
+        public async Task<ResultBase<object>> GetStartPicAsync()
         {
             using (var client = new HttpClient())
             {
                 var json = await client.GetStringAsync($"{Constants.UrlBase}/vgtime-app/api/v2/init/startpic.json");
+                return JsonConvert.DeserializeObject<ResultBase<object>>(json);
             }
-            throw new NotImplementedException();
         }
 
-        public async Task<object> GetVersionAsync()
+        public async Task<ResultBase<object>> GetVersionAsync()
         {
             using (var client = new HttpClient())
             {
                 var json = await client.GetStringAsync($"{Constants.UrlBase}/vgtime-app/api/v2/init/version.json");
+                return JsonConvert.DeserializeObject<ResultBase<object>>(json);
             }
-            throw new NotImplementedException();
         }
     }
 }

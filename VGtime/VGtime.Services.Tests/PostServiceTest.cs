@@ -20,7 +20,7 @@ namespace VGtime.Services.Tests
         public async Task TestGetAdAsync()
         {
             var result = await _postService.GetAdAsync();
-            throw new NotImplementedException();
+            Assert.AreEqual(result.ErrorCode, HttpStatusCode.OK);
         }
 
         [Test]
@@ -99,14 +99,14 @@ namespace VGtime.Services.Tests
         public async Task TestGetStartPicAsync()
         {
             var result = await _postService.GetStartPicAsync();
-            throw new NotImplementedException();
+            Assert.AreEqual(result.ErrorCode, HttpStatusCode.OK);
         }
 
         [Test]
         public async Task TestGetVersionAsync()
         {
             var result = await _postService.GetVersionAsync();
-            throw new NotImplementedException();
+            Assert.AreEqual(result.ErrorCode, HttpStatusCode.OK);
         }
     }
 }
