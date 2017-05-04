@@ -12,7 +12,7 @@ namespace VGtime.Services
         {
             using (var client = new HttpClient())
             {
-                var json = await client.GetStringAsync($"{Constants.UrlBase}/vgtime-app/api/v2/init/ad.json");
+                var json = await client.GetStringAsync($"{Constants.UrlBase}/vgtime-app/api/v2/init/ad.json?channelId=1&type=1");
                 return JsonConvert.DeserializeObject<ResultBase<object>>(json);
             }
         }
@@ -107,7 +107,7 @@ namespace VGtime.Services
         {
             using (var client = new HttpClient())
             {
-                var json = await client.GetStringAsync($"{Constants.UrlBase}/vgtime-app/api/v2/init/startpic.json");
+                var json = await client.GetStringAsync($"{Constants.UrlBase}/vgtime-app/api/v2/init/startpic.json?type=2&versionName=2.0.8");
                 return JsonConvert.DeserializeObject<ResultBase<object>>(json);
             }
         }
@@ -116,7 +116,7 @@ namespace VGtime.Services
         {
             using (var client = new HttpClient())
             {
-                var json = await client.GetStringAsync($"{Constants.UrlBase}/vgtime-app/api/v2/init/version.json");
+                var json = await client.GetStringAsync($"{Constants.UrlBase}/vgtime-app/api/v2/init/version.json?type=1&versionName=2.0.8");
                 return JsonConvert.DeserializeObject<ResultBase<object>>(json);
             }
         }
