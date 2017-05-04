@@ -17,6 +17,13 @@ namespace VGtime.Services.Tests
         }
 
         [Test]
+        public async Task TestGetAdAsync()
+        {
+            var result = await _postService.GetAdAsync();
+            throw new NotImplementedException();
+        }
+
+        [Test]
         public async Task TestGetCommentListAsync()
         {
             Assert.ThrowsAsync<ArgumentOutOfRangeException>(async () =>
@@ -54,6 +61,13 @@ namespace VGtime.Services.Tests
         }
 
         [Test]
+        public async Task TestGetHotwordAsync()
+        {
+            var result = await _postService.GetHotwordAsync();
+            Assert.AreEqual(result.ErrorCode, HttpStatusCode.OK);
+        }
+
+        [Test]
         public async Task TestGetListAsync()
         {
             Assert.ThrowsAsync<ArgumentOutOfRangeException>(async () =>
@@ -79,6 +93,20 @@ namespace VGtime.Services.Tests
 
             var result = await _postService.GetListByTagAsync(4);
             Assert.AreEqual(result.ErrorCode, HttpStatusCode.OK);
+        }
+
+        [Test]
+        public async Task TestGetStartPicAsync()
+        {
+            var result = await _postService.GetStartPicAsync();
+            throw new NotImplementedException();
+        }
+
+        [Test]
+        public async Task TestGetVersionAsync()
+        {
+            var result = await _postService.GetVersionAsync();
+            throw new NotImplementedException();
         }
     }
 }

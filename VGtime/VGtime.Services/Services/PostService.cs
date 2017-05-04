@@ -62,13 +62,13 @@ namespace VGtime.Services
             }
         }
 
-        public async Task<object> GetHotwordAsync()
+        public async Task<ResultBase<KeywordList>> GetHotwordAsync()
         {
             using (var client = new HttpClient())
             {
                 var json = await client.GetStringAsync($"{Constants.UrlBase}/vgtime-app/api/v2/hotword.json");
+                return JsonConvert.DeserializeObject<ResultBase<KeywordList>>(json);
             }
-            throw new NotImplementedException();
         }
 
         public async Task<ResultBase<PushList>> GetListAsync(int page = 1)

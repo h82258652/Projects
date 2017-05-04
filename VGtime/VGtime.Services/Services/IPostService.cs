@@ -15,7 +15,7 @@ namespace VGtime.Services
 
         Task<ResultBase<HeadPicList>> GetHeadPicAsync();
 
-        Task<object> GetHotwordAsync();
+        Task<ResultBase<KeywordList>> GetHotwordAsync();
 
         Task<ResultBase<PushList>> GetListAsync(int page = 1);
 
