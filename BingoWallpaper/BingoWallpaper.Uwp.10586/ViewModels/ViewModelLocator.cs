@@ -1,11 +1,12 @@
-﻿using BingoWallpaper.Configuration;
+﻿using Autofac;
+using Autofac.Extras.CommonServiceLocator;
+using BingoWallpaper.Configuration;
 using BingoWallpaper.Services;
 using BingoWallpaper.Uwp.Services;
 using BingoWallpaper.Uwp.Views;
 using GalaSoft.MvvmLight.Messaging;
 using GalaSoft.MvvmLight.Views;
 using Microsoft.Practices.ServiceLocation;
-using Microsoft.Practices.Unity;
 using SoftwareKobo.Controls;
 using SoftwareKobo.Services;
 using SoftwareKobo.Support;
@@ -24,7 +25,7 @@ namespace BingoWallpaper.Uwp.ViewModels
 
         static ViewModelLocator()
         {
-            var serviceLocator = new UnityServiceLocator(ConfigureUnityContainer());
+            var serviceLocator = new AutofacServiceLocator(ConfigureAutofacContainer());
             ServiceLocator.SetLocatorProvider(() => serviceLocator);
         }
 
@@ -41,32 +42,30 @@ namespace BingoWallpaper.Uwp.ViewModels
             Messenger.Reset();
         }
 
-        private static IUnityContainer ConfigureUnityContainer()
+        private static IContainer ConfigureAutofacContainer()
         {
-            var unityContainer = new UnityContainer();
+            var containerBuilder = new ContainerBuilder();
 
-            unityContainer.RegisterInstance(CreateNavigationService());
-            unityContainer.RegisterType<IWallpaperService, LeanCloudWallpaperServiceWithCache>();
-            unityContainer.RegisterType<ILeanCloudWallpaperService, LeanCloudWallpaperServiceWithCache>();
-            unityContainer.RegisterType<ILeanCloudWallpaperServiceWithCache, LeanCloudWallpaperServiceWithCache>();
-            unityContainer.RegisterType<IScreenService, ScreenService>();
-            unityContainer.RegisterType<ISystemSettingService, SystemSettingService>();
-            unityContainer.RegisterType<IBingoFileService, BingoFileService>();
-            unityContainer.RegisterType<IAppToastService, AppToastService>();
-            unityContainer.RegisterType<IBingoShareService, BingoShareService>();
-            unityContainer.RegisterType<IStoreService, StoreService>();
-            unityContainer.RegisterType<ILauncherService, LauncherService>();
+            containerBuilder.RegisterInstance(CreateNavigationService());
+            containerBuilder.RegisterType<LeanCloudWallpaperServiceWithCache>().As<IWallpaperService>().As<ILeanCloudWallpaperService>().As<ILeanCloudWallpaperServiceWithCache>();
+            containerBuilder.RegisterType<ScreenService>().As<IScreenService>();
+            containerBuilder.RegisterType<SystemSettingService>().As<ISystemSettingService>();
+            containerBuilder.RegisterType<BingoFileService>().As<IBingoFileService>();
+            containerBuilder.RegisterType<AppToastService>().As<IAppToastService>();
+            containerBuilder.RegisterType<BingoShareService>().As<IBingoShareService>();
+            containerBuilder.RegisterType<StoreService>().As<IStoreService>();
+            containerBuilder.RegisterType<LauncherService>().As<ILauncherService>();
 
-            unityContainer.RegisterType<IBingoWallpaperSettings, BingoWallpaperSettings>();
+            containerBuilder.RegisterType<BingoWallpaperSettings>().As<IBingoWallpaperSettings>();
 
-            unityContainer.RegisterInstance(DefaultImageLoader.Instance);
+            containerBuilder.RegisterInstance(DefaultImageLoader.Instance);
 
-            unityContainer.RegisterType<MainViewModel>(new ContainerControlledLifetimeManager());
-            unityContainer.RegisterType<DetailViewModel>();
-            unityContainer.RegisterType<SettingViewModel>();
-            unityContainer.RegisterType<AboutViewModel>();
+            containerBuilder.RegisterType<MainViewModel>().SingleInstance();
+            containerBuilder.RegisterType<DetailViewModel>();
+            containerBuilder.RegisterType<SettingViewModel>();
+            containerBuilder.RegisterType<AboutViewModel>();
 
-            return unityContainer;
+            return containerBuilder.Build();
         }
 
         private static INavigationService CreateNavigationService()

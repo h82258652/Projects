@@ -294,6 +294,12 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="Autofac">
+      <Version>4.5.0</Version>
+    </PackageReference>
+    <PackageReference Include="Autofac.Extras.CommonServiceLocator">
+      <Version>4.0.0</Version>
+    </PackageReference>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
       <Version>5.3.3</Version>
     </PackageReference>
@@ -308,9 +314,6 @@
     </PackageReference>
     <PackageReference Include="UmengPlusAnalytics">
       <Version>3.1.0</Version>
-    </PackageReference>
-    <PackageReference Include="Unity">
-      <Version>4.0.1</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
