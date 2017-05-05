@@ -50,6 +50,7 @@ namespace VGtime.Uwp.ViewModels
             var navigationService = new SoftwareKobo.Services.NavigationService();
             navigationService.Configure(DetailViewKey, typeof(DetailView));
             navigationService.Configure(CommentViewKey, typeof(CommentView));
+            navigationService.Configure(SearchViewKey, typeof(SearchView));
             return navigationService;
         }
     }
