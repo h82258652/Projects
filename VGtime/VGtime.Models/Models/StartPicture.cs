@@ -3,9 +3,9 @@
 namespace VGtime.Models
 {
     [JsonObject]
-    public class Keyword
+    public class StartPicture
     {
-        [JsonProperty("keyword")]
+        [JsonProperty("startPicture")]
         public string Data
         {
             get;

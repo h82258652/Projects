@@ -3,10 +3,10 @@
 namespace VGtime.Models
 {
     [JsonObject]
-    public class Keyword
+    public class VersionData
     {
-        [JsonProperty("keyword")]
-        public string Data
+        [JsonProperty("version")]
+        public Version Data
         {
             get;
             set;

@@ -8,12 +8,12 @@ namespace VGtime.Services
 {
     public class PostService : IPostService
     {
-        public async Task<ResultBase<object>> GetAdAsync()
+        public async Task<ResultBase<AdData>> GetAdAsync()
         {
             using (var client = new HttpClient())
             {
                 var json = await client.GetStringAsync($"{Constants.UrlBase}/vgtime-app/api/v2/init/ad.json?channelId=1&type=1");
-                return JsonConvert.DeserializeObject<ResultBase<object>>(json);
+                return JsonConvert.DeserializeObject<ResultBase<AdData>>(json);
             }
         }
 
@@ -44,12 +44,12 @@ namespace VGtime.Services
             }
         }
 
-        public async Task<ResultBase<PostStatus>> GetDetailStatusAsync(int postId, int type)
+        public async Task<ResultBase<PostStatusData>> GetDetailStatusAsync(int postId, int type)
         {
             using (var client = new HttpClient())
             {
                 var json = await client.GetStringAsync($"{Constants.UrlBase}/vgtime-app/api/v2/post/detailStatus.json?postId={postId}&type={type}");
-                return JsonConvert.DeserializeObject<ResultBase<PostStatus>>(json);
+                return JsonConvert.DeserializeObject<ResultBase<PostStatusData>>(json);
             }
         }
 
@@ -103,21 +103,21 @@ namespace VGtime.Services
             }
         }
 
-        public async Task<ResultBase<object>> GetStartPicAsync()
+        public async Task<ResultBase<StartPicture>> GetStartPicAsync()
         {
             using (var client = new HttpClient())
             {
                 var json = await client.GetStringAsync($"{Constants.UrlBase}/vgtime-app/api/v2/init/startpic.json?type=2&versionName=2.0.8");
-                return JsonConvert.DeserializeObject<ResultBase<object>>(json);
+                return JsonConvert.DeserializeObject<ResultBase<StartPicture>>(json);
             }
         }
 
-        public async Task<ResultBase<object>> GetVersionAsync()
+        public async Task<ResultBase<VersionData>> GetVersionAsync()
         {
             using (var client = new HttpClient())
             {
                 var json = await client.GetStringAsync($"{Constants.UrlBase}/vgtime-app/api/v2/init/version.json?type=1&versionName=2.0.8");
-                return JsonConvert.DeserializeObject<ResultBase<object>>(json);
+                return JsonConvert.DeserializeObject<ResultBase<VersionData>>(json);
             }
         }
     }
