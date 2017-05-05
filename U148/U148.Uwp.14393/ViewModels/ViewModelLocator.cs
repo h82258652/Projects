@@ -1,6 +1,7 @@
-﻿using GalaSoft.MvvmLight.Views;
+﻿using Autofac;
+using Autofac.Extras.CommonServiceLocator;
+using GalaSoft.MvvmLight.Views;
 using Microsoft.Practices.ServiceLocation;
-using Microsoft.Practices.Unity;
 using SoftwareKobo.Controls;
 using SoftwareKobo.Services;
 using U148.Configuration;
@@ -32,7 +33,7 @@ namespace U148.Uwp.ViewModels
 
         static ViewModelLocator()
         {
-            var serviceLocator = new UnityServiceLocator(ConfigureUnityContainer());
+            var serviceLocator = new AutofacServiceLocator(ConfigureAutofacContainer());
             ServiceLocator.SetLocatorProvider(() => serviceLocator);
         }
 
@@ -54,35 +55,33 @@ namespace U148.Uwp.ViewModels
 
         public SettingViewModel Setting => ServiceLocator.Current.GetInstance<SettingViewModel>();
 
-        private static IUnityContainer ConfigureUnityContainer()
+        private static IContainer ConfigureAutofacContainer()
         {
-            var unityContainer = new UnityContainer();
+            var containerBuilder = new ContainerBuilder();
 
-            unityContainer.RegisterInstance(CreateNavigationService());
-            unityContainer.RegisterType<IArticleService, ArticleServiceWithCache>();
-            unityContainer.RegisterType<IArticleServiceWithCache, ArticleServiceWithCache>();
-            unityContainer.RegisterType<ICommentService, CommentService>();
-            unityContainer.RegisterType<IUserService, UserService>();
-            unityContainer.RegisterType<IU148Settings, U148UwpSettings>();
-            unityContainer.RegisterType<IAppToastService, AppToastService>();
-            unityContainer.RegisterType<IU148ShareService, U148ShareService>();
-            unityContainer.RegisterType<IStoreService, StoreService>();
+            containerBuilder.RegisterInstance(CreateNavigationService());
+            containerBuilder.RegisterType<ArticleServiceWithCache>().As<IArticleService>().As<IArticleServiceWithCache>();
+            containerBuilder.RegisterType<CommentService>().As<ICommentService>();
+            containerBuilder.RegisterType<UserService>().As<IUserService>();
+            containerBuilder.RegisterType<AppToastService>().As<IAppToastService>();
+            containerBuilder.RegisterType<U148ShareService>().As<IU148ShareService>();
+            containerBuilder.RegisterType<StoreService>().As<IStoreService>();
 
-            unityContainer.RegisterType<IU148Settings, U148UwpSettings>();
+            containerBuilder.RegisterType<U148UwpSettings>().As<IU148Settings>().As<IU148UwpSettings>();
 
-            unityContainer.RegisterInstance(DefaultImageLoader.Instance);
+            containerBuilder.RegisterInstance(DefaultImageLoader.Instance);
 
-            unityContainer.RegisterType<RootViewModel>();
-            unityContainer.RegisterType<MainViewModel>();
-            unityContainer.RegisterType<ArticleViewModel>(new ContainerControlledLifetimeManager());
-            unityContainer.RegisterType<DetailViewModel>();
-            unityContainer.RegisterType<CommentViewModel>();
-            unityContainer.RegisterType<SearchViewModel>();
-            unityContainer.RegisterType<SettingViewModel>();
-            unityContainer.RegisterType<LoginViewModel>();
-            unityContainer.RegisterType<AboutViewModel>();
+            containerBuilder.RegisterType<RootViewModel>();
+            containerBuilder.RegisterType<MainViewModel>();
+            containerBuilder.RegisterType<ArticleViewModel>().SingleInstance();
+            containerBuilder.RegisterType<DetailViewModel>();
+            containerBuilder.RegisterType<CommentViewModel>();
+            containerBuilder.RegisterType<SearchViewModel>();
+            containerBuilder.RegisterType<SettingViewModel>();
+            containerBuilder.RegisterType<LoginViewModel>();
+            containerBuilder.RegisterType<AboutViewModel>();
 
-            return unityContainer;
+            return containerBuilder.Build();
         }
 
         private static INavigationService CreateNavigationService()
