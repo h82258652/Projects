@@ -1,6 +1,7 @@
-﻿using GalaSoft.MvvmLight.Views;
+﻿using Autofac;
+using Autofac.Extras.CommonServiceLocator;
+using GalaSoft.MvvmLight.Views;
 using Microsoft.Practices.ServiceLocation;
-using Microsoft.Practices.Unity;
 using VGtime.Services;
 using VGtime.Uwp.Services;
 using VGtime.Uwp.Views;
@@ -17,7 +18,7 @@ namespace VGtime.Uwp.ViewModels
 
         static ViewModelLocator()
         {
-            var serviceLocator = new UnityServiceLocator(ConfigureUnityContainer());
+            var serviceLocator = new AutofacServiceLocator(ConfigureAutofacContainer());
             ServiceLocator.SetLocatorProvider(() => serviceLocator);
         }
 
@@ -29,20 +30,20 @@ namespace VGtime.Uwp.ViewModels
 
         public SearchViewModel Search => ServiceLocator.Current.GetInstance<SearchViewModel>();
 
-        private static IUnityContainer ConfigureUnityContainer()
+        private static IContainer ConfigureAutofacContainer()
         {
-            var unityContainer = new UnityContainer();
+            var containerBuilder = new ContainerBuilder();
 
-            unityContainer.RegisterInstance(CreateNavigationService());
-            unityContainer.RegisterType<IPostService, PostService>();
-            unityContainer.RegisterType<IAppToastService, AppToastService>();
+            containerBuilder.RegisterInstance(CreateNavigationService());
+            containerBuilder.RegisterType<PostService>().As<IPostService>();
+            containerBuilder.RegisterType<AppToastService>().As<IAppToastService>();
 
-            unityContainer.RegisterType<MainViewModel>();
-            unityContainer.RegisterType<DetailViewModel>();
-            unityContainer.RegisterType<CommentViewModel>();
-            unityContainer.RegisterType<SearchViewModel>();
+            containerBuilder.RegisterType<MainViewModel>();
+            containerBuilder.RegisterType<DetailViewModel>();
+            containerBuilder.RegisterType<CommentViewModel>();
+            containerBuilder.RegisterType<SearchViewModel>();
 
-            return unityContainer;
+            return containerBuilder.Build();
         }
 
         private static INavigationService CreateNavigationService()
