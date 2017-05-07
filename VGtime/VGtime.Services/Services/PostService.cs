@@ -121,11 +121,33 @@ namespace VGtime.Services
             }
         }
 
-        public async Task<ResultBase<SearchList>> SearchAsync(string text, int type, int typeTag)
+        public async Task<ResultBase<SearchList>> SearchAsync(string text, int type, int? typeTag = null, int page = 1, int pageSize = 20)
         {
+            if (text == null)
+            {
+                throw new ArgumentNullException(nameof(text));
+            }
+            if (page <= 0)
+            {
+                throw new ArgumentOutOfRangeException(nameof(page));
+            }
+            if (pageSize <= 0)
+            {
+                throw new ArgumentOutOfRangeException(nameof(pageSize));
+            }
+
+            string url;
+            if (typeTag.HasValue)
+            {
+                url = $"{Constants.UrlBase}/vgtime-app/api/v2/search.json?text={text}&type={type}&typeTag={typeTag.Value}&page={page}&pageSize={pageSize}";
+            }
+            else
+            {
+                url = $"{Constants.UrlBase}/vgtime-app/api/v2/search.json?text={text}&type={type}&page={page}&pageSize={pageSize}";
+            }
             using (var client = new HttpClient())
             {
-                var json = await client.GetStringAsync($"{Constants.UrlBase}/vgtime-app/api/v2/search.json?text={text}&type={type}&typeTag={typeTag}");
+                var json = await client.GetStringAsync(url);
                 return JsonConvert.DeserializeObject<ResultBase<SearchList>>(json);
             }
         }

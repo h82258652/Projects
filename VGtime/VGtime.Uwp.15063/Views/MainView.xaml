@@ -169,7 +169,7 @@
                 <PivotItem Header="专栏" />
             </Pivot.Items>
             <Pivot.RightHeader>
-                <Button>
+                <Button Command="{Binding Path=SearchCommand}">
                     <SymbolIcon Symbol="Find" />
                 </Button>
             </Pivot.RightHeader>

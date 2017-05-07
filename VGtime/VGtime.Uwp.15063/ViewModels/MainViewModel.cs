@@ -26,6 +26,8 @@ namespace VGtime.Uwp.ViewModels
 
         private RelayCommand _refreshCommand;
 
+        private RelayCommand _searchCommand;
+
         public MainViewModel(IPostService postService, INavigationService navigationService, IAppToastService appToastService)
         {
             _postService = postService;
@@ -72,11 +74,6 @@ namespace VGtime.Uwp.ViewModels
             get;
         }
 
-        public TagPostCollection TopicPosts
-        {
-            get;
-        }
-
         public RelayCommand<Post> PostClickCommand
         {
             get
@@ -100,6 +97,23 @@ namespace VGtime.Uwp.ViewModels
                 });
                 return _refreshCommand;
             }
+        }
+
+        public RelayCommand SearchCommand
+        {
+            get
+            {
+                _searchCommand = _searchCommand ?? new RelayCommand(() =>
+                {
+                    _navigationService.NavigateTo(ViewModelLocator.SearchViewKey);
+                });
+                return _searchCommand;
+            }
+        }
+
+        public TagPostCollection TopicPosts
+        {
+            get;
         }
 
         public async void LoadHeadPostsAsync()

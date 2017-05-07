@@ -98,11 +98,17 @@
     <Compile Include="Controls\CommentItem.xaml.cs">
       <DependentUpon>CommentItem.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\GamePostItem.xaml.cs">
+      <DependentUpon>GamePostItem.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\HeadPostItem.xaml.cs">
       <DependentUpon>HeadPostItem.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\ListPostItem.xaml.cs">
       <DependentUpon>ListPostItem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\UserPostItem.xaml.cs">
+      <DependentUpon>UserPostItem.xaml</DependentUpon>
     </Compile>
     <Compile Include="Converters\AddConverter.cs" />
     <Compile Include="Converters\IntegerToVisibilityConverter.cs" />
@@ -112,6 +118,7 @@
     <Compile Include="Data\CommentCollection.cs" />
     <Compile Include="Data\IncrementalLoadingCollectionBase.cs" />
     <Compile Include="Data\ListPostCollection.cs" />
+    <Compile Include="Data\SearchPostCollection.cs" />
     <Compile Include="Data\TagPostCollection.cs" />
     <Compile Include="LocalizedStrings.cs" />
     <Compile Include="Messages\PostContentLoadedMessage.cs" />
@@ -324,11 +331,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Controls\GamePostItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controls\HeadPostItem.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\ListPostItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\UserPostItem.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -25,6 +25,6 @@ namespace VGtime.Services
 
         Task<ResultBase<VersionData>> GetVersionAsync();
 
-        Task<ResultBase<SearchList>> SearchAsync(string text, int type, int typeTag);
+        Task<ResultBase<SearchList>> SearchAsync(string text, int type, int? typeTag = null, int page = 1, int pageSize = 20);
     }
 }
