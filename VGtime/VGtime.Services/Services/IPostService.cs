@@ -24,5 +24,7 @@ namespace VGtime.Services
         Task<ResultBase<StartPicture>> GetStartPicAsync();
 
         Task<ResultBase<VersionData>> GetVersionAsync();
+
+        Task<ResultBase<SearchList>> SearchAsync(string text, int type, int typeTag);
     }
 }

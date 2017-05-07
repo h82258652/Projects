@@ -108,5 +108,12 @@ namespace VGtime.Services.Tests
             var result = await _postService.GetVersionAsync();
             Assert.AreEqual(result.ErrorCode, HttpStatusCode.OK);
         }
+
+        [Test]
+        public async Task TestSearchAsync()
+        {
+            var result = await _postService.SearchAsync("高达", 2, 2);
+            Assert.AreEqual(result.ErrorCode, HttpStatusCode.OK);
+        }
     }
 }

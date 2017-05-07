@@ -120,5 +120,14 @@ namespace VGtime.Services
                 return JsonConvert.DeserializeObject<ResultBase<VersionData>>(json);
             }
         }
+
+        public async Task<ResultBase<SearchList>> SearchAsync(string text, int type, int typeTag)
+        {
+            using (var client = new HttpClient())
+            {
+                var json = await client.GetStringAsync($"{Constants.UrlBase}/vgtime-app/api/v2/search.json?text={text}&type={type}&typeTag={typeTag}");
+                return JsonConvert.DeserializeObject<ResultBase<SearchList>>(json);
+            }
+        }
     }
 }
