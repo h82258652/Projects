@@ -126,17 +126,33 @@ namespace VGtime.Services.Tests
             });
 
             {
-                var result = await _postService.SearchAsync("高达", 2, 2);
+                var result = await _postService.SearchAsync("高达", 2, typeTag: 2);
                 Assert.AreEqual(result.ErrorCode, HttpStatusCode.OK);
             }
             {
-                var result = await _postService.SearchAsync("高达", 2, 3);
+                var result = await _postService.SearchAsync("高达", 2, typeTag: 3);
                 Assert.AreEqual(result.ErrorCode, HttpStatusCode.OK);
             }
+        }
+
+        [Test]
+        public async Task TestSearchGameAsync()
+        {
+            Assert.ThrowsAsync<ArgumentNullException>(async () =>
             {
-                var result = await _postService.SearchAsync("高达", 2);
-                Assert.AreEqual(result.ErrorCode, HttpStatusCode.OK);
-            }
+                await _postService.SearchGameAsync(null, 2, 4);
+            });
+            Assert.ThrowsAsync<ArgumentOutOfRangeException>(async () =>
+            {
+                await _postService.SearchGameAsync("高达", 2, 4, page: 0);
+            });
+            Assert.ThrowsAsync<ArgumentOutOfRangeException>(async () =>
+            {
+                await _postService.SearchGameAsync("高达", 2, 4, pageSize: 0);
+            });
+
+            var result = await _postService.SearchAsync("高达", 2, 4);
+            Assert.AreEqual(result.ErrorCode, HttpStatusCode.OK);
         }
 
         [Test]

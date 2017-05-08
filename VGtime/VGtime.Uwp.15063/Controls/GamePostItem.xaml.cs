@@ -5,6 +5,7 @@
         public GamePostItem()
         {
             InitializeComponent();
+#warning 删除这个自定义控件
         }
     }
 }

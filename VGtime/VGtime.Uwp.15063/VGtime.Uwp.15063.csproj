@@ -98,6 +98,9 @@
     <Compile Include="Controls\CommentItem.xaml.cs">
       <DependentUpon>CommentItem.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\GameItem.xaml.cs">
+      <DependentUpon>GameItem.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\GamePostItem.xaml.cs">
       <DependentUpon>GamePostItem.xaml</DependentUpon>
     </Compile>
@@ -118,6 +121,7 @@
     <Compile Include="Data\CommentCollection.cs" />
     <Compile Include="Data\IncrementalLoadingCollectionBase.cs" />
     <Compile Include="Data\ListPostCollection.cs" />
+    <Compile Include="Data\SearchGameCollection.cs" />
     <Compile Include="Data\SearchPostCollection.cs" />
     <Compile Include="Data\SearchUserCollection.cs" />
     <Compile Include="Data\TagPostCollection.cs" />
@@ -333,6 +337,10 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="Controls\CommentItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\GameItem.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

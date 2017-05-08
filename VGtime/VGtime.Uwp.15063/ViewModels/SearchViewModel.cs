@@ -11,7 +11,7 @@ namespace VGtime.Uwp.ViewModels
 
         private SearchPostCollection _forumPosts;
 
-        private SearchPostCollection _gamePosts;
+        private SearchGameCollection _games;
 
         private RelayCommand<string> _searchCommand;
 
@@ -36,15 +36,15 @@ namespace VGtime.Uwp.ViewModels
             }
         }
 
-        public SearchPostCollection GamePosts
+        public SearchGameCollection Games
         {
             get
             {
-                return _gamePosts;
+                return _games;
             }
             private set
             {
-                Set(ref _gamePosts, value);
+                Set(ref _games, value);
             }
         }
 
@@ -59,7 +59,7 @@ namespace VGtime.Uwp.ViewModels
                         TopicPosts = new SearchPostCollection(text, 2, 2, _postService);
                         ForumPosts = new SearchPostCollection(text, 2, 3, _postService);
                         Users = new SearchUserCollection(text, 1, _postService);
-                        GamePosts = new SearchPostCollection(text, 2, null, _postService);
+                        Games = new SearchGameCollection(text, 2, 4, _postService);
                     }
                 });
                 return _searchCommand;

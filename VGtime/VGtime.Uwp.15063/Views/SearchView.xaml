@@ -94,11 +94,11 @@
                 </ListView>
             </PivotItem>
             <PivotItem Header="游戏">
-                <ListView ItemsSource="{Binding Path=GamePosts}"
+                <ListView ItemsSource="{Binding Path=Games}"
                           SelectionMode="None">
                     <ListView.ItemTemplate>
                         <DataTemplate>
-                            <controls:GamePostItem />
+                            <controls:GameItem />
                         </DataTemplate>
                     </ListView.ItemTemplate>
                     <ListView.ItemContainerStyle>

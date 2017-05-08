@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Net.Http;
+using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using VGtime.Models;
@@ -136,13 +137,39 @@ namespace VGtime.Services
                 throw new ArgumentOutOfRangeException(nameof(pageSize));
             }
 
-            var url = typeTag.HasValue
-                ? $"{Constants.UrlBase}/vgtime-app/api/v2/search.json?text={text}&type={type}&typeTag={typeTag.Value}&page={page}&pageSize={pageSize}"
-                : $"{Constants.UrlBase}/vgtime-app/api/v2/search.json?text={text}&type={type}&page={page}&pageSize={pageSize}";
+            StringBuilder urlBuilder = new StringBuilder();
+            urlBuilder.Append($"{Constants.UrlBase}/vgtime-app/api/v2/search.json?text={text}&type={type}");
+            if (typeTag.HasValue)
+            {
+                urlBuilder.Append($"&typeTag={typeTag.Value}");
+            }
+            urlBuilder.Append($"&page={page}&pageSize={pageSize}");
             using (var client = new HttpClient())
             {
-                var json = await client.GetStringAsync(url);
+                var json = await client.GetStringAsync(urlBuilder.ToString());
                 return JsonConvert.DeserializeObject<ResultBase<SearchList<Post>>>(json);
+            }
+        }
+
+        public async Task<ResultBase<SearchList<Game>>> SearchGameAsync(string text, int type, int contentType, int page = 1, int pageSize = 20)
+        {
+            if (text == null)
+            {
+                throw new ArgumentNullException(nameof(text));
+            }
+            if (page <= 0)
+            {
+                throw new ArgumentOutOfRangeException(nameof(page));
+            }
+            if (pageSize <= 0)
+            {
+                throw new ArgumentOutOfRangeException(nameof(pageSize));
+            }
+
+            using (var client = new HttpClient())
+            {
+                var json = await client.GetStringAsync($"{Constants.UrlBase}/vgtime-app/api/v2/search.json?text={text}&type={type}&contentType={contentType}&page={page}&pageSize={pageSize}");
+                return JsonConvert.DeserializeObject<ResultBase<SearchList<Game>>>(json);
             }
         }
 
