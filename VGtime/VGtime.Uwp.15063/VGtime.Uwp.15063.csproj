@@ -107,8 +107,8 @@
     <Compile Include="Controls\ListPostItem.xaml.cs">
       <DependentUpon>ListPostItem.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\UserPostItem.xaml.cs">
-      <DependentUpon>UserPostItem.xaml</DependentUpon>
+    <Compile Include="Controls\UserItem.xaml.cs">
+      <DependentUpon>UserItem.xaml</DependentUpon>
     </Compile>
     <Compile Include="Converters\AddConverter.cs" />
     <Compile Include="Converters\IntegerToVisibilityConverter.cs" />
@@ -119,6 +119,7 @@
     <Compile Include="Data\IncrementalLoadingCollectionBase.cs" />
     <Compile Include="Data\ListPostCollection.cs" />
     <Compile Include="Data\SearchPostCollection.cs" />
+    <Compile Include="Data\SearchUserCollection.cs" />
     <Compile Include="Data\TagPostCollection.cs" />
     <Compile Include="LocalizedStrings.cs" />
     <Compile Include="Messages\PostContentLoadedMessage.cs" />
@@ -144,6 +145,9 @@
     </Compile>
     <Compile Include="Views\SearchView.xaml.cs">
       <DependentUpon>SearchView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SplashScreenView.xaml.cs">
+      <DependentUpon>SplashScreenView.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -288,6 +292,7 @@
     <Content Include="Assets\Html\css\detail.css" />
     <Content Include="Assets\Html\detail.html" />
     <Content Include="Assets\Html\js\detail.js" />
+    <Content Include="Assets\Images\splash_screen.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />
@@ -343,7 +348,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Controls\UserPostItem.xaml">
+    <Page Include="Controls\UserItem.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -394,6 +399,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\SearchView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SplashScreenView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

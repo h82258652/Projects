@@ -125,7 +125,7 @@
                 </Popup>
             </Grid>
         </Grid>
-        <Grid Background="#80000000"
+        <Grid Background="{ThemeResource U148MaskBrush}"
               Visibility="{Binding Path=IsBusy, Converter={StaticResource BooleanToVisibilityConverter}}">
             <ProgressRing Width="96"
                           Height="96"

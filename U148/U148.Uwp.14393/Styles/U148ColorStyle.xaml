@@ -3,14 +3,17 @@
     <ResourceDictionary.ThemeDictionaries>
         <ResourceDictionary x:Key="Light">
             <Color x:Key="U148AccentColor">#FF9900</Color>
+            <Color x:Key="U148AccentLightColor">#FFB240</Color>
+            <Color x:Key="U148AccentDarkColor">#BF8630</Color>
         </ResourceDictionary>
         <ResourceDictionary x:Key="Dark">
             <Color x:Key="U148AccentColor">#B26B00</Color>
+            <Color x:Key="U148AccentLightColor">#D99736</Color>
+            <Color x:Key="U148AccentDarkColor">#855D21</Color>
         </ResourceDictionary>
     </ResourceDictionary.ThemeDictionaries>
-    <Color x:Key="U148AccentLightColor">#FFB240</Color>
-    <Color x:Key="U148AccentDarkColor">#BF8630</Color>
     <Color x:Key="U148DividerColor">Gray</Color>
+    <Color x:Key="U148MaskColor">#80000000</Color>
     <SolidColorBrush x:Key="U148AccentBrush"
                      Color="{ThemeResource U148AccentColor}" />
     <SolidColorBrush x:Key="U148AccentLightBrush"
@@ -19,4 +22,6 @@
                      Color="{ThemeResource U148AccentDarkColor}" />
     <SolidColorBrush x:Key="U148DividerBrush"
                      Color="{ThemeResource U148DividerColor}" />
+    <SolidColorBrush x:Key="U148MaskBrush"
+                     Color="{ThemeResource U148MaskColor}" />
 </ResourceDictionary>

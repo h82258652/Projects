@@ -25,15 +25,6 @@ namespace VGtime.Uwp
                 rootView.RootFrame.NavigationFailed += OnNavigationFailed;
                 Window.Current.Content = rootView;
             }
-
-            if (e.PrelaunchActivated == false)
-            {
-                if (rootView.RootFrame.Content == null)
-                {
-                    rootView.RootFrame.Navigate(typeof(MainView), e.Arguments);
-                }
-                Window.Current.Activate();
-            }
         }
 
         private void OnNavigationFailed(object sender, NavigationFailedEventArgs e)

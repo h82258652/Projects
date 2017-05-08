@@ -1,5 +1,4 @@
-﻿using System;
-using AppStudio.Uwp.Commands;
+﻿using AppStudio.Uwp.Commands;
 using GalaSoft.MvvmLight;
 using VGtime.Services;
 using VGtime.Uwp.Data;
@@ -18,7 +17,7 @@ namespace VGtime.Uwp.ViewModels
 
         private SearchPostCollection _topicPosts;
 
-        private SearchPostCollection _userPosts;
+        private SearchUserCollection _users;
 
         public SearchViewModel(IPostService postService)
         {
@@ -29,8 +28,7 @@ namespace VGtime.Uwp.ViewModels
         {
             get
             {
-                return _forumPosts
-                    ;
+                return _forumPosts;
             }
             private set
             {
@@ -60,7 +58,7 @@ namespace VGtime.Uwp.ViewModels
                     {
                         TopicPosts = new SearchPostCollection(text, 2, 2, _postService);
                         ForumPosts = new SearchPostCollection(text, 2, 3, _postService);
-                        UserPosts = new SearchPostCollection(text, 1, null, _postService);
+                        Users = new SearchUserCollection(text, 1, _postService);
                         GamePosts = new SearchPostCollection(text, 2, null, _postService);
                     }
                 });
@@ -80,15 +78,15 @@ namespace VGtime.Uwp.ViewModels
             }
         }
 
-        public SearchPostCollection UserPosts
+        public SearchUserCollection Users
         {
             get
             {
-                return _userPosts;
+                return _users;
             }
             private set
             {
-                Set(ref _userPosts, value);
+                Set(ref _users, value);
             }
         }
     }

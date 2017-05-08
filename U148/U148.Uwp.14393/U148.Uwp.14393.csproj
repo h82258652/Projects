@@ -95,6 +95,9 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="AppThemes\CurrentThemeChangedEventArgs.cs" />
+    <Compile Include="AppThemes\IThemeModeManager.cs" />
+    <Compile Include="AppThemes\ThemeModeManager.cs" />
     <Compile Include="Controls\ArticleItem.xaml.cs">
       <DependentUpon>ArticleItem.xaml</DependentUpon>
     </Compile>
@@ -114,7 +117,9 @@
     <Compile Include="Converters\CommentCountConverter.cs" />
     <Compile Include="Converters\FileSizeToStringConverter.cs" />
     <Compile Include="Converters\IntegerToVisibilityConverter.cs" />
+    <Compile Include="Converters\IsDayModeToVisibilityConverter.cs" />
     <Compile Include="Converters\IsDisplayDetailConverter.cs" />
+    <Compile Include="Converters\IsNightModeToVisibilityConverter.cs" />
     <Compile Include="Converters\IsNullConverter.cs" />
     <Compile Include="Converters\IsNullOrEmptyStringToVisibilityConverter.cs" />
     <Compile Include="Converters\IsNullToVisibilityConverter.cs" />
@@ -133,7 +138,6 @@
     <Compile Include="Messages\ReplyCommentSuccessMessage.cs" />
     <Compile Include="Messages\SendCommentSuccessMessage.cs" />
     <Compile Include="Messages\ShowLoginViewMessage.cs" />
-    <Compile Include="Messages\ThemeModeChangedMessage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\AppToastService.cs" />
     <Compile Include="Services\IAppToastService.cs" />

@@ -134,13 +134,29 @@ namespace VGtime.Services.Tests
                 Assert.AreEqual(result.ErrorCode, HttpStatusCode.OK);
             }
             {
-                var result = await _postService.SearchAsync("高达", 1);
-                Assert.AreEqual(result.ErrorCode, HttpStatusCode.OK);
-            }
-            {
                 var result = await _postService.SearchAsync("高达", 2);
                 Assert.AreEqual(result.ErrorCode, HttpStatusCode.OK);
             }
+        }
+
+        [Test]
+        public async Task TestSearchUserAsync()
+        {
+            Assert.ThrowsAsync<ArgumentNullException>(async () =>
+            {
+                await _postService.SearchUserAsync(null, 1);
+            });
+            Assert.ThrowsAsync<ArgumentOutOfRangeException>(async () =>
+            {
+                await _postService.SearchUserAsync("高达", 1, page: 0);
+            });
+            Assert.ThrowsAsync<ArgumentOutOfRangeException>(async () =>
+            {
+                await _postService.SearchUserAsync("高达", 1, pageSize: 0);
+            });
+
+            var result = await _postService.SearchUserAsync("高达", 1);
+            Assert.AreEqual(result.ErrorCode, HttpStatusCode.OK);
         }
     }
 }

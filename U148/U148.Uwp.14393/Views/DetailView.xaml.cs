@@ -6,14 +6,20 @@ using Windows.Foundation;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
+using Microsoft.Practices.ServiceLocation;
+using U148.Uwp.AppThemes;
 using WinRTXamlToolkit.AwaitableUI;
 
 namespace U148.Uwp.Views
 {
     public sealed partial class DetailView
     {
+        private readonly IThemeModeManager _themeModeManager;
+
         public DetailView()
         {
+            _themeModeManager = ServiceLocator.Current.GetInstance<IThemeModeManager>();
+
             InitializeComponent();
         }
 
@@ -24,33 +30,27 @@ namespace U148.Uwp.Views
             base.OnNavigatedFrom(e);
 
             Messenger.Default.Unregister(this);
+
+            ThemeModeManager.CurrentThemeChanged -= ThemeModeManager_CurrentThemeChanged;
         }
 
         protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
+            ThemeModeManager.CurrentThemeChanged += ThemeModeManager_CurrentThemeChanged;
+
             Messenger.Default.Register<ArticleContentLoadedMessage>(this, async message =>
             {
                 if (ViewModel.Article?.Id == message.Article.Id)
                 {
                     await WebView.NavigateAsync(new Uri("ms-appx-web:///Assets/Html/article.html"));
+                    await WebView.InvokeScriptAsync("setThemeMode", new[]
+                    {
+                        _themeModeManager.CurrentTheme.ToString()
+                    });
                     await WebView.InvokeScriptAsync("setContent", new[]
                     {
                         message.Content
                     });
-                }
-            });
-            Messenger.Default.Register<ThemeModeChangedMessage>(this, async message =>
-            {
-                try
-                {
-                    await WebView.InvokeScriptAsync("setThemeMode", new[]
-                    {
-                        message.NewThemeMode.ToString()
-                    });
-                }
-                catch (Exception)
-                {
-                    // ignored
                 }
             });
 
@@ -67,6 +67,21 @@ namespace U148.Uwp.Views
             {
                 await WebView.InvokeScriptAsync("scrollToTop", new string[]
                 {
+                });
+            }
+            catch (Exception)
+            {
+                // ignored
+            }
+        }
+
+        private async void ThemeModeManager_CurrentThemeChanged(object sender, CurrentThemeChangedEventArgs e)
+        {
+            try
+            {
+                await WebView.InvokeScriptAsync("setThemeMode", new[]
+                {
+                    e.CurrentTheme.ToString()
                 });
             }
             catch (Exception)

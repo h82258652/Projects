@@ -6,6 +6,7 @@ using SoftwareKobo.Controls;
 using SoftwareKobo.Services;
 using U148.Configuration;
 using U148.Services;
+using U148.Uwp.AppThemes;
 using U148.Uwp.Services;
 using U148.Uwp.Views;
 
@@ -55,6 +56,8 @@ namespace U148.Uwp.ViewModels
 
         public SettingViewModel Setting => ServiceLocator.Current.GetInstance<SettingViewModel>();
 
+        public IThemeModeManager ThemeModeManager => ServiceLocator.Current.GetInstance<IThemeModeManager>();
+
         private static IContainer ConfigureAutofacContainer()
         {
             var containerBuilder = new ContainerBuilder();
@@ -68,6 +71,8 @@ namespace U148.Uwp.ViewModels
             containerBuilder.RegisterType<StoreService>().As<IStoreService>();
 
             containerBuilder.RegisterType<U148UwpSettings>().As<IU148Settings>().As<IU148UwpSettings>();
+
+            containerBuilder.RegisterType<ThemeModeManager>().As<IThemeModeManager>().SingleInstance();
 
             containerBuilder.RegisterInstance(DefaultImageLoader.Instance);
 

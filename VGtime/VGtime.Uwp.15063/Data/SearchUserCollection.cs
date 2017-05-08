@@ -8,7 +8,7 @@ using VGtime.Services;
 
 namespace VGtime.Uwp.Data
 {
-    public class SearchPostCollection : IncrementalLoadingCollectionBase<Post>
+    public class SearchUserCollection : IncrementalLoadingCollectionBase<User>
     {
         private readonly Action<Exception> _onError;
 
@@ -18,11 +18,9 @@ namespace VGtime.Uwp.Data
 
         private readonly int _type;
 
-        private readonly int? _typeTag;
-
         private int _currentPage;
 
-        public SearchPostCollection(string text, int type, int? typeTag, IPostService postService, Action<Exception> onError = null)
+        public SearchUserCollection(string text, int type, IPostService postService, Action<Exception> onError = null)
         {
             if (text == null)
             {
@@ -31,7 +29,6 @@ namespace VGtime.Uwp.Data
 
             _text = text;
             _type = type;
-            _typeTag = typeTag;
             _postService = postService;
             _onError = onError;
         }
@@ -46,7 +43,7 @@ namespace VGtime.Uwp.Data
             IsLoading = true;
             try
             {
-                var result = await _postService.SearchAsync(_text, _type, _typeTag, _currentPage + 1);
+                var result = await _postService.SearchUserAsync(_text, _type, _currentPage + 1);
                 uint loadedCount = 0;
                 if (result.ErrorCode == HttpStatusCode.OK)
                 {
@@ -55,11 +52,11 @@ namespace VGtime.Uwp.Data
                     var data = result.Data.Data;
                     if (data.Length > 0)
                     {
-                        foreach (var post in data)
+                        foreach (var user in data)
                         {
-                            if (this.All(temp => temp.PostId != post.PostId))
+                            if (this.All(temp => temp.UserId != user.UserId))
                             {
-                                Add(post);
+                                Add(user);
                                 loadedCount++;
                             }
                         }
