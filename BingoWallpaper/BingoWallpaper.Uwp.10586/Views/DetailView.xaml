@@ -198,8 +198,8 @@
                           VerticalAlignment="Center"
                           IsActive="True" />
         </Grid>
-        <localControls:EllipseMask x:Name="EllipseMask"
+        <!--<localControls:EllipseMask x:Name="EllipseMask"
                                    Grid.Row="0"
-                                   Grid.RowSpan="3" />
+                                   Grid.RowSpan="3" />-->
     </Grid>
 </views:BingoWallpaperViewBase>

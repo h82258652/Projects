@@ -168,6 +168,11 @@ namespace SoftwareKobo.Controls
                             ImageDownloadTasks.TryRemove(source, out imageDownloadTask);
                             return new BitmapResult(ex);
                         }
+                        catch (OperationCanceledException ex)
+                        {
+                            ImageDownloadTasks.TryRemove(source, out imageDownloadTask);
+                            return new BitmapResult(ex);
+                        }
                         catch (HttpRequestException ex)
                         {
                             ImageDownloadTasks.TryRemove(source, out imageDownloadTask);

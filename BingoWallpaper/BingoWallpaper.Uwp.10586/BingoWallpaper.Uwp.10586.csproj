@@ -160,6 +160,20 @@
     <AppxManifest Include="Package.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
+    <Content Include="Assets\Fonts\Roboto-Black.ttf" />
+    <Content Include="Assets\Fonts\Roboto-BlackItalic.ttf" />
+    <Content Include="Assets\Fonts\Roboto-Bold.ttf" />
+    <Content Include="Assets\Fonts\Roboto-BoldItalic.ttf" />
+    <Content Include="Assets\Fonts\Roboto-Italic.ttf" />
+    <Content Include="Assets\Fonts\Roboto-Light.ttf" />
+    <Content Include="Assets\Fonts\Roboto-LightItalic.ttf" />
+    <Content Include="Assets\Fonts\Roboto-Medium.ttf" />
+    <Content Include="Assets\Fonts\Roboto-MediumItalic.ttf" />
+    <Content Include="Assets\Fonts\Roboto-Regular.ttf" />
+    <Content Include="Assets\Fonts\Roboto-Thin.ttf" />
+    <Content Include="Assets\Fonts\Roboto-ThinItalic.ttf" />
+    <Content Include="Assets\Fonts\SourceHanSansSC-Bold.otf" />
+    <Content Include="Assets\Fonts\SourceHanSansSC-Normal.otf" />
     <None Include="BingoWallpaper.Uwp.10586_StoreKey.pfx" />
     <None Include="BingoWallpaper.Uwp.10586_TemporaryKey.pfx" />
     <PRIResource Include="Strings\zh-CN\SettingView.resw" />
@@ -181,6 +195,20 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Package.StoreAssociation.xml" />
+    <Content Include="Assets\Images\Flags\de-DE.png" />
+    <Content Include="Assets\Images\Flags\en-AU.png" />
+    <Content Include="Assets\Images\Flags\en-CA.png" />
+    <Content Include="Assets\Images\Flags\en-GB.png" />
+    <Content Include="Assets\Images\Flags\en-IN.png" />
+    <Content Include="Assets\Images\Flags\en-US.png" />
+    <Content Include="Assets\Images\Flags\fr-CA.png" />
+    <Content Include="Assets\Images\Flags\fr-FR.png" />
+    <Content Include="Assets\Images\Flags\ja-JP.png" />
+    <Content Include="Assets\Images\Flags\pt-BR.png" />
+    <Content Include="Assets\Images\Flags\zh-CN.png" />
+    <Content Include="Assets\Images\Share\SinaWeibo.png" />
+    <Content Include="Assets\Images\Share\SystemShare.png" />
+    <Content Include="Assets\Images\Share\Wechat.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />

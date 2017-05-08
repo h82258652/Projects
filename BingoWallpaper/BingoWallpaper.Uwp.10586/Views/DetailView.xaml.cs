@@ -154,9 +154,10 @@ namespace BingoWallpaper.Uwp.Views
             await storyboard.BeginAsync();
         }
 
-        private async void DetailView_Loaded(object sender, RoutedEventArgs e)
+        private void DetailView_Loaded(object sender, RoutedEventArgs e)
         {
-            await EllipseMask.LightOnAsync();
+            //await Task.Delay(TimeSpan.FromSeconds(0.2));
+            //await EllipseMask.LightOnAsync();
         }
 
         private void ThumbnailImage_ImageFailed(object sender, ImageFailedEventArgs e)
