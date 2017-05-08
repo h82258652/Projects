@@ -64,34 +64,107 @@ namespace VGtime.Models
             set;
         }
 
-        public object typesId { get; set; }
+        [JsonProperty("typesId")]
+        public object typesId
+        {
+            get;
+            set;
+        }
 
-        public object imageCount { get; set; }
+        [JsonProperty("imageCount")]
+        public object imageCount
+        {
+            get;
+            set;
+        }
 
-        public object shortPostCount { get; set; }
+        [JsonProperty("shortPostCount")]
+        public object shortPostCount
+        {
+            get;
+            set;
+        }
 
-        public object longPostCount { get; set; }
+        [JsonProperty("longPostCount")]
+        public object longPostCount
+        {
+            get;
+            set;
+        }
 
-        public object scoreCount { get; set; }
+        [JsonProperty("scoreCount")]
+        public object scoreCount
+        {
+            get;
+            set;
+        }
 
-        public object questionCount { get; set; }
+        [JsonProperty("questionCount")]
+        public object questionCount
+        {
+            get;
+            set;
+        }
 
-        public object strategyCount { get; set; }
+        public object strategyCount
+        {
+            get;
+            set;
+        }
 
-        public Thumbnail thumbnail { get; set; }
+        [JsonProperty("thumbnail")]
+        public Thumbnail Thumbnail
+        {
+            get;
+            set;
+        }
 
-        public object distributor { get; set; }
+        public object distributor
+        {
+            get;
+            set;
+        }
 
-        public object action { get; set; }
+        [JsonProperty("action")]
+        public object action
+        {
+            get;
+            set;
+        }
 
-        public bool isOnSale { get; set; }
+        [JsonProperty("isOnSale")]
+        public bool isOnSale
+        {
+            get;
+            set;
+        }
 
-        public object review { get; set; }
+        [JsonProperty("review")]
+        public object review
+        {
+            get;
+            set;
+        }
 
-        public object shareUrl { get; set; }
+        [JsonProperty("shareUrl")]
+        public object shareUrl
+        {
+            get;
+            set;
+        }
 
-        public object myScore { get; set; }
+        [JsonProperty("myScore")]
+        public object myScore
+        {
+            get;
+            set;
+        }
 
-        public object myContent { get; set; }
+        [JsonProperty("myContent")]
+        public object myContent
+        {
+            get;
+            set;
+        }
     }
 }
