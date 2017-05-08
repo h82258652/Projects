@@ -1,8 +1,8 @@
 ﻿namespace VGtime.Uwp.Controls
 {
-    public sealed partial class GamePostItem
+    public sealed partial class UserItem
     {
-        public GamePostItem()
+        public UserItem()
         {
             InitializeComponent();
         }

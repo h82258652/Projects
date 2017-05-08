@@ -3,10 +3,10 @@
 namespace VGtime.Models
 {
     [JsonObject]
-    public class SearchList
+    public class SearchList<T>
     {
         [JsonProperty("searchList")]
-        public Post[] Data
+        public T[] Data
         {
             get;
             set;

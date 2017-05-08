@@ -33,15 +33,15 @@ namespace VGtime.Models
             set;
         }
 
-        [JsonProperty("followerCount")]
-        public object FollowerCount
+        [JsonProperty("followerCount", NullValueHandling = NullValueHandling.Ignore)]
+        public int FollowerCount
         {
             get;
             set;
         }
 
-        [JsonProperty("followCount")]
-        public object FollowCount
+        [JsonProperty("followCount", NullValueHandling = NullValueHandling.Ignore)]
+        public int FollowCount
         {
             get;
             set;
