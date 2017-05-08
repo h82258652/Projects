@@ -9,6 +9,7 @@
              xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
              xmlns:localControls="using:U148.Uwp.Controls"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:models="using:U148.Models"
              xmlns:views="using:U148.Uwp.Views"
              DataContext="{Binding Source={StaticResource Locator}, Path=Main}"
              Loaded="MainView_Loaded"
@@ -20,6 +21,8 @@
             <converters:IsNullToVisibilityConverter x:Key="InversedIsNullToVisibilityConverter"
                                                     IsInversed="True" />
             <converters:IsDisplayDetailConverter x:Key="IsDisplayDetailConverter" />
+            <converters:IsDayModeToVisibilityConverter x:Key="IsDayModeToVisibilityConverter" />
+            <converters:IsNightModeToVisibilityConverter x:Key="IsNightModeToVisibilityConverter" />
         </ResourceDictionary>
     </UserControl.Resources>
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
@@ -90,24 +93,38 @@
                             </StackPanel>
                             <StackPanel Grid.Row="2"
                                         Orientation="Vertical">
-                                <localControls:HamburgerMenuItem Label="日间">
+                                <localControls:HamburgerMenuItem x:Uid="/MainView/SwitchToDayModeMenuItem"
+                                                                 Visibility="{Binding Source={StaticResource Locator}, Path=ThemeModeManager.CurrentTheme, Converter={StaticResource IsNightModeToVisibilityConverter}}">
                                     <interactivity:Interaction.Behaviors>
                                         <core:EventTriggerBehavior EventName="Click">
                                             <core:ChangePropertyAction PropertyName="IsPaneOpen"
                                                                        TargetObject="{Binding ElementName=HamburgerMenu}"
                                                                        Value="False" />
+                                            <core:ChangePropertyAction PropertyName="CurrentTheme"
+                                                                       TargetObject="{Binding Source={StaticResource Locator}, Path=ThemeModeManager}">
+                                                <core:ChangePropertyAction.Value>
+                                                    <models:ThemeMode>Day</models:ThemeMode>
+                                                </core:ChangePropertyAction.Value>
+                                            </core:ChangePropertyAction>
                                         </core:EventTriggerBehavior>
                                     </interactivity:Interaction.Behaviors>
                                     <localControls:HamburgerMenuItem.Icon>
                                         <fontAwesome:FontAwesomeIcon Symbol="SunOutline" />
                                     </localControls:HamburgerMenuItem.Icon>
                                 </localControls:HamburgerMenuItem>
-                                <localControls:HamburgerMenuItem Label="夜间">
+                                <localControls:HamburgerMenuItem x:Uid="/MainView/SwitchToNightModeMenuItem"
+                                                                 Visibility="{Binding Source={StaticResource Locator}, Path=ThemeModeManager.CurrentTheme, Converter={StaticResource IsDayModeToVisibilityConverter}}">
                                     <interactivity:Interaction.Behaviors>
                                         <core:EventTriggerBehavior EventName="Click">
                                             <core:ChangePropertyAction PropertyName="IsPaneOpen"
                                                                        TargetObject="{Binding ElementName=HamburgerMenu}"
                                                                        Value="False" />
+                                            <core:ChangePropertyAction PropertyName="CurrentTheme"
+                                                                       TargetObject="{Binding Source={StaticResource Locator}, Path=ThemeModeManager}">
+                                                <core:ChangePropertyAction.Value>
+                                                    <models:ThemeMode>Night</models:ThemeMode>
+                                                </core:ChangePropertyAction.Value>
+                                            </core:ChangePropertyAction>
                                         </core:EventTriggerBehavior>
                                     </interactivity:Interaction.Behaviors>
                                     <localControls:HamburgerMenuItem.Icon>

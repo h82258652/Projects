@@ -135,4 +135,10 @@
   <data name="SettingMenuItem.Label" xml:space="preserve">
     <value>设置</value>
   </data>
+  <data name="SwitchToDayModeMenuItem.Label" xml:space="preserve">
+    <value>日间</value>
+  </data>
+  <data name="SwitchToNightModeMenuItem.Label" xml:space="preserve">
+    <value>夜间</value>
+  </data>
 </root>
