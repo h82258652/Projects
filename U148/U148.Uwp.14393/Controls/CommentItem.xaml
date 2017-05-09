@@ -9,6 +9,8 @@
              x:Name="Root"
              d:DataContext="{d:DesignInstance Type=models:Comment}"
              DataContextChanged="CommentItem_DataContextChanged"
+             Loaded="CommentItem_Loaded"
+             Unloaded="CommentItem_Unloaded"
              mc:Ignorable="d">
     <UserControl.Resources>
         <ResourceDictionary>

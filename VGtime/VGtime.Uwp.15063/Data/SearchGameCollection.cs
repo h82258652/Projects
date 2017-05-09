@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Net;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using VGtime.Models;
@@ -12,17 +10,17 @@ namespace VGtime.Uwp.Data
 {
     public class SearchGameCollection : IncrementalLoadingCollectionBase<Game>
     {
-        private int _contentType;
+        private readonly int _contentType;
+
+        private readonly Action<Exception> _onError;
+
+        private readonly IPostService _postService;
+
+        private readonly string _text;
+
+        private readonly int _type;
 
         private int _currentPage;
-
-        private Action<Exception> _onError;
-
-        private IPostService _postService;
-
-        private string _text;
-
-        private int _type;
 
         public SearchGameCollection(string text, int type, int contentType, IPostService postService, Action<Exception> onError = null)
         {
