@@ -136,6 +136,12 @@
                     </ListView.ItemContainerStyle>
                 </ListView>
             </PivotItem>
+            <Pivot.ItemContainerStyle>
+                <Style TargetType="PivotItem">
+                    <Setter Property="Margin"
+                            Value="0" />
+                </Style>
+            </Pivot.ItemContainerStyle>
         </Pivot>
     </Grid>
 </Page>

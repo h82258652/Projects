@@ -13,6 +13,6 @@
         </Grid.RenderTransform>
         <Image x:Name="SplashScreenImage"
                ImageOpened="SplashScreenImage_ImageOpened"
-               Source="/Assets/Images/splash_screen.png" />
+               Source="{Binding Path=StartPicture}" />
     </Grid>
 </UserControl>
