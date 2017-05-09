@@ -54,6 +54,7 @@
                              Grid.Row="1"
                              Margin="0,8,0,0"
                              VerticalAlignment="Top"
+                             DefaultBackgroundColor="Transparent"
                              IsHitTestVisible="False"
                              ScriptNotify="ContentHost_ScriptNotify" />
                 </Grid>
