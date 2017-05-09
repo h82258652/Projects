@@ -5,7 +5,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d">
     <Grid x:Name="RootGrid"
-          Background="{ThemeResource U148AccentBrush}"
+          Background="#FF9900"
           RenderTransformOrigin="0.5,0.5">
         <Grid.RenderTransform>
             <ScaleTransform />
