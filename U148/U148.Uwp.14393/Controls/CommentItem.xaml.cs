@@ -3,6 +3,8 @@ using U148.Models;
 using Windows.Foundation;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Microsoft.Practices.ServiceLocation;
+using U148.Uwp.AppThemes;
 using WinRTXamlToolkit.AwaitableUI;
 
 namespace U148.Uwp.Controls
@@ -11,8 +13,12 @@ namespace U148.Uwp.Controls
     {
         public static readonly DependencyProperty IsReplyEnabledProperty = DependencyProperty.Register(nameof(IsReplyEnabled), typeof(bool), typeof(CommentItem), new PropertyMetadata(default(bool), OnIsReplyEnabledChanged));
 
+        private readonly IThemeModeManager _themeModeManager;
+
         public CommentItem()
         {
+            _themeModeManager = ServiceLocator.Current.GetInstance<IThemeModeManager>();
+
             InitializeComponent();
         }
 
@@ -56,11 +62,25 @@ namespace U148.Uwp.Controls
             {
                 var contents = comment.Contents;
                 await ContentHost.NavigateAsync(new Uri("ms-appx-web:///Assets/Html/comment.html"));
+                await ContentHost.InvokeScriptAsync("setThemeMode", new[]
+                {
+                    _themeModeManager.CurrentTheme.ToString()
+                });
                 await ContentHost.InvokeScriptAsync("setContent", new[]
                 {
                     contents
                 });
             }
+        }
+
+        private void CommentItem_Loaded(object sender, RoutedEventArgs e)
+        {
+            ThemeModeManager.CurrentThemeChanged += ThemeModeManager_CurrentThemeChanged;
+        }
+
+        private void CommentItem_Unloaded(object sender, RoutedEventArgs e)
+        {
+            ThemeModeManager.CurrentThemeChanged -= ThemeModeManager_CurrentThemeChanged;
         }
 
         private void ContentHost_ScriptNotify(object sender, NotifyEventArgs e)
@@ -88,6 +108,21 @@ namespace U148.Uwp.Controls
             if (!string.IsNullOrEmpty(replyContent))
             {
                 Reply?.Invoke(this, new CommentItemReplyEventArgs(Comment, replyContent));
+            }
+        }
+
+        private async void ThemeModeManager_CurrentThemeChanged(object sender, CurrentThemeChangedEventArgs e)
+        {
+            try
+            {
+                await ContentHost.InvokeScriptAsync("setThemeMode", new[]
+                {
+                    e.CurrentTheme.ToString()
+                });
+            }
+            catch (Exception)
+            {
+                // ignored
             }
         }
     }

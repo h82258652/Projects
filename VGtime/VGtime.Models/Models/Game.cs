@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 
 namespace VGtime.Models
 {
@@ -23,21 +20,21 @@ namespace VGtime.Models
         }
 
         [JsonProperty("platformsText")]
-        public string platformsText
+        public string PlatformsText
         {
             get;
             set;
         }
 
         [JsonProperty("platformsId")]
-        public object platformsId
+        public object PlatformsId
         {
             get;
             set;
         }
 
         [JsonProperty("score")]
-        public double score
+        public double Score
         {
             get;
             set;
@@ -65,48 +62,49 @@ namespace VGtime.Models
         }
 
         [JsonProperty("typesId")]
-        public object typesId
+        public object TypesId
         {
             get;
             set;
         }
 
         [JsonProperty("imageCount")]
-        public object imageCount
+        public object ImageCount
         {
             get;
             set;
         }
 
         [JsonProperty("shortPostCount")]
-        public object shortPostCount
+        public object ShortPostCount
         {
             get;
             set;
         }
 
         [JsonProperty("longPostCount")]
-        public object longPostCount
+        public object LongPostCount
         {
             get;
             set;
         }
 
         [JsonProperty("scoreCount")]
-        public object scoreCount
+        public object ScoreCount
         {
             get;
             set;
         }
 
         [JsonProperty("questionCount")]
-        public object questionCount
+        public object QuestionCount
         {
             get;
             set;
         }
 
-        public object strategyCount
+        [JsonProperty("strategyCount")]
+        public object StrategyCount
         {
             get;
             set;
@@ -119,49 +117,50 @@ namespace VGtime.Models
             set;
         }
 
-        public object distributor
+        [JsonProperty("distributor")]
+        public object Distributor
         {
             get;
             set;
         }
 
         [JsonProperty("action")]
-        public object action
+        public object Action
         {
             get;
             set;
         }
 
         [JsonProperty("isOnSale")]
-        public bool isOnSale
+        public bool IsOnSale
         {
             get;
             set;
         }
 
         [JsonProperty("review")]
-        public object review
+        public object Review
         {
             get;
             set;
         }
 
         [JsonProperty("shareUrl")]
-        public object shareUrl
+        public object ShareUrl
         {
             get;
             set;
         }
 
         [JsonProperty("myScore")]
-        public object myScore
+        public object MyScore
         {
             get;
             set;
         }
 
         [JsonProperty("myContent")]
-        public object myContent
+        public object MyContent
         {
             get;
             set;
