@@ -2,6 +2,8 @@
 using Autofac.Extras.CommonServiceLocator;
 using GalaSoft.MvvmLight.Views;
 using Microsoft.Practices.ServiceLocation;
+using SoftwareKobo.Controls;
+using VGtime.Configuration;
 using VGtime.Services;
 using VGtime.Uwp.Services;
 using VGtime.Uwp.Views;
@@ -30,6 +32,8 @@ namespace VGtime.Uwp.ViewModels
 
         public SearchViewModel Search => ServiceLocator.Current.GetInstance<SearchViewModel>();
 
+        public SplashScreenViewModel SplashScreen => ServiceLocator.Current.GetInstance<SplashScreenViewModel>();
+
         private static IContainer ConfigureAutofacContainer()
         {
             var containerBuilder = new ContainerBuilder();
@@ -38,6 +42,11 @@ namespace VGtime.Uwp.ViewModels
             containerBuilder.RegisterType<PostService>().As<IPostService>();
             containerBuilder.RegisterType<AppToastService>().As<IAppToastService>();
 
+            containerBuilder.RegisterType<VGtimeSettings>().As<IVGtimeSettings>();
+
+            containerBuilder.RegisterInstance(DefaultImageLoader.Instance);
+
+            containerBuilder.RegisterType<SplashScreenViewModel>();
             containerBuilder.RegisterType<MainViewModel>();
             containerBuilder.RegisterType<DetailViewModel>();
             containerBuilder.RegisterType<CommentViewModel>();

@@ -56,9 +56,7 @@ namespace SoftwareKobo.Controls
                 return false;
             }
 
-            var uriSource = ToUriSource(source);
-            var cacheFilePath = GetCacheFilePath(uriSource);
-            return File.Exists(cacheFilePath);
+            return GetCacheFilePath(source) != null;
         }
 
         public async Task DeleteAllCacheAsync()
@@ -79,8 +77,7 @@ namespace SoftwareKobo.Controls
                 return false;
             }
 
-            var uriSource = ToUriSource(source);
-            var cacheFilePath = GetCacheFilePath(uriSource);
+            var cacheFilePath = GetCacheFilePath(source);
             if (File.Exists(cacheFilePath))
             {
                 await Task.Run(() =>
@@ -311,6 +308,25 @@ namespace SoftwareKobo.Controls
                     var buffer = await FileIO.ReadBufferAsync(file);
                     return buffer.ToArray();
                 }
+            }
+        }
+
+        public string GetCacheFilePath(string source)
+        {
+            if (source == null)
+            {
+                throw new ArgumentNullException(nameof(source));
+            }
+
+            var uriSource = ToUriSource(source);
+            var cacheFilePath = GetCacheFilePath(uriSource);
+            if (File.Exists(cacheFilePath))
+            {
+                return cacheFilePath;
+            }
+            else
+            {
+                return null;
             }
         }
 

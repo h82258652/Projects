@@ -98,7 +98,7 @@
                 </PivotItem>
                 <PivotItem Header="新闻">
                     <ListView IsItemClickEnabled="True"
-                              ItemsSource="{Binding Path=TopicPosts}"
+                              ItemsSource="{Binding Path=NewsPosts}"
                               SelectionMode="None">
                         <interactivity:Interaction.Behaviors>
                             <core:EventTriggerBehavior EventName="ItemClick">
@@ -164,9 +164,39 @@
                         </ListView.ItemContainerStyle>
                     </ListView>
                 </PivotItem>
-                <PivotItem Header="视频" />
-                <PivotItem Header="攻略" />
-                <PivotItem Header="专栏" />
+                <PivotItem Header="视频">
+                    <ListView ItemsSource="{Binding Path=VideoPosts}"
+                              SelectionMode="None">
+                        <ListView.ItemContainerStyle>
+                            <Style TargetType="ListViewItem">
+                                <Setter Property="HorizontalContentAlignment"
+                                        Value="Stretch" />
+                            </Style>
+                        </ListView.ItemContainerStyle>
+                    </ListView>
+                </PivotItem>
+                <PivotItem Header="攻略">
+                    <ListView ItemsSource="{Binding Path=StrategyPosts}"
+                              SelectionMode="None">
+                        <ListView.ItemContainerStyle>
+                            <Style TargetType="ListViewItem">
+                                <Setter Property="HorizontalContentAlignment"
+                                        Value="Stretch" />
+                            </Style>
+                        </ListView.ItemContainerStyle>
+                    </ListView>
+                </PivotItem>
+                <PivotItem Header="专栏">
+                    <ListView ItemsSource="{Binding Path=TopicPosts}"
+                              SelectionMode="None">
+                        <ListView.ItemContainerStyle>
+                            <Style TargetType="ListViewItem">
+                                <Setter Property="HorizontalContentAlignment"
+                                        Value="Stretch" />
+                            </Style>
+                        </ListView.ItemContainerStyle>
+                    </ListView>
+                </PivotItem>
             </Pivot.Items>
             <Pivot.RightHeader>
                 <Button Command="{Binding Path=SearchCommand}">

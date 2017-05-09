@@ -151,7 +151,7 @@ namespace VGtime.Services.Tests
                 await _postService.SearchGameAsync("高达", 2, 4, pageSize: 0);
             });
 
-            var result = await _postService.SearchAsync("高达", 2, 4);
+            var result = await _postService.SearchGameAsync("高达", 2, 4);
             Assert.AreEqual(result.ErrorCode, HttpStatusCode.OK);
         }
 

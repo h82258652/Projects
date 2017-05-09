@@ -101,9 +101,6 @@
     <Compile Include="Controls\GameItem.xaml.cs">
       <DependentUpon>GameItem.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\GamePostItem.xaml.cs">
-      <DependentUpon>GamePostItem.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Controls\HeadPostItem.xaml.cs">
       <DependentUpon>HeadPostItem.xaml</DependentUpon>
     </Compile>
@@ -134,6 +131,7 @@
     <Compile Include="ViewModels\DetailViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\SearchViewModel.cs" />
+    <Compile Include="ViewModels\SplashScreenViewModel.cs" />
     <Compile Include="ViewModels\ViewModelLocator.cs" />
     <Compile Include="Views\CommentView.xaml.cs">
       <DependentUpon>CommentView.xaml</DependentUpon>
@@ -344,10 +342,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Controls\GamePostItem.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Controls\HeadPostItem.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -417,6 +411,14 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <ProjectReference Include="..\..\Libraries\SoftwareKobo.Controls.ImageEx.Core\SoftwareKobo.Controls.ImageEx.Core.csproj">
+      <Project>{218dd945-b472-4d22-b8b4-3fdf88b9f361}</Project>
+      <Name>SoftwareKobo.Controls.ImageEx.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Libraries\SoftwareKobo.Controls.ImageEx.Uwp\SoftwareKobo.Controls.ImageEx.Uwp.csproj">
+      <Project>{3d0a2072-6b7c-4c2f-b350-38fbf3547899}</Project>
+      <Name>SoftwareKobo.Controls.ImageEx.Uwp</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Libraries\SoftwareKobo.Controls.ToastPrompt.Uwp\SoftwareKobo.Controls.ToastPrompt.Uwp.csproj">
       <Project>{c48bd2cb-fb6a-4677-a2f0-b04f07360b6a}</Project>
       <Name>SoftwareKobo.Controls.ToastPrompt.Uwp</Name>
@@ -432,6 +434,14 @@
     <ProjectReference Include="..\..\Libraries\SoftwareKobo.Utils\SoftwareKobo.Utils.csproj">
       <Project>{5a2dcd3b-ccda-449b-b6d9-929f9fd5455e}</Project>
       <Name>SoftwareKobo.Utils</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VGtime.Configuration.Uwp.15063\VGtime.Configuration.Uwp.15063.csproj">
+      <Project>{3c4a1d90-7b99-421d-86e1-1384a9f5812f}</Project>
+      <Name>VGtime.Configuration.Uwp.15063</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VGtime.Configuration\VGtime.Configuration.csproj">
+      <Project>{41f0003f-c8ab-4a96-b8c0-3a32bfc5fce3}</Project>
+      <Name>VGtime.Configuration</Name>
     </ProjectReference>
     <ProjectReference Include="..\VGtime.Models\VGtime.Models.csproj">
       <Project>{C70780E2-F68C-4F53-A8EE-FB449D926B8B}</Project>

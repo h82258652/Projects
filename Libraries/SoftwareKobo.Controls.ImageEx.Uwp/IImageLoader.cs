@@ -15,5 +15,7 @@ namespace SoftwareKobo.Controls
         Task<BitmapResult> GetBitmapAsync(string source);
 
         Task<byte[]> GetBytesAsync(string source);
+
+        string GetCacheFilePath(string source);
     }
 }

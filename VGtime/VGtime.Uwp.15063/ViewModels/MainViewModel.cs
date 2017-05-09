@@ -35,8 +35,11 @@ namespace VGtime.Uwp.ViewModels
             _appToastService = appToastService;
 
             ListPosts = new ListPostCollection(postService);
-            TopicPosts = new TagPostCollection(postService, 1);
+            NewsPosts = new TagPostCollection(postService, 1);
             EvalPosts = new TagPostCollection(postService, 4);
+            VideoPosts = new TagPostCollection(postService, 2);
+            StrategyPosts = new TagPostCollection(postService, 3);
+            TopicPosts = new TagPostCollection(postService, 5);
             LoadHeadPostsAsync();
         }
 
@@ -70,6 +73,11 @@ namespace VGtime.Uwp.ViewModels
         }
 
         public ListPostCollection ListPosts
+        {
+            get;
+        }
+
+        public TagPostCollection NewsPosts
         {
             get;
         }
@@ -111,7 +119,17 @@ namespace VGtime.Uwp.ViewModels
             }
         }
 
+        public TagPostCollection StrategyPosts
+        {
+            get;
+        }
+
         public TagPostCollection TopicPosts
+        {
+            get;
+        }
+
+        public TagPostCollection VideoPosts
         {
             get;
         }

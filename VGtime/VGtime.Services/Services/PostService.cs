@@ -137,7 +137,7 @@ namespace VGtime.Services
                 throw new ArgumentOutOfRangeException(nameof(pageSize));
             }
 
-            StringBuilder urlBuilder = new StringBuilder();
+            var urlBuilder = new StringBuilder();
             urlBuilder.Append($"{Constants.UrlBase}/vgtime-app/api/v2/search.json?text={text}&type={type}");
             if (typeTag.HasValue)
             {
