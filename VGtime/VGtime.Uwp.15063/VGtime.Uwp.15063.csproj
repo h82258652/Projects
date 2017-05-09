@@ -111,6 +111,7 @@
       <DependentUpon>UserItem.xaml</DependentUpon>
     </Compile>
     <Compile Include="Converters\AddConverter.cs" />
+    <Compile Include="Converters\AutoSuggestBoxQuerySubmittedEventArgsConverter.cs" />
     <Compile Include="Converters\IntegerToVisibilityConverter.cs" />
     <Compile Include="Converters\IsNullToVisibilityConverter.cs" />
     <Compile Include="Converters\ReviewScoreToColorConverter.cs" />

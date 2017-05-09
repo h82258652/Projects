@@ -167,10 +167,21 @@
                 <PivotItem Header="视频">
                     <ListView ItemsSource="{Binding Path=VideoPosts}"
                               SelectionMode="None">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <localControls:ListPostItem />
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
                         <ListView.ItemContainerStyle>
                             <Style TargetType="ListViewItem">
                                 <Setter Property="HorizontalContentAlignment"
                                         Value="Stretch" />
+                                <Setter Property="Padding"
+                                        Value="12" />
+                                <Setter Property="BorderThickness"
+                                        Value="0,0,0,1" />
+                                <Setter Property="BorderBrush"
+                                        Value="Gray" />
                             </Style>
                         </ListView.ItemContainerStyle>
                     </ListView>
@@ -178,10 +189,21 @@
                 <PivotItem Header="攻略">
                     <ListView ItemsSource="{Binding Path=StrategyPosts}"
                               SelectionMode="None">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <localControls:ListPostItem />
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
                         <ListView.ItemContainerStyle>
                             <Style TargetType="ListViewItem">
                                 <Setter Property="HorizontalContentAlignment"
                                         Value="Stretch" />
+                                <Setter Property="Padding"
+                                        Value="12" />
+                                <Setter Property="BorderThickness"
+                                        Value="0,0,0,1" />
+                                <Setter Property="BorderBrush"
+                                        Value="Gray" />
                             </Style>
                         </ListView.ItemContainerStyle>
                     </ListView>
@@ -189,10 +211,21 @@
                 <PivotItem Header="专栏">
                     <ListView ItemsSource="{Binding Path=TopicPosts}"
                               SelectionMode="None">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <localControls:ListPostItem />
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
                         <ListView.ItemContainerStyle>
                             <Style TargetType="ListViewItem">
                                 <Setter Property="HorizontalContentAlignment"
                                         Value="Stretch" />
+                                <Setter Property="Padding"
+                                        Value="12" />
+                                <Setter Property="BorderThickness"
+                                        Value="0,0,0,1" />
+                                <Setter Property="BorderBrush"
+                                        Value="Gray" />
                             </Style>
                         </ListView.ItemContainerStyle>
                     </ListView>
