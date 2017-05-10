@@ -71,13 +71,16 @@ namespace VGtime.Uwp.Views
             var titleBar = ApplicationView.GetForCurrentView().TitleBar;
             var accentColor = (Color)Application.Current.Resources["VGtimeAccentColor"];
             titleBar.BackgroundColor = accentColor;
+            titleBar.ButtonBackgroundColor = accentColor;
         }
 
-        private void SplashScreenImage_ImageOpened(object sender, RoutedEventArgs e)
+        private async void SplashScreenImage_ImageOpened(object sender, RoutedEventArgs e)
         {
             InitializeTitleBar();
 
             Window.Current.Activate();
+
+            await Task.Delay(TimeSpan.FromSeconds(1));
 
             InitializeCompleted?.Invoke(this, EventArgs.Empty);
         }
