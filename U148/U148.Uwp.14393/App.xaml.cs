@@ -43,7 +43,7 @@ namespace U148.Uwp
             var rootView = Window.Current.Content as RootView;
             if (rootView == null)
             {
-                rootView = new RootView(e.SplashScreen);
+                rootView = new RootView();
 
                 Window.Current.Content = rootView;
             }

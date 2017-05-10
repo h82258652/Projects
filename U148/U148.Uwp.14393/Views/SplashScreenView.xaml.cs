@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Threading.Tasks;
-using Windows.ApplicationModel.Activation;
 using Windows.UI;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
@@ -9,21 +8,14 @@ using WinRTXamlToolkit.AwaitableUI;
 
 namespace U148.Uwp.Views
 {
-    public sealed partial class ExtendedSplashScreenView
+    public sealed partial class SplashScreenView
     {
-        private readonly SplashScreen _splashScreen;
-
-        public ExtendedSplashScreenView()
+        public SplashScreenView()
         {
             InitializeComponent();
         }
 
-        public ExtendedSplashScreenView(SplashScreen splashScreen) : this()
-        {
-            _splashScreen = splashScreen;
-        }
-
-        public event EventHandler Completed;
+        public event EventHandler InitializeCompleted;
 
         public async Task DismissAsync()
         {
@@ -109,7 +101,7 @@ namespace U148.Uwp.Views
 
             await Task.Delay(TimeSpan.FromSeconds(1));
 
-            Completed?.Invoke(this, EventArgs.Empty);
+            InitializeCompleted?.Invoke(this, EventArgs.Empty);
         }
     }
 }
