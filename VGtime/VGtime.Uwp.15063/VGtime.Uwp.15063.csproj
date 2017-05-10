@@ -110,6 +110,9 @@
     <Compile Include="Controls\UserItem.xaml.cs">
       <DependentUpon>UserItem.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\VideoPostItem.xaml.cs">
+      <DependentUpon>VideoPostItem.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Converters\AddConverter.cs" />
     <Compile Include="Converters\AutoSuggestBoxQuerySubmittedEventArgsConverter.cs" />
     <Compile Include="Converters\IntegerToVisibilityConverter.cs" />
@@ -355,7 +358,16 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Controls\VideoPostItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Styles\Buttons\EmptyButtonStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Page>
+    <Page Include="Styles\Buttons\IconButtonStyle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

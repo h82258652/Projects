@@ -91,8 +91,14 @@ namespace VGtime.Services.Tests
                 await _postService.GetListByTagAsync(1, pageSize: 0);
             });
 
-            var result = await _postService.GetListByTagAsync(4);
-            Assert.AreEqual(result.ErrorCode, HttpStatusCode.OK);
+            {
+                var result = await _postService.GetListByTagAsync(4);
+                Assert.AreEqual(result.ErrorCode, HttpStatusCode.OK);
+            }
+            {
+                var result = await _postService.GetListByTagAsync(2);
+                Assert.AreEqual(result.ErrorCode, HttpStatusCode.OK);
+            }
         }
 
         [Test]

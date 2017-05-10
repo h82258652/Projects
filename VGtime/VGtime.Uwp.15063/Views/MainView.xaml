@@ -176,7 +176,7 @@
                         </interactivity:Interaction.Behaviors>
                         <ListView.ItemTemplate>
                             <DataTemplate>
-                                <localControls:ListPostItem />
+                                <localControls:VideoPostItem />
                             </DataTemplate>
                         </ListView.ItemTemplate>
                         <ListView.ItemContainerStyle>
@@ -185,19 +185,17 @@
                                         Value="Stretch" />
                                 <Setter Property="Padding"
                                         Value="12" />
-                                <Setter Property="BorderThickness"
-                                        Value="0,0,0,1" />
-                                <Setter Property="BorderBrush"
-                                        Value="Gray" />
                             </Style>
                         </ListView.ItemContainerStyle>
                     </ListView>
                 </PivotItem>
                 <PivotItem Header="攻略">
-                    <ListView ItemsSource="{Binding Path=StrategyPosts}"
+                    <ListView IsItemClickEnabled="True"
+                              ItemsSource="{Binding Path=StrategyPosts}"
                               SelectionMode="None">
                         <ListView.Header>
-                            <Grid>
+                            <Grid BorderBrush="Gray"
+                                  BorderThickness="0,0,0,1">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*" />
                                     <ColumnDefinition Width="Auto" />
@@ -266,7 +264,8 @@
                 </PivotItem>
             </Pivot.Items>
             <Pivot.RightHeader>
-                <Button Command="{Binding Path=SearchCommand}">
+                <Button Command="{Binding Path=SearchCommand}"
+                        Style="{StaticResource IconButtonStyle}">
                     <SymbolIcon Symbol="Find" />
                 </Button>
             </Pivot.RightHeader>
