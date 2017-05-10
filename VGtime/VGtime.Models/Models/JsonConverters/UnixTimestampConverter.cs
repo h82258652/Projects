@@ -34,6 +34,10 @@ namespace VGtime.Models.JsonConverters
                     throw new JsonSerializationException(Properties.Resources.NotSupportStringFormatExceptionMessage);
                 }
             }
+            else if (tokenType == JsonToken.Null && IsNullable(objectType))
+            {
+                return null;
+            }
             else
             {
                 throw new JsonSerializationException(Properties.Resources.NotSupportValueTypeExceptionMessage);
