@@ -38,9 +38,13 @@ namespace VGtime.Uwp.Converters
             {
                 return string.Format("{0}小时前", (long)Math.Floor(expired.TotalHours));
             }
-            else
+            else if (expired.TotalDays < 30)
             {
                 return string.Format("{0}天前", (long)Math.Floor(expired.TotalDays));
+            }
+            else
+            {
+                return string.Format("{0}月前", (long)Math.Floor(expired.TotalDays / 30));
             }
         }
 

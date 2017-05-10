@@ -116,6 +116,7 @@
     <Compile Include="Converters\AddConverter.cs" />
     <Compile Include="Converters\AutoSuggestBoxQuerySubmittedEventArgsConverter.cs" />
     <Compile Include="Converters\IntegerToVisibilityConverter.cs" />
+    <Compile Include="Converters\IsNullOrEmptyStringToVisibilityConverter.cs" />
     <Compile Include="Converters\IsNullToVisibilityConverter.cs" />
     <Compile Include="Converters\ReviewScoreToColorConverter.cs" />
     <Compile Include="Converters\TimeAgoConverter.cs" />
