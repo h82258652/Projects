@@ -25,9 +25,9 @@
                 <Style BasedOn="{StaticResource VGtimePivotHeaderItemStyle}"
                        TargetType="PivotHeaderItem" />
             </Pivot.Resources>
+            <!-- 二维码按钮
             <Pivot.LeftHeader>
-                <Button Content="二维码" />
-            </Pivot.LeftHeader>
+            </Pivot.LeftHeader>-->
             <Pivot.Items>
                 <PivotItem Header="首页">
                     <ListView IsItemClickEnabled="True"
@@ -42,10 +42,12 @@
                         <ListView.Header>
                             <Grid>
                                 <controls:Carousel x:Name="HeadPostsCarousel"
+                                                   MaxHeight="400"
                                                    ItemClickCommand="{Binding Path=PostClickCommand}"
                                                    ItemsSource="{Binding Path=HeadPosts}"
                                                    MaxItems="1"
                                                    SelectedIndex="0"
+                                                   SizeChanged="HeadPostsCarousel_SizeChanged"
                                                    SlideInterval="4000">
                                     <controls:Carousel.ContentTemplate>
                                         <DataTemplate>
@@ -53,7 +55,8 @@
                                         </DataTemplate>
                                     </controls:Carousel.ContentTemplate>
                                 </controls:Carousel>
-                                <Grid Width="32"
+                                <Grid x:Name="HeadPostsIndicator"
+                                      Width="32"
                                       Height="32"
                                       Margin="0,0,16,16"
                                       HorizontalAlignment="Right"
@@ -165,29 +168,33 @@
                     </ListView>
                 </PivotItem>
                 <PivotItem Header="视频">
-                    <ListView IsItemClickEnabled="True"
+                    <GridView Padding="8,8,0,0"
+                              IsItemClickEnabled="True"
                               ItemsSource="{Binding Path=VideoPosts}"
-                              SelectionMode="None">
+                              SelectionMode="None"
+                              SizeChanged="VideoPostsGridView_SizeChanged">
                         <interactivity:Interaction.Behaviors>
                             <core:EventTriggerBehavior EventName="ItemClick">
                                 <core:InvokeCommandAction Command="{Binding Path=PostClickCommand}"
                                                           InputConverter="{Binding Source={StaticResource ItemClickEventArgsConverter}}" />
                             </core:EventTriggerBehavior>
                         </interactivity:Interaction.Behaviors>
-                        <ListView.ItemTemplate>
+                        <ItemsControl.ItemTemplate>
                             <DataTemplate>
                                 <localControls:VideoPostItem />
                             </DataTemplate>
-                        </ListView.ItemTemplate>
-                        <ListView.ItemContainerStyle>
-                            <Style TargetType="ListViewItem">
+                        </ItemsControl.ItemTemplate>
+                        <ItemsControl.ItemContainerStyle>
+                            <Style TargetType="SelectorItem">
                                 <Setter Property="HorizontalContentAlignment"
                                         Value="Stretch" />
-                                <Setter Property="Padding"
-                                        Value="12" />
+                                <Setter Property="VerticalContentAlignment"
+                                        Value="Stretch" />
+                                <Setter Property="Margin"
+                                        Value="0,0,8,8" />
                             </Style>
-                        </ListView.ItemContainerStyle>
-                    </ListView>
+                        </ItemsControl.ItemContainerStyle>
+                    </GridView>
                 </PivotItem>
                 <PivotItem Header="攻略">
                     <ListView IsItemClickEnabled="True"

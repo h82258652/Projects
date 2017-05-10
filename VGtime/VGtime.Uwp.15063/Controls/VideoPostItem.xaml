@@ -17,7 +17,8 @@
         <Image Source="{Binding Path=Thumbnail.Url}"
                Stretch="UniformToFill" />
         <Border Background="#40000000" />
-        <TextBlock HorizontalAlignment="Left"
+        <TextBlock Margin="4,4,0,0"
+                   HorizontalAlignment="Left"
                    VerticalAlignment="Top"
                    Foreground="White"
                    Text="{Binding Path=PublishDate, Converter={StaticResource TimeAgoConverter}}" />
@@ -32,13 +33,20 @@
                        Foreground="White"
                        Text="{Binding Path=Duration}" />
         </StackPanel>
-        <TextBlock HorizontalAlignment="Left"
+        <TextBlock Margin="4,0,0,4"
+                   HorizontalAlignment="Left"
                    VerticalAlignment="Bottom"
                    Foreground="White"
-                   Text="{Binding Path=Title}" />
-        <SymbolIcon HorizontalAlignment="Center"
-                    VerticalAlignment="Center"
-                    Foreground="White"
-                    Symbol="Play" />
+                   Text="{Binding Path=Title}"
+                   TextWrapping="Wrap" />
+        <Grid HorizontalAlignment="Center"
+              VerticalAlignment="Center">
+            <Ellipse Fill="#40000000"
+                     Stroke="White"
+                     StrokeThickness="1.5" />
+            <SymbolIcon Margin="12"
+                        Foreground="White"
+                        Symbol="Play" />
+        </Grid>
     </Grid>
 </UserControl>

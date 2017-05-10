@@ -13,6 +13,7 @@
         </Grid.RenderTransform>
         <Image x:Name="SplashScreenImage"
                ImageOpened="SplashScreenImage_ImageOpened"
-               Source="{Binding Path=StartPicture}" />
+               Source="{Binding Path=StartPicture}"
+               Stretch="UniformToFill" />
     </Grid>
 </UserControl>

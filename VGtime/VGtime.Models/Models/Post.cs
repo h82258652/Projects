@@ -28,9 +28,9 @@ namespace VGtime.Models
             set;
         }
 
-        [JsonProperty("publishDate", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("publishDate")]
         [JsonConverter(typeof(UnixTimestampConverter))]
-        public DateTimeOffset PublishDate
+        public DateTimeOffset? PublishDate
         {
             get;
             set;

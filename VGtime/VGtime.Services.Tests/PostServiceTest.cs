@@ -99,6 +99,10 @@ namespace VGtime.Services.Tests
                 var result = await _postService.GetListByTagAsync(2);
                 Assert.AreEqual(result.ErrorCode, HttpStatusCode.OK);
             }
+            {
+                var result = await _postService.GetListByTagAsync(3);
+                Assert.AreEqual(result.ErrorCode, HttpStatusCode.OK);
+            }
         }
 
         [Test]

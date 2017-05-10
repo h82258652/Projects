@@ -70,8 +70,20 @@ namespace VGtime.Uwp.Views
         {
             var titleBar = ApplicationView.GetForCurrentView().TitleBar;
             var accentColor = (Color)Application.Current.Resources["VGtimeAccentColor"];
+            var accentLightColor = (Color)Application.Current.Resources["VGtimeAccentLightColor"];
+            var accentDarkColor = (Color)Application.Current.Resources["VGtimeAccentDarkColor"];
             titleBar.BackgroundColor = accentColor;
+            titleBar.ForegroundColor = Colors.White;
+            titleBar.InactiveBackgroundColor = accentColor;
+            titleBar.InactiveForegroundColor = Colors.White;
             titleBar.ButtonBackgroundColor = accentColor;
+            titleBar.ButtonForegroundColor = Colors.White;
+            titleBar.ButtonHoverBackgroundColor = accentLightColor;
+            titleBar.ButtonHoverForegroundColor = Colors.White;
+            titleBar.ButtonPressedBackgroundColor = accentDarkColor;
+            titleBar.ButtonPressedForegroundColor = Colors.White;
+            titleBar.ButtonInactiveBackgroundColor = accentColor;
+            titleBar.ButtonInactiveForegroundColor = Colors.White;
         }
 
         private async void SplashScreenImage_ImageOpened(object sender, RoutedEventArgs e)
