@@ -18,6 +18,8 @@ namespace VGtime.Uwp.ViewModels
 
         public const string SearchViewKey = "Search";
 
+        public const string StrategyViewKey = "Strategy";
+
         static ViewModelLocator()
         {
             var serviceLocator = new AutofacServiceLocator(ConfigureAutofacContainer());
@@ -34,6 +36,8 @@ namespace VGtime.Uwp.ViewModels
 
         public SplashScreenViewModel SplashScreen => ServiceLocator.Current.GetInstance<SplashScreenViewModel>();
 
+        public StrategyViewModel Strategy => ServiceLocator.Current.GetInstance<StrategyViewModel>();
+
         private static IContainer ConfigureAutofacContainer()
         {
             var containerBuilder = new ContainerBuilder();
@@ -49,6 +53,7 @@ namespace VGtime.Uwp.ViewModels
             containerBuilder.RegisterType<SplashScreenViewModel>();
             containerBuilder.RegisterType<MainViewModel>();
             containerBuilder.RegisterType<DetailViewModel>();
+            containerBuilder.RegisterType<StrategyViewModel>();
             containerBuilder.RegisterType<CommentViewModel>();
             containerBuilder.RegisterType<SearchViewModel>();
 
@@ -59,6 +64,7 @@ namespace VGtime.Uwp.ViewModels
         {
             var navigationService = new SoftwareKobo.Services.NavigationService();
             navigationService.Configure(DetailViewKey, typeof(DetailView));
+            navigationService.Configure(StrategyViewKey, typeof(StrategyView));
             navigationService.Configure(CommentViewKey, typeof(CommentView));
             navigationService.Configure(SearchViewKey, typeof(SearchView));
             return navigationService;
