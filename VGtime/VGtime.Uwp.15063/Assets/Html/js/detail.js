@@ -1,15 +1,14 @@
-﻿"use strict";
-
+/// <reference path="../type/jquery.d.ts"/>
+/// <reference path="../type/hammerjs.d.ts"/>
+/// <reference path="../type/winrt.d.ts"/>
 function setContent(content) {
     $("#container").html(content);
 }
-
 function scrollToTop() {
     $("body").animate({
         scrollTop: 0
     }, "fast");
 }
-
 $(function () {
     var hammertime = new Hammer(document.getElementsByTagName("html")[0]);
     hammertime.on("swipeleft", function (e) {
@@ -23,3 +22,4 @@ $(function () {
         }
     });
 });
+//# sourceMappingURL=detail.js.map

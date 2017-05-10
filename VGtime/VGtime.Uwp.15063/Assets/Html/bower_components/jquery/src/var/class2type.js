@@ -1,6 +1,7 @@
-define( function() {
-	"use strict";
-
-	// [[Class]] -> type pairs
-	return {};
-} );
+define(function () {
+    "use strict";
+    // [[Class]] -> type pairs
+    return {};
+});
+//# sourceMappingURL=class2type.js.map 
+//# sourceMappingURL=class2type.js.map

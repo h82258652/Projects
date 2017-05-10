@@ -182,6 +182,7 @@
     <None Include="Assets\Html\bower_components\jquery\README.md" />
     <None Include="Assets\Html\bower_components\jquery\src\.eslintrc.json" />
     <PRIResource Include="Strings\zh-CN\Resources.resw" />
+    <None Include="Assets\Html\js\detail.js.map" />
     <None Include="VGtime.Uwp.15063_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
@@ -441,7 +442,12 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <TypeScriptCompile Include="Assets\Html\js\detail.ts" />
+    <TypeScriptCompile Include="Assets\Html\type\hammerjs.d.ts" />
+    <TypeScriptCompile Include="Assets\Html\type\jquery.d.ts" />
+    <TypeScriptCompile Include="Assets\Html\type\winrt.d.ts" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Libraries\SoftwareKobo.Controls.ImageEx.Core\SoftwareKobo.Controls.ImageEx.Core.csproj">
       <Project>{218dd945-b472-4d22-b8b4-3fdf88b9f361}</Project>
@@ -484,6 +490,7 @@
       <Name>VGtime.Services</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>

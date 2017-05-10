@@ -1,6 +1,7 @@
-define( function() {
-	"use strict";
-
-	// All support tests are defined in their respective modules.
-	return {};
-} );
+define(function () {
+    "use strict";
+    // All support tests are defined in their respective modules.
+    return {};
+});
+//# sourceMappingURL=support.js.map 
+//# sourceMappingURL=support.js.map

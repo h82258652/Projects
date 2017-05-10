@@ -1,11 +1,9 @@
-define( [
-	"../var/support"
-], function( support ) {
-
-"use strict";
-
-support.focusin = "onfocusin" in window;
-
-return support;
-
-} );
+define([
+    "../var/support"
+], function (support) {
+    "use strict";
+    support.focusin = "onfocusin" in window;
+    return support;
+});
+//# sourceMappingURL=support.js.map 
+//# sourceMappingURL=support.js.map
