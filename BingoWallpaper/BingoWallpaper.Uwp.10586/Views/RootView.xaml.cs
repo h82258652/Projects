@@ -20,17 +20,17 @@ namespace BingoWallpaper.Uwp.Views
 
         public RootView(SplashScreen splashScreen) : this()
         {
-            var extendedSplashScreenView = new ExtendedSplashScreenView(splashScreen);
-            EventHandler completedHandler = null;
-            completedHandler = async (sender, e) =>
+            var splashScreenView = new SplashScreenView(splashScreen);
+            EventHandler initializeCompletedHandler = null;
+            initializeCompletedHandler = async (sender, e) =>
             {
-                extendedSplashScreenView.Completed -= completedHandler;
+                splashScreenView.InitializeCompleted -= initializeCompletedHandler;
                 RootFrame.Navigate(typeof(MainView));
-                await extendedSplashScreenView.DismissAsync();
-                RootGrid.Children.Remove(extendedSplashScreenView);
+                await splashScreenView.DismissAsync();
+                RootGrid.Children.Remove(splashScreenView);
             };
-            extendedSplashScreenView.Completed += completedHandler;
-            RootGrid.Children.Add(extendedSplashScreenView);
+            splashScreenView.InitializeCompleted += initializeCompletedHandler;
+            RootGrid.Children.Add(splashScreenView);
         }
 
         public override ContentControl PreviousPageHost => ContentControl;

@@ -17,25 +17,25 @@ using WinRTXamlToolkit.AwaitableUI;
 
 namespace BingoWallpaper.Uwp.Views
 {
-    public sealed partial class ExtendedSplashScreenView
+    public sealed partial class SplashScreenView
     {
         private readonly SplashScreen _splashScreen;
 
         private BackgroundTaskRegistration _backgroundTaskRegistration;
 
-        public ExtendedSplashScreenView()
+        public SplashScreenView()
         {
             InitializeComponent();
         }
 
-        public ExtendedSplashScreenView(SplashScreen splashScreen) : this()
+        public SplashScreenView(SplashScreen splashScreen) : this()
         {
             _splashScreen = splashScreen;
 
             UpdateSplashScreenImagePosition();
         }
 
-        public event EventHandler Completed;
+        public event EventHandler InitializeCompleted;
 
         public async Task DismissAsync()
         {
@@ -67,17 +67,6 @@ namespace BingoWallpaper.Uwp.Views
         private static void UpdatePrimaryTile()
         {
             new UpdateTileTask().Run(null);
-        }
-
-        private void ExtendedSplashScreenView_Loaded(object sender, RoutedEventArgs e)
-        {
-            Window.Current.SizeChanged += Window_SizeChanged;
-            UpdateSplashScreenImagePosition();
-        }
-
-        private void ExtendedSplashScreenView_Unloaded(object sender, RoutedEventArgs e)
-        {
-            Window.Current.SizeChanged -= Window_SizeChanged;
         }
 
         private async Task RegisterBackgroundTaskAsync()
@@ -115,7 +104,18 @@ namespace BingoWallpaper.Uwp.Views
             InitializeTitleBar();
             await Task.WhenAll(HideStatusBarAsync(), RegisterBackgroundTaskAsync());
             UpdatePrimaryTile();
-            Completed?.Invoke(this, EventArgs.Empty);
+            InitializeCompleted?.Invoke(this, EventArgs.Empty);
+        }
+
+        private void SplashScreenView_Loaded(object sender, RoutedEventArgs e)
+        {
+            Window.Current.SizeChanged += Window_SizeChanged;
+            UpdateSplashScreenImagePosition();
+        }
+
+        private void SplashScreenView_Unloaded(object sender, RoutedEventArgs e)
+        {
+            Window.Current.SizeChanged -= Window_SizeChanged;
         }
 
         private void UpdateSplashScreenImagePosition()
