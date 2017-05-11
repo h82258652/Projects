@@ -6,5 +6,9 @@
                     xmlns:views="using:SoftwareKobo.Views"
                     DataContext="{Binding Source={StaticResource Locator}, Path=Strategy}"
                     mc:Ignorable="d">
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" />
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
+            <StackPanel Orientation="Vertical"></StackPanel>
+        </ScrollViewer>
+    </Grid>
 </views:BindablePage>
