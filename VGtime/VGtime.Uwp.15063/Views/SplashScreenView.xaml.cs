@@ -4,18 +4,28 @@ using Windows.UI;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Media.Animation;
+using VGtime.Uwp.ViewModels;
 using WinRTXamlToolkit.AwaitableUI;
 
 namespace VGtime.Uwp.Views
 {
     public sealed partial class SplashScreenView
     {
+        private readonly TaskCompletionSource<object> _logoImageOpenedTcs = new TaskCompletionSource<object>();
+
+        private readonly TaskCompletionSource<object> _splashScreenImageOpenedTcs = new TaskCompletionSource<object>();
+
         public SplashScreenView()
         {
             InitializeComponent();
         }
 
         public event EventHandler InitializeCompleted;
+
+        public SplashScreenViewModel ViewModel
+        {
+            get { return (SplashScreenViewModel)DataContext; }
+        }
 
         public async Task DismissAsync()
         {
@@ -86,8 +96,28 @@ namespace VGtime.Uwp.Views
             titleBar.ButtonInactiveForegroundColor = Colors.White;
         }
 
-        private async void SplashScreenImage_ImageOpened(object sender, RoutedEventArgs e)
+        private void LogoImage_ImageOpened(object sender, RoutedEventArgs e)
         {
+            _logoImageOpenedTcs.SetResult(null);
+        }
+
+        private void SplashScreenImage_ImageOpened(object sender, RoutedEventArgs e)
+        {
+            _splashScreenImageOpenedTcs.SetResult(null);
+        }
+
+        private void SplashScreenImage_Loaded(object sender, RoutedEventArgs e)
+        {
+            if (ViewModel.StartPicture == null)
+            {
+                _splashScreenImageOpenedTcs.SetResult(null);
+            }
+        }
+
+        private async void SplashScreenView_Loaded(object sender, RoutedEventArgs e)
+        {
+            await Task.WhenAll(_splashScreenImageOpenedTcs.Task, _logoImageOpenedTcs.Task);
+
             InitializeTitleBar();
 
             Window.Current.Activate();

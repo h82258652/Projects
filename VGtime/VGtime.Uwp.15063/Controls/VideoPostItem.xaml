@@ -14,28 +14,42 @@
         </ResourceDictionary>
     </UserControl.Resources>
     <Grid>
-        <Image Source="{Binding Path=Thumbnail.Url}"
-               Stretch="UniformToFill" />
+        <Viewbox VerticalAlignment="Center"
+                 Stretch="UniformToFill">
+            <Grid>
+                <Border Width="960"
+                        Height="600" />
+                <Image Source="{Binding Path=Thumbnail.Url}" />
+            </Grid>
+        </Viewbox>
         <Border Background="#40000000" />
-        <TextBlock Margin="4,4,0,0"
+        <TextBlock Margin="8,8,0,0"
                    HorizontalAlignment="Left"
                    VerticalAlignment="Top"
+                   FontSize="14"
                    Foreground="White"
                    Text="{Binding Path=PublishDate, Converter={StaticResource TimeAgoConverter}}" />
-        <StackPanel HorizontalAlignment="Right"
+        <StackPanel Margin="0,8,8,0"
+                    HorizontalAlignment="Right"
                     VerticalAlignment="Top"
                     Orientation="Horizontal"
                     Visibility="{Binding Path=Duration, Converter={StaticResource IsNullOrEmptyStringToVisibilityConverter}}">
-            <SymbolIcon VerticalAlignment="Center"
-                        Foreground="White"
-                        Symbol="Clock" />
-            <TextBlock VerticalAlignment="Center"
+            <Viewbox Width="16"
+                     Height="16"
+                     VerticalAlignment="Center">
+                <SymbolIcon Foreground="White"
+                            Symbol="Clock" />
+            </Viewbox>
+            <TextBlock Margin="4,0,0,0"
+                       VerticalAlignment="Center"
+                       FontSize="14"
                        Foreground="White"
                        Text="{Binding Path=Duration}" />
         </StackPanel>
-        <TextBlock Margin="4,0,0,4"
+        <TextBlock Margin="8,0,0,8"
                    HorizontalAlignment="Left"
                    VerticalAlignment="Bottom"
+                   FontSize="16"
                    Foreground="White"
                    Text="{Binding Path=Title}"
                    TextWrapping="Wrap" />

@@ -31,12 +31,12 @@ namespace VGtime.Uwp.ViewModels
                 var startPicture = _vgtimeSettings.StartPicture;
                 if (string.IsNullOrEmpty(startPicture))
                 {
-                    return "/Assets/Images/default_splash_screen.png";
+                    return null;
                 }
                 var cacheStartPictureFilePath = _imageLoader.GetCacheFilePath(startPicture);
                 if (string.IsNullOrEmpty(cacheStartPictureFilePath))
                 {
-                    return "/Assets/Images/default_splash_screen.png";
+                    return null;
                 }
                 else
                 {

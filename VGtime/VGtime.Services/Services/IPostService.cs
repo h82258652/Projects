@@ -23,6 +23,8 @@ namespace VGtime.Services
 
         Task<ResultBase<StartPicture>> GetStartPicAsync();
 
+        Task<ResultBase<StrategyList>> GetStrategyMenuListAsync(int gameId);
+
         Task<ResultBase<VersionData>> GetVersionAsync();
 
         Task<ResultBase<SearchList<Post>>> SearchAsync(string text, int type, int? typeTag = null, int page = 1, int pageSize = 20);

@@ -17,6 +17,18 @@
         <ResourceDictionary>
             <converters:ItemClickEventArgsConverter x:Key="ItemClickEventArgsConverter" />
             <localConverters:AddConverter x:Key="AddConverter" />
+            <localControls:PostItemTemplateSelector x:Key="PostItemTemplateSelector">
+                <localControls:PostItemTemplateSelector.NormalTemplate>
+                    <DataTemplate>
+                        <localControls:ListPostItem />
+                    </DataTemplate>
+                </localControls:PostItemTemplateSelector.NormalTemplate>
+                <localControls:PostItemTemplateSelector.VideoTemplate>
+                    <DataTemplate>
+                        <localControls:VideoPostItem />
+                    </DataTemplate>
+                </localControls:PostItemTemplateSelector.VideoTemplate>
+            </localControls:PostItemTemplateSelector>
         </ResourceDictionary>
     </Page.Resources>
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
@@ -31,6 +43,7 @@
             <Pivot.Items>
                 <PivotItem Header="首页">
                     <ListView IsItemClickEnabled="True"
+                              ItemTemplateSelector="{StaticResource PostItemTemplateSelector}"
                               ItemsSource="{Binding Path=ListPosts}"
                               SelectionMode="None">
                         <interactivity:Interaction.Behaviors>
@@ -80,11 +93,6 @@
                                        Text="正在加载中..."
                                        TextAlignment="Center" />
                         </ListView.Footer>
-                        <ListView.ItemTemplate>
-                            <DataTemplate>
-                                <localControls:ListPostItem />
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
                         <ListView.ItemContainerStyle>
                             <Style TargetType="ListViewItem">
                                 <Setter Property="HorizontalContentAlignment"
@@ -95,6 +103,8 @@
                                         Value="0,0,0,1" />
                                 <Setter Property="BorderBrush"
                                         Value="Gray" />
+                                <Setter Property="MaxHeight"
+                                        Value="300" />
                             </Style>
                         </ListView.ItemContainerStyle>
                     </ListView>
@@ -216,7 +226,6 @@
                                 <TextBlock Grid.Column="0"
                                            Margin="16,8,0,8"
                                            VerticalAlignment="Center"
-                                           Foreground="Gray"
                                            Text="点击查看更多过往攻略" />
                                 <Button Grid.Column="1"
                                         Margin="8"

@@ -107,6 +107,7 @@
     <Compile Include="Controls\ListPostItem.xaml.cs">
       <DependentUpon>ListPostItem.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\PostItemTemplateSelector.cs" />
     <Compile Include="Controls\UserItem.xaml.cs">
       <DependentUpon>UserItem.xaml</DependentUpon>
     </Compile>
@@ -135,6 +136,7 @@
     <Compile Include="ViewModels\CommentViewModel.cs" />
     <Compile Include="ViewModels\DetailViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
+    <Compile Include="ViewModels\OldStrategyViewModel.cs" />
     <Compile Include="ViewModels\SearchViewModel.cs" />
     <Compile Include="ViewModels\SplashScreenViewModel.cs" />
     <Compile Include="ViewModels\StrategyViewModel.cs" />
@@ -147,6 +149,9 @@
     </Compile>
     <Compile Include="Views\MainView.xaml.cs">
       <DependentUpon>MainView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\OldStrategyView.xaml.cs">
+      <DependentUpon>OldStrategyView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\RootView.xaml.cs">
       <DependentUpon>RootView.xaml</DependentUpon>
@@ -304,7 +309,6 @@
     <Content Include="Assets\Html\css\detail.css" />
     <Content Include="Assets\Html\detail.html" />
     <Content Include="Assets\Html\js\detail.js" />
-    <Content Include="Assets\Images\default_splash_screen.png" />
     <Content Include="Assets\Images\logo_about.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
@@ -384,6 +388,11 @@
       <Generator>MSBuild:Compile</Generator>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Page>
+    <Page Include="Styles\Buttons\RefreshButtonStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Page>
     <Page Include="Styles\Buttons\VGtimeAccentButtonStyle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -423,6 +432,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\MainView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\OldStrategyView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

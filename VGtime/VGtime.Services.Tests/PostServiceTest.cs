@@ -80,6 +80,13 @@ namespace VGtime.Services.Tests
         }
 
         [Test]
+        public async Task TestGetStrategyMenuListAsync()
+        {
+            var result = await _postService.GetStrategyMenuListAsync(10079);
+            Assert.AreEqual(result.ErrorCode, HttpStatusCode.OK);
+        }
+
+        [Test]
         public async Task TestGetListByTagAsync()
         {
             Assert.ThrowsAsync<ArgumentOutOfRangeException>(async () =>

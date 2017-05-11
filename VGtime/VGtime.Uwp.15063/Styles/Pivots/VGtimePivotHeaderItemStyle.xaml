@@ -153,7 +153,7 @@
                                           FontWeight="{TemplateBinding FontWeight}"
                                           OpticalMarginAlignment="TrimSideBearings" />
                         <Rectangle x:Name="FocusPipe"
-                                   Height="2"
+                                   Height="4"
                                    HorizontalAlignment="Stretch"
                                    VerticalAlignment="Bottom"
                                    Fill="White"

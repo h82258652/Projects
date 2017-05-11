@@ -91,24 +91,34 @@
                 </StackPanel>
             </Grid>
             <Grid Grid.Column="1"
-                  Width="90"
                   Margin="12,0,0,0"
                   Background="#f5f5f5">
-                <Image Source="{Binding Path=Thumbnail.Url}" />
+                <Viewbox Width="90"
+                         Stretch="UniformToFill">
+                    <Grid>
+                        <Border Width="960"
+                                Height="600" />
+                        <Image Source="{Binding Path=Thumbnail.Url}" />
+                    </Grid>
+                </Viewbox>
                 <Border HorizontalAlignment="Right"
                         VerticalAlignment="Top"
                         Background="{Binding Path=ReviewScore, Converter={StaticResource ReviewScoreToColorConverter}}"
                         Visibility="{Binding Path=ReviewScore, Converter={StaticResource IsNullToVisibilityConverter}}">
-                    <StackPanel Margin="0,2,0,2"
+                    <StackPanel Margin="2,4,2,4"
                                 Orientation="Horizontal">
                         <TextBlock VerticalAlignment="Center"
                                    FontSize="16"
                                    FontWeight="Bold"
                                    Foreground="White"
+                                   LineHeight="16"
+                                   LineStackingStrategy="BlockLineHeight"
                                    Text="{Binding Path=ReviewScore}" />
                         <TextBlock VerticalAlignment="Center"
-                                   FontSize="12"
+                                   FontSize="10"
                                    Foreground="White"
+                                   LineHeight="12"
+                                   LineStackingStrategy="BlockLineHeight"
                                    Text="分" />
                     </StackPanel>
                 </Border>

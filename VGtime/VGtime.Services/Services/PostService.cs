@@ -113,6 +113,15 @@ namespace VGtime.Services
             }
         }
 
+        public async Task<ResultBase<StrategyList>> GetStrategyMenuListAsync(int gameId)
+        {
+            using (var client = new HttpClient())
+            {
+                var json = await client.GetStringAsync($"{Constants.UrlBase}/vgtime-app/api/v2/strategy/gameMenuList.json?gameId={gameId}");
+                return JsonConvert.DeserializeObject<ResultBase<StrategyList>>(json);
+            }
+        }
+
         public async Task<ResultBase<VersionData>> GetVersionAsync()
         {
             using (var client = new HttpClient())

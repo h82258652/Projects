@@ -4,16 +4,26 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              DataContext="{Binding Source={StaticResource Locator}, Path=SplashScreen}"
+             Loaded="SplashScreenView_Loaded"
              mc:Ignorable="d">
     <Grid x:Name="RootGrid"
-          Background="{ThemeResource VGtimeAccentBrush}"
+          Background="White"
           RenderTransformOrigin="0.5,0.5">
         <Grid.RenderTransform>
             <ScaleTransform />
         </Grid.RenderTransform>
         <Image x:Name="SplashScreenImage"
                ImageOpened="SplashScreenImage_ImageOpened"
+               Loaded="SplashScreenImage_Loaded"
                Source="{Binding Path=StartPicture}"
                Stretch="UniformToFill" />
+        <Border VerticalAlignment="Bottom"
+                Background="#80FFFFFF">
+            <Viewbox Margin="12"
+                     StretchDirection="DownOnly">
+                <Image ImageOpened="LogoImage_ImageOpened"
+                       Source="/Assets/Images/logo_about.png" />
+            </Viewbox>
+        </Border>
     </Grid>
 </UserControl>

@@ -20,6 +20,8 @@ namespace VGtime.Uwp.ViewModels
 
         public const string StrategyViewKey = "Strategy";
 
+        public const string OldStrategyViewKey = "OldStrategy";
+
         static ViewModelLocator()
         {
             var serviceLocator = new AutofacServiceLocator(ConfigureAutofacContainer());
@@ -31,6 +33,8 @@ namespace VGtime.Uwp.ViewModels
         public DetailViewModel Detail => ServiceLocator.Current.GetInstance<DetailViewModel>();
 
         public MainViewModel Main => ServiceLocator.Current.GetInstance<MainViewModel>();
+
+        public OldStrategyViewModel OldStrategy => ServiceLocator.Current.GetInstance<OldStrategyViewModel>();
 
         public SearchViewModel Search => ServiceLocator.Current.GetInstance<SearchViewModel>();
 
@@ -54,6 +58,7 @@ namespace VGtime.Uwp.ViewModels
             containerBuilder.RegisterType<MainViewModel>();
             containerBuilder.RegisterType<DetailViewModel>();
             containerBuilder.RegisterType<StrategyViewModel>();
+            containerBuilder.RegisterType<OldStrategyViewModel>();
             containerBuilder.RegisterType<CommentViewModel>();
             containerBuilder.RegisterType<SearchViewModel>();
 
@@ -65,6 +70,7 @@ namespace VGtime.Uwp.ViewModels
             var navigationService = new SoftwareKobo.Services.NavigationService();
             navigationService.Configure(DetailViewKey, typeof(DetailView));
             navigationService.Configure(StrategyViewKey, typeof(StrategyView));
+            navigationService.Configure(OldStrategyViewKey, typeof(OldStrategyView));
             navigationService.Configure(CommentViewKey, typeof(CommentView));
             navigationService.Configure(SearchViewKey, typeof(SearchView));
             return navigationService;
