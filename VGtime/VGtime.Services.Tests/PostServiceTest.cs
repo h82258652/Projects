@@ -54,6 +54,13 @@ namespace VGtime.Services.Tests
         }
 
         [Test]
+        public async Task TestGetGameAblumListAsync()
+        {
+            var result = await _postService.GetGameAblumListAsync(3504);
+            Assert.AreEqual(result.ErrorCode, HttpStatusCode.OK);
+        }
+
+        [Test]
         public async Task TestGetGameDetailAsync()
         {
             var result = await _postService.GetGameDetailAsync(2613);
