@@ -200,6 +200,12 @@
                     <ListView IsItemClickEnabled="True"
                               ItemsSource="{Binding Path=StrategyPosts}"
                               SelectionMode="None">
+                        <interactivity:Interaction.Behaviors>
+                            <core:EventTriggerBehavior EventName="ItemClick">
+                                <core:InvokeCommandAction Command="{Binding Path=StrategyPostClickCommand}"
+                                                          InputConverter="{Binding Source={StaticResource ItemClickEventArgsConverter}}" />
+                            </core:EventTriggerBehavior>
+                        </interactivity:Interaction.Behaviors>
                         <ListView.Header>
                             <Grid BorderBrush="Gray"
                                   BorderThickness="0,0,0,1">
@@ -208,9 +214,12 @@
                                     <ColumnDefinition Width="Auto" />
                                 </Grid.ColumnDefinitions>
                                 <TextBlock Grid.Column="0"
+                                           Margin="16,8,0,8"
                                            VerticalAlignment="Center"
+                                           Foreground="Gray"
                                            Text="点击查看更多过往攻略" />
                                 <Button Grid.Column="1"
+                                        Margin="8"
                                         VerticalAlignment="Center"
                                         Content="查看"
                                         Style="{StaticResource VGtimeAccentButtonStyle}" />

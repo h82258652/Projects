@@ -28,6 +28,8 @@ namespace VGtime.Uwp.ViewModels
 
         private RelayCommand _searchCommand;
 
+        private RelayCommand<Post> _strategyPostClickCommand;
+
         public MainViewModel(IPostService postService, INavigationService navigationService, IAppToastService appToastService)
         {
             _postService = postService;
@@ -116,6 +118,18 @@ namespace VGtime.Uwp.ViewModels
                     _navigationService.NavigateTo(ViewModelLocator.SearchViewKey);
                 });
                 return _searchCommand;
+            }
+        }
+
+        public RelayCommand<Post> StrategyPostClickCommand
+        {
+            get
+            {
+                _strategyPostClickCommand = _strategyPostClickCommand ?? new RelayCommand<Post>(post =>
+                {
+                    _navigationService.NavigateTo(ViewModelLocator.StrategyViewKey, post);
+                });
+                return _strategyPostClickCommand;
             }
         }
 
