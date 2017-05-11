@@ -54,6 +54,15 @@ namespace VGtime.Services
             }
         }
 
+        public async Task<ResultBase<GameData>> GetGameDetailAsync(int gameId)
+        {
+            using (var client = new HttpClient())
+            {
+                var json = await client.GetStringAsync($"{Constants.UrlBase}/vgtime-app/api/v2/game/detail.json?gameId={gameId}");
+                return JsonConvert.DeserializeObject<ResultBase<GameData>>(json);
+            }
+        }
+
         public async Task<ResultBase<HeadPicList>> GetHeadPicAsync()
         {
             using (var client = new HttpClient())

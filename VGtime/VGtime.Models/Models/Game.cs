@@ -27,7 +27,7 @@ namespace VGtime.Models
         }
 
         [JsonProperty("platformsId")]
-        public object PlatformsId
+        public string PlatformsId
         {
             get;
             set;
@@ -41,7 +41,7 @@ namespace VGtime.Models
         }
 
         [JsonProperty("introduction")]
-        public object Introduction
+        public string Introduction
         {
             get;
             set;
@@ -55,56 +55,56 @@ namespace VGtime.Models
         }
 
         [JsonProperty("typesText")]
-        public object TypesText
+        public string TypesText
         {
             get;
             set;
         }
 
         [JsonProperty("typesId")]
-        public object TypesId
+        public int TypesId
         {
             get;
             set;
         }
 
         [JsonProperty("imageCount")]
-        public object ImageCount
+        public int ImageCount
         {
             get;
             set;
         }
 
         [JsonProperty("shortPostCount")]
-        public object ShortPostCount
+        public int ShortPostCount
         {
             get;
             set;
         }
 
         [JsonProperty("longPostCount")]
-        public object LongPostCount
+        public int LongPostCount
         {
             get;
             set;
         }
 
         [JsonProperty("scoreCount")]
-        public object ScoreCount
+        public int ScoreCount
         {
             get;
             set;
         }
 
         [JsonProperty("questionCount")]
-        public object QuestionCount
+        public int QuestionCount
         {
             get;
             set;
         }
 
         [JsonProperty("strategyCount")]
-        public object StrategyCount
+        public int StrategyCount
         {
             get;
             set;
@@ -118,14 +118,14 @@ namespace VGtime.Models
         }
 
         [JsonProperty("distributor")]
-        public object Distributor
+        public string Distributor
         {
             get;
             set;
         }
 
         [JsonProperty("action")]
-        public object Action
+        public Action Action
         {
             get;
             set;
@@ -146,7 +146,7 @@ namespace VGtime.Models
         }
 
         [JsonProperty("shareUrl")]
-        public object ShareUrl
+        public string ShareUrl
         {
             get;
             set;
@@ -161,6 +161,13 @@ namespace VGtime.Models
 
         [JsonProperty("myContent")]
         public object MyContent
+        {
+            get;
+            set;
+        }
+
+        [JsonProperty("hasPsnGame")]
+        public bool HasPsnGame
         {
             get;
             set;

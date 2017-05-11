@@ -1,5 +1,7 @@
 ﻿using AppStudio.Uwp.Commands;
 using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Views;
+using VGtime.Models;
 using VGtime.Services;
 using VGtime.Uwp.Data;
 
@@ -7,6 +9,8 @@ namespace VGtime.Uwp.ViewModels
 {
     public class SearchViewModel : ViewModelBase
     {
+        private readonly INavigationService _navigationService;
+
         private readonly IPostService _postService;
 
         private SearchPostCollection _forumPosts;
@@ -15,13 +19,16 @@ namespace VGtime.Uwp.ViewModels
 
         private RelayCommand<string> _searchCommand;
 
+        private RelayCommand<Post> _topicPostClickCommand;
+
         private SearchPostCollection _topicPosts;
 
         private SearchUserCollection _users;
 
-        public SearchViewModel(IPostService postService)
+        public SearchViewModel(IPostService postService, INavigationService navigationService)
         {
             _postService = postService;
+            _navigationService = navigationService;
         }
 
         public SearchPostCollection ForumPosts
@@ -63,6 +70,18 @@ namespace VGtime.Uwp.ViewModels
                     }
                 });
                 return _searchCommand;
+            }
+        }
+
+        public RelayCommand<Post> TopicPostClickCommand
+        {
+            get
+            {
+                _topicPostClickCommand = _topicPostClickCommand ?? new RelayCommand<Post>(post =>
+                {
+                    _navigationService.NavigateTo(ViewModelLocator.DetailViewKey, post);
+                });
+                return _topicPostClickCommand;
             }
         }
 

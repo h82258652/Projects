@@ -1,18 +1,27 @@
 ﻿<UserControl x:Class="VGtime.Uwp.Controls.GameItem"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:converters="using:VGtime.Uwp.Converters"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:models="using:VGtime.Models"
              d:DataContext="{d:DesignInstance Type=models:Game}"
              mc:Ignorable="d">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <converters:PublishDateConverter x:Key="PublishDateConverter" />
+        </ResourceDictionary>
+    </UserControl.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
         <Grid Grid.Column="0">
-            <Image Source="{Binding Path=Thumbnail.Url}" />
+            <Image Width="144"
+                   Height="90"
+                   Source="{Binding Path=Thumbnail.Url}"
+                   Stretch="UniformToFill" />
             <Border HorizontalAlignment="Right"
                     VerticalAlignment="Top">
                 <TextBlock Text="{Binding Path=Score}" />
@@ -25,11 +34,20 @@
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
             <TextBlock Grid.Row="0"
+                       FontSize="18"
+                       FontWeight="Bold"
                        Text="{Binding Path=Title}" />
             <TextBlock Grid.Row="1"
+                       Foreground="Gray"
                        Text="{Binding Path=PlatformsText}" />
-            <TextBlock Grid.Row="2"
-                       Text="{Binding Path=PublishDate}" />
+            <StackPanel Grid.Row="2"
+                        HorizontalAlignment="Right"
+                        Orientation="Horizontal">
+                <SymbolIcon Foreground="Gray"
+                            Symbol="Calendar" />
+                <TextBlock Foreground="Gray"
+                           Text="{Binding Path=PublishDate, Converter={StaticResource PublishDateConverter}}" />
+            </StackPanel>
         </Grid>
     </Grid>
 </UserControl>

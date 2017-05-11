@@ -13,6 +13,8 @@ namespace VGtime.Services
 
         Task<ResultBase<PostStatusData>> GetDetailStatusAsync(int postId, int type);
 
+        Task<ResultBase<GameData>> GetGameDetailAsync(int gameId);
+
         Task<ResultBase<HeadPicList>> GetHeadPicAsync();
 
         Task<ResultBase<KeywordList>> GetHotwordAsync();

@@ -3,12 +3,19 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:behaviors="using:SoftwareKobo.Behaviors"
                     xmlns:controls="using:VGtime.Uwp.Controls"
+                    xmlns:converters="using:SoftwareKobo.Converters"
                     xmlns:core="using:Microsoft.Xaml.Interactions.Core"
                     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                     xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
                     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                     xmlns:views="using:SoftwareKobo.Views"
+                    DataContext="{Binding Source={StaticResource Locator}, Path=OldStrategy}"
                     mc:Ignorable="d">
+    <Page.Resources>
+        <ResourceDictionary>
+            <converters:ItemClickEventArgsConverter x:Key="ItemClickEventArgsConverter" />
+        </ResourceDictionary>
+    </Page.Resources>
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -25,12 +32,27 @@
             </Button>
             <TextBlock HorizontalAlignment="Center"
                        VerticalAlignment="Center"
+                       FontSize="18"
                        Foreground="White"
+                       IsHitTestVisible="False"
+                       Style="{StaticResource VGtimePageHeaderTextControlStyle}"
                        Text="旧攻略" />
         </Grid>
         <ListView Grid.Row="1"
                   IsItemClickEnabled="True"
+                  ItemsSource="{Binding Path=StrategyPosts}"
                   SelectionMode="None">
+            <interactivity:Interaction.Behaviors>
+                <core:EventTriggerBehavior EventName="ItemClick">
+                    <core:InvokeCommandAction Command="{Binding Path=StrategyPostClickCommand}"
+                                              InputConverter="{StaticResource ItemClickEventArgsConverter}" />
+                </core:EventTriggerBehavior>
+            </interactivity:Interaction.Behaviors>
+            <ListView.Footer>
+                <TextBlock Foreground="Gray"
+                           Text="正在加载中..."
+                           TextAlignment="Center" />
+            </ListView.Footer>
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <controls:ListPostItem />
@@ -42,6 +64,10 @@
                             Value="Stretch" />
                     <Setter Property="Padding"
                             Value="12" />
+                    <Setter Property="BorderThickness"
+                            Value="0,0,0,1" />
+                    <Setter Property="BorderBrush"
+                            Value="Gray" />
                 </Style>
             </ListView.ItemContainerStyle>
         </ListView>

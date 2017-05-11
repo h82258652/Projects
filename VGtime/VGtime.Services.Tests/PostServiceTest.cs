@@ -54,6 +54,13 @@ namespace VGtime.Services.Tests
         }
 
         [Test]
+        public async Task TestGetGameDetailAsync()
+        {
+            var result = await _postService.GetGameDetailAsync(2613);
+            Assert.AreEqual(result.ErrorCode, HttpStatusCode.OK);
+        }
+
+        [Test]
         public async Task TestGetHeadPicAsync()
         {
             var result = await _postService.GetHeadPicAsync();
@@ -76,13 +83,6 @@ namespace VGtime.Services.Tests
             });
 
             var result = await _postService.GetListAsync();
-            Assert.AreEqual(result.ErrorCode, HttpStatusCode.OK);
-        }
-
-        [Test]
-        public async Task TestGetStrategyMenuListAsync()
-        {
-            var result = await _postService.GetStrategyMenuListAsync(10079);
             Assert.AreEqual(result.ErrorCode, HttpStatusCode.OK);
         }
 
@@ -116,6 +116,13 @@ namespace VGtime.Services.Tests
         public async Task TestGetStartPicAsync()
         {
             var result = await _postService.GetStartPicAsync();
+            Assert.AreEqual(result.ErrorCode, HttpStatusCode.OK);
+        }
+
+        [Test]
+        public async Task TestGetStrategyMenuListAsync()
+        {
+            var result = await _postService.GetStrategyMenuListAsync(10079);
             Assert.AreEqual(result.ErrorCode, HttpStatusCode.OK);
         }
 
