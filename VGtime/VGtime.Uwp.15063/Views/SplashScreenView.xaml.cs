@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Threading.Tasks;
+using VGtime.Uwp.ViewModels;
 using Windows.UI;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Media.Animation;
-using VGtime.Uwp.ViewModels;
 using WinRTXamlToolkit.AwaitableUI;
 
 namespace VGtime.Uwp.Views
