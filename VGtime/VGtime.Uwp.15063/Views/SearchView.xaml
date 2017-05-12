@@ -37,7 +37,8 @@
                     </core:EventTriggerBehavior>
                 </interactivity:Interaction.Behaviors>
             </Button>
-            <AutoSuggestBox Grid.Column="1">
+            <AutoSuggestBox Grid.Column="1"
+                            PlaceholderText="TODO">
                 <AutoSuggestBox.QueryIcon>
                     <SymbolIcon Symbol="Find" />
                 </AutoSuggestBox.QueryIcon>

@@ -98,6 +98,9 @@
     <Compile Include="Controls\CommentItem.xaml.cs">
       <DependentUpon>CommentItem.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\ForumPostItem.xaml.cs">
+      <DependentUpon>ForumPostItem.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\GameItem.xaml.cs">
       <DependentUpon>GameItem.xaml</DependentUpon>
     </Compile>
@@ -116,6 +119,8 @@
     </Compile>
     <Compile Include="Converters\AddConverter.cs" />
     <Compile Include="Converters\AutoSuggestBoxQuerySubmittedEventArgsConverter.cs" />
+    <Compile Include="Converters\CommentNumToStringConverter.cs" />
+    <Compile Include="Converters\LikeNumToStringConverter.cs" />
     <Compile Include="Converters\IntegerToVisibilityConverter.cs" />
     <Compile Include="Converters\IsNullOrEmptyStringToVisibilityConverter.cs" />
     <Compile Include="Converters\IsNullToVisibilityConverter.cs" />
@@ -359,6 +364,10 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="Controls\CommentItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\ForumPostItem.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

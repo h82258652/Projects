@@ -72,7 +72,7 @@ namespace VGtime.Models
         }
 
         [JsonProperty("text")]
-        public object Text
+        public string Text
         {
             get;
             set;
