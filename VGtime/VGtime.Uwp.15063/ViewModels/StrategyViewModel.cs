@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Net;
+using AppStudio.Uwp.Commands;
 using GalaSoft.MvvmLight;
 using SoftwareKobo.ViewModels;
 using VGtime.Models;
@@ -19,6 +20,8 @@ namespace VGtime.Uwp.ViewModels
         private Post _post;
 
         private Strategy[] _strategies;
+
+        private RelayCommand<StrategyItem> _strategyItemClickCommand;
 
         public StrategyViewModel(IPostService postService, IAppToastService appToastService)
         {
@@ -47,6 +50,18 @@ namespace VGtime.Uwp.ViewModels
             private set
             {
                 Set(ref _strategies, value);
+            }
+        }
+
+        public RelayCommand<StrategyItem> StrategyItemClickCommand
+        {
+            get
+            {
+                _strategyItemClickCommand = _strategyItemClickCommand ?? new RelayCommand<StrategyItem>(strategyItem =>
+                {
+                    throw new NotImplementedException();
+                });
+                return _strategyItemClickCommand;
             }
         }
 
