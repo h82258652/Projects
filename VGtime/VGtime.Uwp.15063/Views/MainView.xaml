@@ -9,6 +9,7 @@
       xmlns:localControls="using:VGtime.Uwp.Controls"
       xmlns:localConverters="using:VGtime.Uwp.Converters"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:behaviors="using:SoftwareKobo.Behaviors"
       x:Name="Root"
       DataContext="{Binding Source={StaticResource Locator}, Path=Main}"
       NavigationCacheMode="Required"
@@ -234,10 +235,15 @@
                                            Text="点击查看更多过往攻略" />
                                 <Button Grid.Column="1"
                                         Margin="8"
-                                        Click="Button_Click"
                                         VerticalAlignment="Center"
                                         Content="查看"
-                                        Style="{StaticResource VGtimeAccentButtonStyle}" />
+                                        Style="{StaticResource VGtimeAccentButtonStyle}">
+                                    <interactivity:Interaction.Behaviors>
+                                        <core:EventTriggerBehavior EventName="Click">
+                                            <behaviors:NavigateToPageAction TargetPage="VGtime.Uwp.Views.OldStrategyView" />
+                                        </core:EventTriggerBehavior>
+                                    </interactivity:Interaction.Behaviors>
+                                </Button>
                             </Grid>
                         </ListView.Header>
                         <ListView.Footer>

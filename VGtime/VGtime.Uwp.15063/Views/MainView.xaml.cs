@@ -39,10 +39,5 @@ namespace VGtime.Uwp.Views
             var column = Math.Ceiling(width / 640);
             itemsWrapGrid.ItemWidth = width / column;
         }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            Frame.Navigate(typeof(OldStrategyView));
-        }
     }
 }

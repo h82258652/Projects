@@ -8,22 +8,34 @@ using VGtime.Uwp.Services;
 
 namespace VGtime.Uwp.ViewModels
 {
-    public class StrategyViewModel : ViewModelBase, INavigable
+    public class GameDetailViewModel : ViewModelBase, INavigable
     {
         private readonly IAppToastService _appToastService;
 
         private readonly IPostService _postService;
 
+        private Game _gameDetail;
+
+        private int _gameId;
+
         private bool _isLoading;
 
-        private Post _post;
-
-        private Strategy[] _strategies;
-
-        public StrategyViewModel(IPostService postService, IAppToastService appToastService)
+        public GameDetailViewModel(IPostService postService, IAppToastService appToastService)
         {
             _postService = postService;
             _appToastService = appToastService;
+        }
+
+        public Game GameDetail
+        {
+            get
+            {
+                return _gameDetail;
+            }
+            private set
+            {
+                Set(ref _gameDetail, value);
+            }
         }
 
         public bool IsLoading
@@ -38,38 +50,25 @@ namespace VGtime.Uwp.ViewModels
             }
         }
 
-        public Strategy[] Strategies
-        {
-            get
-            {
-                return _strategies;
-            }
-            private set
-            {
-                Set(ref _strategies, value);
-            }
-        }
-
         public void Activate(object parameter)
         {
-            _post = (Post)parameter;
-
-            LoadStrategyList();
+            _gameId = (int)parameter;
+            LoadGameDetail();
         }
 
         public void Deactivate(object parameter)
         {
         }
 
-        private async void LoadStrategyList()
+        private async void LoadGameDetail()
         {
             IsLoading = true;
             try
             {
-                var result = await _postService.GetStrategyMenuListAsync(_post.PostId);
+                var result = await _postService.GetGameDetailAsync(_gameId);
                 if (result.ErrorCode == HttpStatusCode.OK)
                 {
-                    Strategies = result.Data.Data;
+                    GameDetail = result.Data.Data;
                 }
                 else
                 {

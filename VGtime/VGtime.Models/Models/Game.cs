@@ -61,49 +61,49 @@ namespace VGtime.Models
             set;
         }
 
-        [JsonProperty("typesId")]
+        [JsonProperty("typesId", NullValueHandling = NullValueHandling.Ignore)]
         public int TypesId
         {
             get;
             set;
         }
 
-        [JsonProperty("imageCount")]
+        [JsonProperty("imageCount", NullValueHandling = NullValueHandling.Ignore)]
         public int ImageCount
         {
             get;
             set;
         }
 
-        [JsonProperty("shortPostCount")]
+        [JsonProperty("shortPostCount", NullValueHandling = NullValueHandling.Ignore)]
         public int ShortPostCount
         {
             get;
             set;
         }
 
-        [JsonProperty("longPostCount")]
+        [JsonProperty("longPostCount", NullValueHandling = NullValueHandling.Ignore)]
         public int LongPostCount
         {
             get;
             set;
         }
 
-        [JsonProperty("scoreCount")]
+        [JsonProperty("scoreCount", NullValueHandling = NullValueHandling.Ignore)]
         public int ScoreCount
         {
             get;
             set;
         }
 
-        [JsonProperty("questionCount")]
+        [JsonProperty("questionCount", NullValueHandling = NullValueHandling.Ignore)]
         public int QuestionCount
         {
             get;
             set;
         }
 
-        [JsonProperty("strategyCount")]
+        [JsonProperty("strategyCount", NullValueHandling = NullValueHandling.Ignore)]
         public int StrategyCount
         {
             get;

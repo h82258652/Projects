@@ -30,12 +30,7 @@
                     </core:EventTriggerBehavior>
                 </interactivity:Interaction.Behaviors>
             </Button>
-            <TextBlock HorizontalAlignment="Center"
-                       VerticalAlignment="Center"
-                       FontSize="18"
-                       Foreground="White"
-                       IsHitTestVisible="False"
-                       Style="{StaticResource VGtimePageHeaderTextControlStyle}"
+            <TextBlock Style="{StaticResource VGtimePageHeaderTextControlStyle}"
                        Text="旧攻略" />
         </Grid>
         <ListView Grid.Row="1"

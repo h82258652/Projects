@@ -31,12 +31,7 @@
                     </core:EventTriggerBehavior>
                 </interactivity:Interaction.Behaviors>
             </Button>
-            <TextBlock HorizontalAlignment="Center"
-                       VerticalAlignment="Center"
-                       FontSize="18"
-                       Style="{StaticResource VGtimePageHeaderTextControlStyle}"
-                       Foreground="White"
-                       IsHitTestVisible="False"
+            <TextBlock Style="{StaticResource VGtimePageHeaderTextControlStyle}"
                        Text="全部评论" />
         </Grid>
         <ListView Grid.Row="1"

@@ -12,15 +12,19 @@ namespace VGtime.Uwp.ViewModels
 {
     public class ViewModelLocator
     {
+        public const string AblumListViewKey = "AblumList";
+
         public const string CommentViewKey = "Comment";
 
         public const string DetailViewKey = "Detail";
 
+        public const string GameDetailViewKey = "GameDetail";
+
+        public const string OldStrategyViewKey = "OldStrategy";
+
         public const string SearchViewKey = "Search";
 
         public const string StrategyViewKey = "Strategy";
-
-        public const string OldStrategyViewKey = "OldStrategy";
 
         static ViewModelLocator()
         {
@@ -28,9 +32,13 @@ namespace VGtime.Uwp.ViewModels
             ServiceLocator.SetLocatorProvider(() => serviceLocator);
         }
 
+        public AblumListViewModel AblumList => ServiceLocator.Current.GetInstance<AblumListViewModel>();
+
         public CommentViewModel Comment => ServiceLocator.Current.GetInstance<CommentViewModel>();
 
         public DetailViewModel Detail => ServiceLocator.Current.GetInstance<DetailViewModel>();
+
+        public GameDetailViewModel GameDetail => ServiceLocator.Current.GetInstance<GameDetailViewModel>();
 
         public MainViewModel Main => ServiceLocator.Current.GetInstance<MainViewModel>();
 
@@ -61,6 +69,8 @@ namespace VGtime.Uwp.ViewModels
             containerBuilder.RegisterType<OldStrategyViewModel>();
             containerBuilder.RegisterType<CommentViewModel>();
             containerBuilder.RegisterType<SearchViewModel>();
+            containerBuilder.RegisterType<GameDetailViewModel>();
+            containerBuilder.RegisterType<AblumListViewModel>();
 
             return containerBuilder.Build();
         }
@@ -73,6 +83,8 @@ namespace VGtime.Uwp.ViewModels
             navigationService.Configure(OldStrategyViewKey, typeof(OldStrategyView));
             navigationService.Configure(CommentViewKey, typeof(CommentView));
             navigationService.Configure(SearchViewKey, typeof(SearchView));
+            navigationService.Configure(GameDetailViewKey, typeof(GameDetailView));
+            navigationService.Configure(AblumListViewKey, typeof(AblumListView));
             return navigationService;
         }
     }

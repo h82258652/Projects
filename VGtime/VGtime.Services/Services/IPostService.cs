@@ -13,7 +13,7 @@ namespace VGtime.Services
 
         Task<ResultBase<PostStatusData>> GetDetailStatusAsync(int postId, int type);
 
-        Task<ResultBase<object>> GetGameAblumListAsync(int gameId);
+        Task<ResultBase<AblumList>> GetGameAblumListAsync(int gameId);
 
         Task<ResultBase<GameData>> GetGameDetailAsync(int gameId);
 

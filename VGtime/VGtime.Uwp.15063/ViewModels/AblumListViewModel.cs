@@ -8,22 +8,34 @@ using VGtime.Uwp.Services;
 
 namespace VGtime.Uwp.ViewModels
 {
-    public class StrategyViewModel : ViewModelBase, INavigable
+    public class AblumListViewModel : ViewModelBase, INavigable
     {
         private readonly IAppToastService _appToastService;
 
         private readonly IPostService _postService;
 
+        private Ablum[] _ablums;
+
+        private int _gameId;
+
         private bool _isLoading;
 
-        private Post _post;
-
-        private Strategy[] _strategies;
-
-        public StrategyViewModel(IPostService postService, IAppToastService appToastService)
+        public AblumListViewModel(IPostService postService, IAppToastService appToastService)
         {
             _postService = postService;
             _appToastService = appToastService;
+        }
+
+        public Ablum[] Ablums
+        {
+            get
+            {
+                return _ablums;
+            }
+            private set
+            {
+                Set(ref _ablums, value);
+            }
         }
 
         public bool IsLoading
@@ -38,38 +50,26 @@ namespace VGtime.Uwp.ViewModels
             }
         }
 
-        public Strategy[] Strategies
-        {
-            get
-            {
-                return _strategies;
-            }
-            private set
-            {
-                Set(ref _strategies, value);
-            }
-        }
-
         public void Activate(object parameter)
         {
-            _post = (Post)parameter;
+            _gameId = (int)parameter;
 
-            LoadStrategyList();
+            LoadGameAblums();
         }
 
         public void Deactivate(object parameter)
         {
         }
 
-        private async void LoadStrategyList()
+        private async void LoadGameAblums()
         {
             IsLoading = true;
             try
             {
-                var result = await _postService.GetStrategyMenuListAsync(_post.PostId);
+                var result = await _postService.GetGameAblumListAsync(_gameId);
                 if (result.ErrorCode == HttpStatusCode.OK)
                 {
-                    Strategies = result.Data.Data;
+                    Ablums = result.Data.Data;
                 }
                 else
                 {
