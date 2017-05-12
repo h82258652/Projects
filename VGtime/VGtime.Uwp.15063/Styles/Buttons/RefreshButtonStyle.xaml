@@ -42,13 +42,26 @@
                     <Grid>
                         <VisualStateManager.VisualStateGroups>
                             <VisualStateGroup x:Name="CommonStates">
-                                <VisualState x:Name="Normal"></VisualState>
-                                <VisualState x:Name="PointerOver"></VisualState>
-                                <VisualState x:Name="Pressed"></VisualState>
-                                <VisualState x:Name="Disabled"></VisualState>
+                                <VisualState x:Name="Normal" />
+                                <VisualState x:Name="PointerOver">
+                                    <Storyboard />
+                                </VisualState>
+                                <VisualState x:Name="Pressed">
+                                    <Storyboard />
+                                </VisualState>
+                                <VisualState x:Name="Disabled">
+                                    <Storyboard />
+                                </VisualState>
                             </VisualStateGroup>
                         </VisualStateManager.VisualStateGroups>
-                        <Ellipse Fill="{TemplateBinding Background}"></Ellipse>
+                        <Ellipse Fill="{TemplateBinding Background}" />
+                        <ContentPresenter Padding="{TemplateBinding Padding}"
+                                          HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                          VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                          AutomationProperties.AccessibilityView="Raw"
+                                          Content="{TemplateBinding Content}"
+                                          ContentTemplate="{TemplateBinding ContentTemplate}"
+                                          ContentTransitions="{TemplateBinding ContentTransitions}" />
                     </Grid>
                 </ControlTemplate>
             </Setter.Value>
