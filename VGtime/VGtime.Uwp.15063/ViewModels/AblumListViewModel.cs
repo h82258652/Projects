@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Net;
 using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Command;
 using SoftwareKobo.ViewModels;
 using VGtime.Models;
 using VGtime.Services;
@@ -14,6 +15,8 @@ namespace VGtime.Uwp.ViewModels
 
         private readonly IPostService _postService;
 
+        private RelayCommand<Ablum> _ablumClickCommand;
+
         private Ablum[] _ablums;
 
         private int _gameId;
@@ -24,6 +27,18 @@ namespace VGtime.Uwp.ViewModels
         {
             _postService = postService;
             _appToastService = appToastService;
+        }
+
+        public RelayCommand<Ablum> AblumClickCommand
+        {
+            get
+            {
+                _ablumClickCommand = _ablumClickCommand ?? new RelayCommand<Ablum>(ablum =>
+                {
+                    throw new NotImplementedException();
+                });
+                return _ablumClickCommand;
+            }
         }
 
         public Ablum[] Ablums

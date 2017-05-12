@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Net;
-using AppStudio.Uwp.Commands;
 using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Command;
 using SoftwareKobo.ViewModels;
 using VGtime.Models;
 using VGtime.Services;

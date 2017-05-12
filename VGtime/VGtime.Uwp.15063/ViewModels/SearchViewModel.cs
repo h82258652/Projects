@@ -1,5 +1,5 @@
-﻿using AppStudio.Uwp.Commands;
-using GalaSoft.MvvmLight;
+﻿using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Views;
 using VGtime.Models;
 using VGtime.Services;
