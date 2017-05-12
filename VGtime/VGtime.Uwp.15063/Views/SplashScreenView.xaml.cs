@@ -22,10 +22,7 @@ namespace VGtime.Uwp.Views
 
         public event EventHandler InitializeCompleted;
 
-        public SplashScreenViewModel ViewModel
-        {
-            get { return (SplashScreenViewModel)DataContext; }
-        }
+        public SplashScreenViewModel ViewModel => (SplashScreenViewModel)DataContext;
 
         public async Task DismissAsync()
         {
