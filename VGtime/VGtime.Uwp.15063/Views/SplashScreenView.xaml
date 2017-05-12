@@ -9,9 +9,9 @@
     <Grid x:Name="RootGrid"
           Background="White"
           RenderTransformOrigin="0.5,0.5">
-        <Grid.RenderTransform>
+        <UIElement.RenderTransform>
             <ScaleTransform />
-        </Grid.RenderTransform>
+        </UIElement.RenderTransform>
         <Image x:Name="SplashScreenImage"
                ImageOpened="SplashScreenImage_ImageOpened"
                Loaded="SplashScreenImage_Loaded"

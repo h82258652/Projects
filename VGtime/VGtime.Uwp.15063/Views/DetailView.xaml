@@ -10,11 +10,11 @@
                     xmlns:views="using:SoftwareKobo.Views"
                     DataContext="{Binding Source={StaticResource Locator}, Path=Detail}"
                     mc:Ignorable="d">
-    <Page.Resources>
+    <FrameworkElement.Resources>
         <ResourceDictionary>
             <converters:StringFormatConverter x:Key="StringFormatConverter" />
         </ResourceDictionary>
-    </Page.Resources>
+    </FrameworkElement.Resources>
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />

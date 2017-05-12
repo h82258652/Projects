@@ -11,11 +11,11 @@
                     xmlns:views="using:SoftwareKobo.Views"
                     DataContext="{Binding Source={StaticResource Locator}, Path=OldStrategy}"
                     mc:Ignorable="d">
-    <Page.Resources>
+    <FrameworkElement.Resources>
         <ResourceDictionary>
             <converters:ItemClickEventArgsConverter x:Key="ItemClickEventArgsConverter" />
         </ResourceDictionary>
-    </Page.Resources>
+    </FrameworkElement.Resources>
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -43,17 +43,17 @@
                                               InputConverter="{StaticResource ItemClickEventArgsConverter}" />
                 </core:EventTriggerBehavior>
             </interactivity:Interaction.Behaviors>
-            <ListView.Footer>
+            <ListViewBase.Footer>
                 <TextBlock Foreground="Gray"
                            Text="正在加载中..."
                            TextAlignment="Center" />
-            </ListView.Footer>
-            <ListView.ItemTemplate>
+            </ListViewBase.Footer>
+            <ItemsControl.ItemTemplate>
                 <DataTemplate>
                     <controls:ListPostItem />
                 </DataTemplate>
-            </ListView.ItemTemplate>
-            <ListView.ItemContainerStyle>
+            </ItemsControl.ItemTemplate>
+            <ItemsControl.ItemContainerStyle>
                 <Style TargetType="ListViewItem">
                     <Setter Property="HorizontalContentAlignment"
                             Value="Stretch" />
@@ -64,7 +64,7 @@
                     <Setter Property="BorderBrush"
                             Value="Gray" />
                 </Style>
-            </ListView.ItemContainerStyle>
+            </ItemsControl.ItemContainerStyle>
         </ListView>
     </Grid>
 </views:BindablePage>

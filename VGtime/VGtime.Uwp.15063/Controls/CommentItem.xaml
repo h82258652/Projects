@@ -7,11 +7,11 @@
              xmlns:converters="using:VGtime.Uwp.Converters"
              d:DataContext="{d:DesignInstance models:Post}"
              mc:Ignorable="d">
-    <UserControl.Resources>
+    <FrameworkElement.Resources>
         <ResourceDictionary>
             <converters:TimeAgoConverter x:Key="TimeAgoConverter" />
         </ResourceDictionary>
-    </UserControl.Resources>
+    </FrameworkElement.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -26,9 +26,9 @@
                      Width="32"
                      Height="32"
                      VerticalAlignment="Center">
-                <Ellipse.Fill>
+                <Shape.Fill>
                     <ImageBrush ImageSource="{Binding Path=Comment.User.AvatarUrl}" />
-                </Ellipse.Fill>
+                </Shape.Fill>
             </Ellipse>
             <Grid Grid.Column="1"
                   Margin="8,0,0,0"

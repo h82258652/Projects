@@ -7,14 +7,14 @@
              xmlns:models="using:VGtime.Models"
              d:DataContext="{d:DesignInstance Type=models:Post}"
              mc:Ignorable="d">
-    <UserControl.Resources>
+    <FrameworkElement.Resources>
         <ResourceDictionary>
             <converters:TimeAgoConverter x:Key="TimeAgoConverter" />
             <converters:IntegerToVisibilityConverter x:Key="IntegerToVisibilityConverter" />
             <converters:ReviewScoreToColorConverter x:Key="ReviewScoreToColorConverter" />
             <converters:IsNullToVisibilityConverter x:Key="IsNullToVisibilityConverter" />
         </ResourceDictionary>
-    </UserControl.Resources>
+    </FrameworkElement.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -31,9 +31,9 @@
                      Width="24"
                      Height="24"
                      VerticalAlignment="Center">
-                <Ellipse.Fill>
+                <Shape.Fill>
                     <ImageBrush ImageSource="{Binding Path=User.AvatarUrl}" />
-                </Ellipse.Fill>
+                </Shape.Fill>
             </Ellipse>
             <TextBlock Grid.Column="1"
                        Margin="12,0,0,0"

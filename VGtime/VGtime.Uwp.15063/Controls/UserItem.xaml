@@ -15,9 +15,9 @@
                  Width="32"
                  Height="32"
                  VerticalAlignment="Center">
-            <Ellipse.Fill>
+            <Shape.Fill>
                 <ImageBrush ImageSource="{Binding Path=AvatarUrl}" />
-            </Ellipse.Fill>
+            </Shape.Fill>
         </Ellipse>
         <Grid Grid.Column="1"
               VerticalAlignment="Center">

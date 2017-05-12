@@ -28,11 +28,11 @@
                   IsItemClickEnabled="True"
                   ItemsSource="{Binding Path=Ablums}"
                   SelectionMode="None">
-            <GridView.ItemTemplate>
+            <ItemsControl.ItemTemplate>
                 <DataTemplate>
                     <Image Source="{Binding Path=Url}" />
                 </DataTemplate>
-            </GridView.ItemTemplate>
+            </ItemsControl.ItemTemplate>
         </GridView>
     </Grid>
 </views:BindablePage>

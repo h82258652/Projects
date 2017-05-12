@@ -11,11 +11,11 @@
                     xmlns:views="using:SoftwareKobo.Views"
                     DataContext="{Binding Source={StaticResource Locator}, Path=Comment}"
                     mc:Ignorable="d">
-    <Page.Resources>
+    <FrameworkElement.Resources>
         <ResourceDictionary>
             <converters:StringFormatConverter x:Key="StringFormatConverter" />
         </ResourceDictionary>
-    </Page.Resources>
+    </FrameworkElement.Resources>
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -37,7 +37,7 @@
         <ListView Grid.Row="1"
                   ItemsSource="{Binding Path=Comments}"
                   SelectionMode="None">
-            <ListView.Header>
+            <ListViewBase.Header>
                 <Border Background="#f7f7f7"
                         BorderBrush="Gray"
                         BorderThickness="0,0,0,1">
@@ -45,13 +45,13 @@
                                Foreground="Gray"
                                Text="{Binding Path=Post.CommentNum, Converter={StaticResource StringFormatConverter}, ConverterParameter='全部评论 {0}'}" />
                 </Border>
-            </ListView.Header>
-            <ListView.ItemTemplate>
+            </ListViewBase.Header>
+            <ItemsControl.ItemTemplate>
                 <DataTemplate>
                     <controls:CommentItem />
                 </DataTemplate>
-            </ListView.ItemTemplate>
-            <ListView.ItemContainerStyle>
+            </ItemsControl.ItemTemplate>
+            <ItemsControl.ItemContainerStyle>
                 <Style TargetType="ListViewItem">
                     <Setter Property="HorizontalContentAlignment"
                             Value="Stretch" />
@@ -62,7 +62,7 @@
                     <Setter Property="BorderBrush"
                             Value="Gray" />
                 </Style>
-            </ListView.ItemContainerStyle>
+            </ItemsControl.ItemContainerStyle>
         </ListView>
         <TextBox Grid.Row="2"
                  PlaceholderText="说点什么？" />

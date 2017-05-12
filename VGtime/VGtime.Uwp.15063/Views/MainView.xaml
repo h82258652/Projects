@@ -1,19 +1,20 @@
-﻿<Page x:Class="VGtime.Uwp.Views.MainView"
-      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      xmlns:controls="using:AppStudio.Uwp.Controls"
-      xmlns:converters="using:SoftwareKobo.Converters"
-      xmlns:core="using:Microsoft.Xaml.Interactions.Core"
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-      xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
-      xmlns:localControls="using:VGtime.Uwp.Controls"
-      xmlns:localConverters="using:VGtime.Uwp.Converters"
-      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-      xmlns:behaviors="using:SoftwareKobo.Behaviors"
-      DataContext="{Binding Source={StaticResource Locator}, Path=Main}"
-      NavigationCacheMode="Required"
-      mc:Ignorable="d">
-    <Page.Resources>
+﻿<views:BindablePage x:Class="VGtime.Uwp.Views.MainView"
+                    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:behaviors="using:SoftwareKobo.Behaviors"
+                    xmlns:controls="using:AppStudio.Uwp.Controls"
+                    xmlns:converters="using:SoftwareKobo.Converters"
+                    xmlns:core="using:Microsoft.Xaml.Interactions.Core"
+                    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                    xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
+                    xmlns:localControls="using:VGtime.Uwp.Controls"
+                    xmlns:localConverters="using:VGtime.Uwp.Converters"
+                    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                    xmlns:views="using:SoftwareKobo.Views"
+                    DataContext="{Binding Source={StaticResource Locator}, Path=Main}"
+                    NavigationCacheMode="Required"
+                    mc:Ignorable="d">
+    <FrameworkElement.Resources>
         <ResourceDictionary>
             <converters:ItemClickEventArgsConverter x:Key="ItemClickEventArgsConverter" />
             <localConverters:AddConverter x:Key="AddConverter" />
@@ -30,17 +31,17 @@
                 </localControls:PostItemTemplateSelector.VideoTemplate>
             </localControls:PostItemTemplateSelector>
         </ResourceDictionary>
-    </Page.Resources>
+    </FrameworkElement.Resources>
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Pivot Style="{StaticResource VGtimePivotStyle}">
-            <Pivot.Resources>
+            <FrameworkElement.Resources>
                 <Style BasedOn="{StaticResource VGtimePivotHeaderItemStyle}"
                        TargetType="PivotHeaderItem" />
-            </Pivot.Resources>
+            </FrameworkElement.Resources>
             <!-- 二维码按钮
             <Pivot.LeftHeader>
             </Pivot.LeftHeader>-->
-            <Pivot.Items>
+            <ItemsControl.Items>
                 <PivotItem Header="首页">
                     <ListView IsItemClickEnabled="True"
                               ItemTemplateSelector="{StaticResource PostItemTemplateSelector}"
@@ -52,7 +53,7 @@
                                                           InputConverter="{Binding Source={StaticResource ItemClickEventArgsConverter}}" />
                             </core:EventTriggerBehavior>
                         </interactivity:Interaction.Behaviors>
-                        <ListView.Header>
+                        <ListViewBase.Header>
                             <Grid>
                                 <controls:Carousel x:Name="HeadPostsCarousel"
                                                    MaxHeight="400"
@@ -77,9 +78,9 @@
                                     <Border Background="{ThemeResource VGtimeAccentBrush}"
                                             CornerRadius="2"
                                             RenderTransformOrigin="0.5,0.5">
-                                        <Border.RenderTransform>
+                                        <UIElement.RenderTransform>
                                             <RotateTransform Angle="45" />
-                                        </Border.RenderTransform>
+                                        </UIElement.RenderTransform>
                                     </Border>
                                     <TextBlock HorizontalAlignment="Center"
                                                VerticalAlignment="Center"
@@ -87,13 +88,13 @@
                                         <Run Text="{Binding ElementName=HeadPostsCarousel, Path=SelectedIndex, Converter={StaticResource AddConverter}, ConverterParameter=1}" /><Run Text="/" /><Run Text="{Binding Path=HeadPosts.Length}" /></TextBlock>
                                 </Grid>
                             </Grid>
-                        </ListView.Header>
-                        <ListView.Footer>
+                        </ListViewBase.Header>
+                        <ListViewBase.Footer>
                             <TextBlock Foreground="Gray"
                                        Text="正在加载中..."
                                        TextAlignment="Center" />
-                        </ListView.Footer>
-                        <ListView.ItemContainerStyle>
+                        </ListViewBase.Footer>
+                        <ItemsControl.ItemContainerStyle>
                             <Style TargetType="ListViewItem">
                                 <Setter Property="HorizontalContentAlignment"
                                         Value="Stretch" />
@@ -106,7 +107,7 @@
                                 <Setter Property="MaxHeight"
                                         Value="300" />
                             </Style>
-                        </ListView.ItemContainerStyle>
+                        </ItemsControl.ItemContainerStyle>
                     </ListView>
                 </PivotItem>
                 <PivotItem Header="新闻">
@@ -119,17 +120,17 @@
                                                           InputConverter="{Binding Source={StaticResource ItemClickEventArgsConverter}}" />
                             </core:EventTriggerBehavior>
                         </interactivity:Interaction.Behaviors>
-                        <ListView.Footer>
+                        <ListViewBase.Footer>
                             <TextBlock Foreground="Gray"
                                        Text="正在加载中..."
                                        TextAlignment="Center" />
-                        </ListView.Footer>
-                        <ListView.ItemTemplate>
+                        </ListViewBase.Footer>
+                        <ItemsControl.ItemTemplate>
                             <DataTemplate>
                                 <localControls:ListPostItem />
                             </DataTemplate>
-                        </ListView.ItemTemplate>
-                        <ListView.ItemContainerStyle>
+                        </ItemsControl.ItemTemplate>
+                        <ItemsControl.ItemContainerStyle>
                             <Style TargetType="ListViewItem">
                                 <Setter Property="HorizontalContentAlignment"
                                         Value="Stretch" />
@@ -140,7 +141,7 @@
                                 <Setter Property="BorderBrush"
                                         Value="Gray" />
                             </Style>
-                        </ListView.ItemContainerStyle>
+                        </ItemsControl.ItemContainerStyle>
                     </ListView>
                 </PivotItem>
                 <PivotItem Header="评测">
@@ -153,17 +154,17 @@
                                                           InputConverter="{Binding Source={StaticResource ItemClickEventArgsConverter}}" />
                             </core:EventTriggerBehavior>
                         </interactivity:Interaction.Behaviors>
-                        <ListView.Footer>
+                        <ListViewBase.Footer>
                             <TextBlock Foreground="Gray"
                                        Text="正在加载中..."
                                        TextAlignment="Center" />
-                        </ListView.Footer>
-                        <ListView.ItemTemplate>
+                        </ListViewBase.Footer>
+                        <ItemsControl.ItemTemplate>
                             <DataTemplate>
                                 <localControls:ListPostItem />
                             </DataTemplate>
-                        </ListView.ItemTemplate>
-                        <ListView.ItemContainerStyle>
+                        </ItemsControl.ItemTemplate>
+                        <ItemsControl.ItemContainerStyle>
                             <Style TargetType="ListViewItem">
                                 <Setter Property="HorizontalContentAlignment"
                                         Value="Stretch" />
@@ -174,7 +175,7 @@
                                 <Setter Property="BorderBrush"
                                         Value="Gray" />
                             </Style>
-                        </ListView.ItemContainerStyle>
+                        </ItemsControl.ItemContainerStyle>
                     </ListView>
                 </PivotItem>
                 <PivotItem Header="视频">
@@ -221,7 +222,7 @@
                                                           InputConverter="{Binding Source={StaticResource ItemClickEventArgsConverter}}" />
                             </core:EventTriggerBehavior>
                         </interactivity:Interaction.Behaviors>
-                        <ListView.Header>
+                        <ListViewBase.Header>
                             <Grid BorderBrush="Gray"
                                   BorderThickness="0,0,0,1">
                                 <Grid.ColumnDefinitions>
@@ -244,18 +245,18 @@
                                     </interactivity:Interaction.Behaviors>
                                 </Button>
                             </Grid>
-                        </ListView.Header>
-                        <ListView.Footer>
+                        </ListViewBase.Header>
+                        <ListViewBase.Footer>
                             <TextBlock Foreground="Gray"
                                        Text="正在加载中..."
                                        TextAlignment="Center" />
-                        </ListView.Footer>
-                        <ListView.ItemTemplate>
+                        </ListViewBase.Footer>
+                        <ItemsControl.ItemTemplate>
                             <DataTemplate>
                                 <localControls:ListPostItem />
                             </DataTemplate>
-                        </ListView.ItemTemplate>
-                        <ListView.ItemContainerStyle>
+                        </ItemsControl.ItemTemplate>
+                        <ItemsControl.ItemContainerStyle>
                             <Style TargetType="ListViewItem">
                                 <Setter Property="HorizontalContentAlignment"
                                         Value="Stretch" />
@@ -266,7 +267,7 @@
                                 <Setter Property="BorderBrush"
                                         Value="Gray" />
                             </Style>
-                        </ListView.ItemContainerStyle>
+                        </ItemsControl.ItemContainerStyle>
                     </ListView>
                 </PivotItem>
                 <PivotItem Header="专栏">
@@ -279,17 +280,17 @@
                                                           InputConverter="{Binding Source={StaticResource ItemClickEventArgsConverter}}" />
                             </core:EventTriggerBehavior>
                         </interactivity:Interaction.Behaviors>
-                        <ListView.Footer>
+                        <ListViewBase.Footer>
                             <TextBlock Foreground="Gray"
                                        Text="正在加载中..."
                                        TextAlignment="Center" />
-                        </ListView.Footer>
-                        <ListView.ItemTemplate>
+                        </ListViewBase.Footer>
+                        <ItemsControl.ItemTemplate>
                             <DataTemplate>
                                 <localControls:ListPostItem />
                             </DataTemplate>
-                        </ListView.ItemTemplate>
-                        <ListView.ItemContainerStyle>
+                        </ItemsControl.ItemTemplate>
+                        <ItemsControl.ItemContainerStyle>
                             <Style TargetType="ListViewItem">
                                 <Setter Property="HorizontalContentAlignment"
                                         Value="Stretch" />
@@ -300,22 +301,22 @@
                                 <Setter Property="BorderBrush"
                                         Value="Gray" />
                             </Style>
-                        </ListView.ItemContainerStyle>
+                        </ItemsControl.ItemContainerStyle>
                     </ListView>
                 </PivotItem>
-            </Pivot.Items>
+            </ItemsControl.Items>
             <Pivot.RightHeader>
                 <Button Command="{Binding Path=SearchCommand}"
                         Style="{StaticResource IconButtonStyle}">
                     <SymbolIcon Symbol="Find" />
                 </Button>
             </Pivot.RightHeader>
-            <Pivot.ItemContainerStyle>
+            <ItemsControl.ItemContainerStyle>
                 <Style TargetType="PivotItem">
                     <Setter Property="Margin"
                             Value="0" />
                 </Style>
-            </Pivot.ItemContainerStyle>
+            </ItemsControl.ItemContainerStyle>
         </Pivot>
     </Grid>
-</Page>
+</views:BindablePage>

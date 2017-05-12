@@ -26,34 +26,40 @@
             <TextBlock Style="{StaticResource VGtimePageHeaderTextControlStyle}"
                        Text="攻略集" />
         </Grid>
-        <ScrollViewer Grid.Row="1"
-                      VerticalScrollBarVisibility="Auto">
-            <ItemsControl ItemsSource="{Binding Path=Strategies}">
-                <ItemsControl.ItemTemplate>
-                    <DataTemplate>
-                        <ListView IsItemClickEnabled="True"
-                                  ItemsSource="{Binding Path=Items}"
-                                  SelectionMode="None">
-                            <ListView.Header>
-                                <Border Background="LightGray">
-                                    <TextBlock Text="{Binding Path=Name}" />
-                                </Border>
-                            </ListView.Header>
-                            <ListView.ItemTemplate>
-                                <DataTemplate>
-                                    <TextBlock Text="{Binding Path=Title}" />
-                                </DataTemplate>
-                            </ListView.ItemTemplate>
-                            <ListView.ItemContainerStyle>
-                                <Style TargetType="ListViewItem">
-                                    <Setter Property="HorizontalContentAlignment"
-                                            Value="Stretch" />
-                                </Style>
-                            </ListView.ItemContainerStyle>
-                        </ListView>
-                    </DataTemplate>
-                </ItemsControl.ItemTemplate>
-            </ItemsControl>
-        </ScrollViewer>
+        <ListView Grid.Row="1"
+                  IsItemClickEnabled="False"
+                  ItemsSource="{Binding Path=Strategies}"
+                  SelectionMode="None">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <ListView IsItemClickEnabled="True"
+                              ItemsSource="{Binding Path=Items}"
+                              SelectionMode="None">
+                        <ListView.Header>
+                            <Border Background="LightGray">
+                                <TextBlock Text="{Binding Path=Name}" />
+                            </Border>
+                        </ListView.Header>
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Path=Title}" />
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                        <ListView.ItemContainerStyle>
+                            <Style TargetType="ListViewItem">
+                                <Setter Property="HorizontalContentAlignment"
+                                        Value="Stretch" />
+                            </Style>
+                        </ListView.ItemContainerStyle>
+                    </ListView>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+            <ItemsControl.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="HorizontalContentAlignment"
+                            Value="Stretch" />
+                </Style>
+            </ItemsControl.ItemContainerStyle>
+        </ListView>
     </Grid>
 </views:BindablePage>
