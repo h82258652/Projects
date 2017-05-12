@@ -33,15 +33,127 @@
                        Text="{Binding Path=GameDetail.Title}" />
         </Grid>
         <Grid Grid.Row="1">
-            <Image Source="{Binding Path=GameDetail.Thumbnail.Url}" />
-            <TextBlock HorizontalAlignment="Right"
-                       VerticalAlignment="Top"
-                       Text="{Binding Path=GameDetail.Score}" />
-            <TextBlock HorizontalAlignment="Right"
-                       VerticalAlignment="Bottom"
-                       Text="{Binding Path=GameDetail.ImageCount}" />
-            <TextBlock Text="{Binding Path=GameDetail.Introduction}"
-                       TextWrapping="Wrap" />
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <StackPanel Orientation="Vertical">
+                    <Grid>
+                        <Image Source="{Binding Path=GameDetail.Thumbnail.Url}" />
+                        <Border HorizontalAlignment="Right"
+                                VerticalAlignment="Top"
+                                Background="LightGreen">
+                            <TextBlock Text="{Binding Path=GameDetail.Score}" />
+                        </Border>
+                        <Border HorizontalAlignment="Right"
+                                VerticalAlignment="Bottom"
+                                Background="DarkGray">
+                            <StackPanel Orientation="Horizontal">
+                                <SymbolIcon Symbol="Pictures" />
+                                <TextBlock Text="{Binding GameDetail.ImageCount}" />
+                            </StackPanel>
+                        </Border>
+                    </Grid>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0"
+                                   FontWeight="Bold"
+                                   Text="{Binding Path=GameDetail.Title}" />
+                        <StackPanel Grid.Column="1"
+                                    Orientation="Horizontal">
+                            <SymbolIcon Foreground="Gray"
+                                        Symbol="Calculator" />
+                            <TextBlock Foreground="Gray"
+                                       Text="{Binding Path=GameDetail.PublishDate, Converter={StaticResource PublishDateConverter}}" />
+                        </StackPanel>
+                    </Grid>
+                    <TextBlock Text="{Binding Path=GameDetail.PlatformsText}" />
+                    <StackPanel Orientation="Horizontal">
+                        <Button Content="想玩" />
+                        <Button Content="在玩" />
+                        <Button Content="玩过" />
+                        <Button Content="通关" />
+                    </StackPanel>
+                    <TextBlock Text="游戏简介" />
+                    <TextBlock Text="{Binding Path=GameDetail.Introduction}"
+                               TextWrapping="Wrap" />
+                    <Button>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0"
+                                       Text="俱乐部" />
+                            <TextBlock Grid.Column="1"
+                                       Text="{Binding Path=GameDetail.ShortPostCount}" />
+                            <TextBlock Grid.Column="2"
+                                       Text="&gt;" />
+                        </Grid>
+                    </Button>
+                    <Button>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0"
+                                       Text="文章和视频" />
+                            <TextBlock Grid.Column="1"
+                                       Text="{Binding Path=GameDetail.LongPostCount}" />
+                            <TextBlock Grid.Column="2"
+                                       Text="&gt;" />
+                        </Grid>
+                    </Button>
+                    <Button>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0"
+                                       Text="提问" />
+                            <TextBlock Grid.Column="1"
+                                       Text="{Binding Path=GameDetail.QuestionCount}" />
+                            <TextBlock Grid.Column="2"
+                                       Text="&gt;" />
+                        </Grid>
+                    </Button>
+                    <Button>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0"
+                                       Text="评分" />
+                            <TextBlock Grid.Column="1"
+                                       Text="{Binding Path=GameDetail.ScoreCount}" />
+                            <TextBlock Grid.Column="2"
+                                       Text="&gt;" />
+                        </Grid>
+                    </Button>
+                    <Button>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0"
+                                       Text="攻略集" />
+                            <TextBlock Grid.Column="1"
+                                       Text="{Binding Path=GameDetail.StrategyCount}" />
+                            <TextBlock Grid.Column="2"
+                                       Text="&gt;" />
+                        </Grid>
+                    </Button>
+                </StackPanel>
+            </ScrollViewer>
             <TextBlock Text="{Binding Path=GameDetail.PublishDate, Converter={StaticResource PublishDateConverter}}" />
         </Grid>
     </Grid>
