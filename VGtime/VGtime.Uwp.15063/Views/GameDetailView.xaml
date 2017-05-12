@@ -36,7 +36,9 @@
             <ScrollViewer VerticalScrollBarVisibility="Auto">
                 <StackPanel Orientation="Vertical">
                     <Grid>
-                        <Image Source="{Binding Path=GameDetail.Thumbnail.Url}" />
+                        <Button Style="{StaticResource EmptyButtonStyle}">
+                            <Image Source="{Binding Path=GameDetail.Thumbnail.Url}" />
+                        </Button>
                         <Border HorizontalAlignment="Right"
                                 VerticalAlignment="Top"
                                 Background="LightGreen">
@@ -69,10 +71,14 @@
                     </Grid>
                     <TextBlock Text="{Binding Path=GameDetail.PlatformsText}" />
                     <StackPanel Orientation="Horizontal">
-                        <Button Content="想玩" />
-                        <Button Content="在玩" />
-                        <Button Content="玩过" />
-                        <Button Content="通关" />
+                        <Button Content="想玩"
+                                Style="{StaticResource VGtimeAccentButtonStyle}" />
+                        <Button Content="在玩"
+                                Style="{StaticResource VGtimeAccentButtonStyle}" />
+                        <Button Content="玩过"
+                                Style="{StaticResource VGtimeAccentButtonStyle}" />
+                        <Button Content="通关"
+                                Style="{StaticResource VGtimeAccentButtonStyle}" />
                     </StackPanel>
                     <TextBlock Text="游戏简介" />
                     <TextBlock Text="{Binding Path=GameDetail.Introduction}"
