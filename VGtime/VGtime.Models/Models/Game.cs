@@ -139,7 +139,7 @@ namespace VGtime.Models
         }
 
         [JsonProperty("review")]
-        public object Review
+        public Post Review
         {
             get;
             set;

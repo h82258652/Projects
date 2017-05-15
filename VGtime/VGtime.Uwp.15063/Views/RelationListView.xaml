@@ -33,7 +33,14 @@
         </Grid>
         <ListView Grid.Row="1"
                   IsItemClickEnabled="True"
+                  ItemsSource="{Binding Path=RelationPosts}"
                   SelectionMode="None">
+            <interactivity:Interaction.Behaviors>
+                <core:EventTriggerBehavior EventName="ItemClick">
+                    <core:InvokeCommandAction Command="{Binding Path=PostClickCommand}"
+                                              InputConverter="{StaticResource ItemClickEventArgsConverter}" />
+                </core:EventTriggerBehavior>
+            </interactivity:Interaction.Behaviors>
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <controls:ListPostItem />

@@ -61,7 +61,7 @@ namespace VGtime.Services.Tests
         [Fact]
         public async Task TestGetGameDetailAsync()
         {
-            var result = await _postService.GetGameDetailAsync(2613);
+            var result = await _postService.GetGameDetailAsync(2235);
             Assert.Equal(result.ErrorCode, HttpStatusCode.OK);
         }
 

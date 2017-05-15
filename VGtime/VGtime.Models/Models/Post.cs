@@ -240,14 +240,14 @@ namespace VGtime.Models
         }
 
         [JsonProperty("advantageList")]
-        public object AdvantageList
+        public string AdvantageList
         {
             get;
             set;
         }
 
         [JsonProperty("disadvantageList")]
-        public object DisadvantageList
+        public string DisadvantageList
         {
             get;
             set;
@@ -296,7 +296,7 @@ namespace VGtime.Models
         }
 
         [JsonProperty("anchor")]
-        public object[] Anchor
+        public Anchor[] Anchor
         {
             get;
             set;
