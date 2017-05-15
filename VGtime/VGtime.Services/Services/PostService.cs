@@ -1,6 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Net.Http;
-using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
@@ -124,6 +124,15 @@ namespace VGtime.Services
             }
         }
 
+        public async Task<ResultBase<bool>> GetMessageIsReadAsync(int userId, int type)
+        {
+            using (var client = new HttpClient())
+            {
+                var json = await client.GetStringAsync($"{Constants.UrlBase}/vgtime-app/api/v2/message/isRead.json?userId={userId}&type={type}");
+                return JsonConvert.DeserializeObject<ResultBase<bool>>(json);
+            }
+        }
+
         public async Task<ResultBase<AblumList<Post>>> GetRelationListAsync(int gameId, int type, int page = 1, int pageSize = 20)
         {
             if (page <= 0)
@@ -178,6 +187,20 @@ namespace VGtime.Services
             }
         }
 
+        public async Task<ResultBase<UserInfo>> GetUserInfoAsync(int userId, string token)
+        {
+            if (token == null)
+            {
+                throw new ArgumentNullException(nameof(token));
+            }
+
+            using (var client = new HttpClient())
+            {
+                var json = await client.GetStringAsync($"{Constants.UrlBase}/vgtime-app/api/v2/common/getUserInfo.json?userId={userId}&token={token}");
+                return JsonConvert.DeserializeObject<ResultBase<UserInfo>>(json);
+            }
+        }
+
         public async Task<ResultBase<VersionData>> GetVersionAsync()
         {
             using (var client = new HttpClient())
@@ -187,17 +210,34 @@ namespace VGtime.Services
             }
         }
 
-        public async Task<ResultBase<object>> LoginAsync(string account, string password)
+        public async Task<ResultBase<UserInfo>> LoginAsync(string account, string password)
         {
+            if (account == null)
+            {
+                throw new ArgumentNullException(nameof(account));
+            }
+            if (password == null)
+            {
+                throw new ArgumentNullException(nameof(password));
+            }
+
+            var postData = new Dictionary<string, string>()
+            {
+                ["account"] = account
+            };
+            var passwordAes = EncryptHelper.AesEncryptString(password, Constants.AESEncryptKey);
+            var passwordBase64 = Convert.ToBase64String(Encoding.UTF8.GetBytes(passwordAes + "\n"));
+            postData["password"] = passwordBase64;
+
+            var url = $"{Constants.UrlBase}/vgtime-app/api/v2/common/login.json";
             using (var client = new HttpClient())
             {
-                var url = $"{Constants.UrlBase}/vgtime-app/api/v2/common/login.json";
-
-                url = url + "?account" + account;
-                url = url + "?password" + EncryptHelper.AesEncryptString(password + "\n", Constants.AESEncryptKey);
-
-                var json = await client.GetStringAsync(url);
-                return JsonConvert.DeserializeObject<ResultBase<object>>(json);
+                using (var postContent = new FormUrlEncodedContent(postData))
+                {
+                    var response = await client.PostAsync(url, postContent);
+                    var json = await response.Content.ReadAsStringAsync();
+                    return JsonConvert.DeserializeObject<ResultBase<UserInfo>>(json);
+                }
             }
         }
 

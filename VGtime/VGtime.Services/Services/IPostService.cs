@@ -25,6 +25,8 @@ namespace VGtime.Services
 
         Task<ResultBase<TopicList>> GetListByTagAsync(int tags, int page = 1, int pageSize = 20);
 
+        Task<ResultBase<bool>> GetMessageIsReadAsync(int userId, int type);
+
         Task<ResultBase<AblumList<Post>>> GetRelationListAsync(int gameId, int type, int page = 1, int pageSize = 20);
 
         Task<ResultBase<GameList>> GetScoreListAsync(int gameId, int page = 1, int pageSize = 20);
@@ -33,14 +35,16 @@ namespace VGtime.Services
 
         Task<ResultBase<StrategyList>> GetStrategyMenuListAsync(int gameId);
 
+        Task<ResultBase<UserInfo>> GetUserInfoAsync(int userId, string token);
+
         Task<ResultBase<VersionData>> GetVersionAsync();
+
+        Task<ResultBase<UserInfo>> LoginAsync(string account, string password);
 
         Task<ResultBase<SearchList<Post>>> SearchAsync(string text, int type, int? typeTag = null, int page = 1, int pageSize = 20);
 
         Task<ResultBase<SearchList<Game>>> SearchGameAsync(string text, int type, int contentType, int page = 1, int pageSize = 20);
 
         Task<ResultBase<SearchList<User>>> SearchUserAsync(string text, int type, int page = 1, int pageSize = 20);
-
-        Task<ResultBase<object>> LoginAsync(string account, string password);
     }
 }
