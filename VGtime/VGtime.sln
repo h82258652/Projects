@@ -33,7 +33,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoftwareKobo.Controls.Image
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoftwareKobo.Controls.ImageEx.Uwp.14393", "..\Libraries\SoftwareKobo.Controls.ImageEx.Uwp.14393\SoftwareKobo.Controls.ImageEx.Uwp.14393.csproj", "{6AB289CA-714C-4D98-962D-E7EBB445AEC1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VGtime.Services.Tests", "VGtime.Services.Tests\VGtime.Services.Tests.csproj", "{6F094CFE-10DC-497D-A245-1B7163120BFC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VGtime.Services.Tests", "VGtime.Services.Tests\VGtime.Services.Tests.csproj", "{16FE7530-3583-410B-BBD9-FBD9BD52F3DD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -275,22 +275,22 @@ Global
 		{6AB289CA-714C-4D98-962D-E7EBB445AEC1}.Release|x64.Build.0 = Release|x64
 		{6AB289CA-714C-4D98-962D-E7EBB445AEC1}.Release|x86.ActiveCfg = Release|x86
 		{6AB289CA-714C-4D98-962D-E7EBB445AEC1}.Release|x86.Build.0 = Release|x86
-		{6F094CFE-10DC-497D-A245-1B7163120BFC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6F094CFE-10DC-497D-A245-1B7163120BFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6F094CFE-10DC-497D-A245-1B7163120BFC}.Debug|ARM.ActiveCfg = Debug|Any CPU
-		{6F094CFE-10DC-497D-A245-1B7163120BFC}.Debug|ARM.Build.0 = Debug|Any CPU
-		{6F094CFE-10DC-497D-A245-1B7163120BFC}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{6F094CFE-10DC-497D-A245-1B7163120BFC}.Debug|x64.Build.0 = Debug|Any CPU
-		{6F094CFE-10DC-497D-A245-1B7163120BFC}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{6F094CFE-10DC-497D-A245-1B7163120BFC}.Debug|x86.Build.0 = Debug|Any CPU
-		{6F094CFE-10DC-497D-A245-1B7163120BFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6F094CFE-10DC-497D-A245-1B7163120BFC}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6F094CFE-10DC-497D-A245-1B7163120BFC}.Release|ARM.ActiveCfg = Release|Any CPU
-		{6F094CFE-10DC-497D-A245-1B7163120BFC}.Release|ARM.Build.0 = Release|Any CPU
-		{6F094CFE-10DC-497D-A245-1B7163120BFC}.Release|x64.ActiveCfg = Release|Any CPU
-		{6F094CFE-10DC-497D-A245-1B7163120BFC}.Release|x64.Build.0 = Release|Any CPU
-		{6F094CFE-10DC-497D-A245-1B7163120BFC}.Release|x86.ActiveCfg = Release|Any CPU
-		{6F094CFE-10DC-497D-A245-1B7163120BFC}.Release|x86.Build.0 = Release|Any CPU
+		{16FE7530-3583-410B-BBD9-FBD9BD52F3DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{16FE7530-3583-410B-BBD9-FBD9BD52F3DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{16FE7530-3583-410B-BBD9-FBD9BD52F3DD}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{16FE7530-3583-410B-BBD9-FBD9BD52F3DD}.Debug|ARM.Build.0 = Debug|Any CPU
+		{16FE7530-3583-410B-BBD9-FBD9BD52F3DD}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{16FE7530-3583-410B-BBD9-FBD9BD52F3DD}.Debug|x64.Build.0 = Debug|Any CPU
+		{16FE7530-3583-410B-BBD9-FBD9BD52F3DD}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{16FE7530-3583-410B-BBD9-FBD9BD52F3DD}.Debug|x86.Build.0 = Debug|Any CPU
+		{16FE7530-3583-410B-BBD9-FBD9BD52F3DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{16FE7530-3583-410B-BBD9-FBD9BD52F3DD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{16FE7530-3583-410B-BBD9-FBD9BD52F3DD}.Release|ARM.ActiveCfg = Release|Any CPU
+		{16FE7530-3583-410B-BBD9-FBD9BD52F3DD}.Release|ARM.Build.0 = Release|Any CPU
+		{16FE7530-3583-410B-BBD9-FBD9BD52F3DD}.Release|x64.ActiveCfg = Release|Any CPU
+		{16FE7530-3583-410B-BBD9-FBD9BD52F3DD}.Release|x64.Build.0 = Release|Any CPU
+		{16FE7530-3583-410B-BBD9-FBD9BD52F3DD}.Release|x86.ActiveCfg = Release|Any CPU
+		{16FE7530-3583-410B-BBD9-FBD9BD52F3DD}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
