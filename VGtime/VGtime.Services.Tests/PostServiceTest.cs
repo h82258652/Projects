@@ -120,6 +120,38 @@ namespace VGtime.Services.Tests
         }
 
         [Test]
+        public async Task TestGetRelationListAsync()
+        {
+            Assert.ThrowsAsync<ArgumentOutOfRangeException>(async () =>
+            {
+                await _postService.GetRelationListAsync(2235, 1, page: 0);
+            });
+            Assert.ThrowsAsync<ArgumentOutOfRangeException>(async () =>
+            {
+                await _postService.GetRelationListAsync(2235, 1, pageSize: 0);
+            });
+
+            var result = await _postService.GetRelationListAsync(2235, 1);
+            Assert.AreEqual(result.ErrorCode, HttpStatusCode.OK);
+        }
+
+        [Test]
+        public async Task TestGetScoreListAsync()
+        {
+            Assert.ThrowsAsync<ArgumentOutOfRangeException>(async () =>
+            {
+                await _postService.GetScoreListAsync(2235, page: 0);
+            });
+            Assert.ThrowsAsync<ArgumentOutOfRangeException>(async () =>
+            {
+                await _postService.GetScoreListAsync(2235, pageSize: 0);
+            });
+
+            var result = await _postService.GetScoreListAsync(2235);
+            Assert.AreEqual(result.ErrorCode, HttpStatusCode.OK);
+        }
+
+        [Test]
         public async Task TestGetStartPicAsync()
         {
             var result = await _postService.GetStartPicAsync();

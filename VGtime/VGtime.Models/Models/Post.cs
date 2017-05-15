@@ -79,7 +79,7 @@ namespace VGtime.Models
         }
 
         [JsonProperty("images")]
-        public object Images
+        public object[] Images
         {
             get;
             set;

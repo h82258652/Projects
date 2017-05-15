@@ -4,6 +4,7 @@
         <ResourceDictionary Source="/Styles/Buttons/IconButtonStyle.xaml" />
         <ResourceDictionary Source="/Styles/Buttons/NavigationBackButtonStyle.xaml" />
         <ResourceDictionary Source="/Styles/Buttons/RefreshButtonStyle.xaml" />
+        <ResourceDictionary Source="/Styles/Buttons/ShareButtonStyle.xaml" />
         <ResourceDictionary Source="/Styles/Buttons/VGtimeAccentButtonStyle.xaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

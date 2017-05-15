@@ -3,10 +3,10 @@
 namespace VGtime.Models
 {
     [JsonObject]
-    public class AblumList<T>
+    public class GameList
     {
-        [JsonProperty("ablumnList")]
-        public T[] Data
+        [JsonProperty("gameList")]
+        public ScoreInfo[] Data
         {
             get;
             set;

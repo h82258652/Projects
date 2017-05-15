@@ -54,12 +54,12 @@ namespace VGtime.Services
             }
         }
 
-        public async Task<ResultBase<AblumList>> GetGameAblumListAsync(int gameId)
+        public async Task<ResultBase<AblumList<Ablum>>> GetGameAblumListAsync(int gameId)
         {
             using (var client = new HttpClient())
             {
                 var json = await client.GetStringAsync($"{Constants.UrlBase}/vgtime-app/api/v2/game/ablumlist.json?gameId={gameId}");
-                return JsonConvert.DeserializeObject<ResultBase<AblumList>>(json);
+                return JsonConvert.DeserializeObject<ResultBase<AblumList<Ablum>>>(json);
             }
         }
 
@@ -119,6 +119,42 @@ namespace VGtime.Services
             {
                 var json = await client.GetStringAsync($"{Constants.UrlBase}/vgtime-app/api/v2/homepage/listByTag.json?tags={tags}&page={page}&pageSize={pageSize}");
                 return JsonConvert.DeserializeObject<ResultBase<TopicList>>(json);
+            }
+        }
+
+        public async Task<ResultBase<AblumList<Post>>> GetRelationListAsync(int gameId, int type, int page = 1, int pageSize = 20)
+        {
+            if (page <= 0)
+            {
+                throw new ArgumentOutOfRangeException(nameof(page));
+            }
+            if (pageSize <= 0)
+            {
+                throw new ArgumentOutOfRangeException(nameof(pageSize));
+            }
+
+            using (var client = new HttpClient())
+            {
+                var json = await client.GetStringAsync($"{Constants.UrlBase}/vgtime-app/api/v2/game/relationList.json?gameId={gameId}&type={type}&page={page}&pageSize={pageSize}");
+                return JsonConvert.DeserializeObject<ResultBase<AblumList<Post>>>(json);
+            }
+        }
+
+        public async Task<ResultBase<GameList>> GetScoreListAsync(int gameId, int page = 1, int pageSize = 20)
+        {
+            if (page <= 0)
+            {
+                throw new ArgumentOutOfRangeException(nameof(page));
+            }
+            if (pageSize <= 0)
+            {
+                throw new ArgumentOutOfRangeException(nameof(pageSize));
+            }
+
+            using (var client = new HttpClient())
+            {
+                var json = await client.GetStringAsync($"{Constants.UrlBase}/vgtime-app/api/v2/game/scorelist.json?gameId={gameId}&page={page}&pageSize={pageSize}");
+                return JsonConvert.DeserializeObject<ResultBase<GameList>>(json);
             }
         }
 

@@ -44,6 +44,8 @@ namespace VGtime.Uwp.ViewModels
 
         public OldStrategyViewModel OldStrategy => ServiceLocator.Current.GetInstance<OldStrategyViewModel>();
 
+        public RelationListViewModel RelationList => ServiceLocator.Current.GetInstance<RelationListViewModel>();
+
         public SearchViewModel Search => ServiceLocator.Current.GetInstance<SearchViewModel>();
 
         public SplashScreenViewModel SplashScreen => ServiceLocator.Current.GetInstance<SplashScreenViewModel>();
@@ -71,6 +73,7 @@ namespace VGtime.Uwp.ViewModels
             containerBuilder.RegisterType<SearchViewModel>();
             containerBuilder.RegisterType<GameDetailViewModel>();
             containerBuilder.RegisterType<AblumListViewModel>();
+            containerBuilder.RegisterType<RelationListViewModel>();
 
             return containerBuilder.Build();
         }

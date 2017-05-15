@@ -13,7 +13,7 @@ namespace VGtime.Services
 
         Task<ResultBase<PostStatusData>> GetDetailStatusAsync(int postId, int type);
 
-        Task<ResultBase<AblumList>> GetGameAblumListAsync(int gameId);
+        Task<ResultBase<AblumList<Ablum>>> GetGameAblumListAsync(int gameId);
 
         Task<ResultBase<GameData>> GetGameDetailAsync(int gameId);
 
@@ -24,6 +24,10 @@ namespace VGtime.Services
         Task<ResultBase<PushList>> GetListAsync(int page = 1);
 
         Task<ResultBase<TopicList>> GetListByTagAsync(int tags, int page = 1, int pageSize = 20);
+
+        Task<ResultBase<AblumList<Post>>> GetRelationListAsync(int gameId, int type, int page = 1, int pageSize = 20);
+
+        Task<ResultBase<GameList>> GetScoreListAsync(int gameId, int page = 1, int pageSize = 20);
 
         Task<ResultBase<StartPicture>> GetStartPicAsync();
 

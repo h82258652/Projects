@@ -38,7 +38,7 @@
                 </interactivity:Interaction.Behaviors>
             </Button>
             <AutoSuggestBox Grid.Column="1"
-                            PlaceholderText="TODO">
+                            PlaceholderText="请输入搜索内容">
                 <AutoSuggestBox.QueryIcon>
                     <SymbolIcon Symbol="Find" />
                 </AutoSuggestBox.QueryIcon>
@@ -95,7 +95,7 @@
                     </ListViewBase.Footer>
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
-                            <controls:ListPostItem />
+                            <controls:ForumPostItem />
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
                     <ItemsControl.ItemContainerStyle>

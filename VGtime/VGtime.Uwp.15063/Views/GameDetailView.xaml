@@ -22,14 +22,24 @@
         </Grid.RowDefinitions>
         <Grid Grid.Row="0"
               Background="{ThemeResource VGtimeAccentBrush}">
-            <Button Style="{StaticResource NavigationBackButtonStyle}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0"
+                    Style="{StaticResource NavigationBackButtonStyle}">
                 <interactivity:Interaction.Behaviors>
                     <core:EventTriggerBehavior>
                         <behaviors:GoBackAction />
                     </core:EventTriggerBehavior>
                 </interactivity:Interaction.Behaviors>
             </Button>
-            <TextBlock Style="{StaticResource VGtimePageHeaderTextControlStyle}"
+            <Button Grid.Column="2"
+                    Style="{StaticResource ShareButtonStyle}" />
+            <TextBlock Grid.Column="0"
+                       Grid.ColumnSpan="3"
+                       Style="{StaticResource VGtimePageHeaderTextControlStyle}"
                        Text="{Binding Path=GameDetail.Title}" />
         </Grid>
         <Grid Grid.Row="1">
@@ -92,6 +102,7 @@
                             </Grid.ColumnDefinitions>
                             <TextBlock Grid.Column="0"
                                        Text="俱乐部" />
+                            <!--  relationList type=1 page pageSize  -->
                             <TextBlock Grid.Column="1"
                                        Text="{Binding Path=GameDetail.ShortPostCount}" />
                             <TextBlock Grid.Column="2"
@@ -107,6 +118,7 @@
                             </Grid.ColumnDefinitions>
                             <TextBlock Grid.Column="0"
                                        Text="文章和视频" />
+                            <!--  relationList type=2 page pageSize  -->
                             <TextBlock Grid.Column="1"
                                        Text="{Binding Path=GameDetail.LongPostCount}" />
                             <TextBlock Grid.Column="2"
@@ -122,6 +134,7 @@
                             </Grid.ColumnDefinitions>
                             <TextBlock Grid.Column="0"
                                        Text="提问" />
+                            <!--  relationList type=3 page pageSize  -->
                             <TextBlock Grid.Column="1"
                                        Text="{Binding Path=GameDetail.QuestionCount}" />
                             <TextBlock Grid.Column="2"
@@ -137,6 +150,7 @@
                             </Grid.ColumnDefinitions>
                             <TextBlock Grid.Column="0"
                                        Text="评分" />
+                            <!--  scorelist gameId page pageSize  -->
                             <TextBlock Grid.Column="1"
                                        Text="{Binding Path=GameDetail.ScoreCount}" />
                             <TextBlock Grid.Column="2"
@@ -152,6 +166,7 @@
                             </Grid.ColumnDefinitions>
                             <TextBlock Grid.Column="0"
                                        Text="攻略集" />
+                            <!--  gameMenuList gameId  -->
                             <TextBlock Grid.Column="1"
                                        Text="{Binding Path=GameDetail.StrategyCount}" />
                             <TextBlock Grid.Column="2"
