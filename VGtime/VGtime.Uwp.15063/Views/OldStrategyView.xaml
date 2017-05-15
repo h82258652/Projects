@@ -10,6 +10,7 @@
                     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                     xmlns:views="using:SoftwareKobo.Views"
                     DataContext="{Binding Source={StaticResource Locator}, Path=OldStrategy}"
+                    NavigationCacheMode="Required"
                     mc:Ignorable="d">
     <FrameworkElement.Resources>
         <ResourceDictionary>

@@ -9,6 +9,7 @@
              mc:Ignorable="d">
     <FrameworkElement.Resources>
         <ResourceDictionary>
+            <converters:ReviewScoreToColorConverter x:Key="ReviewScoreToColorConverter" />
             <converters:PublishDateConverter x:Key="PublishDateConverter" />
         </ResourceDictionary>
     </FrameworkElement.Resources>
@@ -18,16 +19,24 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
         <Grid Grid.Column="0">
-            <Image Width="144"
-                   Height="90"
+            <Image Width="176"
+                   Height="99"
                    Source="{Binding Path=Thumbnail.Url}"
                    Stretch="UniformToFill" />
-            <Border HorizontalAlignment="Right"
-                    VerticalAlignment="Top">
-                <TextBlock Text="{Binding Path=Score}" />
+            <Border Width="36"
+                    Height="32"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Top"
+                    Background="{Binding Path=Score, Converter={StaticResource ReviewScoreToColorConverter}}">
+                <TextBlock HorizontalAlignment="Center"
+                           VerticalAlignment="Center"
+                           FontSize="20"
+                           Foreground="White"
+                           Text="{Binding Path=Score}" />
             </Border>
         </Grid>
-        <Grid Grid.Column="1">
+        <Grid Grid.Column="1"
+              Margin="8">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="*" />
@@ -38,14 +47,21 @@
                        FontWeight="Bold"
                        Text="{Binding Path=Title}" />
             <TextBlock Grid.Row="1"
+                       Margin="0,8,0,0"
                        Foreground="Gray"
                        Text="{Binding Path=PlatformsText}" />
             <StackPanel Grid.Row="2"
+                        Margin="0,8,0,0"
                         HorizontalAlignment="Right"
                         Orientation="Horizontal">
-                <SymbolIcon Foreground="Gray"
-                            Symbol="Calendar" />
-                <TextBlock Foreground="Gray"
+                <Viewbox Width="18"
+                         Height="18"
+                         VerticalAlignment="Bottom">
+                    <SymbolIcon Foreground="Gray"
+                                Symbol="Calendar" />
+                </Viewbox>
+                <TextBlock Margin="4,0,0,0"
+                           Foreground="Gray"
                            Text="{Binding Path=PublishDate, Converter={StaticResource PublishDateConverter}}" />
             </StackPanel>
         </Grid>

@@ -10,23 +10,28 @@ namespace VGtime.Uwp.Converters
     {
         public object Convert(object value, Type targetType, object parameter, string language)
         {
-            var reviewScore = (float?)value;
+            var reviewScore = (double?)value;
 
             Color color;
             if (reviewScore.HasValue)
             {
                 if (reviewScore.Value >= 8)
                 {
-                    color = Color.FromArgb(0xCC, 0x00, 0x96, 0x88);
+                    color = Colors.Green;
                 }
                 else if (reviewScore.Value >= 7)
                 {
-                    color = Color.FromArgb(0xCC, 0x8b, 0xc2, 0x4a);
+                    color = Colors.Yellow;
+                }
+                else if (reviewScore.Value > 0)
+                {
+                    color = Colors.Red;
                 }
                 else
                 {
-                    color = Color.FromArgb(0xCC, 0xe8, 0x1e, 0x63);
+                    color = Colors.Gray;
                 }
+                color.A = 0xCC;
             }
             else
             {

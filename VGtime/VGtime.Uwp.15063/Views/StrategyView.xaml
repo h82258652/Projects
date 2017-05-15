@@ -5,6 +5,7 @@
                     xmlns:converters="using:SoftwareKobo.Converters"
                     xmlns:core="using:Microsoft.Xaml.Interactions.Core"
                     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                    xmlns:fontawesome="using:SoftwareKobo.Icons.FontAwesome"
                     xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
                     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                     xmlns:views="using:SoftwareKobo.Views"
@@ -49,19 +50,35 @@
                             </core:EventTriggerBehavior>
                         </interactivity:Interaction.Behaviors>
                         <ListViewBase.Header>
-                            <Border Background="LightGray">
+                            <Border Padding="12"
+                                    Background="#f7f7f7">
                                 <TextBlock Text="{Binding Path=Name}" />
                             </Border>
                         </ListViewBase.Header>
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
-                                <TextBlock Text="{Binding Path=Title}" />
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Grid.Column="0"
+                                               VerticalAlignment="Center"
+                                               Text="{Binding Path=Title}" />
+                                    <fontawesome:FontAwesomeIcon Grid.Column="1"
+                                                                 VerticalAlignment="Center"
+                                                                 Symbol="AngleRight" />
+                                </Grid>
                             </DataTemplate>
                         </ItemsControl.ItemTemplate>
                         <ItemsControl.ItemContainerStyle>
                             <Style TargetType="ListViewItem">
                                 <Setter Property="HorizontalContentAlignment"
                                         Value="Stretch" />
+                                <Setter Property="VerticalContentAlignment"
+                                        Value="Stretch" />
+                                <Setter Property="Padding"
+                                        Value="12" />
                             </Style>
                         </ItemsControl.ItemContainerStyle>
                     </ListView>
@@ -71,6 +88,8 @@
                 <Style TargetType="ListViewItem">
                     <Setter Property="HorizontalContentAlignment"
                             Value="Stretch" />
+                    <Setter Property="Padding"
+                            Value="0" />
                 </Style>
             </ItemsControl.ItemContainerStyle>
         </ListView>

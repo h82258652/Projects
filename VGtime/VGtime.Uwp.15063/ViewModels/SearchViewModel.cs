@@ -85,6 +85,20 @@ namespace VGtime.Uwp.ViewModels
             }
         }
 
+        public RelayCommand<Game> GameClickCommand
+        {
+            get
+            {
+                _gameClickCommand = _gameClickCommand ?? new RelayCommand<Game>(game =>
+                {
+                    _navigationService.NavigateTo(ViewModelLocator.GameDetailViewKey, game.GameId);
+                });
+                return _gameClickCommand;
+            }
+        }
+
+        private RelayCommand<Game> _gameClickCommand;
+
         public SearchPostCollection TopicPosts
         {
             get

@@ -12,29 +12,35 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
         <Ellipse Grid.Column="0"
-                 Width="32"
-                 Height="32"
+                 Width="40"
+                 Height="40"
                  VerticalAlignment="Center">
             <Shape.Fill>
                 <ImageBrush ImageSource="{Binding Path=AvatarUrl}" />
             </Shape.Fill>
         </Ellipse>
         <Grid Grid.Column="1"
+              Margin="8,0,0,0"
               VerticalAlignment="Center">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
             <TextBlock Grid.Row="0"
+                       FontWeight="Bold"
                        Text="{Binding Path=Name}" />
             <StackPanel Grid.Row="1"
+                        Margin="0,4,0,0"
                         Orientation="Horizontal">
                 <TextBlock Foreground="Gray"
                            Text="他关注的人" />
-                <TextBlock Text="{Binding Path=FollowCount}" />
-                <TextBlock Foreground="Gray"
+                <TextBlock Margin="4,0,0,0"
+                           Text="{Binding Path=FollowCount}" />
+                <TextBlock Margin="8,0,0,0"
+                           Foreground="Gray"
                            Text="关注他的人" />
-                <TextBlock Text="{Binding Path=FollowerCount}" />
+                <TextBlock Margin="4,0,0,0"
+                           Text="{Binding Path=FollowerCount}" />
             </StackPanel>
         </Grid>
     </Grid>

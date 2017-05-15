@@ -140,8 +140,15 @@
                 </ListView>
             </PivotItem>
             <PivotItem Header="游戏">
-                <ListView ItemsSource="{Binding Path=Games}"
+                <ListView IsItemClickEnabled="True"
+                          ItemsSource="{Binding Path=Games}"
                           SelectionMode="None">
+                    <interactivity:Interaction.Behaviors>
+                        <core:EventTriggerBehavior EventName="ItemClick">
+                            <core:InvokeCommandAction Command="{Binding Path=GameClickCommand}"
+                                                      InputConverter="{StaticResource ItemClickEventArgsConverter}" />
+                        </core:EventTriggerBehavior>
+                    </interactivity:Interaction.Behaviors>
                     <ListViewBase.Footer>
                         <TextBlock Foreground="Gray"
                                    Text="正在加载中..."
