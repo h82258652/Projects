@@ -40,5 +40,7 @@ namespace VGtime.Services
         Task<ResultBase<SearchList<Game>>> SearchGameAsync(string text, int type, int contentType, int page = 1, int pageSize = 20);
 
         Task<ResultBase<SearchList<User>>> SearchUserAsync(string text, int type, int page = 1, int pageSize = 20);
+
+        Task<ResultBase<object>> LoginAsync(string account, string password);
     }
 }

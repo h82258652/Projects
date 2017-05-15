@@ -237,5 +237,12 @@ namespace VGtime.Services.Tests
             var result = await _postService.SearchUserAsync("高达", 1);
             Assert.AreEqual(result.ErrorCode, HttpStatusCode.OK);
         }
+
+        [Test]
+        public async Task TestLoginAsync()
+        {
+            var result = await _postService.LoginAsync("842053625@qq.com", "842053625");
+            Assert.AreEqual(result.ErrorCode, HttpStatusCode.OK);
+        }
     }
 }
