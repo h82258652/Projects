@@ -6,6 +6,8 @@ using SoftwareKobo.ViewModels;
 using VGtime.Models;
 using VGtime.Services;
 using VGtime.Uwp.Services;
+using GalaSoft.MvvmLight.Views;
+using VGtime.Uwp.ViewModelParameters;
 
 namespace VGtime.Uwp.ViewModels
 {
@@ -17,16 +19,17 @@ namespace VGtime.Uwp.ViewModels
 
         private bool _isLoading;
 
-        private Post _post;
+        private int _gameId;
 
         private Strategy[] _strategies;
 
         private RelayCommand<StrategyItem> _strategyItemClickCommand;
 
-        public StrategyViewModel(IPostService postService, IAppToastService appToastService)
+        public StrategyViewModel(IPostService postService, IAppToastService appToastService, INavigationService navigationService)
         {
             _postService = postService;
             _appToastService = appToastService;
+            _navigationService = navigationService;
         }
 
         public bool IsLoading
@@ -53,13 +56,15 @@ namespace VGtime.Uwp.ViewModels
             }
         }
 
+        private readonly INavigationService _navigationService;
+
         public RelayCommand<StrategyItem> StrategyItemClickCommand
         {
             get
             {
                 _strategyItemClickCommand = _strategyItemClickCommand ?? new RelayCommand<StrategyItem>(strategyItem =>
                 {
-                    throw new NotImplementedException();
+                    _navigationService.NavigateTo(ViewModelLocator.DetailViewKey, new DetailViewModelParameter(strategyItem.PostId, strategyItem.DetailType));
                 });
                 return _strategyItemClickCommand;
             }
@@ -67,7 +72,7 @@ namespace VGtime.Uwp.ViewModels
 
         public void Activate(object parameter)
         {
-            _post = (Post)parameter;
+            _gameId = (int)parameter;
 
             LoadStrategyList();
         }
@@ -81,7 +86,7 @@ namespace VGtime.Uwp.ViewModels
             IsLoading = true;
             try
             {
-                var result = await _postService.GetStrategyMenuListAsync(_post.PostId);
+                var result = await _postService.GetStrategyMenuListAsync(_gameId);
                 if (result.ErrorCode == HttpStatusCode.OK)
                 {
                     Strategies = result.Data.Data;

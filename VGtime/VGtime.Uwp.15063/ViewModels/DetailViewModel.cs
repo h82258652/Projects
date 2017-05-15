@@ -8,6 +8,7 @@ using VGtime.Models;
 using VGtime.Services;
 using VGtime.Uwp.Messages;
 using VGtime.Uwp.Services;
+using VGtime.Uwp.ViewModelParameters;
 
 namespace VGtime.Uwp.ViewModels
 {
@@ -82,9 +83,11 @@ namespace VGtime.Uwp.ViewModels
             }
         }
 
+        private DetailViewModelParameter _viewParameter;
+
         public void Activate(object parameter)
         {
-            Post = (Post)parameter;
+            _viewParameter = (DetailViewModelParameter)parameter;
 
             LoadArticleDetail();
         }
@@ -95,8 +98,7 @@ namespace VGtime.Uwp.ViewModels
 
         private async void LoadArticleDetail(bool isRefresh = false)
         {
-            var post = Post;
-            if (IsLoading || post == null)
+            if (IsLoading || _viewParameter == null)
             {
                 return;
             }
@@ -104,10 +106,10 @@ namespace VGtime.Uwp.ViewModels
             IsLoading = true;
             try
             {
-                var result = await _postService.GetDetailAsync(post.PostId, post.DetailType);
+                var result = await _postService.GetDetailAsync(_viewParameter.PostId, _viewParameter.DetailType);
                 if (result.ErrorCode == HttpStatusCode.OK)
                 {
-                    post = result.Data.Data;
+                    var post = result.Data.Data;
                     Post = post;
                     MessengerInstance.Send(new PostContentLoadedMessage(post.Content));
 

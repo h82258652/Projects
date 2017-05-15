@@ -11,6 +11,7 @@
                     xmlns:views="using:SoftwareKobo.Views"
                     x:Name="Root"
                     DataContext="{Binding Source={StaticResource Locator}, Path=Strategy}"
+                    NavigationCacheMode="Required"
                     mc:Ignorable="d">
     <FrameworkElement.Resources>
         <ResourceDictionary>

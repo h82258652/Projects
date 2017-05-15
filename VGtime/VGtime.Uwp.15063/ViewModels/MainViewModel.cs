@@ -7,6 +7,7 @@ using VGtime.Models;
 using VGtime.Services;
 using VGtime.Uwp.Data;
 using VGtime.Uwp.Services;
+using VGtime.Uwp.ViewModelParameters;
 
 namespace VGtime.Uwp.ViewModels
 {
@@ -90,7 +91,7 @@ namespace VGtime.Uwp.ViewModels
             {
                 _postClickCommand = _postClickCommand ?? new RelayCommand<Post>(post =>
                 {
-                    _navigationService.NavigateTo(ViewModelLocator.DetailViewKey, post);
+                    _navigationService.NavigateTo(ViewModelLocator.DetailViewKey, new DetailViewModelParameter(post.PostId, post.DetailType));
                 });
                 return _postClickCommand;
             }
@@ -127,7 +128,7 @@ namespace VGtime.Uwp.ViewModels
             {
                 _strategyPostClickCommand = _strategyPostClickCommand ?? new RelayCommand<Post>(post =>
                 {
-                    _navigationService.NavigateTo(ViewModelLocator.StrategyViewKey, post);
+                    _navigationService.NavigateTo(ViewModelLocator.StrategyViewKey, post.PostId);
                 });
                 return _strategyPostClickCommand;
             }

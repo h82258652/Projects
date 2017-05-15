@@ -5,6 +5,8 @@
                     xmlns:converters="using:VGtime.Uwp.Converters"
                     xmlns:core="using:Microsoft.Xaml.Interactions.Core"
                     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                    xmlns:dashicons="using:SoftwareKobo.Icons.Dashicons"
+                    xmlns:fontawesome="using:SoftwareKobo.Icons.FontAwesome"
                     xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
                     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                     xmlns:views="using:SoftwareKobo.Views"
@@ -30,7 +32,7 @@
             <Button Grid.Column="0"
                     Style="{StaticResource NavigationBackButtonStyle}">
                 <interactivity:Interaction.Behaviors>
-                    <core:EventTriggerBehavior>
+                    <core:EventTriggerBehavior EventName="Click">
                         <behaviors:GoBackAction />
                     </core:EventTriggerBehavior>
                 </interactivity:Interaction.Behaviors>
@@ -49,17 +51,28 @@
                         <Button Style="{StaticResource EmptyButtonStyle}">
                             <Image Source="{Binding Path=GameDetail.Thumbnail.Url}" />
                         </Button>
-                        <Border HorizontalAlignment="Right"
+                        <Border Margin="0,0,12,0"
+                                HorizontalAlignment="Right"
                                 VerticalAlignment="Top"
                                 Background="LightGreen">
-                            <TextBlock Text="{Binding Path=GameDetail.Score}" />
+                            <TextBlock FontSize="20"
+                                       Foreground="White"
+                                       Text="{Binding Path=GameDetail.Score}" />
                         </Border>
                         <Border HorizontalAlignment="Right"
                                 VerticalAlignment="Bottom"
-                                Background="DarkGray">
-                            <StackPanel Orientation="Horizontal">
-                                <SymbolIcon Symbol="Pictures" />
-                                <TextBlock Text="{Binding GameDetail.ImageCount}" />
+                                Background="#505050">
+                            <StackPanel Margin="8,4,8,4"
+                                        Orientation="Horizontal">
+                                <Viewbox Width="18"
+                                         Height="18">
+                                    <dashicons:DashIcon Foreground="White"
+                                                        Symbol="FormatGallery" />
+                                </Viewbox>
+                                <TextBlock Foreground="White"
+                                           Text="{Binding GameDetail.ImageCount}" />
+                                <TextBlock Foreground="White"
+                                           Text="张" />
                             </StackPanel>
                         </Border>
                     </Grid>
@@ -73,8 +86,11 @@
                                    Text="{Binding Path=GameDetail.Title}" />
                         <StackPanel Grid.Column="1"
                                     Orientation="Horizontal">
-                            <SymbolIcon Foreground="Gray"
-                                        Symbol="Calculator" />
+                            <Viewbox Width="18"
+                                     Height="18">
+                                <SymbolIcon Foreground="Gray"
+                                            Symbol="Calendar" />
+                            </Viewbox>
                             <TextBlock Foreground="Gray"
                                        Text="{Binding Path=GameDetail.PublishDate, Converter={StaticResource PublishDateConverter}}" />
                         </StackPanel>
@@ -91,9 +107,11 @@
                                 Style="{StaticResource VGtimeAccentButtonStyle}" />
                     </StackPanel>
                     <TextBlock Text="游戏简介" />
-                    <TextBlock Text="{Binding Path=GameDetail.Introduction}"
+                    <TextBlock Foreground="Gray"
+                               Text="{Binding Path=GameDetail.Introduction}"
                                TextWrapping="Wrap" />
-                    <Button>
+                    <Button HorizontalAlignment="Stretch"
+                            Click="Button_Click">
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*" />
@@ -105,11 +123,13 @@
                             <!--  relationList type=1 page pageSize  -->
                             <TextBlock Grid.Column="1"
                                        Text="{Binding Path=GameDetail.ShortPostCount}" />
-                            <TextBlock Grid.Column="2"
-                                       Text="&gt;" />
+                            <fontawesome:FontAwesomeIcon Grid.Column="2"
+                                                         VerticalAlignment="Center"
+                                                         Symbol="AngleRight" />
                         </Grid>
                     </Button>
-                    <Button>
+                    <Button HorizontalAlignment="Stretch"
+                            Click="Button_Click_1">
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*" />
@@ -125,7 +145,8 @@
                                        Text="&gt;" />
                         </Grid>
                     </Button>
-                    <Button>
+                    <Button HorizontalAlignment="Stretch"
+                            Click="Button_Click_3">
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*" />
@@ -141,7 +162,8 @@
                                        Text="&gt;" />
                         </Grid>
                     </Button>
-                    <Button>
+                    <Button HorizontalAlignment="Stretch"
+                            Click="Button_Click_2">
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*" />
@@ -157,7 +179,8 @@
                                        Text="&gt;" />
                         </Grid>
                     </Button>
-                    <Button>
+                    <Button HorizontalAlignment="Stretch"
+                            Click="Button_Click_4">
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*" />
@@ -175,7 +198,6 @@
                     </Button>
                 </StackPanel>
             </ScrollViewer>
-            <TextBlock Text="{Binding Path=GameDetail.PublishDate, Converter={StaticResource PublishDateConverter}}" />
         </Grid>
     </Grid>
 </views:BindablePage>
