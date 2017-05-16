@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Navigation;
 
 namespace VGtime.Uwp.Views
 {
@@ -10,6 +11,14 @@ namespace VGtime.Uwp.Views
         public AblumListView()
         {
             InitializeComponent();
+        }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            if (e.NavigationMode == NavigationMode.New)
+            {
+                base.OnNavigatedTo(e);
+            }
         }
 
         private void AblumGridView_SizeChanged(object sender, SizeChangedEventArgs e)

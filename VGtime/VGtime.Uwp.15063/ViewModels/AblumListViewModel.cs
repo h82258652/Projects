@@ -86,9 +86,13 @@ namespace VGtime.Uwp.ViewModels
 
         public void Activate(object parameter)
         {
-            Game = (Game)parameter;
+            var game = (Game)parameter;
+            if (Game == null || Game.GameId != game.GameId)
+            {
+                Game = game;
 
-            LoadGameAblums();
+                LoadGameAblums();
+            }
         }
 
         public void Deactivate(object parameter)
@@ -100,6 +104,7 @@ namespace VGtime.Uwp.ViewModels
             IsLoading = true;
             try
             {
+                Ablums = null;
                 var result = await _postService.GetGameAblumListAsync(Game.GameId);
                 if (result.ErrorCode == HttpStatusCode.OK)
                 {

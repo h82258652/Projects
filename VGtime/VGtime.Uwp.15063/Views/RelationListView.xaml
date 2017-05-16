@@ -25,7 +25,7 @@
               Background="{ThemeResource VGtimeAccentBrush}">
             <Button Style="{StaticResource NavigationBackButtonStyle}">
                 <interactivity:Interaction.Behaviors>
-                    <core:EventTriggerBehavior>
+                    <core:EventTriggerBehavior EventName="Click">
                         <behaviors:GoBackAction />
                     </core:EventTriggerBehavior>
                 </interactivity:Interaction.Behaviors>

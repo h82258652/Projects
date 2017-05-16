@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:converters="using:VGtime.Uwp.Converters"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:fontawesome="using:SoftwareKobo.Icons.FontAwesome"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:models="using:VGtime.Models"
              d:DataContext="{d:DesignInstance models:Post}"
@@ -50,13 +51,12 @@
             </Grid>
             <StackPanel Grid.Column="2"
                         Orientation="Horizontal">
-                <SymbolIcon Foreground="Gray"
-                            Symbol="Comment" />
+                <fontawesome:FontAwesomeIcon Foreground="Gray"
+                                             Symbol="CommentingOutline" />
                 <TextBlock Foreground="Gray"
                            Text="{Binding Path=Comment.CommentNum, Converter={StaticResource CommentNumToStringConverter}}" />
-                <!--  TODO heart  -->
-                <SymbolIcon Foreground="Gray"
-                            Symbol="Favorite" />
+                <fontawesome:FontAwesomeIcon Foreground="Gray"
+                                             Symbol="HeartOutline" />
                 <TextBlock Foreground="Gray"
                            Text="{Binding Path=Comment.LikeNum, Converter={StaticResource LikeNumToStringConverter}}" />
             </StackPanel>

@@ -18,7 +18,9 @@ namespace VGtime.Uwp.Data
 
         private int _currentPage;
 
-        public CommentCollection(int postId, IPostService postService, Action<Exception> onError = null)
+        private int _type;
+
+        public CommentCollection(int postId, int type, IPostService postService, Action<Exception> onError = null)
         {
             if (postService == null)
             {
@@ -26,6 +28,7 @@ namespace VGtime.Uwp.Data
             }
 
             _postId = postId;
+            _type = type;
             _postService = postService;
             _onError = onError;
         }
@@ -40,7 +43,7 @@ namespace VGtime.Uwp.Data
             IsLoading = true;
             try
             {
-                var result = await _postService.GetCommentListAsync(_postId, 1, _currentPage + 1);
+                var result = await _postService.GetCommentListAsync(_postId, _type, _currentPage + 1);
                 uint loadedCount = 0;
                 if (result.ErrorCode == HttpStatusCode.OK)
                 {

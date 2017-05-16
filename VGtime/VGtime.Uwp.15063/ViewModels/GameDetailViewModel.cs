@@ -142,8 +142,13 @@ namespace VGtime.Uwp.ViewModels
 
         public void Activate(object parameter)
         {
-            _gameId = (int)parameter;
-            LoadGameDetail();
+            var gameId = (int)parameter;
+            if (_gameId != gameId)
+            {
+                _gameId = gameId;
+
+                LoadGameDetail();
+            }
         }
 
         public void Deactivate(object parameter)
@@ -155,6 +160,7 @@ namespace VGtime.Uwp.ViewModels
             IsLoading = true;
             try
             {
+                GameDetail = null;
                 var result = await _postService.GetGameDetailAsync(_gameId);
                 if (result.ErrorCode == HttpStatusCode.OK)
                 {

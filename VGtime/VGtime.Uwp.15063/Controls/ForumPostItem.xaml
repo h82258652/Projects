@@ -85,7 +85,7 @@
                 <StackPanel Orientation="Horizontal">
                     <Viewbox Width="18"
                              Height="18">
-                        <SymbolIcon Symbol="Comment" />
+                        <fontawesome:FontAwesomeIcon Symbol="CommentingOutline" />
                     </Viewbox>
                     <TextBlock Margin="4,0,0,0"
                                Text="{Binding Path=CommentNum, Converter={StaticResource CommentNumToStringConverter}}" />
@@ -96,7 +96,8 @@
                 <StackPanel Orientation="Horizontal">
                     <Viewbox Width="18"
                              Height="18">
-                        <SymbolIcon Symbol="ReShare" />
+                        <FontIcon FontFamily="Segoe MDL2 Assets"
+                                  Glyph="&#xE72D;" />
                     </Viewbox>
                     <TextBlock Margin="4,0,0,0"
                                Text="分享" />

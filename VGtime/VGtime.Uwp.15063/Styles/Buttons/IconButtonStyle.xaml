@@ -10,7 +10,7 @@
         <Setter Property="Foreground"
                 Value="White" />
         <Setter Property="FontSize"
-                Value="24" />
+                Value="20" />
         <Setter Property="Height"
                 Value="48" />
         <Setter Property="Width"

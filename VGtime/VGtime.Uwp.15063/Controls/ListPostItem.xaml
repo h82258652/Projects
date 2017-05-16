@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:converters="using:VGtime.Uwp.Converters"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:fontawesome="using:SoftwareKobo.Icons.FontAwesome"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:models="using:VGtime.Models"
              d:DataContext="{d:DesignInstance Type=models:Post}"
@@ -80,8 +81,8 @@
                     <Viewbox Width="18"
                              Height="18"
                              VerticalAlignment="Bottom">
-                        <SymbolIcon Foreground="#9C9C9C"
-                                    Symbol="Comment" />
+                        <fontawesome:FontAwesomeIcon Foreground="#9C9C9C"
+                                                     Symbol="CommentingOutline" />
                     </Viewbox>
                     <TextBlock Margin="4,0,0,0"
                                VerticalAlignment="Bottom"

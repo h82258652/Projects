@@ -49,15 +49,19 @@
         <Grid Grid.Row="1">
             <ScrollViewer VerticalScrollBarVisibility="Auto">
                 <StackPanel Orientation="Vertical">
-                    <Button Command="{Binding Path=AblumCommand}"
+                    <Button HorizontalAlignment="Stretch"
+                            HorizontalContentAlignment="Stretch"
+                            Command="{Binding Path=AblumCommand}"
                             Style="{StaticResource EmptyButtonStyle}">
                         <Grid>
-                            <Image Source="{Binding Path=GameDetail.Thumbnail.Url}" />
+                            <Image MaxHeight="300" 
+                                   Source="{Binding Path=GameDetail.Thumbnail.Url}" />
+                         
                             <Border Margin="0,0,12,0"
                                     HorizontalAlignment="Right"
                                     VerticalAlignment="Top"
                                     Background="{Binding Path=GameDetail.Score, Converter={StaticResource ScoreToColorConverter}}">
-                                <TextBlock FontSize="20"
+                                <TextBlock FontSize="22"
                                            Foreground="White"
                                            Text="{Binding Path=GameDetail.Score}" />
                             </Border>
@@ -71,15 +75,14 @@
                                         <dashicons:DashIcon Foreground="White"
                                                             Symbol="FormatGallery" />
                                     </Viewbox>
-                                    <TextBlock Foreground="White"
-                                               Text="{Binding GameDetail.ImageCount}" />
-                                    <TextBlock Foreground="White"
-                                               Text="张" />
+                                    <TextBlock Margin="4,0,0,0"
+                                               Foreground="White">
+                                        <Run Text="{Binding GameDetail.ImageCount}" /><Run Text="张" /></TextBlock>
                                 </StackPanel>
                             </Border>
                         </Grid>
                     </Button>
-                    <Grid>
+                    <Grid Margin="12,12,12,0">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*" />
                             <ColumnDefinition Width="Auto" />
@@ -95,14 +98,14 @@
                                             Symbol="Calendar" />
                             </Viewbox>
                             <TextBlock Foreground="Gray"
-                                       Text="{Binding Path=GameDetail.PublishDate, Converter={StaticResource PublishDateConverter}}" />
+                                  Margin="4,0,0,0"      Text="{Binding Path=GameDetail.PublishDate, Converter={StaticResource PublishDateConverter}}" />
                         </StackPanel>
                     </Grid>
-                    <TextBlock Text="{Binding Path=GameDetail.PlatformsText}" />
-                    <StackPanel Margin="0,4,0,0"
+                    <TextBlock Margin="12,12,12,0"
+                               Text="{Binding Path=GameDetail.PlatformsText}" />
+                    <StackPanel Margin="12,12,12,0"
                                 Orientation="Horizontal">
-                        <Button Margin="4,0,0,0"
-                                Content="想玩"
+                        <Button Content="想玩"
                                 Style="{StaticResource VGtimeAccentButtonStyle}" />
                         <Button Margin="4,0,0,0"
                                 Content="在玩"
@@ -110,15 +113,21 @@
                         <Button Margin="4,0,0,0"
                                 Content="玩过"
                                 Style="{StaticResource VGtimeAccentButtonStyle}" />
-                        <Button Margin="4,0,4,0"
+                        <Button Margin="4,0,0,0"
                                 Content="通关"
                                 Style="{StaticResource VGtimeAccentButtonStyle}" />
                     </StackPanel>
-                    <TextBlock Text="游戏简介" />
-                    <TextBlock Foreground="Gray"
+                    <Border Height="1"
+                            Margin="12,12,12,0"
+                            Background="Gray" />
+                    <TextBlock Margin="12,12,12,0"
+                               Text="游戏简介" />
+                    <TextBlock Margin="12,12,12,0"
+                               Foreground="Gray"
                                Text="{Binding Path=GameDetail.Introduction}"
                                TextWrapping="Wrap" />
                     <Button HorizontalAlignment="Stretch"
+                            HorizontalContentAlignment="Stretch"
                             Command="{Binding Path=ForumCommand}">
                         <Grid>
                             <Grid.ColumnDefinitions>
@@ -137,6 +146,7 @@
                         </Grid>
                     </Button>
                     <Button HorizontalAlignment="Stretch"
+                            HorizontalContentAlignment="Stretch"
                             Command="{Binding Path=PostCommand}">
                         <Grid>
                             <Grid.ColumnDefinitions>
@@ -149,11 +159,13 @@
                             <!--  relationList type=2 page pageSize  -->
                             <TextBlock Grid.Column="1"
                                        Text="{Binding Path=GameDetail.LongPostCount}" />
-                            <TextBlock Grid.Column="2"
-                                       Text="&gt;" />
+                            <fontawesome:FontAwesomeIcon Grid.Column="2"
+                                                         VerticalAlignment="Center"
+                                                         Symbol="AngleRight" />
                         </Grid>
                     </Button>
                     <Button HorizontalAlignment="Stretch"
+                            HorizontalContentAlignment="Stretch"
                             Command="{Binding Path=QuestionCommand}">
                         <Grid>
                             <Grid.ColumnDefinitions>
@@ -166,11 +178,13 @@
                             <!--  relationList type=3 page pageSize  -->
                             <TextBlock Grid.Column="1"
                                        Text="{Binding Path=GameDetail.QuestionCount}" />
-                            <TextBlock Grid.Column="2"
-                                       Text="&gt;" />
+                            <fontawesome:FontAwesomeIcon Grid.Column="2"
+                                                         VerticalAlignment="Center"
+                                                         Symbol="AngleRight" />
                         </Grid>
                     </Button>
                     <Button HorizontalAlignment="Stretch"
+                            HorizontalContentAlignment="Stretch"
                             Command="{Binding Path=ScoreCommand}">
                         <Grid>
                             <Grid.ColumnDefinitions>
@@ -183,11 +197,13 @@
                             <!--  scorelist gameId page pageSize  -->
                             <TextBlock Grid.Column="1"
                                        Text="{Binding Path=GameDetail.ScoreCount}" />
-                            <TextBlock Grid.Column="2"
-                                       Text="&gt;" />
+                            <fontawesome:FontAwesomeIcon Grid.Column="2"
+                                                         VerticalAlignment="Center"
+                                                         Symbol="AngleRight" />
                         </Grid>
                     </Button>
                     <Button HorizontalAlignment="Stretch"
+                            HorizontalContentAlignment="Stretch"
                             Command="{Binding Path=StrategyCommand}">
                         <Grid>
                             <Grid.ColumnDefinitions>
@@ -200,8 +216,9 @@
                             <!--  gameMenuList gameId  -->
                             <TextBlock Grid.Column="1"
                                        Text="{Binding Path=GameDetail.StrategyCount}" />
-                            <TextBlock Grid.Column="2"
-                                       Text="&gt;" />
+                            <fontawesome:FontAwesomeIcon Grid.Column="2"
+                                                         VerticalAlignment="Center"
+                                                         Symbol="AngleRight" />
                         </Grid>
                     </Button>
                 </StackPanel>
