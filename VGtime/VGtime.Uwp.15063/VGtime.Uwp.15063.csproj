@@ -111,6 +111,9 @@
       <DependentUpon>ListPostItem.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\PostItemTemplateSelector.cs" />
+    <Compile Include="Controls\ScoreInfoItem.xaml.cs">
+      <DependentUpon>ScoreInfoItem.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\UserItem.xaml.cs">
       <DependentUpon>UserItem.xaml</DependentUpon>
     </Compile>
@@ -131,6 +134,7 @@
     <Compile Include="Data\IncrementalLoadingCollectionBase.cs" />
     <Compile Include="Data\ListPostCollection.cs" />
     <Compile Include="Data\RelationPostCollection.cs" />
+    <Compile Include="Data\ScoreInfoCollection.cs" />
     <Compile Include="Data\SearchGameCollection.cs" />
     <Compile Include="Data\SearchPostCollection.cs" />
     <Compile Include="Data\SearchUserCollection.cs" />
@@ -149,6 +153,7 @@
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\OldStrategyViewModel.cs" />
     <Compile Include="ViewModels\RelationListViewModel.cs" />
+    <Compile Include="ViewModels\ScoreListViewModel.cs" />
     <Compile Include="ViewModels\SearchViewModel.cs" />
     <Compile Include="ViewModels\SplashScreenViewModel.cs" />
     <Compile Include="ViewModels\StrategyViewModel.cs" />
@@ -390,6 +395,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\ListPostItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\ScoreInfoItem.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

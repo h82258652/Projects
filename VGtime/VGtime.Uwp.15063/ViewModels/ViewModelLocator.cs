@@ -22,6 +22,8 @@ namespace VGtime.Uwp.ViewModels
 
         public const string OldStrategyViewKey = "OldStrategy";
 
+        public const string ScoreListViewKey = "ScoreList";
+
         public const string SearchViewKey = "Search";
 
         public const string StrategyViewKey = "Strategy";
@@ -45,6 +47,8 @@ namespace VGtime.Uwp.ViewModels
         public OldStrategyViewModel OldStrategy => ServiceLocator.Current.GetInstance<OldStrategyViewModel>();
 
         public RelationListViewModel RelationList => ServiceLocator.Current.GetInstance<RelationListViewModel>();
+
+        public ScoreListViewModel ScoreList => ServiceLocator.Current.GetInstance<ScoreListViewModel>();
 
         public SearchViewModel Search => ServiceLocator.Current.GetInstance<SearchViewModel>();
 
@@ -74,6 +78,7 @@ namespace VGtime.Uwp.ViewModels
             containerBuilder.RegisterType<GameDetailViewModel>();
             containerBuilder.RegisterType<AblumListViewModel>();
             containerBuilder.RegisterType<RelationListViewModel>();
+            containerBuilder.RegisterType<ScoreListViewModel>();
 
             return containerBuilder.Build();
         }
@@ -88,6 +93,7 @@ namespace VGtime.Uwp.ViewModels
             navigationService.Configure(SearchViewKey, typeof(SearchView));
             navigationService.Configure(GameDetailViewKey, typeof(GameDetailView));
             navigationService.Configure(AblumListViewKey, typeof(AblumListView));
+            navigationService.Configure(ScoreListViewKey, typeof(ScoreListView));
             return navigationService;
         }
     }

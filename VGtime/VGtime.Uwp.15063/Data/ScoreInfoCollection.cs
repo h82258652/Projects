@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq;
 using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
@@ -8,7 +7,7 @@ using VGtime.Services;
 
 namespace VGtime.Uwp.Data
 {
-    public class RelationPostCollection : IncrementalLoadingCollectionBase<Post>
+    public class ScoreInfoCollection : IncrementalLoadingCollectionBase<ScoreInfo>
     {
         private readonly int _gameId;
 
@@ -16,14 +15,11 @@ namespace VGtime.Uwp.Data
 
         private readonly IPostService _postService;
 
-        private readonly int _type;
-
         private int _currentPage;
 
-        public RelationPostCollection(int gameId, int type, IPostService postService, Action<Exception> onError = null)
+        public ScoreInfoCollection(int gameId, IPostService postService, Action<Exception> onError = null)
         {
             _gameId = gameId;
-            _type = type;
             _postService = postService;
             _onError = onError;
         }
@@ -38,7 +34,7 @@ namespace VGtime.Uwp.Data
             IsLoading = true;
             try
             {
-                var result = await _postService.GetRelationListAsync(_gameId, _type, _currentPage++);
+                var result = await _postService.GetScoreListAsync(_gameId, _currentPage + 1);
                 uint loadedCount = 0;
                 if (result.ErrorCode == HttpStatusCode.OK)
                 {
@@ -47,13 +43,10 @@ namespace VGtime.Uwp.Data
                     var data = result.Data.Data;
                     if (data.Length > 0)
                     {
-                        foreach (var post in data)
+                        foreach (var scoreInfo in data)
                         {
-                            if (this.All(temp => temp.PostId != post.PostId))
-                            {
-                                Add(post);
-                                loadedCount++;
-                            }
+                            Add(scoreInfo);
+                            loadedCount++;
                         }
                     }
                     else
