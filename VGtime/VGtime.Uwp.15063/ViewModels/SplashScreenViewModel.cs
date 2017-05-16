@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Net;
 using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Command;
 using SoftwareKobo.Controls;
 using VGtime.Configuration;
 using VGtime.Services;
@@ -15,6 +16,8 @@ namespace VGtime.Uwp.ViewModels
 
         private readonly IVGtimeSettings _vgtimeSettings;
 
+        private RelayCommand _deleteStartPictureCommand;
+
         public SplashScreenViewModel(IVGtimeSettings vgtimeSettings, IPostService postService, IImageLoader imageLoader)
         {
             _vgtimeSettings = vgtimeSettings;
@@ -22,6 +25,25 @@ namespace VGtime.Uwp.ViewModels
             _imageLoader = imageLoader;
 
             Initialize();
+        }
+
+        public RelayCommand DeleteStartPictureCommand
+        {
+            get
+            {
+                _deleteStartPictureCommand = _deleteStartPictureCommand ?? new RelayCommand(async () =>
+                {
+                    try
+                    {
+                        await _imageLoader.DeleteCacheAsync(_vgtimeSettings.StartPicture);
+                    }
+                    catch (Exception)
+                    {
+                        // ignored
+                    }
+                });
+                return _deleteStartPictureCommand;
+            }
         }
 
         public string StartPicture

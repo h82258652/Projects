@@ -76,7 +76,7 @@ namespace VGtime.Uwp.ViewModels
             containerBuilder.RegisterInstance(DefaultImageLoader.Instance);
 
             containerBuilder.RegisterType<SplashScreenViewModel>();
-            containerBuilder.RegisterType<MainViewModel>();
+            containerBuilder.RegisterType<MainViewModel>().SingleInstance();
             containerBuilder.RegisterType<DetailViewModel>();
             containerBuilder.RegisterType<StrategyViewModel>();
             containerBuilder.RegisterType<OldStrategyViewModel>();

@@ -21,7 +21,7 @@ namespace VGtime.Uwp.ViewModels
 
         private Post[] _headPosts;
 
-        private bool _isLoading;
+        private bool _isLoadingHeadPosts;
 
         private RelayCommand<Post> _postClickCommand;
 
@@ -63,15 +63,15 @@ namespace VGtime.Uwp.ViewModels
             }
         }
 
-        public bool IsLoading
+        public bool IsLoadingHeadPosts
         {
             get
             {
-                return _isLoading;
+                return _isLoadingHeadPosts;
             }
             private set
             {
-                Set(ref _isLoading, value);
+                Set(ref _isLoadingHeadPosts, value);
             }
         }
 
@@ -103,8 +103,7 @@ namespace VGtime.Uwp.ViewModels
             {
                 _refreshCommand = _refreshCommand ?? new RelayCommand(() =>
                 {
-                    LoadHeadPostsAsync();
-                    ListPosts.Refresh();
+                    throw new NotImplementedException();
                 });
                 return _refreshCommand;
             }
@@ -151,12 +150,12 @@ namespace VGtime.Uwp.ViewModels
 
         public async void LoadHeadPostsAsync()
         {
-            if (IsLoading)
+            if (IsLoadingHeadPosts)
             {
                 return;
             }
 
-            IsLoading = true;
+            IsLoadingHeadPosts = true;
             try
             {
                 var result = await _postService.GetHeadPicAsync();
@@ -175,7 +174,7 @@ namespace VGtime.Uwp.ViewModels
             }
             finally
             {
-                IsLoading = false;
+                IsLoadingHeadPosts = false;
             }
         }
     }
