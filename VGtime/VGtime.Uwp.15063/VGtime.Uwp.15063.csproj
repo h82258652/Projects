@@ -576,6 +576,10 @@
       <Project>{C70780E2-F68C-4F53-A8EE-FB449D926B8B}</Project>
       <Name>VGtime.Models</Name>
     </ProjectReference>
+    <ProjectReference Include="..\VGtime.Services.Uwp.15063\VGtime.Services.Uwp.15063.csproj">
+      <Project>{73432f3d-cd13-49ab-a77e-863141680f3e}</Project>
+      <Name>VGtime.Services.Uwp.15063</Name>
+    </ProjectReference>
     <ProjectReference Include="..\VGtime.Services\VGtime.Services.csproj">
       <Project>{efbe8575-c14f-4fb1-8702-41ed214a18d1}</Project>
       <Name>VGtime.Services</Name>

@@ -69,6 +69,7 @@ namespace VGtime.Uwp.ViewModels
             containerBuilder.RegisterInstance(CreateNavigationService());
             containerBuilder.RegisterType<PostService>().As<IPostService>();
             containerBuilder.RegisterType<AppToastService>().As<IAppToastService>();
+            containerBuilder.RegisterType<VGtimeFileService>().As<IVGtimeFileService>();
 
             containerBuilder.RegisterType<VGtimeSettings>().As<IVGtimeSettings>();
 
