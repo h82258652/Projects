@@ -9,7 +9,7 @@
              mc:Ignorable="d">
     <FrameworkElement.Resources>
         <ResourceDictionary>
-            <converters:ReviewScoreToColorConverter x:Key="ReviewScoreToColorConverter" />
+            <converters:ScoreToColorConverter x:Key="ScoreToColorConverter" />
             <converters:PublishDateConverter x:Key="PublishDateConverter" />
             <converters:IsNullOrEmptyStringToVisibilityConverter x:Key="IsNullOrEmptyStringToVisibilityConverter" />
         </ResourceDictionary>
@@ -28,7 +28,7 @@
                     Height="32"
                     HorizontalAlignment="Right"
                     VerticalAlignment="Top"
-                    Background="{Binding Path=Score, Converter={StaticResource ReviewScoreToColorConverter}}">
+                    Background="{Binding Path=Score, Converter={StaticResource ScoreToColorConverter}}">
                 <TextBlock HorizontalAlignment="Center"
                            VerticalAlignment="Center"
                            FontSize="20"

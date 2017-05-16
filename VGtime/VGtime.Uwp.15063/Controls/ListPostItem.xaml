@@ -11,7 +11,7 @@
         <ResourceDictionary>
             <converters:TimeAgoConverter x:Key="TimeAgoConverter" />
             <converters:IntegerToVisibilityConverter x:Key="IntegerToVisibilityConverter" />
-            <converters:ReviewScoreToColorConverter x:Key="ReviewScoreToColorConverter" />
+            <converters:ScoreToColorConverter x:Key="ScoreToColorConverter" />
             <converters:IsNullToVisibilityConverter x:Key="IsNullToVisibilityConverter" />
         </ResourceDictionary>
     </FrameworkElement.Resources>
@@ -103,7 +103,7 @@
                 </Viewbox>
                 <Border HorizontalAlignment="Right"
                         VerticalAlignment="Top"
-                        Background="{Binding Path=ReviewScore, Converter={StaticResource ReviewScoreToColorConverter}}"
+                        Background="{Binding Path=ReviewScore, Converter={StaticResource ScoreToColorConverter}}"
                         Visibility="{Binding Path=ReviewScore, Converter={StaticResource IsNullToVisibilityConverter}}">
                     <StackPanel Margin="2,4,2,4"
                                 Orientation="Horizontal">

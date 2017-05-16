@@ -6,7 +6,7 @@ using Windows.UI.Xaml.Media;
 
 namespace VGtime.Uwp.Converters
 {
-    public class ReviewScoreToColorConverter : IValueConverter
+    public class ScoreToColorConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, string language)
         {
