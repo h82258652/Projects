@@ -9,7 +9,9 @@
         <Setter Property="ContentTemplate">
             <Setter.Value>
                 <DataTemplate>
-                    <SymbolIcon Symbol="ReShare" />
+                    <FontIcon AutomationProperties.Name="Share"
+                              FontFamily="Segoe MDL2 Assets"
+                              Glyph="&#xE72D;" />
                 </DataTemplate>
             </Setter.Value>
         </Setter>
