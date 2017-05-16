@@ -5,7 +5,7 @@ using SoftwareKobo.ViewModels;
 using VGtime.Models;
 using VGtime.Services;
 using VGtime.Uwp.Data;
-using VGtime.Uwp.ViewModelParameters;
+using VGtime.Uwp.ViewParameters;
 
 namespace VGtime.Uwp.ViewModels
 {
@@ -31,7 +31,7 @@ namespace VGtime.Uwp.ViewModels
             {
                 _postClickCommand = _postClickCommand ?? new RelayCommand<Post>(post =>
                 {
-                    _navigationService.NavigateTo(ViewModelLocator.DetailViewKey, new DetailViewModelParameter(post.PostId, post.DetailType));
+                    _navigationService.NavigateTo(ViewModelLocator.DetailViewKey, new DetailViewParameter(post.PostId, post.DetailType));
                 });
                 return _postClickCommand;
             }
@@ -51,7 +51,7 @@ namespace VGtime.Uwp.ViewModels
 
         public void Activate(object parameter)
         {
-            var viewModelParameter = (RelationListViewModelParameter)parameter;
+            var viewModelParameter = (RelationListViewParameter)parameter;
 
             RelationPosts = new RelationPostCollection(viewModelParameter.GameId, viewModelParameter.Type, _postService);
         }

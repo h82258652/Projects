@@ -11,6 +11,7 @@
                     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                     xmlns:views="using:SoftwareKobo.Views"
                     DataContext="{Binding Source={StaticResource Locator}, Path=GameDetail}"
+                    NavigationCacheMode="Required"
                     mc:Ignorable="d">
     <FrameworkElement.Resources>
         <ResourceDictionary>
@@ -47,35 +48,36 @@
         <Grid Grid.Row="1">
             <ScrollViewer VerticalScrollBarVisibility="Auto">
                 <StackPanel Orientation="Vertical">
-                    <Grid>
-                        <Button Style="{StaticResource EmptyButtonStyle}">
+                    <Button Command="{Binding Path=AblumCommand}"
+                            Style="{StaticResource EmptyButtonStyle}">
+                        <Grid>
                             <Image Source="{Binding Path=GameDetail.Thumbnail.Url}" />
-                        </Button>
-                        <Border Margin="0,0,12,0"
-                                HorizontalAlignment="Right"
-                                VerticalAlignment="Top"
-                                Background="LightGreen">
-                            <TextBlock FontSize="20"
-                                       Foreground="White"
-                                       Text="{Binding Path=GameDetail.Score}" />
-                        </Border>
-                        <Border HorizontalAlignment="Right"
-                                VerticalAlignment="Bottom"
-                                Background="#505050">
-                            <StackPanel Margin="8,4,8,4"
-                                        Orientation="Horizontal">
-                                <Viewbox Width="18"
-                                         Height="18">
-                                    <dashicons:DashIcon Foreground="White"
-                                                        Symbol="FormatGallery" />
-                                </Viewbox>
-                                <TextBlock Foreground="White"
-                                           Text="{Binding GameDetail.ImageCount}" />
-                                <TextBlock Foreground="White"
-                                           Text="张" />
-                            </StackPanel>
-                        </Border>
-                    </Grid>
+                            <Border Margin="0,0,12,0"
+                                    HorizontalAlignment="Right"
+                                    VerticalAlignment="Top"
+                                    Background="LightGreen">
+                                <TextBlock FontSize="20"
+                                           Foreground="White"
+                                           Text="{Binding Path=GameDetail.Score}" />
+                            </Border>
+                            <Border HorizontalAlignment="Right"
+                                    VerticalAlignment="Bottom"
+                                    Background="#505050">
+                                <StackPanel Margin="8,4,8,4"
+                                            Orientation="Horizontal">
+                                    <Viewbox Width="18"
+                                             Height="18">
+                                        <dashicons:DashIcon Foreground="White"
+                                                            Symbol="FormatGallery" />
+                                    </Viewbox>
+                                    <TextBlock Foreground="White"
+                                               Text="{Binding GameDetail.ImageCount}" />
+                                    <TextBlock Foreground="White"
+                                               Text="张" />
+                                </StackPanel>
+                            </Border>
+                        </Grid>
+                    </Button>
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*" />
@@ -111,7 +113,7 @@
                                Text="{Binding Path=GameDetail.Introduction}"
                                TextWrapping="Wrap" />
                     <Button HorizontalAlignment="Stretch"
-                            Click="Button_Click">
+                            Command="{Binding Path=ForumCommand}">
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*" />
@@ -129,7 +131,7 @@
                         </Grid>
                     </Button>
                     <Button HorizontalAlignment="Stretch"
-                            Click="Button_Click_1">
+                            Command="{Binding Path=PostCommand}">
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*" />
@@ -146,7 +148,7 @@
                         </Grid>
                     </Button>
                     <Button HorizontalAlignment="Stretch"
-                            Click="Button_Click_3">
+                            Command="{Binding Path=QuestionCommand}">
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*" />
@@ -163,7 +165,7 @@
                         </Grid>
                     </Button>
                     <Button HorizontalAlignment="Stretch"
-                            Click="Button_Click_2">
+                            Command="{Binding Path=ScoreCommand}">
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*" />
@@ -180,7 +182,7 @@
                         </Grid>
                     </Button>
                     <Button HorizontalAlignment="Stretch"
-                            Click="Button_Click_4">
+                            Command="{Binding Path=StrategyCommand}">
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*" />

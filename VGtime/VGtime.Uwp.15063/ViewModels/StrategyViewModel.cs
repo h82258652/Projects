@@ -7,7 +7,7 @@ using VGtime.Models;
 using VGtime.Services;
 using VGtime.Uwp.Services;
 using GalaSoft.MvvmLight.Views;
-using VGtime.Uwp.ViewModelParameters;
+using VGtime.Uwp.ViewParameters;
 
 namespace VGtime.Uwp.ViewModels
 {
@@ -15,11 +15,13 @@ namespace VGtime.Uwp.ViewModels
     {
         private readonly IAppToastService _appToastService;
 
+        private readonly INavigationService _navigationService;
+
         private readonly IPostService _postService;
 
-        private bool _isLoading;
-
         private int _gameId;
+
+        private bool _isLoading;
 
         private Strategy[] _strategies;
 
@@ -56,15 +58,13 @@ namespace VGtime.Uwp.ViewModels
             }
         }
 
-        private readonly INavigationService _navigationService;
-
         public RelayCommand<StrategyItem> StrategyItemClickCommand
         {
             get
             {
                 _strategyItemClickCommand = _strategyItemClickCommand ?? new RelayCommand<StrategyItem>(strategyItem =>
                 {
-                    _navigationService.NavigateTo(ViewModelLocator.DetailViewKey, new DetailViewModelParameter(strategyItem.PostId, strategyItem.DetailType));
+                    _navigationService.NavigateTo(ViewModelLocator.DetailViewKey, new DetailViewParameter(strategyItem.PostId, strategyItem.DetailType));
                 });
                 return _strategyItemClickCommand;
             }

@@ -12,6 +12,8 @@ namespace VGtime.Uwp.ViewModels
 {
     public class ViewModelLocator
     {
+        public const string AblumDetailViewKey = "AblumDetail";
+
         public const string AblumListViewKey = "AblumList";
 
         public const string CommentViewKey = "Comment";
@@ -21,6 +23,8 @@ namespace VGtime.Uwp.ViewModels
         public const string GameDetailViewKey = "GameDetail";
 
         public const string OldStrategyViewKey = "OldStrategy";
+
+        public const string RelationListViewKey = "RelationList";
 
         public const string ScoreListViewKey = "ScoreList";
 
@@ -33,6 +37,8 @@ namespace VGtime.Uwp.ViewModels
             var serviceLocator = new AutofacServiceLocator(ConfigureAutofacContainer());
             ServiceLocator.SetLocatorProvider(() => serviceLocator);
         }
+
+        public AblumDetailViewModel AblumDetail => ServiceLocator.Current.GetInstance<AblumDetailViewModel>();
 
         public AblumListViewModel AblumList => ServiceLocator.Current.GetInstance<AblumListViewModel>();
 
@@ -77,6 +83,7 @@ namespace VGtime.Uwp.ViewModels
             containerBuilder.RegisterType<SearchViewModel>();
             containerBuilder.RegisterType<GameDetailViewModel>();
             containerBuilder.RegisterType<AblumListViewModel>();
+            containerBuilder.RegisterType<AblumDetailViewModel>();
             containerBuilder.RegisterType<RelationListViewModel>();
             containerBuilder.RegisterType<ScoreListViewModel>();
 
@@ -93,6 +100,8 @@ namespace VGtime.Uwp.ViewModels
             navigationService.Configure(SearchViewKey, typeof(SearchView));
             navigationService.Configure(GameDetailViewKey, typeof(GameDetailView));
             navigationService.Configure(AblumListViewKey, typeof(AblumListView));
+            navigationService.Configure(AblumDetailViewKey, typeof(AblumDetailView));
+            navigationService.Configure(RelationListViewKey, typeof(RelationListView));
             navigationService.Configure(ScoreListViewKey, typeof(ScoreListView));
             return navigationService;
         }

@@ -4,7 +4,7 @@ using GalaSoft.MvvmLight.Views;
 using VGtime.Models;
 using VGtime.Services;
 using VGtime.Uwp.Data;
-using VGtime.Uwp.ViewModelParameters;
+using VGtime.Uwp.ViewParameters;
 
 namespace VGtime.Uwp.ViewModels
 {
@@ -17,6 +17,7 @@ namespace VGtime.Uwp.ViewModels
         private SearchPostCollection _forumPosts;
 
         private RelayCommand<Game> _gameClickCommand;
+
         private SearchGameCollection _games;
 
         private RelayCommand<string> _searchCommand;
@@ -93,7 +94,7 @@ namespace VGtime.Uwp.ViewModels
             {
                 _topicPostClickCommand = _topicPostClickCommand ?? new RelayCommand<Post>(post =>
                 {
-                    _navigationService.NavigateTo(ViewModelLocator.DetailViewKey, new DetailViewModelParameter(post.PostId, post.DetailType));
+                    _navigationService.NavigateTo(ViewModelLocator.DetailViewKey, new DetailViewParameter(post.PostId, post.DetailType));
                 });
                 return _topicPostClickCommand;
             }

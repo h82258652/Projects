@@ -11,6 +11,7 @@
         <ResourceDictionary>
             <converters:ReviewScoreToColorConverter x:Key="ReviewScoreToColorConverter" />
             <converters:PublishDateConverter x:Key="PublishDateConverter" />
+            <converters:IsNullOrEmptyStringToVisibilityConverter x:Key="IsNullOrEmptyStringToVisibilityConverter" />
         </ResourceDictionary>
     </FrameworkElement.Resources>
     <Grid>
@@ -53,7 +54,8 @@
             <StackPanel Grid.Row="2"
                         Margin="0,8,0,0"
                         HorizontalAlignment="Right"
-                        Orientation="Horizontal">
+                        Orientation="Horizontal"
+                        Visibility="{Binding Path=PublishDate, Converter={StaticResource IsNullOrEmptyStringToVisibilityConverter}}">
                 <Viewbox Width="18"
                          Height="18"
                          VerticalAlignment="Bottom">

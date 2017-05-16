@@ -1,8 +1,8 @@
-﻿namespace VGtime.Uwp.ViewModelParameters
+﻿namespace VGtime.Uwp.ViewParameters
 {
-    public class RelationListViewModelParameter
+    public class RelationListViewParameter
     {
-        public RelationListViewModelParameter(int gameId, int type)
+        public RelationListViewParameter(int gameId, int type)
         {
             GameId = gameId;
             Type = type;

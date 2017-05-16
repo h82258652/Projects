@@ -5,7 +5,7 @@ namespace VGtime.Models
     [JsonObject]
     public class AblumList<T>
     {
-        [JsonProperty("ablumnList")]
+        [JsonProperty("ablumList")]
         public T[] Data
         {
             get;

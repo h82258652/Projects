@@ -9,6 +9,7 @@
                     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                     xmlns:views="using:SoftwareKobo.Views"
                     DataContext="{Binding Source={StaticResource Locator}, Path=AblumList}"
+                    NavigationCacheMode="Required"
                     mc:Ignorable="d">
     <FrameworkElement.Resources>
         <ResourceDictionary>
@@ -29,11 +30,15 @@
                     </core:EventTriggerBehavior>
                 </interactivity:Interaction.Behaviors>
             </Button>
+            <TextBlock Style="{StaticResource VGtimePageHeaderTextControlStyle}"
+                       Text="{Binding Path=Game.Title}" />
         </Grid>
         <GridView Grid.Row="1"
+                  Padding="4,4,0,0"
                   IsItemClickEnabled="True"
                   ItemsSource="{Binding Path=Ablums}"
-                  SelectionMode="None">
+                  SelectionMode="None"
+                  SizeChanged="AblumGridView_SizeChanged">
             <interactivity:Interaction.Behaviors>
                 <core:EventTriggerBehavior EventName="ItemClick">
                     <core:InvokeCommandAction Command="{Binding Path=AblumClickCommand}"
@@ -42,7 +47,8 @@
             </interactivity:Interaction.Behaviors>
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <Image Source="{Binding Path=Url}" />
+                    <Image Source="{Binding Path=Url}"
+                           Stretch="UniformToFill" />
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </GridView>

@@ -8,7 +8,7 @@ using VGtime.Models;
 using VGtime.Services;
 using VGtime.Uwp.Messages;
 using VGtime.Uwp.Services;
-using VGtime.Uwp.ViewModelParameters;
+using VGtime.Uwp.ViewParameters;
 
 namespace VGtime.Uwp.ViewModels
 {
@@ -27,6 +27,8 @@ namespace VGtime.Uwp.ViewModels
         private Post _post;
 
         private RelayCommand _refreshCommand;
+
+        private DetailViewParameter _viewParameter;
 
         public DetailViewModel(IPostService postService, INavigationService navigationService, IAppToastService appToastService)
         {
@@ -83,11 +85,9 @@ namespace VGtime.Uwp.ViewModels
             }
         }
 
-        private DetailViewModelParameter _viewParameter;
-
         public void Activate(object parameter)
         {
-            _viewParameter = (DetailViewModelParameter)parameter;
+            _viewParameter = (DetailViewParameter)parameter;
 
             LoadArticleDetail();
         }

@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Net;
 using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Command;
+using GalaSoft.MvvmLight.Views;
 using SoftwareKobo.ViewModels;
 using VGtime.Models;
 using VGtime.Services;
 using VGtime.Uwp.Services;
+using VGtime.Uwp.ViewParameters;
 
 namespace VGtime.Uwp.ViewModels
 {
@@ -12,7 +15,13 @@ namespace VGtime.Uwp.ViewModels
     {
         private readonly IAppToastService _appToastService;
 
+        private readonly INavigationService _navigationService;
+
         private readonly IPostService _postService;
+
+        private RelayCommand _ablumCommand;
+
+        private RelayCommand _forumCommand;
 
         private Game _gameDetail;
 
@@ -20,10 +29,43 @@ namespace VGtime.Uwp.ViewModels
 
         private bool _isLoading;
 
-        public GameDetailViewModel(IPostService postService, IAppToastService appToastService)
+        private RelayCommand _postCommand;
+
+        private RelayCommand _questionCommand;
+
+        private RelayCommand _scoreCommand;
+
+        private RelayCommand _strategyCommand;
+
+        public GameDetailViewModel(IPostService postService, IAppToastService appToastService, INavigationService navigationService)
         {
             _postService = postService;
             _appToastService = appToastService;
+            _navigationService = navigationService;
+        }
+
+        public RelayCommand AblumCommand
+        {
+            get
+            {
+                _ablumCommand = _ablumCommand ?? new RelayCommand(() =>
+                {
+                    _navigationService.NavigateTo(ViewModelLocator.AblumListViewKey, GameDetail);
+                });
+                return _ablumCommand;
+            }
+        }
+
+        public RelayCommand ForumCommand
+        {
+            get
+            {
+                _forumCommand = _forumCommand ?? new RelayCommand(() =>
+                {
+                    _navigationService.NavigateTo(ViewModelLocator.RelationListViewKey, new RelationListViewParameter(_gameId, 1));
+                });
+                return _forumCommand;
+            }
         }
 
         public Game GameDetail
@@ -47,6 +89,54 @@ namespace VGtime.Uwp.ViewModels
             private set
             {
                 Set(ref _isLoading, value);
+            }
+        }
+
+        public RelayCommand PostCommand
+        {
+            get
+            {
+                _postCommand = _postCommand ?? new RelayCommand(() =>
+                {
+                    _navigationService.NavigateTo(ViewModelLocator.RelationListViewKey, new RelationListViewParameter(_gameId, 2));
+                });
+                return _postCommand;
+            }
+        }
+
+        public RelayCommand QuestionCommand
+        {
+            get
+            {
+                _questionCommand = _questionCommand ?? new RelayCommand(() =>
+                {
+                    _navigationService.NavigateTo(ViewModelLocator.RelationListViewKey, new RelationListViewParameter(_gameId, 3));
+                });
+                return _questionCommand;
+            }
+        }
+
+        public RelayCommand ScoreCommand
+        {
+            get
+            {
+                _scoreCommand = _scoreCommand ?? new RelayCommand(() =>
+                {
+                    _navigationService.NavigateTo(ViewModelLocator.ScoreListViewKey, _gameId);
+                });
+                return _scoreCommand;
+            }
+        }
+
+        public RelayCommand StrategyCommand
+        {
+            get
+            {
+                _strategyCommand = _strategyCommand ?? new RelayCommand(() =>
+                {
+                    _navigationService.NavigateTo(ViewModelLocator.StrategyViewKey, _gameId);
+                });
+                return _strategyCommand;
             }
         }
 

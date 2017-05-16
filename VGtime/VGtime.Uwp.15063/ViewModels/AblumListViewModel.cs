@@ -2,10 +2,12 @@
 using System.Net;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
+using GalaSoft.MvvmLight.Views;
 using SoftwareKobo.ViewModels;
 using VGtime.Models;
 using VGtime.Services;
 using VGtime.Uwp.Services;
+using VGtime.Uwp.ViewParameters;
 
 namespace VGtime.Uwp.ViewModels
 {
@@ -13,20 +15,23 @@ namespace VGtime.Uwp.ViewModels
     {
         private readonly IAppToastService _appToastService;
 
+        private readonly INavigationService _navigationService;
+
         private readonly IPostService _postService;
 
         private RelayCommand<Ablum> _ablumClickCommand;
 
         private Ablum[] _ablums;
 
-        private int _gameId;
+        private Game _game;
 
         private bool _isLoading;
 
-        public AblumListViewModel(IPostService postService, IAppToastService appToastService)
+        public AblumListViewModel(IPostService postService, IAppToastService appToastService, INavigationService navigationService)
         {
             _postService = postService;
             _appToastService = appToastService;
+            _navigationService = navigationService;
         }
 
         public RelayCommand<Ablum> AblumClickCommand
@@ -35,7 +40,9 @@ namespace VGtime.Uwp.ViewModels
             {
                 _ablumClickCommand = _ablumClickCommand ?? new RelayCommand<Ablum>(ablum =>
                 {
-                    throw new NotImplementedException();
+                    var ablums = Ablums;
+                    var index = Array.IndexOf(ablums, ablum);
+                    _navigationService.NavigateTo(ViewModelLocator.AblumDetailViewKey, new AblumDetailViewParameter(ablums, index));
                 });
                 return _ablumClickCommand;
             }
@@ -53,6 +60,18 @@ namespace VGtime.Uwp.ViewModels
             }
         }
 
+        public Game Game
+        {
+            get
+            {
+                return _game;
+            }
+            private set
+            {
+                Set(ref _game, value);
+            }
+        }
+
         public bool IsLoading
         {
             get
@@ -67,7 +86,7 @@ namespace VGtime.Uwp.ViewModels
 
         public void Activate(object parameter)
         {
-            _gameId = (int)parameter;
+            Game = (Game)parameter;
 
             LoadGameAblums();
         }
@@ -81,7 +100,7 @@ namespace VGtime.Uwp.ViewModels
             IsLoading = true;
             try
             {
-                var result = await _postService.GetGameAblumListAsync(_gameId);
+                var result = await _postService.GetGameAblumListAsync(Game.GameId);
                 if (result.ErrorCode == HttpStatusCode.OK)
                 {
                     Ablums = result.Data.Data;

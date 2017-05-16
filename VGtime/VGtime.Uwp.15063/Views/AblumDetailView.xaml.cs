@@ -1,8 +1,8 @@
 ﻿namespace VGtime.Uwp.Views
 {
-    public sealed partial class GameDetailView
+    public sealed partial class AblumDetailView
     {
-        public GameDetailView()
+        public AblumDetailView()
         {
             InitializeComponent();
         }
