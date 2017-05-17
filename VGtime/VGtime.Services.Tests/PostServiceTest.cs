@@ -171,18 +171,6 @@ namespace VGtime.Services.Tests
         }
 
         [Fact]
-        public async Task TestGetUserInfoAsync()
-        {
-            await Assert.ThrowsAsync<ArgumentNullException>(async () =>
-            {
-                await _postService.GetUserInfoAsync(169953, null);
-            });
-
-            var result = await _postService.GetUserInfoAsync(169953, "FF8080815C074CF2015C0A0DAA5F00000CD4");
-            Assert.Equal(result.ErrorCode, HttpStatusCode.OK);
-        }
-
-        [Fact]
         public async Task TestGetVersionAsync()
         {
             var result = await _postService.GetVersionAsync();
@@ -232,26 +220,6 @@ namespace VGtime.Services.Tests
             });
 
             var result = await _postService.SearchGameAsync("高达", 2, 4);
-            Assert.Equal(result.ErrorCode, HttpStatusCode.OK);
-        }
-
-        [Fact]
-        public async Task TestSearchUserAsync()
-        {
-            await Assert.ThrowsAsync<ArgumentNullException>(async () =>
-            {
-                await _postService.SearchUserAsync(null, 1);
-            });
-            await Assert.ThrowsAsync<ArgumentOutOfRangeException>(async () =>
-            {
-                await _postService.SearchUserAsync("高达", 1, page: 0);
-            });
-            await Assert.ThrowsAsync<ArgumentOutOfRangeException>(async () =>
-            {
-                await _postService.SearchUserAsync("高达", 1, pageSize: 0);
-            });
-
-            var result = await _postService.SearchUserAsync("高达", 1);
             Assert.Equal(result.ErrorCode, HttpStatusCode.OK);
         }
     }

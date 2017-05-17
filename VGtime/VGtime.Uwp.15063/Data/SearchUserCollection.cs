@@ -12,15 +12,13 @@ namespace VGtime.Uwp.Data
     {
         private readonly Action<Exception> _onError;
 
-        private readonly IPostService _postService;
+        private readonly IUserService _userService;
 
         private readonly string _text;
 
-        private readonly int _type;
-
         private int _currentPage;
 
-        public SearchUserCollection(string text, int type, IPostService postService, Action<Exception> onError = null)
+        public SearchUserCollection(string text, IUserService userService, Action<Exception> onError = null)
         {
             if (text == null)
             {
@@ -28,8 +26,7 @@ namespace VGtime.Uwp.Data
             }
 
             _text = text;
-            _type = type;
-            _postService = postService;
+            _userService = userService;
             _onError = onError;
         }
 
@@ -43,7 +40,7 @@ namespace VGtime.Uwp.Data
             IsLoading = true;
             try
             {
-                var result = await _postService.SearchUserAsync(_text, _type, _currentPage + 1);
+                var result = await _userService.SearchUserAsync(_text, _currentPage + 1);
                 uint loadedCount = 0;
                 if (result.ErrorCode == HttpStatusCode.OK)
                 {

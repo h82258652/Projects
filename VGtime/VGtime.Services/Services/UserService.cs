@@ -11,6 +11,20 @@ namespace VGtime.Services
 {
     public class UserService : IUserService
     {
+        public async Task<ResultBase<UserInfo>> GetUserInfoAsync(int userId, string token)
+        {
+            if (token == null)
+            {
+                throw new ArgumentNullException(nameof(token));
+            }
+
+            using (var client = new HttpClient())
+            {
+                var json = await client.GetStringAsync($"{Constants.UrlBase}/vgtime-app/api/v2/common/getUserInfo.json?userId={userId}&token={token}");
+                return JsonConvert.DeserializeObject<ResultBase<UserInfo>>(json);
+            }
+        }
+
         public async Task<ResultBase<UserInfo>> LoginAsync(string account, string password)
         {
             if (account == null)
@@ -39,6 +53,29 @@ namespace VGtime.Services
                     var json = await response.Content.ReadAsStringAsync();
                     return JsonConvert.DeserializeObject<ResultBase<UserInfo>>(json);
                 }
+            }
+        }
+
+        public async Task<ResultBase<SearchList<User>>> SearchUserAsync(string text, int page = 1, int pageSize = 20)
+        {
+            if (text == null)
+            {
+                throw new ArgumentNullException(nameof(text));
+            }
+            if (page <= 0)
+            {
+                throw new ArgumentOutOfRangeException(nameof(page));
+            }
+            if (pageSize <= 0)
+            {
+                throw new ArgumentOutOfRangeException(nameof(pageSize));
+            }
+
+            var url = $"{Constants.UrlBase}/vgtime-app/api/v2/search.json?text={text}&type=1&page={page}&pageSize={pageSize}";
+            using (var client = new HttpClient())
+            {
+                var json = await client.GetStringAsync(url);
+                return JsonConvert.DeserializeObject<ResultBase<SearchList<User>>>(json);
             }
         }
     }

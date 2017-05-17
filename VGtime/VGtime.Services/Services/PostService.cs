@@ -185,20 +185,6 @@ namespace VGtime.Services
             }
         }
 
-        public async Task<ResultBase<UserInfo>> GetUserInfoAsync(int userId, string token)
-        {
-            if (token == null)
-            {
-                throw new ArgumentNullException(nameof(token));
-            }
-
-            using (var client = new HttpClient())
-            {
-                var json = await client.GetStringAsync($"{Constants.UrlBase}/vgtime-app/api/v2/common/getUserInfo.json?userId={userId}&token={token}");
-                return JsonConvert.DeserializeObject<ResultBase<UserInfo>>(json);
-            }
-        }
-
         public async Task<ResultBase<VersionData>> GetVersionAsync()
         {
             using (var client = new HttpClient())
@@ -256,28 +242,6 @@ namespace VGtime.Services
             {
                 var json = await client.GetStringAsync($"{Constants.UrlBase}/vgtime-app/api/v2/search.json?text={text}&type={type}&contentType={contentType}&page={page}&pageSize={pageSize}");
                 return JsonConvert.DeserializeObject<ResultBase<SearchList<Game>>>(json);
-            }
-        }
-
-        public async Task<ResultBase<SearchList<User>>> SearchUserAsync(string text, int type, int page = 1, int pageSize = 20)
-        {
-            if (text == null)
-            {
-                throw new ArgumentNullException(nameof(text));
-            }
-            if (page <= 0)
-            {
-                throw new ArgumentOutOfRangeException(nameof(page));
-            }
-            if (pageSize <= 0)
-            {
-                throw new ArgumentOutOfRangeException(nameof(pageSize));
-            }
-
-            using (var client = new HttpClient())
-            {
-                var json = await client.GetStringAsync($"{Constants.UrlBase}/vgtime-app/api/v2/search.json?text={text}&type={type}&page={page}&pageSize={pageSize}");
-                return JsonConvert.DeserializeObject<ResultBase<SearchList<User>>>(json);
             }
         }
     }

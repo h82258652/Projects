@@ -14,6 +14,8 @@ namespace VGtime.Uwp.ViewModels
 
         private readonly IPostService _postService;
 
+        private readonly IUserService _userService;
+
         private SearchPostCollection _forumPosts;
 
         private RelayCommand<Game> _gameClickCommand;
@@ -28,9 +30,10 @@ namespace VGtime.Uwp.ViewModels
 
         private SearchUserCollection _users;
 
-        public SearchViewModel(IPostService postService, INavigationService navigationService)
+        public SearchViewModel(IPostService postService, IUserService userService, INavigationService navigationService)
         {
             _postService = postService;
+            _userService = userService;
             _navigationService = navigationService;
         }
 
@@ -80,7 +83,7 @@ namespace VGtime.Uwp.ViewModels
                     {
                         TopicPosts = new SearchPostCollection(text, 2, 2, _postService);
                         ForumPosts = new SearchPostCollection(text, 2, 3, _postService);
-                        Users = new SearchUserCollection(text, 1, _postService);
+                        Users = new SearchUserCollection(text, _userService);
                         Games = new SearchGameCollection(text, 2, 4, _postService);
                     }
                 });

@@ -35,14 +35,10 @@ namespace VGtime.Services
 
         Task<ResultBase<StrategyList>> GetStrategyMenuListAsync(int gameId);
 
-        Task<ResultBase<UserInfo>> GetUserInfoAsync(int userId, string token);
-
         Task<ResultBase<VersionData>> GetVersionAsync();
 
         Task<ResultBase<SearchList<Post>>> SearchAsync(string text, int type, int? typeTag = null, int page = 1, int pageSize = 20);
 
         Task<ResultBase<SearchList<Game>>> SearchGameAsync(string text, int type, int contentType, int page = 1, int pageSize = 20);
-
-        Task<ResultBase<SearchList<User>>> SearchUserAsync(string text, int type, int page = 1, int pageSize = 20);
     }
 }
