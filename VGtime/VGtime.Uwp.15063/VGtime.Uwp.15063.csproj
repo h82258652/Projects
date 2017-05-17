@@ -342,6 +342,12 @@
     <Content Include="Assets\Html\bower_components\jquery\src\wrap.js" />
     <Content Include="Assets\Html\css\detail.css" />
     <Content Include="Assets\Html\detail.html" />
+    <Content Include="Assets\Html\img\1.png" />
+    <Content Include="Assets\Html\img\2.png" />
+    <Content Include="Assets\Html\img\3.png" />
+    <Content Include="Assets\Html\img\blockquote.svg" />
+    <Content Include="Assets\Html\img\no_solve.png" />
+    <Content Include="Assets\Html\img\solve.png" />
     <Content Include="Assets\Html\js\detail.js" />
     <Content Include="Assets\Images\logo_about.png" />
     <Content Include="Properties\Default.rd.xml" />
