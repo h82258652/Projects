@@ -2,12 +2,12 @@
 using System.Diagnostics;
 using GalaSoft.MvvmLight.Messaging;
 using VGtime.Uwp.Messages;
+using VGtime.Uwp.ViewModels;
+using VGtime.Uwp.ViewParameters;
 using Windows.Foundation;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
-using VGtime.Uwp.ViewModels;
-using VGtime.Uwp.ViewParameters;
 using WinRTXamlToolkit.AwaitableUI;
 
 namespace VGtime.Uwp.Views

@@ -2,11 +2,11 @@
 using System.Net;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
+using GalaSoft.MvvmLight.Views;
 using SoftwareKobo.ViewModels;
 using VGtime.Models;
 using VGtime.Services;
 using VGtime.Uwp.Services;
-using GalaSoft.MvvmLight.Views;
 using VGtime.Uwp.ViewParameters;
 
 namespace VGtime.Uwp.ViewModels

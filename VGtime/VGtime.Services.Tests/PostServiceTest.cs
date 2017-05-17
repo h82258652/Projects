@@ -190,22 +190,6 @@ namespace VGtime.Services.Tests
         }
 
         [Fact]
-        public async Task TestLoginAsync()
-        {
-            await Assert.ThrowsAsync<ArgumentNullException>(async () =>
-            {
-                await _postService.LoginAsync(null, "842053625");
-            });
-            await Assert.ThrowsAsync<ArgumentNullException>(async () =>
-            {
-                await _postService.LoginAsync("842053625@qq.com", null);
-            });
-
-            var result = await _postService.LoginAsync("842053625@qq.com", "842053625");
-            Assert.Equal(result.ErrorCode, HttpStatusCode.OK);
-        }
-
-        [Fact]
         public async Task TestSearchAsync()
         {
             await Assert.ThrowsAsync<ArgumentNullException>(async () =>

@@ -38,7 +38,7 @@
                     Command="{Binding Path=SaveCommand}"
                     CommandParameter="{Binding ElementName=AblumFlipView, Path=SelectedItem}"
                     Style="{StaticResource IconButtonStyle}">
-                <SymbolIcon Symbol="Download" /> 
+                <SymbolIcon Symbol="Download" />
             </Button>
             <TextBlock Grid.Column="0"
                        Grid.ColumnSpan="3"
