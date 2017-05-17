@@ -4,6 +4,7 @@ using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Navigation;
+using VGtime.Utils;
 
 namespace VGtime.Uwp
 {
@@ -14,6 +15,8 @@ namespace VGtime.Uwp
             InitializeComponent();
             Resuming += OnResuming;
             Suspending += OnSuspending;
+
+            UserAgentHelper.SetDefaultUserAgent(Constants.DefaultUserAgent);
         }
 
         protected override void OnLaunched(LaunchActivatedEventArgs e)

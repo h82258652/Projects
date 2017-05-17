@@ -584,6 +584,14 @@
       <Project>{efbe8575-c14f-4fb1-8702-41ed214a18d1}</Project>
       <Name>VGtime.Services</Name>
     </ProjectReference>
+    <ProjectReference Include="..\VGtime.Utils.Uwp\VGtime.Utils.Uwp.csproj">
+      <Project>{75accbba-f269-4086-97f1-7c7505eccc9e}</Project>
+      <Name>VGtime.Utils.Uwp</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VGtime.Utils\VGtime.Utils.csproj">
+      <Project>{667a8eb0-178d-45d0-9e9a-0f7ec270fa3b}</Project>
+      <Name>VGtime.Utils</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
