@@ -36,6 +36,7 @@
         <GridView Grid.Row="1"
                   Padding="4,4,0,0"
                   IsItemClickEnabled="True"
+                  ItemClick="AblumGridView_ItemClick"
                   ItemsSource="{Binding Path=Ablums}"
                   SelectionMode="None"
                   SizeChanged="AblumGridView_SizeChanged">
@@ -47,7 +48,8 @@
             </interactivity:Interaction.Behaviors>
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <Image Source="{Binding Path=Url}"
+                    <Image x:Name="Image"
+                           Source="{Binding Path=Url}"
                            Stretch="UniformToFill" />
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
