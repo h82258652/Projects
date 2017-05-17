@@ -1,6 +1,9 @@
 /// <reference path="../type/jquery.d.ts"/>
 /// <reference path="../type/hammerjs.d.ts"/>
 /// <reference path="../type/winrt.d.ts"/>
+function setUser(avatar) {
+    $(".vgapp_user_box > img").attr("src", avatar);
+}
 function setContent(content) {
     $("#container").html(content);
 }
