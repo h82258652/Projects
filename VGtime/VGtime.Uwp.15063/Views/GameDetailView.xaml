@@ -54,9 +54,8 @@
                             Command="{Binding Path=AblumCommand}"
                             Style="{StaticResource EmptyButtonStyle}">
                         <Grid>
-                            <Image MaxHeight="300" 
+                            <Image MaxHeight="300"
                                    Source="{Binding Path=GameDetail.Thumbnail.Url}" />
-                         
                             <Border Margin="0,0,12,0"
                                     HorizontalAlignment="Right"
                                     VerticalAlignment="Top"
@@ -97,8 +96,9 @@
                                 <SymbolIcon Foreground="Gray"
                                             Symbol="Calendar" />
                             </Viewbox>
-                            <TextBlock Foreground="Gray"
-                                  Margin="4,0,0,0"      Text="{Binding Path=GameDetail.PublishDate, Converter={StaticResource PublishDateConverter}}" />
+                            <TextBlock Margin="4,0,0,0"
+                                       Foreground="Gray"
+                                       Text="{Binding Path=GameDetail.PublishDate, Converter={StaticResource PublishDateConverter}}" />
                         </StackPanel>
                     </Grid>
                     <TextBlock Margin="12,12,12,0"
@@ -139,6 +139,7 @@
                                        Text="俱乐部" />
                             <!--  relationList type=1 page pageSize  -->
                             <TextBlock Grid.Column="1"
+                                       Margin="0,0,8,0"
                                        Text="{Binding Path=GameDetail.ShortPostCount}" />
                             <fontawesome:FontAwesomeIcon Grid.Column="2"
                                                          VerticalAlignment="Center"
@@ -158,6 +159,7 @@
                                        Text="文章和视频" />
                             <!--  relationList type=2 page pageSize  -->
                             <TextBlock Grid.Column="1"
+                                       Margin="0,0,8,0"
                                        Text="{Binding Path=GameDetail.LongPostCount}" />
                             <fontawesome:FontAwesomeIcon Grid.Column="2"
                                                          VerticalAlignment="Center"
@@ -177,6 +179,7 @@
                                        Text="提问" />
                             <!--  relationList type=3 page pageSize  -->
                             <TextBlock Grid.Column="1"
+                                       Margin="0,0,8,0"
                                        Text="{Binding Path=GameDetail.QuestionCount}" />
                             <fontawesome:FontAwesomeIcon Grid.Column="2"
                                                          VerticalAlignment="Center"
@@ -196,6 +199,7 @@
                                        Text="评分" />
                             <!--  scorelist gameId page pageSize  -->
                             <TextBlock Grid.Column="1"
+                                       Margin="0,0,8,0"
                                        Text="{Binding Path=GameDetail.ScoreCount}" />
                             <fontawesome:FontAwesomeIcon Grid.Column="2"
                                                          VerticalAlignment="Center"
@@ -215,6 +219,7 @@
                                        Text="攻略集" />
                             <!--  gameMenuList gameId  -->
                             <TextBlock Grid.Column="1"
+                                       Margin="0,0,8,0"
                                        Text="{Binding Path=GameDetail.StrategyCount}" />
                             <fontawesome:FontAwesomeIcon Grid.Column="2"
                                                          VerticalAlignment="Center"

@@ -41,8 +41,11 @@ namespace VGtime.Uwp.ViewModels
                 _ablumClickCommand = _ablumClickCommand ?? new RelayCommand<Ablum>(ablum =>
                 {
                     var ablums = Ablums;
-                    var index = Array.IndexOf(ablums, ablum);
-                    _navigationService.NavigateTo(ViewModelLocator.AblumDetailViewKey, new AblumDetailViewParameter(ablums, index));
+                    if (ablums != null)
+                    {
+                        var index = Array.IndexOf(ablums, ablum);
+                        _navigationService.NavigateTo(ViewModelLocator.AblumDetailViewKey, new AblumDetailViewParameter(ablums, index));
+                    }
                 });
                 return _ablumClickCommand;
             }
@@ -90,6 +93,7 @@ namespace VGtime.Uwp.ViewModels
             if (Game == null || Game.GameId != game.GameId)
             {
                 Game = game;
+                Ablums = null;
 
                 LoadGameAblums();
             }
@@ -101,10 +105,14 @@ namespace VGtime.Uwp.ViewModels
 
         private async void LoadGameAblums()
         {
+            if (IsLoading || Game == null)
+            {
+                return;
+            }
+
             IsLoading = true;
             try
             {
-                Ablums = null;
                 var result = await _postService.GetGameAblumListAsync(Game.GameId);
                 if (result.ErrorCode == HttpStatusCode.OK)
                 {

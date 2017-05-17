@@ -9,6 +9,8 @@ namespace VGtime.Uwp.ViewModels
     {
         private readonly IPostService _postService;
 
+        private int _gameId;
+
         private ScoreInfoCollection _scoreInfos;
 
         public ScoreListViewModel(IPostService postService)
@@ -31,8 +33,12 @@ namespace VGtime.Uwp.ViewModels
         public void Activate(object parameter)
         {
             var gameId = (int)parameter;
+            if (_gameId != gameId)
+            {
+                _gameId = gameId;
 
-            ScoreInfos = new ScoreInfoCollection(gameId, _postService);
+                ScoreInfos = new ScoreInfoCollection(gameId, _postService);
+            }
         }
 
         public void Deactivate(object parameter)

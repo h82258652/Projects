@@ -146,6 +146,7 @@ namespace VGtime.Uwp.ViewModels
             if (_gameId != gameId)
             {
                 _gameId = gameId;
+                GameDetail = null;
 
                 LoadGameDetail();
             }
@@ -157,10 +158,14 @@ namespace VGtime.Uwp.ViewModels
 
         private async void LoadGameDetail()
         {
+            if (IsLoading)
+            {
+                return;
+            }
+
             IsLoading = true;
             try
             {
-                GameDetail = null;
                 var result = await _postService.GetGameDetailAsync(_gameId);
                 if (result.ErrorCode == HttpStatusCode.OK)
                 {

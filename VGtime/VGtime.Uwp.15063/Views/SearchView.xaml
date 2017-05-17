@@ -39,6 +39,7 @@
                 </interactivity:Interaction.Behaviors>
             </Button>
             <AutoSuggestBox Grid.Column="1"
+                            VerticalAlignment="Center"
                             PlaceholderText="请输入搜索内容">
                 <AutoSuggestBox.QueryIcon>
                     <SymbolIcon Symbol="Find" />

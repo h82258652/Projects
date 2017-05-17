@@ -1,10 +1,13 @@
 ﻿using System;
+using System.Diagnostics;
 using GalaSoft.MvvmLight.Messaging;
 using VGtime.Uwp.Messages;
 using Windows.Foundation;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
+using VGtime.Uwp.ViewModels;
+using VGtime.Uwp.ViewParameters;
 using WinRTXamlToolkit.AwaitableUI;
 
 namespace VGtime.Uwp.Views
@@ -23,6 +26,8 @@ namespace VGtime.Uwp.Views
             Messenger.Default.Unregister(this);
         }
 
+        public DetailViewModel ViewModel => (DetailViewModel)DataContext;
+
         protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
             Messenger.Default.Register<PostContentLoadedMessage>(this, async message =>
@@ -36,7 +41,12 @@ namespace VGtime.Uwp.Views
 
             if (e.NavigationMode == NavigationMode.New)
             {
-                await WebView.NavigateAsync(new Uri("about:blank"));
+                var viewParameter = (DetailViewParameter)e.Parameter;
+                Debug.Assert(viewParameter != null);
+                if (ViewModel.ViewParameter == null || viewParameter.PostId != ViewModel.ViewParameter.PostId)
+                {
+                    await WebView.NavigateAsync(new Uri("about:blank"));
+                }
                 base.OnNavigatedTo(e);
             }
         }

@@ -45,8 +45,12 @@ namespace VGtime.Uwp.ViewModels
 
         public void Activate(object parameter)
         {
-            Post = (Post)parameter;
-            Comments = new CommentCollection(Post.PostId, Post.DetailType, _postService);
+            var post = (Post)parameter;
+            if (Post == null || Post.PostId != post.PostId)
+            {
+                Post = post;
+                Comments = new CommentCollection(post.PostId, post.DetailType, _postService);
+            }
         }
 
         public void Deactivate(object parameter)

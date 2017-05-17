@@ -28,8 +28,6 @@ namespace VGtime.Uwp.ViewModels
 
         private RelayCommand _refreshCommand;
 
-        private DetailViewParameter _viewParameter;
-
         public DetailViewModel(IPostService postService, INavigationService navigationService, IAppToastService appToastService)
         {
             _postService = postService;
@@ -43,8 +41,11 @@ namespace VGtime.Uwp.ViewModels
             {
                 _commentCommand = _commentCommand ?? new RelayCommand(() =>
                 {
-                    _navigationService.NavigateTo(ViewModelLocator.CommentViewKey, Post);
-                });
+                    if (Post != null)
+                    {
+                        _navigationService.NavigateTo(ViewModelLocator.CommentViewKey, Post);
+                    }
+                }, () => Post != null);
                 return _commentCommand;
             }
         }
@@ -85,11 +86,22 @@ namespace VGtime.Uwp.ViewModels
             }
         }
 
+        public DetailViewParameter ViewParameter
+        {
+            get;
+            private set;
+        }
+
         public void Activate(object parameter)
         {
-            _viewParameter = (DetailViewParameter)parameter;
+            var viewParameter = (DetailViewParameter)parameter;
+            if (ViewParameter == null || viewParameter.PostId != ViewParameter.PostId)
+            {
+                ViewParameter = viewParameter;
+                Post = null;
 
-            LoadArticleDetail();
+                LoadArticleDetail();
+            }
         }
 
         public void Deactivate(object parameter)
@@ -98,7 +110,7 @@ namespace VGtime.Uwp.ViewModels
 
         private async void LoadArticleDetail(bool isRefresh = false)
         {
-            if (IsLoading || _viewParameter == null)
+            if (IsLoading || ViewParameter == null)
             {
                 return;
             }
@@ -106,7 +118,7 @@ namespace VGtime.Uwp.ViewModels
             IsLoading = true;
             try
             {
-                var result = await _postService.GetDetailAsync(_viewParameter.PostId, _viewParameter.DetailType);
+                var result = await _postService.GetDetailAsync(ViewParameter.PostId, ViewParameter.DetailType);
                 if (result.ErrorCode == HttpStatusCode.OK)
                 {
                     var post = result.Data.Data;

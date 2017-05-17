@@ -72,9 +72,14 @@ namespace VGtime.Uwp.ViewModels
 
         public void Activate(object parameter)
         {
-            _gameId = (int)parameter;
+            var gameId = (int)parameter;
+            if (_gameId != gameId)
+            {
+                _gameId = gameId;
+                Strategies = null;
 
-            LoadStrategyList();
+                LoadStrategyList();
+            }
         }
 
         public void Deactivate(object parameter)
@@ -83,6 +88,11 @@ namespace VGtime.Uwp.ViewModels
 
         private async void LoadStrategyList()
         {
+            if (IsLoading)
+            {
+                return;
+            }
+
             IsLoading = true;
             try
             {

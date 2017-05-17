@@ -19,6 +19,8 @@ namespace VGtime.Uwp.ViewModels
 
         private RelationPostCollection _relationPosts;
 
+        private RelationListViewParameter _viewParameter;
+
         public RelationListViewModel(IPostService postService, INavigationService navigationService)
         {
             _postService = postService;
@@ -51,9 +53,13 @@ namespace VGtime.Uwp.ViewModels
 
         public void Activate(object parameter)
         {
-            var viewModelParameter = (RelationListViewParameter)parameter;
+            var viewParameter = (RelationListViewParameter)parameter;
+            if (_viewParameter == null || _viewParameter.GameId != viewParameter.GameId)
+            {
+                _viewParameter = viewParameter;
 
-            RelationPosts = new RelationPostCollection(viewModelParameter.GameId, viewModelParameter.Type, _postService);
+                RelationPosts = new RelationPostCollection(viewParameter.GameId, viewParameter.Type, _postService);
+            }
         }
 
         public void Deactivate(object parameter)
