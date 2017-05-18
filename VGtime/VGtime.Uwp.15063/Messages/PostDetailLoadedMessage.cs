@@ -1,10 +1,9 @@
 ﻿using System;
-using GalaSoft.MvvmLight.Messaging;
 using VGtime.Models;
 
 namespace VGtime.Uwp.Messages
 {
-    public class PostDetailLoadedMessage : MessageBase
+    public class PostDetailLoadedMessage : GalaSoft.MvvmLight.Messaging.MessageBase
     {
         public PostDetailLoadedMessage(Post post)
         {

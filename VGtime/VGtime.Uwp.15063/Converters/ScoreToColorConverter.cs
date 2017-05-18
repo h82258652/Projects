@@ -17,7 +17,7 @@ namespace VGtime.Uwp.Converters
             }
             else
             {
-                score = (double)value;
+                score = System.Convert.ToDouble(value);
             }
 
             Color color;

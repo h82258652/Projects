@@ -5,7 +5,7 @@ namespace VGtime.Models
     [JsonObject]
     public class GameAlbum
     {
-        [JsonProperty("id")]
+        [JsonProperty("id", NullValueHandling = NullValueHandling.Ignore)]
         public int Id
         {
             get;

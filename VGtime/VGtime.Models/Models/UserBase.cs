@@ -54,7 +54,7 @@ namespace VGtime.Models
             set;
         }
 
-        [JsonProperty("isHighlight")]
+        [JsonProperty("isHighlight", NullValueHandling = NullValueHandling.Ignore)]
         public bool IsHighlight
         {
             get;
