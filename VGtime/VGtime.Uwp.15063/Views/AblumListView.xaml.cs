@@ -32,6 +32,7 @@ namespace VGtime.Uwp.Views
                     var item = items.ElementAtOrDefault(NavigationBackIndex);
                     if (item != null)
                     {
+                        AblumGridView.ScrollIntoView(item);
                         await AblumGridView.TryStartConnectedAnimationAsync(animation, item, "Image");
                     }
                 }
