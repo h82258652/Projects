@@ -6,5 +6,15 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       DataContext="{Binding Source={StaticResource Locator}, Path=ArticleDetail}"
       mc:Ignorable="d">
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" />
+    <Grid Background="#FF2ABACA">
+        <Grid Height="52"
+              VerticalAlignment="Top"
+              Background="#FF2ABACA">
+            <TextBlock Padding="16"
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Center"
+                       Foreground="White" />
+            <Image />
+        </Grid>
+    </Grid>
 </Page>
