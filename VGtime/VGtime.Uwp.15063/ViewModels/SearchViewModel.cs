@@ -4,12 +4,15 @@ using GalaSoft.MvvmLight.Views;
 using VGtime.Models;
 using VGtime.Services;
 using VGtime.Uwp.Data;
+using VGtime.Uwp.Services;
 using VGtime.Uwp.ViewParameters;
 
 namespace VGtime.Uwp.ViewModels
 {
     public class SearchViewModel : ViewModelBase
     {
+        private readonly IAppToastService _appToastService;
+
         private readonly INavigationService _navigationService;
 
         private readonly IPostService _postService;
@@ -30,11 +33,12 @@ namespace VGtime.Uwp.ViewModels
 
         private SearchUserCollection _users;
 
-        public SearchViewModel(IPostService postService, IUserService userService, INavigationService navigationService)
+        public SearchViewModel(IPostService postService, IUserService userService, INavigationService navigationService, IAppToastService appToastService)
         {
             _postService = postService;
             _userService = userService;
             _navigationService = navigationService;
+            _appToastService = appToastService;
         }
 
         public SearchPostCollection ForumPosts
@@ -79,7 +83,12 @@ namespace VGtime.Uwp.ViewModels
             {
                 _searchCommand = _searchCommand ?? new RelayCommand<string>(text =>
                 {
-                    if (!string.IsNullOrEmpty(text))
+                    text = text?.Trim();
+                    if (string.IsNullOrEmpty(text))
+                    {
+                        _appToastService.ShowWarning("搜索内容为空哦");
+                    }
+                    else
                     {
                         TopicPosts = new SearchPostCollection(text, 2, 2, _postService);
                         ForumPosts = new SearchPostCollection(text, 2, 3, _postService);
@@ -97,7 +106,7 @@ namespace VGtime.Uwp.ViewModels
             {
                 _topicPostClickCommand = _topicPostClickCommand ?? new RelayCommand<Post>(post =>
                 {
-                    _navigationService.NavigateTo(ViewModelLocator.DetailViewKey, new DetailViewParameter(post.PostId, post.DetailType));
+                    _navigationService.NavigateTo(ViewModelLocator.ArticleDetailViewKey, new DetailViewParameter(post.PostId, post.DetailType));
                 });
                 return _topicPostClickCommand;
             }

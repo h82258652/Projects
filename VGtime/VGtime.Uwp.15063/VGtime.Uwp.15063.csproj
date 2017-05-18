@@ -166,11 +166,11 @@
     <Compile Include="Views\AblumListView.xaml.cs">
       <DependentUpon>AblumListView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\ArticleDetailView.xaml.cs">
+      <DependentUpon>ArticleDetailView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\CommentView.xaml.cs">
       <DependentUpon>CommentView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\DetailView.xaml.cs">
-      <DependentUpon>DetailView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\GameDetailView.xaml.cs">
       <DependentUpon>GameDetailView.xaml</DependentUpon>
@@ -505,11 +505,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\CommentView.xaml">
+    <Page Include="Views\ArticleDetailView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\DetailView.xaml">
+    <Page Include="Views\CommentView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

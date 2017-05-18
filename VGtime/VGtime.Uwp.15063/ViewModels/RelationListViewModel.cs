@@ -33,7 +33,7 @@ namespace VGtime.Uwp.ViewModels
             {
                 _postClickCommand = _postClickCommand ?? new RelayCommand<Post>(post =>
                 {
-                    _navigationService.NavigateTo(ViewModelLocator.DetailViewKey, new DetailViewParameter(post.PostId, post.DetailType));
+                    _navigationService.NavigateTo(ViewModelLocator.ArticleDetailViewKey, new DetailViewParameter(post.PostId, post.DetailType));
                 });
                 return _postClickCommand;
             }

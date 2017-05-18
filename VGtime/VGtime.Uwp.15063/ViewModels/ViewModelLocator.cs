@@ -18,7 +18,7 @@ namespace VGtime.Uwp.ViewModels
 
         public const string CommentViewKey = "Comment";
 
-        public const string DetailViewKey = "Detail";
+        public const string ArticleDetailViewKey = "ArticleDetail";
 
         public const string GameDetailViewKey = "GameDetail";
 
@@ -95,7 +95,7 @@ namespace VGtime.Uwp.ViewModels
         private static INavigationService CreateNavigationService()
         {
             var navigationService = new SoftwareKobo.Services.NavigationService();
-            navigationService.Configure(DetailViewKey, typeof(DetailView));
+            navigationService.Configure(ArticleDetailViewKey, typeof(ArticleDetailView));
             navigationService.Configure(StrategyViewKey, typeof(StrategyView));
             navigationService.Configure(OldStrategyViewKey, typeof(OldStrategyView));
             navigationService.Configure(CommentViewKey, typeof(CommentView));

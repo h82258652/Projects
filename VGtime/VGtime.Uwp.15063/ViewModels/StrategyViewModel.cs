@@ -64,7 +64,7 @@ namespace VGtime.Uwp.ViewModels
             {
                 _strategyItemClickCommand = _strategyItemClickCommand ?? new RelayCommand<StrategyItem>(strategyItem =>
                 {
-                    _navigationService.NavigateTo(ViewModelLocator.DetailViewKey, new DetailViewParameter(strategyItem.PostId, strategyItem.DetailType));
+                    _navigationService.NavigateTo(ViewModelLocator.ArticleDetailViewKey, new DetailViewParameter(strategyItem.PostId, strategyItem.DetailType));
                 });
                 return _strategyItemClickCommand;
             }
