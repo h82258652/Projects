@@ -123,7 +123,7 @@ namespace VGtime.Uwp.ViewModels
                 {
                     var post = result.Data.Data;
                     Post = post;
-                    MessengerInstance.Send(new PostContentLoadedMessage(post.Content));
+                    MessengerInstance.Send(new PostDetailLoadedMessage(post));
 
                     if (isRefresh)
                     {

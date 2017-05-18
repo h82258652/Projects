@@ -140,7 +140,7 @@
     <Compile Include="Data\SearchUserCollection.cs" />
     <Compile Include="Data\TagPostCollection.cs" />
     <Compile Include="LocalizedStrings.cs" />
-    <Compile Include="Messages\PostContentLoadedMessage.cs" />
+    <Compile Include="Messages\PostDetailLoadedMessage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\AppToastService.cs" />
     <Compile Include="Services\IAppToastService.cs" />

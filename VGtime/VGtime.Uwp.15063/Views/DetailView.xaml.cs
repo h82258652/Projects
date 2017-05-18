@@ -30,12 +30,12 @@ namespace VGtime.Uwp.Views
 
         protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
-            Messenger.Default.Register<PostContentLoadedMessage>(this, async message =>
+            Messenger.Default.Register<PostDetailLoadedMessage>(this, async message =>
             {
                 await WebView.NavigateAsync(new Uri("ms-appx-web:///Assets/Html/detail.html"));
                 await WebView.InvokeScriptAsync("setContent", new[]
                 {
-                    message.Content
+                    message.Post.Content
                 });
             });
 
