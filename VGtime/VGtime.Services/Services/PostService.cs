@@ -131,6 +131,20 @@ namespace VGtime.Services
             }
         }
 
+        public async Task<ResultBase<MessageList>> GetMessageListAsync(int userId, string token)
+        {
+            if (token == null)
+            {
+                throw new ArgumentNullException(nameof(token));
+            }
+
+            using (var client = new HttpClient())
+            {
+                var json = await client.GetStringAsync($"{Constants.UrlBase}/vgtime-app/api/v2/message/list.json?userId={userId}&token={token}");
+                return JsonConvert.DeserializeObject<ResultBase<MessageList>>(json);
+            }
+        }
+
         public async Task<ResultBase<AblumList<Post>>> GetRelationListAsync(int gameId, int type, int page = 1, int pageSize = 20)
         {
             if (page <= 0)

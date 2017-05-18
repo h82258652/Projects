@@ -27,6 +27,8 @@ namespace VGtime.Services
 
         Task<ResultBase<bool>> GetMessageIsReadAsync(int userId, int type);
 
+        Task<ResultBase<MessageList>> GetMessageListAsync(int userId, string token);
+
         Task<ResultBase<AblumList<Post>>> GetRelationListAsync(int gameId, int type, int page = 1, int pageSize = 20);
 
         Task<ResultBase<GameList>> GetScoreListAsync(int gameId, int page = 1, int pageSize = 20);
