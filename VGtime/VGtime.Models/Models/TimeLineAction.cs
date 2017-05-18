@@ -3,7 +3,7 @@
 namespace VGtime.Models
 {
     [JsonObject]
-    public class Action
+    public class TimeLineAction
     {
         [JsonProperty("operation")]
         public int Operation

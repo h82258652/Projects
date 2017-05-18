@@ -125,7 +125,7 @@ namespace VGtime.Models
         }
 
         [JsonProperty("action")]
-        public Action Action
+        public TimeLineAction Action
         {
             get;
             set;
