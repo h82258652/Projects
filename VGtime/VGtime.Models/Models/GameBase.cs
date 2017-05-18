@@ -3,7 +3,7 @@
 namespace VGtime.Models
 {
     [JsonObject]
-    public class Game
+    public class GameBase
     {
         [JsonProperty("gameId")]
         public int GameId

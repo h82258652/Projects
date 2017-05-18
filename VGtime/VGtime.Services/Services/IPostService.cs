@@ -39,6 +39,6 @@ namespace VGtime.Services
 
         Task<ResultBase<SearchList<Post>>> SearchAsync(string text, int type, int? typeTag = null, int page = 1, int pageSize = 20);
 
-        Task<ResultBase<SearchList<Game>>> SearchGameAsync(string text, int type, int contentType, int page = 1, int pageSize = 20);
+        Task<ResultBase<SearchList<GameBase>>> SearchGameAsync(string text, int type, int contentType, int page = 1, int pageSize = 20);
     }
 }

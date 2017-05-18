@@ -21,7 +21,7 @@ namespace VGtime.Uwp.ViewModels
 
         private SearchPostCollection _forumPosts;
 
-        private RelayCommand<Game> _gameClickCommand;
+        private RelayCommand<GameBase> _gameClickCommand;
 
         private SearchGameCollection _games;
 
@@ -53,11 +53,11 @@ namespace VGtime.Uwp.ViewModels
             }
         }
 
-        public RelayCommand<Game> GameClickCommand
+        public RelayCommand<GameBase> GameClickCommand
         {
             get
             {
-                _gameClickCommand = _gameClickCommand ?? new RelayCommand<Game>(game =>
+                _gameClickCommand = _gameClickCommand ?? new RelayCommand<GameBase>(game =>
                 {
                     _navigationService.NavigateTo(ViewModelLocator.GameDetailViewKey, game.GameId);
                 });

@@ -23,7 +23,7 @@ namespace VGtime.Uwp.ViewModels
 
         private GameAlbum[] _gameAlbums;
 
-        private Game _game;
+        private GameBase _game;
 
         private bool _isLoading;
 
@@ -63,7 +63,7 @@ namespace VGtime.Uwp.ViewModels
             }
         }
 
-        public Game Game
+        public GameBase Game
         {
             get
             {
@@ -89,7 +89,7 @@ namespace VGtime.Uwp.ViewModels
 
         public void Activate(object parameter)
         {
-            var game = (Game)parameter;
+            var game = (GameBase)parameter;
             if (Game == null || Game.GameId != game.GameId)
             {
                 Game = game;

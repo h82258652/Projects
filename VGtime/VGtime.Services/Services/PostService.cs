@@ -223,7 +223,7 @@ namespace VGtime.Services
             }
         }
 
-        public async Task<ResultBase<SearchList<Game>>> SearchGameAsync(string text, int type, int contentType, int page = 1, int pageSize = 20)
+        public async Task<ResultBase<SearchList<GameBase>>> SearchGameAsync(string text, int type, int contentType, int page = 1, int pageSize = 20)
         {
             if (text == null)
             {
@@ -241,7 +241,7 @@ namespace VGtime.Services
             using (var client = new HttpClient())
             {
                 var json = await client.GetStringAsync($"{Constants.UrlBase}/vgtime-app/api/v2/search.json?text={text}&type={type}&contentType={contentType}&page={page}&pageSize={pageSize}");
-                return JsonConvert.DeserializeObject<ResultBase<SearchList<Game>>>(json);
+                return JsonConvert.DeserializeObject<ResultBase<SearchList<GameBase>>>(json);
             }
         }
     }

@@ -6,7 +6,7 @@ namespace VGtime.Models
     public class GameData
     {
         [JsonProperty("game")]
-        public Game Data
+        public GameBase Data
         {
             get;
             set;

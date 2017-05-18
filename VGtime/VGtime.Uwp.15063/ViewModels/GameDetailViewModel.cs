@@ -23,7 +23,7 @@ namespace VGtime.Uwp.ViewModels
 
         private RelayCommand _forumCommand;
 
-        private Game _gameDetail;
+        private GameBase _gameDetail;
 
         private int _gameId;
 
@@ -68,7 +68,7 @@ namespace VGtime.Uwp.ViewModels
             }
         }
 
-        public Game GameDetail
+        public GameBase GameDetail
         {
             get
             {

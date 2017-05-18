@@ -8,7 +8,7 @@ using VGtime.Services;
 
 namespace VGtime.Uwp.Data
 {
-    public class SearchGameCollection : IncrementalLoadingCollectionBase<Game>
+    public class SearchGameCollection : IncrementalLoadingCollectionBase<GameBase>
     {
         private readonly int _contentType;
 
