@@ -23,7 +23,7 @@ namespace VGtime.Uwp.Views
 
         private void AblumGridView_ItemClick(object sender, ItemClickEventArgs e)
         {
-            GridView gridView = (GridView)sender;
+            var gridView = (GridView)sender;
             gridView.PrepareConnectedAnimation("Ablum", e.ClickedItem, "Image");
         }
 

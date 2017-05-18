@@ -15,10 +15,7 @@ namespace VGtime.Uwp.Views
             base.OnNavigatedTo(e);
 
             var animation = ConnectedAnimationService.GetForCurrentView().GetAnimation("Ablum");
-            if (animation != null)
-            {
-                animation.TryStart(AblumFlipView);
-            }
+            animation?.TryStart(AblumFlipView);
         }
     }
 }
