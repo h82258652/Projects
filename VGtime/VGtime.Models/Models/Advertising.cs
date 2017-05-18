@@ -5,7 +5,7 @@ using VGtime.Models.JsonConverters;
 namespace VGtime.Models
 {
     [JsonObject]
-    public class Ad
+    public class Advertising
     {
         [JsonProperty("id")]
         public int Id

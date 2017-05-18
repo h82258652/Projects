@@ -51,7 +51,7 @@
                 <StackPanel Orientation="Vertical">
                     <Button HorizontalAlignment="Stretch"
                             HorizontalContentAlignment="Stretch"
-                            Command="{Binding Path=AblumCommand}"
+                            Command="{Binding Path=AlbumCommand}"
                             Style="{StaticResource EmptyButtonStyle}">
                         <Grid>
                             <Image MaxHeight="300"

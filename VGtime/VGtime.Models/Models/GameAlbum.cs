@@ -3,10 +3,10 @@
 namespace VGtime.Models
 {
     [JsonObject]
-    public class Ablum
+    public class GameAlbum
     {
         [JsonProperty("id")]
-        public object Id
+        public int Id
         {
             get;
             set;

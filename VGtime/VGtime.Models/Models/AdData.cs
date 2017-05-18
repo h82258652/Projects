@@ -6,7 +6,7 @@ namespace VGtime.Models
     public class AdData
     {
         [JsonProperty("ad")]
-        public Ad Data
+        public Advertising Data
         {
             get;
             set;

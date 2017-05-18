@@ -15,20 +15,20 @@ namespace VGtime.Uwp.Views
         {
             base.OnNavigatedTo(e);
 
-            var animation = ConnectedAnimationService.GetForCurrentView().GetAnimation("Ablum");
-            animation?.TryStart(AblumFlipView);
+            var animation = ConnectedAnimationService.GetForCurrentView().GetAnimation("Album");
+            animation?.TryStart(AlbumFlipView);
         }
 
         protected override void OnNavigatingFrom(NavigatingCancelEventArgs e)
         {
             base.OnNavigatingFrom(e);
 
-            var selectedIndex = AblumFlipView.SelectedIndex;
+            var selectedIndex = AlbumFlipView.SelectedIndex;
             if (selectedIndex >= 0)
             {
-                var image = (UIElement)AblumFlipView.ContainerFromIndex(selectedIndex);
+                var image = (UIElement)AlbumFlipView.ContainerFromIndex(selectedIndex);
                 AblumListView.NavigationBackIndex = selectedIndex;
-                ConnectedAnimationService.GetForCurrentView().PrepareToAnimate("AblumBack", image);
+                ConnectedAnimationService.GetForCurrentView().PrepareToAnimate("AlbumBack", image);
             }
         }
     }

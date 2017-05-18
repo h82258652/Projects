@@ -33,17 +33,17 @@
             <TextBlock Style="{StaticResource VGtimePageHeaderTextControlStyle}"
                        Text="{Binding Path=Game.Title}" />
         </Grid>
-        <GridView x:Name="AblumGridView"
+        <GridView x:Name="AlbumGridView"
                   Grid.Row="1"
                   Padding="4,4,0,0"
                   IsItemClickEnabled="True"
-                  ItemClick="AblumGridView_ItemClick"
-                  ItemsSource="{Binding Path=Ablums}"
+                  ItemClick="AlbumGridView_ItemClick"
+                  ItemsSource="{Binding Path=GameAlbums}"
                   SelectionMode="None"
-                  SizeChanged="AblumGridView_SizeChanged">
+                  SizeChanged="AlbumGridView_SizeChanged">
             <interactivity:Interaction.Behaviors>
                 <core:EventTriggerBehavior EventName="ItemClick">
-                    <core:InvokeCommandAction Command="{Binding Path=AblumClickCommand}"
+                    <core:InvokeCommandAction Command="{Binding Path=GameAlbumClickCommand}"
                                               InputConverter="{StaticResource ItemClickEventArgsConverter}" />
                 </core:EventTriggerBehavior>
             </interactivity:Interaction.Behaviors>

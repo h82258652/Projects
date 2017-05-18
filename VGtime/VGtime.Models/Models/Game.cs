@@ -34,7 +34,7 @@ namespace VGtime.Models
         }
 
         [JsonProperty("score")]
-        public double Score
+        public float Score
         {
             get;
             set;

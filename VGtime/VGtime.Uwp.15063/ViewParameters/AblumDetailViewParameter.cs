@@ -4,13 +4,13 @@ namespace VGtime.Uwp.ViewParameters
 {
     public class AblumDetailViewParameter
     {
-        public AblumDetailViewParameter(Ablum[] ablums, int index)
+        public AblumDetailViewParameter(GameAlbum[] gameAlbums, int index)
         {
-            Ablums = ablums;
+            GameAlbums = gameAlbums;
             Index = index;
         }
 
-        public Ablum[] Ablums
+        public GameAlbum[] GameAlbums
         {
             get;
         }

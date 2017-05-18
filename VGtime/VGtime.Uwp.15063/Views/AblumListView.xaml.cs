@@ -25,27 +25,27 @@ namespace VGtime.Uwp.Views
             }
             else if (e.NavigationMode == NavigationMode.Back)
             {
-                var animation = ConnectedAnimationService.GetForCurrentView().GetAnimation("AblumBack");
-                var items = AblumGridView.Items;
+                var animation = ConnectedAnimationService.GetForCurrentView().GetAnimation("AlbumBack");
+                var items = AlbumGridView.Items;
                 if (animation != null && items != null)
                 {
                     var item = items.ElementAtOrDefault(NavigationBackIndex);
                     if (item != null)
                     {
-                        AblumGridView.ScrollIntoView(item);
-                        await AblumGridView.TryStartConnectedAnimationAsync(animation, item, "Image");
+                        AlbumGridView.ScrollIntoView(item);
+                        await AlbumGridView.TryStartConnectedAnimationAsync(animation, item, "Image");
                     }
                 }
             }
         }
 
-        private void AblumGridView_ItemClick(object sender, ItemClickEventArgs e)
+        private void AlbumGridView_ItemClick(object sender, ItemClickEventArgs e)
         {
             var gridView = (GridView)sender;
-            gridView.PrepareConnectedAnimation("Ablum", e.ClickedItem, "Image");
+            gridView.PrepareConnectedAnimation("Album", e.ClickedItem, "Image");
         }
 
-        private void AblumGridView_SizeChanged(object sender, SizeChangedEventArgs e)
+        private void AlbumGridView_SizeChanged(object sender, SizeChangedEventArgs e)
         {
             var itemsControl = (ItemsControl)sender;
             var itemsWrapGrid = (ItemsWrapGrid)itemsControl.ItemsPanelRoot;

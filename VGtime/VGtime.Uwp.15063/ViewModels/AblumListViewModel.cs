@@ -19,9 +19,9 @@ namespace VGtime.Uwp.ViewModels
 
         private readonly IPostService _postService;
 
-        private RelayCommand<Ablum> _ablumClickCommand;
+        private RelayCommand<GameAlbum> _gameAblumClickCommand;
 
-        private Ablum[] _ablums;
+        private GameAlbum[] _gameAlbums;
 
         private Game _game;
 
@@ -34,32 +34,32 @@ namespace VGtime.Uwp.ViewModels
             _navigationService = navigationService;
         }
 
-        public RelayCommand<Ablum> AblumClickCommand
+        public RelayCommand<GameAlbum> GameAlbumClickCommand
         {
             get
             {
-                _ablumClickCommand = _ablumClickCommand ?? new RelayCommand<Ablum>(ablum =>
+                _gameAblumClickCommand = _gameAblumClickCommand ?? new RelayCommand<GameAlbum>(gameAlbum =>
                 {
-                    var ablums = Ablums;
-                    if (ablums != null)
+                    var gameAlbums = GameAlbums;
+                    if (gameAlbums != null)
                     {
-                        var index = Array.IndexOf(ablums, ablum);
-                        _navigationService.NavigateTo(ViewModelLocator.AblumDetailViewKey, new AblumDetailViewParameter(ablums, index));
+                        var index = Array.IndexOf(gameAlbums, gameAlbum);
+                        _navigationService.NavigateTo(ViewModelLocator.AblumDetailViewKey, new AblumDetailViewParameter(gameAlbums, index));
                     }
                 });
-                return _ablumClickCommand;
+                return _gameAblumClickCommand;
             }
         }
 
-        public Ablum[] Ablums
+        public GameAlbum[] GameAlbums
         {
             get
             {
-                return _ablums;
+                return _gameAlbums;
             }
             private set
             {
-                Set(ref _ablums, value);
+                Set(ref _gameAlbums, value);
             }
         }
 
@@ -93,9 +93,9 @@ namespace VGtime.Uwp.ViewModels
             if (Game == null || Game.GameId != game.GameId)
             {
                 Game = game;
-                Ablums = null;
+                GameAlbums = null;
 
-                LoadGameAblums();
+                LoadGameAlbums();
             }
         }
 
@@ -103,7 +103,7 @@ namespace VGtime.Uwp.ViewModels
         {
         }
 
-        private async void LoadGameAblums()
+        private async void LoadGameAlbums()
         {
             if (IsLoading || Game == null)
             {
@@ -116,7 +116,7 @@ namespace VGtime.Uwp.ViewModels
                 var result = await _postService.GetGameAblumListAsync(Game.GameId);
                 if (result.ErrorCode == HttpStatusCode.OK)
                 {
-                    Ablums = result.Data.Data;
+                    GameAlbums = result.Data.Data;
                 }
                 else
                 {

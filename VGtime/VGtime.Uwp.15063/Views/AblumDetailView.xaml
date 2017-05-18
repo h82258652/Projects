@@ -36,18 +36,18 @@
             </Button>
             <Button Grid.Column="2"
                     Command="{Binding Path=SaveCommand}"
-                    CommandParameter="{x:Bind AblumFlipView.SelectedItem, Mode=OneWay}"
+                    CommandParameter="{x:Bind AlbumFlipView.SelectedItem, Mode=OneWay}"
                     Style="{StaticResource IconButtonStyle}">
                 <SymbolIcon Symbol="Download" />
             </Button>
             <TextBlock Grid.Column="0"
                        Grid.ColumnSpan="3"
                        Style="{StaticResource VGtimePageHeaderTextControlStyle}">
-                <Run Text="{Binding Path=SelectedIndex, Mode=OneWay, Converter={StaticResource AddConverter}, ConverterParameter=1}" /><Run Text="/" /><Run Text="{Binding Path=Ablums.Length}" /></TextBlock>
+                <Run Text="{Binding Path=SelectedIndex, Mode=OneWay, Converter={StaticResource AddConverter}, ConverterParameter=1}" /><Run Text="/" /><Run Text="{Binding Path=GameAlbums.Length}" /></TextBlock>
         </Grid>
-        <FlipView x:Name="AblumFlipView"
+        <FlipView x:Name="AlbumFlipView"
                   Grid.Row="1"
-                  ItemsSource="{Binding Path=Ablums}"
+                  ItemsSource="{Binding Path=GameAlbums}"
                   SelectedIndex="{Binding Path=SelectedIndex, Mode=TwoWay}">
             <FlipView.ItemTemplate>
                 <DataTemplate>

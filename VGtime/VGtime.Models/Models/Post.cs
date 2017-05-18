@@ -226,7 +226,7 @@ namespace VGtime.Models
         }
 
         [JsonProperty("ad")]
-        public Ad Ad
+        public Advertising Ad
         {
             get;
             set;
@@ -254,7 +254,7 @@ namespace VGtime.Models
         }
 
         [JsonProperty("reviewScore")]
-        public double? ReviewScore
+        public float? ReviewScore
         {
             get;
             set;

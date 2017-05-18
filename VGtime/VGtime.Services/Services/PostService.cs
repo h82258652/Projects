@@ -54,12 +54,12 @@ namespace VGtime.Services
             }
         }
 
-        public async Task<ResultBase<AblumList<Ablum>>> GetGameAblumListAsync(int gameId)
+        public async Task<ResultBase<AblumList<GameAlbum>>> GetGameAblumListAsync(int gameId)
         {
             using (var client = new HttpClient())
             {
                 var json = await client.GetStringAsync($"{Constants.UrlBase}/vgtime-app/api/v2/game/ablumlist.json?gameId={gameId}");
-                return JsonConvert.DeserializeObject<ResultBase<AblumList<Ablum>>>(json);
+                return JsonConvert.DeserializeObject<ResultBase<AblumList<GameAlbum>>>(json);
             }
         }
 

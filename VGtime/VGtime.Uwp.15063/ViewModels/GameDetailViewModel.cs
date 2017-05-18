@@ -19,7 +19,7 @@ namespace VGtime.Uwp.ViewModels
 
         private readonly IPostService _postService;
 
-        private RelayCommand _ablumCommand;
+        private RelayCommand _albumCommand;
 
         private RelayCommand _forumCommand;
 
@@ -44,15 +44,15 @@ namespace VGtime.Uwp.ViewModels
             _navigationService = navigationService;
         }
 
-        public RelayCommand AblumCommand
+        public RelayCommand AlbumCommand
         {
             get
             {
-                _ablumCommand = _ablumCommand ?? new RelayCommand(() =>
+                _albumCommand = _albumCommand ?? new RelayCommand(() =>
                 {
                     _navigationService.NavigateTo(ViewModelLocator.AblumListViewKey, GameDetail);
                 });
-                return _ablumCommand;
+                return _albumCommand;
             }
         }
 

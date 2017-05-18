@@ -19,11 +19,11 @@ namespace VGtime.Uwp.ViewModels
 
         private readonly IVGtimeFileService _vgtimeFileService;
 
-        private Ablum[] _ablums;
+        private GameAlbum[] _gameAlbums;
 
         private bool _isBusy;
 
-        private RelayCommand<Ablum> _saveCommand;
+        private RelayCommand<GameAlbum> _saveCommand;
 
         private int _selectedIndex = -1;
 
@@ -34,15 +34,15 @@ namespace VGtime.Uwp.ViewModels
             _vgtimeFileService = vgtimeFileService;
         }
 
-        public Ablum[] Ablums
+        public GameAlbum[] GameAlbums
         {
             get
             {
-                return _ablums;
+                return _gameAlbums;
             }
             private set
             {
-                Set(ref _ablums, value);
+                Set(ref _gameAlbums, value);
             }
         }
 
@@ -58,11 +58,11 @@ namespace VGtime.Uwp.ViewModels
             }
         }
 
-        public RelayCommand<Ablum> SaveCommand
+        public RelayCommand<GameAlbum> SaveCommand
         {
             get
             {
-                _saveCommand = _saveCommand ?? new RelayCommand<Ablum>(async ablum =>
+                _saveCommand = _saveCommand ?? new RelayCommand<GameAlbum>(async gameAlbum =>
                 {
                     if (IsBusy)
                     {
@@ -72,7 +72,7 @@ namespace VGtime.Uwp.ViewModels
                     IsBusy = true;
                     try
                     {
-                        var url = ablum.Url;
+                        var url = gameAlbum.Url;
                         var bytes = await _imageLoader.GetBytesAsync(url);
                         var result = await _vgtimeFileService.SaveFileAsync(bytes, Path.GetFileName(url));
                         if (result)
@@ -108,7 +108,7 @@ namespace VGtime.Uwp.ViewModels
         public void Activate(object parameter)
         {
             var viewParameter = (AblumDetailViewParameter)parameter;
-            Ablums = viewParameter.Ablums;
+            GameAlbums = viewParameter.GameAlbums;
             SelectedIndex = viewParameter.Index;
         }
 
