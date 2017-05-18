@@ -44,7 +44,7 @@ namespace VGtime.Uwp.ViewModels
 
         public CommentViewModel Comment => ServiceLocator.Current.GetInstance<CommentViewModel>();
 
-        public DetailViewModel Detail => ServiceLocator.Current.GetInstance<DetailViewModel>();
+        public ArticleDetailViewModel ArticleDetail => ServiceLocator.Current.GetInstance<ArticleDetailViewModel>();
 
         public GameDetailViewModel GameDetail => ServiceLocator.Current.GetInstance<GameDetailViewModel>();
 
@@ -78,7 +78,7 @@ namespace VGtime.Uwp.ViewModels
 
             containerBuilder.RegisterType<SplashScreenViewModel>();
             containerBuilder.RegisterType<MainViewModel>().SingleInstance();
-            containerBuilder.RegisterType<DetailViewModel>();
+            containerBuilder.RegisterType<ArticleDetailViewModel>();
             containerBuilder.RegisterType<StrategyViewModel>();
             containerBuilder.RegisterType<OldStrategyViewModel>();
             containerBuilder.RegisterType<CommentViewModel>();

@@ -19,7 +19,7 @@ namespace VGtime.Uwp.Views
             InitializeComponent();
         }
 
-        public DetailViewModel ViewModel => (DetailViewModel)DataContext;
+        public ArticleDetailViewModel ViewModel => (ArticleDetailViewModel)DataContext;
 
         protected override void OnNavigatedFrom(NavigationEventArgs e)
         {

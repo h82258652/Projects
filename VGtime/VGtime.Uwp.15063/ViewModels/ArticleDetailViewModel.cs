@@ -12,7 +12,7 @@ using VGtime.Uwp.ViewParameters;
 
 namespace VGtime.Uwp.ViewModels
 {
-    public class DetailViewModel : ViewModelBase, INavigable
+    public class ArticleDetailViewModel : ViewModelBase, INavigable
     {
         private readonly IAppToastService _appToastService;
 
@@ -28,7 +28,7 @@ namespace VGtime.Uwp.ViewModels
 
         private RelayCommand _refreshCommand;
 
-        public DetailViewModel(IPostService postService, INavigationService navigationService, IAppToastService appToastService)
+        public ArticleDetailViewModel(IPostService postService, INavigationService navigationService, IAppToastService appToastService)
         {
             _postService = postService;
             _navigationService = navigationService;
