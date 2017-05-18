@@ -13,14 +13,14 @@ namespace VGtime.Models
         }
 
         [JsonProperty("score")]
-        public int Score
+        public float Score
         {
             get;
             set;
         }
 
         [JsonProperty("comment")]
-        public object Comment
+        public string Comment
         {
             get;
             set;

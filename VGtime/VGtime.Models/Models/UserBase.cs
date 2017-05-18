@@ -3,7 +3,7 @@
 namespace VGtime.Models
 {
     [JsonObject]
-    public class User
+    public class UserBase
     {
         [JsonProperty("userId", NullValueHandling = NullValueHandling.Ignore)]
         public int UserId
@@ -48,14 +48,14 @@ namespace VGtime.Models
         }
 
         [JsonProperty("followerDate")]
-        public object FollowerDate
+        public string FollowerDate
         {
             get;
             set;
         }
 
         [JsonProperty("isHighlight")]
-        public object IsHighlight
+        public bool IsHighlight
         {
             get;
             set;

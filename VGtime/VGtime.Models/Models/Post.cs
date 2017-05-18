@@ -8,7 +8,7 @@ namespace VGtime.Models
     public class Post
     {
         [JsonProperty("user")]
-        public User User
+        public UserBase User
         {
             get;
             set;
@@ -79,7 +79,7 @@ namespace VGtime.Models
         }
 
         [JsonProperty("images")]
-        public object[] Images
+        public TimeLineImage[] Images
         {
             get;
             set;
@@ -100,7 +100,7 @@ namespace VGtime.Models
         }
 
         [JsonProperty("thumbnail")]
-        public Thumbnail Thumbnail
+        public TimeLineImage Thumbnail
         {
             get;
             set;
@@ -114,7 +114,7 @@ namespace VGtime.Models
         }
 
         [JsonProperty("relatedGame")]
-        public object RelatedGame
+        public GameBase[] RelatedGame
         {
             get;
             set;
@@ -184,21 +184,21 @@ namespace VGtime.Models
         }
 
         [JsonProperty("originalPost")]
-        public object OriginalPost
+        public Post OriginalPost
         {
             get;
             set;
         }
 
         [JsonProperty("game")]
-        public object Game
+        public GameBase Game
         {
             get;
             set;
         }
 
         [JsonProperty("action")]
-        public object Action
+        public TimeLineAction Action
         {
             get;
             set;

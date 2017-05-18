@@ -15,7 +15,7 @@ namespace VGtime.Models
         }
 
         [JsonProperty("user")]
-        public User User
+        public UserBase User
         {
             get;
             set;

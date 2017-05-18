@@ -8,7 +8,7 @@ using VGtime.Services;
 
 namespace VGtime.Uwp.Data
 {
-    public class SearchUserCollection : IncrementalLoadingCollectionBase<User>
+    public class SearchUserCollection : IncrementalLoadingCollectionBase<UserBase>
     {
         private readonly Action<Exception> _onError;
 

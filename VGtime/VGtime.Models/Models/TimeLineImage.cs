@@ -3,7 +3,7 @@
 namespace VGtime.Models
 {
     [JsonObject]
-    public class Thumbnail
+    public class TimeLineImage
     {
         [JsonProperty("width", NullValueHandling = NullValueHandling.Ignore)]
         public int Width

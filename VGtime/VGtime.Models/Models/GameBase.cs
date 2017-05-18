@@ -61,8 +61,8 @@ namespace VGtime.Models
             set;
         }
 
-        [JsonProperty("typesId", NullValueHandling = NullValueHandling.Ignore)]
-        public int TypesId
+        [JsonProperty("typesId")]
+        public string TypesId
         {
             get;
             set;
@@ -111,7 +111,7 @@ namespace VGtime.Models
         }
 
         [JsonProperty("thumbnail")]
-        public Thumbnail Thumbnail
+        public TimeLineImage Thumbnail
         {
             get;
             set;

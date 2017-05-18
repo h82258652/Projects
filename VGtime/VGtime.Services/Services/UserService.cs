@@ -56,7 +56,7 @@ namespace VGtime.Services
             }
         }
 
-        public async Task<ResultBase<SearchList<User>>> SearchUserAsync(string text, int page = 1, int pageSize = 20)
+        public async Task<ResultBase<SearchList<UserBase>>> SearchUserAsync(string text, int page = 1, int pageSize = 20)
         {
             if (text == null)
             {
@@ -75,7 +75,7 @@ namespace VGtime.Services
             using (var client = new HttpClient())
             {
                 var json = await client.GetStringAsync(url);
-                return JsonConvert.DeserializeObject<ResultBase<SearchList<User>>>(json);
+                return JsonConvert.DeserializeObject<ResultBase<SearchList<UserBase>>>(json);
             }
         }
     }

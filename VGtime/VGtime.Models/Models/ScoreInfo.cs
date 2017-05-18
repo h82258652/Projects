@@ -8,7 +8,7 @@ namespace VGtime.Models
     public class ScoreInfo
     {
         [JsonProperty("user")]
-        public User User
+        public UserBase User
         {
             get;
             set;
