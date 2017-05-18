@@ -33,7 +33,8 @@
             <TextBlock Style="{StaticResource VGtimePageHeaderTextControlStyle}"
                        Text="{Binding Path=Game.Title}" />
         </Grid>
-        <GridView Grid.Row="1"
+        <GridView x:Name="AblumGridView"
+                  Grid.Row="1"
                   Padding="4,4,0,0"
                   IsItemClickEnabled="True"
                   ItemClick="AblumGridView_ItemClick"
