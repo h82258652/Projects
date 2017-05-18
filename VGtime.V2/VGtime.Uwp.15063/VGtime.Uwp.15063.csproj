@@ -105,6 +105,7 @@
     <Compile Include="ViewModels\Settings\SettingViewModel.cs" />
     <Compile Include="ViewModels\Users\LoginViewModel.cs" />
     <Compile Include="ViewModels\ViewModelLocator.cs" />
+    <Compile Include="ViewModels\WelcomeViewModel.cs" />
     <Compile Include="Views\ArticleDetailView.xaml.cs">
       <DependentUpon>ArticleDetailView.xaml</DependentUpon>
     </Compile>
@@ -128,6 +129,9 @@
     </Compile>
     <Compile Include="Views\Users\LoginView.xaml.cs">
       <DependentUpon>LoginView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\WelcomeView.xaml.cs">
+      <DependentUpon>WelcomeView.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -183,6 +187,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\WelcomeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
@@ -195,6 +203,12 @@
   <ItemGroup>
     <Folder Include="Controls\" />
     <Folder Include="Messages\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\VGtime.Services\VGtime.Services.csproj">
+      <Project>{5D75A74E-97DB-4113-A9C9-0E44B25073F4}</Project>
+      <Name>VGtime.Services</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
