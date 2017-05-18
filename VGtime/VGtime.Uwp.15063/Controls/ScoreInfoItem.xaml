@@ -40,7 +40,8 @@
                        Text="{Binding Path=PublishDate, Converter={StaticResource TimeAgoConverter}}" />
             <Border Grid.Column="3"
                     Background="{Binding Path=Score, Converter={StaticResource ScoreToColorConverter}}">
-                <TextBlock Foreground="White"
+                <TextBlock FontSize="20"
+                           Foreground="White"
                            Text="{Binding Path=Score}" />
             </Border>
         </Grid>
