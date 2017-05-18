@@ -33,9 +33,14 @@ namespace VGtime.Uwp.Views
             Messenger.Default.Register<PostDetailLoadedMessage>(this, async message =>
             {
                 await WebView.NavigateAsync(new Uri("ms-appx-web:///Assets/Html/detail.html"));
+                var post = message.Post;
+                await WebView.InvokeScriptAsync("setUser", new[]
+                {
+                    post.User.AvatarUrl, post.User.Name
+                });
                 await WebView.InvokeScriptAsync("setContent", new[]
                 {
-                    message.Post.Content
+                    post.Content
                 });
             });
 

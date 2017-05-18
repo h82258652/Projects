@@ -2,8 +2,9 @@
 /// <reference path="../type/hammerjs.d.ts"/>
 /// <reference path="../type/winrt.d.ts"/>
 
-function setUser(avatar: string): void {
+function setUser(avatar: string, username: string): void {
     $(".vgapp_user_box > img").attr("src", avatar);
+    $(".vgapp_user_box > .vgapp_ub_info > .name").text(username);
 }
 
 function setContent(content: string): void {
