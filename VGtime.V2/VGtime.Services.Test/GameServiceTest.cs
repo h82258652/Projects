@@ -51,5 +51,27 @@ namespace VGtime.Services.Test
             var result = await _gameService.GetStrategyMenuListAsync(2235);
             Assert.Equal(result.Retcode, 200);
         }
+
+        [Fact]
+        public async Task TestSearchGameAsync()
+        {
+            const string text = "尼尔";
+
+            await Assert.ThrowsAsync<ArgumentNullException>(async () =>
+            {
+                await _gameService.SearchAsync(null);
+            });
+            await Assert.ThrowsAsync<ArgumentOutOfRangeException>(async () =>
+            {
+                await _gameService.SearchAsync(text, page: 0);
+            });
+            await Assert.ThrowsAsync<ArgumentOutOfRangeException>(async () =>
+            {
+                await _gameService.SearchAsync(text, pageSize: 0);
+            });
+
+            var result = await _gameService.SearchAsync(text);
+            Assert.Equal(result.Retcode, 200);
+        }
     }
 }

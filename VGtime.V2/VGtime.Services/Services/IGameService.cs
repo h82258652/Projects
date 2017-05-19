@@ -1,5 +1,6 @@
 ﻿using System.Threading.Tasks;
 using VGtime.Models;
+using VGtime.Models.Games;
 
 namespace VGtime.Services
 {
@@ -12,5 +13,7 @@ namespace VGtime.Services
         Task<ServerBase<GameList>> GetScoreListAsync(int gameId, int page = 1, int pageSize = 20);
 
         Task<ServerBase<StrategyList>> GetStrategyMenuListAsync(int gameId);
+
+        Task<ServerBase<SearchList<GameBase>>> SearchAsync(string text, int? userId = null, int page = 1, int pageSize = 20);
     }
 }
