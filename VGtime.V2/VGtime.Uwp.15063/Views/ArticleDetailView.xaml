@@ -16,5 +16,6 @@
                        Foreground="White" />
             <Image />
         </Grid>
+        <WebView></WebView>
     </Grid>
 </Page>
