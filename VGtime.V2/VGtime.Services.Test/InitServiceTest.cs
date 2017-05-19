@@ -17,7 +17,7 @@ namespace VGtime.Services.Test
         public async Task GetHotwordAsync()
         {
             var result = await _initService.GetHotwordAsync();
-            Assert.Equal(result.Retcode, 200);
+            Assert.Equal(result.Retcode, Constants.SuccessCode);
         }
 
         [Fact]
@@ -29,7 +29,7 @@ namespace VGtime.Services.Test
             });
 
             var result = await _initService.GetStartpicAsync("2.0.8");
-            Assert.Equal(result.Retcode, 200);
+            Assert.Equal(result.Retcode, Constants.SuccessCode);
         }
     }
 }

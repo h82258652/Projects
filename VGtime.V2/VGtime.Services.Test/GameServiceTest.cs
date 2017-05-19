@@ -17,14 +17,14 @@ namespace VGtime.Services.Test
         public async Task TestGetAlbumListAsync()
         {
             var result = await _gameService.GetAlbumListAsync(2235);
-            Assert.Equal(result.Retcode, 200);
+            Assert.Equal(result.Retcode, Constants.SuccessCode);
         }
 
         [Fact]
         public async Task TestGetDetailAsync()
         {
             var result = await _gameService.GetDetailAsync(2235);
-            Assert.Equal(result.Retcode, 200);
+            Assert.Equal(result.Retcode, Constants.SuccessCode);
         }
 
         [Fact]
@@ -42,7 +42,7 @@ namespace VGtime.Services.Test
             });
 
             var result = await _gameService.GetRelationListAsync(gameId, 1);
-            Assert.Equal(result.Retcode, 200);
+            Assert.Equal(result.Retcode, Constants.SuccessCode);
         }
 
         [Fact]
@@ -60,14 +60,14 @@ namespace VGtime.Services.Test
             });
 
             var result = await _gameService.GetScoreListAsync(gameId);
-            Assert.Equal(result.Retcode, 200);
+            Assert.Equal(result.Retcode, Constants.SuccessCode);
         }
 
         [Fact]
         public async Task TestGetStrategyMenuListAsync()
         {
             var result = await _gameService.GetStrategyMenuListAsync(2235);
-            Assert.Equal(result.Retcode, 200);
+            Assert.Equal(result.Retcode, Constants.SuccessCode);
         }
 
         [Fact]
@@ -89,7 +89,7 @@ namespace VGtime.Services.Test
             });
 
             var result = await _gameService.SearchAsync(text);
-            Assert.Equal(result.Retcode, 200);
+            Assert.Equal(result.Retcode, Constants.SuccessCode);
         }
     }
 }

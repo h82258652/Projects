@@ -1,10 +1,58 @@
 ﻿<Page x:Class="VGtime.Uwp.Views.SearchView"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:behaviors="using:SoftwareKobo.Behaviors"
+      xmlns:converters="using:SoftwareKobo.Converters"
+      xmlns:core="using:Microsoft.Xaml.Interactions.Core"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
       xmlns:local="using:VGtime.Uwp.Views"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       DataContext="{Binding Source={StaticResource Locator}, Path=Search}"
       mc:Ignorable="d">
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" />
+    <FrameworkElement.Resources>
+        <ResourceDictionary>
+            <converters:ItemClickEventArgsConverter x:Key="ItemClickEventArgsConverter" />
+        </ResourceDictionary>
+    </FrameworkElement.Resources>
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid>
+            <Button>
+                <interactivity:Interaction.Behaviors>
+                    <core:EventTriggerBehavior EventName="Click">
+                        <behaviors:GoBackAction />
+                    </core:EventTriggerBehavior>
+                </interactivity:Interaction.Behaviors>
+            </Button>
+            <AutoSuggestBox />
+        </Grid>
+        <Pivot>
+            <PivotItem Header="文章">
+                <GridView SelectionMode="None"
+                          IsItemClickEnabled="True"></GridView>
+            </PivotItem>
+            <PivotItem Header="俱乐部"></PivotItem>
+            <PivotItem Header="用户">
+                <GridView SelectionMode="None"
+                          ItemsSource="{Binding Path=Users}"></GridView>
+            </PivotItem>
+            <PivotItem Header="游戏">
+                <GridView SelectionMode="None"
+                          IsItemClickEnabled="True"
+                          ItemsSource="{Binding Path=Games}">
+                    <GridView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <!-- TODO -->
+                            </Grid>
+                        </DataTemplate>
+                    </GridView.ItemTemplate>
+                </GridView>
+            </PivotItem>
+        </Pivot>
+    </Grid>
 </Page>

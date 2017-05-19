@@ -125,6 +125,10 @@
       <Project>{3b9b899b-5ed9-4074-8a62-c396227b98e2}</Project>
       <Name>VGtime.Configuration</Name>
     </ProjectReference>
+    <ProjectReference Include="..\VGtime.Models\VGtime.Models.csproj">
+      <Project>{3A47FCD2-8CBC-44F8-B863-618FF5650249}</Project>
+      <Name>VGtime.Models</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>

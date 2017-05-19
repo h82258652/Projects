@@ -25,7 +25,7 @@ namespace VGtime.Services.Test
             });
 
             var result = await _userService.GetUserInfoAsync(userId, token);
-            Assert.Equal(result.Retcode, 200);
+            Assert.Equal(result.Retcode, Constants.SuccessCode);
         }
 
         [Fact]
@@ -44,7 +44,7 @@ namespace VGtime.Services.Test
             });
 
             var result = await _userService.LoginAsync(account, password);
-            Assert.Equal(result.Retcode, 200);
+            Assert.Equal(result.Retcode, Constants.SuccessCode);
         }
 
         [Fact]
@@ -66,7 +66,7 @@ namespace VGtime.Services.Test
             });
 
             var result = await _userService.SearchAsync(text);
-            Assert.Equal(result.Retcode, 200);
+            Assert.Equal(result.Retcode, Constants.SuccessCode);
         }
     }
 }

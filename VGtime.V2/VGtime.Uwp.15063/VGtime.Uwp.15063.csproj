@@ -95,7 +95,11 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Data\IncrementalLoadingCollectionBase.cs" />
+    <Compile Include="Data\SearchGameCollection.cs" />
+    <Compile Include="Data\SearchUserCollection.cs" />
     <Compile Include="Messages\ArticleDetailLoadedMessage.cs" />
+    <Compile Include="Messages\LoginSuccessMessage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\ArticleDetailViewModel.cs" />
     <Compile Include="ViewModels\Games\GameDetailViewModel.cs" />
@@ -222,6 +226,10 @@
     <ProjectReference Include="..\..\Libraries\SoftwareKobo.Controls.ImageEx.Uwp\SoftwareKobo.Controls.ImageEx.Uwp.csproj">
       <Project>{3D0A2072-6B7C-4C2F-B350-38FBF3547899}</Project>
       <Name>SoftwareKobo.Controls.ImageEx.Uwp</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Libraries\SoftwareKobo.Utils.Uwp\SoftwareKobo.Utils.Uwp.csproj">
+      <Project>{e325fcd6-2e6b-44fc-85d0-d49957258c98}</Project>
+      <Name>SoftwareKobo.Utils.Uwp</Name>
     </ProjectReference>
     <ProjectReference Include="..\VGtime.Configuration.Uwp.15063\VGtime.Configuration.Uwp.15063.csproj">
       <Project>{bf6f62f6-713b-4c2a-9aa5-768f4d8e5c06}</Project>

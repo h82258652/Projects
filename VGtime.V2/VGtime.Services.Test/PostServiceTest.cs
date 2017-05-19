@@ -29,7 +29,7 @@ namespace VGtime.Services.Test
             });
 
             var result = await _postService.GetCommentListAsync(postId, type);
-            Assert.Equal(result.Retcode, 200);
+            Assert.Equal(result.Retcode, Constants.SuccessCode);
         }
 
         [Fact]
@@ -44,7 +44,7 @@ namespace VGtime.Services.Test
             });
 
             var result = await _postService.GetDetailAsync(postId, type);
-            Assert.Equal(result.Retcode, 200);
+            Assert.Equal(result.Retcode, Constants.SuccessCode);
         }
 
         [Fact]
@@ -54,7 +54,7 @@ namespace VGtime.Services.Test
             const int type = 1;
 
             var result = await _postService.GetDetailStatusAsync(postId, type);
-            Assert.Equal(result.Retcode, 200);
+            Assert.Equal(result.Retcode, Constants.SuccessCode);
         }
     }
 }

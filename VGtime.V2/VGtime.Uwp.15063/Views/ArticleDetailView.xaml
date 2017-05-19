@@ -15,7 +15,10 @@
                        VerticalAlignment="Center"
                        Foreground="White" />
             <Image />
+            <Button Click="ScrollToTopButton_Click"
+                    Style="{StaticResource EmptyButtonStyle}" />
         </Grid>
-        <WebView></WebView>
+        <WebView x:Name="WebView"
+                 ScriptNotify="WebView_ScriptNotify" />
     </Grid>
 </Page>

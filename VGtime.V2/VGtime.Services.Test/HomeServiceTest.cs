@@ -17,7 +17,7 @@ namespace VGtime.Services.Test
         public async Task TestGetHeadpicAsync()
         {
             var result = await _homeService.GetHeadpicAsync();
-            Assert.Equal(result.Retcode, 200);
+            Assert.Equal(result.Retcode, Constants.SuccessCode);
         }
 
         [Fact]
@@ -33,7 +33,7 @@ namespace VGtime.Services.Test
             });
 
             var result = await _homeService.GetVglistAsync();
-            Assert.Equal(result.Retcode, 200);
+            Assert.Equal(result.Retcode, Constants.SuccessCode);
         }
     }
 }
