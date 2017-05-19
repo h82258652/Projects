@@ -1,0 +1,12 @@
+﻿using System.Threading.Tasks;
+using VGtime.Models;
+
+namespace VGtime.Services
+{
+    public interface IInitService
+    {
+        Task<ServerBase<KeywordList>> GetHotwordAsync();
+
+        Task<ServerBase<StartPic>> GetStartpicAsync(string versionName);
+    }
+}
