@@ -2,6 +2,9 @@
 using Autofac.Extras.CommonServiceLocator;
 using GalaSoft.MvvmLight.Views;
 using Microsoft.Practices.ServiceLocation;
+using SoftwareKobo.Controls;
+using VGtime.Configuration;
+using VGtime.Services;
 using VGtime.Uwp.ViewModels.Games;
 using VGtime.Uwp.ViewModels.Settings;
 using VGtime.Uwp.ViewModels.Users;
@@ -32,11 +35,18 @@ namespace VGtime.Uwp.ViewModels
 
         public SettingViewModel Setting => ServiceLocator.Current.GetInstance<SettingViewModel>();
 
+        public WelcomeViewModel Welcome => ServiceLocator.Current.GetInstance<WelcomeViewModel>();
+
         private static IContainer ConfigureAutofacContainer()
         {
             var containerBuilder = new ContainerBuilder();
 
             containerBuilder.RegisterInstance(CreateNavigationService());
+            containerBuilder.RegisterType<InitService>().As<IInitService>();
+
+            containerBuilder.RegisterType<VGtimeSettings>().As<IVGtimeSettings>();
+
+            containerBuilder.RegisterInstance(DefaultImageLoader.Instance);
 
             containerBuilder.RegisterType<AboutViewModel>();
             containerBuilder.RegisterType<ArticleDetailViewModel>();
@@ -46,6 +56,7 @@ namespace VGtime.Uwp.ViewModels
             containerBuilder.RegisterType<MainViewModel>();
             containerBuilder.RegisterType<SearchViewModel>();
             containerBuilder.RegisterType<SettingViewModel>();
+            containerBuilder.RegisterType<WelcomeViewModel>();
 
             return containerBuilder.Build();
         }

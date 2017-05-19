@@ -219,9 +219,29 @@
     <Folder Include="Controls\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Libraries\SoftwareKobo.Controls.ImageEx.Uwp\SoftwareKobo.Controls.ImageEx.Uwp.csproj">
+      <Project>{3D0A2072-6B7C-4C2F-B350-38FBF3547899}</Project>
+      <Name>SoftwareKobo.Controls.ImageEx.Uwp</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VGtime.Configuration.Uwp.15063\VGtime.Configuration.Uwp.15063.csproj">
+      <Project>{bf6f62f6-713b-4c2a-9aa5-768f4d8e5c06}</Project>
+      <Name>VGtime.Configuration.Uwp.15063</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VGtime.Configuration\VGtime.Configuration.csproj">
+      <Project>{3b9b899b-5ed9-4074-8a62-c396227b98e2}</Project>
+      <Name>VGtime.Configuration</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VGtime.Models\VGtime.Models.csproj">
+      <Project>{3a47fcd2-8cbc-44f8-b863-618ff5650249}</Project>
+      <Name>VGtime.Models</Name>
+    </ProjectReference>
     <ProjectReference Include="..\VGtime.Services\VGtime.Services.csproj">
       <Project>{5D75A74E-97DB-4113-A9C9-0E44B25073F4}</Project>
       <Name>VGtime.Services</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VGtime.Utils\VGtime.Utils.csproj">
+      <Project>{f203414a-213f-4da2-9c6e-9df10a450514}</Project>
+      <Name>VGtime.Utils</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
