@@ -7,16 +7,17 @@ namespace VGtime.Services
 {
     public class GameService : IGameService
     {
-        public async Task<ServerBase<object>> GetAlbumListAsync(int gameId)
+        public async Task<ServerBase<AlbumList>> GetAlbumListAsync(int gameId)
         {
             var url = $"{Constants.UrlBase}/vgtime-app/api/v2/game/ablumlist.json?gameId={gameId}";
             using (var client = new HttpClient())
             {
                 var json = await client.GetStringAsync(url);
-                return JsonConvert.DeserializeObject<ServerBase<object>>(json);
+                return JsonConvert.DeserializeObject<ServerBase<AlbumList>>(json, new JsonSerializerSettings()
+                {
+                    NullValueHandling = NullValueHandling.Ignore
+                });
             }
-
-            throw new System.NotImplementedException();
         }
 
         public async Task<ServerBase<GameData>> GetDetailAsync(int gameId, int? userId = null)

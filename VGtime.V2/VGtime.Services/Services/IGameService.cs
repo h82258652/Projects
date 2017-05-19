@@ -5,7 +5,7 @@ namespace VGtime.Services
 {
     public interface IGameService
     {
-        Task<ServerBase<object>> GetAlbumListAsync(int gameId);
+        Task<ServerBase<AlbumList>> GetAlbumListAsync(int gameId);
 
         Task<ServerBase<GameData>> GetDetailAsync(int gameId, int? userId = null);
     }
