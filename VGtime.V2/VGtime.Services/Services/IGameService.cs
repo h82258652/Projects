@@ -8,5 +8,7 @@ namespace VGtime.Services
         Task<ServerBase<AlbumList>> GetAlbumListAsync(int gameId);
 
         Task<ServerBase<GameData>> GetDetailAsync(int gameId, int? userId = null);
+
+        Task<ServerBase<GameList>> GetScoreListAsync(int gameId, int page = 1, int pageSize = 20);
     }
 }
