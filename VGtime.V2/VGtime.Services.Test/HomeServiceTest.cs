@@ -14,6 +14,13 @@ namespace VGtime.Services.Test
         }
 
         [Fact]
+        public async Task TestGetHeadpicAsync()
+        {
+            var result = await _homeService.GetHeadpicAsync();
+            Assert.Equal(result.Retcode, 200);
+        }
+
+        [Fact]
         public async Task TestGetVglistAsync()
         {
             await Assert.ThrowsAsync<ArgumentOutOfRangeException>(async () =>

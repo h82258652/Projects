@@ -5,6 +5,8 @@ namespace VGtime.Services
 {
     public interface IHomeService
     {
+        Task<ServerBase<HeadPicList>> GetHeadpicAsync();
+
         Task<ServerBase<PushList>> GetVglistAsync(int page = 1, int pageSize = 20);
     }
 }
