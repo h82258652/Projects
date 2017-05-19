@@ -46,5 +46,27 @@ namespace VGtime.Services.Test
             var result = await _userService.LoginAsync(account, password);
             Assert.Equal(result.Retcode, 200);
         }
+
+        [Fact]
+        public async Task TestSearchAsync()
+        {
+            const string text = "¸ß´ï";
+
+            await Assert.ThrowsAsync<ArgumentNullException>(async () =>
+            {
+                await _userService.SearchAsync(null);
+            });
+            await Assert.ThrowsAsync<ArgumentOutOfRangeException>(async () =>
+            {
+                await _userService.SearchAsync(text, page: 0);
+            });
+            await Assert.ThrowsAsync<ArgumentOutOfRangeException>(async () =>
+            {
+                await _userService.SearchAsync(text, pageSize: 0);
+            });
+
+            var result = await _userService.SearchAsync(text);
+            Assert.Equal(result.Retcode, 200);
+        }
     }
 }

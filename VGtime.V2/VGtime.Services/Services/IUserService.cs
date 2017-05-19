@@ -9,5 +9,7 @@ namespace VGtime.Services
         Task<ServerBase<UserBase>> GetUserInfoAsync(int userId, string token);
 
         Task<ServerBase<UserBase>> LoginAsync(string account, string password);
+
+        Task<ServerBase<SearchList<UserBase>>> SearchAsync(string text, int? userId = null, int page = 1, int pageSize = 20);
     }
 }
