@@ -28,6 +28,24 @@ namespace VGtime.Services.Test
         }
 
         [Fact]
+        public async Task TestGetRelationListAsync()
+        {
+            const int gameId = 2235;
+
+            await Assert.ThrowsAsync<ArgumentOutOfRangeException>(async () =>
+            {
+                await _gameService.GetRelationListAsync(gameId, 1, page: 0);
+            });
+            await Assert.ThrowsAsync<ArgumentOutOfRangeException>(async () =>
+            {
+                await _gameService.GetRelationListAsync(gameId, 1, pageSize: 0);
+            });
+
+            var result = await _gameService.GetRelationListAsync(gameId, 1);
+            Assert.Equal(result.Retcode, 200);
+        }
+
+        [Fact]
         public async Task TestGetScoreListAsync()
         {
             const int gameId = 2235;

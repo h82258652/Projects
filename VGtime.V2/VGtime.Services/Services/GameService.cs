@@ -5,18 +5,19 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 using VGtime.Models;
 using VGtime.Models.Games;
+using VGtime.Models.Timeline;
 
 namespace VGtime.Services
 {
     public class GameService : IGameService
     {
-        public async Task<ServerBase<AlbumList>> GetAlbumListAsync(int gameId)
+        public async Task<ServerBase<AlbumList<GameAlbum>>> GetAlbumListAsync(int gameId)
         {
             var url = $"{Constants.UrlBase}/vgtime-app/api/v2/game/ablumlist.json?gameId={gameId}";
             using (var client = new HttpClient())
             {
                 var json = await client.GetStringAsync(url);
-                return JsonConvert.DeserializeObject<ServerBase<AlbumList>>(json, new JsonSerializerSettings()
+                return JsonConvert.DeserializeObject<ServerBase<AlbumList<GameAlbum>>>(json, new JsonSerializerSettings()
                 {
                     NullValueHandling = NullValueHandling.Ignore
                 });
@@ -34,6 +35,28 @@ namespace VGtime.Services
             {
                 var json = await client.GetStringAsync(url);
                 return JsonConvert.DeserializeObject<ServerBase<GameData>>(json, new JsonSerializerSettings()
+                {
+                    NullValueHandling = NullValueHandling.Ignore
+                });
+            }
+        }
+
+        public async Task<ServerBase<AlbumList<TimeLineBase>>> GetRelationListAsync(int gameId, int type, int page = 1, int pageSize = 20)
+        {
+            if (page <= 0)
+            {
+                throw new ArgumentOutOfRangeException(nameof(page));
+            }
+            if (pageSize <= 0)
+            {
+                throw new ArgumentOutOfRangeException(nameof(pageSize));
+            }
+
+            var url = $"{Constants.UrlBase}/vgtime-app/api/v2/game/relationList.json?gameId={gameId}&type={type}&page={page}&pageSize={pageSize}";
+            using (var client = new HttpClient())
+            {
+                var json = await client.GetStringAsync(url);
+                return JsonConvert.DeserializeObject<ServerBase<AlbumList<TimeLineBase>>>(json, new JsonSerializerSettings()
                 {
                     NullValueHandling = NullValueHandling.Ignore
                 });

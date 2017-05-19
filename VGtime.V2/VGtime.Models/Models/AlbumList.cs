@@ -1,13 +1,12 @@
 ﻿using Newtonsoft.Json;
-using VGtime.Models.Games;
 
 namespace VGtime.Models
 {
     [JsonObject]
-    public class AlbumList
+    public class AlbumList<T>
     {
         [JsonProperty("ablumList")]
-        public GameAlbum[] Data
+        public T[] Data
         {
             get;
             set;
