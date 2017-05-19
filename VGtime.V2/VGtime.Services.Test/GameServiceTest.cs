@@ -44,5 +44,12 @@ namespace VGtime.Services.Test
             var result = await _gameService.GetScoreListAsync(gameId);
             Assert.Equal(result.Retcode, 200);
         }
+
+        [Fact]
+        public async Task TestGetStrategyMenuListAsync()
+        {
+            var result = await _gameService.GetStrategyMenuListAsync(2235);
+            Assert.Equal(result.Retcode, 200);
+        }
     }
 }

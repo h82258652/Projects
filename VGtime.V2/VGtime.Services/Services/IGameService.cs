@@ -10,5 +10,7 @@ namespace VGtime.Services
         Task<ServerBase<GameData>> GetDetailAsync(int gameId, int? userId = null);
 
         Task<ServerBase<GameList>> GetScoreListAsync(int gameId, int page = 1, int pageSize = 20);
+
+        Task<ServerBase<StrategyList>> GetStrategyMenuListAsync(int gameId);
     }
 }
