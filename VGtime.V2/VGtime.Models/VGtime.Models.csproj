@@ -6,7 +6,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Models\Article\" />
     <Folder Include="Models\Chat\" />
     <Folder Include="Models\Message\" />
     <Folder Include="Models\Post\" />
