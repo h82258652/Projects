@@ -13,6 +13,8 @@ namespace VGtime.Uwp.ViewModels
 {
     public class ViewModelLocator
     {
+        public CommentViewModel Comment => ServiceLocator.Current.GetInstance<CommentViewModel>();
+
         static ViewModelLocator()
         {
             var serviceLocator = new AutofacServiceLocator(ConfigureAutofacContainer());
