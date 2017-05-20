@@ -5,15 +5,21 @@ using Microsoft.Practices.ServiceLocation;
 using SoftwareKobo.Controls;
 using VGtime.Configuration;
 using VGtime.Services;
+using VGtime.Uwp.Services;
 using VGtime.Uwp.ViewModels.Games;
 using VGtime.Uwp.ViewModels.Settings;
 using VGtime.Uwp.ViewModels.Users;
+using VGtime.Uwp.Views;
 
 namespace VGtime.Uwp.ViewModels
 {
     public class ViewModelLocator
     {
-        public CommentViewModel Comment => ServiceLocator.Current.GetInstance<CommentViewModel>();
+        public const string ArticleDetailViewKey = "ArticleDetail";
+
+        public const string CommentViewKey = "Comment";
+
+        public const string SearchViewKey = "Search";
 
         static ViewModelLocator()
         {
@@ -24,6 +30,8 @@ namespace VGtime.Uwp.ViewModels
         public AboutViewModel About => ServiceLocator.Current.GetInstance<AboutViewModel>();
 
         public ArticleDetailViewModel ArticleDetail => ServiceLocator.Current.GetInstance<ArticleDetailViewModel>();
+
+        public CommentViewModel Comment => ServiceLocator.Current.GetInstance<CommentViewModel>();
 
         public GameDetailViewModel GameDetail => ServiceLocator.Current.GetInstance<GameDetailViewModel>();
 
@@ -45,6 +53,10 @@ namespace VGtime.Uwp.ViewModels
 
             containerBuilder.RegisterInstance(CreateNavigationService());
             containerBuilder.RegisterType<InitService>().As<IInitService>();
+            containerBuilder.RegisterType<HomeService>().As<IHomeService>();
+            containerBuilder.RegisterType<UserService>().As<IUserService>();
+            containerBuilder.RegisterType<GameService>().As<IGameService>();
+            containerBuilder.RegisterType<AppToastService>().As<IAppToastService>();
 
             containerBuilder.RegisterType<VGtimeSettings>().As<IVGtimeSettings>();
 
@@ -66,6 +78,9 @@ namespace VGtime.Uwp.ViewModels
         private static INavigationService CreateNavigationService()
         {
             var navigationService = new NavigationService();
+            navigationService.Configure(SearchViewKey, typeof(SearchView));
+            navigationService.Configure(ArticleDetailViewKey, typeof(ArticleDetailView));
+            navigationService.Configure(CommentViewKey, typeof(CommentView));
             return navigationService;
         }
     }

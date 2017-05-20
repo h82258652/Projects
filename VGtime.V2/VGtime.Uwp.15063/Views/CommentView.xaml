@@ -7,6 +7,7 @@
       xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
       xmlns:local="using:VGtime.Uwp.Views"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      DataContext="{Binding Source={StaticResource Locator}, Path=Comment}"
       mc:Ignorable="d">
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid.RowDefinitions>
@@ -22,10 +23,16 @@
                 </interactivity:Interaction.Behaviors>
             </Button>
         </Grid>
-        <GridView SelectionMode="None">
+        <GridView ItemsSource="{Binding Path=Comments}"
+                  SelectionMode="None">
             <GridView.Header>
                 <Border />
             </GridView.Header>
+            <GridView.ItemTemplate>
+                <DataTemplate>
+                    <Grid />
+                </DataTemplate>
+            </GridView.ItemTemplate>
             <GridView.ItemContainerStyle>
                 <Style TargetType="GridViewItem" />
             </GridView.ItemContainerStyle>

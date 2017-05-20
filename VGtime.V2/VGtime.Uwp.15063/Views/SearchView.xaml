@@ -35,7 +35,9 @@
                 <GridView SelectionMode="None"
                           IsItemClickEnabled="True"></GridView>
             </PivotItem>
-            <PivotItem Header="俱乐部"></PivotItem>
+            <PivotItem Header="俱乐部">
+                <GridView SelectionMode="None"></GridView>
+            </PivotItem>
             <PivotItem Header="用户">
                 <GridView SelectionMode="None"
                           ItemsSource="{Binding Path=Users}"></GridView>
