@@ -7,6 +7,8 @@ namespace VGtime.Services
     {
         Task<ServerBase<HeadPicList>> GetHeadpicAsync();
 
+        Task<ServerBase<TopicList>> GetListByTagAsync(int tags, int page = 1, int pageSize = 20);
+
         Task<ServerBase<PushList>> GetVglistAsync(int page = 1, int pageSize = 20);
     }
 }

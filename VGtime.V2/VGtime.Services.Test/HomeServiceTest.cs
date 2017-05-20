@@ -21,6 +21,32 @@ namespace VGtime.Services.Test
         }
 
         [Fact]
+        public async Task TestGetListByTagAsync()
+        {
+            await Assert.ThrowsAsync<ArgumentOutOfRangeException>(async () =>
+             {
+                 await _homeService.GetListByTagAsync(1, page: 0);
+             });
+            await Assert.ThrowsAsync<ArgumentOutOfRangeException>(async () =>
+            {
+                await _homeService.GetListByTagAsync(1, pageSize: 0);
+            });
+
+            {
+                var result = await _homeService.GetListByTagAsync(4);
+                Assert.Equal(result.Retcode, Constants.SuccessCode);
+            }
+            {
+                var result = await _homeService.GetListByTagAsync(2);
+                Assert.Equal(result.Retcode, Constants.SuccessCode);
+            }
+            {
+                var result = await _homeService.GetListByTagAsync(3);
+                Assert.Equal(result.Retcode, Constants.SuccessCode);
+            }
+        }
+
+        [Fact]
         public async Task TestGetVglistAsync()
         {
             await Assert.ThrowsAsync<ArgumentOutOfRangeException>(async () =>

@@ -24,6 +24,6 @@ namespace VGtime.Uwp.ViewModels
         // input
         public int _page;
 
-        private readonly Services.IPostService _postService;
+        private readonly IPostService _postService;
     }
 }
