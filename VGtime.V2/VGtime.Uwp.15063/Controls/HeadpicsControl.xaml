@@ -1,0 +1,50 @@
+﻿<UserControl x:Class="VGtime.Uwp.Controls.HeadpicsControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:controls="using:AppStudio.Uwp.Controls"
+             xmlns:converters="using:VGtime.Uwp.Converters"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="using:VGtime.Uwp.Controls"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             d:DataContext="{Binding Source={StaticResource Locator}, Path=Main}"
+             SizeChanged="HeadpicsControl_SizeChanged"
+             mc:Ignorable="d">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <converters:AddConverter x:Key="AddConverter" />
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Grid>
+        <controls:Carousel x:Name="HeadpicsCarousel"
+                           MaxHeight="400"
+                           ItemClickCommand="{Binding Path=PostClickCommand}"
+                           ItemsSource="{Binding Path=Headpics}"
+                           MaxItems="1"
+                           SelectedIndex="0"
+                           SlideInterval="4000">
+            <controls:Carousel.ContentTemplate>
+                <DataTemplate>
+                    <local:HeadpicItem />
+                </DataTemplate>
+            </controls:Carousel.ContentTemplate>
+        </controls:Carousel>
+        <Grid x:Name="HeadpicsIndicator"
+              Width="32"
+              Height="32"
+              Margin="0,0,16,16"
+              HorizontalAlignment="Right"
+              VerticalAlignment="Bottom">
+            <Border Background="{ThemeResource VGtimeAccentBrush}"
+                    CornerRadius="2"
+                    RenderTransformOrigin="0.5,0.5">
+                <UIElement.RenderTransform>
+                    <RotateTransform Angle="45" />
+                </UIElement.RenderTransform>
+            </Border>
+            <TextBlock HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       Foreground="White">
+                <Run Text="{Binding ElementName=HeadpicsCarousel, Path=SelectedIndex, Converter={StaticResource AddConverter}, ConverterParameter=1}" /><Run Text="/" /><Run Text="{Binding Path=Headpics.Length}" /></TextBlock>
+        </Grid>
+    </Grid>
+</UserControl>

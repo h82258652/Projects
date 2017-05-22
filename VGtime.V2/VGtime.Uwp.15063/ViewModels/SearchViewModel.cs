@@ -1,16 +1,21 @@
-﻿using System;
-using GalaSoft.MvvmLight;
+﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
+using GalaSoft.MvvmLight.Views;
 using VGtime.Configuration;
 using VGtime.Models.Games;
 using VGtime.Services;
 using VGtime.Uwp.Data;
+using VGtime.Uwp.Services;
 
 namespace VGtime.Uwp.ViewModels
 {
     public class SearchViewModel : ViewModelBase
     {
+        private readonly IAppToastService _appToastService;
+
         private readonly IGameService _gameService;
+
+        private readonly INavigationService _navigationService;
 
         private readonly IUserService _userService;
 
@@ -24,11 +29,13 @@ namespace VGtime.Uwp.ViewModels
 
         private SearchUserCollection _users;
 
-        public SearchViewModel(IUserService userService, IGameService gameService, IVGtimeSettings vgtimeSettings)
+        public SearchViewModel(IUserService userService, IGameService gameService, IVGtimeSettings vgtimeSettings, INavigationService navigationService, IAppToastService appToastService)
         {
             _userService = userService;
             _gameService = gameService;
             _vgtimeSettings = vgtimeSettings;
+            _navigationService = navigationService;
+            _appToastService = appToastService;
         }
 
         public RelayCommand<GameBase> GameClickCommand
@@ -37,7 +44,7 @@ namespace VGtime.Uwp.ViewModels
             {
                 _gameClickCommand = _gameClickCommand ?? new RelayCommand<GameBase>(game =>
                 {
-                    throw new NotImplementedException();
+                    _navigationService.NavigateTo(ViewModelLocator.GameDetailViewKey, null);
                 });
                 return _gameClickCommand;
             }
@@ -63,8 +70,7 @@ namespace VGtime.Uwp.ViewModels
                 {
                     if (string.IsNullOrEmpty(text))
                     {
-                        // TODO show toast
-                        //"搜索内容为空哦"
+                        _appToastService.ShowWarning("搜索内容为空哦");
                     }
                     else
                     {

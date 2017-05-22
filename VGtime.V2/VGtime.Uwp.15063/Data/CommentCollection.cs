@@ -20,7 +20,7 @@ namespace VGtime.Uwp.Data
 
         private readonly IVGtimeSettings _vgtimeSettings;
 
-        public CommentCollection(int postId, int type, IPostService postService, IVGtimeSettings vgtimeSettings, Action<Exception> onError)
+        public CommentCollection(int postId, int type, IPostService postService, IVGtimeSettings vgtimeSettings, Action<Exception> onError = null)
         {
             if (postService == null)
             {

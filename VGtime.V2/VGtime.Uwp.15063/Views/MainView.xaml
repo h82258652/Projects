@@ -1,10 +1,136 @@
 ﻿<Page x:Class="VGtime.Uwp.Views.MainView"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:controls="using:VGtime.Uwp.Controls"
+      xmlns:converters="using:SoftwareKobo.Converters"
+      xmlns:core="using:Microsoft.Xaml.Interactions.Core"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
       xmlns:local="using:VGtime.Uwp.Views"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       DataContext="{Binding Source={StaticResource Locator}, Path=Main}"
       mc:Ignorable="d">
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" />
+    <Page.Resources>
+        <ResourceDictionary>
+            <converters:ItemClickEventArgsConverter x:Key="ItemClickEventArgsConverter" />
+        </ResourceDictionary>
+    </Page.Resources>
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Pivot>
+            <PivotItem Header="首页">
+                <GridView IsItemClickEnabled="True"
+                          ItemsSource="{Binding Path=VglistPosts}"
+                          SelectionMode="None">
+                    <interactivity:Interaction.Behaviors>
+                        <core:EventTriggerBehavior EventName="ItemClick">
+                            <core:InvokeCommandAction Command="{Binding Path=PostClickCommand}"
+                                                      InputConverter="{StaticResource ItemClickEventArgsConverter}" />
+                        </core:EventTriggerBehavior>
+                    </interactivity:Interaction.Behaviors>
+                    <GridView.Header>
+                        <controls:HeadpicsControl />
+                    </GridView.Header>
+                    <GridView.ItemTemplate>
+                        <DataTemplate />
+                    </GridView.ItemTemplate>
+                </GridView>
+            </PivotItem>
+            <PivotItem Header="新闻">
+                <GridView IsItemClickEnabled="True"
+                          ItemsSource="{Binding Path=NewsPosts}"
+                          SelectionMode="None">
+                    <interactivity:Interaction.Behaviors>
+                        <core:EventTriggerBehavior EventName="ItemClick">
+                            <core:InvokeCommandAction InputConverter="{StaticResource ItemClickEventArgsConverter}" />
+                        </core:EventTriggerBehavior>
+                    </interactivity:Interaction.Behaviors>
+                    <GridView.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Path=Title}" />
+                        </DataTemplate>
+                    </GridView.ItemTemplate>
+                </GridView>
+            </PivotItem>
+            <PivotItem Header="评测">
+                <GridView IsItemClickEnabled="True"
+                          SelectionMode="None">
+                    <interactivity:Interaction.Behaviors>
+                        <core:EventTriggerBehavior EventName="ItemClick">
+                            <core:InvokeCommandAction InputConverter="{StaticResource ItemClickEventArgsConverter}" />
+                        </core:EventTriggerBehavior>
+                    </interactivity:Interaction.Behaviors>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="" />
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </GridView>
+            </PivotItem>
+            <PivotItem Header="视频">
+                <controls:VGtimeGridView Padding="8,8,0,0"
+                                         IsItemClickEnabled="True"
+                                         ItemsSource="{Binding Path=VideoPosts}"
+                                         MaxItemWidth="640"
+                                         SelectionMode="None">
+                    <interactivity:Interaction.Behaviors>
+                        <core:EventTriggerBehavior EventName="ItemClick">
+                            <core:InvokeCommandAction Command="{Binding Path=PostClickCommand}"
+                                                      InputConverter="{StaticResource ItemClickEventArgsConverter}" />
+                        </core:EventTriggerBehavior>
+                    </interactivity:Interaction.Behaviors>
+                    <GridView.ItemTemplate>
+                        <DataTemplate>
+                            <controls:VideoPostItem />
+                        </DataTemplate>
+                    </GridView.ItemTemplate>
+                </controls:VGtimeGridView>
+            </PivotItem>
+            <PivotItem Header="攻略">
+                <GridView x:Uid="/MainView/StrategyPostsGridView"
+                          IsItemClickEnabled="True"
+                          ItemsSource="{Binding Path=StrategyPosts}">
+                    <interactivity:Interaction.Behaviors>
+                        <core:EventTriggerBehavior EventName="ItemClick">
+                            <core:InvokeCommandAction Command="{Binding Path=StrategyPostClickCommand}"
+                                                      InputConverter="{StaticResource ItemClickEventArgsConverter}" />
+                        </core:EventTriggerBehavior>
+                    </interactivity:Interaction.Behaviors>
+                    <ListViewBase.Header>
+                        <Grid>
+                            <TextBlock Text="点击查看更多过往攻略" />
+                            <Button Content="查看" />
+                        </Grid>
+                    </ListViewBase.Header>
+                    <GridView.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Path=Title}" />
+                        </DataTemplate>
+                    </GridView.ItemTemplate>
+                </GridView>
+            </PivotItem>
+            <PivotItem Header="专栏">
+                <GridView IsItemClickEnabled="True"
+                          ItemsSource="{Binding Path=TopicPosts}"
+                          SelectionMode="None">
+                    <interactivity:Interaction.Behaviors>
+                        <core:EventTriggerBehavior EventName="ItemClick">
+                            <core:InvokeCommandAction Command="{Binding Path=PostClickCommand}"
+                                                      InputConverter="{StaticResource ItemClickEventArgsConverter}" />
+                        </core:EventTriggerBehavior>
+                    </interactivity:Interaction.Behaviors>
+                    <ListViewBase.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock />
+                        </DataTemplate>
+                    </ListViewBase.ItemTemplate>
+                </GridView>
+            </PivotItem>
+            <Pivot.RightHeader>
+                <Button Command="{Binding Path=SearchCommand}"
+                        Style="{StaticResource IconButtonStyle}">
+                    <SymbolIcon Symbol="Find" />
+                </Button>
+            </Pivot.RightHeader>
+        </Pivot>
+    </Grid>
 </Page>

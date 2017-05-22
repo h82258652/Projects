@@ -10,6 +10,7 @@ using VGtime.Uwp.ViewModels.Games;
 using VGtime.Uwp.ViewModels.Settings;
 using VGtime.Uwp.ViewModels.Users;
 using VGtime.Uwp.Views;
+using VGtime.Uwp.Views.Games;
 
 namespace VGtime.Uwp.ViewModels
 {
@@ -18,6 +19,10 @@ namespace VGtime.Uwp.ViewModels
         public const string ArticleDetailViewKey = "ArticleDetail";
 
         public const string CommentViewKey = "Comment";
+
+        public const string GameDetailViewKey = "GameDetail";
+
+        public const string GamePhotoViewKey = "GamePhoto";
 
         public const string SearchViewKey = "Search";
 
@@ -81,6 +86,8 @@ namespace VGtime.Uwp.ViewModels
             navigationService.Configure(SearchViewKey, typeof(SearchView));
             navigationService.Configure(ArticleDetailViewKey, typeof(ArticleDetailView));
             navigationService.Configure(CommentViewKey, typeof(CommentView));
+            navigationService.Configure(GameDetailViewKey, typeof(GameDetailView));
+            navigationService.Configure(GamePhotoViewKey, typeof(GamePhotoView));
             return navigationService;
         }
     }

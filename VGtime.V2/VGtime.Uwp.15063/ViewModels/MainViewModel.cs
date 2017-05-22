@@ -1,7 +1,10 @@
 ﻿using System;
 using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Command;
+using GalaSoft.MvvmLight.Views;
 using VGtime.Models.Timeline;
 using VGtime.Services;
+using VGtime.Uwp.Data;
 
 namespace VGtime.Uwp.ViewModels
 {
@@ -9,13 +12,27 @@ namespace VGtime.Uwp.ViewModels
     {
         private readonly IHomeService _homeService;
 
+        private readonly INavigationService _navigationService;
+
         private TimeLineBase[] _headpics;
 
-        public MainViewModel(IHomeService homeService)
+        private RelayCommand<TimeLineBase> _postClickCommand;
+
+        private RelayCommand _searchCommand;
+
+        private RelayCommand<TimeLineBase> _strategyPostClickCommand;
+
+        public MainViewModel(IHomeService homeService, INavigationService navigationService)
         {
             _homeService = homeService;
+            _navigationService = navigationService;
 
             Initialize();
+            VglistPosts = new VglistPostCollection(homeService);
+            NewsPosts = new TagPostCollection(1, homeService);
+            VideoPosts = new TagPostCollection(2, homeService);
+            StrategyPosts = new TagPostCollection(3, homeService);
+            TopicPosts = new TagPostCollection(5, homeService);
         }
 
         public TimeLineBase[] Headpics
@@ -30,6 +47,69 @@ namespace VGtime.Uwp.ViewModels
             }
         }
 
+        public TagPostCollection NewsPosts
+        {
+            get;
+        }
+
+        public RelayCommand<TimeLineBase> PostClickCommand
+        {
+            get
+            {
+                _postClickCommand = _postClickCommand ?? new RelayCommand<TimeLineBase>(post =>
+                {
+                    // TODO
+                    _navigationService.NavigateTo(ViewModelLocator.ArticleDetailViewKey, null);
+                });
+                return _postClickCommand;
+            }
+        }
+
+        public RelayCommand SearchCommand
+        {
+            get
+            {
+                _searchCommand = _searchCommand ?? new RelayCommand(() =>
+                {
+                    _navigationService.NavigateTo(ViewModelLocator.SearchViewKey);
+                });
+                return _searchCommand;
+            }
+        }
+
+        public RelayCommand<TimeLineBase> StrategyPostClickCommand
+        {
+            get
+            {
+                _strategyPostClickCommand = _strategyPostClickCommand ?? new RelayCommand<TimeLineBase>(strategyPost =>
+                {
+                    // TODO
+                    _navigationService.NavigateTo(ViewModelLocator.SearchViewKey, null);
+                });
+                return _strategyPostClickCommand;
+            }
+        }
+
+        public TagPostCollection StrategyPosts
+        {
+            get;
+        }
+
+        public TagPostCollection TopicPosts
+        {
+            get;
+        }
+
+        public VglistPostCollection VglistPosts
+        {
+            get;
+        }
+
+        public TagPostCollection VideoPosts
+        {
+            get;
+        }
+
         private async void Initialize()
         {
             try
@@ -39,12 +119,18 @@ namespace VGtime.Uwp.ViewModels
                 {
                     Headpics = result.Data.Data;
                 }
+                else
+                {
+                    // TODO
+                }
             }
             catch (Exception ex)
             {
+                // TODO
             }
             finally
             {
+                // TODO
             }
         }
     }

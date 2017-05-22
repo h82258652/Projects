@@ -6,7 +6,6 @@
       xmlns:core="using:Microsoft.Xaml.Interactions.Core"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
-      xmlns:local="using:VGtime.Uwp.Views"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       DataContext="{Binding Source={StaticResource Locator}, Path=Search}"
       mc:Ignorable="d">
@@ -20,7 +19,8 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <Grid>
+        <Grid Grid.Row="0"
+              Background="{ThemeResource VGtimeAccentBrush}">
             <Button>
                 <interactivity:Interaction.Behaviors>
                     <core:EventTriggerBehavior EventName="Click">
@@ -28,28 +28,47 @@
                     </core:EventTriggerBehavior>
                 </interactivity:Interaction.Behaviors>
             </Button>
-            <AutoSuggestBox />
+            <AutoSuggestBox VerticalAlignment="Center"
+                            PlaceholderText="请输入搜索内容" />
         </Grid>
-        <Pivot>
+        <Pivot Grid.Row="1">
             <PivotItem Header="文章">
-                <GridView SelectionMode="None"
-                          IsItemClickEnabled="True"></GridView>
+                <GridView IsItemClickEnabled="True"
+                          SelectionMode="None">
+                    <GridView.ItemTemplate>
+                        <DataTemplate />
+                    </GridView.ItemTemplate>
+                </GridView>
             </PivotItem>
             <PivotItem Header="俱乐部">
-                <GridView SelectionMode="None"></GridView>
+                <GridView SelectionMode="None">
+                    <GridView.ItemTemplate>
+                        <DataTemplate />
+                    </GridView.ItemTemplate>
+                </GridView>
             </PivotItem>
             <PivotItem Header="用户">
-                <GridView SelectionMode="None"
-                          ItemsSource="{Binding Path=Users}"></GridView>
+                <GridView ItemsSource="{Binding Path=Users}"
+                          SelectionMode="None">
+                    <GridView.ItemTemplate>
+                        <DataTemplate />
+                    </GridView.ItemTemplate>
+                </GridView>
             </PivotItem>
             <PivotItem Header="游戏">
-                <GridView SelectionMode="None"
-                          IsItemClickEnabled="True"
-                          ItemsSource="{Binding Path=Games}">
+                <GridView IsItemClickEnabled="True"
+                          ItemsSource="{Binding Path=Games}"
+                          SelectionMode="None">
+                    <interactivity:Interaction.Behaviors>
+                        <core:EventTriggerBehavior EventName="ItemClick">
+                            <core:InvokeCommandAction Command="{Binding Path=GameClickCommand}"
+                                                      InputConverter="{StaticResource ItemClickEventArgsConverter}" />
+                        </core:EventTriggerBehavior>
+                    </interactivity:Interaction.Behaviors>
                     <GridView.ItemTemplate>
                         <DataTemplate>
                             <Grid>
-                                <!-- TODO -->
+                                <!--  TODO  -->
                             </Grid>
                         </DataTemplate>
                     </GridView.ItemTemplate>
