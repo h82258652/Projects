@@ -49,8 +49,6 @@ namespace SoftwareKobo.Controls
 
         private Image _image;
 
-        private IImageLoader _loader;
-
         public ImageEx()
         {
             DefaultStyleKey = typeof(ImageEx);
@@ -144,15 +142,6 @@ namespace SoftwareKobo.Controls
             }
         }
 
-        protected virtual IImageLoader Loader
-        {
-            get
-            {
-                _loader = _loader ?? DefaultImageLoader.Instance;
-                return _loader;
-            }
-        }
-
         public CastingSource GetAsCastingSource()
         {
             ApplyTemplate();
@@ -196,7 +185,8 @@ namespace SoftwareKobo.Controls
                     else
                     {
                         VisualStateManager.GoToState(this, LoadingStateName, true);
-                        var result = await Loader.GetBitmapAsync(source);
+                        var loader = ImageExSettings.Loader();
+                        var result = await loader.GetBitmapAsync(source);
                         if (source == Source)// 确保在执行异步操作过程中，Source 没有变动。
                         {
                             switch (result.Status)

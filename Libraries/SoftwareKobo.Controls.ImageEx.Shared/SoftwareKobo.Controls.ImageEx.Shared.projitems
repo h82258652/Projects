@@ -11,5 +11,6 @@
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)DefaultImageLoader.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)IImageLoader.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ImageExSettings.cs" />
   </ItemGroup>
 </Project>

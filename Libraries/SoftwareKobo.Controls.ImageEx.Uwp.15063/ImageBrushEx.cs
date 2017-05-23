@@ -10,8 +10,6 @@ namespace SoftwareKobo.Controls
     {
         public static readonly DependencyProperty ImageSourceProperty = DependencyProperty.Register(nameof(ImageSource), typeof(string), typeof(ImageBrushEx), new PropertyMetadata(default(string), OnImageSourceChanged));
 
-        private IImageLoader _loader;
-
         public event ImageFailedEventHandler ImageFailed;
 
         public event EventHandler ImageOpened;
@@ -25,15 +23,6 @@ namespace SoftwareKobo.Controls
             set
             {
                 SetValue(ImageSourceProperty, value);
-            }
-        }
-
-        protected virtual IImageLoader Loader
-        {
-            get
-            {
-                _loader = _loader ?? DefaultImageLoader.Instance;
-                return _loader;
             }
         }
 
@@ -91,7 +80,8 @@ namespace SoftwareKobo.Controls
                 }
                 else
                 {
-                    var result = await Loader.GetImageSurfaceAsync(imageSource);
+                    var loader = ImageExSettings.Loader();
+                    var result = await loader.GetImageSurfaceAsync(imageSource);
                     if (imageSource == ImageSource)// 确保在执行异步操作过程中，ImageSource 没有变动。
                     {
                         switch (result.Status)

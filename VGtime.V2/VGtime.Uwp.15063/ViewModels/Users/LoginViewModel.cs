@@ -4,6 +4,7 @@ using GalaSoft.MvvmLight.Command;
 using VGtime.Configuration;
 using VGtime.Services;
 using VGtime.Uwp.Messages;
+using VGtime.Uwp.Services;
 
 namespace VGtime.Uwp.ViewModels.Users
 {
@@ -13,16 +14,19 @@ namespace VGtime.Uwp.ViewModels.Users
 
         private readonly IVGtimeSettings _vgtimeSettings;
 
+        private readonly IAppToastService _appToastService;
+
         private string _account;
 
         private RelayCommand _loginCommand;
 
         private string _password;
 
-        public LoginViewModel(IUserService userService, IVGtimeSettings vgtimeSettings)
+        public LoginViewModel(IUserService userService, IVGtimeSettings vgtimeSettings, IAppToastService appToastService)
         {
             _userService = userService;
             _vgtimeSettings = vgtimeSettings;
+            _appToastService = appToastService;
         }
 
         public string Account
