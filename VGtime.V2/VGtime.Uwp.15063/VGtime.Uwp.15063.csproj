@@ -339,9 +339,9 @@
     <Folder Include="Styles\TextControls\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Libraries\SoftwareKobo.Controls.ImageEx.Uwp\SoftwareKobo.Controls.ImageEx.Uwp.csproj">
-      <Project>{3D0A2072-6B7C-4C2F-B350-38FBF3547899}</Project>
-      <Name>SoftwareKobo.Controls.ImageEx.Uwp</Name>
+    <ProjectReference Include="..\..\Libraries\SoftwareKobo.Controls.ImageEx.Uwp.15063\SoftwareKobo.Controls.ImageEx.Uwp.15063.csproj">
+      <Project>{5af5d966-ee34-48cd-a100-28fd22b9d8b8}</Project>
+      <Name>SoftwareKobo.Controls.ImageEx.Uwp.15063</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Libraries\SoftwareKobo.Utils.Uwp\SoftwareKobo.Utils.Uwp.csproj">
       <Project>{e325fcd6-2e6b-44fc-85d0-d49957258c98}</Project>
