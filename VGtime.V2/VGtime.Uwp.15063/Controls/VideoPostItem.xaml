@@ -10,6 +10,7 @@
     <UserControl.Resources>
         <ResourceDictionary>
             <converters:IsNullOrEmptyStringToVisibilityConverter x:Key="IsNullOrEmptyStringToVisibilityConverter" />
+            <converters:TimeAgoConverter x:Key="TimeAgoConverter" />
         </ResourceDictionary>
     </UserControl.Resources>
     <Grid>
@@ -27,7 +28,7 @@
                    VerticalAlignment="Top"
                    FontSize="14"
                    Foreground="White"
-                   Text="{Binding Path=PublishDate}" />
+                   Text="{Binding Path=PublishDate, Converter={StaticResource TimeAgoConverter}}" />
         <StackPanel Margin="0,8,8,0"
                     HorizontalAlignment="Right"
                     VerticalAlignment="Top"

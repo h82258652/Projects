@@ -1,5 +1,7 @@
-﻿using Newtonsoft.Json;
+﻿using System;
+using Newtonsoft.Json;
 using VGtime.Models.Games;
+using VGtime.Models.JsonConverters;
 using VGtime.Models.Users;
 
 namespace VGtime.Models.Timeline
@@ -127,7 +129,8 @@ namespace VGtime.Models.Timeline
         }
 
         [JsonProperty("publishDate")]
-        public string PublishDate
+        [JsonConverter(typeof(UnixTimestampConverter))]
+        public DateTimeOffset PublishDate
         {
             get;
             set;

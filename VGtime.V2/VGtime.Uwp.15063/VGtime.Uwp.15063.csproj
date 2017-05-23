@@ -112,8 +112,8 @@
     <Compile Include="Controls\VideoPostItem.xaml.cs">
       <DependentUpon>VideoPostItem.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Converters\AddConverter.cs" />
     <Compile Include="Converters\IsNullOrEmptyStringToVisibilityConverter.cs" />
+    <Compile Include="Converters\TimeAgoConverter.cs" />
     <Compile Include="Data\CommentCollection.cs" />
     <Compile Include="Data\IncrementalLoadingCollectionBase.cs" />
     <Compile Include="Data\SearchGameCollection.cs" />
@@ -483,7 +483,7 @@
       <Name>VGtime.Configuration</Name>
     </ProjectReference>
     <ProjectReference Include="..\VGtime.Models\VGtime.Models.csproj">
-      <Project>{3a47fcd2-8cbc-44f8-b863-618ff5650249}</Project>
+      <Project>{f9a50eb5-bc0f-4159-aefb-329bbfcfaf2b}</Project>
       <Name>VGtime.Models</Name>
     </ProjectReference>
     <ProjectReference Include="..\VGtime.Services\VGtime.Services.csproj">
