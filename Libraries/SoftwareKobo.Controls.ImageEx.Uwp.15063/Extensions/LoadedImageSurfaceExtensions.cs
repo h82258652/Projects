@@ -20,6 +20,7 @@ namespace SoftwareKobo.Controls.Extensions
             handler = (sender, args) =>
             {
                 imageSurface.LoadCompleted -= handler;
+                tcs.SetResult(args);
             };
             imageSurface.LoadCompleted += handler;
 

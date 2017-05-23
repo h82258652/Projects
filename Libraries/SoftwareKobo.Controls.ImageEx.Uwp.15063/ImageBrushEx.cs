@@ -64,12 +64,19 @@ namespace SoftwareKobo.Controls
             // 设计模式下直接显示。
             if (DesignMode.DesignModeEnabled)
             {
-                var imageSurface = imageSource == null ? null : LoadedImageSurface.StartLoadFromUri(new Uri(imageSource, UriKind.RelativeOrAbsolute));
-                var args = await imageSurface.WaitForLoadCompletedAsync();
-                DisposeCompositionBrush();
-                if (args.Status == LoadedImageSourceLoadStatus.Success)
+                if (imageSource == null)
                 {
-                    CompositionBrush = compositor.CreateSurfaceBrush(imageSurface);
+                    DisposeCompositionBrush();
+                }
+                else
+                {
+                    var imageSurface = LoadedImageSurface.StartLoadFromUri(new Uri(imageSource, UriKind.RelativeOrAbsolute));
+                    var args = await imageSurface.WaitForLoadCompletedAsync();
+                    DisposeCompositionBrush();
+                    if (args.Status == LoadedImageSourceLoadStatus.Success)
+                    {
+                        CompositionBrush = compositor.CreateSurfaceBrush(imageSurface);
+                    }
                 }
             }
             else
