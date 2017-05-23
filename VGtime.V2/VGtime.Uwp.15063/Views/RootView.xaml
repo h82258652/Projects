@@ -8,5 +8,7 @@
           Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Frame x:Name="RootFrame"
                x:FieldModifier="internal" />
+        <Border x:Name="TODOContainer"
+                x:FieldModifier="internal" />
     </Grid>
 </UserControl>
