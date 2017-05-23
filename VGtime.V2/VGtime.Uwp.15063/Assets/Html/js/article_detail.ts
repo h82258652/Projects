@@ -7,3 +7,17 @@ function scrollToTop(): void {
         scrollTop: 0
     }, "fast");
 }
+
+$(() => {
+    var hammertime = new Hammer(document.querySelector("html"));
+    hammertime.on("swipeleft", (e: HammerInput): void => {
+        if (e.pointerType !== "mouse") {
+            window.external.notify("?action=goForward");
+        }
+    });
+    hammertime.on("swiperight", (e: HammerInput): void => {
+        if (e.pointerType !== "mouse") {
+            window.external.notify("?action=goBack");
+        }
+    });
+})
