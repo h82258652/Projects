@@ -83,6 +83,42 @@ namespace SoftwareKobo.Controls
             DisposeCompositionBrush();
         }
 
+        private static float ConvertAlignmentXToHorizontalAlignmentRatio(AlignmentX alignmentX)
+        {
+            switch (alignmentX)
+            {
+                case AlignmentX.Left:
+                    return 0f;
+
+                case AlignmentX.Center:
+                    return 0.5f;
+
+                case AlignmentX.Right:
+                    return 1f;
+
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(alignmentX));
+            }
+        }
+
+        private static float ConvertAlignmentYToVerticalAlignmentRatio(AlignmentY alignmentY)
+        {
+            switch (alignmentY)
+            {
+                case AlignmentY.Top:
+                    return 0f;
+
+                case AlignmentY.Center:
+                    return 0.5f;
+
+                case AlignmentY.Bottom:
+                    return 1f;
+
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(alignmentY));
+            }
+        }
+
         private static void OnAlignmentXChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var obj = (ImageBrushEx)d;
@@ -94,20 +130,7 @@ namespace SoftwareKobo.Controls
             }
 
             var brush = (CompositionSurfaceBrush)obj.CompositionBrush;
-            switch (value)
-            {
-                case AlignmentX.Left:
-                    brush.HorizontalAlignmentRatio = 0f;
-                    break;
-
-                case AlignmentX.Center:
-                    brush.HorizontalAlignmentRatio = 0.5f;
-                    break;
-
-                case AlignmentX.Right:
-                    brush.HorizontalAlignmentRatio = 1f;
-                    break;
-            }
+            brush.HorizontalAlignmentRatio = ConvertAlignmentXToHorizontalAlignmentRatio(value);
         }
 
         private static void OnAlignmentYChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
@@ -121,20 +144,7 @@ namespace SoftwareKobo.Controls
             }
 
             var brush = (CompositionSurfaceBrush)obj.CompositionBrush;
-            switch (value)
-            {
-                case AlignmentY.Top:
-                    brush.VerticalAlignmentRatio = 0f;
-                    break;
-
-                case AlignmentY.Center:
-                    brush.VerticalAlignmentRatio = 0.5f;
-                    break;
-
-                case AlignmentY.Bottom:
-                    brush.VerticalAlignmentRatio = 1f;
-                    break;
-            }
+            brush.VerticalAlignmentRatio = ConvertAlignmentYToVerticalAlignmentRatio(value);
         }
 
         private static void OnImageSourceChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
@@ -210,6 +220,8 @@ namespace SoftwareKobo.Controls
                                 DisposeCompositionBrush();
                                 var brush = compositor.CreateSurfaceBrush(result.Value);
                                 brush.Stretch = (CompositionStretch)Stretch;
+                                brush.HorizontalAlignmentRatio = ConvertAlignmentXToHorizontalAlignmentRatio(AlignmentX);
+                                brush.VerticalAlignmentRatio = ConvertAlignmentYToVerticalAlignmentRatio(AlignmentY);
                                 CompositionBrush = brush;
                                 ImageOpened?.Invoke(this, EventArgs.Empty);
                                 break;
