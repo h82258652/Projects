@@ -9,6 +9,10 @@ namespace SoftwareKobo.Controls
 {
     public class ImageBrushEx : XamlCompositionBrushBase
     {
+        public static readonly DependencyProperty AlignmentXProperty = DependencyProperty.Register(nameof(AlignmentX), typeof(AlignmentX), typeof(ImageBrushEx), new PropertyMetadata(AlignmentX.Center, OnAlignmentXChanged));
+
+        public static readonly DependencyProperty AlignmentYProperty = DependencyProperty.Register(nameof(AlignmentY), typeof(AlignmentY), typeof(ImageBrushEx), new PropertyMetadata(AlignmentY.Center, OnAlignmentYChanged));
+
         public static readonly DependencyProperty ImageSourceProperty = DependencyProperty.Register(nameof(ImageSource), typeof(string), typeof(ImageBrushEx), new PropertyMetadata(default(string), OnImageSourceChanged));
 
         public static readonly DependencyProperty StretchProperty = DependencyProperty.Register(nameof(Stretch), typeof(Stretch), typeof(ImageBrushEx), new PropertyMetadata(Stretch.Uniform, OnStretchChanged));
@@ -16,6 +20,30 @@ namespace SoftwareKobo.Controls
         public event ImageFailedEventHandler ImageFailed;
 
         public event EventHandler ImageOpened;
+
+        public AlignmentX AlignmentX
+        {
+            get
+            {
+                return (AlignmentX)GetValue(AlignmentXProperty);
+            }
+            set
+            {
+                SetValue(AlignmentXProperty, value);
+            }
+        }
+
+        public AlignmentY AlignmentY
+        {
+            get
+            {
+                return (AlignmentY)GetValue(AlignmentYProperty);
+            }
+            set
+            {
+                SetValue(AlignmentYProperty, value);
+            }
+        }
 
         public string ImageSource
         {
@@ -55,6 +83,60 @@ namespace SoftwareKobo.Controls
             DisposeCompositionBrush();
         }
 
+        private static void OnAlignmentXChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var obj = (ImageBrushEx)d;
+            var value = (AlignmentX)e.NewValue;
+
+            if (!Enum.IsDefined(typeof(AlignmentX), value))
+            {
+                throw new ArgumentOutOfRangeException(nameof(AlignmentX));
+            }
+
+            var brush = (CompositionSurfaceBrush)obj.CompositionBrush;
+            switch (value)
+            {
+                case AlignmentX.Left:
+                    brush.HorizontalAlignmentRatio = 0f;
+                    break;
+
+                case AlignmentX.Center:
+                    brush.HorizontalAlignmentRatio = 0.5f;
+                    break;
+
+                case AlignmentX.Right:
+                    brush.HorizontalAlignmentRatio = 1f;
+                    break;
+            }
+        }
+
+        private static void OnAlignmentYChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var obj = (ImageBrushEx)d;
+            var value = (AlignmentY)e.NewValue;
+
+            if (!Enum.IsDefined(typeof(AlignmentY), value))
+            {
+                throw new ArgumentOutOfRangeException(nameof(AlignmentY));
+            }
+
+            var brush = (CompositionSurfaceBrush)obj.CompositionBrush;
+            switch (value)
+            {
+                case AlignmentY.Top:
+                    brush.VerticalAlignmentRatio = 0f;
+                    break;
+
+                case AlignmentY.Center:
+                    brush.VerticalAlignmentRatio = 0.5f;
+                    break;
+
+                case AlignmentY.Bottom:
+                    brush.VerticalAlignmentRatio = 1f;
+                    break;
+            }
+        }
+
         private static void OnImageSourceChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var obj = (ImageBrushEx)d;
@@ -73,10 +155,8 @@ namespace SoftwareKobo.Controls
                 throw new ArgumentOutOfRangeException(nameof(Stretch));
             }
 
-            if (obj.CompositionBrush is CompositionSurfaceBrush brush)
-            {
-                brush.Stretch = (CompositionStretch)value;
-            }
+            var brush = (CompositionSurfaceBrush)obj.CompositionBrush;
+            brush.Stretch = (CompositionStretch)value;
         }
 
         private void DisposeCompositionBrush()
