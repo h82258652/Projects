@@ -106,7 +106,22 @@
     <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="ImageEx.cs" />
+    <Compile Include="..\SoftwareKobo.Controls.ImageEx.Uwp.10240\BitmapResult.cs">
+      <Link>BitmapResult.cs</Link>
+    </Compile>
+    <Compile Include="..\SoftwareKobo.Controls.ImageEx.Uwp.10240\DefaultImageLoader.cs">
+      <Link>DefaultImageLoader.cs</Link>
+    </Compile>
+    <Compile Include="..\SoftwareKobo.Controls.ImageEx.Uwp.10240\IImageLoader.cs">
+      <Link>IImageLoader.cs</Link>
+    </Compile>
+    <Compile Include="..\SoftwareKobo.Controls.ImageEx.Uwp.10240\ImageEx.cs">
+      <Link>ImageEx.cs</Link>
+    </Compile>
+    <Compile Include="..\SoftwareKobo.Controls.ImageEx.Uwp.10240\ImageExBehavior.cs">
+      <Link>ImageExBehavior.cs</Link>
+    </Compile>
+    <Compile Include="ImageEx.GetAlphaMask.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\SoftwareKobo.Controls.ImageEx.Uwp._14393.rd.xml" />
   </ItemGroup>
@@ -114,12 +129,18 @@
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
       <Version>5.3.3</Version>
     </PackageReference>
+    <PackageReference Include="Microsoft.Xaml.Behaviors.Uwp.Managed">
+      <Version>2.0.0</Version>
+    </PackageReference>
+    <PackageReference Include="Weakly">
+      <Version>2.7.0</Version>
+    </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <Page Include="ImageEx.xaml">
-      <SubType>Designer</SubType>
+    <Page Include="..\SoftwareKobo.Controls.ImageEx.Uwp.10240\ImageEx.xaml">
+      <Link>ImageEx.xaml</Link>
       <Generator>MSBuild:Compile</Generator>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Themes\Generic.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -131,9 +152,9 @@
       <Project>{2378f097-7706-4c6c-b1c1-4c9910829095}</Project>
       <Name>SoftwareKobo.Controls.ImageEx.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\SoftwareKobo.Controls.ImageEx.Uwp\SoftwareKobo.Controls.ImageEx.Uwp.csproj">
-      <Project>{3d0a2072-6b7c-4c2f-b350-38fbf3547899}</Project>
-      <Name>SoftwareKobo.Controls.ImageEx.Uwp</Name>
+    <ProjectReference Include="..\SoftwareKobo.Utils\SoftwareKobo.Utils.csproj">
+      <Project>{776a7d97-d3cc-4bcc-8047-7fc3b696dd79}</Project>
+      <Name>SoftwareKobo.Utils</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">

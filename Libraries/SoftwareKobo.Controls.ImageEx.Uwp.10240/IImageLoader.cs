@@ -2,7 +2,7 @@
 
 namespace SoftwareKobo.Controls
 {
-    public interface IImageLoader
+    public partial interface IImageLoader
     {
         long CalculateCacheSize();
 

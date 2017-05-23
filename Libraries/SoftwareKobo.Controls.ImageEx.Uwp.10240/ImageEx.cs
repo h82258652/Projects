@@ -15,7 +15,7 @@ namespace SoftwareKobo.Controls
     [TemplateVisualState(GroupName = ImageStateGroupName, Name = OpenedStateName)]
     [TemplateVisualState(GroupName = ImageStateGroupName, Name = FailedStateName)]
     [TemplateVisualState(GroupName = ImageStateGroupName, Name = LoadingStateName)]
-    public class ImageEx : Control
+    public partial class ImageEx : Control
     {
         public static readonly DependencyProperty FailedTemplateProperty = DependencyProperty.Register(nameof(FailedTemplate), typeof(DataTemplate), typeof(ImageEx), new PropertyMetadata(default(DataTemplate)));
 

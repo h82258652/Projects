@@ -5,16 +5,16 @@ using System.Linq;
 using System.Net.Http;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading.Tasks;
-using SoftwareKobo.Extensions;
-using SoftwareKobo.Utils;
-using Weakly;
 using Windows.Storage;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Media.Imaging;
+using SoftwareKobo.Extensions;
+using SoftwareKobo.Utils;
+using Weakly;
 
 namespace SoftwareKobo.Controls
 {
-    public sealed class DefaultImageLoader : IImageLoader
+    public sealed partial class DefaultImageLoader : IImageLoader
     {
         private const string CacheFolderName = "ImageExCache";
 

@@ -1,9 +1,9 @@
 ﻿using System;
-using Microsoft.Xaml.Interactivity;
 using Windows.ApplicationModel;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Imaging;
+using Microsoft.Xaml.Interactivity;
 
 namespace SoftwareKobo.Controls
 {
