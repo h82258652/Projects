@@ -1,6 +1,7 @@
 ﻿using System;
 using SoftwareKobo.Controls.Extensions;
 using Windows.ApplicationModel;
+using Windows.UI.Composition;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Media;
 
@@ -9,6 +10,8 @@ namespace SoftwareKobo.Controls
     public class ImageBrushEx : XamlCompositionBrushBase
     {
         public static readonly DependencyProperty ImageSourceProperty = DependencyProperty.Register(nameof(ImageSource), typeof(string), typeof(ImageBrushEx), new PropertyMetadata(default(string), OnImageSourceChanged));
+
+        public static readonly DependencyProperty StretchProperty = DependencyProperty.Register(nameof(Stretch), typeof(Stretch), typeof(ImageBrushEx), new PropertyMetadata(Stretch.Uniform, OnStretchChanged));
 
         public event ImageFailedEventHandler ImageFailed;
 
@@ -23,6 +26,18 @@ namespace SoftwareKobo.Controls
             set
             {
                 SetValue(ImageSourceProperty, value);
+            }
+        }
+
+        public Stretch Stretch
+        {
+            get
+            {
+                return (Stretch)GetValue(StretchProperty);
+            }
+            set
+            {
+                SetValue(StretchProperty, value);
             }
         }
 
@@ -46,6 +61,22 @@ namespace SoftwareKobo.Controls
             var value = (string)e.NewValue;
 
             obj.SetImageSource(value);
+        }
+
+        private static void OnStretchChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var obj = (ImageBrushEx)d;
+            var value = (Stretch)e.NewValue;
+
+            if (!Enum.IsDefined(typeof(Stretch), value))
+            {
+                throw new ArgumentOutOfRangeException(nameof(Stretch));
+            }
+
+            if (obj.CompositionBrush is CompositionSurfaceBrush brush)
+            {
+                brush.Stretch = (CompositionStretch)value;
+            }
         }
 
         private void DisposeCompositionBrush()
@@ -75,7 +106,9 @@ namespace SoftwareKobo.Controls
                     DisposeCompositionBrush();
                     if (args.Status == LoadedImageSourceLoadStatus.Success)
                     {
-                        CompositionBrush = compositor.CreateSurfaceBrush(imageSurface);
+                        var brush = compositor.CreateSurfaceBrush(imageSurface);
+                        brush.Stretch = (CompositionStretch)Stretch;
+                        CompositionBrush = brush;
                     }
                 }
             }
@@ -95,7 +128,9 @@ namespace SoftwareKobo.Controls
                         {
                             case LoadedImageSourceLoadStatus.Success:
                                 DisposeCompositionBrush();
-                                CompositionBrush = compositor.CreateSurfaceBrush(result.Value);
+                                var brush = compositor.CreateSurfaceBrush(result.Value);
+                                brush.Stretch = (CompositionStretch)Stretch;
+                                CompositionBrush = brush;
                                 ImageOpened?.Invoke(this, EventArgs.Empty);
                                 break;
 
