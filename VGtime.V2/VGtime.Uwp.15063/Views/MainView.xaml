@@ -99,12 +99,23 @@
                             <controls:VideoPostItem />
                         </DataTemplate>
                     </GridView.ItemTemplate>
+                    <ItemsControl.ItemContainerStyle>
+                        <Style TargetType="SelectorItem">
+                            <Setter Property="HorizontalContentAlignment"
+                                    Value="Stretch" />
+                            <Setter Property="VerticalContentAlignment"
+                                    Value="Stretch" />
+                            <Setter Property="Margin"
+                                    Value="0,0,8,8" />
+                        </Style>
+                    </ItemsControl.ItemContainerStyle>
                 </controls:VGtimeGridView>
             </PivotItem>
             <PivotItem Header="攻略">
                 <GridView x:Uid="/MainView/StrategyPostsGridView"
                           IsItemClickEnabled="True"
-                          ItemsSource="{Binding Path=StrategyPosts}">
+                          ItemsSource="{Binding Path=StrategyPosts}"
+                          SelectionMode="None">
                     <interactivity:Interaction.Behaviors>
                         <core:EventTriggerBehavior EventName="ItemClick">
                             <core:InvokeCommandAction Command="{Binding Path=StrategyPostClickCommand}"

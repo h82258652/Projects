@@ -13,20 +13,34 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-        <Grid Grid.Row="0">
-            <Button>
+        <Grid Grid.Row="0"
+              Background="{ThemeResource VGtimeAccentBrush}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0"
+                    Style="{StaticResource NavigationBackButtonStyle}">
                 <interactivity:Interaction.Behaviors>
                     <core:EventTriggerBehavior EventName="Click">
                         <behaviors:GoBackAction />
                     </core:EventTriggerBehavior>
                 </interactivity:Interaction.Behaviors>
             </Button>
-            <Button Click="ScrollToTopButton_Click"
+            <Button Grid.Column="1"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Stretch"
+                    Click="ScrollToTopButton_Click"
                     Style="{StaticResource EmptyButtonStyle}" />
+            <Button Grid.Column="2"
+                    Style="{StaticResource ShareButtonStyle}" />
         </Grid>
         <WebView x:Name="WebView"
                  Grid.Row="1"
+                 DefaultBackgroundColor="Transparent"
                  ScriptNotify="WebView_ScriptNotify" />
     </Grid>
 </Page>
