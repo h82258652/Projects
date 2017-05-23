@@ -61,6 +61,7 @@ namespace VGtime.Uwp.ViewModels
             containerBuilder.RegisterType<HomeService>().As<IHomeService>();
             containerBuilder.RegisterType<UserService>().As<IUserService>();
             containerBuilder.RegisterType<GameService>().As<IGameService>();
+            containerBuilder.RegisterType<PostService>().As<IPostService>();
             containerBuilder.RegisterType<AppToastService>().As<IAppToastService>();
 
             containerBuilder.RegisterType<VGtimeSettings>().As<IVGtimeSettings>();
@@ -82,7 +83,7 @@ namespace VGtime.Uwp.ViewModels
 
         private static INavigationService CreateNavigationService()
         {
-            var navigationService = new NavigationService();
+            var navigationService = new SoftwareKobo.Services.NavigationService();
             navigationService.Configure(SearchViewKey, typeof(SearchView));
             navigationService.Configure(ArticleDetailViewKey, typeof(ArticleDetailView));
             navigationService.Configure(CommentViewKey, typeof(CommentView));

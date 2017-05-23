@@ -120,6 +120,7 @@
     <Compile Include="Data\SearchUserCollection.cs" />
     <Compile Include="Data\TagPostCollection.cs" />
     <Compile Include="Data\VglistPostCollection.cs" />
+    <Compile Include="LocalizedStrings.cs" />
     <Compile Include="Messages\ArticleDetailLoadedMessage.cs" />
     <Compile Include="Messages\LoginSuccessMessage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -191,6 +192,7 @@
     <None Include="Assets\Html\bower_components\jquery\README.md" />
     <None Include="Assets\Html\bower_components\jquery\src\.eslintrc.json" />
     <None Include="Assets\Html\js\article_detail.js.map" />
+    <PRIResource Include="Strings\zh-CN\Resources.resw" />
     <None Include="VGtime.Uwp.15063_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>

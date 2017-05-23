@@ -48,6 +48,16 @@
                     <GridView.Header>
                         <controls:HeadpicsControl />
                     </GridView.Header>
+                    <ItemsControl.ItemContainerStyle>
+                        <Style TargetType="SelectorItem">
+                            <Setter Property="HorizontalContentAlignment"
+                                    Value="Stretch" />
+                            <Setter Property="VerticalContentAlignment"
+                                    Value="Stretch" />
+                            <Setter Property="Margin"
+                                    Value="0,0,8,8" />
+                        </Style>
+                    </ItemsControl.ItemContainerStyle>
                 </GridView>
             </PivotItem>
             <PivotItem Header="新闻">
@@ -158,6 +168,12 @@
                     <SymbolIcon Symbol="Find" />
                 </Button>
             </Pivot.RightHeader>
+            <Pivot.ItemContainerStyle>
+                <Style TargetType="PivotItem">
+                    <Setter Property="Margin"
+                            Value="0" />
+                </Style>
+            </Pivot.ItemContainerStyle>
         </Pivot>
     </Grid>
 </Page>
