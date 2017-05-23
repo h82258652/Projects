@@ -6,19 +6,37 @@
       xmlns:core="using:Microsoft.Xaml.Interactions.Core"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
-      xmlns:local="using:VGtime.Uwp.Views"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       DataContext="{Binding Source={StaticResource Locator}, Path=Main}"
       mc:Ignorable="d">
     <Page.Resources>
         <ResourceDictionary>
             <converters:ItemClickEventArgsConverter x:Key="ItemClickEventArgsConverter" />
+            <controls:PostItemTemplateSelector x:Key="PostItemTemplateSelector">
+                <controls:PostItemTemplateSelector.NormalTemplate>
+                    <DataTemplate>
+                        <controls:ListPostItem />
+                    </DataTemplate>
+                </controls:PostItemTemplateSelector.NormalTemplate>
+                <controls:PostItemTemplateSelector.VideoTemplate>
+                    <DataTemplate>
+                        <controls:VideoPostItem />
+                    </DataTemplate>
+                </controls:PostItemTemplateSelector.VideoTemplate>
+            </controls:PostItemTemplateSelector>
         </ResourceDictionary>
     </Page.Resources>
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Pivot>
+            <FrameworkElement.Resources>
+                <ResourceDictionary>
+                    <Style TargetType="PivotHeaderItem" />
+                </ResourceDictionary>
+            </FrameworkElement.Resources>
+            <!-- 二维码按钮<Pivot.LeftHeader></Pivot.LeftHeader>-->
             <PivotItem Header="首页">
                 <GridView IsItemClickEnabled="True"
+                          ItemTemplateSelector="{StaticResource PostItemTemplateSelector}"
                           ItemsSource="{Binding Path=VglistPosts}"
                           SelectionMode="None">
                     <interactivity:Interaction.Behaviors>
@@ -30,9 +48,6 @@
                     <GridView.Header>
                         <controls:HeadpicsControl />
                     </GridView.Header>
-                    <GridView.ItemTemplate>
-                        <DataTemplate />
-                    </GridView.ItemTemplate>
                 </GridView>
             </PivotItem>
             <PivotItem Header="新闻">
@@ -53,6 +68,7 @@
             </PivotItem>
             <PivotItem Header="评测">
                 <GridView IsItemClickEnabled="True"
+                          ItemsSource="{Binding Path=EvaluationPosts}"
                           SelectionMode="None">
                     <interactivity:Interaction.Behaviors>
                         <core:EventTriggerBehavior EventName="ItemClick">

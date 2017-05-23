@@ -30,9 +30,15 @@ namespace VGtime.Uwp.ViewModels
             Initialize();
             VglistPosts = new VglistPostCollection(homeService);
             NewsPosts = new TagPostCollection(1, homeService);
+            EvaluationPosts = new TagPostCollection(4, homeService);
             VideoPosts = new TagPostCollection(2, homeService);
             StrategyPosts = new TagPostCollection(3, homeService);
             TopicPosts = new TagPostCollection(5, homeService);
+        }
+
+        public TagPostCollection EvaluationPosts
+        {
+            get;
         }
 
         public TimeLineBase[] Headpics

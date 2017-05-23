@@ -54,7 +54,7 @@
                    TextWrapping="Wrap" />
         <Grid HorizontalAlignment="Center"
               VerticalAlignment="Center">
-            <Ellipse Fill="#4000000"
+            <Ellipse Fill="#40000000"
                      Stroke="White"
                      StrokeThickness="1.5" />
             <SymbolIcon Margin="12"
