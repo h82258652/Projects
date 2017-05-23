@@ -1,86 +1,21 @@
 ﻿using System;
-using System.Collections.Concurrent;
 using System.IO;
-using System.Linq;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Media.Imaging;
 using SoftwareKobo.Extensions;
-using SoftwareKobo.Utils;
 using Weakly;
 
 namespace SoftwareKobo.Controls
 {
-    public sealed class DefaultImageLoader : IImageLoader
+    public sealed partial class DefaultImageLoader
     {
-        private const string CacheFolderName = "ImageExCache";
-
         private static readonly WeakValueDictionary<string, BitmapImage> CacheBitmapImages = new WeakValueDictionary<string, BitmapImage>();
 
         private static readonly string CacheFolderPath = Path.Combine(Path.GetTempPath(), CacheFolderName);
 
-        private static readonly ConcurrentDictionary<string, Task<byte[]>> ImageDownloadTasks = new ConcurrentDictionary<string, Task<byte[]>>();
-
         private static readonly SemaphoreSlim SemaphoreSlim = new SemaphoreSlim(1);
-
-        private DefaultImageLoader()
-        {
-        }
-
-        public static IImageLoader Instance
-        {
-            get;
-        } = new DefaultImageLoader();
-
-        public long CalculateCacheSize()
-        {
-            return (from cacheFilePath in Directory.EnumerateFiles(CacheFolderPath)
-                    select new FileInfo(cacheFilePath).Length).Sum();
-        }
-
-        public bool ContainsCache(string source)
-        {
-            if (source == null)
-            {
-                return false;
-            }
-
-            var uriSource = ToUriSource(source);
-            var cacheFilePath = GetCacheFilePath(uriSource);
-            return File.Exists(cacheFilePath);
-        }
-
-        public async Task DeleteAllCacheAsync()
-        {
-            await Task.Run(() =>
-            {
-                Directory.Delete(CacheFolderPath, true);
-            });
-        }
-
-        public async Task<bool> DeleteCacheAsync(string source)
-        {
-            if (source == null)
-            {
-                return false;
-            }
-
-            var uriSource = ToUriSource(source);
-            var cacheFilePath = GetCacheFilePath(uriSource);
-            if (File.Exists(cacheFilePath))
-            {
-                await Task.Run(() =>
-                {
-                    File.Delete(cacheFilePath);
-                });
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
 
         public async Task<BitmapResult> GetBitmapAsync(string source)
         {
@@ -319,19 +254,6 @@ namespace SoftwareKobo.Controls
             }
         }
 
-        private static string GetCacheFilePath(Uri uriSource)
-        {
-            if (uriSource == null)
-            {
-                throw new ArgumentNullException(nameof(uriSource));
-            }
-
-            var originalString = uriSource.OriginalString;
-            var extension = Path.GetExtension(originalString);
-            var cacheFileName = HashHelper.GenerateMD5Hash(originalString) + extension;
-            return Path.Combine(CacheFolderPath, cacheFileName);
-        }
-
         private static bool IsHttpUri(Uri uri)
         {
             if (uri == null)
@@ -367,14 +289,6 @@ namespace SoftwareKobo.Controls
             }
 
             return uriSource;
-        }
-
-        private async Task<byte[]> DownloadImageAsync(Uri uriSource)
-        {
-            using (var httpClient = new HttpClient())
-            {
-                return await httpClient.GetByteArrayAsync(uriSource);
-            }
         }
     }
 }

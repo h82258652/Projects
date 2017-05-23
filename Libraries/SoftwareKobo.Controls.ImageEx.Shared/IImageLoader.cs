@@ -12,8 +12,6 @@ namespace SoftwareKobo.Controls
 
         Task<bool> DeleteCacheAsync(string source);
 
-        Task<BitmapResult> GetBitmapAsync(string source);
-
         Task<byte[]> GetBytesAsync(string source);
 
         string GetCacheFilePath(string source);

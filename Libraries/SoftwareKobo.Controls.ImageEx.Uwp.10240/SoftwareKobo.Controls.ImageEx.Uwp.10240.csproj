@@ -107,8 +107,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="BitmapResult.cs" />
-    <Compile Include="DefaultImageLoader.cs" />
-    <Compile Include="IImageLoader.cs" />
+    <Compile Include="DefaultImageLoader.Uwp.cs" />
+    <Compile Include="IImageLoader.Uwp.cs" />
     <Compile Include="ImageEx.cs" />
     <Compile Include="ImageExBehavior.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -146,6 +146,7 @@
       <Name>SoftwareKobo.Utils</Name>
     </ProjectReference>
   </ItemGroup>
+  <Import Project="..\SoftwareKobo.Controls.ImageEx.Shared\SoftwareKobo.Controls.ImageEx.Shared.projitems" Label="Shared" />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>

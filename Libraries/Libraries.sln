@@ -57,7 +57,16 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoftwareKobo.Controls.Toast
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoftwareKobo.Controls.ImageEx.Uwp.15063", "SoftwareKobo.Controls.ImageEx.Uwp.15063\SoftwareKobo.Controls.ImageEx.Uwp.15063.csproj", "{5AF5D966-EE34-48CD-A100-28FD22B9D8B8}"
 EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "SoftwareKobo.Controls.ImageEx.Shared", "SoftwareKobo.Controls.ImageEx.Shared\SoftwareKobo.Controls.ImageEx.Shared.shproj", "{06FD7584-5424-48AA-A2AB-59AF83CC55F1}"
+EndProject
 Global
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		SoftwareKobo.Controls.ImageEx.Shared\SoftwareKobo.Controls.ImageEx.Shared.projitems*{06fd7584-5424-48aa-a2ab-59af83cc55f1}*SharedItemsImports = 13
+		SoftwareKobo.Controls.ImageEx.Shared\SoftwareKobo.Controls.ImageEx.Shared.projitems*{50e078c8-b2f1-4998-ba53-ef236b7762cd}*SharedItemsImports = 4
+		SoftwareKobo.Controls.ImageEx.Shared\SoftwareKobo.Controls.ImageEx.Shared.projitems*{5af5d966-ee34-48cd-a100-28fd22b9d8b8}*SharedItemsImports = 4
+		SoftwareKobo.Controls.ImageEx.Shared\SoftwareKobo.Controls.ImageEx.Shared.projitems*{6ab289ca-714c-4d98-962d-e7ebb445aec1}*SharedItemsImports = 4
+		SoftwareKobo.Controls.ImageEx.Shared\SoftwareKobo.Controls.ImageEx.Shared.projitems*{8ef3f4eb-62c4-4267-a3ab-aee7148d4ff3}*SharedItemsImports = 4
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Debug|ARM = Debug|ARM
@@ -380,5 +389,6 @@ Global
 		{149E728C-3AAC-4AE6-A27D-14402E88BD71} = {5EF5BD3A-4E47-4F19-B20F-56D10A73C10E}
 		{C48BD2CB-FB6A-4677-A2F0-B04F07360B6A} = {AD97817E-1BF4-4D34-89EE-1496D87A5B6C}
 		{5AF5D966-EE34-48CD-A100-28FD22B9D8B8} = {11759603-49BA-4F66-8A27-76C3CD91A8F3}
+		{06FD7584-5424-48AA-A2AB-59AF83CC55F1} = {11759603-49BA-4F66-8A27-76C3CD91A8F3}
 	EndGlobalSection
 EndGlobal

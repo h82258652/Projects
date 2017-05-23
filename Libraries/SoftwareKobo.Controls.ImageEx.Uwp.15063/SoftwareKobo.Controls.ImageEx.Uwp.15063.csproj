@@ -109,11 +109,11 @@
     <Compile Include="..\SoftwareKobo.Controls.ImageEx.Uwp.10240\BitmapResult.cs">
       <Link>BitmapResult.cs</Link>
     </Compile>
-    <Compile Include="..\SoftwareKobo.Controls.ImageEx.Uwp.10240\DefaultImageLoader.cs">
-      <Link>DefaultImageLoader.cs</Link>
+    <Compile Include="..\SoftwareKobo.Controls.ImageEx.Uwp.10240\DefaultImageLoader.Uwp.cs">
+      <Link>DefaultImageLoader.Uwp.cs</Link>
     </Compile>
-    <Compile Include="..\SoftwareKobo.Controls.ImageEx.Uwp.10240\IImageLoader.cs">
-      <Link>IImageLoader.cs</Link>
+    <Compile Include="..\SoftwareKobo.Controls.ImageEx.Uwp.10240\IImageLoader.Uwp.cs">
+      <Link>IImageLoader.Uwp.cs</Link>
     </Compile>
     <Compile Include="..\SoftwareKobo.Controls.ImageEx.Uwp.10240\ImageEx.cs">
       <Link>ImageEx.cs</Link>
@@ -159,6 +159,7 @@
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
+  <Import Project="..\SoftwareKobo.Controls.ImageEx.Shared\SoftwareKobo.Controls.ImageEx.Shared.projitems" Label="Shared" />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>
