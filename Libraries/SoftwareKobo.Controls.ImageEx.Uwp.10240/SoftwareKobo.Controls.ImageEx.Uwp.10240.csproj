@@ -111,6 +111,7 @@
     <Compile Include="IImageLoader.Uwp.cs" />
     <Compile Include="ImageEx.cs" />
     <Compile Include="ImageExBehavior.cs" />
+    <Compile Include="ImageExSettings.Uwp.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\SoftwareKobo.Controls.ImageEx.Uwp._10240.rd.xml" />
   </ItemGroup>

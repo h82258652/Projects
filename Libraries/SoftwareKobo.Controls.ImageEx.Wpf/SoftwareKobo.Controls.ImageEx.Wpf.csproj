@@ -64,6 +64,7 @@
     <Compile Include="IImageLoader.Wpf.cs" />
     <Compile Include="ImageEx.cs" />
     <Compile Include="ImageExBehavior.cs" />
+    <Compile Include="ImageExSettings.Wpf.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

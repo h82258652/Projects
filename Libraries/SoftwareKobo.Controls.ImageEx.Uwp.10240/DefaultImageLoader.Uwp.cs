@@ -21,8 +21,6 @@ namespace SoftwareKobo.Controls
 
         private static readonly WeakValueDictionary<string, BitmapImage> CacheBitmapImages = new WeakValueDictionary<string, BitmapImage>();
 
-        private static readonly string CacheFolderPath = Path.Combine(ApplicationData.Current.LocalCacheFolder.Path, CacheFolderName);
-
         public async Task<BitmapResult> GetBitmapAsync(string source)
         {
             if (source == null)
@@ -118,7 +116,7 @@ namespace SoftwareKobo.Controls
                             {
                                 try
                                 {
-                                    Directory.CreateDirectory(CacheFolderPath);
+                                    Directory.CreateDirectory(ImageExSettings.CacheFolderPath);
                                     await FileExtensions.WriteAllBytesAsync(cacheFilePath, bytes);
                                 }
                                 catch (Exception)
@@ -214,7 +212,7 @@ namespace SoftwareKobo.Controls
                             // 放入内存缓存。
                             CacheBitmapImages[source] = bitmap;
 
-                            Directory.CreateDirectory(CacheFolderPath);
+                            Directory.CreateDirectory(ImageExSettings.CacheFolderPath);
                             await FileExtensions.WriteAllBytesAsync(cacheFilePath, bytes);
                         };
                         bitmap.ImageOpened += imageOpenedHandler;

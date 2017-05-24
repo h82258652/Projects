@@ -11,8 +11,6 @@ namespace SoftwareKobo.Controls
 {
     public partial class DefaultImageLoader : IImageLoader
     {
-        private const string CacheFolderName = "ImageExCache";
-
         private static readonly ConcurrentDictionary<string, Task<byte[]>> ImageDownloadTasks = new ConcurrentDictionary<string, Task<byte[]>>();
 
         private DefaultImageLoader()
@@ -26,9 +24,9 @@ namespace SoftwareKobo.Controls
 
         public long CalculateCacheSize()
         {
-            if (Directory.Exists(CacheFolderPath))
+            if (Directory.Exists(ImageExSettings.CacheFolderPath))
             {
-                return (from cacheFilePath in Directory.EnumerateFiles(CacheFolderPath)
+                return (from cacheFilePath in Directory.EnumerateFiles(ImageExSettings.CacheFolderPath)
                         select new FileInfo(cacheFilePath).Length).Sum();
             }
             return 0;
@@ -48,9 +46,9 @@ namespace SoftwareKobo.Controls
         {
             await Task.Run(() =>
             {
-                if (Directory.Exists(CacheFolderPath))
+                if (Directory.Exists(ImageExSettings.CacheFolderPath))
                 {
-                    Directory.Delete(CacheFolderPath, true);
+                    Directory.Delete(ImageExSettings.CacheFolderPath, true);
                 }
             });
         }
@@ -103,7 +101,7 @@ namespace SoftwareKobo.Controls
             var originalString = uriSource.OriginalString;
             var extension = Path.GetExtension(originalString);
             var cacheFileName = HashHelper.GenerateMD5Hash(originalString) + extension;
-            return Path.Combine(CacheFolderPath, cacheFileName);
+            return Path.Combine(ImageExSettings.CacheFolderPath, cacheFileName);
         }
 
         private async Task<byte[]> DownloadImageAsync(Uri uriSource)

@@ -105,7 +105,7 @@ namespace SoftwareKobo.Controls
                             {
                                 try
                                 {
-                                    Directory.CreateDirectory(CacheFolderPath);
+                                    Directory.CreateDirectory(ImageExSettings.CacheFolderPath);
                                     await FileExtensions.WriteAllBytesAsync(cacheFilePath, bytes);
                                 }
                                 catch (Exception)
