@@ -32,15 +32,15 @@ namespace VGtime.Uwp.Controls
                 selectedIndex = Math.Max(0, selectedIndex);
                 HeadpicsCarouselSelectedIndexTextControl.Text = (selectedIndex + 1).ToString();
             });
+            carousel.Unloaded += delegate
+            {
+                carousel.UnregisterPropertyChangedCallback(Carousel.SelectedIndexProperty, token);
+            };
             {
                 var selectedIndex = carousel.SelectedIndex;
                 selectedIndex = Math.Max(0, selectedIndex);
                 HeadpicsCarouselSelectedIndexTextControl.Text = (selectedIndex + 1).ToString();
             }
-            carousel.Unloaded += delegate
-            {
-                carousel.UnregisterPropertyChangedCallback(Carousel.SelectedIndexProperty, token);
-            };
         }
     }
 }

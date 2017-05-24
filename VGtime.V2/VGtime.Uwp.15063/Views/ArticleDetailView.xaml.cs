@@ -2,6 +2,10 @@
 using Windows.Foundation;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Navigation;
+using GalaSoft.MvvmLight.Messaging;
+using VGtime.Uwp.Messages;
+using WinRTXamlToolkit.AwaitableUI;
 
 namespace VGtime.Uwp.Views
 {
@@ -10,6 +14,23 @@ namespace VGtime.Uwp.Views
         public ArticleDetailView()
         {
             InitializeComponent();
+        }
+
+        protected override void OnNavigatedFrom(NavigationEventArgs e)
+        {
+            base.OnNavigatedFrom(e);
+
+            Messenger.Default.Unregister(this);
+        }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+
+            Messenger.Default.Register<ArticleDetailLoadedMessage>(this, async message =>
+            {
+                await WebView.NavigateAsync(new Uri("ms-appx-web:///Assets/Html/article_detail.html"));
+            });
         }
 
         private async void ScrollToTopButton_Click(object sender, RoutedEventArgs e)

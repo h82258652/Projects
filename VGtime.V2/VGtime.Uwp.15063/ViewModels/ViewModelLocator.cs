@@ -24,6 +24,8 @@ namespace VGtime.Uwp.ViewModels
 
         public const string GamePhotoViewKey = "GamePhoto";
 
+        public const string GameStrategySetViewKey = "GameStrategySet";
+
         public const string SearchViewKey = "Search";
 
         static ViewModelLocator()

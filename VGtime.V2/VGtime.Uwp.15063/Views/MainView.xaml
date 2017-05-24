@@ -9,7 +9,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       DataContext="{Binding Source={StaticResource Locator}, Path=Main}"
       mc:Ignorable="d">
-    <Page.Resources>
+    <FrameworkElement.Resources>
         <ResourceDictionary>
             <converters:ItemClickEventArgsConverter x:Key="ItemClickEventArgsConverter" />
             <controls:PostItemTemplateSelector x:Key="PostItemTemplateSelector">
@@ -25,7 +25,7 @@
                 </controls:PostItemTemplateSelector.VideoTemplate>
             </controls:PostItemTemplateSelector>
         </ResourceDictionary>
-    </Page.Resources>
+    </FrameworkElement.Resources>
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Pivot>
             <FrameworkElement.Resources>
@@ -35,19 +35,20 @@
             </FrameworkElement.Resources>
             <!-- 二维码按钮<Pivot.LeftHeader></Pivot.LeftHeader>-->
             <PivotItem Header="首页">
-                <GridView IsItemClickEnabled="True"
-                          ItemTemplateSelector="{StaticResource PostItemTemplateSelector}"
-                          ItemsSource="{Binding Path=VglistPosts}"
-                          SelectionMode="None">
+                <controls:VGtimeGridView IsItemClickEnabled="True"
+                                         ItemTemplateSelector="{StaticResource PostItemTemplateSelector}"
+                                         ItemsSource="{Binding Path=VglistPosts}"
+                                         MaxItemWidth="640"
+                                         SelectionMode="None">
                     <interactivity:Interaction.Behaviors>
                         <core:EventTriggerBehavior EventName="ItemClick">
                             <core:InvokeCommandAction Command="{Binding Path=PostClickCommand}"
                                                       InputConverter="{StaticResource ItemClickEventArgsConverter}" />
                         </core:EventTriggerBehavior>
                     </interactivity:Interaction.Behaviors>
-                    <GridView.Header>
+                    <ListViewBase.Header>
                         <controls:HeadpicsControl />
-                    </GridView.Header>
+                    </ListViewBase.Header>
                     <ItemsControl.ItemContainerStyle>
                         <Style TargetType="SelectorItem">
                             <Setter Property="HorizontalContentAlignment"
@@ -58,39 +59,65 @@
                                     Value="0,0,8,8" />
                         </Style>
                     </ItemsControl.ItemContainerStyle>
-                </GridView>
+                </controls:VGtimeGridView>
             </PivotItem>
             <PivotItem Header="新闻">
-                <GridView IsItemClickEnabled="True"
-                          ItemsSource="{Binding Path=NewsPosts}"
-                          SelectionMode="None">
+                <controls:VGtimeGridView Padding="8,8,0,0"
+                                         IsItemClickEnabled="True"
+                                         ItemsSource="{Binding Path=NewsPosts}"
+                                         MaxItemWidth="640"
+                                         SelectionMode="None">
                     <interactivity:Interaction.Behaviors>
                         <core:EventTriggerBehavior EventName="ItemClick">
-                            <core:InvokeCommandAction InputConverter="{StaticResource ItemClickEventArgsConverter}" />
-                        </core:EventTriggerBehavior>
-                    </interactivity:Interaction.Behaviors>
-                    <GridView.ItemTemplate>
-                        <DataTemplate>
-                            <TextBlock Text="{Binding Path=Title}" />
-                        </DataTemplate>
-                    </GridView.ItemTemplate>
-                </GridView>
-            </PivotItem>
-            <PivotItem Header="评测">
-                <GridView IsItemClickEnabled="True"
-                          ItemsSource="{Binding Path=EvaluationPosts}"
-                          SelectionMode="None">
-                    <interactivity:Interaction.Behaviors>
-                        <core:EventTriggerBehavior EventName="ItemClick">
-                            <core:InvokeCommandAction InputConverter="{StaticResource ItemClickEventArgsConverter}" />
+                            <core:InvokeCommandAction Command="{Binding Path=PostClickCommand}"
+                                                      InputConverter="{StaticResource ItemClickEventArgsConverter}" />
                         </core:EventTriggerBehavior>
                     </interactivity:Interaction.Behaviors>
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
-                            <TextBlock Text="" />
+                            <TextBlock Text="{Binding Path=Title}" />
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
-                </GridView>
+                    <ItemsControl.ItemContainerStyle>
+                        <Style TargetType="SelectorItem">
+                            <Setter Property="HorizontalContentAlignment"
+                                    Value="Stretch" />
+                            <Setter Property="VerticalContentAlignment"
+                                    Value="Stretch" />
+                            <Setter Property="Margin"
+                                    Value="0,0,8,8" />
+                        </Style>
+                    </ItemsControl.ItemContainerStyle>
+                </controls:VGtimeGridView>
+            </PivotItem>
+            <PivotItem Header="评测">
+                <controls:VGtimeGridView Padding="8,8,0,0"
+                                         IsItemClickEnabled="True"
+                                         ItemsSource="{Binding Path=EvaluationPosts}"
+                                         MaxItemWidth="640"
+                                         SelectionMode="None">
+                    <interactivity:Interaction.Behaviors>
+                        <core:EventTriggerBehavior EventName="ItemClick">
+                            <core:InvokeCommandAction Command="{Binding Path=PostClickCommand}"
+                                                      InputConverter="{StaticResource ItemClickEventArgsConverter}" />
+                        </core:EventTriggerBehavior>
+                    </interactivity:Interaction.Behaviors>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Path=Title}" />
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                    <ItemsControl.ItemContainerStyle>
+                        <Style TargetType="SelectorItem">
+                            <Setter Property="HorizontalContentAlignment"
+                                    Value="Stretch" />
+                            <Setter Property="VerticalContentAlignment"
+                                    Value="Stretch" />
+                            <Setter Property="Margin"
+                                    Value="0,0,8,8" />
+                        </Style>
+                    </ItemsControl.ItemContainerStyle>
+                </controls:VGtimeGridView>
             </PivotItem>
             <PivotItem Header="视频">
                 <controls:VGtimeGridView Padding="8,8,0,0"
@@ -104,11 +131,11 @@
                                                       InputConverter="{StaticResource ItemClickEventArgsConverter}" />
                         </core:EventTriggerBehavior>
                     </interactivity:Interaction.Behaviors>
-                    <GridView.ItemTemplate>
+                    <ItemsControl.ItemTemplate>
                         <DataTemplate>
                             <controls:VideoPostItem />
                         </DataTemplate>
-                    </GridView.ItemTemplate>
+                    </ItemsControl.ItemTemplate>
                     <ItemsControl.ItemContainerStyle>
                         <Style TargetType="SelectorItem">
                             <Setter Property="HorizontalContentAlignment"
@@ -122,10 +149,12 @@
                 </controls:VGtimeGridView>
             </PivotItem>
             <PivotItem Header="攻略">
-                <GridView x:Uid="/MainView/StrategyPostsGridView"
-                          IsItemClickEnabled="True"
-                          ItemsSource="{Binding Path=StrategyPosts}"
-                          SelectionMode="None">
+                <controls:VGtimeGridView x:Uid="/MainView/StrategyPostsGridView"
+                                         Padding="8,8,0,0"
+                                         IsItemClickEnabled="True"
+                                         ItemsSource="{Binding Path=StrategyPosts}"
+                                         MaxItemWidth="640"
+                                         SelectionMode="None">
                     <interactivity:Interaction.Behaviors>
                         <core:EventTriggerBehavior EventName="ItemClick">
                             <core:InvokeCommandAction Command="{Binding Path=StrategyPostClickCommand}"
@@ -134,33 +163,61 @@
                     </interactivity:Interaction.Behaviors>
                     <ListViewBase.Header>
                         <Grid>
-                            <TextBlock Text="点击查看更多过往攻略" />
-                            <Button Content="查看" />
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0"
+                                       Text="点击查看更多过往攻略" />
+                            <Button Grid.Column="1"
+                                    Content="查看" />
                         </Grid>
                     </ListViewBase.Header>
-                    <GridView.ItemTemplate>
+                    <ItemsControl.ItemTemplate>
                         <DataTemplate>
                             <TextBlock Text="{Binding Path=Title}" />
                         </DataTemplate>
-                    </GridView.ItemTemplate>
-                </GridView>
+                    </ItemsControl.ItemTemplate>
+                    <ItemsControl.ItemContainerStyle>
+                        <Style TargetType="SelectorItem">
+                            <Setter Property="HorizontalContentAlignment"
+                                    Value="Stretch" />
+                            <Setter Property="VerticalContentAlignment"
+                                    Value="Stretch" />
+                            <Setter Property="Margin"
+                                    Value="0,0,8,8" />
+                        </Style>
+                    </ItemsControl.ItemContainerStyle>
+                </controls:VGtimeGridView>
             </PivotItem>
             <PivotItem Header="专栏">
-                <GridView IsItemClickEnabled="True"
-                          ItemsSource="{Binding Path=TopicPosts}"
-                          SelectionMode="None">
+                <controls:VGtimeGridView Padding="8,8,0,0"
+                                         IsItemClickEnabled="True"
+                                         ItemsSource="{Binding Path=TopicPosts}"
+                                         MaxItemWidth="640"
+                                         SelectionMode="None">
                     <interactivity:Interaction.Behaviors>
                         <core:EventTriggerBehavior EventName="ItemClick">
                             <core:InvokeCommandAction Command="{Binding Path=PostClickCommand}"
                                                       InputConverter="{StaticResource ItemClickEventArgsConverter}" />
                         </core:EventTriggerBehavior>
                     </interactivity:Interaction.Behaviors>
-                    <ListViewBase.ItemTemplate>
+                    <ItemsControl.ItemTemplate>
                         <DataTemplate>
                             <TextBlock />
                         </DataTemplate>
-                    </ListViewBase.ItemTemplate>
-                </GridView>
+                    </ItemsControl.ItemTemplate>
+                    <ItemsControl.ItemContainerStyle>
+                        <Style TargetType="SelectorItem">
+                            <Setter Property="HorizontalContentAlignment"
+                                    Value="Stretch" />
+                            <Setter Property="VerticalContentAlignment"
+                                    Value="Stretch" />
+                            <Setter Property="Margin"
+                                    Value="0,0,8,8" />
+                        </Style>
+                    </ItemsControl.ItemContainerStyle>
+                </controls:VGtimeGridView>
             </PivotItem>
             <Pivot.RightHeader>
                 <Button Command="{Binding Path=SearchCommand}"

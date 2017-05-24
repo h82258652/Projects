@@ -90,7 +90,7 @@ namespace VGtime.Uwp.ViewModels
                 _strategyPostClickCommand = _strategyPostClickCommand ?? new RelayCommand<TimeLineBase>(strategyPost =>
                 {
                     // TODO
-                    _navigationService.NavigateTo(ViewModelLocator.SearchViewKey, null);
+                    _navigationService.NavigateTo(ViewModelLocator.GameStrategySetViewKey, null);
                 });
                 return _strategyPostClickCommand;
             }

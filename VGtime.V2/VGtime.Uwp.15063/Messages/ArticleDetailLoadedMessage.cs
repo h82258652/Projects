@@ -1,12 +1,12 @@
 ﻿using System;
 using GalaSoft.MvvmLight.Messaging;
-using VGtime.Models.Timeline;
+using VGtime.Models.Article;
 
 namespace VGtime.Uwp.Messages
 {
     public class ArticleDetailLoadedMessage : MessageBase
     {
-        public ArticleDetailLoadedMessage(TimeLineBase articleDetail)
+        public ArticleDetailLoadedMessage(ArticleDetail articleDetail)
         {
             if (articleDetail == null)
             {
@@ -16,7 +16,7 @@ namespace VGtime.Uwp.Messages
             ArticleDetail = articleDetail;
         }
 
-        public TimeLineBase ArticleDetail
+        public ArticleDetail ArticleDetail
         {
             get;
         }
