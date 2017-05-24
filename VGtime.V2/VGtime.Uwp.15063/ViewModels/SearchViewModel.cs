@@ -3,9 +3,11 @@ using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Views;
 using VGtime.Configuration;
 using VGtime.Models.Games;
+using VGtime.Models.Timeline;
 using VGtime.Services;
 using VGtime.Uwp.Data;
 using VGtime.Uwp.Services;
+using VGtime.Uwp.ViewParameters;
 
 namespace VGtime.Uwp.ViewModels
 {
@@ -23,7 +25,11 @@ namespace VGtime.Uwp.ViewModels
 
         private readonly IVGtimeSettings _vgtimeSettings;
 
+        private RelayCommand<TimeLineBase> _articleClickCommand;
+
         private SearchArticleCollection _articles;
+
+        private SearchForumCollection _forums;
 
         private RelayCommand<GameBase> _gameClickCommand;
 
@@ -43,6 +49,18 @@ namespace VGtime.Uwp.ViewModels
             _appToastService = appToastService;
         }
 
+        public RelayCommand<TimeLineBase> ArticleClickCommand
+        {
+            get
+            {
+                _articleClickCommand = _articleClickCommand ?? new RelayCommand<TimeLineBase>(article =>
+                {
+                    _navigationService.NavigateTo(ViewModelLocator.ArticleDetailViewKey, new ArticleDetailViewParameter(article.PostId, article.DetailType));
+                });
+                return _articleClickCommand;
+            }
+        }
+
         public SearchArticleCollection Articles
         {
             get
@@ -55,12 +73,25 @@ namespace VGtime.Uwp.ViewModels
             }
         }
 
+        public SearchForumCollection Forums
+        {
+            get
+            {
+                return _forums;
+            }
+            private set
+            {
+                Set(ref _forums, value);
+            }
+        }
+
         public RelayCommand<GameBase> GameClickCommand
         {
             get
             {
                 _gameClickCommand = _gameClickCommand ?? new RelayCommand<GameBase>(game =>
                 {
+                    // TODO
                     _navigationService.NavigateTo(ViewModelLocator.GameDetailViewKey, null);
                 });
                 return _gameClickCommand;
@@ -93,6 +124,7 @@ namespace VGtime.Uwp.ViewModels
                     else
                     {
                         Articles = new SearchArticleCollection(text, _postService, _vgtimeSettings);
+                        Forums = new SearchForumCollection(text, _postService, _vgtimeSettings);
                         Users = new SearchUserCollection(text, _userService, _vgtimeSettings);
                         Games = new SearchGameCollection(text, _gameService, _vgtimeSettings);
                     }

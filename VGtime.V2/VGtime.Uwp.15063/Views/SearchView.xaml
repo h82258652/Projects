@@ -35,46 +35,52 @@
         <Pivot Grid.Row="1">
             <PivotItem Header="文章">
                 <controls:VGtimeGridView IsItemClickEnabled="True"
+                                         ItemsSource="{Binding Path=Articles}"
                                          MaxItemWidth="640"
                                          SelectionMode="None">
-                    <GridView.ItemTemplate>
+                    <interactivity:Interaction.Behaviors>
+                        <core:EventTriggerBehavior EventName="ItemClick">
+                            <core:InvokeCommandAction Command="{Binding Path=ArticleClickCommand}"
+                                                      InputConverter="{StaticResource ItemClickEventArgsConverter}" />
+                        </core:EventTriggerBehavior>
+                    </interactivity:Interaction.Behaviors>
+                    <ItemsControl.ItemTemplate>
                         <DataTemplate />
-                    </GridView.ItemTemplate>
+                    </ItemsControl.ItemTemplate>
                 </controls:VGtimeGridView>
             </PivotItem>
             <PivotItem Header="俱乐部">
-                <GridView SelectionMode="None">
-                    <GridView.ItemTemplate>
+                <controls:VGtimeGridView ItemsSource="{Binding Path=Forums}"
+                                         SelectionMode="None">
+                    <ItemsControl.ItemTemplate>
                         <DataTemplate />
-                    </GridView.ItemTemplate>
-                </GridView>
+                    </ItemsControl.ItemTemplate>
+                </controls:VGtimeGridView>
             </PivotItem>
             <PivotItem Header="用户">
-                <GridView ItemsSource="{Binding Path=Users}"
-                          SelectionMode="None">
-                    <GridView.ItemTemplate>
+                <controls:VGtimeGridView ItemsSource="{Binding Path=Users}"
+                                         SelectionMode="None">
+                    <ItemsControl.ItemTemplate>
                         <DataTemplate />
-                    </GridView.ItemTemplate>
-                </GridView>
+                    </ItemsControl.ItemTemplate>
+                </controls:VGtimeGridView>
             </PivotItem>
             <PivotItem Header="游戏">
-                <GridView IsItemClickEnabled="True"
-                          ItemsSource="{Binding Path=Games}"
-                          SelectionMode="None">
+                <controls:VGtimeGridView IsItemClickEnabled="True"
+                                         ItemsSource="{Binding Path=Games}"
+                                         SelectionMode="None">
                     <interactivity:Interaction.Behaviors>
                         <core:EventTriggerBehavior EventName="ItemClick">
                             <core:InvokeCommandAction Command="{Binding Path=GameClickCommand}"
                                                       InputConverter="{StaticResource ItemClickEventArgsConverter}" />
                         </core:EventTriggerBehavior>
                     </interactivity:Interaction.Behaviors>
-                    <GridView.ItemTemplate>
+                    <ItemsControl.ItemTemplate>
                         <DataTemplate>
-                            <Grid>
-                                <!--  TODO  -->
-                            </Grid>
+                            <controls:GameItem />
                         </DataTemplate>
-                    </GridView.ItemTemplate>
-                </GridView>
+                    </ItemsControl.ItemTemplate>
+                </controls:VGtimeGridView>
             </PivotItem>
         </Pivot>
     </Grid>

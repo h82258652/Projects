@@ -8,7 +8,7 @@ using VGtime.Services;
 
 namespace VGtime.Uwp.Data
 {
-    public class SearchArticleCollection : IncrementalLoadingCollectionBase<TimeLineBase>
+    public class SearchForumCollection : IncrementalLoadingCollectionBase<TimeLineBase>
     {
         private readonly Action<Exception> _onError;
 
@@ -18,7 +18,7 @@ namespace VGtime.Uwp.Data
 
         private readonly IVGtimeSettings _vgtimeSettings;
 
-        public SearchArticleCollection(string text, IPostService postService, IVGtimeSettings vgtimeSettings, Action<Exception> onError = null)
+        public SearchForumCollection(string text, IPostService postService, IVGtimeSettings vgtimeSettings, Action<Exception> onError = null)
         {
             if (text == null)
             {
@@ -50,7 +50,7 @@ namespace VGtime.Uwp.Data
             {
                 IsLoading = true;
 
-                var result = await _postService.SearchArticleAsync(_text, _vgtimeSettings.UserInfo?.UserId, CurrentPage + 1);
+                var result = await _postService.SearchForumAsync(_text, _vgtimeSettings.UserInfo?.UserId, CurrentPage + 1);
                 uint loadedCount = 0;
                 if (result.Retcode == Constants.SuccessCode)
                 {
@@ -59,11 +59,11 @@ namespace VGtime.Uwp.Data
                     var data = result.Data.Data;
                     if (data.Length > 0)
                     {
-                        foreach (var article in data)
+                        foreach (var forum in data)
                         {
-                            if (this.All(temp => temp.PostId != article.PostId))
+                            if (this.All(temp => temp.PostId != forum.PostId))
                             {
-                                Add(article);
+                                Add(forum);
                                 loadedCount++;
                             }
                         }

@@ -95,7 +95,10 @@ namespace VGtime.Services
             using (var client = new HttpClient())
             {
                 var json = await client.GetStringAsync(url);
-                return JsonConvert.DeserializeObject<ServerBase<SearchList<TimeLineBase>>>(json);
+                return JsonConvert.DeserializeObject<ServerBase<SearchList<TimeLineBase>>>(json, new JsonSerializerSettings()
+                {
+                    NullValueHandling = NullValueHandling.Ignore
+                });
             }
         }
 
@@ -122,7 +125,10 @@ namespace VGtime.Services
             using (var client = new HttpClient())
             {
                 var json = await client.GetStringAsync(url);
-                return JsonConvert.DeserializeObject<ServerBase<SearchList<TimeLineBase>>>(json);
+                return JsonConvert.DeserializeObject<ServerBase<SearchList<TimeLineBase>>>(json, new JsonSerializerSettings()
+                {
+                    NullValueHandling = NullValueHandling.Ignore
+                });
             }
         }
     }
