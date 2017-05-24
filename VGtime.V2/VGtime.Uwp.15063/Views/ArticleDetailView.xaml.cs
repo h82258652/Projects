@@ -56,7 +56,11 @@ namespace VGtime.Uwp.Views
             try
             {
                 var action = query.GetFirstValueByName("action");
-                if (action.Equals("goBack", StringComparison.OrdinalIgnoreCase))
+                if (action.Equals("moreComment", StringComparison.OrdinalIgnoreCase))
+                {
+                    // TODO
+                }
+                else if (action.Equals("goBack", StringComparison.OrdinalIgnoreCase))
                 {
                     if (Frame.CanGoBack)
                     {

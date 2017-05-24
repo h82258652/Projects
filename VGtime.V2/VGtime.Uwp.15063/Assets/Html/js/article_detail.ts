@@ -9,6 +9,10 @@ function scrollToTop(): void {
 }
 
 $(() => {
+    $(".vgapp_comment_more").click(() => {
+        window.external.notify("?action=moreComment");
+    });
+
     var hammertime = new Hammer(document.querySelector("html"));
     hammertime.on("swipeleft", (e: HammerInput): void => {
         if (e.pointerType !== "mouse") {

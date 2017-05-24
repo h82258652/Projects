@@ -7,6 +7,9 @@ function scrollToTop() {
     }, "fast");
 }
 $(function () {
+    $(".vgapp_comment_more").click(function () {
+        window.external.notify("?action=moreComment");
+    });
     var hammertime = new Hammer(document.querySelector("html"));
     hammertime.on("swipeleft", function (e) {
         if (e.pointerType !== "mouse") {

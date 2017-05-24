@@ -7,6 +7,7 @@ using VGtime.Configuration;
 using VGtime.Services;
 using VGtime.Uwp.Services;
 using VGtime.Uwp.ViewModels.Games;
+using VGtime.Uwp.ViewModels.Image;
 using VGtime.Uwp.ViewModels.Settings;
 using VGtime.Uwp.ViewModels.Users;
 using VGtime.Uwp.Views;
@@ -25,6 +26,8 @@ namespace VGtime.Uwp.ViewModels
         public const string GamePhotoViewKey = "GamePhoto";
 
         public const string GameStrategySetViewKey = "GameStrategySet";
+
+        public const string ImagePagerViewKey = "ImagePager";
 
         public const string SearchViewKey = "Search";
 
@@ -47,6 +50,8 @@ namespace VGtime.Uwp.ViewModels
         public GameScoreViewModel GameScore => ServiceLocator.Current.GetInstance<GameScoreViewModel>();
 
         public GameStrategySetViewModel GameStrategySet => ServiceLocator.Current.GetInstance<GameStrategySetViewModel>();
+
+        public ImagePagerViewModel ImagePager => ServiceLocator.Current.GetInstance<ImagePagerViewModel>();
 
         public LoginViewModel Login => ServiceLocator.Current.GetInstance<LoginViewModel>();
 

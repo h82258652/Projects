@@ -141,6 +141,7 @@
     <Compile Include="ViewModels\Games\GamePhotoViewModel.cs" />
     <Compile Include="ViewModels\Games\GameScoreViewModel.cs" />
     <Compile Include="ViewModels\Games\GameStrategySetViewModel.cs" />
+    <Compile Include="ViewModels\Image\ImagePagerViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\SearchViewModel.cs" />
     <Compile Include="ViewModels\Settings\AboutViewModel.cs" />
@@ -167,6 +168,9 @@
     </Compile>
     <Compile Include="Views\Games\GameStrategySetView.xaml.cs">
       <DependentUpon>GameStrategySetView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Image\ImagePagerView.xaml.cs">
+      <DependentUpon>ImagePagerView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\MainView.xaml.cs">
       <DependentUpon>MainView.xaml</DependentUpon>
@@ -335,6 +339,23 @@
     <Content Include="Assets\Html\bower_components\jquery\src\var\toString.js" />
     <Content Include="Assets\Html\bower_components\jquery\src\wrap.js" />
     <Content Include="Assets\Html\css\article_detail.css" />
+    <Content Include="Assets\Html\img\1.png" />
+    <Content Include="Assets\Html\img\2.png" />
+    <Content Include="Assets\Html\img\3.png" />
+    <Content Include="Assets\Html\img\ad_close.png" />
+    <Content Include="Assets\Html\img\album.png" />
+    <Content Include="Assets\Html\img\bad.png" />
+    <Content Include="Assets\Html\img\blockquote.svg" />
+    <Content Include="Assets\Html\img\gan.png" />
+    <Content Include="Assets\Html\img\gan_1.png" />
+    <Content Include="Assets\Html\img\good.png" />
+    <Content Include="Assets\Html\img\no_solve.png" />
+    <Content Include="Assets\Html\img\ping.png" />
+    <Content Include="Assets\Html\img\solve.png" />
+    <Content Include="Assets\Html\img\vlist.png" />
+    <Content Include="Assets\Html\img\vote.png" />
+    <Content Include="Assets\Html\img\zan.png" />
+    <Content Include="Assets\Html\img\zan_1.png" />
     <Content Include="Assets\Html\js\article_detail.js" />
     <Content Include="Assets\Images\logo_about.png" />
     <Content Include="Properties\Default.rd.xml" />
@@ -450,6 +471,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Games\GameStrategySetView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Image\ImagePagerView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
