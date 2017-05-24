@@ -1,18 +1,104 @@
 ﻿<UserControl x:Class="VGtime.Uwp.Controls.ListPostItem"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:converters="using:VGtime.Uwp.Converters"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:timeline="using:VGtime.Models.Timeline"
              d:DataContext="{d:DesignInstance Type=timeline:TimeLineBase}"
              mc:Ignorable="d">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Styles/VGtimeColorStyle.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+            <converters:TimeAgoConverter x:Key="TimeAgoConverter" />
+            <converters:ScoreToColorConverter x:Key="ScoreToColorConverter" />
+        </ResourceDictionary>
+    </UserControl.Resources>
     <Grid>
         <Viewbox>
-            <Border Width="960"
-                    Height="600" />
+            <Border Width="1000"
+                    Height="300" />
         </Viewbox>
-        <TextBlock Text="{Binding Path=Title}"
-                   HorizontalAlignment="Center"
-                   VerticalAlignment="Center" />
+        <Grid Margin="0,8,8,8">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="6*" />
+                <ColumnDefinition Width="4*" />
+            </Grid.ColumnDefinitions>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <StackPanel Grid.Row="0"
+                            Orientation="Horizontal">
+                    <Border Width="4"
+                            Margin="0,2,0,2"
+                            Background="{ThemeResource VGtimeAccentBrush}" />
+                    <TextBlock Margin="4,0,0,0"
+                               Foreground="{ThemeResource VGtimeAccentBrush}"
+                               Text="{Binding Path=Category}" />
+                </StackPanel>
+                <TextBlock Grid.Row="1"
+                           Margin="8,8,0,0" FontSize="18"
+                           Text="{Binding Path=Title}"
+                           TextWrapping="Wrap" />
+                <Grid Grid.Row="2"
+                      Margin="8,8,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <Ellipse Grid.Column="0"
+                             Width="24"
+                             Height="24"
+                             VerticalAlignment="Center">
+                        <Ellipse.Fill>
+                            <ImageBrush ImageSource="{Binding Path=User.AvatarUrl}" />
+                        </Ellipse.Fill>
+                    </Ellipse>
+                    <TextBlock Grid.Column="1"
+                               Margin="4,0,0,0"
+                               VerticalAlignment="Center"
+                               Foreground="{ThemeResource VGtimeSecondaryTextBrush}"
+                               Text="{Binding Path=User.Name}" />
+                    <TextBlock Grid.Column="2"
+                               Margin="4,0,0,0"
+                               VerticalAlignment="Center"
+                               Foreground="{ThemeResource VGtimeSecondaryTextBrush}"
+                               Text="{Binding Path=PublishDate, Converter={StaticResource TimeAgoConverter}}" />
+                    <Viewbox Grid.Column="3"
+                             Width="18"
+                             Height="18"
+                             VerticalAlignment="Center">
+                        <SymbolIcon Foreground="{ThemeResource VGtimeSecondaryTextBrush}"
+                                    Symbol="Comment" />
+                    </Viewbox>
+                    <TextBlock Grid.Column="4"
+                               Margin="4,0,0,0"
+                               VerticalAlignment="Center"
+                               Foreground="{ThemeResource VGtimeSecondaryTextBrush}"
+                               Text="{Binding Path=CommentNum}" />
+                </Grid>
+            </Grid>
+            <Grid Grid.Column="1"
+                  Margin="8,0,0,0">
+                <Image Source="{Binding Path=Thumbnail.Url}"
+                       Stretch="UniformToFill" />
+                <Border HorizontalAlignment="Right"
+                        VerticalAlignment="Top"
+                        Background="{Binding Path=ReviewScore, Converter={StaticResource ScoreToColorConverter}}">
+                    <TextBlock Margin="4,0,4,0"
+                               FontSize="20"
+                               Foreground="White"
+                               Text="{Binding Path=ReviewScore}" />
+                </Border>
+            </Grid>
+        </Grid>
     </Grid>
 </UserControl>

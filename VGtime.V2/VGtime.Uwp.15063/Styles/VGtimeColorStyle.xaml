@@ -3,10 +3,13 @@
     <Color x:Key="VGtimeAccentColor">#2ABACA</Color>
     <Color x:Key="VGtimeAccentLightColor">#82D6E0</Color>
     <Color x:Key="VGtimeAccentDarkColor">#0E7983</Color>
+    <Color x:Key="VGtimeSecondaryTextColor">#8A000000</Color>
     <SolidColorBrush x:Key="VGtimeAccentBrush"
                      Color="{ThemeResource VGtimeAccentColor}" />
     <SolidColorBrush x:Key="VGtimeAccentLightBrush"
                      Color="{ThemeResource VGtimeAccentLightColor}" />
     <SolidColorBrush x:Key="VGtimeAccentDarkBrush"
                      Color="{ThemeResource VGtimeAccentDarkColor}" />
+    <SolidColorBrush x:Key="VGtimeSecondaryTextBrush"
+                     Color="{ThemeResource VGtimeSecondaryTextColor}" />
 </ResourceDictionary>

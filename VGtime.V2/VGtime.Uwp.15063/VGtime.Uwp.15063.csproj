@@ -95,6 +95,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\Card.cs" />
     <Compile Include="Controls\CommentItem.xaml.cs">
       <DependentUpon>CommentItem.xaml</DependentUpon>
     </Compile>
@@ -119,6 +120,7 @@
       <DependentUpon>VideoPostItem.xaml</DependentUpon>
     </Compile>
     <Compile Include="Converters\IsNullOrEmptyStringToVisibilityConverter.cs" />
+    <Compile Include="Converters\ScoreToColorConverter.cs" />
     <Compile Include="Converters\TimeAgoConverter.cs" />
     <Compile Include="Data\CommentCollection.cs" />
     <Compile Include="Data\GameScoreCollection.cs" />
@@ -143,6 +145,7 @@
     <Compile Include="ViewModels\Games\GameStrategySetViewModel.cs" />
     <Compile Include="ViewModels\Image\ImagePagerViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
+    <Compile Include="ViewModels\OldGameStrategyViewModel.cs" />
     <Compile Include="ViewModels\SearchViewModel.cs" />
     <Compile Include="ViewModels\Settings\AboutViewModel.cs" />
     <Compile Include="ViewModels\Settings\SettingViewModel.cs" />
@@ -174,6 +177,9 @@
     </Compile>
     <Compile Include="Views\MainView.xaml.cs">
       <DependentUpon>MainView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\OldGameStrategyView.xaml.cs">
+      <DependentUpon>OldGameStrategyView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\RootView.xaml.cs">
       <DependentUpon>RootView.xaml</DependentUpon>
@@ -372,6 +378,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Controls\Card.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Page>
     <Page Include="Controls\CommentItem.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -450,6 +461,10 @@
       <Generator>MSBuild:Compile</Generator>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Page>
+    <Page Include="Themes\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Views\ArticleDetailView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -479,6 +494,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\MainView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\OldGameStrategyView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -517,6 +536,9 @@
     </PackageReference>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
       <Version>5.3.3</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Toolkit.Uwp.UI.Controls">
+      <Version>1.4.1</Version>
     </PackageReference>
     <PackageReference Include="MvvmLightLibs">
       <Version>5.3.0</Version>

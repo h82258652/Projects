@@ -42,7 +42,7 @@ namespace VGtime.Uwp.Controls
             var itemsWrapGrid = ItemsPanelRoot as ItemsWrapGrid;
             if (itemsWrapGrid != null)
             {
-                var width = itemsWrapGrid.ActualWidth;
+                var width = ActualWidth - Padding.Left - Padding.Right - itemsWrapGrid.Margin.Left - itemsWrapGrid.Margin.Right;
                 var column = Math.Ceiling(width / maxItemWidth);
                 itemsWrapGrid.ItemWidth = width / column;
             }

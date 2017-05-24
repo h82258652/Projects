@@ -151,7 +151,7 @@ namespace VGtime.Models.Timeline
         }
 
         [JsonProperty("reviewScore")]
-        public float ReviewScore
+        public float? ReviewScore
         {
             get;
             set;
