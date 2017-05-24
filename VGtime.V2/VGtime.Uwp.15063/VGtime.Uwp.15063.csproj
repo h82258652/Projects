@@ -184,6 +184,14 @@
       <SubType>Designer</SubType>
     </AppxManifest>
     <None Include="Assets\Html\bower.json" />
+    <None Include="Assets\Html\bower_components\hammerjs\.bower.json" />
+    <None Include="Assets\Html\bower_components\hammerjs\bower.json" />
+    <None Include="Assets\Html\bower_components\hammerjs\CHANGELOG.md" />
+    <None Include="Assets\Html\bower_components\hammerjs\CONTRIBUTING.md" />
+    <None Include="Assets\Html\bower_components\hammerjs\hammer.min.js.map" />
+    <None Include="Assets\Html\bower_components\hammerjs\hammer.min.map" />
+    <None Include="Assets\Html\bower_components\hammerjs\LICENSE.md" />
+    <None Include="Assets\Html\bower_components\hammerjs\README.md" />
     <None Include="Assets\Html\bower_components\jquery\.bower.json" />
     <None Include="Assets\Html\bower_components\jquery\bower.json" />
     <None Include="Assets\Html\bower_components\jquery\dist\jquery.min.map" />
@@ -197,6 +205,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\Html\article_detail.html" />
+    <Content Include="Assets\Html\bower_components\hammerjs\changelog.js" />
+    <Content Include="Assets\Html\bower_components\hammerjs\hammer.js" />
+    <Content Include="Assets\Html\bower_components\hammerjs\hammer.min.js" />
     <Content Include="Assets\Html\bower_components\jquery\AUTHORS.txt" />
     <Content Include="Assets\Html\bower_components\jquery\dist\core.js" />
     <Content Include="Assets\Html\bower_components\jquery\dist\jquery.js" />
@@ -362,6 +373,11 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Page>
     <Page Include="Styles\Buttons\ShareButtonStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Page>
+    <Page Include="Styles\Pivots\VGtimePivotHeaderItemStyle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

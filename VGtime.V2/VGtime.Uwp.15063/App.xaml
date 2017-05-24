@@ -8,6 +8,7 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/Styles/VGtimeButtonStyle.xaml" />
                 <ResourceDictionary Source="/Styles/VGtimeColorStyle.xaml" />
+                <ResourceDictionary Source="/Styles/VGtimePivotStyle.xaml" />
                 <ResourceDictionary Source="/Styles/VGtimeTextControlStyle.xaml" />
             </ResourceDictionary.MergedDictionaries>
             <viewModels:ViewModelLocator x:Key="Locator" />

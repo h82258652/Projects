@@ -323,6 +323,7 @@
                                                           Content="{TemplateBinding LeftHeader}"
                                                           ContentTemplate="{TemplateBinding LeftHeaderTemplate}" />
                                         <ContentControl x:Name="HeaderClipper"
+                                                        Grid.Row="0"
                                                         Grid.Column="1"
                                                         HorizontalContentAlignment="Stretch"
                                                         UseSystemFocusVisuals="True">
@@ -347,6 +348,7 @@
                                             </Grid>
                                         </ContentControl>
                                         <Button x:Name="PreviousButton"
+                                                Grid.Row="0"
                                                 Grid.Column="1"
                                                 Width="20"
                                                 Height="36"
@@ -360,6 +362,7 @@
                                                 Template="{StaticResource PreviousTemplate}"
                                                 UseSystemFocusVisuals="False" />
                                         <Button x:Name="NextButton"
+                                                Grid.Row="0"
                                                 Grid.Column="1"
                                                 Width="20"
                                                 Height="36"
@@ -373,6 +376,7 @@
                                                 Template="{StaticResource NextTemplate}"
                                                 UseSystemFocusVisuals="False" />
                                         <ContentPresenter x:Name="RightHeaderPresenter"
+                                                          Grid.Row="0"
                                                           Grid.Column="2"
                                                           HorizontalAlignment="Stretch"
                                                           VerticalAlignment="Stretch"
@@ -381,6 +385,7 @@
                                                           ContentTemplate="{TemplateBinding RightHeaderTemplate}" />
                                         <ItemsPresenter x:Name="PivotItemPresenter"
                                                         Grid.Row="1"
+                                                        Grid.Column="0"
                                                         Grid.ColumnSpan="3">
                                             <ItemsPresenter.RenderTransform>
                                                 <TransformGroup>

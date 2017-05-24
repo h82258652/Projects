@@ -27,10 +27,11 @@
         </ResourceDictionary>
     </FrameworkElement.Resources>
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <Pivot>
+        <Pivot Style="{StaticResource VGtimePivotStyle}">
             <FrameworkElement.Resources>
                 <ResourceDictionary>
-                    <Style TargetType="PivotHeaderItem" />
+                    <Style BasedOn="{StaticResource VGtimePivotHeaderItemStyle}"
+                           TargetType="PivotHeaderItem" />
                 </ResourceDictionary>
             </FrameworkElement.Resources>
             <!-- 二维码按钮<Pivot.LeftHeader></Pivot.LeftHeader>-->
