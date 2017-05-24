@@ -58,24 +58,46 @@ namespace VGtime.Services.Test
         }
 
         [Fact]
-        public async Task TestSearchArticlesAsync()
+        public async Task TestSearchArticleAsync()
         {
             const string text = "高达";
 
             await Assert.ThrowsAsync<ArgumentNullException>(async () =>
             {
-                await _postService.SearchArticlesAsync(null);
+                await _postService.SearchArticleAsync(null);
             });
             await Assert.ThrowsAsync<ArgumentOutOfRangeException>(async () =>
             {
-                await _postService.SearchArticlesAsync(text, page: 0);
+                await _postService.SearchArticleAsync(text, page: 0);
             });
             await Assert.ThrowsAsync<ArgumentOutOfRangeException>(async () =>
             {
-                await _postService.SearchArticlesAsync(text, pageSize: 0);
+                await _postService.SearchArticleAsync(text, pageSize: 0);
             });
 
-            var result = await _postService.SearchArticlesAsync(text);
+            var result = await _postService.SearchArticleAsync(text);
+            Assert.Equal(result.Retcode, Constants.SuccessCode);
+        }
+
+        [Fact]
+        public async Task TestSearchForumAsync()
+        {
+            const string text = "高达";
+
+            await Assert.ThrowsAsync<ArgumentNullException>(async () =>
+            {
+                await _postService.SearchForumAsync(null);
+            });
+            await Assert.ThrowsAsync<ArgumentOutOfRangeException>(async () =>
+            {
+                await _postService.SearchForumAsync(text, page: 0);
+            });
+            await Assert.ThrowsAsync<ArgumentOutOfRangeException>(async () =>
+            {
+                await _postService.SearchForumAsync(text, pageSize: 0);
+            });
+
+            var result = await _postService.SearchForumAsync(text);
             Assert.Equal(result.Retcode, Constants.SuccessCode);
         }
     }

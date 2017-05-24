@@ -72,7 +72,7 @@ namespace VGtime.Services
             }
         }
 
-        public async Task<ServerBase<SearchList<TimeLineBase>>> SearchArticlesAsync(string text, int? userId = null, int page = 1, int pageSize = 20)
+        public async Task<ServerBase<SearchList<TimeLineBase>>> SearchArticleAsync(string text, int? userId = null, int page = 1, int pageSize = 20)
         {
             if (text == null)
             {
@@ -88,6 +88,33 @@ namespace VGtime.Services
             }
 
             var url = $"{Constants.UrlBase}/vgtime-app/api/v2/search.json?text={WebUtility.UrlEncode(text)}&type=2&typeTag=2&page={page}&pageSize={pageSize}";
+            if (userId.HasValue)
+            {
+                url = url + $"&userId={userId}";
+            }
+            using (var client = new HttpClient())
+            {
+                var json = await client.GetStringAsync(url);
+                return JsonConvert.DeserializeObject<ServerBase<SearchList<TimeLineBase>>>(json);
+            }
+        }
+
+        public async Task<ServerBase<SearchList<TimeLineBase>>> SearchForumAsync(string text, int? userId = null, int page = 1, int pageSize = 20)
+        {
+            if (text == null)
+            {
+                throw new ArgumentNullException(nameof(text));
+            }
+            if (page <= 0)
+            {
+                throw new ArgumentOutOfRangeException(nameof(page));
+            }
+            if (pageSize <= 0)
+            {
+                throw new ArgumentOutOfRangeException(nameof(pageSize));
+            }
+
+            var url = $"{Constants.UrlBase}/vgtime-app/api/v2/search.json?text={WebUtility.UrlEncode(text)}&type=2&typeTag=3&page={page}&pageSize={pageSize}";
             if (userId.HasValue)
             {
                 url = url + $"&userId={userId}";

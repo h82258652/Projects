@@ -12,6 +12,8 @@ namespace VGtime.Services
 
         Task<ServerBase<PostStatus>> GetDetailStatusAsync(int postId, int type, int? userId = null);
 
-        Task<ServerBase<SearchList<TimeLineBase>>> SearchArticlesAsync(string text, int? userId = null, int page = 1, int pageSize = 20);
+        Task<ServerBase<SearchList<TimeLineBase>>> SearchArticleAsync(string text, int? userId = null, int page = 1, int pageSize = 20);
+
+        Task<ServerBase<SearchList<TimeLineBase>>> SearchForumAsync(string text, int? userId = null, int page = 1, int pageSize = 20);
     }
 }
