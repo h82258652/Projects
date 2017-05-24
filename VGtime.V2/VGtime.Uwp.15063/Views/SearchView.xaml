@@ -22,17 +22,30 @@
         </Grid.RowDefinitions>
         <Grid Grid.Row="0"
               Background="{ThemeResource VGtimeAccentBrush}">
-            <Button Style="{StaticResource NavigationBackButtonStyle}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0"
+                    Style="{StaticResource NavigationBackButtonStyle}">
                 <interactivity:Interaction.Behaviors>
                     <core:EventTriggerBehavior EventName="Click">
                         <behaviors:GoBackAction />
                     </core:EventTriggerBehavior>
                 </interactivity:Interaction.Behaviors>
             </Button>
-            <AutoSuggestBox VerticalAlignment="Center"
+            <AutoSuggestBox Grid.Column="1"
+                            VerticalAlignment="Center"
                             PlaceholderText="请输入搜索内容" />
         </Grid>
-        <Pivot Grid.Row="1">
+        <Pivot Grid.Row="1"
+               Style="{StaticResource VGtimePivotStyle}">
+            <Pivot.Resources>
+                <ResourceDictionary>
+                    <Style BasedOn="{StaticResource VGtimePivotHeaderItemStyle}"
+                           TargetType="PivotHeaderItem" />
+                </ResourceDictionary>
+            </Pivot.Resources>
             <PivotItem Header="文章">
                 <controls:VGtimeGridView IsItemClickEnabled="True"
                                          ItemsSource="{Binding Path=Articles}"
@@ -66,7 +79,8 @@
                 </controls:VGtimeGridView>
             </PivotItem>
             <PivotItem Header="游戏">
-                <controls:VGtimeGridView IsItemClickEnabled="True"
+                <controls:VGtimeGridView Padding="8,8,0,0"
+                                         IsItemClickEnabled="True"
                                          ItemsSource="{Binding Path=Games}"
                                          SelectionMode="None">
                     <interactivity:Interaction.Behaviors>
@@ -80,6 +94,16 @@
                             <controls:GameItem />
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
+                    <ItemsControl.ItemContainerStyle>
+                        <Style TargetType="SelectorItem">
+                            <Setter Property="HorizontalContentAlignment"
+                                    Value="Stretch" />
+                            <Setter Property="VerticalContentAlignment"
+                                    Value="Stretch" />
+                            <Setter Property="Margin"
+                                    Value="0,0,8,8" />
+                        </Style>
+                    </ItemsControl.ItemContainerStyle>
                 </controls:VGtimeGridView>
             </PivotItem>
         </Pivot>
