@@ -5,6 +5,7 @@ using GalaSoft.MvvmLight.Views;
 using VGtime.Models.Timeline;
 using VGtime.Services;
 using VGtime.Uwp.Data;
+using VGtime.Uwp.Services;
 using VGtime.Uwp.ViewParameters;
 
 namespace VGtime.Uwp.ViewModels
@@ -15,6 +16,8 @@ namespace VGtime.Uwp.ViewModels
 
         private readonly INavigationService _navigationService;
 
+        private readonly IAppToastService _appToastService;
+
         private TimeLineBase[] _headpics;
 
         private RelayCommand<TimeLineBase> _postClickCommand;
@@ -23,10 +26,11 @@ namespace VGtime.Uwp.ViewModels
 
         private RelayCommand<TimeLineBase> _strategyPostClickCommand;
 
-        public MainViewModel(IHomeService homeService, INavigationService navigationService)
+        public MainViewModel(IHomeService homeService, INavigationService navigationService, IAppToastService appToastService)
         {
             _homeService = homeService;
             _navigationService = navigationService;
+            _appToastService = appToastService;
 
             Initialize();
             VglistPosts = new VglistPostCollection(homeService);
@@ -89,8 +93,7 @@ namespace VGtime.Uwp.ViewModels
             {
                 _strategyPostClickCommand = _strategyPostClickCommand ?? new RelayCommand<TimeLineBase>(strategyPost =>
                 {
-                    // TODO
-                    _navigationService.NavigateTo(ViewModelLocator.GameStrategySetViewKey, null);
+                    _navigationService.NavigateTo(ViewModelLocator.GameStrategySetViewKey, strategyPost.PostId);
                 });
                 return _strategyPostClickCommand;
             }
@@ -132,7 +135,7 @@ namespace VGtime.Uwp.ViewModels
             }
             catch (Exception ex)
             {
-                // TODO
+                _appToastService.ShowError(ex.Message);
             }
             finally
             {

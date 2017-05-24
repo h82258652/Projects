@@ -56,5 +56,27 @@ namespace VGtime.Services.Test
             var result = await _postService.GetDetailStatusAsync(postId, type);
             Assert.Equal(result.Retcode, Constants.SuccessCode);
         }
+
+        [Fact]
+        public async Task TestSearchArticlesAsync()
+        {
+            const string text = "高达";
+
+            await Assert.ThrowsAsync<ArgumentNullException>(async () =>
+            {
+                await _postService.SearchArticlesAsync(null);
+            });
+            await Assert.ThrowsAsync<ArgumentOutOfRangeException>(async () =>
+            {
+                await _postService.SearchArticlesAsync(text, page: 0);
+            });
+            await Assert.ThrowsAsync<ArgumentOutOfRangeException>(async () =>
+            {
+                await _postService.SearchArticlesAsync(text, pageSize: 0);
+            });
+
+            var result = await _postService.SearchArticlesAsync(text);
+            Assert.Equal(result.Retcode, Constants.SuccessCode);
+        }
     }
 }

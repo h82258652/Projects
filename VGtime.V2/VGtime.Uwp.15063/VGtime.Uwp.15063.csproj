@@ -123,6 +123,7 @@
     <Compile Include="Data\CommentCollection.cs" />
     <Compile Include="Data\GameScoreCollection.cs" />
     <Compile Include="Data\IncrementalLoadingCollectionBase.cs" />
+    <Compile Include="Data\SearchArticleCollection.cs" />
     <Compile Include="Data\SearchGameCollection.cs" />
     <Compile Include="Data\SearchUserCollection.cs" />
     <Compile Include="Data\TagPostCollection.cs" />
