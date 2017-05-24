@@ -44,10 +44,12 @@ namespace VGtime.Uwp.ViewModels
             }
         }
 
-        public async void X()
+        public async void TODO()
         {
             try
             {
+                IsLoading = true;
+
                 var result = await _postService.GetDetailAsync(_postId, _type, _vgtimeSettings.UserInfo?.UserId);
                 if (result.Retcode == Constants.SuccessCode)
                 {
@@ -63,6 +65,10 @@ namespace VGtime.Uwp.ViewModels
             catch (Exception ex)
             {
                 _appToastService.ShowError(ex.Message);
+            }
+            finally
+            {
+                IsLoading = false;
             }
         }
     }

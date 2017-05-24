@@ -44,6 +44,8 @@ namespace VGtime.Uwp.ViewModels
 
         public GamePhotoViewModel GamePhoto => ServiceLocator.Current.GetInstance<GamePhotoViewModel>();
 
+        public GameScoreViewModel GameScore => ServiceLocator.Current.GetInstance<GameScoreViewModel>();
+
         public GameStrategySetViewModel GameStrategySet => ServiceLocator.Current.GetInstance<GameStrategySetViewModel>();
 
         public LoginViewModel Login => ServiceLocator.Current.GetInstance<LoginViewModel>();

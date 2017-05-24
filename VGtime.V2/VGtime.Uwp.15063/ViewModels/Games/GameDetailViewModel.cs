@@ -59,9 +59,10 @@ namespace VGtime.Uwp.ViewModels.Games
                 return;
             }
 
-            IsLoading = true;
             try
             {
+                IsLoading = true;
+
                 var result = await _gameService.GetDetailAsync(_gameId, _vgtimeSettings.UserInfo?.UserId);
                 if (result.Retcode == Constants.SuccessCode)
                 {

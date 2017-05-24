@@ -31,9 +31,10 @@ namespace VGtime.Uwp.Data
                 return 0;
             }
 
-            IsLoading = true;
             try
             {
+                IsLoading = true;
+
                 var result = await _homeService.GetVglistAsync(CurrentPage + 1);
                 uint loadedCount = 0;
                 if (result.Retcode == Constants.SuccessCode)

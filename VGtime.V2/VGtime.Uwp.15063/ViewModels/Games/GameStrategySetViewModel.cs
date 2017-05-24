@@ -54,10 +54,10 @@ namespace VGtime.Uwp.ViewModels.Games
             {
                 return;
             }
-
-            IsLoading = true;
             try
             {
+                IsLoading = true;
+
                 var result = await _gameService.GetStrategyMenuListAsync(_gameId);
                 if (result.Retcode == Constants.SuccessCode)
                 {

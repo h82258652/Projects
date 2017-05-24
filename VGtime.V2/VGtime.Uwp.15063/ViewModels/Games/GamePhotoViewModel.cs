@@ -63,11 +63,12 @@ namespace VGtime.Uwp.ViewModels.Games
             }
         }
 
-        public async void TODO()
+        private async void LoadPhotosAsync()
         {
-            IsLoading = true;
             try
             {
+                IsLoading = true;
+
                 var result = await _gameService.GetAlbumListAsync(_gameId);
                 if (result.Retcode == Constants.SuccessCode)
                 {

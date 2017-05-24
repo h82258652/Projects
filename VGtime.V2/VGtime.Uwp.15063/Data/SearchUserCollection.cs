@@ -46,9 +46,10 @@ namespace VGtime.Uwp.Data
                 return 0;
             }
 
-            IsLoading = true;
             try
             {
+                IsLoading = true;
+
                 var result = await _userService.SearchAsync(_text, _vgtimeSettings.UserInfo?.UserId, CurrentPage + 1);
                 uint loadedCount = 0;
                 if (result.Retcode == Constants.SuccessCode)

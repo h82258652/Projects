@@ -10,13 +10,15 @@ namespace VGtime.Uwp.ViewModels.Users
 {
     public class LoginViewModel : ViewModelBase
     {
+        private readonly IAppToastService _appToastService;
+
         private readonly IUserService _userService;
 
         private readonly IVGtimeSettings _vgtimeSettings;
 
-        private readonly IAppToastService _appToastService;
-
         private string _account;
+
+        private bool _isBusy;
 
         private RelayCommand _loginCommand;
 
@@ -41,14 +43,32 @@ namespace VGtime.Uwp.ViewModels.Users
             }
         }
 
+        public bool IsBusy
+        {
+            get
+            {
+                return _isBusy;
+            }
+            set
+            {
+                Set(ref _isBusy, value);
+            }
+        }
+
         public RelayCommand LoginCommand
         {
             get
             {
                 _loginCommand = _loginCommand ?? new RelayCommand(async () =>
                 {
+                    if (IsBusy)
+                    {
+                        return;
+                    }
                     try
                     {
+                        IsBusy = true;
+
                         var result = await _userService.LoginAsync(Account, Password);
                         if (result.Retcode == Constants.SuccessCode)
                         {
@@ -57,12 +77,18 @@ namespace VGtime.Uwp.ViewModels.Users
 
                             MessengerInstance.Send(new LoginSuccessMessage(userInfo));
                         }
+                        else
+                        {
+                            _appToastService.ShowError(result.Message);
+                        }
                     }
                     catch (Exception ex)
                     {
+                        _appToastService.ShowError(ex.Message);
                     }
                     finally
                     {
+                        IsBusy = false;
                     }
                 });
                 return _loginCommand;

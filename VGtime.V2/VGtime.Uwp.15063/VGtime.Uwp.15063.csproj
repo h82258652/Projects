@@ -98,6 +98,12 @@
     <Compile Include="Controls\CommentItem.xaml.cs">
       <DependentUpon>CommentItem.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\GameItem.xaml.cs">
+      <DependentUpon>GameItem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\GameScoreItem.xaml.cs">
+      <DependentUpon>GameScoreItem.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\HeadpicItem.xaml.cs">
       <DependentUpon>HeadpicItem.xaml</DependentUpon>
     </Compile>
@@ -115,6 +121,7 @@
     <Compile Include="Converters\IsNullOrEmptyStringToVisibilityConverter.cs" />
     <Compile Include="Converters\TimeAgoConverter.cs" />
     <Compile Include="Data\CommentCollection.cs" />
+    <Compile Include="Data\GameScoreCollection.cs" />
     <Compile Include="Data\IncrementalLoadingCollectionBase.cs" />
     <Compile Include="Data\SearchGameCollection.cs" />
     <Compile Include="Data\SearchUserCollection.cs" />
@@ -130,6 +137,7 @@
     <Compile Include="ViewModels\CommentViewModel.cs" />
     <Compile Include="ViewModels\Games\GameDetailViewModel.cs" />
     <Compile Include="ViewModels\Games\GamePhotoViewModel.cs" />
+    <Compile Include="ViewModels\Games\GameScoreViewModel.cs" />
     <Compile Include="ViewModels\Games\GameStrategySetViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\SearchViewModel.cs" />
@@ -151,6 +159,9 @@
     </Compile>
     <Compile Include="Views\Games\GamePhotoView.xaml.cs">
       <DependentUpon>GamePhotoView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Games\GameScoreView.xaml.cs">
+      <DependentUpon>GameScoreView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Games\GameStrategySetView.xaml.cs">
       <DependentUpon>GameStrategySetView.xaml</DependentUpon>
@@ -342,6 +353,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Controls\GameItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\GameScoreItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controls\HeadpicItem.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -421,6 +440,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Games\GamePhotoView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Games\GameScoreView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

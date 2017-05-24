@@ -2,28 +2,28 @@
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using VGtime.Models.Timeline;
+using VGtime.Models.Games;
 using VGtime.Services;
 
 namespace VGtime.Uwp.Data
 {
-    public class TagPostCollection : IncrementalLoadingCollectionBase<TimeLineBase>
+    public class GameScoreCollection : IncrementalLoadingCollectionBase<GameScore>
     {
-        private readonly IHomeService _homeService;
+        private readonly int _gameId;
+
+        private readonly IGameService _gameService;
 
         private readonly Action<Exception> _onError;
 
-        private readonly int _tags;
-
-        public TagPostCollection(int tags, IHomeService homeService, Action<Exception> onError = null)
+        public GameScoreCollection(int gameId, IGameService gameService, Action<Exception> onError = null)
         {
-            if (homeService == null)
+            if (gameService == null)
             {
-                throw new ArgumentNullException(nameof(homeService));
+                throw new ArgumentNullException(nameof(gameService));
             }
 
-            _tags = tags;
-            _homeService = homeService;
+            _gameId = gameId;
+            _gameService = gameService;
             _onError = onError;
         }
 
@@ -38,7 +38,7 @@ namespace VGtime.Uwp.Data
             {
                 IsLoading = true;
 
-                var result = await _homeService.GetListByTagAsync(_tags, CurrentPage + 1);
+                var result = await _gameService.GetScoreListAsync(_gameId, CurrentPage + 1);
                 uint loadedCount = 0;
                 if (result.Retcode == Constants.SuccessCode)
                 {
@@ -47,11 +47,11 @@ namespace VGtime.Uwp.Data
                     var data = result.Data.Data;
                     if (data.Length > 0)
                     {
-                        foreach (var post in data)
+                        foreach (var gameScore in data)
                         {
-                            if (this.All(temp => temp.PostId != post.PostId))
+                            if (this.All(temp => temp.User.UserId != gameScore.User.UserId))
                             {
-                                Add(post);
+                                Add(gameScore);
                                 loadedCount++;
                             }
                         }
