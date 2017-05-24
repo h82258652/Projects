@@ -44,6 +44,8 @@ namespace VGtime.Uwp.ViewModels
 
         public GamePhotoViewModel GamePhoto => ServiceLocator.Current.GetInstance<GamePhotoViewModel>();
 
+        public GameStrategySetViewModel GameStrategySet => ServiceLocator.Current.GetInstance<GameStrategySetViewModel>();
+
         public LoginViewModel Login => ServiceLocator.Current.GetInstance<LoginViewModel>();
 
         public MainViewModel Main => ServiceLocator.Current.GetInstance<MainViewModel>();
@@ -86,11 +88,12 @@ namespace VGtime.Uwp.ViewModels
         private static INavigationService CreateNavigationService()
         {
             var navigationService = new SoftwareKobo.Services.NavigationService();
-            navigationService.Configure(SearchViewKey, typeof(SearchView));
             navigationService.Configure(ArticleDetailViewKey, typeof(ArticleDetailView));
             navigationService.Configure(CommentViewKey, typeof(CommentView));
             navigationService.Configure(GameDetailViewKey, typeof(GameDetailView));
             navigationService.Configure(GamePhotoViewKey, typeof(GamePhotoView));
+            navigationService.Configure(GameStrategySetViewKey, typeof(GameStrategySetView));
+            navigationService.Configure(SearchViewKey, typeof(SearchView));
             return navigationService;
         }
     }

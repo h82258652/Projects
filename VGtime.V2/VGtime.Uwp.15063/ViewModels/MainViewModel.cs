@@ -5,6 +5,7 @@ using GalaSoft.MvvmLight.Views;
 using VGtime.Models.Timeline;
 using VGtime.Services;
 using VGtime.Uwp.Data;
+using VGtime.Uwp.ViewParameters;
 
 namespace VGtime.Uwp.ViewModels
 {
@@ -64,8 +65,7 @@ namespace VGtime.Uwp.ViewModels
             {
                 _postClickCommand = _postClickCommand ?? new RelayCommand<TimeLineBase>(post =>
                 {
-                    // TODO
-                    _navigationService.NavigateTo(ViewModelLocator.ArticleDetailViewKey, null);
+                    _navigationService.NavigateTo(ViewModelLocator.ArticleDetailViewKey, new ArticleDetailViewParameter(post.PostId, post.DetailType));
                 });
                 return _postClickCommand;
             }

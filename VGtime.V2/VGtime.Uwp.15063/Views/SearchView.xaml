@@ -22,7 +22,7 @@
         </Grid.RowDefinitions>
         <Grid Grid.Row="0"
               Background="{ThemeResource VGtimeAccentBrush}">
-            <Button>
+            <Button Style="{StaticResource NavigationBackButtonStyle}">
                 <interactivity:Interaction.Behaviors>
                     <core:EventTriggerBehavior EventName="Click">
                         <behaviors:GoBackAction />

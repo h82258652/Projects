@@ -5,6 +5,7 @@ using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 using GalaSoft.MvvmLight.Messaging;
 using VGtime.Uwp.Messages;
+using VGtime.Uwp.ViewParameters;
 using WinRTXamlToolkit.AwaitableUI;
 
 namespace VGtime.Uwp.Views
@@ -31,6 +32,8 @@ namespace VGtime.Uwp.Views
             {
                 await WebView.NavigateAsync(new Uri("ms-appx-web:///Assets/Html/article_detail.html"));
             });
+
+            var parameter = (ArticleDetailViewParameter)e.Parameter;
         }
 
         private async void ScrollToTopButton_Click(object sender, RoutedEventArgs e)
