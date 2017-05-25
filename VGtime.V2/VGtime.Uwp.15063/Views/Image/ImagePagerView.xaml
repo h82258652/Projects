@@ -27,7 +27,8 @@
                     </core:EventTriggerBehavior>
                 </interactivity:Interaction.Behaviors>
             </Button>
-            <TextBlock Grid.Column="1">
+            <TextBlock Grid.Column="1"
+                       Style="{StaticResource VGtimePageHeaderTextControlStyle}">
                 <Run x:Name="PhotosFlipViewIndexTextControl" /><Run Text="/" /><Run Text="{Binding Path=Photos.Length}" /></TextBlock>
             <Button Grid.Column="2"
                     Command="{Binding Path=SaveCommand}"

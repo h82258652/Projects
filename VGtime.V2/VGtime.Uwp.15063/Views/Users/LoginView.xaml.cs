@@ -1,4 +1,6 @@
-﻿namespace VGtime.Uwp.Views.Users
+﻿using VGtime.Uwp.ViewModels.Users;
+
+namespace VGtime.Uwp.Views.Users
 {
     public sealed partial class LoginView
     {
@@ -6,5 +8,7 @@
         {
             InitializeComponent();
         }
+
+        public LoginViewModel ViewModel => (LoginViewModel)DataContext;
     }
 }

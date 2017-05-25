@@ -1,4 +1,6 @@
-﻿namespace VGtime.Uwp.Views.Settings
+﻿using VGtime.Uwp.ViewModels.Settings;
+
+namespace VGtime.Uwp.Views.Settings
 {
     public sealed partial class SettingView
     {
@@ -6,5 +8,7 @@
         {
             InitializeComponent();
         }
+
+        public SettingViewModel ViewModel => (SettingViewModel)DataContext;
     }
 }

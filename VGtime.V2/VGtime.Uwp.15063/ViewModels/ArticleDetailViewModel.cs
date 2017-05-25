@@ -3,6 +3,7 @@ using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Views;
 using VGtime.Configuration;
+using VGtime.Models.Article;
 using VGtime.Services;
 using VGtime.Uwp.Messages;
 using VGtime.Uwp.Services;
@@ -19,6 +20,8 @@ namespace VGtime.Uwp.ViewModels
 
         private readonly IVGtimeSettings _vgtimeSettings;
 
+        private ArticleDetail _articleDetail;
+
         private bool _isLoading;
 
         private RelayCommand _moreCommentCommand;
@@ -31,6 +34,18 @@ namespace VGtime.Uwp.ViewModels
             _vgtimeSettings = vgtimeSettings;
             _appToastService = appToastService;
             _navigationService = navigationService;
+        }
+
+        public ArticleDetail ArticleDetail
+        {
+            get
+            {
+                return _articleDetail;
+            }
+            private set
+            {
+                Set(ref _articleDetail, value);
+            }
         }
 
         public bool IsLoading
@@ -57,17 +72,17 @@ namespace VGtime.Uwp.ViewModels
             }
         }
 
+        public int PostId
+        {
+            get;
+            private set;
+        }
+
         public void LoadArticleDetail(int postId, int type)
         {
             PostId = postId;
             _type = type;
             LoadArticleDetail();
-        }
-
-        public int PostId
-        {
-            get;
-            private set;
         }
 
         private async void LoadArticleDetail()
@@ -83,6 +98,7 @@ namespace VGtime.Uwp.ViewModels
                     if (result.Retcode == Constants.SuccessCode)
                     {
                         var articleDetail = result.Data.Data;
+                        ArticleDetail = articleDetail;
 
                         MessengerInstance.Send(new ArticleDetailLoadedMessage(articleDetail));
                     }

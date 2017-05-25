@@ -5,12 +5,12 @@ namespace VGtime.Uwp.Views.Games
 {
     public sealed partial class GameStrategySetView
     {
-        public GameStrategySetViewModel ViewModel => (GameStrategySetViewModel)DataContext;
-
         public GameStrategySetView()
         {
             InitializeComponent();
         }
+
+        public GameStrategySetViewModel ViewModel => (GameStrategySetViewModel)DataContext;
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
