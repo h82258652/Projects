@@ -43,7 +43,7 @@
             </interactivity:Interaction.Behaviors>
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <controls:ListPostItem2 />
+                    <controls:ListPostItem />
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
             <ItemsControl.ItemContainerStyle>

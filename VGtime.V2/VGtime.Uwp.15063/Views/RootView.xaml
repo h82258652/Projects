@@ -9,6 +9,7 @@
         <Frame x:Name="RootFrame"
                x:FieldModifier="internal" />
         <Grid x:Name="ToastContainer"
+              Margin="0,16,0,0"
               x:FieldModifier="internal" />
     </Grid>
 </UserControl>

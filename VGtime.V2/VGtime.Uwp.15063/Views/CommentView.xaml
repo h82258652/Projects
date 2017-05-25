@@ -23,7 +23,7 @@
                     </core:EventTriggerBehavior>
                 </interactivity:Interaction.Behaviors>
             </Button>
-            <TextBlock Foreground="White"
+            <TextBlock Style="{StaticResource VGtimePageHeaderTextControlStyle}"
                        Text="全部评论" />
         </Grid>
         <controls:VGtimeGridView Grid.Row="1"
