@@ -68,14 +68,18 @@ namespace VGtime.Uwp.ViewModels.Games
             {
                 IsLoading = true;
 
-                var result = await _gameService.GetStrategyMenuListAsync(GameId);
-                if (result.Retcode == Constants.SuccessCode)
+                var gameId = GameId;
+                var result = await _gameService.GetStrategyMenuListAsync(gameId);
+                if (gameId == GameId)
                 {
-                    GameStrategies = result.Data.Data;
-                }
-                else
-                {
-                    _appToastService.ShowError(result.Message);
+                    if (result.Retcode == Constants.SuccessCode)
+                    {
+                        GameStrategies = result.Data.Data;
+                    }
+                    else
+                    {
+                        _appToastService.ShowError(result.Message);
+                    }
                 }
             }
             catch (Exception ex)

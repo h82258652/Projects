@@ -76,16 +76,20 @@ namespace VGtime.Uwp.ViewModels
             {
                 IsLoading = true;
 
-                var result = await _postService.GetDetailAsync(PostId, _type, _vgtimeSettings.UserInfo?.UserId);
-                if (result.Retcode == Constants.SuccessCode)
+                var postId = PostId;
+                var result = await _postService.GetDetailAsync(postId, _type, _vgtimeSettings.UserInfo?.UserId);
+                if (postId == PostId)
                 {
-                    var articleDetail = result.Data.Data;
+                    if (result.Retcode == Constants.SuccessCode)
+                    {
+                        var articleDetail = result.Data.Data;
 
-                    MessengerInstance.Send(new ArticleDetailLoadedMessage(articleDetail));
-                }
-                else
-                {
-                    _appToastService.ShowError(result.Message);
+                        MessengerInstance.Send(new ArticleDetailLoadedMessage(articleDetail));
+                    }
+                    else
+                    {
+                        _appToastService.ShowError(result.Message);
+                    }
                 }
             }
             catch (Exception ex)

@@ -1,8 +1,10 @@
 ﻿using System;
+using System.IO;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using SoftwareKobo.Controls;
 using VGtime.Models.Games;
+using VGtime.Services;
 using VGtime.Uwp.Services;
 
 namespace VGtime.Uwp.ViewModels.Image
@@ -13,14 +15,17 @@ namespace VGtime.Uwp.ViewModels.Image
 
         private readonly IImageLoader _imageLoader;
 
+        private readonly IVGtimeFileService _vgtimeFileService;
+
         private GameAlbum[] _photos;
 
         private RelayCommand<GameAlbum> _saveCommand;
 
-        public ImagePagerViewModel(IImageLoader imageLoader, IAppToastService appToastService)
+        public ImagePagerViewModel(IImageLoader imageLoader, IAppToastService appToastService, IVGtimeFileService vgtimeFileService)
         {
             _imageLoader = imageLoader;
             _appToastService = appToastService;
+            _vgtimeFileService = vgtimeFileService;
         }
 
         public GameAlbum[] Photos
@@ -48,9 +53,13 @@ namespace VGtime.Uwp.ViewModels.Image
 
                     try
                     {
-                        var bytes = await _imageLoader.GetBytesAsync(photo.Url);
-
-                        throw new NotImplementedException();
+                        var url = photo.Url;
+                        var bytes = await _imageLoader.GetBytesAsync(url);
+                        var result = await _vgtimeFileService.SaveFileAsync(bytes, Path.Combine(url));
+                        if (result)
+                        {
+                            _appToastService.ShowMessage(LocalizedStrings.SaveSuccess);
+                        }
                     }
                     catch (Exception ex)
                     {

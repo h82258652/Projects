@@ -102,14 +102,18 @@ namespace VGtime.Uwp.ViewModels.Games
             {
                 IsLoading = true;
 
-                var result = await _gameService.GetAlbumListAsync(GameId);
-                if (result.Retcode == Constants.SuccessCode)
+                var gameId = GameId;
+                var result = await _gameService.GetAlbumListAsync(gameId);
+                if (gameId == GameId)
                 {
-                    Photos = result.Data.Data;
-                }
-                else
-                {
-                    _appToastService.ShowError(result.Message);
+                    if (result.Retcode == Constants.SuccessCode)
+                    {
+                        Photos = result.Data.Data;
+                    }
+                    else
+                    {
+                        _appToastService.ShowError(result.Message);
+                    }
                 }
             }
             catch (Exception ex)

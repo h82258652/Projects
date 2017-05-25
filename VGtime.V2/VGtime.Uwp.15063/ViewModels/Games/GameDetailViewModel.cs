@@ -25,6 +25,10 @@ namespace VGtime.Uwp.ViewModels.Games
 
         private RelayCommand _photoCommand;
 
+        private RelayCommand _scoreCommand;
+
+        private RelayCommand _strategyCommand;
+
         public GameDetailViewModel(IGameService gameService, IVGtimeSettings vgtimeSettings, IAppToastService appToastService, INavigationService navigationService)
         {
             _gameService = gameService;
@@ -75,6 +79,30 @@ namespace VGtime.Uwp.ViewModels.Games
             }
         }
 
+        public RelayCommand ScoreCommand
+        {
+            get
+            {
+                _scoreCommand = _scoreCommand ?? new RelayCommand(() =>
+                {
+                    _navigationService.NavigateTo(ViewModelLocator.GameScoreViewKey, GameId);
+                });
+                return _scoreCommand;
+            }
+        }
+
+        public RelayCommand StrategyCommand
+        {
+            get
+            {
+                _strategyCommand = _strategyCommand ?? new RelayCommand(() =>
+                {
+                    _navigationService.NavigateTo(ViewModelLocator.GameStrategySetViewKey, GameId);
+                });
+                return _strategyCommand;
+            }
+        }
+
         public void LoadDetail(int gameId)
         {
             GameId = gameId;
@@ -92,14 +120,18 @@ namespace VGtime.Uwp.ViewModels.Games
             {
                 IsLoading = true;
 
-                var result = await _gameService.GetDetailAsync(GameId, _vgtimeSettings.UserInfo?.UserId);
-                if (result.Retcode == Constants.SuccessCode)
+                var gameId = GameId;
+                var result = await _gameService.GetDetailAsync(gameId, _vgtimeSettings.UserInfo?.UserId);
+                if (gameId == GameId)
                 {
-                    GameDetail = result.Data.Game;
-                }
-                else
-                {
-                    _appToastService.ShowError(result.Message);
+                    if (result.Retcode == Constants.SuccessCode)
+                    {
+                        GameDetail = result.Data.Game;
+                    }
+                    else
+                    {
+                        _appToastService.ShowError(result.Message);
+                    }
                 }
             }
             catch (Exception ex)

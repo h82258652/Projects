@@ -26,8 +26,16 @@
         <Grid Grid.Row="1">
             <Image Source="{Binding Path=GameDetail.Thumbnail.Url}" />
             <TextBlock Text="{Binding Path=GameDetail.ImageCount}" />
+            <StackPanel Orientation="Horizontal">
+                <Button Content="想玩" />
+                <Button Content="在玩" />
+                <Button Content="玩过" />
+                <Button Content="通关" />
+            </StackPanel>
+            <TextBlock Text="游戏简介"></TextBlock>
             <TextBlock Text="{Binding Path=GameDetail.Introduction}"
                        TextWrapping="Wrap" />
+            <TextBlock Text="{Binding Path=GameDetail.ScoreCount}" />
         </Grid>
     </Grid>
 </Page>

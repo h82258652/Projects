@@ -9,7 +9,7 @@ namespace VGtime.Uwp.Services
             throw new NotImplementedException();
         }
 
-        public void ShowMessage(sbyte message)
+        public void ShowMessage(string message)
         {
             throw new NotImplementedException();
         }

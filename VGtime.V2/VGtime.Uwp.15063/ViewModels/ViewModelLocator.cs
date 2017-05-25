@@ -12,6 +12,7 @@ using VGtime.Uwp.ViewModels.Settings;
 using VGtime.Uwp.ViewModels.Users;
 using VGtime.Uwp.Views;
 using VGtime.Uwp.Views.Games;
+using VGtime.Uwp.Views.Image;
 
 namespace VGtime.Uwp.ViewModels
 {
@@ -24,6 +25,8 @@ namespace VGtime.Uwp.ViewModels
         public const string GameDetailViewKey = "GameDetail";
 
         public const string GamePhotoViewKey = "GamePhoto";
+
+        public const string GameScoreViewKey = "GameScore";
 
         public const string GameStrategySetViewKey = "GameStrategySet";
 
@@ -87,11 +90,15 @@ namespace VGtime.Uwp.ViewModels
             containerBuilder.RegisterType<ArticleDetailViewModel>();
             containerBuilder.RegisterType<GameDetailViewModel>();
             containerBuilder.RegisterType<GamePhotoViewModel>();
+            containerBuilder.RegisterType<GameScoreViewModel>();
+            containerBuilder.RegisterType<GameStrategySetViewModel>();
             containerBuilder.RegisterType<LoginViewModel>();
             containerBuilder.RegisterType<MainViewModel>();
             containerBuilder.RegisterType<SearchViewModel>();
             containerBuilder.RegisterType<SettingViewModel>();
             containerBuilder.RegisterType<WelcomeViewModel>();
+            containerBuilder.RegisterType<OldGameStrategyViewModel>();
+            containerBuilder.RegisterType<CommentViewModel>();
 
             return containerBuilder.Build();
         }
@@ -103,7 +110,9 @@ namespace VGtime.Uwp.ViewModels
             navigationService.Configure(CommentViewKey, typeof(CommentView));
             navigationService.Configure(GameDetailViewKey, typeof(GameDetailView));
             navigationService.Configure(GamePhotoViewKey, typeof(GamePhotoView));
+            navigationService.Configure(GameScoreViewKey, typeof(GameScoreView));
             navigationService.Configure(GameStrategySetViewKey, typeof(GameStrategySetView));
+            navigationService.Configure(ImagePagerViewKey, typeof(ImagePagerView));
             navigationService.Configure(SearchViewKey, typeof(SearchView));
             return navigationService;
         }
