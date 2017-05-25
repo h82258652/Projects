@@ -7,6 +7,7 @@ using Windows.Foundation;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
+using Newtonsoft.Json;
 using VGtime.Uwp.ViewModels;
 using WinRTXamlToolkit.AwaitableUI;
 
@@ -35,6 +36,10 @@ namespace VGtime.Uwp.Views
             Messenger.Default.Register<ArticleDetailLoadedMessage>(this, async message =>
             {
                 await WebView.NavigateAsync(new Uri("ms-appx-web:///Assets/Html/article_detail.html"));
+                await WebView.InvokeScriptAsync("setArticleDetail", new[]
+                {
+                    JsonConvert.SerializeObject(message.ArticleDetail)
+                });
             });
 
             var parameter = (ArticleDetailViewParameter)e.Parameter;

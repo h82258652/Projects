@@ -1,8 +1,11 @@
 ﻿using System;
 using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Command;
+using GalaSoft.MvvmLight.Views;
 using VGtime.Models.Games;
 using VGtime.Services;
 using VGtime.Uwp.Services;
+using VGtime.Uwp.ViewParameters;
 
 namespace VGtime.Uwp.ViewModels.Games
 {
@@ -12,14 +15,19 @@ namespace VGtime.Uwp.ViewModels.Games
 
         private readonly IGameService _gameService;
 
+        private readonly INavigationService _navigationService;
+
         private GameStrategy[] _gameStrategies;
 
         private bool _isLoading;
 
-        public GameStrategySetViewModel(IGameService gameService, IAppToastService appToastService)
+        private RelayCommand<GameStrategyItem> _strategyItemClickCommand;
+
+        public GameStrategySetViewModel(IGameService gameService, IAppToastService appToastService, INavigationService navigationService)
         {
             _gameService = gameService;
             _appToastService = appToastService;
+            _navigationService = navigationService;
         }
 
         public int GameId
@@ -49,6 +57,18 @@ namespace VGtime.Uwp.ViewModels.Games
             private set
             {
                 Set(ref _isLoading, value);
+            }
+        }
+
+        public RelayCommand<GameStrategyItem> StrategyItemClickCommand
+        {
+            get
+            {
+                _strategyItemClickCommand = _strategyItemClickCommand ?? new RelayCommand<GameStrategyItem>(strategyItem =>
+                {
+                    _navigationService.NavigateTo(ViewModelLocator.ArticleDetailViewKey, new ArticleDetailViewParameter(strategyItem.PostId, strategyItem.DetailType));
+                });
+                return _strategyItemClickCommand;
             }
         }
 

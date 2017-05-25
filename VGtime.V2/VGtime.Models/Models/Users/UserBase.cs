@@ -222,6 +222,7 @@ namespace VGtime.Models.Users
             set;
         }
 
+        [JsonProperty("silverAward")]
         public int SilverAward
         {
             get;

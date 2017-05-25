@@ -24,6 +24,6 @@
         </Ellipse>
         <TextBlock Text="{Binding Path=Comment.User.Name}" />
         <TextBlock Text="{Binding Path=Comment.PublishDate, Converter={StaticResource TimeAgoConverter}}" />
-        <TextBlock Text="{Binding Path=Comment.Remark}" />
+        <TextBlock Text="{Binding Path=Comment.Remark}" TextWrapping="Wrap" />
     </Grid>
 </UserControl>

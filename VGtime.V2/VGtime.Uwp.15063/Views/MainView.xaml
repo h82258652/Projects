@@ -67,10 +67,10 @@
                 </localControls:VGtimeGridView>
             </PivotItem>
             <PivotItem Header="新闻">
-                <localControls:VGtimeGridView Padding="16,16,0,0"
+                <localControls:VGtimeGridView Padding="12,12,0,0"
                                               IsItemClickEnabled="True"
                                               ItemsSource="{Binding Path=NewsPosts}"
-                                              MaxItemWidth="800"
+                                              MaxItemWidth="600"
                                               SelectionMode="None">
                     <interactivity:Interaction.Behaviors>
                         <core:EventTriggerBehavior EventName="ItemClick">
@@ -90,7 +90,7 @@
                             <Setter Property="VerticalContentAlignment"
                                     Value="Stretch" />
                             <Setter Property="Margin"
-                                    Value="0,0,16,16" />
+                                    Value="0,0,12,12" />
                         </Style>
                     </ItemsControl.ItemContainerStyle>
                 </localControls:VGtimeGridView>
@@ -99,7 +99,7 @@
                 <localControls:VGtimeGridView Padding="12,12,0,0"
                                               IsItemClickEnabled="True"
                                               ItemsSource="{Binding Path=EvaluationPosts}"
-                                              MaxItemWidth="800"
+                                              MaxItemWidth="600"
                                               SelectionMode="None">
                     <interactivity:Interaction.Behaviors>
                         <core:EventTriggerBehavior EventName="ItemClick">
@@ -155,10 +155,10 @@
             </PivotItem>
             <PivotItem Header="攻略">
                 <localControls:VGtimeGridView x:Uid="/MainView/StrategyPostsGridView"
-                                              Padding="8,8,0,0"
+                                              Padding="12,0,0,0"
                                               IsItemClickEnabled="True"
                                               ItemsSource="{Binding Path=StrategyPosts}"
-                                              MaxItemWidth="800"
+                                              MaxItemWidth="600"
                                               SelectionMode="None">
                     <interactivity:Interaction.Behaviors>
                         <core:EventTriggerBehavior EventName="ItemClick">
@@ -167,7 +167,8 @@
                         </core:EventTriggerBehavior>
                     </interactivity:Interaction.Behaviors>
                     <ListViewBase.Header>
-                        <Grid BorderBrush="{ThemeResource VGtimeDividerBrush}"
+                        <Grid Margin="-12,0,0,12"
+                              BorderBrush="{ThemeResource VGtimeDividerBrush}"
                               BorderThickness="0,0,0,1">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*" />
@@ -199,16 +200,16 @@
                             <Setter Property="VerticalContentAlignment"
                                     Value="Stretch" />
                             <Setter Property="Margin"
-                                    Value="0,0,8,8" />
+                                    Value="0,0,12,12" />
                         </Style>
                     </ItemsControl.ItemContainerStyle>
                 </localControls:VGtimeGridView>
             </PivotItem>
             <PivotItem Header="专栏">
-                <localControls:VGtimeGridView Padding="8,8,0,0"
+                <localControls:VGtimeGridView Padding="12,12,0,0"
                                               IsItemClickEnabled="True"
                                               ItemsSource="{Binding Path=TopicPosts}"
-                                              MaxItemWidth="800"
+                                              MaxItemWidth="600"
                                               SelectionMode="None">
                     <interactivity:Interaction.Behaviors>
                         <core:EventTriggerBehavior EventName="ItemClick">
@@ -228,7 +229,7 @@
                             <Setter Property="VerticalContentAlignment"
                                     Value="Stretch" />
                             <Setter Property="Margin"
-                                    Value="0,0,8,8" />
+                                    Value="0,0,12,12" />
                         </Style>
                     </ItemsControl.ItemContainerStyle>
                 </localControls:VGtimeGridView>

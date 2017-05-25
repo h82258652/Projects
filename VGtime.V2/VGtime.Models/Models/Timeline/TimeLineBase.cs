@@ -16,7 +16,7 @@ namespace VGtime.Models.Timeline
             set;
         }
 
-        [JsonProperty("Advertising")]
+        [JsonProperty("advertising")]
         public Advertising Advertising
         {
             get;
@@ -130,7 +130,7 @@ namespace VGtime.Models.Timeline
 
         [JsonProperty("publishDate")]
         [JsonConverter(typeof(UnixTimestampConverter))]
-        public DateTimeOffset PublishDate
+        public DateTimeOffset? PublishDate
         {
             get;
             set;

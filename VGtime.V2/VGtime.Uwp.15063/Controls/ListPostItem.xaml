@@ -14,35 +14,40 @@
             </ResourceDictionary.MergedDictionaries>
             <converters:TimeAgoConverter x:Key="TimeAgoConverter" />
             <converters:ScoreToColorConverter x:Key="ScoreToColorConverter" />
+            <converters:IntegerToVisibilityConverter x:Key="IntegerToVisibilityConverter" />
         </ResourceDictionary>
     </FrameworkElement.Resources>
     <Grid>
         <Viewbox VerticalAlignment="Center"
                  Stretch="UniformToFill">
             <Image Width="960"
-                   Height="300"
+                   Height="600"
                    Source="{Binding Path=Thumbnail.Url}"
                    Stretch="UniformToFill" />
         </Viewbox>
-        <Border HorizontalAlignment="Right"
+        <Border Background="#40000000" />
+        <Border Width="36"
+                Height="28"
+                HorizontalAlignment="Right"
                 VerticalAlignment="Top"
                 Background="{Binding Path=ReviewScore, Converter={StaticResource ScoreToColorConverter}}">
-            <TextBlock Margin="4,0,4,0"
+            <TextBlock HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
                        FontSize="20"
                        Foreground="White"
                        Text="{Binding Path=ReviewScore}" />
         </Border>
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="618*" />
-                <RowDefinition Height="382*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
             </Grid.RowDefinitions>
             <Grid Grid.Row="1">
                 <Grid.Background>
                     <LinearGradientBrush StartPoint="0.5,0"
                                          EndPoint="0.5,1">
                         <GradientStop Offset="0"
-                                      Color="#80FFFFFF" />
+                                      Color="#C0FEFEFE" />
                         <GradientStop Offset="1"
                                       Color="White" />
                     </LinearGradientBrush>
@@ -63,7 +68,6 @@
                         <ColumnDefinition Width="Auto" />
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="Auto" />
-                        <ColumnDefinition Width="Auto" />
                     </Grid.ColumnDefinitions>
                     <Ellipse Grid.Column="0"
                              Width="24"
@@ -83,18 +87,25 @@
                                VerticalAlignment="Center"
                                Foreground="{ThemeResource VGtimeSecondaryTextBrush}"
                                Text="{Binding Path=PublishDate, Converter={StaticResource TimeAgoConverter}}" />
-                    <Viewbox Grid.Column="3"
-                             Width="18"
-                             Height="18"
-                             VerticalAlignment="Center">
-                        <SymbolIcon Foreground="{ThemeResource VGtimeSecondaryTextBrush}"
-                                    Symbol="Comment" />
-                    </Viewbox>
-                    <TextBlock Grid.Column="4"
-                               Margin="4,0,0,0"
-                               VerticalAlignment="Center"
-                               Foreground="{ThemeResource VGtimeSecondaryTextBrush}"
-                               Text="{Binding Path=CommentNum}" />
+                    <Grid Grid.Column="3"
+                          Visibility="{Binding Path=CommentNum, Converter={StaticResource IntegerToVisibilityConverter}}">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <Viewbox Grid.Column="0"
+                                 Width="16"
+                                 Height="16"
+                                 VerticalAlignment="Center">
+                            <SymbolIcon Foreground="{ThemeResource VGtimeSecondaryTextBrush}"
+                                        Symbol="Comment" />
+                        </Viewbox>
+                        <TextBlock Grid.Column="1"
+                                   Margin="6,0,0,0"
+                                   VerticalAlignment="Center"
+                                   Foreground="{ThemeResource VGtimeSecondaryTextBrush}"
+                                   Text="{Binding Path=CommentNum}" />
+                    </Grid>
                 </Grid>
             </Grid>
         </Grid>

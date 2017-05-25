@@ -7,6 +7,7 @@ using VGtime.Models.Article;
 using VGtime.Services;
 using VGtime.Uwp.Messages;
 using VGtime.Uwp.Services;
+using VGtime.Uwp.ViewParameters;
 
 namespace VGtime.Uwp.ViewModels
 {
@@ -66,7 +67,7 @@ namespace VGtime.Uwp.ViewModels
             {
                 _moreCommentCommand = _moreCommentCommand ?? new RelayCommand(() =>
                 {
-                    _navigationService.NavigateTo(ViewModelLocator.CommentViewKey, PostId);
+                    _navigationService.NavigateTo(ViewModelLocator.CommentViewKey, new CommentViewParameter(PostId, _type));
                 });
                 return _moreCommentCommand;
             }
