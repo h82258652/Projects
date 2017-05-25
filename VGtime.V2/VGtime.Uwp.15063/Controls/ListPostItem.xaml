@@ -7,7 +7,7 @@
              xmlns:timeline="using:VGtime.Models.Timeline"
              d:DataContext="{d:DesignInstance Type=timeline:TimeLineBase}"
              mc:Ignorable="d">
-    <UserControl.Resources>
+    <FrameworkElement.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/Styles/VGtimeColorStyle.xaml" />
@@ -15,7 +15,7 @@
             <converters:TimeAgoConverter x:Key="TimeAgoConverter" />
             <converters:ScoreToColorConverter x:Key="ScoreToColorConverter" />
         </ResourceDictionary>
-    </UserControl.Resources>
+    </FrameworkElement.Resources>
     <Grid>
         <Viewbox VerticalAlignment="Center"
                  Stretch="UniformToFill">

@@ -11,11 +11,11 @@
       DataContext="{Binding Source={StaticResource Locator}, Path=GamePhoto}"
       NavigationCacheMode="Required"
       mc:Ignorable="d">
-    <Page.Resources>
+    <FrameworkElement.Resources>
         <ResourceDictionary>
             <converters:ItemClickEventArgsConverter x:Key="ItemClickEventArgsConverter" />
         </ResourceDictionary>
-    </Page.Resources>
+    </FrameworkElement.Resources>
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />

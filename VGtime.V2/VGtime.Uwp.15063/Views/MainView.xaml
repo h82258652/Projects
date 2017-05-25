@@ -1,6 +1,7 @@
 ﻿<Page x:Class="VGtime.Uwp.Views.MainView"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:behaviors="using:SoftwareKobo.Behaviors"
       xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
       xmlns:converters="using:SoftwareKobo.Converters"
       xmlns:core="using:Microsoft.Xaml.Interactions.Core"
@@ -38,11 +39,11 @@
             </FrameworkElement.Resources>
             <!-- 二维码按钮<Pivot.LeftHeader></Pivot.LeftHeader>-->
             <PivotItem Header="首页">
-                <localControls:VGtimeGridView IsItemClickEnabled="True"
+                <localControls:VGtimeGridView Padding="12,12,0,0"
+                                              IsItemClickEnabled="True"
                                               ItemTemplateSelector="{StaticResource PostItemTemplateSelector}"
                                               ItemsSource="{Binding Path=VglistPosts}"
                                               MaxItemWidth="800"
-                                              Padding="12,12,0,0"
                                               SelectionMode="None">
                     <interactivity:Interaction.Behaviors>
                         <core:EventTriggerBehavior EventName="ItemClick">
@@ -166,15 +167,24 @@
                         </core:EventTriggerBehavior>
                     </interactivity:Interaction.Behaviors>
                     <ListViewBase.Header>
-                        <Grid>
+                        <Grid BorderBrush="{ThemeResource VGtimeDividerBrush}"
+                              BorderThickness="0,0,0,1">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="Auto" />
                             </Grid.ColumnDefinitions>
                             <TextBlock Grid.Column="0"
+                                       VerticalAlignment="Center"
                                        Text="点击查看更多过往攻略" />
                             <Button Grid.Column="1"
-                                    Content="查看" />
+                                    VerticalAlignment="Center"
+                                    Content="查看">
+                                <interactivity:Interaction.Behaviors>
+                                    <core:EventTriggerBehavior EventName="Click">
+                                        <behaviors:NavigateToPageAction TargetPage="VGtime.Uwp.Views.OldGameStrategyView" />
+                                    </core:EventTriggerBehavior>
+                                </interactivity:Interaction.Behaviors>
+                            </Button>
                         </Grid>
                     </ListViewBase.Header>
                     <ItemsControl.ItemTemplate>

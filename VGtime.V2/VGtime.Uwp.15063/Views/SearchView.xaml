@@ -40,12 +40,12 @@
         </Grid>
         <Pivot Grid.Row="1"
                Style="{StaticResource VGtimePivotStyle}">
-            <Pivot.Resources>
+            <FrameworkElement.Resources>
                 <ResourceDictionary>
                     <Style BasedOn="{StaticResource VGtimePivotHeaderItemStyle}"
                            TargetType="PivotHeaderItem" />
                 </ResourceDictionary>
-            </Pivot.Resources>
+            </FrameworkElement.Resources>
             <PivotItem Header="文章">
                 <controls:VGtimeGridView IsItemClickEnabled="True"
                                          ItemsSource="{Binding Path=Articles}"

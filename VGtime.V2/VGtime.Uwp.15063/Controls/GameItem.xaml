@@ -7,14 +7,14 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              d:DataContext="{d:DesignInstance Type=games:GameBase}"
              mc:Ignorable="d">
-    <UserControl.Resources>
+    <FrameworkElement.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/Styles/VGtimeColorStyle.xaml" />
             </ResourceDictionary.MergedDictionaries>
             <converters:ScoreToColorConverter x:Key="ScoreToColorConverter" />
         </ResourceDictionary>
-    </UserControl.Resources>
+    </FrameworkElement.Resources>
     <Grid>
         <Image Source="{Binding Path=Thumbnail.Url}" />
         <Border HorizontalAlignment="Right"
