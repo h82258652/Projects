@@ -130,7 +130,7 @@ namespace VGtime.Uwp.ViewModels
                 }
                 else
                 {
-                    // TODO
+                    _appToastService.ShowError(result.Message);
                 }
             }
             catch (Exception ex)

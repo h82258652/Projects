@@ -1,9 +1,11 @@
 ﻿using System;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
+using GalaSoft.MvvmLight.Views;
 using VGtime.Models.Games;
 using VGtime.Services;
 using VGtime.Uwp.Services;
+using VGtime.Uwp.ViewParameters;
 
 namespace VGtime.Uwp.ViewModels.Games
 {
@@ -13,7 +15,7 @@ namespace VGtime.Uwp.ViewModels.Games
 
         private readonly IGameService _gameService;
 
-        private int _gameId;
+        private readonly INavigationService _navigationService;
 
         private bool _isLoading;
 
@@ -21,10 +23,17 @@ namespace VGtime.Uwp.ViewModels.Games
 
         private GameAlbum[] _photos;
 
-        public GamePhotoViewModel(IGameService gameService, IAppToastService appToastService)
+        public GamePhotoViewModel(IGameService gameService, IAppToastService appToastService, INavigationService navigationService)
         {
             _gameService = gameService;
             _appToastService = appToastService;
+            _navigationService = navigationService;
+        }
+
+        public int GameId
+        {
+            get;
+            private set;
         }
 
         public bool IsLoading
@@ -45,7 +54,20 @@ namespace VGtime.Uwp.ViewModels.Games
             {
                 _photoClickCommand = _photoClickCommand ?? new RelayCommand<GameAlbum>(photo =>
                 {
-                    // TODO
+                    if (photo == null)
+                    {
+                        return;
+                    }
+                    var photos = Photos;
+                    if (photos == null)
+                    {
+                        return;
+                    }
+                    var index = Array.IndexOf(photos, photo);
+                    if (index >= 0)
+                    {
+                        _navigationService.NavigateTo(ViewModelLocator.ImagePagerViewKey, new ImagePagerViewParameter(photos, index));
+                    }
                 });
                 return _photoClickCommand;
             }
@@ -63,13 +85,24 @@ namespace VGtime.Uwp.ViewModels.Games
             }
         }
 
-        private async void LoadPhotosAsync()
+        public void LoadPhotos(int gameId)
         {
+            GameId = gameId;
+            LoadPhotos();
+        }
+
+        private async void LoadPhotos()
+        {
+            if (IsLoading)
+            {
+                return;
+            }
+
             try
             {
                 IsLoading = true;
 
-                var result = await _gameService.GetAlbumListAsync(_gameId);
+                var result = await _gameService.GetAlbumListAsync(GameId);
                 if (result.Retcode == Constants.SuccessCode)
                 {
                     Photos = result.Data.Data;

@@ -1,5 +1,7 @@
 ﻿using System;
 using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Command;
+using GalaSoft.MvvmLight.Views;
 using VGtime.Configuration;
 using VGtime.Models.Games;
 using VGtime.Services;
@@ -13,19 +15,22 @@ namespace VGtime.Uwp.ViewModels.Games
 
         private readonly IGameService _gameService;
 
+        private readonly INavigationService _navigationService;
+
         private readonly IVGtimeSettings _vgtimeSettings;
 
         private GameBase _gameDetail;
 
-        private int _gameId;
-
         private bool _isLoading;
 
-        public GameDetailViewModel(IGameService gameService, IVGtimeSettings vgtimeSettings, IAppToastService appToastService)
+        private RelayCommand _photoCommand;
+
+        public GameDetailViewModel(IGameService gameService, IVGtimeSettings vgtimeSettings, IAppToastService appToastService, INavigationService navigationService)
         {
             _gameService = gameService;
             _vgtimeSettings = vgtimeSettings;
             _appToastService = appToastService;
+            _navigationService = navigationService;
         }
 
         public GameBase GameDetail
@@ -40,6 +45,12 @@ namespace VGtime.Uwp.ViewModels.Games
             }
         }
 
+        public int GameId
+        {
+            get;
+            private set;
+        }
+
         public bool IsLoading
         {
             get
@@ -52,7 +63,25 @@ namespace VGtime.Uwp.ViewModels.Games
             }
         }
 
-        private async void LoadDetailAsync()
+        public RelayCommand PhotoCommand
+        {
+            get
+            {
+                _photoCommand = _photoCommand ?? new RelayCommand(() =>
+                {
+                    _navigationService.NavigateTo(ViewModelLocator.GamePhotoViewKey, GameId);
+                });
+                return _photoCommand;
+            }
+        }
+
+        public void LoadDetail(int gameId)
+        {
+            GameId = gameId;
+            LoadDetail();
+        }
+
+        private async void LoadDetail()
         {
             if (IsLoading)
             {
@@ -63,7 +92,7 @@ namespace VGtime.Uwp.ViewModels.Games
             {
                 IsLoading = true;
 
-                var result = await _gameService.GetDetailAsync(_gameId, _vgtimeSettings.UserInfo?.UserId);
+                var result = await _gameService.GetDetailAsync(GameId, _vgtimeSettings.UserInfo?.UserId);
                 if (result.Retcode == Constants.SuccessCode)
                 {
                     GameDetail = result.Data.Game;

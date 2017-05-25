@@ -1,4 +1,6 @@
-﻿namespace VGtime.Uwp.Views
+﻿using VGtime.Uwp.ViewModels;
+
+namespace VGtime.Uwp.Views
 {
     public sealed partial class MainView
     {
@@ -6,5 +8,7 @@
         {
             InitializeComponent();
         }
+
+        public MainViewModel ViewModel => (MainViewModel)DataContext;
     }
 }

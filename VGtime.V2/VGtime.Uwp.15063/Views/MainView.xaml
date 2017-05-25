@@ -17,16 +17,12 @@
             <localControls:PostItemTemplateSelector x:Key="PostItemTemplateSelector">
                 <localControls:PostItemTemplateSelector.NormalTemplate>
                     <DataTemplate>
-                        <localControls:Card>
-                            <localControls:ListPostItem />
-                        </localControls:Card>
+                        <localControls:ListPostItem />
                     </DataTemplate>
                 </localControls:PostItemTemplateSelector.NormalTemplate>
                 <localControls:PostItemTemplateSelector.VideoTemplate>
                     <DataTemplate>
-                        <localControls:Card>
-                            <localControls:ListPostItem />
-                        </localControls:Card>
+                        <localControls:VideoPostItem />
                     </DataTemplate>
                 </localControls:PostItemTemplateSelector.VideoTemplate>
             </localControls:PostItemTemplateSelector>
@@ -45,7 +41,8 @@
                 <localControls:VGtimeGridView IsItemClickEnabled="True"
                                               ItemTemplateSelector="{StaticResource PostItemTemplateSelector}"
                                               ItemsSource="{Binding Path=VglistPosts}"
-                                              MaxItemWidth="800" Padding="12,12,0,0"
+                                              MaxItemWidth="800"
+                                              Padding="12,12,0,0"
                                               SelectionMode="None">
                     <interactivity:Interaction.Behaviors>
                         <core:EventTriggerBehavior EventName="ItemClick">
@@ -65,7 +62,7 @@
                             <Setter Property="Margin"
                                     Value="0,0,12,12" />
                         </Style>
-                    </ItemsControl.ItemContainerStyle> 
+                    </ItemsControl.ItemContainerStyle>
                 </localControls:VGtimeGridView>
             </PivotItem>
             <PivotItem Header="新闻">
@@ -82,9 +79,7 @@
                     </interactivity:Interaction.Behaviors>
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
-                            <localControls:Card>
-                                <localControls:ListPostItem />
-                            </localControls:Card>
+                            <localControls:ListPostItem />
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
                     <ItemsControl.ItemContainerStyle>
@@ -113,9 +108,7 @@
                     </interactivity:Interaction.Behaviors>
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
-                            <localControls:Card>
-                                <localControls:ListPostItem />
-                            </localControls:Card>
+                            <localControls:ListPostItem />
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
                     <ItemsControl.ItemContainerStyle>
@@ -186,9 +179,7 @@
                     </ListViewBase.Header>
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
-                            <localControls:Card>
-                                <localControls:ListPostItem />
-                            </localControls:Card>
+                            <localControls:ListPostItem />
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
                     <ItemsControl.ItemContainerStyle>
@@ -217,9 +208,7 @@
                     </interactivity:Interaction.Behaviors>
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
-                            <localControls:Card>
-                                <localControls:ListPostItem />
-                            </localControls:Card>
+                            <localControls:ListPostItem />
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
                     <ItemsControl.ItemContainerStyle>

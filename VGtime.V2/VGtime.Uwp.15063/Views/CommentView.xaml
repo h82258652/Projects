@@ -23,6 +23,8 @@
                     </core:EventTriggerBehavior>
                 </interactivity:Interaction.Behaviors>
             </Button>
+            <TextBlock Foreground="White"
+                       Text="全部评论" />
         </Grid>
         <controls:VGtimeGridView Grid.Row="1"
                                  ItemsSource="{Binding Path=Comments}"
@@ -30,19 +32,21 @@
             <ListViewBase.Header>
                 <Border />
             </ListViewBase.Header>
-            <GridView.ItemTemplate>
+            <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <Grid />
+                    <controls:CommentItem />
                 </DataTemplate>
-            </GridView.ItemTemplate>
-            <GridView.ItemContainerStyle>
+            </ItemsControl.ItemTemplate>
+            <ItemsControl.ItemContainerStyle>
                 <Style TargetType="GridViewItem">
                     <Setter Property="HorizontalContentAlignment"
                             Value="Stretch" />
                     <Setter Property="VerticalContentAlignment"
                             Value="Stretch" />
+                    <Setter Property="Margin"
+                            Value="0,0,8,8" />
                 </Style>
-            </GridView.ItemContainerStyle>
+            </ItemsControl.ItemContainerStyle>
         </controls:VGtimeGridView>
     </Grid>
 </Page>

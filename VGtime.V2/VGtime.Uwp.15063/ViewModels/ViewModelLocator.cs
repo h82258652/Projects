@@ -41,6 +41,8 @@ namespace VGtime.Uwp.ViewModels
 
         public ArticleDetailViewModel ArticleDetail => ServiceLocator.Current.GetInstance<ArticleDetailViewModel>();
 
+        public BasicInformationViewModel BasicInformation => ServiceLocator.Current.GetInstance<BasicInformationViewModel>();
+
         public CommentViewModel Comment => ServiceLocator.Current.GetInstance<CommentViewModel>();
 
         public GameDetailViewModel GameDetail => ServiceLocator.Current.GetInstance<GameDetailViewModel>();
@@ -56,6 +58,8 @@ namespace VGtime.Uwp.ViewModels
         public LoginViewModel Login => ServiceLocator.Current.GetInstance<LoginViewModel>();
 
         public MainViewModel Main => ServiceLocator.Current.GetInstance<MainViewModel>();
+
+        public OldGameStrategyViewModel OldGameStrategy => ServiceLocator.Current.GetInstance<OldGameStrategyViewModel>();
 
         public SearchViewModel Search => ServiceLocator.Current.GetInstance<SearchViewModel>();
 

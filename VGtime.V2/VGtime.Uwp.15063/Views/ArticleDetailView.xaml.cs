@@ -1,11 +1,13 @@
 ﻿using System;
+using System.Diagnostics;
+using GalaSoft.MvvmLight.Messaging;
+using VGtime.Uwp.Messages;
+using VGtime.Uwp.ViewParameters;
 using Windows.Foundation;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
-using GalaSoft.MvvmLight.Messaging;
-using VGtime.Uwp.Messages;
-using VGtime.Uwp.ViewParameters;
+using VGtime.Uwp.ViewModels;
 using WinRTXamlToolkit.AwaitableUI;
 
 namespace VGtime.Uwp.Views
@@ -17,6 +19,8 @@ namespace VGtime.Uwp.Views
             InitializeComponent();
         }
 
+        public ArticleDetailViewModel ViewModel => (ArticleDetailViewModel)DataContext;
+
         protected override void OnNavigatedFrom(NavigationEventArgs e)
         {
             base.OnNavigatedFrom(e);
@@ -24,7 +28,7 @@ namespace VGtime.Uwp.Views
             Messenger.Default.Unregister(this);
         }
 
-        protected override void OnNavigatedTo(NavigationEventArgs e)
+        protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
 
@@ -34,6 +38,12 @@ namespace VGtime.Uwp.Views
             });
 
             var parameter = (ArticleDetailViewParameter)e.Parameter;
+            Debug.Assert(parameter != null);
+            if (ViewModel.PostId != parameter.PostId)
+            {
+                await WebView.NavigateAsync(new Uri("about:blank"));
+                ViewModel.LoadArticleDetail(parameter.PostId, parameter.DetailType);
+            }
         }
 
         private async void ScrollToTopButton_Click(object sender, RoutedEventArgs e)
@@ -58,7 +68,7 @@ namespace VGtime.Uwp.Views
                 var action = query.GetFirstValueByName("action");
                 if (action.Equals("moreComment", StringComparison.OrdinalIgnoreCase))
                 {
-                    // TODO
+                    ViewModel.MoreCommentCommand.Execute(null);
                 }
                 else if (action.Equals("goBack", StringComparison.OrdinalIgnoreCase))
                 {

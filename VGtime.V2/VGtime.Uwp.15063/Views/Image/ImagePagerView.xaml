@@ -14,17 +14,32 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <Grid Grid.Row="0">
-            <Button Style="{StaticResource NavigationBackButtonStyle}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0"
+                    Style="{StaticResource NavigationBackButtonStyle}">
                 <interactivity:Interaction.Behaviors>
                     <core:EventTriggerBehavior EventName="Click">
                         <behaviors:GoBackAction />
                     </core:EventTriggerBehavior>
                 </interactivity:Interaction.Behaviors>
             </Button>
-            <Button Style="{StaticResource IconButtonStyle}" />
+            <TextBlock Grid.Column="1">
+                <Run x:Name="PhotosFlipViewIndexTextControl" /><Run Text="/" /><Run Text="{Binding Path=Photos.Length}" /></TextBlock>
+            <Button Grid.Column="2"
+                    Command="{Binding Path=SaveCommand}"
+                    CommandParameter="{Binding ElementName=PhotosFlipView, Path=SelectedItem}"
+                    Style="{StaticResource IconButtonStyle}">
+                <SymbolIcon Symbol="Download" />
+            </Button>
         </Grid>
-        <FlipView Grid.Row="1"
-                  ItemsSource="{Binding Path=Photos}">
+        <FlipView x:Name="PhotosFlipView"
+                  Grid.Row="1"
+                  ItemsSource="{Binding Path=Photos}"
+                  SelectionChanged="PhotosFlipView_SelectionChanged">
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
                     <Image Source="{Binding Path=Url}" />

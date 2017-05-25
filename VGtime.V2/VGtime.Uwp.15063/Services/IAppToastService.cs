@@ -4,6 +4,8 @@
     {
         void ShowError(string message);
 
+        void ShowMessage(sbyte message);
+
         void ShowWarning(string message);
     }
 }

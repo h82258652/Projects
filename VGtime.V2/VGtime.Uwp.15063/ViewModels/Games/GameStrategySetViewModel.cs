@@ -12,8 +12,6 @@ namespace VGtime.Uwp.ViewModels.Games
 
         private readonly IGameService _gameService;
 
-        private int _gameId;
-
         private GameStrategy[] _gameStrategies;
 
         private bool _isLoading;
@@ -22,6 +20,12 @@ namespace VGtime.Uwp.ViewModels.Games
         {
             _gameService = gameService;
             _appToastService = appToastService;
+        }
+
+        public int GameId
+        {
+            get;
+            private set;
         }
 
         public GameStrategy[] GameStrategies
@@ -48,7 +52,13 @@ namespace VGtime.Uwp.ViewModels.Games
             }
         }
 
-        private async void LoadGameStrategiesAsync()
+        public void LoadGameStrategies(int gameId)
+        {
+            GameId = gameId;
+            LoadGameStrategies();
+        }
+
+        private async void LoadGameStrategies()
         {
             if (IsLoading)
             {
@@ -58,7 +68,7 @@ namespace VGtime.Uwp.ViewModels.Games
             {
                 IsLoading = true;
 
-                var result = await _gameService.GetStrategyMenuListAsync(_gameId);
+                var result = await _gameService.GetStrategyMenuListAsync(GameId);
                 if (result.Retcode == Constants.SuccessCode)
                 {
                     GameStrategies = result.Data.Data;

@@ -31,10 +31,16 @@ namespace VGtime.Uwp.ViewModels
             }
         }
 
-        public void XXX()
+        public int PostId
         {
-            // TODO
-            Comments = new CommentCollection(0, 0, _postService, _vgtimeSettings);
+            get;
+            private set;
+        }
+
+        public void LoadComments(int postId, int detailType)
+        {
+            PostId = postId;
+            Comments = new CommentCollection(postId, detailType, _postService, _vgtimeSettings);
         }
     }
 }

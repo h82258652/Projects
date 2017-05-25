@@ -91,8 +91,7 @@ namespace VGtime.Uwp.ViewModels
             {
                 _gameClickCommand = _gameClickCommand ?? new RelayCommand<GameBase>(game =>
                 {
-                    // TODO
-                    _navigationService.NavigateTo(ViewModelLocator.GameDetailViewKey, null);
+                    _navigationService.NavigateTo(ViewModelLocator.GameDetailViewKey, game.GameId);
                 });
                 return _gameClickCommand;
             }

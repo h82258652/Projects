@@ -95,7 +95,6 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\Card.cs" />
     <Compile Include="Controls\CommentItem.xaml.cs">
       <DependentUpon>CommentItem.xaml</DependentUpon>
     </Compile>
@@ -113,6 +112,9 @@
     </Compile>
     <Compile Include="Controls\ListPostItem.xaml.cs">
       <DependentUpon>ListPostItem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ListPostItem2.xaml.cs">
+      <DependentUpon>ListPostItem2.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\PostItemTemplateSelector.cs" />
     <Compile Include="Controls\VGtimeGridView.cs" />
@@ -154,6 +156,8 @@
     <Compile Include="ViewModels\ViewModelLocator.cs" />
     <Compile Include="ViewModels\WelcomeViewModel.cs" />
     <Compile Include="ViewParameters\ArticleDetailViewParameter.cs" />
+    <Compile Include="ViewParameters\CommentViewParameter.cs" />
+    <Compile Include="ViewParameters\ImagePagerViewParameter.cs" />
     <Compile Include="Views\ArticleDetailView.xaml.cs">
       <DependentUpon>ArticleDetailView.xaml</DependentUpon>
     </Compile>
@@ -378,11 +382,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="Controls\Card.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Page>
     <Page Include="Controls\CommentItem.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -404,6 +403,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\ListPostItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\ListPostItem2.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

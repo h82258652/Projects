@@ -17,6 +17,10 @@ namespace VGtime.Uwp.Views.Games
             base.OnNavigatedTo(e);
 
             var gameId = (int)e.Parameter;
+            if (ViewModel.GameId != gameId)
+            {
+                ViewModel.LoadGameStrategies(gameId);
+            }
         }
     }
 }

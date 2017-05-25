@@ -1,23 +1,19 @@
 ﻿using System;
 using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Command;
+using GalaSoft.MvvmLight.Views;
 using VGtime.Configuration;
 using VGtime.Services;
+using VGtime.Uwp.Messages;
 using VGtime.Uwp.Services;
 
 namespace VGtime.Uwp.ViewModels
 {
     public class ArticleDetailViewModel : ViewModelBase
     {
-        // input
-        public int _page;
-
-        // input
-        public int _postId;
-
-        // input
-        public int _type;
-
         private readonly IAppToastService _appToastService;
+
+        private readonly INavigationService _navigationService;
 
         private readonly IPostService _postService;
 
@@ -25,11 +21,16 @@ namespace VGtime.Uwp.ViewModels
 
         private bool _isLoading;
 
-        public ArticleDetailViewModel(IPostService postService, IVGtimeSettings vgtimeSettings, IAppToastService appToastService)
+        private RelayCommand _moreCommentCommand;
+
+        private int _type;
+
+        public ArticleDetailViewModel(IPostService postService, IVGtimeSettings vgtimeSettings, IAppToastService appToastService, INavigationService navigationService)
         {
             _postService = postService;
             _vgtimeSettings = vgtimeSettings;
             _appToastService = appToastService;
+            _navigationService = navigationService;
         }
 
         public bool IsLoading
@@ -44,18 +45,43 @@ namespace VGtime.Uwp.ViewModels
             }
         }
 
-        public async void TODO()
+        public RelayCommand MoreCommentCommand
+        {
+            get
+            {
+                _moreCommentCommand = _moreCommentCommand ?? new RelayCommand(() =>
+                {
+                    _navigationService.NavigateTo(ViewModelLocator.CommentViewKey);
+                });
+                return _moreCommentCommand;
+            }
+        }
+
+        public void LoadArticleDetail(int postId, int type)
+        {
+            PostId = postId;
+            _type = type;
+            LoadArticleDetail();
+        }
+
+        public int PostId
+        {
+            get;
+            private set;
+        }
+
+        private async void LoadArticleDetail()
         {
             try
             {
                 IsLoading = true;
 
-                var result = await _postService.GetDetailAsync(_postId, _type, _vgtimeSettings.UserInfo?.UserId);
+                var result = await _postService.GetDetailAsync(PostId, _type, _vgtimeSettings.UserInfo?.UserId);
                 if (result.Retcode == Constants.SuccessCode)
                 {
                     var articleDetail = result.Data.Data;
 
-                    MessengerInstance.Send(new Messages.ArticleDetailLoadedMessage(articleDetail));
+                    MessengerInstance.Send(new ArticleDetailLoadedMessage(articleDetail));
                 }
                 else
                 {

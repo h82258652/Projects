@@ -15,6 +15,12 @@ namespace VGtime.Uwp.ViewModels.Games
             _gameService = gameService;
         }
 
+        public int GameId
+        {
+            get;
+            private set;
+        }
+
         public GameScoreCollection Scores
         {
             get
@@ -27,8 +33,9 @@ namespace VGtime.Uwp.ViewModels.Games
             }
         }
 
-        public void TODO(int gameId)
+        public void LoadScores(int gameId)
         {
+            GameId = gameId;
             Scores = new GameScoreCollection(gameId, _gameService);
         }
     }

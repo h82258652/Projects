@@ -6,5 +6,5 @@
              xmlns:timeline="using:VGtime.Models.Timeline"
              d:DataContext="{d:DesignInstance Type=timeline:TimeLineBase}"
              mc:Ignorable="d">
-    <Grid />
+    <Grid></Grid>
 </UserControl>
