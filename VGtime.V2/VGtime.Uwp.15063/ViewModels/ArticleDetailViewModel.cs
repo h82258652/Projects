@@ -51,7 +51,7 @@ namespace VGtime.Uwp.ViewModels
             {
                 _moreCommentCommand = _moreCommentCommand ?? new RelayCommand(() =>
                 {
-                    _navigationService.NavigateTo(ViewModelLocator.CommentViewKey);
+                    _navigationService.NavigateTo(ViewModelLocator.CommentViewKey, PostId);
                 });
                 return _moreCommentCommand;
             }
