@@ -14,10 +14,37 @@ function setArticleDetail(json: string): void {
     if (games) {
         const vgappGame = $(".vgapp_game");
         for (let game of games) {
-            let vgappGameItem = "<div class=\"vgapp_game_item\">";
-            vgappGameItem = vgappGameItem + "<h3>" + game.name + "</h3>";
-            vgappGameItem = vgappGameItem + "</div>";
+            const vgappGameItem = `<div class="vgapp_game_item">
+                <h3>${game.name}</h3>
+                <p>${game.platform}</p>
+                <img src="${game.cover}">
+                <span class="score">${game.score}</span>
+            </div>`;
             vgappGame.append(vgappGameItem);
+        }
+    }
+    const comments = articleDetail.comments;
+    if (comments) {
+        const vgappComment = $(".vgapp_comment");
+        for (let comment of comments) {
+            const vgappCommentItem = `<div class="vgapp_comment_item">
+                <div class="vgapp_ci_info">
+                    <img src="${comment.user.avatarUrl}">
+                    <div class="vgapp_ci_detail">
+                        <span class="name">${comment.user.name}</span>
+                        <span class="time">${comment.publishDate}</span>
+                    </div>
+                    <div class="vgapp_ci_op">
+                        <span class="thank">感谢</span>
+                        <span class="replay">${comment.shareNum}</span>
+                        <span class="praise">${comment.likeNum}</span>
+                    </div>
+                </div>
+                <div class="vgapp_ci_content">
+                    ${comment.content}
+                </div>
+            </div>`;
+            vgappComment.append(vgappCommentItem);
         }
     }
 }
