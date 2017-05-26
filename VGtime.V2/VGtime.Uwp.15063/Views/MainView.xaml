@@ -52,7 +52,7 @@
                         </core:EventTriggerBehavior>
                     </interactivity:Interaction.Behaviors>
                     <ListViewBase.Header>
-                        <localControls:HeadpicsControl Margin="-12,-12,0,0" />
+                        <localControls:HeadpicsControl Margin="-12,-12,0,12" />
                     </ListViewBase.Header>
                     <ItemsControl.ItemContainerStyle>
                         <Style TargetType="SelectorItem">

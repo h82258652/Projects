@@ -16,14 +16,32 @@
         </ResourceDictionary>
     </FrameworkElement.Resources>
     <Grid>
-        <Ellipse Width="24"
-                 Height="24">
-            <Ellipse.Fill>
-                <ImageBrush ImageSource="{Binding Path=Comment.User.AvatarUrl}" />
-            </Ellipse.Fill>
-        </Ellipse>
-        <TextBlock Text="{Binding Path=Comment.User.Name}" />
-        <TextBlock Text="{Binding Path=Comment.PublishDate, Converter={StaticResource TimeAgoConverter}}" />
-        <TextBlock Text="{Binding Path=Comment.Remark}" TextWrapping="Wrap" />
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Ellipse Grid.Column="0"
+                     Width="32"
+                     Height="32"
+                     VerticalAlignment="Center">
+                <Ellipse.Fill>
+                    <ImageBrush ImageSource="{Binding Path=Comment.User.AvatarUrl}" />
+                </Ellipse.Fill>
+            </Ellipse>
+            <TextBlock Grid.Column="1"
+                       Text="{Binding Path=Comment.User.Name}" />
+            <TextBlock Grid.Column="2"
+                       Foreground="{ThemeResource VGtimeAccentBrush}"
+                       Text="{Binding Path=Comment.PublishDate, Converter={StaticResource TimeAgoConverter}}" />
+        </Grid>
+        <TextBlock Grid.Row="1"
+                   Text="{Binding Path=Comment.Remark}"
+                   TextWrapping="Wrap" />
     </Grid>
 </UserControl>
