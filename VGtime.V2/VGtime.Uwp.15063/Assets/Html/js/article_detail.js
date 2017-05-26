@@ -6,7 +6,8 @@ function setArticleDetail(json) {
     var user = articleDetail.user;
     $(".vgapp_user_box > img").attr("src", user.avatarUrl);
     $(".vgapp_ub_info > .name").text(user.name);
-    $(".vgapp_ub_info > .time").text(articleDetail.publishDate);
+    var publishDate = new Date(articleDetail.publishDate * 1000);
+    $(".vgapp_ub_info > .time").text(publishDate.getFullYear() + "-" + (publishDate.getMonth() + 1).toString() + "-" + publishDate.getDate() + " " + publishDate.getHours() + ":" + publishDate.getMinutes());
     $(".vgapp_article_long > h1").text(articleDetail.title);
     $(".vgapp_article_long > article").html(articleDetail.content);
     var games = articleDetail.games;
