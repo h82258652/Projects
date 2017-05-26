@@ -31,9 +31,11 @@
                 </interactivity:Interaction.Behaviors>
             </Button>
         </Grid>
-        <controls:VGtimeGridView Grid.Row="1"
+        <controls:VGtimeGridView x:Name="PhotosGridView"
+                                 Grid.Row="1"
                                  Padding="4,4,0,0"
                                  IsItemClickEnabled="True"
+                                 ItemClick="PhotosGridView_ItemClick"
                                  ItemsSource="{Binding Path=Photos}"
                                  SelectionMode="None">
             <interactivity:Interaction.Behaviors>
@@ -44,7 +46,8 @@
             </interactivity:Interaction.Behaviors>
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <Image Source="{Binding Path=Url}" />
+                    <Image x:Name="PhotoImage"
+                           Source="{Binding Path=Url}" />
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
             <ItemsControl.ItemContainerStyle>
