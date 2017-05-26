@@ -125,7 +125,7 @@
     <Compile Include="Data\CommentCollection.cs" />
     <Compile Include="Data\GameScoreCollection.cs" />
     <Compile Include="Data\IncrementalLoadingCollectionBase.cs" />
-    <Compile Include="Data\RelationCollection.cs" />
+    <Compile Include="Data\GameRelationCollection.cs" />
     <Compile Include="Data\SearchArticleCollection.cs" />
     <Compile Include="Data\SearchForumCollection.cs" />
     <Compile Include="Data\SearchGameCollection.cs" />
@@ -140,6 +140,7 @@
     <Compile Include="Services\IAppToastService.cs" />
     <Compile Include="ViewModels\ArticleDetailViewModel.cs" />
     <Compile Include="ViewModels\CommentViewModel.cs" />
+    <Compile Include="ViewModels\GameRelationViewModel.cs" />
     <Compile Include="ViewModels\Games\GameDetailViewModel.cs" />
     <Compile Include="ViewModels\Games\GamePhotoViewModel.cs" />
     <Compile Include="ViewModels\Games\GameScoreViewModel.cs" />
@@ -156,12 +157,16 @@
     <Compile Include="ViewModels\WelcomeViewModel.cs" />
     <Compile Include="ViewParameters\ArticleDetailViewParameter.cs" />
     <Compile Include="ViewParameters\CommentViewParameter.cs" />
+    <Compile Include="ViewParameters\GameRelationViewParameter.cs" />
     <Compile Include="ViewParameters\ImagePagerViewParameter.cs" />
     <Compile Include="Views\ArticleDetailView.xaml.cs">
       <DependentUpon>ArticleDetailView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\CommentView.xaml.cs">
       <DependentUpon>CommentView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\GameRelationView.xaml.cs">
+      <DependentUpon>GameRelationView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Games\GameDetailView.xaml.cs">
       <DependentUpon>GameDetailView.xaml</DependentUpon>
@@ -483,6 +488,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\CommentView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\GameRelationView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

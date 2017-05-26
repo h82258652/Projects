@@ -19,11 +19,15 @@ namespace VGtime.Uwp.ViewModels.Games
 
         private readonly IVGtimeSettings _vgtimeSettings;
 
+        private RelayCommand _forumCommand;
+
         private GameBase _gameDetail;
 
         private bool _isLoading;
 
         private RelayCommand _photoCommand;
+
+        private RelayCommand _questionCommand;
 
         private RelayCommand _scoreCommand;
 
@@ -35,6 +39,18 @@ namespace VGtime.Uwp.ViewModels.Games
             _vgtimeSettings = vgtimeSettings;
             _appToastService = appToastService;
             _navigationService = navigationService;
+        }
+
+        public RelayCommand ForumCommand
+        {
+            get
+            {
+                _forumCommand = _forumCommand ?? new RelayCommand(() =>
+                {
+                    // TODO relation 1.
+                });
+                return _forumCommand;
+            }
         }
 
         public GameBase GameDetail
@@ -76,6 +92,18 @@ namespace VGtime.Uwp.ViewModels.Games
                     _navigationService.NavigateTo(ViewModelLocator.GamePhotoViewKey, GameId);
                 });
                 return _photoCommand;
+            }
+        }
+
+        public RelayCommand QuestionCommand
+        {
+            get
+            {
+                _questionCommand = _questionCommand ?? new RelayCommand(() =>
+                {
+                    // TODO relation 3
+                });
+                return _questionCommand;
             }
         }
 

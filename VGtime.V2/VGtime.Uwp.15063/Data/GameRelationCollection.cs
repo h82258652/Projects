@@ -7,7 +7,7 @@ using VGtime.Services;
 
 namespace VGtime.Uwp.Data
 {
-    public class RelationCollection : IncrementalLoadingCollectionBase<TimeLineBase>
+    public class GameRelationCollection : IncrementalLoadingCollectionBase<TimeLineBase>
     {
         private readonly int _gameId;
 
@@ -17,7 +17,7 @@ namespace VGtime.Uwp.Data
 
         private readonly int _type;
 
-        public RelationCollection(int gameId, int type, IGameService gameService, Action<Exception> onError = null)
+        public GameRelationCollection(int gameId, int type, IGameService gameService, Action<Exception> onError = null)
         {
             if (gameService == null)
             {

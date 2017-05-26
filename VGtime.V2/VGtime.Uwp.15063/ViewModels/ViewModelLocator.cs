@@ -26,6 +26,8 @@ namespace VGtime.Uwp.ViewModels
 
         public const string GamePhotoViewKey = "GamePhoto";
 
+        public const string GameRelationViewKey = "GameRelation";
+
         public const string GameScoreViewKey = "GameScore";
 
         public const string GameStrategySetViewKey = "GameStrategySet";
@@ -51,6 +53,8 @@ namespace VGtime.Uwp.ViewModels
         public GameDetailViewModel GameDetail => ServiceLocator.Current.GetInstance<GameDetailViewModel>();
 
         public GamePhotoViewModel GamePhoto => ServiceLocator.Current.GetInstance<GamePhotoViewModel>();
+
+        public GameRelationViewModel GameRelation => ServiceLocator.Current.GetInstance<GameRelationViewModel>();
 
         public GameScoreViewModel GameScore => ServiceLocator.Current.GetInstance<GameScoreViewModel>();
 
