@@ -47,9 +47,10 @@
                 </ResourceDictionary>
             </FrameworkElement.Resources>
             <PivotItem Header="文章">
-                <controls:VGtimeGridView IsItemClickEnabled="True"
+                <controls:VGtimeGridView Padding="8,8,0,0"
+                                         IsItemClickEnabled="True"
                                          ItemsSource="{Binding Path=Articles}"
-                                         MaxItemWidth="640"
+                                         MaxItemWidth="600"
                                          SelectionMode="None">
                     <interactivity:Interaction.Behaviors>
                         <core:EventTriggerBehavior EventName="ItemClick">
@@ -58,8 +59,20 @@
                         </core:EventTriggerBehavior>
                     </interactivity:Interaction.Behaviors>
                     <ItemsControl.ItemTemplate>
-                        <DataTemplate />
+                        <DataTemplate>
+                            <controls:ListPostItem />
+                        </DataTemplate>
                     </ItemsControl.ItemTemplate>
+                    <ItemsControl.ItemContainerStyle>
+                        <Style TargetType="SelectorItem">
+                            <Setter Property="HorizontalContentAlignment"
+                                    Value="Stretch" />
+                            <Setter Property="VerticalContentAlignment"
+                                    Value="Stretch" />
+                            <Setter Property="Margin"
+                                    Value="0,0,8,8" />
+                        </Style>
+                    </ItemsControl.ItemContainerStyle>
                 </controls:VGtimeGridView>
             </PivotItem>
             <PivotItem Header="俱乐部">

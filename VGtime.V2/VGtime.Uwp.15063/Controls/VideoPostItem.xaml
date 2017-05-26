@@ -16,11 +16,10 @@
     <Grid>
         <Viewbox VerticalAlignment="Center"
                  Stretch="UniformToFill">
-            <Grid>
-                <Border Width="960"
-                        Height="600" />
-                <Image Source="{Binding Path=Thumbnail.Url}" />
-            </Grid>
+            <Image Width="960"
+                   Height="600"
+                   Source="{Binding Path=Thumbnail.Url}"
+                   Stretch="UniformToFill" />
         </Viewbox>
         <Border Background="#40000000" />
         <TextBlock Margin="8,8,0,0"
