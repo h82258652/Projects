@@ -17,6 +17,8 @@ namespace VGtime.Uwp.ViewModels
 
         private RelayCommand _deleteStartPictureCommand;
 
+        private bool _isLoadingHotword;
+
         public WelcomeViewModel(IInitService initService, IVGtimeSettings vgtimeSettings, IImageLoader imageLoader)
         {
             _initService = initService;
@@ -42,6 +44,18 @@ namespace VGtime.Uwp.ViewModels
                     }
                 });
                 return _deleteStartPictureCommand;
+            }
+        }
+
+        public bool IsLoadingHotword
+        {
+            get
+            {
+                return _isLoadingHotword;
+            }
+            private set
+            {
+                Set(ref _isLoadingHotword, value);
             }
         }
 
@@ -76,11 +90,21 @@ namespace VGtime.Uwp.ViewModels
         {
             try
             {
+                IsLoadingHotword = true;
+
                 var result = await _initService.GetHotwordAsync();
+                if (result.Retcode == 0)
+                {
+                    // TODO
+                }
             }
             catch (Exception)
             {
                 // ignored
+            }
+            finally
+            {
+                IsLoadingHotword = false;
             }
         }
 
