@@ -7,8 +7,8 @@ function setArticleDetail(json: string): void {
     const user = articleDetail.user;
     $(".vgapp_user_box > img").attr("src", user.avatarUrl);
     $(".vgapp_ub_info > .name").text(user.name);
-    var publishDate = new Date(articleDetail.publishDate * 1000);
-    $(".vgapp_ub_info > .time").text(`${publishDate.getFullYear()}-${(publishDate.getMonth() + 1).toString()}-${publishDate.getDate()} ${publishDate.getHours()}:${publishDate.getMinutes()}`);
+    const publishDate = new Date(articleDetail.publishDate * 1000);
+    $(".vgapp_ub_info > .time").text(`${publishDate.getFullYear()}-${publishDate.getMonth() + 1}-${publishDate.getDate()} ${publishDate.getHours()}:${publishDate.getMinutes()}`);
     $(".vgapp_article_long > h1").text(articleDetail.title);
     $(".vgapp_article_long > article").html(articleDetail.content);
     const games = articleDetail.games;
@@ -22,6 +22,25 @@ function setArticleDetail(json: string): void {
                 <span class="score">${game.score}</span>
             </div>`;
             vgappGame.append(vgappGameItem);
+        }
+    }
+    const news = articleDetail.news;
+    if (news) {
+        const vgappAlist = $(".vgapp_alist");
+        for (let temp of news) {
+            const newsPublishDate = new Date(temp.publishDate);
+            const vgappAlistItem = `<div class="vgapp_alist_item">
+                <div class="vgapp_alist_uinfo">
+                    <img src="${temp.user.avatarUrl}">
+                    <span class="name">${temp.user.name}</span>
+                    <span class="time">${newsPublishDate.getFullYear()}-${newsPublishDate.getMonth() + 1}-${newsPublishDate.getDate()} ${newsPublishDate.getHours()}:${newsPublishDate.getMinutes()}</span>
+                    <span class="type">${temp.category}</span>
+                </div>
+                <h3>${temp.title}</h3>
+                <span class="replay">${temp.commentNum}</span>
+                <img src="${temp.thumbnail.url}" class="cover">
+            </div>`;
+            vgappAlist.append(vgappAlistItem);
         }
     }
     const comments = articleDetail.comments;

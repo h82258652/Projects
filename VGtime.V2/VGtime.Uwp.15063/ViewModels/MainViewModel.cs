@@ -12,13 +12,15 @@ namespace VGtime.Uwp.ViewModels
 {
     public class MainViewModel : ViewModelBase
     {
+        private readonly IAppToastService _appToastService;
+
         private readonly IHomeService _homeService;
 
         private readonly INavigationService _navigationService;
 
-        private readonly IAppToastService _appToastService;
-
         private TimeLineBase[] _headpics;
+
+        private bool _isLoadingHeadpic;
 
         private RelayCommand<TimeLineBase> _postClickCommand;
 
@@ -32,7 +34,7 @@ namespace VGtime.Uwp.ViewModels
             _navigationService = navigationService;
             _appToastService = appToastService;
 
-            Initialize();
+            LoadHeadpic();
             VglistPosts = new VglistPostCollection(homeService);
             NewsPosts = new TagPostCollection(1, homeService);
             EvaluationPosts = new TagPostCollection(4, homeService);
@@ -55,6 +57,18 @@ namespace VGtime.Uwp.ViewModels
             private set
             {
                 Set(ref _headpics, value);
+            }
+        }
+
+        public bool IsLoadingHeadpic
+        {
+            get
+            {
+                return _isLoadingHeadpic;
+            }
+            private set
+            {
+                Set(ref _isLoadingHeadpic, value);
             }
         }
 
@@ -119,10 +133,12 @@ namespace VGtime.Uwp.ViewModels
             get;
         }
 
-        private async void Initialize()
+        private async void LoadHeadpic()
         {
             try
             {
+                IsLoadingHeadpic = true;
+
                 var result = await _homeService.GetHeadpicAsync();
                 if (result.Retcode == Constants.SuccessCode)
                 {
@@ -139,7 +155,7 @@ namespace VGtime.Uwp.ViewModels
             }
             finally
             {
-                // TODO
+                IsLoadingHeadpic = false;
             }
         }
     }

@@ -48,6 +48,7 @@ namespace VGtime.Uwp.ViewModels.Games
                 _forumCommand = _forumCommand ?? new RelayCommand(() =>
                 {
                     // TODO relation 1.
+                    _navigationService.NavigateTo(ViewModelLocator.GameRelationViewKey, 1);
                 });
                 return _forumCommand;
             }
@@ -102,6 +103,7 @@ namespace VGtime.Uwp.ViewModels.Games
                 _questionCommand = _questionCommand ?? new RelayCommand(() =>
                 {
                     // TODO relation 3
+                    _navigationService.NavigateTo(ViewModelLocator.GameRelationViewKey, 3);
                 });
                 return _questionCommand;
             }
