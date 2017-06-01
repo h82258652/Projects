@@ -14,14 +14,7 @@ namespace VGtime.Services.Test
         }
 
         [Fact]
-        public async Task GetHotwordAsync()
-        {
-            var result = await _initService.GetHotwordAsync();
-            Assert.Equal(result.Retcode, Constants.SuccessCode);
-        }
-
-        [Fact]
-        public async Task GetAsync()
+        public async Task TestGetAsync()
         {
             await Assert.ThrowsAsync<ArgumentNullException>(async () =>
             {
@@ -29,6 +22,20 @@ namespace VGtime.Services.Test
             });
 
             var result = await _initService.GetStartpicAsync("2.0.8");
+            Assert.Equal(result.Retcode, Constants.SuccessCode);
+        }
+
+        [Fact]
+        public async Task TestGetHotwordAsync()
+        {
+            var result = await _initService.GetHotwordAsync();
+            Assert.Equal(result.Retcode, Constants.SuccessCode);
+        }
+
+        [Fact]
+        public async Task TestGetVersionAsync()
+        {
+            var result = await _initService.GetVersionAsync("2.0.8", 1);
             Assert.Equal(result.Retcode, Constants.SuccessCode);
         }
     }

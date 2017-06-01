@@ -147,12 +147,26 @@
     <Compile Include="ViewModels\Games\GameStrategySetViewModel.cs" />
     <Compile Include="ViewModels\Image\ImagePagerViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
+    <Compile Include="ViewModels\Message\MessageViewModel.cs" />
     <Compile Include="ViewModels\OldGameStrategyViewModel.cs" />
+    <Compile Include="ViewModels\Post\SelectFriendsViewModel.cs" />
+    <Compile Include="ViewModels\Post\SelectGameViewModel.cs" />
+    <Compile Include="ViewModels\Post\ShortEditorViewModel.cs" />
     <Compile Include="ViewModels\SearchViewModel.cs" />
     <Compile Include="ViewModels\Settings\AboutViewModel.cs" />
     <Compile Include="ViewModels\Settings\SettingViewModel.cs" />
+    <Compile Include="ViewModels\Settings\ShowCoverViewModel.cs" />
     <Compile Include="ViewModels\Users\BasicInformationViewModel.cs" />
+    <Compile Include="ViewModels\Users\CitysViewModel.cs" />
+    <Compile Include="ViewModels\Users\InvitationViewModel.cs" />
     <Compile Include="ViewModels\Users\LoginViewModel.cs" />
+    <Compile Include="ViewModels\Users\RegisterConfirmViewModel.cs" />
+    <Compile Include="ViewModels\Users\RegisterViewModel.cs" />
+    <Compile Include="ViewModels\Users\RetrievePasswordViewModel.cs" />
+    <Compile Include="ViewModels\Users\SignViewModel.cs" />
+    <Compile Include="ViewModels\Users\UpdateEmailViewModel.cs" />
+    <Compile Include="ViewModels\Users\UpdatePasswordViewModel.cs" />
+    <Compile Include="ViewModels\Users\UpdateUsernameViewModel.cs" />
     <Compile Include="ViewModels\ViewModelLocator.cs" />
     <Compile Include="ViewModels\WelcomeViewModel.cs" />
     <Compile Include="ViewParameters\ArticleDetailViewParameter.cs" />
@@ -186,8 +200,20 @@
     <Compile Include="Views\MainView.xaml.cs">
       <DependentUpon>MainView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Message\MessageView.xaml.cs">
+      <DependentUpon>MessageView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\OldGameStrategyView.xaml.cs">
       <DependentUpon>OldGameStrategyView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Post\SelectFriendsView.xaml.cs">
+      <DependentUpon>SelectFriendsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Post\SelectGameView.xaml.cs">
+      <DependentUpon>SelectGameView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Post\ShortEditorView.xaml.cs">
+      <DependentUpon>ShortEditorView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\RootView.xaml.cs">
       <DependentUpon>RootView.xaml</DependentUpon>
@@ -201,11 +227,41 @@
     <Compile Include="Views\Settings\SettingView.xaml.cs">
       <DependentUpon>SettingView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Settings\ShowCoverView.xaml.cs">
+      <DependentUpon>ShowCoverView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Users\BasicInformationView.xaml.cs">
       <DependentUpon>BasicInformationView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Users\CitysView.xaml.cs">
+      <DependentUpon>CitysView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Users\InvitationView.xaml.cs">
+      <DependentUpon>InvitationView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Users\LoginView.xaml.cs">
       <DependentUpon>LoginView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Users\RegisterConfirmView.xaml.cs">
+      <DependentUpon>RegisterConfirmView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Users\RegisterView.xaml.cs">
+      <DependentUpon>RegisterView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Users\RetrievePasswordView.xaml.cs">
+      <DependentUpon>RetrievePasswordView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Users\SignView.xaml.cs">
+      <DependentUpon>SignView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Users\UpdateEmailView.xaml.cs">
+      <DependentUpon>UpdateEmailView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Users\UpdatePasswordView.xaml.cs">
+      <DependentUpon>UpdatePasswordView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Users\UpdateUsernameView.xaml.cs">
+      <DependentUpon>UpdateUsernameView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\WelcomeView.xaml.cs">
       <DependentUpon>WelcomeView.xaml</DependentUpon>
@@ -519,7 +575,23 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\Message\MessageView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\OldGameStrategyView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Post\SelectFriendsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Post\SelectGameView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Post\ShortEditorView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -539,11 +611,51 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\Settings\ShowCoverView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Users\BasicInformationView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\Users\CitysView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Users\InvitationView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Users\LoginView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Users\RegisterConfirmView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Users\RegisterView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Users\RetrievePasswordView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Users\SignView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Users\UpdateEmailView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Users\UpdatePasswordView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Users\UpdateUsernameView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

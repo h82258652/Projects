@@ -32,5 +32,20 @@ namespace VGtime.Services
                 return JsonConvert.DeserializeObject<ServerBase<StartPic>>(json);
             }
         }
+
+        public async Task<ServerBase<VersionData>> GetVersionAsync(string versionName, int channel)
+        {
+            if (versionName == null)
+            {
+                throw new ArgumentNullException(nameof(versionName));
+            }
+
+            var url = $"{Constants.UrlBase}/vgtime-app/api/v2/init/version.json?versionName={versionName}&type=1&channel={channel}";
+            using (var client = new HttpClient())
+            {
+                var json = await client.GetStringAsync(url);
+                return JsonConvert.DeserializeObject<ServerBase<VersionData>>(json);
+            }
+        }
     }
 }

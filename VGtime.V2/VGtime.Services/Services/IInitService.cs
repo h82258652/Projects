@@ -8,5 +8,7 @@ namespace VGtime.Services
         Task<ServerBase<KeywordList>> GetHotwordAsync();
 
         Task<ServerBase<StartPic>> GetStartpicAsync(string versionName);
+
+        Task<ServerBase<VersionData>> GetVersionAsync(string versionName, int channel);
     }
 }

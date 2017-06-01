@@ -8,6 +8,8 @@ using VGtime.Services;
 using VGtime.Uwp.Services;
 using VGtime.Uwp.ViewModels.Games;
 using VGtime.Uwp.ViewModels.Image;
+using VGtime.Uwp.ViewModels.Message;
+using VGtime.Uwp.ViewModels.Post;
 using VGtime.Uwp.ViewModels.Settings;
 using VGtime.Uwp.ViewModels.Users;
 using VGtime.Uwp.Views;
@@ -48,6 +50,8 @@ namespace VGtime.Uwp.ViewModels
 
         public BasicInformationViewModel BasicInformation => ServiceLocator.Current.GetInstance<BasicInformationViewModel>();
 
+        public CitysViewModel Citys => ServiceLocator.Current.GetInstance<CitysViewModel>();
+
         public CommentViewModel Comment => ServiceLocator.Current.GetInstance<CommentViewModel>();
 
         public GameDetailViewModel GameDetail => ServiceLocator.Current.GetInstance<GameDetailViewModel>();
@@ -62,15 +66,39 @@ namespace VGtime.Uwp.ViewModels
 
         public ImagePagerViewModel ImagePager => ServiceLocator.Current.GetInstance<ImagePagerViewModel>();
 
+        public InvitationViewModel Invitation => ServiceLocator.Current.GetInstance<InvitationViewModel>();
+
         public LoginViewModel Login => ServiceLocator.Current.GetInstance<LoginViewModel>();
 
         public MainViewModel Main => ServiceLocator.Current.GetInstance<MainViewModel>();
 
+        public MessageViewModel Message => ServiceLocator.Current.GetInstance<MessageViewModel>();
+
         public OldGameStrategyViewModel OldGameStrategy => ServiceLocator.Current.GetInstance<OldGameStrategyViewModel>();
+
+        public RegisterViewModel Register => ServiceLocator.Current.GetInstance<RegisterViewModel>();
+
+        public RetrievePasswordViewModel RetrievePassword => ServiceLocator.Current.GetInstance<RetrievePasswordViewModel>();
 
         public SearchViewModel Search => ServiceLocator.Current.GetInstance<SearchViewModel>();
 
+        public SelectFriendsViewModel SelectFriends => ServiceLocator.Current.GetInstance<SelectFriendsViewModel>();
+
+        public SelectGameViewModel SelectGame => ServiceLocator.Current.GetInstance<SelectGameViewModel>();
+
         public SettingViewModel Setting => ServiceLocator.Current.GetInstance<SettingViewModel>();
+
+        public ShortEditorViewModel ShortEditor => ServiceLocator.Current.GetInstance<ShortEditorViewModel>();
+
+        public ShowCoverViewModel ShowCover => ServiceLocator.Current.GetInstance<ShowCoverViewModel>();
+
+        public SignViewModel Sign => ServiceLocator.Current.GetInstance<SignViewModel>();
+
+        public UpdateEmailViewModel UpdateEmail => ServiceLocator.Current.GetInstance<UpdateEmailViewModel>();
+
+        public UpdatePasswordViewModel UpdatePassword => ServiceLocator.Current.GetInstance<UpdatePasswordViewModel>();
+
+        public UpdateUsernameViewModel UpdateUsername => ServiceLocator.Current.GetInstance<UpdateUsernameViewModel>();
 
         public WelcomeViewModel Welcome => ServiceLocator.Current.GetInstance<WelcomeViewModel>();
 

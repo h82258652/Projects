@@ -13,6 +13,21 @@ namespace VGtime.Services
 {
     public class UserService : IUserService
     {
+        public async Task<ServerBase<object>> GetCodeAsync(string account, int type)
+        {
+            if (account == null)
+            {
+                throw new ArgumentNullException(nameof(account));
+            }
+
+            var url = $"{Constants.UrlBase}/vgtime-app/api/v2/common/getCode.json?account={account}&type={type}";
+            using (var client = new HttpClient())
+            {
+                var json = await client.GetStringAsync(url);
+                return JsonConvert.DeserializeObject<ServerBase<object>>(json);
+            }
+        }
+
         public async Task<ServerBase<UserBase>> GetUserInfoAsync(int userId, string token)
         {
             if (token == null)
@@ -59,6 +74,42 @@ namespace VGtime.Services
             }
         }
 
+        public async Task<ServerBase<object>> RegisterAsync(string account, string password, string code)
+        {
+            if (account == null)
+            {
+                throw new ArgumentNullException(nameof(account));
+            }
+            if (password == null)
+            {
+                throw new ArgumentNullException(nameof(password));
+            }
+            if (code == null)
+            {
+                throw new ArgumentNullException(nameof(code));
+            }
+
+            var postData = new Dictionary<string, string>()
+            {
+                ["account"] = account,
+                ["code"] = code
+            };
+            var passwordAes = EncryptHelper.AesEncryptString(password, Constants.PasswordEncryptKey);
+            var passwordBase64 = Convert.ToBase64String(Encoding.UTF8.GetBytes(passwordAes + "\n"));
+            postData["password"] = passwordBase64;
+
+            var url = $"{Constants.UrlBase}/vgtime-app/api/v2/common/register.json";
+            using (var client = new HttpClient())
+            {
+                using (var postContent = new FormUrlEncodedContent(postData))
+                {
+                    var response = await client.PostAsync(url, postContent);
+                    var json = await response.Content.ReadAsStringAsync();
+                    return JsonConvert.DeserializeObject<ServerBase<object>>(json);
+                }
+            }
+        }
+
         public async Task<ServerBase<SearchList<UserBase>>> SearchAsync(string text, int? userId = null, int page = 1, int pageSize = 20)
         {
             if (text == null)
@@ -83,6 +134,25 @@ namespace VGtime.Services
             {
                 var json = await client.GetStringAsync(url);
                 return JsonConvert.DeserializeObject<ServerBase<SearchList<UserBase>>>(json);
+            }
+        }
+
+        public async Task<ServerBase<object>> VerifyCodeAsync(string account, string code)
+        {
+            if (account == null)
+            {
+                throw new ArgumentNullException(nameof(account));
+            }
+            if (code == null)
+            {
+                throw new ArgumentNullException(nameof(code));
+            }
+
+            var url = $"{Constants.UrlBase}/vgtime-app/api/v2/common/verifyCode.json?account={account}&code={code}";
+            using (var client = new HttpClient())
+            {
+                var json = await client.GetStringAsync(url);
+                return JsonConvert.DeserializeObject<ServerBase<object>>(json);
             }
         }
     }
