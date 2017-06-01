@@ -27,6 +27,8 @@ namespace VGtime.Uwp.ViewModels
 
         private RelayCommand _moreCommentCommand;
 
+        private RelayCommand<int> _relatedGameCommand;
+
         private int _type;
 
         public ArticleDetailViewModel(IPostService postService, IVGtimeSettings vgtimeSettings, IAppToastService appToastService, INavigationService navigationService)
@@ -78,6 +80,26 @@ namespace VGtime.Uwp.ViewModels
             get;
             private set;
         }
+
+        public RelayCommand<int> RelatedGameCommand
+        {
+            get
+            {
+                _relatedGameCommand = _relatedGameCommand ?? new RelayCommand<int>(gameId =>
+                {
+                    _navigationService.NavigateTo(ViewModelLocator.GameDetailViewKey, gameId);
+                });
+                return _relatedGameCommand;
+            }
+        }
+
+        //public RelayCommand<(int p, int j)> F
+        //{
+        //    get
+        //    {
+        // TODO 安装 ValueTuple 包
+        //    }
+        //}
 
         public void LoadArticleDetail(int postId, int type)
         {

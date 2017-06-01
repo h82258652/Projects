@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Diagnostics;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media.Animation;
 using Windows.UI.Xaml.Navigation;
 using VGtime.Uwp.ViewModels.Games;
+using VGtime.Uwp.ViewParameters;
 using WinRTXamlToolkit.AwaitableUI;
 
 namespace VGtime.Uwp.Views.Games
@@ -20,21 +22,33 @@ namespace VGtime.Uwp.Views.Games
         {
             base.OnNavigatedTo(e);
 
-            int gameId = (int)e.Parameter;
+            var parameter = (GamePhotoViewParameter)e.Parameter;
+            Debug.Assert(parameter != null);
+            var gameId = parameter.GameId;
             if (ViewModel.GameId != gameId)
             {
+                ViewModel.GameName = parameter.GameName;
                 ViewModel.LoadPhotos(gameId);
             }
 
             if (e.NavigationMode == NavigationMode.Back)
             {
-                await PhotosGridView.WaitForLoadedAsync();
-                var connectedAnimation = ConnectedAnimationService.GetForCurrentView().GetAnimation("ImagePagerView");
-                if (connectedAnimation != null)
+                var imagePagerViewParameter = ViewModel.ImagePagerViewParameter;
+                if (imagePagerViewParameter != null)
                 {
-                    var item = PhotosGridView.Items[0];// TODO
-                    PhotosGridView.ScrollIntoView(item);
-                    await PhotosGridView.TryStartConnectedAnimationAsync(connectedAnimation, item, "PhotoImage");
+                    var photoIndex = imagePagerViewParameter.PhotoIndex;
+                    await PhotosGridView.WaitForLoadedAsync();
+                    var connectedAnimation = ConnectedAnimationService.GetForCurrentView().GetAnimation("ImagePagerView");
+                    if (connectedAnimation != null)
+                    {
+                        var items = PhotosGridView.Items;
+                        if (items != null)
+                        {
+                            var item = items[photoIndex];
+                            PhotosGridView.ScrollIntoView(item);
+                            await PhotosGridView.TryStartConnectedAnimationAsync(connectedAnimation, item, "PhotoImage");
+                        }
+                    }
                 }
             }
         }

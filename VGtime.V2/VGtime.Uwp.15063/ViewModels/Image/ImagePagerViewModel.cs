@@ -21,6 +21,8 @@ namespace VGtime.Uwp.ViewModels.Image
 
         private RelayCommand<GameAlbum> _saveCommand;
 
+        private int _selectedIndex;
+
         public ImagePagerViewModel(IImageLoader imageLoader, IAppToastService appToastService, IVGtimeFileService vgtimeFileService)
         {
             _imageLoader = imageLoader;
@@ -55,7 +57,7 @@ namespace VGtime.Uwp.ViewModels.Image
                     {
                         var url = photo.Url;
                         var bytes = await _imageLoader.GetBytesAsync(url);
-                        var result = await _vgtimeFileService.SaveFileAsync(bytes, Path.Combine(url));
+                        var result = await _vgtimeFileService.SaveFileAsync(bytes, Path.Combine(url));// TODO 拆分成两个方法，先选择文件，再下载，下载完再保存。
                         if (result)
                         {
                             _appToastService.ShowMessage(LocalizedStrings.SaveSuccess);
@@ -67,6 +69,18 @@ namespace VGtime.Uwp.ViewModels.Image
                     }
                 });
                 return _saveCommand;
+            }
+        }
+
+        public int SelectedIndex
+        {
+            get
+            {
+                return _selectedIndex;
+            }
+            set
+            {
+                Set(ref _selectedIndex, value);
             }
         }
     }

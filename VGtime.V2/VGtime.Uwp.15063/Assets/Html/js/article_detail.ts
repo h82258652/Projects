@@ -10,17 +10,23 @@ function setArticleDetail(json: string): void {
     const publishDate = new Date(articleDetail.publishDate * 1000);
     $(".vgapp_ub_info > .time").text(`${publishDate.getFullYear()}-${publishDate.getMonth() + 1}-${publishDate.getDate()} ${publishDate.getHours()}:${publishDate.getMinutes()}`);
     $(".vgapp_article_long > h1").text(articleDetail.title);
+    $(".vgapp_article_long > .vgapp_article_editer > span").text(`作者：${articleDetail.author} 编辑：${articleDetail.editor}`);
     $(".vgapp_article_long > article").html(articleDetail.content);
     const games = articleDetail.games;
     if (games) {
         const vgappGame = $(".vgapp_game");
         for (let game of games) {
-            const vgappGameItem = `<div class="vgapp_game_item">
+            var vgappGameItem = $(document.createElement("div"));
+            vgappGameItem.addClass("vgapp_game_item");
+            vgappGameItem.html(`
                 <h3>${game.name}</h3>
                 <p>${game.platform}</p>
                 <img src="${game.cover}">
                 <span class="score">${game.score}</span>
-            </div>`;
+            `);
+            vgappGameItem.click(() => {
+                window.external.notify(`?action=relatedGame&gameId=${game.id}`);
+            });
             vgappGame.append(vgappGameItem);
         }
     }
@@ -28,31 +34,32 @@ function setArticleDetail(json: string): void {
     if (news) {
         const vgappAlist = $(".vgapp_alist");
         for (let temp of news) {
-            const newsPublishDate = new Date(temp.publishDate);
+            const newsPublishDate = new Date(temp.publishDate * 1000);
             const vgappAlistItem = `<div class="vgapp_alist_item">
                 <div class="vgapp_alist_uinfo">
                     <img src="${temp.user.avatarUrl}">
                     <span class="name">${temp.user.name}</span>
                     <span class="time">${newsPublishDate.getFullYear()}-${newsPublishDate.getMonth() + 1}-${newsPublishDate.getDate()} ${newsPublishDate.getHours()}:${newsPublishDate.getMinutes()}</span>
-                    <span class="type">${temp.category}</span>
                 </div>
                 <h3>${temp.title}</h3>
                 <span class="replay">${temp.commentNum}</span>
-                <img src="${temp.thumbnail.url}" class="cover">
+                <img src="${temp.cover}" class="cover">
             </div>`;
             vgappAlist.append(vgappAlistItem);
         }
     }
     const comments = articleDetail.comments;
     if (comments) {
-        const vgappComment = $(".vgapp_comment");
+        $(".vgapp_comment > h2 > span").text(comments.length);
+        const vgappCommentMore = $(".vgapp_comment_more");
         for (let comment of comments) {
+            const commentPublishDate = new Date(comment.publishDate * 1000);
             const vgappCommentItem = `<div class="vgapp_comment_item">
                 <div class="vgapp_ci_info">
                     <img src="${comment.user.avatarUrl}">
                     <div class="vgapp_ci_detail">
                         <span class="name">${comment.user.name}</span>
-                        <span class="time">${comment.publishDate}</span>
+                        <span class="time">${commentPublishDate.getFullYear()}-${commentPublishDate.getMonth() + 1}-${commentPublishDate.getDate()} ${commentPublishDate.getHours()}:${commentPublishDate.getMinutes()}</span>
                     </div>
                     <div class="vgapp_ci_op">
                         <span class="thank">感谢</span>
@@ -61,10 +68,10 @@ function setArticleDetail(json: string): void {
                     </div>
                 </div>
                 <div class="vgapp_ci_content">
-                    ${comment.content}
+                    ${comment.remark}
                 </div>
             </div>`;
-            vgappComment.append(vgappCommentItem);
+            vgappCommentMore.before(vgappCommentItem);
         }
     }
 }

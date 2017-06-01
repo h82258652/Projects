@@ -8,7 +8,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       DataContext="{Binding Source={StaticResource Locator}, Path=ImagePager}"
       mc:Ignorable="d">
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Grid Background="Black">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
@@ -37,15 +37,18 @@
                 <SymbolIcon Symbol="Download" />
             </Button>
         </Grid>
-        <FlipView x:Name="PhotosFlipView"
-                  Grid.Row="1"
-                  ItemsSource="{Binding Path=Photos}"
-                  SelectionChanged="PhotosFlipView_SelectionChanged">
-            <ItemsControl.ItemTemplate>
-                <DataTemplate>
-                    <Image Source="{Binding Path=Url}" />
-                </DataTemplate>
-            </ItemsControl.ItemTemplate>
-        </FlipView>
+        <Grid Grid.Row="1">
+            <FlipView x:Name="PhotosFlipView"
+                      Background="Transparent"
+                      ItemsSource="{Binding Path=Photos}"
+                      SelectedIndex="{Binding Path=SelectedIndex, Mode=TwoWay}"
+                      SelectionChanged="PhotosFlipView_SelectionChanged">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Image Source="{Binding Path=Url}" />
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </FlipView>
+        </Grid>
     </Grid>
 </Page>

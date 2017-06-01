@@ -17,6 +17,8 @@ namespace VGtime.Uwp.ViewModels.Games
 
         private readonly INavigationService _navigationService;
 
+        private string _gameName;
+
         private bool _isLoading;
 
         private RelayCommand<GameAlbum> _photoClickCommand;
@@ -34,6 +36,18 @@ namespace VGtime.Uwp.ViewModels.Games
         {
             get;
             private set;
+        }
+
+        public string GameName
+        {
+            get
+            {
+                return _gameName;
+            }
+            set
+            {
+                Set(ref _gameName, value);
+            }
         }
 
         public bool IsLoading
@@ -66,7 +80,8 @@ namespace VGtime.Uwp.ViewModels.Games
                     var index = Array.IndexOf(photos, photo);
                     if (index >= 0)
                     {
-                        _navigationService.NavigateTo(ViewModelLocator.ImagePagerViewKey, new ImagePagerViewParameter(photos, index));
+                        ImagePagerViewParameter = new ImagePagerViewParameter(photos, index);
+                        _navigationService.NavigateTo(ViewModelLocator.ImagePagerViewKey, ImagePagerViewParameter);
                     }
                 });
                 return _photoClickCommand;
@@ -83,6 +98,12 @@ namespace VGtime.Uwp.ViewModels.Games
             {
                 Set(ref _photos, value);
             }
+        }
+
+        internal ImagePagerViewParameter ImagePagerViewParameter
+        {
+            get;
+            private set;
         }
 
         public void LoadPhotos(int gameId)

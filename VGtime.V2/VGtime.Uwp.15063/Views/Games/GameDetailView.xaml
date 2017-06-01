@@ -7,6 +7,7 @@
       xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       DataContext="{Binding Source={StaticResource Locator}, Path=GameDetail}"
+      NavigationCacheMode="Required"
       mc:Ignorable="d">
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid.RowDefinitions>
@@ -15,29 +16,137 @@
         </Grid.RowDefinitions>
         <Grid Grid.Row="0"
               Background="{ThemeResource VGtimeAccentBrush}">
-            <Button Style="{StaticResource NavigationBackButtonStyle}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0"
+                    Style="{StaticResource NavigationBackButtonStyle}">
                 <interactivity:Interaction.Behaviors>
                     <core:EventTriggerBehavior EventName="Click">
                         <behaviors:GoBackAction />
                     </core:EventTriggerBehavior>
                 </interactivity:Interaction.Behaviors>
             </Button>
-            <TextBlock Style="{StaticResource VGtimePageHeaderTextControlStyle}"
+            <TextBlock Grid.Column="1"
+                       Style="{StaticResource VGtimePageHeaderTextControlStyle}"
                        Text="{Binding Path=GameDetail.Title}" />
+            <Button Grid.Column="2"
+                    Style="{StaticResource ShareButtonStyle}" />
         </Grid>
         <Grid Grid.Row="1">
-            <Image Source="{Binding Path=GameDetail.Thumbnail.Url}" />
-            <TextBlock Text="{Binding Path=GameDetail.ImageCount}" />
-            <StackPanel Orientation="Horizontal">
-                <Button Content="想玩" />
-                <Button Content="在玩" />
-                <Button Content="玩过" />
-                <Button Content="通关" />
-            </StackPanel>
-            <TextBlock Text="游戏简介" />
-            <TextBlock Text="{Binding Path=GameDetail.Introduction}"
-                       TextWrapping="Wrap" />
-            <TextBlock Text="{Binding Path=GameDetail.ScoreCount}" />
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <StackPanel Orientation="Vertical">
+                    <Button HorizontalAlignment="Stretch"
+                            Command="{Binding Path=PhotoCommand}"
+                            VerticalAlignment="Stretch"
+                            Style="{StaticResource EmptyButtonStyle}">
+                        <Grid>
+                            <Image Source="{Binding Path=GameDetail.Thumbnail.Url}" />
+                            <Border HorizontalAlignment="Right"
+                                    VerticalAlignment="Bottom">
+                                <TextBlock Text="{Binding Path=GameDetail.ImageCount}" />
+                            </Border>
+                        </Grid>
+                    </Button>
+                    <Grid Margin="12,12,12,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0"
+                                   Text="{Binding Path=GameDetail.Title}" />
+                        <StackPanel Grid.Column="1"
+                                    Orientation="Horizontal">
+                            <Viewbox Width="18"
+                                     Height="18"
+                                     VerticalAlignment="Center">
+                                <SymbolIcon Symbol="Calendar" />
+                            </Viewbox>
+                            <TextBlock Margin="4,0,0,0"
+                                       Text="{Binding Path=GameDetail.PublishDate}" />
+                        </StackPanel>
+                    </Grid>
+                    <TextBlock Text="{Binding Path=GameDetail.PlatformsText}" />
+                    <StackPanel Orientation="Horizontal">
+                        <Button Content="想玩" />
+                        <Button Content="在玩" />
+                        <Button Content="玩过" />
+                        <Button Content="通关" />
+                    </StackPanel>
+                    <Border Height="1"
+                            Background="{ThemeResource VGtimeDividerBrush}" />
+                    <TextBlock Text="游戏简介" />
+                    <TextBlock Text="{Binding Path=GameDetail.Introduction}"
+                               TextWrapping="Wrap" />
+                    <Button Command="{Binding Path=ForumCommand}"
+                            HorizontalAlignment="Stretch">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0"
+                                       Text="俱乐部" />
+                            <TextBlock Grid.Column="1"
+                                       Text="{Binding Path=GameDetail.ShortPostCount}" />
+                        </Grid>
+                    </Button>
+                    <Button Command="{Binding Path=PostCommand}"
+                            HorizontalAlignment="Stretch">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0"
+                                       Text="文章和视频" />
+                            <TextBlock Grid.Column="1"
+                                       Text="{Binding Path=GameDetail.LongPostCount}" />
+                        </Grid>
+                    </Button>
+                    <Button Command="{Binding Path=QuestionCommand}"
+                            HorizontalAlignment="Stretch">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0"
+                                       Text="提问" />
+                            <TextBlock Grid.Column="1"
+                                       Text="{Binding Path=GameDetail.QuestionCount}" />
+                        </Grid>
+                    </Button>
+                    <Button Command="{Binding Path=ScoreCommand}"
+                            HorizontalAlignment="Stretch">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0"
+                                       Text="评分" />
+                            <TextBlock Grid.Column="1"
+                                       Text="{Binding Path=GameDetail.ScoreCount}" />
+                        </Grid>
+                    </Button>
+                    <Button Command="{Binding Path=StrategyCommand}"
+                            HorizontalAlignment="Stretch">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0"
+                                       Text="攻略集" />
+                            <TextBlock Grid.Column="1"
+                                       Text="{Binding Path=GameDetail.StrategyCount}" />
+                        </Grid>
+                    </Button>
+                </StackPanel>
+            </ScrollViewer>
         </Grid>
     </Grid>
 </Page>

@@ -6,6 +6,7 @@ using VGtime.Configuration;
 using VGtime.Models.Games;
 using VGtime.Services;
 using VGtime.Uwp.Services;
+using VGtime.Uwp.ViewParameters;
 
 namespace VGtime.Uwp.ViewModels.Games
 {
@@ -26,6 +27,8 @@ namespace VGtime.Uwp.ViewModels.Games
         private bool _isLoading;
 
         private RelayCommand _photoCommand;
+
+        private RelayCommand _postCommand;
 
         private RelayCommand _questionCommand;
 
@@ -90,9 +93,22 @@ namespace VGtime.Uwp.ViewModels.Games
             {
                 _photoCommand = _photoCommand ?? new RelayCommand(() =>
                 {
-                    _navigationService.NavigateTo(ViewModelLocator.GamePhotoViewKey, GameId);
+                    _navigationService.NavigateTo(ViewModelLocator.GamePhotoViewKey, new GamePhotoViewParameter(GameId, GameDetail.Title));
                 });
                 return _photoCommand;
+            }
+        }
+
+        public RelayCommand PostCommand
+        {
+            get
+            {
+                _postCommand = _postCommand ?? new RelayCommand(() =>
+                {
+                    // TODO relation 2.
+                    _navigationService.NavigateTo(ViewModelLocator.GameRelationViewKey, 2);
+                });
+                return _postCommand;
             }
         }
 

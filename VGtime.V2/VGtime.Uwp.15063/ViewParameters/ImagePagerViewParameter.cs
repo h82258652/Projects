@@ -5,7 +5,7 @@ namespace VGtime.Uwp.ViewParameters
 {
     public class ImagePagerViewParameter
     {
-        public ImagePagerViewParameter(GameAlbum[] photos, int selectedIndex)
+        public ImagePagerViewParameter(GameAlbum[] photos, int photoIndex)
         {
             if (photos == null)
             {
@@ -13,7 +13,7 @@ namespace VGtime.Uwp.ViewParameters
             }
 
             Photos = photos;
-            SelectedIndex = selectedIndex;
+            PhotoIndex = photoIndex;
         }
 
         public GameAlbum[] Photos
@@ -21,7 +21,7 @@ namespace VGtime.Uwp.ViewParameters
             get;
         }
 
-        public int SelectedIndex
+        public int PhotoIndex
         {
             get;
             set;

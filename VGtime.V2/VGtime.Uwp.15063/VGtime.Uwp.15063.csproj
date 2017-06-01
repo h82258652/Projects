@@ -171,6 +171,7 @@
     <Compile Include="ViewModels\WelcomeViewModel.cs" />
     <Compile Include="ViewParameters\ArticleDetailViewParameter.cs" />
     <Compile Include="ViewParameters\CommentViewParameter.cs" />
+    <Compile Include="ViewParameters\GamePhotoViewParameter.cs" />
     <Compile Include="ViewParameters\GameRelationViewParameter.cs" />
     <Compile Include="ViewParameters\ImagePagerViewParameter.cs" />
     <Compile Include="Views\ArticleDetailView.xaml.cs">
@@ -293,6 +294,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\Html\article_detail.html" />
+    <Content Include="Assets\Html\article_detail_test.html" />
     <Content Include="Assets\Html\bower_components\hammerjs\changelog.js" />
     <Content Include="Assets\Html\bower_components\hammerjs\hammer.js" />
     <Content Include="Assets\Html\bower_components\hammerjs\hammer.min.js" />

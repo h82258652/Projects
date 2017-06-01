@@ -30,6 +30,8 @@
                     </core:EventTriggerBehavior>
                 </interactivity:Interaction.Behaviors>
             </Button>
+            <TextBlock Style="{StaticResource VGtimePageHeaderTextControlStyle}"
+                       Text="{Binding Path=GameName}" />
         </Grid>
         <controls:VGtimeGridView x:Name="PhotosGridView"
                                  Grid.Row="1"
@@ -37,6 +39,7 @@
                                  IsItemClickEnabled="True"
                                  ItemClick="PhotosGridView_ItemClick"
                                  ItemsSource="{Binding Path=Photos}"
+                                 MaxItemWidth="640"
                                  SelectionMode="None">
             <interactivity:Interaction.Behaviors>
                 <core:EventTriggerBehavior EventName="ItemClick">

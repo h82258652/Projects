@@ -113,6 +113,7 @@ namespace VGtime.Uwp.ViewModels
             containerBuilder.RegisterType<GameService>().As<IGameService>();
             containerBuilder.RegisterType<PostService>().As<IPostService>();
             containerBuilder.RegisterType<AppToastService>().As<IAppToastService>();
+            containerBuilder.RegisterType<VGtimeFileService>().As<IVGtimeFileService>();
 
             containerBuilder.RegisterType<VGtimeSettings>().As<IVGtimeSettings>();
 
@@ -131,6 +132,7 @@ namespace VGtime.Uwp.ViewModels
             containerBuilder.RegisterType<WelcomeViewModel>();
             containerBuilder.RegisterType<OldGameStrategyViewModel>();
             containerBuilder.RegisterType<CommentViewModel>();
+            containerBuilder.RegisterType<ImagePagerViewModel>();
 
             return containerBuilder.Build();
         }
