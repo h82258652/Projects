@@ -22,7 +22,7 @@ namespace VGtime.Uwp.Views
             }
         }
 
-        protected override Task PlayEnterAnimationAsync()
+        protected override async Task PlayEnterAnimationAsync()
         {
             if (ApiInformation.IsMethodPresent("Windows.UI.Xaml.Hosting.ElementCompositionPreview", nameof(ElementCompositionPreview.GetElementVisual)))
             {
@@ -46,23 +46,21 @@ namespace VGtime.Uwp.Views
                     var offsetAnimation = compositor.CreateVector3KeyFrameAnimation();
                     offsetAnimation.InsertKeyFrame(0, new Vector3((float)Frame.ActualWidth, 0, 0), linear);
                     offsetAnimation.InsertKeyFrame(1, new Vector3(0, 0, 0), linear);
-                    offsetAnimation.Duration = TimeSpan.FromSeconds(0.2);
+                    offsetAnimation.Duration = TimeSpan.FromSeconds(0.3);
                     visual.StartAnimation(nameof(Visual.Offset), offsetAnimation);
                     batch.End();
-                    return tcs.Task;
+                    await tcs.Task;
                 }
             }
-
-            return base.PlayEnterAnimationAsync();
         }
 
-        protected override Task PlayLeaveAnimationAsync(NavigationMode currentPageNavigationMode)
+        protected override async Task PlayLeaveAnimationAsync(NavigationMode currentPageNavigationMode)
         {
             if (ApiInformation.IsMethodPresent("Windows.UI.Xaml.Hosting.ElementCompositionPreview", nameof(ElementCompositionPreview.GetElementVisual)))
             {
-                if (currentPageNavigationMode == NavigationMode.Back)
+                var visual = ElementCompositionPreview.GetElementVisual(this);
+                if (currentPageNavigationMode == NavigationMode.New)
                 {
-                    var visual = ElementCompositionPreview.GetElementVisual(this);
                     var compositor = visual.Compositor;
                     var tcs = new TaskCompletionSource<object>();
                     var batch = compositor.CreateScopedBatch(CompositionBatchTypes.Animation);
@@ -70,7 +68,28 @@ namespace VGtime.Uwp.Views
                     handler = (sender, args) =>
                     {
                         batch.Completed -= handler;
-                        visual.Offset = Vector3.Zero;
+                        tcs.SetResult(null);
+                    };
+                    batch.Completed += handler;
+
+                    var linear = compositor.CreateLinearEasingFunction();
+                    var offsetAnimation = compositor.CreateVector3KeyFrameAnimation();
+                    offsetAnimation.InsertKeyFrame(0, new Vector3(0, 0, 0), linear);
+                    offsetAnimation.InsertKeyFrame(1, new Vector3((float)(0 - Frame.ActualWidth), 0, 0), linear);
+                    offsetAnimation.Duration = TimeSpan.FromSeconds(0.3);
+                    visual.StartAnimation(nameof(Visual.Offset), offsetAnimation);
+                    batch.End();
+                    await tcs.Task;
+                }
+                else if (currentPageNavigationMode == NavigationMode.Back)
+                {
+                    var compositor = visual.Compositor;
+                    var tcs = new TaskCompletionSource<object>();
+                    var batch = compositor.CreateScopedBatch(CompositionBatchTypes.Animation);
+                    TypedEventHandler<object, CompositionBatchCompletedEventArgs> handler = null;
+                    handler = (sender, args) =>
+                    {
+                        batch.Completed -= handler;
                         tcs.SetResult(null);
                     };
                     batch.Completed += handler;
@@ -82,11 +101,13 @@ namespace VGtime.Uwp.Views
                     offsetAnimation.Duration = TimeSpan.FromSeconds(0.3);
                     visual.StartAnimation(nameof(Visual.Offset), offsetAnimation);
                     batch.End();
-                    return tcs.Task;
+                    await tcs.Task;
+                }
+                else
+                {
+                    visual.Offset = new Vector3(0, 0, 0);
                 }
             }
-
-            return base.PlayLeaveAnimationAsync(currentPageNavigationMode);
         }
     }
 }

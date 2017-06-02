@@ -48,7 +48,8 @@
                             <Image Source="{Binding Path=GameDetail.Thumbnail.Url}" />
                             <Border HorizontalAlignment="Right"
                                     VerticalAlignment="Bottom">
-                                <TextBlock Text="{Binding Path=GameDetail.ImageCount}" />
+                                <TextBlock Foreground="White"
+                                           Text="{Binding Path=GameDetail.ImageCount}" />
                             </Border>
                         </Grid>
                     </Button>
@@ -67,11 +68,13 @@
                                 <SymbolIcon Symbol="Calendar" />
                             </Viewbox>
                             <TextBlock Margin="4,0,0,0"
+                                       VerticalAlignment="Center"
                                        Text="{Binding Path=GameDetail.PublishDate}" />
                         </StackPanel>
                     </Grid>
                     <TextBlock Text="{Binding Path=GameDetail.PlatformsText}" />
-                    <StackPanel Orientation="Horizontal">
+                    <StackPanel Orientation="Horizontal"
+                                Visibility="Collapsed">
                         <Button Content="想玩" />
                         <Button Content="在玩" />
                         <Button Content="玩过" />
@@ -82,19 +85,9 @@
                     <TextBlock Text="游戏简介" />
                     <TextBlock Text="{Binding Path=GameDetail.Introduction}"
                                TextWrapping="Wrap" />
-                    <Button HorizontalAlignment="Stretch"
-                            Command="{Binding Path=ForumCommand}">
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="Auto" />
-                            </Grid.ColumnDefinitions>
-                            <TextBlock Grid.Column="0"
-                                       Text="俱乐部" />
-                            <TextBlock Grid.Column="1"
-                                       Text="{Binding Path=GameDetail.ShortPostCount}" />
-                        </Grid>
-                    </Button>
+                    <controls:GoNextButton Command="{Binding Path=ForumCommand}"
+                                           Count="{Binding Path=GameDetail.ShortPostCount}"
+                                           Text="俱乐部" />
                     <controls:GoNextButton Command="{Binding Path=PostCommand}"
                                            Count="{Binding Path=GameDetail.LongPostCount}"
                                            Text="文章和视频" />
