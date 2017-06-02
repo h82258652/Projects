@@ -104,6 +104,7 @@
     <Compile Include="Controls\GameScoreItem.xaml.cs">
       <DependentUpon>GameScoreItem.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\GoNextButton.cs" />
     <Compile Include="Controls\HeadpicItem.xaml.cs">
       <DependentUpon>HeadpicItem.xaml</DependentUpon>
     </Compile>
@@ -132,6 +133,7 @@
     <Compile Include="Data\SearchUserCollection.cs" />
     <Compile Include="Data\TagPostCollection.cs" />
     <Compile Include="Data\VglistPostCollection.cs" />
+    <Compile Include="Extensions\FrameExtensions.cs" />
     <Compile Include="LocalizedStrings.cs" />
     <Compile Include="Messages\ArticleDetailLoadedMessage.cs" />
     <Compile Include="Messages\LoginSuccessMessage.cs" />
@@ -265,6 +267,7 @@
       <DependentUpon>UpdateUsernameView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\VGtimeViewBase.cs" />
+    <Compile Include="Views\ViewBase.cs" />
     <Compile Include="Views\WelcomeView.xaml.cs">
       <DependentUpon>WelcomeView.xaml</DependentUpon>
     </Compile>
@@ -456,6 +459,11 @@
     <Page Include="Controls\GameScoreItem.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\GoNextButton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Page>
     <Page Include="Controls\HeadpicItem.xaml">
       <SubType>Designer</SubType>
@@ -680,6 +688,9 @@
     <PackageReference Include="MvvmLightLibs">
       <Version>5.3.0</Version>
     </PackageReference>
+    <PackageReference Include="PlatformSpecific.Analyzer">
+      <Version>2.0.3</Version>
+    </PackageReference>
     <PackageReference Include="System.ValueTuple">
       <Version>4.3.1</Version>
     </PackageReference>
@@ -687,7 +698,11 @@
       <Version>1.5.3</Version>
     </PackageReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <SDKReference Include="WindowsMobile, Version=10.0.15063.0">
+      <Name>Windows Mobile Extensions for the UWP</Name>
+    </SDKReference>
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Libraries\SoftwareKobo.Controls.ImageEx.Uwp.15063\SoftwareKobo.Controls.ImageEx.Uwp.15063.csproj">
       <Project>{5af5d966-ee34-48cd-a100-28fd22b9d8b8}</Project>
@@ -754,6 +769,7 @@
     <TypeScriptCompile Include="Assets\Html\typings\jquery.d.ts" />
     <TypeScriptCompile Include="Assets\Html\typings\winrt.d.ts" />
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>

@@ -8,6 +8,11 @@
           Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Frame x:Name="RootFrame"
                x:FieldModifier="internal" />
+        <ContentControl x:Name="PreviousPageHost"
+                        HorizontalContentAlignment="Stretch"
+                        VerticalContentAlignment="Stretch"
+                        x:FieldModifier="internal"
+                        IsHitTestVisible="False" />
         <Grid x:Name="ToastContainer"
               Margin="0,16,0,0"
               x:FieldModifier="internal" />
