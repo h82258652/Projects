@@ -73,10 +73,17 @@ namespace VGtime.Uwp.Views
                 var action = query.GetFirstValueByName("action");
                 if (action.Equals("relatedGame", StringComparison.OrdinalIgnoreCase))
                 {
-                    int gameId;
-                    if (int.TryParse(query.GetFirstValueByName("gameId"), out gameId))
+                    if (int.TryParse(query.GetFirstValueByName("gameId"), out int gameId))
                     {
                         ViewModel.RelatedGameCommand.Execute(gameId);
+                    }
+                }
+                else if (action.Equals("relatedNews", StringComparison.OrdinalIgnoreCase))
+                {
+                    if (int.TryParse(query.GetFirstValueByName("postId"), out int postId)
+                        && int.TryParse(query.GetFirstValueByName("detailType"), out int detailType))
+                    {
+                        ViewModel.RelatedNewsCommand.Execute((postId, detailType));
                     }
                 }
                 else if (action.Equals("moreComment", StringComparison.OrdinalIgnoreCase))

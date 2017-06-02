@@ -264,6 +264,7 @@
     <Compile Include="Views\Users\UpdateUsernameView.xaml.cs">
       <DependentUpon>UpdateUsernameView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\VGtimeViewBase.cs" />
     <Compile Include="Views\WelcomeView.xaml.cs">
       <DependentUpon>WelcomeView.xaml</DependentUpon>
     </Compile>

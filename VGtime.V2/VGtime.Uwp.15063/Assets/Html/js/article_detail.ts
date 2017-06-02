@@ -16,7 +16,7 @@ function setArticleDetail(json: string): void {
     if (games) {
         const vgappGame = $(".vgapp_game");
         for (let game of games) {
-            var vgappGameItem = $(document.createElement("div"));
+            let vgappGameItem = $(document.createElement("div"));
             vgappGameItem.addClass("vgapp_game_item");
             vgappGameItem.html(`
                 <h3>${game.name}</h3>
@@ -35,7 +35,9 @@ function setArticleDetail(json: string): void {
         const vgappAlist = $(".vgapp_alist");
         for (let temp of news) {
             const newsPublishDate = new Date(temp.publishDate * 1000);
-            const vgappAlistItem = `<div class="vgapp_alist_item">
+            let vgappAlistItem = $(document.createElement("div"));
+            vgappAlistItem.addClass("vgapp_alist_item");
+            vgappAlistItem.html(`
                 <div class="vgapp_alist_uinfo">
                     <img src="${temp.user.avatarUrl}">
                     <span class="name">${temp.user.name}</span>
@@ -44,7 +46,10 @@ function setArticleDetail(json: string): void {
                 <h3>${temp.title}</h3>
                 <span class="replay">${temp.commentNum}</span>
                 <img src="${temp.cover}" class="cover">
-            </div>`;
+            `);
+            vgappAlist.click(() => {
+                window.external.notify(`?action=relatedNews&postId=${temp.postId}&detailType=${temp.detailType}`);
+            });
             vgappAlist.append(vgappAlistItem);
         }
     }

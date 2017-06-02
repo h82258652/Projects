@@ -35,7 +35,19 @@ function setArticleDetail(json) {
         for (var _a = 0, news_1 = news; _a < news_1.length; _a++) {
             var temp = news_1[_a];
             var newsPublishDate = new Date(temp.publishDate * 1000);
-            var vgappAlistItem = "<div class=\"vgapp_alist_item\">\n                <div class=\"vgapp_alist_uinfo\">\n                    <img src=\"" + temp.user.avatarUrl + "\">\n                    <span class=\"name\">" + temp.user.name + "</span>\n                    <span class=\"time\">" + newsPublishDate.getFullYear() + "-" + (newsPublishDate.getMonth() + 1) + "-" + newsPublishDate.getDate() + " " + newsPublishDate.getHours() + ":" + newsPublishDate.getMinutes() + "</span>\n                </div>\n                <h3>" + temp.title + "</h3>\n                <span class=\"replay\">" + temp.commentNum + "</span>\n                <img src=\"" + temp.cover + "\" class=\"cover\">\n            </div>";
+            var vgappAlistItem = $(document.createElement("div"));
+            vgappAlistItem.addClass("vgapp_alist_item");
+            vgappAlistItem.html("\n                <div class=\"vgapp_alist_uinfo\">\n                    <img src=\"" + temp.user.avatarUrl + "\">\n                    <span class=\"name\">" + temp.user.name + "</span>\n                    <span class=\"time\">" + newsPublishDate.getFullYear() + "-" + (newsPublishDate.getMonth() + 1) + "-" + newsPublishDate.getDate() + " " + newsPublishDate.getHours() + ":" + newsPublishDate.getMinutes() + "</span>\n                </div>\n            ");
+            //const vgappAlistItem = `<div class="vgapp_alist_item">
+            //    <div class="vgapp_alist_uinfo">
+            //        <img src="${temp.user.avatarUrl}">
+            //        <span class="name">${temp.user.name}</span>
+            //        <span class="time">${newsPublishDate.getFullYear()}-${newsPublishDate.getMonth() + 1}-${newsPublishDate.getDate()} ${newsPublishDate.getHours()}:${newsPublishDate.getMinutes()}</span>
+            //    </div>
+            //    <h3>${temp.title}</h3>
+            //    <span class="replay">${temp.commentNum}</span>
+            //    <img src="${temp.cover}" class="cover">
+            //</div>`;
             vgappAlist.append(vgappAlistItem);
         }
     }
