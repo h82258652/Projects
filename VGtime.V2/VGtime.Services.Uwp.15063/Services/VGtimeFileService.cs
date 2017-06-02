@@ -9,11 +9,11 @@ namespace VGtime.Services
 {
     public class VGtimeFileService : IVGtimeFileService
     {
-        public async Task<bool> SaveFileAsync(byte[] bytes, string suggestedFileName)
+        public async Task<IStorageFile> SelectSaveFileAsync(string suggestedFileName)
         {
-            if (bytes == null)
+            if (suggestedFileName == null)
             {
-                throw new ArgumentNullException(nameof(bytes));
+                throw new ArgumentNullException(nameof(suggestedFileName));
             }
 
             var fileExtension = Path.GetExtension(suggestedFileName);
@@ -26,16 +26,21 @@ namespace VGtime.Services
             {
                 fileExtension
             });
-            var file = await fileSavePicker.PickSaveFileAsync();
-            if (file != null)
+            return await fileSavePicker.PickSaveFileAsync();
+        }
+
+        public async Task WriteAllBytesAsync(IStorageFile file, byte[] bytes)
+        {
+            if (file == null)
             {
-                await FileIO.WriteBytesAsync(file, bytes);
-                return true;
+                throw new ArgumentNullException(nameof(file));
             }
-            else
+            if (bytes == null)
             {
-                return false;
+                throw new ArgumentNullException(nameof(bytes));
             }
+
+            await FileIO.WriteBytesAsync(file, bytes);
         }
     }
 }

@@ -56,12 +56,16 @@ namespace VGtime.Uwp.ViewModels.Image
                     try
                     {
                         var url = photo.Url;
-                        var bytes = await _imageLoader.GetBytesAsync(url);
-                        var result = await _vgtimeFileService.SaveFileAsync(bytes, Path.Combine(url));// TODO 拆分成两个方法，先选择文件，再下载，下载完再保存。
-                        if (result)
+
+                        var file = await _vgtimeFileService.SelectSaveFileAsync(Path.GetFileName(url));
+                        if (file == null)
                         {
-                            _appToastService.ShowMessage(LocalizedStrings.SaveSuccess);
+                            return;
                         }
+
+                        var bytes = await _imageLoader.GetBytesAsync(url);
+                        await _vgtimeFileService.WriteAllBytesAsync(file, bytes);
+                        _appToastService.ShowMessage(LocalizedStrings.SaveSuccess);
                     }
                     catch (Exception ex)
                     {
