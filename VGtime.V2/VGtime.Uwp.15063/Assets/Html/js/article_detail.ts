@@ -11,10 +11,22 @@ function setArticleDetail(json: string): void {
     $(".vgapp_ub_info > .time").text(`${publishDate.getFullYear()}-${publishDate.getMonth() + 1}-${publishDate.getDate()} ${publishDate.getHours()}:${publishDate.getMinutes()}`);
     $(".vgapp_article_long > h1").text(articleDetail.title);
     $(".vgapp_article_long > .vgapp_article_editer > span").text(`作者：${articleDetail.author} 编辑：${articleDetail.editor}`);
+    const anchor = articleDetail.anchor;
+    const vgAnchor = $(".vg_anchor");
+    if (anchor && anchor.length > 0) {
+        for (let temp of anchor) {
+            let li = $(document.createElement("li"));
+            li.text(temp.title);
+            li.click(() => {
+                // TODO
+            });
+            vgAnchor.append(li);
+        }
+    }
     $(".vgapp_article_long > article").html(articleDetail.content);
     const games = articleDetail.games;
-    if (games) {
-        const vgappGame = $(".vgapp_game");
+    const vgappGame = $(".vgapp_game");
+    if (games && games.length > 0) {
         for (let game of games) {
             let vgappGameItem = $(document.createElement("div"));
             vgappGameItem.addClass("vgapp_game_item");
@@ -29,10 +41,12 @@ function setArticleDetail(json: string): void {
             });
             vgappGame.append(vgappGameItem);
         }
+    } else {
+        vgappGame.remove();
     }
     const news = articleDetail.news;
-    if (news) {
-        const vgappAlist = $(".vgapp_alist");
+    const vgappAlist = $(".vgapp_alist");
+    if (news && news.length > 0) {
         for (let temp of news) {
             const newsPublishDate = new Date(temp.publishDate * 1000);
             let vgappAlistItem = $(document.createElement("div"));
@@ -52,9 +66,11 @@ function setArticleDetail(json: string): void {
             });
             vgappAlist.append(vgappAlistItem);
         }
+    } else {
+        vgappAlist.remove();
     }
     const comments = articleDetail.comments;
-    if (comments) {
+    if (comments && comments.length > 0) {
         $(".vgapp_comment > h2 > span").text(comments.length);
         const vgappCommentMore = $(".vgapp_comment_more");
         for (let comment of comments) {
@@ -68,8 +84,8 @@ function setArticleDetail(json: string): void {
                     </div>
                     <div class="vgapp_ci_op">
                         <span class="thank">感谢</span>
-                        <span class="replay">${comment.shareNum}</span>
-                        <span class="praise">${comment.likeNum}</span>
+                        <span class="replay">${comment.commentNum === 0 ? "评论" : comment.commentNum}</span>
+                        <span class="praise">${comment.likeNum === 0 ? "点赞" : comment.likeNum}</span>
                     </div>
                 </div>
                 <div class="vgapp_ci_content">
@@ -78,6 +94,8 @@ function setArticleDetail(json: string): void {
             </div>`;
             vgappCommentMore.before(vgappCommentItem);
         }
+    } else {
+        $(".vgapp_comment > h2").remove();
     }
 }
 
@@ -92,7 +110,7 @@ $(() => {
         window.external.notify("?action=moreComment");
     });
 
-    var hammertime = new Hammer(document.querySelector("html"));
+    const hammertime = new Hammer(document.querySelector("html"));
     hammertime.on("swipeleft", (e: HammerInput): void => {
         if (e.pointerType !== "mouse") {
             window.external.notify("?action=goForward");

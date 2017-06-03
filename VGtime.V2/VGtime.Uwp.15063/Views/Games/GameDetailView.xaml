@@ -3,6 +3,7 @@
                       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                       xmlns:behaviors="using:SoftwareKobo.Behaviors"
                       xmlns:controls="using:VGtime.Uwp.Controls"
+                      xmlns:converters="using:VGtime.Uwp.Converters"
                       xmlns:core="using:Microsoft.Xaml.Interactions.Core"
                       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                       xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
@@ -11,6 +12,11 @@
                       DataContext="{Binding Source={StaticResource Locator}, Path=GameDetail}"
                       NavigationCacheMode="Required"
                       mc:Ignorable="d">
+    <FrameworkElement.Resources>
+        <ResourceDictionary>
+            <converters:ScoreToColorConverter x:Key="ScoreToColorConverter" />
+        </ResourceDictionary>
+    </FrameworkElement.Resources>
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -46,6 +52,14 @@
                             Style="{StaticResource EmptyButtonStyle}">
                         <Grid>
                             <Image Source="{Binding Path=GameDetail.Thumbnail.Url}" />
+                            <Border Margin="0,0,20,0"
+                                    HorizontalAlignment="Right"
+                                    VerticalAlignment="Top"
+                                    Background="{Binding Path=GameDetail.Score, Converter={StaticResource ScoreToColorConverter}}">
+                                <TextBlock FontSize="24"
+                                           Foreground="White"
+                                           Text="{Binding Path=GameDetail.Score}" />
+                            </Border>
                             <Border HorizontalAlignment="Right"
                                     VerticalAlignment="Bottom">
                                 <TextBlock Foreground="White"
@@ -59,20 +73,25 @@
                             <ColumnDefinition Width="Auto" />
                         </Grid.ColumnDefinitions>
                         <TextBlock Grid.Column="0"
+                                   FontSize="18"
+                                   FontWeight="Bold"
                                    Text="{Binding Path=GameDetail.Title}" />
                         <StackPanel Grid.Column="1"
                                     Orientation="Horizontal">
                             <Viewbox Width="18"
                                      Height="18"
                                      VerticalAlignment="Center">
-                                <SymbolIcon Symbol="Calendar" />
+                                <SymbolIcon Foreground="{ThemeResource VGtimeSecondaryTextBrush}"
+                                            Symbol="Calendar" />
                             </Viewbox>
-                            <TextBlock Margin="4,0,0,0"
+                            <TextBlock Margin="8,0,0,0"
                                        VerticalAlignment="Center"
+                                       Foreground="{ThemeResource VGtimeSecondaryTextBrush}"
                                        Text="{Binding Path=GameDetail.PublishDate}" />
                         </StackPanel>
                     </Grid>
-                    <TextBlock Text="{Binding Path=GameDetail.PlatformsText}" />
+                    <TextBlock Margin="12,12,12,0"
+                               Text="{Binding Path=GameDetail.PlatformsText}" />
                     <StackPanel Orientation="Horizontal"
                                 Visibility="Collapsed">
                         <Button Content="想玩" />
@@ -81,25 +100,43 @@
                         <Button Content="通关" />
                     </StackPanel>
                     <Border Height="1"
+                            Margin="12,12,12,0"
                             Background="{ThemeResource VGtimeDividerBrush}" />
-                    <TextBlock Text="游戏简介" />
-                    <TextBlock Text="{Binding Path=GameDetail.Introduction}"
+                    <TextBlock Margin="12,12,12,0"
+                               FontSize="17"
+                               FontWeight="Bold"
+                               Text="游戏简介" />
+                    <TextBlock Margin="12,12,12,0"
+                               Foreground="{ThemeResource VGtimeSecondaryTextBrush}"
+                               Text="{Binding Path=GameDetail.Introduction}"
                                TextWrapping="Wrap" />
+                    <Border Height="1"
+                            Background="{ThemeResource VGtimeDividerBrush}" />
                     <controls:GoNextButton Command="{Binding Path=ForumCommand}"
                                            Count="{Binding Path=GameDetail.ShortPostCount}"
                                            Text="俱乐部" />
+                    <Border Height="1"
+                            Background="{ThemeResource VGtimeDividerBrush}" />
                     <controls:GoNextButton Command="{Binding Path=PostCommand}"
                                            Count="{Binding Path=GameDetail.LongPostCount}"
                                            Text="文章和视频" />
+                    <Border Height="1"
+                            Background="{ThemeResource VGtimeDividerBrush}" />
                     <controls:GoNextButton Command="{Binding Path=QuestionCommand}"
                                            Count="{Binding Path=GameDetail.QuestionCount}"
                                            Text="提问" />
+                    <Border Height="1"
+                            Background="{ThemeResource VGtimeDividerBrush}" />
                     <controls:GoNextButton Command="{Binding Path=ScoreCommand}"
                                            Count="{Binding Path=GameDetail.ScoreCount}"
                                            Text="评分" />
+                    <Border Height="1"
+                            Background="{ThemeResource VGtimeDividerBrush}" />
                     <controls:GoNextButton Command="{Binding Path=StrategyCommand}"
                                            Count="{Binding Path=GameDetail.StrategyCount}"
                                            Text="攻略集" />
+                    <Border Height="1"
+                            Background="{ThemeResource VGtimeDividerBrush}" />
                 </StackPanel>
             </ScrollViewer>
         </Grid>

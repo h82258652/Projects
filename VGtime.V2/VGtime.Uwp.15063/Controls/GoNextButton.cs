@@ -5,7 +5,7 @@ namespace VGtime.Uwp.Controls
 {
     public sealed class GoNextButton : Button
     {
-        public static readonly DependencyProperty CountProperty = DependencyProperty.Register(nameof(Count), typeof(int?), typeof(GoNextButton), new PropertyMetadata(default(int?)));
+        public static readonly DependencyProperty CountProperty = DependencyProperty.Register(nameof(Count), typeof(object), typeof(GoNextButton), new PropertyMetadata(null));
 
         public static readonly DependencyProperty TextProperty = DependencyProperty.Register(nameof(Text), typeof(string), typeof(GoNextButton), new PropertyMetadata(default(string)));
 

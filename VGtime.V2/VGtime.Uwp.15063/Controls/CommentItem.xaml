@@ -20,7 +20,8 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-        <Grid Grid.Row="0">
+        <Grid Grid.Row="0"
+              Margin="12,12,12,0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="Auto" />
@@ -34,14 +35,30 @@
                     <ImageBrush ImageSource="{Binding Path=Comment.User.AvatarUrl}" />
                 </Ellipse.Fill>
             </Ellipse>
-            <TextBlock Grid.Column="1"
-                       Text="{Binding Path=Comment.User.Name}" />
-            <TextBlock Grid.Column="2"
-                       Foreground="{ThemeResource VGtimeAccentBrush}"
-                       Text="{Binding Path=Comment.PublishDate, Converter={StaticResource TimeAgoConverter}}" />
+            <Grid Grid.Column="1"
+                  Margin="8,0,0,0"
+                  VerticalAlignment="Center">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Row="0"
+                           Text="{Binding Path=Comment.User.Name}" />
+                <TextBlock Grid.Row="1"
+                           Foreground="{ThemeResource VGtimeSecondaryTextBrush}"
+                           Text="{Binding Path=Comment.PublishDate, Converter={StaticResource TimeAgoConverter}}" />
+            </Grid>
         </Grid>
-        <TextBlock Grid.Row="1"
-                   Text="{Binding Path=Comment.Remark}"
-                   TextWrapping="Wrap" />
+        <Grid Grid.Row="1"
+              Margin="12,12,12,12">
+            <TextBlock IsHitTestVisible="False"
+                       Opacity="0"><Run Text="Xg" />
+                <LineBreak /><Run Text="Xg" />
+                <LineBreak /><Run Text="Xg" /></TextBlock>
+            <TextBlock MaxLines="3"
+                       Text="{Binding Path=Comment.Remark}"
+                       TextTrimming="CharacterEllipsis"
+                       TextWrapping="Wrap" />
+        </Grid>
     </Grid>
 </UserControl>

@@ -40,7 +40,7 @@
                                  IsItemClickEnabled="True"
                                  ItemClick="PhotosGridView_ItemClick"
                                  ItemsSource="{Binding Path=Photos}"
-                                 MaxItemWidth="640"
+                                 MaxItemWidth="600"
                                  SelectionMode="None">
             <interactivity:Interaction.Behaviors>
                 <core:EventTriggerBehavior EventName="ItemClick">

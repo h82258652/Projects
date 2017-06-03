@@ -26,10 +26,10 @@ namespace VGtime.Uwp.Views
         {
             if (ApiInformation.IsMethodPresent("Windows.UI.Xaml.Hosting.ElementCompositionPreview", nameof(ElementCompositionPreview.GetElementVisual)))
             {
+                var visual = ElementCompositionPreview.GetElementVisual(this);
                 if (Frame.BackStackDepth > 0
                     && Frame.CanGoForward == false)
                 {
-                    var visual = ElementCompositionPreview.GetElementVisual(this);
                     var compositor = visual.Compositor;
                     var tcs = new TaskCompletionSource<object>();
                     var batch = compositor.CreateScopedBatch(CompositionBatchTypes.Animation);
@@ -46,10 +46,14 @@ namespace VGtime.Uwp.Views
                     var offsetAnimation = compositor.CreateVector3KeyFrameAnimation();
                     offsetAnimation.InsertKeyFrame(0, new Vector3((float)Frame.ActualWidth, 0, 0), linear);
                     offsetAnimation.InsertKeyFrame(1, new Vector3(0, 0, 0), linear);
-                    offsetAnimation.Duration = TimeSpan.FromSeconds(0.3);
+                    offsetAnimation.Duration = TimeSpan.FromSeconds(0.2);
                     visual.StartAnimation(nameof(Visual.Offset), offsetAnimation);
                     batch.End();
                     await tcs.Task;
+                }
+                else
+                {
+                    visual.Offset = new Vector3(0, 0, 0);
                 }
             }
         }
@@ -76,7 +80,7 @@ namespace VGtime.Uwp.Views
                     var offsetAnimation = compositor.CreateVector3KeyFrameAnimation();
                     offsetAnimation.InsertKeyFrame(0, new Vector3(0, 0, 0), linear);
                     offsetAnimation.InsertKeyFrame(1, new Vector3((float)(0 - Frame.ActualWidth), 0, 0), linear);
-                    offsetAnimation.Duration = TimeSpan.FromSeconds(0.3);
+                    offsetAnimation.Duration = TimeSpan.FromSeconds(0.2);
                     visual.StartAnimation(nameof(Visual.Offset), offsetAnimation);
                     batch.End();
                     await tcs.Task;
@@ -98,7 +102,7 @@ namespace VGtime.Uwp.Views
                     var offsetAnimation = compositor.CreateVector3KeyFrameAnimation();
                     offsetAnimation.InsertKeyFrame(0, new Vector3(0, 0, 0), linear);
                     offsetAnimation.InsertKeyFrame(1, new Vector3((float)Frame.ActualWidth, 0, 0), linear);
-                    offsetAnimation.Duration = TimeSpan.FromSeconds(0.3);
+                    offsetAnimation.Duration = TimeSpan.FromSeconds(0.2);
                     visual.StartAnimation(nameof(Visual.Offset), offsetAnimation);
                     batch.End();
                     await tcs.Task;

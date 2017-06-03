@@ -58,7 +58,7 @@
                 </Grid.RowDefinitions>
                 <TextBlock Grid.Row="0"
                            Margin="8,8,0,0"
-                           FontSize="18"
+                           FontSize="17"
                            Text="{Binding Path=Title}"
                            TextWrapping="Wrap" />
                 <Grid Grid.Row="1"

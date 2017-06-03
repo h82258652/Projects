@@ -3,13 +3,20 @@
                       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                       xmlns:behaviors="using:SoftwareKobo.Behaviors"
                       xmlns:controls="using:VGtime.Uwp.Controls"
+                      xmlns:converters="using:SoftwareKobo.Converters"
                       xmlns:core="using:Microsoft.Xaml.Interactions.Core"
                       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                       xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
                       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                       xmlns:views="using:VGtime.Uwp.Views"
                       DataContext="{Binding Source={StaticResource Locator}, Path=Comment}"
+                      NavigationCacheMode="Required"
                       mc:Ignorable="d">
+    <FrameworkElement.Resources>
+        <ResourceDictionary>
+            <converters:ItemClickEventArgsConverter x:Key="ItemClickEventArgsConverter" />
+        </ResourceDictionary>
+    </FrameworkElement.Resources>
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -28,10 +35,39 @@
                        Text="全部评论" />
         </Grid>
         <controls:VGtimeGridView Grid.Row="1"
+                                 Padding="12,12,0,0"
+                                 Background="#F7F7F7"
+                                 IsItemClickEnabled="True"
                                  ItemsSource="{Binding Path=Comments}"
+                                 MaxItemWidth="300"
                                  SelectionMode="None">
+            <interactivity:Interaction.Behaviors>
+                <core:EventTriggerBehavior EventName="ItemClick">
+                    <core:InvokeCommandAction Command="{Binding Path=CommentClickCommand}"
+                                              InputConverter="{StaticResource ItemClickEventArgsConverter}" />
+                </core:EventTriggerBehavior>
+            </interactivity:Interaction.Behaviors>
             <ListViewBase.Header>
-                <Border />
+                <Grid Margin="-12,-12,0,12">
+                    <Border Padding="12"
+                            Background="#F7F7F7"
+                            BorderBrush="{ThemeResource VGtimeDividerBrush}"
+                            BorderThickness="0,0,0,1">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0"
+                                       Foreground="{ThemeResource VGtimeSecondaryTextBrush}"
+                                       Text="全部评论" />
+                            <TextBlock Grid.Column="1"
+                                       Margin="8,0,0,0"
+                                       Foreground="{ThemeResource VGtimeSecondaryTextBrush}"
+                                       Text="{Binding Path=Comments.Count}" />
+                        </Grid>
+                    </Border>
+                </Grid>
             </ListViewBase.Header>
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
@@ -45,7 +81,9 @@
                     <Setter Property="VerticalContentAlignment"
                             Value="Stretch" />
                     <Setter Property="Margin"
-                            Value="0,0,8,8" />
+                            Value="0,0,12,12" />
+                    <Setter Property="Background"
+                            Value="White" />
                 </Style>
             </ItemsControl.ItemContainerStyle>
         </controls:VGtimeGridView>

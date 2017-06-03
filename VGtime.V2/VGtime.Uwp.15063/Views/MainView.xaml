@@ -30,7 +30,8 @@
         </ResourceDictionary>
     </FrameworkElement.Resources>
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <Pivot Style="{StaticResource VGtimePivotStyle}">
+        <Pivot x:Name="MainPivot"
+               Style="{StaticResource VGtimePivotStyle}">
             <FrameworkElement.Resources>
                 <ResourceDictionary>
                     <Style BasedOn="{StaticResource VGtimePivotHeaderItemStyle}"
@@ -175,11 +176,13 @@
                                 <ColumnDefinition Width="Auto" />
                             </Grid.ColumnDefinitions>
                             <TextBlock Grid.Column="0"
+                                       Margin="12,0,0,0"
                                        VerticalAlignment="Center"
                                        Text="点击查看更多过往攻略" />
                             <Button Grid.Column="1"
-                                    VerticalAlignment="Center"
-                                    Content="查看">
+                                    Margin="12,8,12,8"
+                                    Content="查看"
+                                    Style="{StaticResource VGtimeButtonStyle}">
                                 <interactivity:Interaction.Behaviors>
                                     <core:EventTriggerBehavior EventName="Click">
                                         <behaviors:NavigateToPageAction TargetPage="VGtime.Uwp.Views.OldGameStrategyView" />

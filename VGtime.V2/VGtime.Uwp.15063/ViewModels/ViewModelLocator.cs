@@ -20,6 +20,8 @@ namespace VGtime.Uwp.ViewModels
 {
     public class ViewModelLocator
     {
+        public const string AboutViewKey = "About";
+
         public const string ArticleDetailViewKey = "ArticleDetail";
 
         public const string CommentViewKey = "Comment";
@@ -37,6 +39,8 @@ namespace VGtime.Uwp.ViewModels
         public const string ImagePagerViewKey = "ImagePager";
 
         public const string SearchViewKey = "Search";
+
+        public const string ShowCoverViewKey = "ShowCover";
 
         static ViewModelLocator()
         {
