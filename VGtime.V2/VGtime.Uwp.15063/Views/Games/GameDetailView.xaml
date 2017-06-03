@@ -6,6 +6,7 @@
                       xmlns:converters="using:VGtime.Uwp.Converters"
                       xmlns:core="using:Microsoft.Xaml.Interactions.Core"
                       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                      xmlns:dashicons="using:SoftwareKobo.Icons.Dashicons"
                       xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
                       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                       xmlns:views="using:VGtime.Uwp.Views"
@@ -44,30 +45,53 @@
                     Style="{StaticResource ShareButtonStyle}" />
         </Grid>
         <Grid Grid.Row="1">
-            <ScrollViewer VerticalScrollBarVisibility="Auto">
+            <ScrollViewer Background="#F7F7F7"
+                          VerticalScrollBarVisibility="Auto">
                 <StackPanel Orientation="Vertical">
-                    <Button HorizontalAlignment="Stretch"
+                    <Button Height="300"
+                            HorizontalAlignment="Stretch"
                             VerticalAlignment="Stretch"
+                            HorizontalContentAlignment="Stretch"
+                            VerticalContentAlignment="Stretch"
+                            Background="White"
                             Command="{Binding Path=PhotoCommand}"
                             Style="{StaticResource EmptyButtonStyle}">
                         <Grid>
-                            <Image Source="{Binding Path=GameDetail.Thumbnail.Url}" />
-                            <Border Margin="0,0,20,0"
+                            <Image Source="{Binding Path=GameDetail.Thumbnail.Url}"
+                                   Stretch="Uniform" />
+                            <Border Width="40"
+                                    Height="32"
+                                    Margin="0,0,20,0"
                                     HorizontalAlignment="Right"
                                     VerticalAlignment="Top"
                                     Background="{Binding Path=GameDetail.Score, Converter={StaticResource ScoreToColorConverter}}">
-                                <TextBlock FontSize="24"
+                                <TextBlock HorizontalAlignment="Center"
+                                           VerticalAlignment="Center"
+                                           FontSize="24"
                                            Foreground="White"
                                            Text="{Binding Path=GameDetail.Score}" />
                             </Border>
                             <Border HorizontalAlignment="Right"
-                                    VerticalAlignment="Bottom">
-                                <TextBlock Foreground="White"
-                                           Text="{Binding Path=GameDetail.ImageCount}" />
+                                    VerticalAlignment="Bottom"
+                                    Background="#505050">
+                                <StackPanel Margin="8,4,8,4"
+                                            Orientation="Horizontal">
+                                    <Viewbox Width="16"
+                                             Height="16"
+                                             VerticalAlignment="Center">
+                                        <dashicons:DashIcon Foreground="White"
+                                                            Symbol="FormatGallery" />
+                                    </Viewbox>
+                                    <TextBlock Margin="4,0,0,0"
+                                               VerticalAlignment="Center"
+                                               Foreground="White"
+                                               Text="{Binding Path=GameDetail.ImageCount}" />
+                                </StackPanel>
                             </Border>
                         </Grid>
                     </Button>
-                    <Grid Margin="12,12,12,0">
+                    <Grid Padding="12,12,12,0"
+                          Background="White">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*" />
                             <ColumnDefinition Width="Auto" />
@@ -90,8 +114,10 @@
                                        Text="{Binding Path=GameDetail.PublishDate}" />
                         </StackPanel>
                     </Grid>
-                    <TextBlock Margin="12,12,12,0"
-                               Text="{Binding Path=GameDetail.PlatformsText}" />
+                    <Grid Padding="12,12,12,0"
+                          Background="White">
+                        <TextBlock Text="{Binding Path=GameDetail.PlatformsText}" />
+                    </Grid>
                     <StackPanel Orientation="Horizontal"
                                 Visibility="Collapsed">
                         <Button Content="想玩" />
@@ -99,18 +125,27 @@
                         <Button Content="玩过" />
                         <Button Content="通关" />
                     </StackPanel>
+                    <Grid Padding="12,12,12,0"
+                          Background="White">
+                        <Border Height="1"
+                                Background="{ThemeResource VGtimeDividerBrush}" />
+                    </Grid>
+                    <Grid Background="White">
+                        <TextBlock Margin="12,12,12,0"
+                                   FontSize="17"
+                                   FontWeight="Bold"
+                                   Text="游戏简介" />
+                    </Grid>
+                    <Grid Background="White">
+                        <TextBlock Margin="12,12,12,12"
+                                   Foreground="{ThemeResource VGtimeSecondaryTextBrush}"
+                                   Text="{Binding Path=GameDetail.Introduction}"
+                                   TextWrapping="Wrap" />
+                    </Grid>
                     <Border Height="1"
-                            Margin="12,12,12,0"
                             Background="{ThemeResource VGtimeDividerBrush}" />
-                    <TextBlock Margin="12,12,12,0"
-                               FontSize="17"
-                               FontWeight="Bold"
-                               Text="游戏简介" />
-                    <TextBlock Margin="12,12,12,0"
-                               Foreground="{ThemeResource VGtimeSecondaryTextBrush}"
-                               Text="{Binding Path=GameDetail.Introduction}"
-                               TextWrapping="Wrap" />
                     <Border Height="1"
+                            Margin="0,12,0,0"
                             Background="{ThemeResource VGtimeDividerBrush}" />
                     <controls:GoNextButton Command="{Binding Path=ForumCommand}"
                                            Count="{Binding Path=GameDetail.ShortPostCount}"

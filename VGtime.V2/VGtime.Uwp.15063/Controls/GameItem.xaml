@@ -16,11 +16,11 @@
         </ResourceDictionary>
     </FrameworkElement.Resources>
     <Grid>
-        <Viewbox VerticalAlignment="Center"
-                 Stretch="UniformToFill">
+        <Viewbox Stretch="UniformToFill">
             <Image Width="400"
                    Height="300"
-                   Source="{Binding Path=Thumbnail.Url}" />
+                   Source="{Binding Path=Thumbnail.Url}"
+                   Stretch="UniformToFill" />
         </Viewbox>
         <Border Background="#40000000" />
         <Border Width="36"
@@ -36,17 +36,50 @@
         </Border>
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="*" />
-                <RowDefinition Height="Auto" />
+                <RowDefinition Height="0.618*" />
+                <RowDefinition Height="0.382*" />
             </Grid.RowDefinitions>
-            <TextBlock Grid.Row="0"
-                       Text="{Binding Path=Title}" />
-            <TextBlock Grid.Row="1"
-                       Foreground="{ThemeResource VGtimeSecondaryTextBrush}"
-                       Text="{Binding Path=PlatformsText}" />
-            <TextBlock Grid.Row="2"
-                       Text="{Binding Path=PublishDate}" />
+            <Grid Grid.Row="1">
+                <Grid.Background>
+                    <LinearGradientBrush StartPoint="0.5,0"
+                                         EndPoint="0.5,1">
+                        <GradientStop Offset="0"
+                                      Color="#80FFFFFF" />
+                        <GradientStop Offset="1"
+                                      Color="#E0FFFFFF" />
+                    </LinearGradientBrush>
+                </Grid.Background>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0"
+                      Margin="8,8,8,0">
+                    <TextBlock FontSize="18"
+                               Text="{Binding Path=Title}" />
+                    <TextBlock FontSize="18"
+                               Text="{Binding Path=Title}" />
+                </Grid>
+                <TextBlock Grid.Row="1"
+                           Margin="8,8,8,0"
+                           Foreground="{ThemeResource VGtimeSecondaryTextBrush}"
+                           Text="{Binding Path=PlatformsText}" />
+                <StackPanel Grid.Row="2"
+                            Margin="8,8,8,8"
+                            HorizontalAlignment="Right"
+                            Orientation="Horizontal">
+                    <Viewbox Width="18"
+                             Height="18"
+                             VerticalAlignment="Center">
+                        <SymbolIcon Foreground="{ThemeResource VGtimeSecondaryTextBrush}"
+                                    Symbol="Calendar" />
+                    </Viewbox>
+                    <TextBlock Margin="4,0,0,0"
+                               Foreground="{ThemeResource VGtimeSecondaryTextBrush}"
+                               Text="{Binding Path=PublishDate}" />
+                </StackPanel>
+            </Grid>
         </Grid>
     </Grid>
 </UserControl>

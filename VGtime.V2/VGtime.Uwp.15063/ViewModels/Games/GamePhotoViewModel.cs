@@ -17,6 +17,8 @@ namespace VGtime.Uwp.ViewModels.Games
 
         private readonly INavigationService _navigationService;
 
+        private int _gameId;
+
         private string _gameName;
 
         private bool _isLoading;
@@ -34,8 +36,18 @@ namespace VGtime.Uwp.ViewModels.Games
 
         public int GameId
         {
-            get;
-            private set;
+            get
+            {
+                return _gameId;
+            }
+            private set
+            {
+                if (_gameId != value)
+                {
+                    _gameId = value;
+                    Photos = null;
+                }
+            }
         }
 
         public string GameName

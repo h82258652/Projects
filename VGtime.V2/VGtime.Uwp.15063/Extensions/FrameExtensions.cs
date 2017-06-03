@@ -6,14 +6,14 @@ namespace VGtime.Uwp.Extensions
 {
     internal static class FrameExtensions
     {
-        internal static readonly DependencyProperty PreviousPageProperty = DependencyProperty.RegisterAttached("PreviousPage", typeof(ViewBase), typeof(FrameExtensions), new PropertyMetadata(default(ViewBase)));
+        internal static readonly DependencyProperty PreviousPageProperty = DependencyProperty.RegisterAttached("PreviousPage", typeof(AnimatedViewBase), typeof(FrameExtensions), new PropertyMetadata(default(AnimatedViewBase)));
 
-        internal static ViewBase GetPreviousPage(Frame obj)
+        internal static AnimatedViewBase GetPreviousPage(Frame obj)
         {
-            return (ViewBase)obj.GetValue(PreviousPageProperty);
+            return (AnimatedViewBase)obj.GetValue(PreviousPageProperty);
         }
 
-        internal static void SetPreviousPage(Frame obj, ViewBase value)
+        internal static void SetPreviousPage(Frame obj, AnimatedViewBase value)
         {
             obj.SetValue(PreviousPageProperty, value);
         }

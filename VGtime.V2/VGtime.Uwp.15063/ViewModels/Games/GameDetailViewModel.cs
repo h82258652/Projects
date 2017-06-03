@@ -24,6 +24,8 @@ namespace VGtime.Uwp.ViewModels.Games
 
         private GameBase _gameDetail;
 
+        private int _gameId;
+
         private bool _isLoading;
 
         private RelayCommand _photoCommand;
@@ -70,8 +72,18 @@ namespace VGtime.Uwp.ViewModels.Games
 
         public int GameId
         {
-            get;
-            private set;
+            get
+            {
+                return _gameId;
+            }
+            private set
+            {
+                if (_gameId != value)
+                {
+                    _gameId = value;
+                    GameDetail = null;
+                }
+            }
         }
 
         public bool IsLoading

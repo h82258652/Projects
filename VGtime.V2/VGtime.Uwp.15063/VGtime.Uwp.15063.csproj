@@ -116,9 +116,14 @@
     </Compile>
     <Compile Include="Controls\PostItemTemplateSelector.cs" />
     <Compile Include="Controls\VGtimeGridView.cs" />
+    <Compile Include="Controls\VGtimePivot.cs" />
+    <Compile Include="Controls\VGtimePivotHeaderItemAssistButton.cs" />
+    <Compile Include="Controls\VGtimePivotSelectedHeaderItemClickEventArgs.cs" />
+    <Compile Include="Controls\VGtimePivotSelectedHeaderItemClickEventHandler.cs" />
     <Compile Include="Controls\VideoPostItem.xaml.cs">
       <DependentUpon>VideoPostItem.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Converters\AutoSuggestBoxQuerySubmittedEventArgsConverter.cs" />
     <Compile Include="Converters\IntegerToVisibilityConverter.cs" />
     <Compile Include="Converters\IsNullOrEmptyStringToVisibilityConverter.cs" />
     <Compile Include="Converters\ScoreToColorConverter.cs" />
@@ -176,6 +181,7 @@
     <Compile Include="ViewParameters\GamePhotoViewParameter.cs" />
     <Compile Include="ViewParameters\GameRelationViewParameter.cs" />
     <Compile Include="ViewParameters\ImagePagerViewParameter.cs" />
+    <Compile Include="Views\AnimatedViewBase.cs" />
     <Compile Include="Views\ArticleDetailView.xaml.cs">
       <DependentUpon>ArticleDetailView.xaml</DependentUpon>
     </Compile>
@@ -476,6 +482,11 @@
     <Page Include="Controls\ListPostItem.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\VGtimePivot.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Page>
     <Page Include="Controls\VideoPostItem.xaml">
       <SubType>Designer</SubType>

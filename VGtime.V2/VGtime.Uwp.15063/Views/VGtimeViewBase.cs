@@ -11,7 +11,7 @@ using Windows.UI.Xaml.Navigation;
 
 namespace VGtime.Uwp.Views
 {
-    public class VGtimeViewBase : ViewBase
+    public class VGtimeViewBase : AnimatedViewBase
     {
         protected override ContentControl PreviousPageHost
         {

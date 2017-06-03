@@ -30,8 +30,8 @@
         </ResourceDictionary>
     </FrameworkElement.Resources>
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <Pivot x:Name="MainPivot"
-               Style="{StaticResource VGtimePivotStyle}">
+        <localControls:VGtimePivot x:Name="RootPivot"
+                                   SelectedHeaderItemClick="RootPivot_SelectedHeaderItemClick">
             <FrameworkElement.Resources>
                 <ResourceDictionary>
                     <Style BasedOn="{StaticResource VGtimePivotHeaderItemStyle}"
@@ -40,7 +40,8 @@
             </FrameworkElement.Resources>
             <!-- 二维码按钮<Pivot.LeftHeader></Pivot.LeftHeader>-->
             <PivotItem Header="首页">
-                <localControls:VGtimeGridView Padding="12,12,0,0"
+                <localControls:VGtimeGridView x:Name="VglistPostsGridView"
+                                              Padding="12,12,0,0"
                                               IsItemClickEnabled="True"
                                               ItemTemplateSelector="{StaticResource PostItemTemplateSelector}"
                                               ItemsSource="{Binding Path=VglistPosts}"
@@ -68,7 +69,8 @@
                 </localControls:VGtimeGridView>
             </PivotItem>
             <PivotItem Header="新闻">
-                <localControls:VGtimeGridView Padding="12,12,0,0"
+                <localControls:VGtimeGridView x:Name="NewsPostsGridView"
+                                              Padding="12,12,0,0"
                                               IsItemClickEnabled="True"
                                               ItemsSource="{Binding Path=NewsPosts}"
                                               MaxItemWidth="600"
@@ -97,7 +99,8 @@
                 </localControls:VGtimeGridView>
             </PivotItem>
             <PivotItem Header="评测">
-                <localControls:VGtimeGridView Padding="12,12,0,0"
+                <localControls:VGtimeGridView x:Name="EvaluationPostsGridView"
+                                              Padding="12,12,0,0"
                                               IsItemClickEnabled="True"
                                               ItemsSource="{Binding Path=EvaluationPosts}"
                                               MaxItemWidth="600"
@@ -126,7 +129,8 @@
                 </localControls:VGtimeGridView>
             </PivotItem>
             <PivotItem Header="视频">
-                <localControls:VGtimeGridView Padding="8,8,0,0"
+                <localControls:VGtimeGridView x:Name="VideoPostsGridView"
+                                              Padding="8,8,0,0"
                                               IsItemClickEnabled="True"
                                               ItemsSource="{Binding Path=VideoPosts}"
                                               MaxItemWidth="640"
@@ -155,7 +159,8 @@
                 </localControls:VGtimeGridView>
             </PivotItem>
             <PivotItem Header="攻略">
-                <localControls:VGtimeGridView x:Uid="/MainView/StrategyPostsGridView"
+                <localControls:VGtimeGridView x:Name="StrategyPostsGridView"
+                                              x:Uid="/MainView/StrategyPostsGridView"
                                               Padding="12,0,0,0"
                                               IsItemClickEnabled="True"
                                               ItemsSource="{Binding Path=StrategyPosts}"
@@ -209,7 +214,8 @@
                 </localControls:VGtimeGridView>
             </PivotItem>
             <PivotItem Header="专栏">
-                <localControls:VGtimeGridView Padding="12,12,0,0"
+                <localControls:VGtimeGridView x:Name="TopicPostsGridView"
+                                              Padding="12,12,0,0"
                                               IsItemClickEnabled="True"
                                               ItemsSource="{Binding Path=TopicPosts}"
                                               MaxItemWidth="600"
@@ -249,6 +255,6 @@
                             Value="0" />
                 </Style>
             </Pivot.ItemContainerStyle>
-        </Pivot>
+        </localControls:VGtimePivot>
     </Grid>
 </views:VGtimeViewBase>

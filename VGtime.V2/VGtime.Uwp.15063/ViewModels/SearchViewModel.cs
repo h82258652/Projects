@@ -1,4 +1,7 @@
-﻿using GalaSoft.MvvmLight;
+﻿using System;
+using System.Linq;
+using System.Threading.Tasks;
+using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Views;
 using VGtime.Configuration;
@@ -16,6 +19,8 @@ namespace VGtime.Uwp.ViewModels
         private readonly IAppToastService _appToastService;
 
         private readonly IGameService _gameService;
+
+        private readonly IInitService _initService;
 
         private readonly INavigationService _navigationService;
 
@@ -35,18 +40,31 @@ namespace VGtime.Uwp.ViewModels
 
         private SearchGameCollection _games;
 
+        private string[] _hotword;
+
+        private bool _isLoadingHotword;
+
         private RelayCommand<string> _searchCommand;
 
         private SearchUserCollection _users;
 
-        public SearchViewModel(IPostService postService, IUserService userService, IGameService gameService, IVGtimeSettings vgtimeSettings, INavigationService navigationService, IAppToastService appToastService)
+        public SearchViewModel(IInitService initService,
+            IPostService postService,
+            IUserService userService,
+            IGameService gameService,
+            IVGtimeSettings vgtimeSettings,
+            INavigationService navigationService,
+            IAppToastService appToastService)
         {
+            _initService = initService;
             _postService = postService;
             _userService = userService;
             _gameService = gameService;
             _vgtimeSettings = vgtimeSettings;
             _navigationService = navigationService;
             _appToastService = appToastService;
+
+            LoadHotword();
         }
 
         public RelayCommand<TimeLineBase> ArticleClickCommand
@@ -109,6 +127,30 @@ namespace VGtime.Uwp.ViewModels
             }
         }
 
+        public string[] Hotword
+        {
+            get
+            {
+                return _hotword;
+            }
+            private set
+            {
+                Set(ref _hotword, value);
+            }
+        }
+
+        public bool IsLoadingHotword
+        {
+            get
+            {
+                return _isLoadingHotword;
+            }
+            private set
+            {
+                Set(ref _isLoadingHotword, value);
+            }
+        }
+
         public RelayCommand<string> SearchCommand
         {
             get
@@ -141,6 +183,34 @@ namespace VGtime.Uwp.ViewModels
             private set
             {
                 Set(ref _users, value);
+            }
+        }
+
+        private async void LoadHotword()
+        {
+            while (true)
+            {
+                try
+                {
+                    IsLoadingHotword = true;
+
+                    var result = await _initService.GetHotwordAsync();
+                    if (result.Retcode == Constants.SuccessCode)
+                    {
+                        Hotword = result.Data.Data.Select(temp => temp.Keyword).ToArray();
+                        break;
+                    }
+                }
+                catch (Exception)
+                {
+                    // ignored
+                }
+                finally
+                {
+                    IsLoadingHotword = false;
+                }
+
+                await Task.Delay(TimeSpan.FromSeconds(10));
             }
         }
     }

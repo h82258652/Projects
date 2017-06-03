@@ -17,6 +17,8 @@ namespace VGtime.Uwp.ViewModels.Games
 
         private readonly INavigationService _navigationService;
 
+        private int _gameId;
+
         private GameStrategy[] _gameStrategies;
 
         private bool _isLoading;
@@ -32,8 +34,18 @@ namespace VGtime.Uwp.ViewModels.Games
 
         public int GameId
         {
-            get;
-            private set;
+            get
+            {
+                return _gameId;
+            }
+            private set
+            {
+                if (_gameId != value)
+                {
+                    _gameId = value;
+                    GameStrategies = null;
+                }
+            }
         }
 
         public GameStrategy[] GameStrategies

@@ -7,13 +7,16 @@
                       xmlns:core="using:Microsoft.Xaml.Interactions.Core"
                       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                       xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
+                      xmlns:localConverters="using:VGtime.Uwp.Converters"
                       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                       xmlns:views="using:VGtime.Uwp.Views"
                       DataContext="{Binding Source={StaticResource Locator}, Path=Search}"
+                      NavigationCacheMode="Required"
                       mc:Ignorable="d">
     <FrameworkElement.Resources>
         <ResourceDictionary>
             <converters:ItemClickEventArgsConverter x:Key="ItemClickEventArgsConverter" />
+            <localConverters:AutoSuggestBoxQuerySubmittedEventArgsConverter x:Key="AutoSuggestBoxQuerySubmittedEventArgsConverter" />
         </ResourceDictionary>
     </FrameworkElement.Resources>
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
@@ -37,10 +40,22 @@
             </Button>
             <AutoSuggestBox Grid.Column="1"
                             VerticalAlignment="Center"
-                            PlaceholderText="请输入搜索内容" />
+                            ItemsSource="{Binding Path=Hotword}"
+                            PlaceholderText="请输入搜索内容">
+                <interactivity:Interaction.Behaviors>
+                    <core:EventTriggerBehavior EventName="QuerySubmitted">
+                        <core:InvokeCommandAction Command="{Binding Path=SearchCommand}"
+                                                  InputConverter="{StaticResource AutoSuggestBoxQuerySubmittedEventArgsConverter}" />
+                    </core:EventTriggerBehavior>
+                </interactivity:Interaction.Behaviors>
+                <AutoSuggestBox.QueryIcon>
+                    <SymbolIcon Symbol="Find" />
+                </AutoSuggestBox.QueryIcon>
+            </AutoSuggestBox>
         </Grid>
-        <Pivot Grid.Row="1"
-               Style="{StaticResource VGtimePivotStyle}">
+        <controls:VGtimePivot x:Name="RootPivot"
+                              Grid.Row="1"
+                              SelectedHeaderItemClick="RootPivot_SelectedHeaderItemClick">
             <FrameworkElement.Resources>
                 <ResourceDictionary>
                     <Style BasedOn="{StaticResource VGtimePivotHeaderItemStyle}"
@@ -48,7 +63,8 @@
                 </ResourceDictionary>
             </FrameworkElement.Resources>
             <PivotItem Header="文章">
-                <controls:VGtimeGridView Padding="8,8,0,0"
+                <controls:VGtimeGridView x:Name="ArticlesGridView"
+                                         Padding="12,12,0,0"
                                          IsItemClickEnabled="True"
                                          ItemsSource="{Binding Path=Articles}"
                                          MaxItemWidth="600"
@@ -71,31 +87,39 @@
                             <Setter Property="VerticalContentAlignment"
                                     Value="Stretch" />
                             <Setter Property="Margin"
-                                    Value="0,0,8,8" />
+                                    Value="0,0,12,12" />
                         </Style>
                     </ItemsControl.ItemContainerStyle>
                 </controls:VGtimeGridView>
             </PivotItem>
             <PivotItem Header="俱乐部">
-                <controls:VGtimeGridView ItemsSource="{Binding Path=Forums}"
+                <controls:VGtimeGridView x:Name="ForumsGridView"
+                                         ItemsSource="{Binding Path=Forums}"
                                          SelectionMode="None">
                     <ItemsControl.ItemTemplate>
-                        <DataTemplate />
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Path=Text}" />
+                        </DataTemplate>
                     </ItemsControl.ItemTemplate>
                 </controls:VGtimeGridView>
             </PivotItem>
             <PivotItem Header="用户">
-                <controls:VGtimeGridView ItemsSource="{Binding Path=Users}"
+                <controls:VGtimeGridView x:Name="UsersGridView"
+                                         ItemsSource="{Binding Path=Users}"
                                          SelectionMode="None">
                     <ItemsControl.ItemTemplate>
-                        <DataTemplate />
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Path=Name}" />
+                        </DataTemplate>
                     </ItemsControl.ItemTemplate>
                 </controls:VGtimeGridView>
             </PivotItem>
             <PivotItem Header="游戏">
-                <controls:VGtimeGridView Padding="8,8,0,0"
+                <controls:VGtimeGridView x:Name="GamesGridView"
+                                         Padding="12,12,0,0"
                                          IsItemClickEnabled="True"
                                          ItemsSource="{Binding Path=Games}"
+                                         MaxItemWidth="600"
                                          SelectionMode="None">
                     <interactivity:Interaction.Behaviors>
                         <core:EventTriggerBehavior EventName="ItemClick">
@@ -115,11 +139,17 @@
                             <Setter Property="VerticalContentAlignment"
                                     Value="Stretch" />
                             <Setter Property="Margin"
-                                    Value="0,0,8,8" />
+                                    Value="0,0,12,12" />
                         </Style>
                     </ItemsControl.ItemContainerStyle>
                 </controls:VGtimeGridView>
             </PivotItem>
-        </Pivot>
+            <Pivot.ItemContainerStyle>
+                <Style TargetType="PivotItem">
+                    <Setter Property="Margin"
+                            Value="0" />
+                </Style>
+            </Pivot.ItemContainerStyle>
+        </controls:VGtimePivot>
     </Grid>
 </views:VGtimeViewBase>
