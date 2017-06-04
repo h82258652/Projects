@@ -115,6 +115,7 @@
       <DependentUpon>ListPostItem.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\PostItemTemplateSelector.cs" />
+    <Compile Include="Controls\ScoreItem.cs" />
     <Compile Include="Controls\VGtimeGridView.cs" />
     <Compile Include="Controls\VGtimePivot.cs" />
     <Compile Include="Controls\VGtimePivotHeaderItemAssistButton.cs" />
@@ -282,6 +283,7 @@
     <AppxManifest Include="Package.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
+    <Content Include="Assets\Fonts\MFBanHei_Noncommercial-Regular.ttf" />
     <None Include="Assets\Html\bower.json" />
     <None Include="Assets\Html\bower_components\hammerjs\.bower.json" />
     <None Include="Assets\Html\bower_components\hammerjs\bower.json" />
@@ -482,6 +484,11 @@
     <Page Include="Controls\ListPostItem.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\ScoreItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Page>
     <Page Include="Controls\VGtimePivot.xaml">
       <SubType>Designer</SubType>

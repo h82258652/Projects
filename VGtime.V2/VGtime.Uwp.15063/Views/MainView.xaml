@@ -31,6 +31,7 @@
     </FrameworkElement.Resources>
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <localControls:VGtimePivot x:Name="RootPivot"
+                                   Loaded="RootPivot_Loaded"
                                    SelectedHeaderItemClick="RootPivot_SelectedHeaderItemClick">
             <FrameworkElement.Resources>
                 <ResourceDictionary>
@@ -130,7 +131,7 @@
             </PivotItem>
             <PivotItem Header="视频">
                 <localControls:VGtimeGridView x:Name="VideoPostsGridView"
-                                              Padding="8,8,0,0"
+                                              Padding="12,12,0,0"
                                               IsItemClickEnabled="True"
                                               ItemsSource="{Binding Path=VideoPosts}"
                                               MaxItemWidth="640"
@@ -153,7 +154,7 @@
                             <Setter Property="VerticalContentAlignment"
                                     Value="Stretch" />
                             <Setter Property="Margin"
-                                    Value="0,0,8,8" />
+                                    Value="0,0,12,12" />
                         </Style>
                     </ItemsControl.ItemContainerStyle>
                 </localControls:VGtimeGridView>

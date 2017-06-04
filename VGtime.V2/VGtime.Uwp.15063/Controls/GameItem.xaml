@@ -1,9 +1,10 @@
 ﻿<UserControl x:Class="VGtime.Uwp.Controls.GameItem"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:converters="using:VGtime.Uwp.Converters"
+             xmlns:controls="using:SoftwareKobo.Controls"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:games="using:VGtime.Models.Games"
+             xmlns:localControls="using:VGtime.Uwp.Controls"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              d:DataContext="{d:DesignInstance Type=games:GameBase}"
              mc:Ignorable="d">
@@ -12,28 +13,17 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/Styles/VGtimeColorStyle.xaml" />
             </ResourceDictionary.MergedDictionaries>
-            <converters:ScoreToColorConverter x:Key="ScoreToColorConverter" />
         </ResourceDictionary>
     </FrameworkElement.Resources>
     <Grid>
         <Viewbox Stretch="UniformToFill">
-            <Image Width="400"
-                   Height="300"
-                   Source="{Binding Path=Thumbnail.Url}"
-                   Stretch="UniformToFill" />
+            <controls:ImageEx Width="400"
+                              Height="300"
+                              Source="{Binding Path=Thumbnail.Url}"
+                              Stretch="UniformToFill" />
         </Viewbox>
         <Border Background="#40000000" />
-        <Border Width="36"
-                Height="28"
-                HorizontalAlignment="Right"
-                VerticalAlignment="Top"
-                Background="{Binding Path=Score, Converter={StaticResource ScoreToColorConverter}}">
-            <TextBlock HorizontalAlignment="Center"
-                       VerticalAlignment="Center"
-                       FontSize="20"
-                       Foreground="White"
-                       Text="{Binding Path=Score}" />
-        </Border>
+        <localControls:ScoreItem Score="{Binding Path=Score}" />
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="0.618*" />

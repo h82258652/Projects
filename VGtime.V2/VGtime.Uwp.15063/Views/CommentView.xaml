@@ -75,7 +75,7 @@
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
             <ItemsControl.ItemContainerStyle>
-                <Style TargetType="GridViewItem">
+                <Style TargetType="SelectorItem">
                     <Setter Property="HorizontalContentAlignment"
                             Value="Stretch" />
                     <Setter Property="VerticalContentAlignment"

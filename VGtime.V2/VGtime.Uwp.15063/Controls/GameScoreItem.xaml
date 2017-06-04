@@ -1,19 +1,59 @@
 ﻿<UserControl x:Class="VGtime.Uwp.Controls.GameScoreItem"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:controls="using:SoftwareKobo.Controls"
+             xmlns:converters="using:VGtime.Uwp.Converters"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:games="using:VGtime.Models.Games"
+             xmlns:localControls="using:VGtime.Uwp.Controls"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              d:DataContext="{d:DesignInstance Type=games:GameScore}"
              mc:Ignorable="d">
+    <FrameworkElement.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Styles/VGtimeColorStyle.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+            <converters:TimeAgoConverter x:Key="TimeAgoConverter" />
+        </ResourceDictionary>
+    </FrameworkElement.Resources>
     <Grid>
-        <TextBlock Text="{Binding Path=Content}" />
-        <TextBlock Text="{Binding Path=User.Name}" />
-        <Ellipse>
-            <Ellipse.Fill>
-                <ImageBrush ImageSource="{Binding Path=User.AvatarUrl}" />
-            </Ellipse.Fill>
-        </Ellipse>
-        <TextBlock Text="{Binding Path=Score}" />
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Ellipse Grid.Column="0"
+                     Width="32"
+                     Height="32"
+                     VerticalAlignment="Center">
+                <Ellipse.Fill>
+                    <controls:ImageBrushEx ImageSource="{Binding Path=User.AvatarUrl}" />
+                </Ellipse.Fill>
+            </Ellipse>
+            <TextBlock Grid.Column="1"
+                       Margin="10,0,0,0"
+                       VerticalAlignment="Center"
+                       Foreground="{ThemeResource VGtimeSecondaryTextBrush}"
+                       Text="{Binding Path=User.Name}" />
+            <TextBlock Grid.Column="2"
+                       Margin="8,0,0,0"
+                       VerticalAlignment="Center"
+                       Foreground="{ThemeResource VGtimeSecondaryTextBrush}"
+                       Text="{Binding Path=PublishDate, Converter={StaticResource TimeAgoConverter}}" />
+        </Grid>
+        <localControls:ScoreItem Grid.Row="0"
+                                 Grid.RowSpan="2"
+                                 Padding="0"
+                                 Score="{Binding Path=Score}" />
+        <TextBlock Grid.Row="1"
+                   Margin="0,12,0,0"
+                   Text="{Binding Path=Content}"
+                   TextWrapping="Wrap" />
     </Grid>
 </UserControl>

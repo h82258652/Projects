@@ -152,6 +152,7 @@ namespace VGtime.Uwp.ViewModels
             navigationService.Configure(GameStrategySetViewKey, typeof(GameStrategySetView));
             navigationService.Configure(ImagePagerViewKey, typeof(ImagePagerView));
             navigationService.Configure(SearchViewKey, typeof(SearchView));
+            navigationService.Configure(GameRelationViewKey, typeof(GameRelationView));
             return navigationService;
         }
     }

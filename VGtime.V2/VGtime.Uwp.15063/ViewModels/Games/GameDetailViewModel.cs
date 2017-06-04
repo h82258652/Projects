@@ -104,7 +104,17 @@ namespace VGtime.Uwp.ViewModels.Games
             {
                 _photoCommand = _photoCommand ?? new RelayCommand(() =>
                 {
-                    _navigationService.NavigateTo(ViewModelLocator.GamePhotoViewKey, new GamePhotoViewParameter(GameId, GameDetail.Title));
+                    if (GameDetail != null)
+                    {
+                        if (GameDetail.ImageCount <= 0)
+                        {
+                            _appToastService.ShowInformation("没有相应的游戏图集哦");
+                        }
+                        else
+                        {
+                            _navigationService.NavigateTo(ViewModelLocator.GamePhotoViewKey, new GamePhotoViewParameter(GameId, GameDetail.Title));
+                        }
+                    }
                 });
                 return _photoCommand;
             }

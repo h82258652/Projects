@@ -47,7 +47,7 @@
                                                                        Storyboard.TargetProperty="Background">
                                             <DiscreteObjectKeyFrame KeyTime="0:0:0">
                                                 <DiscreteObjectKeyFrame.Value>
-                                                    <SolidColorBrush Color="{ThemeResource VGtimeAccentLightColor}" />
+                                                    <SolidColorBrush Color="#E0E6Ef" />
                                                 </DiscreteObjectKeyFrame.Value>
                                             </DiscreteObjectKeyFrame>
                                         </ObjectAnimationUsingKeyFrames>
@@ -59,7 +59,7 @@
                                                                        Storyboard.TargetProperty="Background">
                                             <DiscreteObjectKeyFrame KeyTime="0:0:0">
                                                 <DiscreteObjectKeyFrame.Value>
-                                                    <SolidColorBrush Color="{ThemeResource VGtimeAccentLightColor}" />
+                                                    <SolidColorBrush Color="#E0E6Ef" />
                                                 </DiscreteObjectKeyFrame.Value>
                                             </DiscreteObjectKeyFrame>
                                         </ObjectAnimationUsingKeyFrames>

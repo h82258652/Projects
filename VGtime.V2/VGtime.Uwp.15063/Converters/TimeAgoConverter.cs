@@ -44,7 +44,7 @@ namespace VGtime.Uwp.Converters
             }
             else
             {
-                return string.Format("{0}月前", (long)Math.Floor(expired.TotalDays / 30));
+                return string.Format("{0}个月前", (long)Math.Floor(expired.TotalDays / 30));
             }
         }
 

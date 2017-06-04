@@ -1,8 +1,10 @@
 ﻿<UserControl x:Class="VGtime.Uwp.Controls.ListPostItem"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:controls="using:SoftwareKobo.Controls"
              xmlns:converters="using:VGtime.Uwp.Converters"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:localControls="using:VGtime.Uwp.Controls"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:timeline="using:VGtime.Models.Timeline"
              d:DataContext="{d:DesignInstance Type=timeline:TimeLineBase}"
@@ -13,30 +15,19 @@
                 <ResourceDictionary Source="/Styles/VGtimeColorStyle.xaml" />
             </ResourceDictionary.MergedDictionaries>
             <converters:TimeAgoConverter x:Key="TimeAgoConverter" />
-            <converters:ScoreToColorConverter x:Key="ScoreToColorConverter" />
             <converters:IntegerToVisibilityConverter x:Key="IntegerToVisibilityConverter" />
         </ResourceDictionary>
     </FrameworkElement.Resources>
     <Grid>
         <Viewbox VerticalAlignment="Center"
                  Stretch="UniformToFill">
-            <Image Width="960"
-                   Height="600"
-                   Source="{Binding Path=Thumbnail.Url}"
-                   Stretch="UniformToFill" />
+            <controls:ImageEx Width="960"
+                              Height="600"
+                              Source="{Binding Path=Thumbnail.Url}"
+                              Stretch="UniformToFill" />
         </Viewbox>
         <Border Background="#40000000" />
-        <Border Width="36"
-                Height="28"
-                HorizontalAlignment="Right"
-                VerticalAlignment="Top"
-                Background="{Binding Path=ReviewScore, Converter={StaticResource ScoreToColorConverter}}">
-            <TextBlock HorizontalAlignment="Center"
-                       VerticalAlignment="Center"
-                       FontSize="20"
-                       Foreground="White"
-                       Text="{Binding Path=ReviewScore}" />
-        </Border>
+        <localControls:ScoreItem Score="{Binding Path=ReviewScore}" />
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="*" />
@@ -74,7 +65,7 @@
                              Height="24"
                              VerticalAlignment="Center">
                         <Ellipse.Fill>
-                            <ImageBrush ImageSource="{Binding Path=User.AvatarUrl}" />
+                            <controls:ImageBrushEx ImageSource="{Binding Path=User.AvatarUrl}" />
                         </Ellipse.Fill>
                     </Ellipse>
                     <TextBlock Grid.Column="1"

@@ -1,7 +1,6 @@
 ﻿using System;
-using System.Threading.Tasks;
+using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Navigation;
 using VGtime.Uwp.Controls;
 using VGtime.Uwp.ViewModels;
 using WinRTXamlToolkit.AwaitableUI;
@@ -18,18 +17,12 @@ namespace VGtime.Uwp.Views
 
         public MainViewModel ViewModel => (MainViewModel)DataContext;
 
-        protected override Task PlayLeaveAnimationAsync(NavigationMode currentPageNavigationMode)
+        private async void RootPivot_Loaded(object sender, RoutedEventArgs e)
         {
             // Hack fix.
-            Action asyncAction = async () =>
-            {
-                RootPivot.Width = RootPivot.ActualWidth + 1;
-                await RootPivot.WaitForLayoutUpdateAsync();
-                RootPivot.Width = double.NaN;
-            };
-            asyncAction();
-
-            return base.PlayLeaveAnimationAsync(currentPageNavigationMode);
+            RootPivot.Width = RootPivot.ActualWidth + 1;
+            await RootPivot.WaitForLayoutUpdateAsync();
+            RootPivot.Width = double.NaN;
         }
 
         private async void RootPivot_SelectedHeaderItemClick(object sender, VGtimePivotSelectedHeaderItemClickEventArgs args)
