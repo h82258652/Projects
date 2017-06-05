@@ -1,9 +1,7 @@
 ﻿using System;
-using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using VGtime.Uwp.Controls;
 using VGtime.Uwp.ViewModels;
-using WinRTXamlToolkit.AwaitableUI;
 using WinRTXamlToolkit.Controls.Extensions;
 
 namespace VGtime.Uwp.Views
@@ -16,14 +14,6 @@ namespace VGtime.Uwp.Views
         }
 
         public MainViewModel ViewModel => (MainViewModel)DataContext;
-
-        private async void RootPivot_Loaded(object sender, RoutedEventArgs e)
-        {
-            // Hack fix.
-            RootPivot.Width = RootPivot.ActualWidth + 1;
-            await RootPivot.WaitForLayoutUpdateAsync();
-            RootPivot.Width = double.NaN;
-        }
 
         private async void RootPivot_SelectedHeaderItemClick(object sender, VGtimePivotSelectedHeaderItemClickEventArgs args)
         {

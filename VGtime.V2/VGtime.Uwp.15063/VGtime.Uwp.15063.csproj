@@ -95,6 +95,8 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Brushes\AcrylicBackgroundSource.cs" />
+    <Compile Include="Brushes\AcrylicBrush.cs" />
     <Compile Include="Controls\ChooseShareDialog.xaml.cs">
       <DependentUpon>ChooseShareDialog.xaml</DependentUpon>
     </Compile>

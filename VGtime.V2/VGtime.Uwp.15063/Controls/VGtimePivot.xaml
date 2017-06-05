@@ -316,12 +316,15 @@
                                         <Grid.RenderTransform>
                                             <CompositeTransform x:Name="PivotLayoutElementTranslateTransform" />
                                         </Grid.RenderTransform>
+                                        <Border Grid.Row="0"
+                                                Grid.Column="0"
+                                                Grid.ColumnSpan="3"
+                                                Background="{ThemeResource VGtimeAccentBrush}" />
                                         <ContentPresenter x:Name="LeftHeaderPresenter"
                                                           Grid.Row="0"
                                                           Grid.Column="0"
                                                           HorizontalAlignment="Stretch"
                                                           VerticalAlignment="Stretch"
-                                                          Background="{ThemeResource VGtimeAccentBrush}"
                                                           Content="{TemplateBinding LeftHeader}"
                                                           ContentTemplate="{TemplateBinding LeftHeaderTemplate}" />
                                         <ContentControl x:Name="HeaderClipper"
@@ -332,7 +335,7 @@
                                             <ContentControl.Clip>
                                                 <RectangleGeometry x:Name="HeaderClipperGeometry" />
                                             </ContentControl.Clip>
-                                            <Grid Background="{ThemeResource VGtimeAccentBrush}">
+                                            <Grid>
                                                 <Grid.RenderTransform>
                                                     <CompositeTransform x:Name="HeaderOffsetTranslateTransform" />
                                                 </Grid.RenderTransform>
@@ -389,7 +392,6 @@
                                                           Grid.Column="2"
                                                           HorizontalAlignment="Stretch"
                                                           VerticalAlignment="Stretch"
-                                                          Background="{ThemeResource VGtimeAccentBrush}"
                                                           Content="{TemplateBinding RightHeader}"
                                                           ContentTemplate="{TemplateBinding RightHeaderTemplate}" />
                                         <ItemsPresenter x:Name="PivotItemPresenter"

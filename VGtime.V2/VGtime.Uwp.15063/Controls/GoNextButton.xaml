@@ -80,11 +80,13 @@
                                    VerticalAlignment="Center"
                                    Text="{TemplateBinding Text}" />
                         <TextBlock Grid.Column="1"
+                                   Margin="8,0,0,0"
                                    VerticalAlignment="Center"
                                    Foreground="{ThemeResource VGtimeSecondaryTextBrush}"
                                    Text="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=Count}" />
                         <fontAwesome:FontAwesomeIcon x:Name="GoNextIcon"
                                                      Grid.Column="2"
+                                                     Margin="8,0,0,0"
                                                      VerticalAlignment="Center"
                                                      Foreground="{ThemeResource VGtimeSecondaryTextBrush}"
                                                      Symbol="AngleRight" />
