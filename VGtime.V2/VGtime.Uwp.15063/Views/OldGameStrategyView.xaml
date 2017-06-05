@@ -34,33 +34,35 @@
             <TextBlock Style="{StaticResource VGtimePageHeaderTextControlStyle}"
                        Text="旧攻略" />
         </Grid>
-        <controls:VGtimeGridView Grid.Row="1"
-                                 Padding="12,12,0,0"
-                                 IsItemClickEnabled="True"
-                                 ItemsSource="{Binding Path=StrategyPosts}"
-                                 MaxItemWidth="800"
-                                 SelectionMode="None">
-            <interactivity:Interaction.Behaviors>
-                <core:EventTriggerBehavior EventName="ItemClick">
-                    <core:InvokeCommandAction Command="{Binding Path=StrategyPostClickCommand}"
-                                              InputConverter="{StaticResource ItemClickEventArgsConverter}" />
-                </core:EventTriggerBehavior>
-            </interactivity:Interaction.Behaviors>
-            <ItemsControl.ItemTemplate>
-                <DataTemplate>
-                    <controls:ListPostItem />
-                </DataTemplate>
-            </ItemsControl.ItemTemplate>
-            <ItemsControl.ItemContainerStyle>
-                <Style TargetType="SelectorItem">
-                    <Setter Property="HorizontalContentAlignment"
-                            Value="Stretch" />
-                    <Setter Property="VerticalContentAlignment"
-                            Value="Stretch" />
-                    <Setter Property="Margin"
-                            Value="0,0,12,12" />
-                </Style>
-            </ItemsControl.ItemContainerStyle>
-        </controls:VGtimeGridView>
+        <Grid Grid.Row="1">
+            <controls:VGtimeGridView Padding="12,12,0,0"
+                                     IsItemClickEnabled="True"
+                                     ItemsSource="{Binding Path=StrategyPosts}"
+                                     MaxItemWidth="800"
+                                     SelectionMode="None">
+                <interactivity:Interaction.Behaviors>
+                    <core:EventTriggerBehavior EventName="ItemClick">
+                        <core:InvokeCommandAction Command="{Binding Path=StrategyPostClickCommand}"
+                                                  InputConverter="{StaticResource ItemClickEventArgsConverter}" />
+                    </core:EventTriggerBehavior>
+                </interactivity:Interaction.Behaviors>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <controls:ListPostItem />
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+                <ItemsControl.ItemContainerStyle>
+                    <Style TargetType="SelectorItem">
+                        <Setter Property="HorizontalContentAlignment"
+                                Value="Stretch" />
+                        <Setter Property="VerticalContentAlignment"
+                                Value="Stretch" />
+                        <Setter Property="Margin"
+                                Value="0,0,12,12" />
+                    </Style>
+                </ItemsControl.ItemContainerStyle>
+            </controls:VGtimeGridView>
+            <controls:VGtimeLoadingControl IsLoading="{Binding Path=StrategyPosts.IsLoading}" />
+        </Grid>
     </Grid>
 </views:VGtimeViewBase>
