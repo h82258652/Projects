@@ -7,6 +7,7 @@ using GalaSoft.MvvmLight.Views;
 using VGtime.Configuration;
 using VGtime.Models.Games;
 using VGtime.Models.Timeline;
+using VGtime.Models.Users;
 using VGtime.Services;
 using VGtime.Uwp.Data;
 using VGtime.Uwp.Services;
@@ -45,6 +46,8 @@ namespace VGtime.Uwp.ViewModels
         private bool _isLoadingHotword;
 
         private RelayCommand<string> _searchCommand;
+
+        private RelayCommand<UserBase> _userClickCommand;
 
         private SearchUserCollection _users;
 
@@ -171,6 +174,18 @@ namespace VGtime.Uwp.ViewModels
                     }
                 });
                 return _searchCommand;
+            }
+        }
+
+        public RelayCommand<UserBase> UserClickCommand
+        {
+            get
+            {
+                _userClickCommand = _userClickCommand ?? new RelayCommand<UserBase>(user =>
+                {
+                    // TODO in next version.
+                });
+                return _userClickCommand;
             }
         }
 
