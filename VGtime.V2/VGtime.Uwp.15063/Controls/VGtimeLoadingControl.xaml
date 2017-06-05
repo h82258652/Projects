@@ -70,7 +70,7 @@
                             </VisualStateGroup>
                         </VisualStateManager.VisualStateGroups>
                         <controls:DropShadowPanel OffsetY="1"
-                                                  ShadowOpacity="0.2">
+                                                  ShadowOpacity="0.3">
                             <Ellipse Fill="White" />
                         </controls:DropShadowPanel>
                         <localControls:VGtimeProgressRing Margin="12"

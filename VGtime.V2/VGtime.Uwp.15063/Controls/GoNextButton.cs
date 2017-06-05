@@ -5,7 +5,7 @@ namespace VGtime.Uwp.Controls
 {
     public sealed class GoNextButton : Button
     {
-        public static readonly DependencyProperty CountProperty = DependencyProperty.Register(nameof(Count), typeof(object), typeof(GoNextButton), new PropertyMetadata(null));
+        public static readonly DependencyProperty IsNextIconVisibleProperty = DependencyProperty.Register(nameof(IsNextIconVisible), typeof(bool), typeof(GoNextButton), new PropertyMetadata(true));
 
         public static readonly DependencyProperty TextProperty = DependencyProperty.Register(nameof(Text), typeof(string), typeof(GoNextButton), new PropertyMetadata(default(string)));
 
@@ -14,15 +14,15 @@ namespace VGtime.Uwp.Controls
             DefaultStyleKey = typeof(GoNextButton);
         }
 
-        public int? Count
+        public bool IsNextIconVisible
         {
             get
             {
-                return (int?)GetValue(CountProperty);
+                return (bool)GetValue(IsNextIconVisibleProperty);
             }
             set
             {
-                SetValue(CountProperty, value);
+                SetValue(IsNextIconVisibleProperty, value);
             }
         }
 

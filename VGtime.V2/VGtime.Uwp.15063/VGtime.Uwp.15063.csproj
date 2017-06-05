@@ -116,6 +116,7 @@
       <DependentUpon>GameScoreItem.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\GoNextButton.cs" />
+    <Compile Include="Controls\HamburgerMenuItem.cs" />
     <Compile Include="Controls\HeadpicItem.xaml.cs">
       <DependentUpon>HeadpicItem.xaml</DependentUpon>
     </Compile>
@@ -142,6 +143,7 @@
       <DependentUpon>VideoPostItem.xaml</DependentUpon>
     </Compile>
     <Compile Include="Converters\AutoSuggestBoxQuerySubmittedEventArgsConverter.cs" />
+    <Compile Include="Converters\FileSizeToStringConverter.cs" />
     <Compile Include="Converters\IntegerToVisibilityConverter.cs" />
     <Compile Include="Converters\IsNullOrEmptyStringToVisibilityConverter.cs" />
     <Compile Include="Converters\ScoreToColorConverter.cs" />
@@ -462,7 +464,8 @@
     <Content Include="Assets\Html\img\zan.png" />
     <Content Include="Assets\Html\img\zan_1.png" />
     <Content Include="Assets\Html\js\article_detail.js" />
-    <Content Include="Assets\Images\logo_about.png" />
+    <Content Include="Assets\Images\about_logo.png" />
+    <Content Include="Assets\Images\welcome_logo.png" />
     <Content Include="Assets\Images\share_system.png" />
     <Content Include="Assets\Images\share_sina_weibo.png" />
     <Content Include="Properties\Default.rd.xml" />
@@ -504,6 +507,11 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\GoNextButton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Page>
+    <Page Include="Controls\HamburgerMenuItem.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -588,6 +596,11 @@
       <Generator>MSBuild:Compile</Generator>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Page>
+    <Page Include="Styles\SplitViews\VGtimeSplitViewStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Page>
     <Page Include="Styles\TextControls\VGtimePageHeaderTextControlStyle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -604,6 +617,11 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Page>
     <Page Include="Styles\VGtimePivotStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Page>
+    <Page Include="Styles\VGtimeSplitViewStyle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

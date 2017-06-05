@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using SoftwareKobo.Controls;
@@ -12,15 +13,15 @@ namespace VGtime.Uwp.ViewModels.Settings
     {
         private readonly IAppToastService _appToastService;
 
+        private readonly IImageLoader _imageLoader;
+
         private readonly IInitService _initService;
 
-        private IImageLoader _imageLoader;
+        private readonly IVGtimeFileService _vgtimeFileService;
+
+        private readonly IVGtimeSettings _vgtimeSettings;
 
         private RelayCommand _saveCommand;
-
-        private IVGtimeFileService _vgtimeFileService;
-
-        private IVGtimeSettings _vgtimeSettings;
 
         public ShowCoverViewModel(IImageLoader imageLoader, IVGtimeFileService vgtimeFileService, IInitService initService, IAppToastService appToastService, IVGtimeSettings vgtimeSettings)
         {
@@ -35,11 +36,25 @@ namespace VGtime.Uwp.ViewModels.Settings
         {
             get
             {
-                _saveCommand = _saveCommand ?? new RelayCommand(() =>
+                _saveCommand = _saveCommand ?? new RelayCommand(async () =>
                 {
                     try
                     {
-                        throw new NotImplementedException();
+                        var startPicture = StartPicture;
+                        if (string.IsNullOrEmpty(startPicture))
+                        {
+                            return;
+                        }
+
+                        var file = await _vgtimeFileService.SelectSaveFileAsync(Path.GetFileName(startPicture));
+                        if (file == null)
+                        {
+                            return;
+                        }
+
+                        var bytes = await _imageLoader.GetBytesAsync(startPicture);
+                        await _vgtimeFileService.WriteAllBytesAsync(file, bytes);
+                        _appToastService.ShowMessage(LocalizedStrings.SaveSuccess);
                     }
                     catch (Exception ex)
                     {
@@ -47,6 +62,25 @@ namespace VGtime.Uwp.ViewModels.Settings
                     }
                 });
                 return _saveCommand;
+            }
+        }
+
+        public string StartPicture => _vgtimeSettings.StartPicture;
+
+        public async void LoadStartPicture()
+        {
+            try
+            {
+                var result = await _initService.GetStartpicAsync(Constants.AppVersionName);
+                if (result.Retcode == Constants.SuccessCode)
+                {
+                    _vgtimeSettings.StartPicture = result.Data.StartPicture;
+                    RaisePropertyChanged(nameof(StartPicture));
+                }
+            }
+            catch (Exception ex)
+            {
+                _appToastService.ShowError(ex.Message);
             }
         }
     }

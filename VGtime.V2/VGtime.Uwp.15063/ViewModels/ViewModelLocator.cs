@@ -3,6 +3,7 @@ using Autofac.Extras.CommonServiceLocator;
 using GalaSoft.MvvmLight.Views;
 using Microsoft.Practices.ServiceLocation;
 using SoftwareKobo.Controls;
+using SoftwareKobo.Services;
 using VGtime.Configuration;
 using VGtime.Services;
 using VGtime.Uwp.Services;
@@ -15,6 +16,7 @@ using VGtime.Uwp.ViewModels.Users;
 using VGtime.Uwp.Views;
 using VGtime.Uwp.Views.Games;
 using VGtime.Uwp.Views.Image;
+using VGtime.Uwp.Views.Settings;
 
 namespace VGtime.Uwp.ViewModels
 {
@@ -39,6 +41,8 @@ namespace VGtime.Uwp.ViewModels
         public const string ImagePagerViewKey = "ImagePager";
 
         public const string SearchViewKey = "Search";
+
+        public const string SettingViewKey = "Setting";
 
         public const string ShowCoverViewKey = "ShowCover";
 
@@ -117,6 +121,7 @@ namespace VGtime.Uwp.ViewModels
             containerBuilder.RegisterType<GameService>().As<IGameService>();
             containerBuilder.RegisterType<PostService>().As<IPostService>();
             containerBuilder.RegisterType<AppToastService>().As<IAppToastService>();
+            containerBuilder.RegisterType<StoreService>().As<IStoreService>();
             containerBuilder.RegisterType<VGtimeFileService>().As<IVGtimeFileService>();
             containerBuilder.RegisterType<VGtimeShareService>().As<IVGtimeShareService>();
 
@@ -138,6 +143,7 @@ namespace VGtime.Uwp.ViewModels
             containerBuilder.RegisterType<OldGameStrategyViewModel>();
             containerBuilder.RegisterType<CommentViewModel>();
             containerBuilder.RegisterType<ImagePagerViewModel>();
+            containerBuilder.RegisterType<ShowCoverViewModel>();
 
             return containerBuilder.Build();
         }
@@ -154,6 +160,9 @@ namespace VGtime.Uwp.ViewModels
             navigationService.Configure(ImagePagerViewKey, typeof(ImagePagerView));
             navigationService.Configure(SearchViewKey, typeof(SearchView));
             navigationService.Configure(GameRelationViewKey, typeof(GameRelationView));
+            navigationService.Configure(AboutViewKey, typeof(AboutView));
+            navigationService.Configure(SettingViewKey, typeof(SettingView));
+            navigationService.Configure(ShowCoverViewKey, typeof(ShowCoverView));
             return navigationService;
         }
     }

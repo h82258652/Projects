@@ -18,6 +18,8 @@ namespace VGtime.Uwp.ViewModels
 
         private readonly INavigationService _navigationService;
 
+        private RelayCommand _aboutCommand;
+
         private TimeLineBase[] _headpics;
 
         private bool _isLoadingHeadpic;
@@ -25,6 +27,8 @@ namespace VGtime.Uwp.ViewModels
         private RelayCommand<TimeLineBase> _postClickCommand;
 
         private RelayCommand _searchCommand;
+
+        private RelayCommand _settingCommand;
 
         private RelayCommand<TimeLineBase> _strategyPostClickCommand;
 
@@ -41,6 +45,18 @@ namespace VGtime.Uwp.ViewModels
             VideoPosts = new TagPostCollection(2, homeService);
             StrategyPosts = new TagPostCollection(3, homeService);
             TopicPosts = new TagPostCollection(5, homeService);
+        }
+
+        public RelayCommand AboutCommand
+        {
+            get
+            {
+                _aboutCommand = _aboutCommand ?? new RelayCommand(() =>
+                {
+                    _navigationService.NavigateTo(ViewModelLocator.AboutViewKey);
+                });
+                return _aboutCommand;
+            }
         }
 
         public TagPostCollection EvaluationPosts
@@ -98,6 +114,18 @@ namespace VGtime.Uwp.ViewModels
                     _navigationService.NavigateTo(ViewModelLocator.SearchViewKey);
                 });
                 return _searchCommand;
+            }
+        }
+
+        public RelayCommand SettingCommand
+        {
+            get
+            {
+                _settingCommand = _settingCommand ?? new RelayCommand(() =>
+                {
+                    _navigationService.NavigateTo(ViewModelLocator.SettingViewKey);
+                });
+                return _settingCommand;
             }
         }
 

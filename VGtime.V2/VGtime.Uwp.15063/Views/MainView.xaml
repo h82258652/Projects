@@ -33,7 +33,8 @@
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <SplitView x:Name="RootSplitView"
                    OpenPaneLength="300"
-                   PaneBackground="Transparent">
+                   PaneBackground="Transparent"
+                   Style="{StaticResource VGtimeSplitViewStyle}">
             <SplitView.Pane>
                 <Grid>
                     <Grid.Background>
@@ -47,8 +48,33 @@
                             </Grid.RowDefinitions>
                             <StackPanel Grid.Row="1"
                                         Orientation="Vertical">
-                                <localControls:GoNextButton Text="设置" />
-                                <localControls:GoNextButton Text="关于" />
+                                <localControls:HamburgerMenuItem Command="{Binding Path=SettingCommand}"
+                                                                 Text="设置">
+                                    <interactivity:Interaction.Behaviors>
+                                        <core:EventTriggerBehavior EventName="Click">
+                                            <core:ChangePropertyAction PropertyName="IsPaneOpen"
+                                                                       TargetObject="{Binding ElementName=RootSplitView}"
+                                                                       Value="False" />
+                                        </core:EventTriggerBehavior>
+                                    </interactivity:Interaction.Behaviors>
+                                    <localControls:HamburgerMenuItem.Icon>
+                                        <SymbolIcon Symbol="Setting" />
+                                    </localControls:HamburgerMenuItem.Icon>
+                                </localControls:HamburgerMenuItem>
+                                <localControls:HamburgerMenuItem Command="{Binding Path=AboutCommand}"
+                                                                 Text="关于">
+                                    <interactivity:Interaction.Behaviors>
+                                        <core:EventTriggerBehavior EventName="Click">
+                                            <core:ChangePropertyAction PropertyName="IsPaneOpen"
+                                                                       TargetObject="{Binding ElementName=RootSplitView}"
+                                                                       Value="False" />
+                                        </core:EventTriggerBehavior>
+                                    </interactivity:Interaction.Behaviors>
+                                    <localControls:HamburgerMenuItem.Icon>
+                                        <FontIcon FontFamily="Segoe MDL2 Assets"
+                                                  Glyph="&#xE946;" />
+                                    </localControls:HamburgerMenuItem.Icon>
+                                </localControls:HamburgerMenuItem>
                             </StackPanel>
                         </Grid>
                     </ScrollViewer>

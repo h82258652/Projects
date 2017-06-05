@@ -14,7 +14,8 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <Grid Grid.Row="0">
+        <Grid Grid.Row="0"
+              Background="{ThemeResource VGtimeAccentBrush}">
             <Button Style="{StaticResource NavigationBackButtonStyle}">
                 <interactivity:Interaction.Behaviors>
                     <core:EventTriggerBehavior EventName="Click">
@@ -24,6 +25,27 @@
             </Button>
             <TextBlock Style="{StaticResource VGtimePageHeaderTextControlStyle}"
                        Text="关于" />
+        </Grid>
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <TextBlock Margin="12"
+                       FontSize="16"
+                       TextWrapping="Wrap">
+                <Run Text="VGtime 第三方 Windows 10 客户端。" />
+                <LineBreak /><Run Text="目前只实现除账户体系的功能。" /></TextBlock>
+            <StackPanel Grid.Row="1"
+                        Orientation="Vertical">
+                <Image HorizontalAlignment="Center"
+                       Source="/Assets/Images/about_logo.png"
+                       Stretch="None" />
+                <TextBlock Margin="0,12,0,2"
+                           FontSize="16"
+                           Text="Copyright 2015 VGtime.All Rights Reserved"
+                           TextAlignment="Center" />
+            </StackPanel>
         </Grid>
     </Grid>
 </views:VGtimeViewBase>

@@ -3,6 +3,7 @@
                       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                       xmlns:behaviors="using:SoftwareKobo.Behaviors"
                       xmlns:controls="using:VGtime.Uwp.Controls"
+                      xmlns:converters="using:VGtime.Uwp.Converters"
                       xmlns:core="using:Microsoft.Xaml.Interactions.Core"
                       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                       xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
@@ -10,6 +11,11 @@
                       xmlns:views="using:VGtime.Uwp.Views"
                       DataContext="{Binding Source={StaticResource Locator}, Path=Setting}"
                       mc:Ignorable="d">
+    <FrameworkElement.Resources>
+        <ResourceDictionary>
+            <converters:FileSizeToStringConverter x:Key="FileSizeToStringConverter" />
+        </ResourceDictionary>
+    </FrameworkElement.Resources>
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -28,10 +34,40 @@
                        Text="设置" />
         </Grid>
         <Grid Grid.Row="1">
-            <controls:GoNextButton Command="{Binding Path=ShowCoverCommand}"
-                                   Text="VGtime封面" />
-            <controls:GoNextButton Command="{Binding Path=AboutCommand}"
-                                   Text="关于" />
+            <ScrollViewer Background="#F7F7F7"
+                          VerticalScrollBarVisibility="Auto">
+                <StackPanel Orientation="Vertical">
+                    <Border Padding="12"
+                            Background="#F7F7F7">
+                        <TextBlock Foreground="{ThemeResource VGtimeSecondaryTextBrush}"
+                                   Text="系统设置" />
+                    </Border>
+                    <Border Height="1"
+                            Background="{ThemeResource VGtimeDividerBrush}" />
+                    <controls:GoNextButton Command="{Binding Path=ClearImageCacheCommand}"
+                                           Content="{Binding Path=CacheImageSize, Converter={StaticResource FileSizeToStringConverter}}"
+                                           IsNextIconVisible="False"
+                                           Text="清理图片缓存" />
+                    <Border Height="1"
+                            Background="{ThemeResource VGtimeDividerBrush}" />
+                    <Border Padding="12"
+                            Background="#F7F7F7">
+                        <TextBlock Foreground="{ThemeResource VGtimeSecondaryTextBrush}"
+                                   Text="其它设置" />
+                    </Border>
+                    <Border Height="1"
+                            Background="{ThemeResource VGtimeDividerBrush}" />
+                    <controls:GoNextButton Command="{Binding Path=PraiseCommand}"
+                                           Text="为游戏时光评分" />
+                    <Border Height="1"
+                            Margin="12,0,0,0"
+                            Background="{ThemeResource VGtimeDividerBrush}" />
+                    <controls:GoNextButton Command="{Binding Path=ShowCoverCommand}"
+                                           Text="VGtime封面" />
+                    <Border Height="1"
+                            Background="{ThemeResource VGtimeDividerBrush}" />
+                </StackPanel>
+            </ScrollViewer>
         </Grid>
     </Grid>
 </views:VGtimeViewBase>
