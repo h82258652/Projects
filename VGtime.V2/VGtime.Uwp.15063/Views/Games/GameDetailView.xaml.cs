@@ -1,4 +1,6 @@
 ﻿using Windows.UI.Xaml.Navigation;
+using GalaSoft.MvvmLight.Messaging;
+using VGtime.Uwp.Messages;
 using VGtime.Uwp.ViewModels.Games;
 
 namespace VGtime.Uwp.Views.Games
@@ -16,11 +18,27 @@ namespace VGtime.Uwp.Views.Games
         {
             base.OnNavigatedTo(e);
 
+            Messenger.Default.Register<SinaWeiboShareSelectedMessage>(this, message =>
+            {
+                ViewModel.SinaWeiboShareCommand.Execute(null);
+            });
+            Messenger.Default.Register<SystemShareSelectedMessage>(this, message =>
+            {
+                ViewModel.SystemShareCommand.Execute(null);
+            });
+
             var gameId = (int)e.Parameter;
             if (ViewModel.GameId != gameId)
             {
                 ViewModel.LoadDetail(gameId);
             }
+        }
+
+        protected override void OnNavigatedFrom(NavigationEventArgs e)
+        {
+            base.OnNavigatedFrom(e);
+
+            Messenger.Default.Unregister(this);
         }
     }
 }

@@ -41,6 +41,14 @@ namespace VGtime.Uwp.Views
                     JsonConvert.SerializeObject(message.ArticleDetail)
                 });
             });
+            Messenger.Default.Register<SinaWeiboShareSelectedMessage>(this, message =>
+            {
+                ViewModel.SinaWeiboShareCommand.Execute(null);
+            });
+            Messenger.Default.Register<SystemShareSelectedMessage>(this, message =>
+            {
+                ViewModel.SystemShareCommand.Execute(null);
+            });
 
             var parameter = (ArticleDetailViewParameter)e.Parameter;
             Debug.Assert(parameter != null);

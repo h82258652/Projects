@@ -7,28 +7,28 @@ namespace VGtime.Uwp.Controls
 {
     internal class VGtimePivotHeaderItemAssistButton : Button
     {
-        internal static readonly DependencyProperty AttachPivotHeaderItemProperty = DependencyProperty.Register(nameof(AttachPivotHeaderItem), typeof(PivotHeaderItem), typeof(VGtimePivotHeaderItemAssistButton), new PropertyMetadata(default(PivotHeaderItem)));
+        internal static readonly DependencyProperty AttachedPivotHeaderItemProperty = DependencyProperty.Register(nameof(AttachedPivotHeaderItem), typeof(PivotHeaderItem), typeof(VGtimePivotHeaderItemAssistButton), new PropertyMetadata(default(PivotHeaderItem)));
 
         internal VGtimePivotHeaderItemAssistButton()
         {
             Click += VGtimePivotHeaderItemAssistButton_Click;
         }
 
-        internal PivotHeaderItem AttachPivotHeaderItem
+        internal PivotHeaderItem AttachedPivotHeaderItem
         {
             get
             {
-                return (PivotHeaderItem)GetValue(AttachPivotHeaderItemProperty);
+                return (PivotHeaderItem)GetValue(AttachedPivotHeaderItemProperty);
             }
             set
             {
-                SetValue(AttachPivotHeaderItemProperty, value);
+                SetValue(AttachedPivotHeaderItemProperty, value);
             }
         }
 
         private void VGtimePivotHeaderItemAssistButton_Click(object sender, RoutedEventArgs e)
         {
-            var attachPivotHeaderItem = AttachPivotHeaderItem;
+            var attachPivotHeaderItem = AttachedPivotHeaderItem;
             if (attachPivotHeaderItem != null)
             {
                 this.GetFirstAncestorOfType<VGtimePivot>()?.FireSelectedHeaderItemClick(attachPivotHeaderItem);

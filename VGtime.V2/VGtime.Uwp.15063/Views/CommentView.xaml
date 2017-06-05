@@ -34,58 +34,60 @@
             <TextBlock Style="{StaticResource VGtimePageHeaderTextControlStyle}"
                        Text="全部评论" />
         </Grid>
-        <controls:VGtimeGridView Grid.Row="1"
-                                 Padding="12,12,0,0"
-                                 Background="#F7F7F7"
-                                 IsItemClickEnabled="True"
-                                 ItemsSource="{Binding Path=Comments}"
-                                 MaxItemWidth="300"
-                                 SelectionMode="None">
-            <interactivity:Interaction.Behaviors>
-                <core:EventTriggerBehavior EventName="ItemClick">
-                    <core:InvokeCommandAction Command="{Binding Path=CommentClickCommand}"
-                                              InputConverter="{StaticResource ItemClickEventArgsConverter}" />
-                </core:EventTriggerBehavior>
-            </interactivity:Interaction.Behaviors>
-            <ListViewBase.Header>
-                <Grid Margin="-12,-12,0,12">
-                    <Border Padding="12"
-                            Background="#F7F7F7"
-                            BorderBrush="{ThemeResource VGtimeDividerBrush}"
-                            BorderThickness="0,0,0,1">
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto" />
-                                <ColumnDefinition Width="*" />
-                            </Grid.ColumnDefinitions>
-                            <TextBlock Grid.Column="0"
-                                       Foreground="{ThemeResource VGtimeSecondaryTextBrush}"
-                                       Text="全部评论" />
-                            <TextBlock Grid.Column="1"
-                                       Margin="8,0,0,0"
-                                       Foreground="{ThemeResource VGtimeSecondaryTextBrush}"
-                                       Text="{Binding Path=Comments.Count}" />
-                        </Grid>
-                    </Border>
-                </Grid>
-            </ListViewBase.Header>
-            <ItemsControl.ItemTemplate>
-                <DataTemplate>
-                    <controls:CommentItem />
-                </DataTemplate>
-            </ItemsControl.ItemTemplate>
-            <ItemsControl.ItemContainerStyle>
-                <Style TargetType="SelectorItem">
-                    <Setter Property="HorizontalContentAlignment"
-                            Value="Stretch" />
-                    <Setter Property="VerticalContentAlignment"
-                            Value="Stretch" />
-                    <Setter Property="Margin"
-                            Value="0,0,12,12" />
-                    <Setter Property="Background"
-                            Value="White" />
-                </Style>
-            </ItemsControl.ItemContainerStyle>
-        </controls:VGtimeGridView>
+        <Grid Grid.Row="1">
+            <controls:VGtimeGridView Padding="12,12,0,0"
+                                     Background="#F7F7F7"
+                                     IsItemClickEnabled="True"
+                                     ItemsSource="{Binding Path=Comments}"
+                                     MaxItemWidth="300"
+                                     SelectionMode="None">
+                <interactivity:Interaction.Behaviors>
+                    <core:EventTriggerBehavior EventName="ItemClick">
+                        <core:InvokeCommandAction Command="{Binding Path=CommentClickCommand}"
+                                                  InputConverter="{StaticResource ItemClickEventArgsConverter}" />
+                    </core:EventTriggerBehavior>
+                </interactivity:Interaction.Behaviors>
+                <ListViewBase.Header>
+                    <Grid Margin="-12,-12,0,12">
+                        <Border Padding="12"
+                                Background="#F7F7F7"
+                                BorderBrush="{ThemeResource VGtimeDividerBrush}"
+                                BorderThickness="0,0,0,1">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Column="0"
+                                           Foreground="{ThemeResource VGtimeSecondaryTextBrush}"
+                                           Text="全部评论" />
+                                <TextBlock Grid.Column="1"
+                                           Margin="8,0,0,0"
+                                           Foreground="{ThemeResource VGtimeSecondaryTextBrush}"
+                                           Text="{Binding Path=Comments.Count}" />
+                            </Grid>
+                        </Border>
+                    </Grid>
+                </ListViewBase.Header>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <controls:CommentItem />
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+                <ItemsControl.ItemContainerStyle>
+                    <Style TargetType="SelectorItem">
+                        <Setter Property="HorizontalContentAlignment"
+                                Value="Stretch" />
+                        <Setter Property="VerticalContentAlignment"
+                                Value="Stretch" />
+                        <Setter Property="Margin"
+                                Value="0,0,12,12" />
+                        <Setter Property="Background"
+                                Value="White" />
+                    </Style>
+                </ItemsControl.ItemContainerStyle>
+            </controls:VGtimeGridView>
+            <controls:VGtimeLoadingControl IsLoading="{Binding Path=Comments.IsLoading}" />
+        </Grid>
     </Grid>
 </views:VGtimeViewBase>

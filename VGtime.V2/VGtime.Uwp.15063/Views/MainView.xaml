@@ -41,208 +41,226 @@
             </FrameworkElement.Resources>
             <!-- 二维码按钮<Pivot.LeftHeader></Pivot.LeftHeader>-->
             <PivotItem Header="首页">
-                <localControls:VGtimeGridView x:Name="VglistPostsGridView"
-                                              Padding="12,12,0,0"
-                                              IsItemClickEnabled="True"
-                                              ItemTemplateSelector="{StaticResource PostItemTemplateSelector}"
-                                              ItemsSource="{Binding Path=VglistPosts}"
-                                              MaxItemWidth="800"
-                                              SelectionMode="None">
-                    <interactivity:Interaction.Behaviors>
-                        <core:EventTriggerBehavior EventName="ItemClick">
-                            <core:InvokeCommandAction Command="{Binding Path=PostClickCommand}"
-                                                      InputConverter="{StaticResource ItemClickEventArgsConverter}" />
-                        </core:EventTriggerBehavior>
-                    </interactivity:Interaction.Behaviors>
-                    <ListViewBase.Header>
-                        <localControls:HeadpicsControl Margin="-12,-12,0,12" />
-                    </ListViewBase.Header>
-                    <ItemsControl.ItemContainerStyle>
-                        <Style TargetType="SelectorItem">
-                            <Setter Property="HorizontalContentAlignment"
-                                    Value="Stretch" />
-                            <Setter Property="VerticalContentAlignment"
-                                    Value="Stretch" />
-                            <Setter Property="Margin"
-                                    Value="0,0,12,12" />
-                        </Style>
-                    </ItemsControl.ItemContainerStyle>
-                </localControls:VGtimeGridView>
+                <Grid>
+                    <localControls:VGtimeGridView x:Name="VglistPostsGridView"
+                                                  Padding="12,12,0,0"
+                                                  IsItemClickEnabled="True"
+                                                  ItemTemplateSelector="{StaticResource PostItemTemplateSelector}"
+                                                  ItemsSource="{Binding Path=VglistPosts}"
+                                                  MaxItemWidth="800"
+                                                  SelectionMode="None">
+                        <interactivity:Interaction.Behaviors>
+                            <core:EventTriggerBehavior EventName="ItemClick">
+                                <core:InvokeCommandAction Command="{Binding Path=PostClickCommand}"
+                                                          InputConverter="{StaticResource ItemClickEventArgsConverter}" />
+                            </core:EventTriggerBehavior>
+                        </interactivity:Interaction.Behaviors>
+                        <ListViewBase.Header>
+                            <localControls:HeadpicsControl Margin="-12,-12,0,12" />
+                        </ListViewBase.Header>
+                        <ItemsControl.ItemContainerStyle>
+                            <Style TargetType="SelectorItem">
+                                <Setter Property="HorizontalContentAlignment"
+                                        Value="Stretch" />
+                                <Setter Property="VerticalContentAlignment"
+                                        Value="Stretch" />
+                                <Setter Property="Margin"
+                                        Value="0,0,12,12" />
+                            </Style>
+                        </ItemsControl.ItemContainerStyle>
+                    </localControls:VGtimeGridView>
+                    <localControls:VGtimeLoadingControl IsLoading="{Binding VglistPosts.IsLoading}" />
+                </Grid>
             </PivotItem>
             <PivotItem Header="新闻">
-                <localControls:VGtimeGridView x:Name="NewsPostsGridView"
-                                              Padding="12,12,0,0"
-                                              IsItemClickEnabled="True"
-                                              ItemsSource="{Binding Path=NewsPosts}"
-                                              MaxItemWidth="600"
-                                              SelectionMode="None">
-                    <interactivity:Interaction.Behaviors>
-                        <core:EventTriggerBehavior EventName="ItemClick">
-                            <core:InvokeCommandAction Command="{Binding Path=PostClickCommand}"
-                                                      InputConverter="{StaticResource ItemClickEventArgsConverter}" />
-                        </core:EventTriggerBehavior>
-                    </interactivity:Interaction.Behaviors>
-                    <ItemsControl.ItemTemplate>
-                        <DataTemplate>
-                            <localControls:ListPostItem />
-                        </DataTemplate>
-                    </ItemsControl.ItemTemplate>
-                    <ItemsControl.ItemContainerStyle>
-                        <Style TargetType="SelectorItem">
-                            <Setter Property="HorizontalContentAlignment"
-                                    Value="Stretch" />
-                            <Setter Property="VerticalContentAlignment"
-                                    Value="Stretch" />
-                            <Setter Property="Margin"
-                                    Value="0,0,12,12" />
-                        </Style>
-                    </ItemsControl.ItemContainerStyle>
-                </localControls:VGtimeGridView>
+                <Grid>
+                    <localControls:VGtimeGridView x:Name="NewsPostsGridView"
+                                                  Padding="12,12,0,0"
+                                                  IsItemClickEnabled="True"
+                                                  ItemsSource="{Binding Path=NewsPosts}"
+                                                  MaxItemWidth="600"
+                                                  SelectionMode="None">
+                        <interactivity:Interaction.Behaviors>
+                            <core:EventTriggerBehavior EventName="ItemClick">
+                                <core:InvokeCommandAction Command="{Binding Path=PostClickCommand}"
+                                                          InputConverter="{StaticResource ItemClickEventArgsConverter}" />
+                            </core:EventTriggerBehavior>
+                        </interactivity:Interaction.Behaviors>
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <localControls:ListPostItem />
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                        <ItemsControl.ItemContainerStyle>
+                            <Style TargetType="SelectorItem">
+                                <Setter Property="HorizontalContentAlignment"
+                                        Value="Stretch" />
+                                <Setter Property="VerticalContentAlignment"
+                                        Value="Stretch" />
+                                <Setter Property="Margin"
+                                        Value="0,0,12,12" />
+                            </Style>
+                        </ItemsControl.ItemContainerStyle>
+                    </localControls:VGtimeGridView>
+                    <localControls:VGtimeLoadingControl IsLoading="{Binding Path=NewsPosts.IsLoading}" />
+                </Grid>
             </PivotItem>
             <PivotItem Header="评测">
-                <localControls:VGtimeGridView x:Name="EvaluationPostsGridView"
-                                              Padding="12,12,0,0"
-                                              IsItemClickEnabled="True"
-                                              ItemsSource="{Binding Path=EvaluationPosts}"
-                                              MaxItemWidth="600"
-                                              SelectionMode="None">
-                    <interactivity:Interaction.Behaviors>
-                        <core:EventTriggerBehavior EventName="ItemClick">
-                            <core:InvokeCommandAction Command="{Binding Path=PostClickCommand}"
-                                                      InputConverter="{StaticResource ItemClickEventArgsConverter}" />
-                        </core:EventTriggerBehavior>
-                    </interactivity:Interaction.Behaviors>
-                    <ItemsControl.ItemTemplate>
-                        <DataTemplate>
-                            <localControls:ListPostItem />
-                        </DataTemplate>
-                    </ItemsControl.ItemTemplate>
-                    <ItemsControl.ItemContainerStyle>
-                        <Style TargetType="SelectorItem">
-                            <Setter Property="HorizontalContentAlignment"
-                                    Value="Stretch" />
-                            <Setter Property="VerticalContentAlignment"
-                                    Value="Stretch" />
-                            <Setter Property="Margin"
-                                    Value="0,0,12,12" />
-                        </Style>
-                    </ItemsControl.ItemContainerStyle>
-                </localControls:VGtimeGridView>
+                <Grid>
+                    <localControls:VGtimeGridView x:Name="EvaluationPostsGridView"
+                                                  Padding="12,12,0,0"
+                                                  IsItemClickEnabled="True"
+                                                  ItemsSource="{Binding Path=EvaluationPosts}"
+                                                  MaxItemWidth="600"
+                                                  SelectionMode="None">
+                        <interactivity:Interaction.Behaviors>
+                            <core:EventTriggerBehavior EventName="ItemClick">
+                                <core:InvokeCommandAction Command="{Binding Path=PostClickCommand}"
+                                                          InputConverter="{StaticResource ItemClickEventArgsConverter}" />
+                            </core:EventTriggerBehavior>
+                        </interactivity:Interaction.Behaviors>
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <localControls:ListPostItem />
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                        <ItemsControl.ItemContainerStyle>
+                            <Style TargetType="SelectorItem">
+                                <Setter Property="HorizontalContentAlignment"
+                                        Value="Stretch" />
+                                <Setter Property="VerticalContentAlignment"
+                                        Value="Stretch" />
+                                <Setter Property="Margin"
+                                        Value="0,0,12,12" />
+                            </Style>
+                        </ItemsControl.ItemContainerStyle>
+                    </localControls:VGtimeGridView>
+                    <localControls:VGtimeLoadingControl IsLoading="{Binding Path=EvaluationPosts.IsLoading}" />
+                </Grid>
             </PivotItem>
             <PivotItem Header="视频">
-                <localControls:VGtimeGridView x:Name="VideoPostsGridView"
-                                              Padding="12,12,0,0"
-                                              IsItemClickEnabled="True"
-                                              ItemsSource="{Binding Path=VideoPosts}"
-                                              MaxItemWidth="640"
-                                              SelectionMode="None">
-                    <interactivity:Interaction.Behaviors>
-                        <core:EventTriggerBehavior EventName="ItemClick">
-                            <core:InvokeCommandAction Command="{Binding Path=PostClickCommand}"
-                                                      InputConverter="{StaticResource ItemClickEventArgsConverter}" />
-                        </core:EventTriggerBehavior>
-                    </interactivity:Interaction.Behaviors>
-                    <ItemsControl.ItemTemplate>
-                        <DataTemplate>
-                            <localControls:VideoPostItem />
-                        </DataTemplate>
-                    </ItemsControl.ItemTemplate>
-                    <ItemsControl.ItemContainerStyle>
-                        <Style TargetType="SelectorItem">
-                            <Setter Property="HorizontalContentAlignment"
-                                    Value="Stretch" />
-                            <Setter Property="VerticalContentAlignment"
-                                    Value="Stretch" />
-                            <Setter Property="Margin"
-                                    Value="0,0,12,12" />
-                        </Style>
-                    </ItemsControl.ItemContainerStyle>
-                </localControls:VGtimeGridView>
+                <Grid>
+                    <localControls:VGtimeGridView x:Name="VideoPostsGridView"
+                                                  Padding="12,12,0,0"
+                                                  IsItemClickEnabled="True"
+                                                  ItemsSource="{Binding Path=VideoPosts}"
+                                                  MaxItemWidth="640"
+                                                  SelectionMode="None">
+                        <interactivity:Interaction.Behaviors>
+                            <core:EventTriggerBehavior EventName="ItemClick">
+                                <core:InvokeCommandAction Command="{Binding Path=PostClickCommand}"
+                                                          InputConverter="{StaticResource ItemClickEventArgsConverter}" />
+                            </core:EventTriggerBehavior>
+                        </interactivity:Interaction.Behaviors>
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <localControls:VideoPostItem />
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                        <ItemsControl.ItemContainerStyle>
+                            <Style TargetType="SelectorItem">
+                                <Setter Property="HorizontalContentAlignment"
+                                        Value="Stretch" />
+                                <Setter Property="VerticalContentAlignment"
+                                        Value="Stretch" />
+                                <Setter Property="Margin"
+                                        Value="0,0,12,12" />
+                            </Style>
+                        </ItemsControl.ItemContainerStyle>
+                    </localControls:VGtimeGridView>
+                    <localControls:VGtimeLoadingControl IsLoading="{Binding Path=VideoPosts.IsLoading}" />
+                </Grid>
             </PivotItem>
             <PivotItem Header="攻略">
-                <localControls:VGtimeGridView x:Name="StrategyPostsGridView"
-                                              x:Uid="/MainView/StrategyPostsGridView"
-                                              Padding="12,0,0,0"
-                                              IsItemClickEnabled="True"
-                                              ItemsSource="{Binding Path=StrategyPosts}"
-                                              MaxItemWidth="600"
-                                              SelectionMode="None">
-                    <interactivity:Interaction.Behaviors>
-                        <core:EventTriggerBehavior EventName="ItemClick">
-                            <core:InvokeCommandAction Command="{Binding Path=StrategyPostClickCommand}"
-                                                      InputConverter="{StaticResource ItemClickEventArgsConverter}" />
-                        </core:EventTriggerBehavior>
-                    </interactivity:Interaction.Behaviors>
-                    <ListViewBase.Header>
-                        <Grid Margin="-12,0,0,12"
-                              BorderBrush="{ThemeResource VGtimeDividerBrush}"
-                              BorderThickness="0,0,0,1">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="Auto" />
-                            </Grid.ColumnDefinitions>
-                            <TextBlock Grid.Column="0"
-                                       Margin="12,0,0,0"
-                                       VerticalAlignment="Center"
-                                       Text="点击查看更多过往攻略" />
-                            <Button Grid.Column="1"
-                                    Margin="12,8,12,8"
-                                    Content="查看"
-                                    Style="{StaticResource VGtimeButtonStyle}">
-                                <interactivity:Interaction.Behaviors>
-                                    <core:EventTriggerBehavior EventName="Click">
-                                        <behaviors:NavigateToPageAction TargetPage="VGtime.Uwp.Views.OldGameStrategyView" />
-                                    </core:EventTriggerBehavior>
-                                </interactivity:Interaction.Behaviors>
-                            </Button>
-                        </Grid>
-                    </ListViewBase.Header>
-                    <ItemsControl.ItemTemplate>
-                        <DataTemplate>
-                            <localControls:ListPostItem />
-                        </DataTemplate>
-                    </ItemsControl.ItemTemplate>
-                    <ItemsControl.ItemContainerStyle>
-                        <Style TargetType="SelectorItem">
-                            <Setter Property="HorizontalContentAlignment"
-                                    Value="Stretch" />
-                            <Setter Property="VerticalContentAlignment"
-                                    Value="Stretch" />
-                            <Setter Property="Margin"
-                                    Value="0,0,12,12" />
-                        </Style>
-                    </ItemsControl.ItemContainerStyle>
-                </localControls:VGtimeGridView>
+                <Grid>
+                    <localControls:VGtimeGridView x:Name="StrategyPostsGridView"
+                                                  x:Uid="/MainView/StrategyPostsGridView"
+                                                  Padding="12,0,0,0"
+                                                  IsItemClickEnabled="True"
+                                                  ItemsSource="{Binding Path=StrategyPosts}"
+                                                  MaxItemWidth="600"
+                                                  SelectionMode="None">
+                        <interactivity:Interaction.Behaviors>
+                            <core:EventTriggerBehavior EventName="ItemClick">
+                                <core:InvokeCommandAction Command="{Binding Path=StrategyPostClickCommand}"
+                                                          InputConverter="{StaticResource ItemClickEventArgsConverter}" />
+                            </core:EventTriggerBehavior>
+                        </interactivity:Interaction.Behaviors>
+                        <ListViewBase.Header>
+                            <Grid Margin="-12,0,0,12"
+                                  BorderBrush="{ThemeResource VGtimeDividerBrush}"
+                                  BorderThickness="0,0,0,1">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Column="0"
+                                           Margin="12,0,0,0"
+                                           VerticalAlignment="Center"
+                                           Text="点击查看更多过往攻略" />
+                                <Button Grid.Column="1"
+                                        Margin="12,8,12,8"
+                                        Content="查看"
+                                        Style="{StaticResource VGtimeButtonStyle}">
+                                    <interactivity:Interaction.Behaviors>
+                                        <core:EventTriggerBehavior EventName="Click">
+                                            <behaviors:NavigateToPageAction TargetPage="VGtime.Uwp.Views.OldGameStrategyView" />
+                                        </core:EventTriggerBehavior>
+                                    </interactivity:Interaction.Behaviors>
+                                </Button>
+                            </Grid>
+                        </ListViewBase.Header>
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <localControls:ListPostItem />
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                        <ItemsControl.ItemContainerStyle>
+                            <Style TargetType="SelectorItem">
+                                <Setter Property="HorizontalContentAlignment"
+                                        Value="Stretch" />
+                                <Setter Property="VerticalContentAlignment"
+                                        Value="Stretch" />
+                                <Setter Property="Margin"
+                                        Value="0,0,12,12" />
+                            </Style>
+                        </ItemsControl.ItemContainerStyle>
+                    </localControls:VGtimeGridView>
+                    <localControls:VGtimeLoadingControl IsLoading="{Binding Path=StrategyPosts.IsLoading}" />
+                </Grid>
             </PivotItem>
             <PivotItem Header="专栏">
-                <localControls:VGtimeGridView x:Name="TopicPostsGridView"
-                                              Padding="12,12,0,0"
-                                              IsItemClickEnabled="True"
-                                              ItemsSource="{Binding Path=TopicPosts}"
-                                              MaxItemWidth="600"
-                                              SelectionMode="None">
-                    <interactivity:Interaction.Behaviors>
-                        <core:EventTriggerBehavior EventName="ItemClick">
-                            <core:InvokeCommandAction Command="{Binding Path=PostClickCommand}"
-                                                      InputConverter="{StaticResource ItemClickEventArgsConverter}" />
-                        </core:EventTriggerBehavior>
-                    </interactivity:Interaction.Behaviors>
-                    <ItemsControl.ItemTemplate>
-                        <DataTemplate>
-                            <localControls:ListPostItem />
-                        </DataTemplate>
-                    </ItemsControl.ItemTemplate>
-                    <ItemsControl.ItemContainerStyle>
-                        <Style TargetType="SelectorItem">
-                            <Setter Property="HorizontalContentAlignment"
-                                    Value="Stretch" />
-                            <Setter Property="VerticalContentAlignment"
-                                    Value="Stretch" />
-                            <Setter Property="Margin"
-                                    Value="0,0,12,12" />
-                        </Style>
-                    </ItemsControl.ItemContainerStyle>
-                </localControls:VGtimeGridView>
+                <Grid>
+                    <localControls:VGtimeGridView x:Name="TopicPostsGridView"
+                                                  Padding="12,12,0,0"
+                                                  IsItemClickEnabled="True"
+                                                  ItemsSource="{Binding Path=TopicPosts}"
+                                                  MaxItemWidth="600"
+                                                  SelectionMode="None">
+                        <interactivity:Interaction.Behaviors>
+                            <core:EventTriggerBehavior EventName="ItemClick">
+                                <core:InvokeCommandAction Command="{Binding Path=PostClickCommand}"
+                                                          InputConverter="{StaticResource ItemClickEventArgsConverter}" />
+                            </core:EventTriggerBehavior>
+                        </interactivity:Interaction.Behaviors>
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <localControls:ListPostItem />
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                        <ItemsControl.ItemContainerStyle>
+                            <Style TargetType="SelectorItem">
+                                <Setter Property="HorizontalContentAlignment"
+                                        Value="Stretch" />
+                                <Setter Property="VerticalContentAlignment"
+                                        Value="Stretch" />
+                                <Setter Property="Margin"
+                                        Value="0,0,12,12" />
+                            </Style>
+                        </ItemsControl.ItemContainerStyle>
+                    </localControls:VGtimeGridView>
+                    <localControls:VGtimeLoadingControl IsLoading="{Binding Path=TopicPosts.IsLoading}" />
+                </Grid>
             </PivotItem>
             <Pivot.RightHeader>
                 <Button Command="{Binding Path=SearchCommand}"

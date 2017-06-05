@@ -3,6 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             Loaded="RootView_Loaded"
+             Unloaded="RootView_Unloaded"
              mc:Ignorable="d">
     <Grid x:Name="RootGrid"
           Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
@@ -13,6 +15,9 @@
                         VerticalContentAlignment="Stretch"
                         x:FieldModifier="internal"
                         IsHitTestVisible="False" />
+        <ContentControl x:Name="ChooseShareDialogHost"
+                        HorizontalContentAlignment="Stretch"
+                        VerticalContentAlignment="Stretch" />
         <Grid x:Name="ToastContainer"
               Margin="0,16,0,0"
               x:FieldModifier="internal" />

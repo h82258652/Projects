@@ -2,6 +2,8 @@
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Views;
+using SoftwareKobo.Controls;
+using SoftwareKobo.Social.SinaWeibo;
 using VGtime.Configuration;
 using VGtime.Models.Article;
 using VGtime.Services;
@@ -15,11 +17,15 @@ namespace VGtime.Uwp.ViewModels
     {
         private readonly IAppToastService _appToastService;
 
+        private readonly IImageLoader _imageLoader;
+
         private readonly INavigationService _navigationService;
 
         private readonly IPostService _postService;
 
         private readonly IVGtimeSettings _vgtimeSettings;
+
+        private readonly IVGtimeShareService _vgtimeShareService;
 
         private ArticleDetail _articleDetail;
 
@@ -27,18 +33,28 @@ namespace VGtime.Uwp.ViewModels
 
         private RelayCommand _moreCommentCommand;
 
+        private int _postId;
+
         private RelayCommand<int> _relatedGameCommand;
 
         private RelayCommand<(int gameId, int detailType)> _relatedNewsCommand;
 
+        private RelayCommand _shareCommand;
+
+        private RelayCommand _sinaWeiboShareCommand;
+
+        private RelayCommand _systemShareCommand;
+
         private int _type;
 
-        public ArticleDetailViewModel(IPostService postService, IVGtimeSettings vgtimeSettings, IAppToastService appToastService, INavigationService navigationService)
+        public ArticleDetailViewModel(IPostService postService, IVGtimeSettings vgtimeSettings, IAppToastService appToastService, INavigationService navigationService, IVGtimeShareService vgtimeShareService, IImageLoader imageLoader)
         {
             _postService = postService;
             _vgtimeSettings = vgtimeSettings;
             _appToastService = appToastService;
             _navigationService = navigationService;
+            _vgtimeShareService = vgtimeShareService;
+            _imageLoader = imageLoader;
         }
 
         public ArticleDetail ArticleDetail
@@ -79,8 +95,18 @@ namespace VGtime.Uwp.ViewModels
 
         public int PostId
         {
-            get;
-            private set;
+            get
+            {
+                return _postId;
+            }
+            private set
+            {
+                if (_postId != value)
+                {
+                    _postId = value;
+                    ArticleDetail = null;
+                }
+            }
         }
 
         public RelayCommand<int> RelatedGameCommand
@@ -104,6 +130,75 @@ namespace VGtime.Uwp.ViewModels
                     _navigationService.NavigateTo(ViewModelLocator.ArticleDetailViewKey, new ArticleDetailViewParameter(tuple.gameId, tuple.detailType));
                 });
                 return _relatedNewsCommand;
+            }
+        }
+
+        public RelayCommand ShareCommand
+        {
+            get
+            {
+                _shareCommand = _shareCommand ?? new RelayCommand(() =>
+                {
+                    MessengerInstance.Send(new ShowChooseShareDialogMessage());
+                });
+                return _shareCommand;
+            }
+        }
+
+        public RelayCommand SinaWeiboShareCommand
+        {
+            get
+            {
+                _sinaWeiboShareCommand = _sinaWeiboShareCommand ?? new RelayCommand(async () =>
+                {
+                    var articleDetail = ArticleDetail;
+                    if (articleDetail == null)
+                    {
+                        return;
+                    }
+
+                    try
+                    {
+                        var imageUrl = articleDetail.Thumbnail.Url;
+                        var bytes = await _imageLoader.GetBytesAsync(imageUrl);
+                        var text = string.Join(Environment.NewLine, articleDetail.Title, articleDetail.ShareUrl);
+                        var result = await _vgtimeShareService.ShareToSinaWeiboAsync(text, bytes);
+                        if (result.ErrorCode <= 0)
+                        {
+                            _appToastService.ShowMessage(LocalizedStrings.ShareSuccess);
+                        }
+                        else
+                        {
+                            _appToastService.ShowError(result.ErrorMessage);
+                        }
+                    }
+                    catch (UserCancelAuthorizeException)
+                    {
+                    }
+                    catch (Exception ex)
+                    {
+                        _appToastService.ShowError(ex.Message);
+                    }
+                });
+                return _sinaWeiboShareCommand;
+            }
+        }
+
+        public RelayCommand SystemShareCommand
+        {
+            get
+            {
+                _systemShareCommand = _systemShareCommand ?? new RelayCommand(async () =>
+                {
+                    var articleDetail = ArticleDetail;
+                    if (articleDetail == null)
+                    {
+                        return;
+                    }
+
+                    await _vgtimeShareService.ShareToSystemAsync(articleDetail.Title, articleDetail.ShareUrl, articleDetail.Thumbnail.Url);
+                });
+                return _systemShareCommand;
             }
         }
 

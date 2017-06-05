@@ -63,86 +63,98 @@
                 </ResourceDictionary>
             </FrameworkElement.Resources>
             <PivotItem Header="文章">
-                <controls:VGtimeGridView x:Name="ArticlesGridView"
-                                         Padding="12,12,0,0"
-                                         IsItemClickEnabled="True"
-                                         ItemsSource="{Binding Path=Articles}"
-                                         MaxItemWidth="600"
-                                         SelectionMode="None">
-                    <interactivity:Interaction.Behaviors>
-                        <core:EventTriggerBehavior EventName="ItemClick">
-                            <core:InvokeCommandAction Command="{Binding Path=ArticleClickCommand}"
-                                                      InputConverter="{StaticResource ItemClickEventArgsConverter}" />
-                        </core:EventTriggerBehavior>
-                    </interactivity:Interaction.Behaviors>
-                    <ItemsControl.ItemTemplate>
-                        <DataTemplate>
-                            <controls:ListPostItem />
-                        </DataTemplate>
-                    </ItemsControl.ItemTemplate>
-                    <ItemsControl.ItemContainerStyle>
-                        <Style TargetType="SelectorItem">
-                            <Setter Property="HorizontalContentAlignment"
-                                    Value="Stretch" />
-                            <Setter Property="VerticalContentAlignment"
-                                    Value="Stretch" />
-                            <Setter Property="Margin"
-                                    Value="0,0,12,12" />
-                        </Style>
-                    </ItemsControl.ItemContainerStyle>
-                </controls:VGtimeGridView>
+                <Grid>
+                    <controls:VGtimeGridView x:Name="ArticlesGridView"
+                                             Padding="12,12,0,0"
+                                             IsItemClickEnabled="True"
+                                             ItemsSource="{Binding Path=Articles}"
+                                             MaxItemWidth="600"
+                                             SelectionMode="None">
+                        <interactivity:Interaction.Behaviors>
+                            <core:EventTriggerBehavior EventName="ItemClick">
+                                <core:InvokeCommandAction Command="{Binding Path=ArticleClickCommand}"
+                                                          InputConverter="{StaticResource ItemClickEventArgsConverter}" />
+                            </core:EventTriggerBehavior>
+                        </interactivity:Interaction.Behaviors>
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <controls:ListPostItem />
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                        <ItemsControl.ItemContainerStyle>
+                            <Style TargetType="SelectorItem">
+                                <Setter Property="HorizontalContentAlignment"
+                                        Value="Stretch" />
+                                <Setter Property="VerticalContentAlignment"
+                                        Value="Stretch" />
+                                <Setter Property="Margin"
+                                        Value="0,0,12,12" />
+                            </Style>
+                        </ItemsControl.ItemContainerStyle>
+                    </controls:VGtimeGridView>
+                    <controls:VGtimeLoadingControl IsLoading="{Binding Path=Articles.IsLoading}" />
+                </Grid>
             </PivotItem>
             <PivotItem Header="俱乐部">
-                <controls:VGtimeGridView x:Name="ForumsGridView"
-                                         ItemsSource="{Binding Path=Forums}"
-                                         SelectionMode="None">
-                    <ItemsControl.ItemTemplate>
-                        <DataTemplate>
-                            <TextBlock Text="{Binding Path=Text}" />
-                        </DataTemplate>
-                    </ItemsControl.ItemTemplate>
-                </controls:VGtimeGridView>
+                <Grid>
+                    <controls:VGtimeGridView x:Name="ForumsGridView"
+                                             ItemsSource="{Binding Path=Forums}"
+                                             SelectionMode="None">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Path=Text}" />
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </controls:VGtimeGridView>
+                    <controls:VGtimeLoadingControl IsLoading="{Binding Path=Forums.IsLoading}" />
+                </Grid>
             </PivotItem>
             <PivotItem Header="用户">
-                <controls:VGtimeGridView x:Name="UsersGridView"
-                                         ItemsSource="{Binding Path=Users}"
-                                         SelectionMode="None">
-                    <ItemsControl.ItemTemplate>
-                        <DataTemplate>
-                            <TextBlock Text="{Binding Path=Name}" />
-                        </DataTemplate>
-                    </ItemsControl.ItemTemplate>
-                </controls:VGtimeGridView>
+                <Grid>
+                    <controls:VGtimeGridView x:Name="UsersGridView"
+                                             ItemsSource="{Binding Path=Users}"
+                                             SelectionMode="None">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Path=Name}" />
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </controls:VGtimeGridView>
+                    <controls:VGtimeLoadingControl IsLoading="{Binding Path=Users.IsLoading}" />
+                </Grid>
             </PivotItem>
             <PivotItem Header="游戏">
-                <controls:VGtimeGridView x:Name="GamesGridView"
-                                         Padding="12,12,0,0"
-                                         IsItemClickEnabled="True"
-                                         ItemsSource="{Binding Path=Games}"
-                                         MaxItemWidth="600"
-                                         SelectionMode="None">
-                    <interactivity:Interaction.Behaviors>
-                        <core:EventTriggerBehavior EventName="ItemClick">
-                            <core:InvokeCommandAction Command="{Binding Path=GameClickCommand}"
-                                                      InputConverter="{StaticResource ItemClickEventArgsConverter}" />
-                        </core:EventTriggerBehavior>
-                    </interactivity:Interaction.Behaviors>
-                    <ItemsControl.ItemTemplate>
-                        <DataTemplate>
-                            <controls:GameItem />
-                        </DataTemplate>
-                    </ItemsControl.ItemTemplate>
-                    <ItemsControl.ItemContainerStyle>
-                        <Style TargetType="SelectorItem">
-                            <Setter Property="HorizontalContentAlignment"
-                                    Value="Stretch" />
-                            <Setter Property="VerticalContentAlignment"
-                                    Value="Stretch" />
-                            <Setter Property="Margin"
-                                    Value="0,0,12,12" />
-                        </Style>
-                    </ItemsControl.ItemContainerStyle>
-                </controls:VGtimeGridView>
+                <Grid>
+                    <controls:VGtimeGridView x:Name="GamesGridView"
+                                             Padding="12,12,0,0"
+                                             IsItemClickEnabled="True"
+                                             ItemsSource="{Binding Path=Games}"
+                                             MaxItemWidth="600"
+                                             SelectionMode="None">
+                        <interactivity:Interaction.Behaviors>
+                            <core:EventTriggerBehavior EventName="ItemClick">
+                                <core:InvokeCommandAction Command="{Binding Path=GameClickCommand}"
+                                                          InputConverter="{StaticResource ItemClickEventArgsConverter}" />
+                            </core:EventTriggerBehavior>
+                        </interactivity:Interaction.Behaviors>
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <controls:GameItem />
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                        <ItemsControl.ItemContainerStyle>
+                            <Style TargetType="SelectorItem">
+                                <Setter Property="HorizontalContentAlignment"
+                                        Value="Stretch" />
+                                <Setter Property="VerticalContentAlignment"
+                                        Value="Stretch" />
+                                <Setter Property="Margin"
+                                        Value="0,0,12,12" />
+                            </Style>
+                        </ItemsControl.ItemContainerStyle>
+                    </controls:VGtimeGridView>
+                    <controls:VGtimeLoadingControl IsLoading="{Binding Path=Games.IsLoading}" />
+                </Grid>
             </PivotItem>
             <Pivot.ItemContainerStyle>
                 <Style TargetType="PivotItem">

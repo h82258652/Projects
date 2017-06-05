@@ -3,12 +3,12 @@
                       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                       xmlns:behaviors="using:SoftwareKobo.Behaviors"
                       xmlns:controls="using:SoftwareKobo.Controls"
-                      xmlns:converters="using:VGtime.Uwp.Converters"
                       xmlns:core="using:Microsoft.Xaml.Interactions.Core"
                       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                       xmlns:dashicons="using:SoftwareKobo.Icons.Dashicons"
                       xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
                       xmlns:localControls="using:VGtime.Uwp.Controls"
+                      xmlns:localConverters="using:VGtime.Uwp.Converters"
                       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                       xmlns:views="using:VGtime.Uwp.Views"
                       DataContext="{Binding Source={StaticResource Locator}, Path=GameDetail}"
@@ -16,7 +16,7 @@
                       mc:Ignorable="d">
     <FrameworkElement.Resources>
         <ResourceDictionary>
-            <converters:IntegerToVisibilityConverter x:Key="IntegerToVisibilityConverter" />
+            <localConverters:IntegerToVisibilityConverter x:Key="IntegerToVisibilityConverter" />
         </ResourceDictionary>
     </FrameworkElement.Resources>
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
@@ -43,6 +43,7 @@
                        Style="{StaticResource VGtimePageHeaderTextControlStyle}"
                        Text="{Binding Path=GameDetail.Title}" />
             <Button Grid.Column="2"
+                    Command="{Binding Path=ShareCommand}"
                     Style="{StaticResource ShareButtonStyle}" />
         </Grid>
         <Grid Grid.Row="1">
@@ -165,6 +166,7 @@
                             Background="{ThemeResource VGtimeDividerBrush}" />
                 </StackPanel>
             </ScrollViewer>
+            <localControls:VGtimeLoadingControl IsLoading="{Binding Path=IsLoading}" />
         </Grid>
     </Grid>
 </views:VGtimeViewBase>

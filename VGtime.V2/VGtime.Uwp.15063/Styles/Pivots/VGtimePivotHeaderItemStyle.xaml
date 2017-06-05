@@ -158,7 +158,7 @@
                         <controls:VGtimePivotHeaderItemAssistButton x:Name="AssistButton"
                                                                     HorizontalAlignment="Stretch"
                                                                     VerticalAlignment="Stretch"
-                                                                    AttachPivotHeaderItem="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}}"
+                                                                    AttachedPivotHeaderItem="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}}"
                                                                     Style="{StaticResource EmptyButtonStyle}"
                                                                     Visibility="Collapsed" />
                     </Grid>

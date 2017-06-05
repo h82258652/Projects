@@ -35,36 +35,38 @@
             <TextBlock Style="{StaticResource VGtimePageHeaderTextControlStyle}"
                        Text="{Binding Path=GameName}" />
         </Grid>
-        <localControls:VGtimeGridView x:Name="PhotosGridView"
-                                      Grid.Row="1"
-                                      Padding="4,4,0,0"
-                                      IsItemClickEnabled="True"
-                                      ItemClick="PhotosGridView_ItemClick"
-                                      ItemsSource="{Binding Path=Photos}"
-                                      MaxItemWidth="600"
-                                      SelectionMode="None">
-            <interactivity:Interaction.Behaviors>
-                <core:EventTriggerBehavior EventName="ItemClick">
-                    <core:InvokeCommandAction Command="{Binding Path=PhotoClickCommand}"
-                                              InputConverter="{StaticResource ItemClickEventArgsConverter}" />
-                </core:EventTriggerBehavior>
-            </interactivity:Interaction.Behaviors>
-            <ItemsControl.ItemTemplate>
-                <DataTemplate>
-                    <controls:ImageEx x:Name="PhotoImage"
-                                      Source="{Binding Path=Url}" />
-                </DataTemplate>
-            </ItemsControl.ItemTemplate>
-            <ItemsControl.ItemContainerStyle>
-                <Style TargetType="SelectorItem">
-                    <Setter Property="HorizontalContentAlignment"
-                            Value="Stretch" />
-                    <Setter Property="VerticalContentAlignment"
-                            Value="Stretch" />
-                    <Setter Property="Margin"
-                            Value="0,0,4,4" />
-                </Style>
-            </ItemsControl.ItemContainerStyle>
-        </localControls:VGtimeGridView>
+        <Grid Grid.Row="1">
+            <localControls:VGtimeGridView x:Name="PhotosGridView"
+                                          Padding="4,4,0,0"
+                                          IsItemClickEnabled="True"
+                                          ItemClick="PhotosGridView_ItemClick"
+                                          ItemsSource="{Binding Path=Photos}"
+                                          MaxItemWidth="600"
+                                          SelectionMode="None">
+                <interactivity:Interaction.Behaviors>
+                    <core:EventTriggerBehavior EventName="ItemClick">
+                        <core:InvokeCommandAction Command="{Binding Path=PhotoClickCommand}"
+                                                  InputConverter="{StaticResource ItemClickEventArgsConverter}" />
+                    </core:EventTriggerBehavior>
+                </interactivity:Interaction.Behaviors>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <controls:ImageEx x:Name="PhotoImage"
+                                          Source="{Binding Path=Url}" />
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+                <ItemsControl.ItemContainerStyle>
+                    <Style TargetType="SelectorItem">
+                        <Setter Property="HorizontalContentAlignment"
+                                Value="Stretch" />
+                        <Setter Property="VerticalContentAlignment"
+                                Value="Stretch" />
+                        <Setter Property="Margin"
+                                Value="0,0,4,4" />
+                    </Style>
+                </ItemsControl.ItemContainerStyle>
+            </localControls:VGtimeGridView>
+            <localControls:VGtimeLoadingControl IsLoading="{Binding Path=IsLoading}" />
+        </Grid>
     </Grid>
 </views:VGtimeViewBase>

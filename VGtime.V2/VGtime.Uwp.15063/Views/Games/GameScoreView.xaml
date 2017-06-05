@@ -26,29 +26,31 @@
                 </interactivity:Interaction.Behaviors>
             </Button>
         </Grid>
-        <ListView Grid.Row="1"
-                  IsItemClickEnabled="False"
-                  ItemsSource="{Binding Path=Scores}"
-                  SelectionMode="None">
-            <ItemsControl.ItemTemplate>
-                <DataTemplate>
-                    <controls:GameScoreItem />
-                </DataTemplate>
-            </ItemsControl.ItemTemplate>
-            <ItemsControl.ItemContainerStyle>
-                <Style TargetType="SelectorItem">
-                    <Setter Property="HorizontalContentAlignment"
-                            Value="Stretch" />
-                    <Setter Property="VerticalContentAlignment"
-                            Value="Stretch" />
-                    <Setter Property="BorderThickness"
-                            Value="0,0,0,1" />
-                    <Setter Property="BorderBrush"
-                            Value="{ThemeResource VGtimeDividerBrush}" />
-                    <Setter Property="Padding"
-                            Value="12" />
-                </Style>
-            </ItemsControl.ItemContainerStyle>
-        </ListView>
+        <Grid Grid.Row="1">
+            <ListView IsItemClickEnabled="False"
+                      ItemsSource="{Binding Path=Scores}"
+                      SelectionMode="None">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <controls:GameScoreItem />
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+                <ItemsControl.ItemContainerStyle>
+                    <Style TargetType="SelectorItem">
+                        <Setter Property="HorizontalContentAlignment"
+                                Value="Stretch" />
+                        <Setter Property="VerticalContentAlignment"
+                                Value="Stretch" />
+                        <Setter Property="BorderThickness"
+                                Value="0,0,0,1" />
+                        <Setter Property="BorderBrush"
+                                Value="{ThemeResource VGtimeDividerBrush}" />
+                        <Setter Property="Padding"
+                                Value="12" />
+                    </Style>
+                </ItemsControl.ItemContainerStyle>
+            </ListView>
+            <controls:VGtimeLoadingControl IsLoading="{Binding Path=Scores.IsLoading}" />
+        </Grid>
     </Grid>
 </views:VGtimeViewBase>
