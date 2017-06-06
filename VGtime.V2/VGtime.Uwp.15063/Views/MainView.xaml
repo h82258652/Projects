@@ -38,7 +38,8 @@
             <SplitView.Pane>
                 <Grid>
                     <Grid.Background>
-                        <brushes:AcrylicBrush />
+                        <brushes:AcrylicBrush TintColor="Black"
+                                              TintOpacity="0.5" />
                     </Grid.Background>
                     <ScrollViewer VerticalScrollBarVisibility="Auto">
                         <Grid>

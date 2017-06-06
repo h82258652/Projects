@@ -1,5 +1,6 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
     <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/Styles/TextControls/VGtimeAutoSuggestBoxStyle.xaml" />
         <ResourceDictionary Source="/Styles/TextControls/VGtimePageHeaderTextControlStyle.xaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

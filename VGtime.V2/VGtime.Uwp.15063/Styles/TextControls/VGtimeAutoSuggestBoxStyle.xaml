@@ -1,0 +1,81 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:brushes="using:VGtime.Uwp.Brushes">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/Styles/TextControls/VGtimeAutoSuggestBoxTextBoxStyle.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+    <Style x:Key="VGtimeAutoSuggestBoxStyle"
+           TargetType="AutoSuggestBox">
+        <Setter Property="VerticalAlignment"
+                Value="Top" />
+        <Setter Property="IsTabStop"
+                Value="False" />
+        <Setter Property="TextBoxStyle"
+                Value="{StaticResource VGtimeAutoSuggestBoxTextBoxStyle}" />
+        <Setter Property="ItemContainerStyle">
+            <Setter.Value>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="Foreground"
+                            Value="#171717" />
+                </Style>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="AutoSuggestBox">
+                    <Grid x:Name="LayoutRoot">
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="Orientation">
+                                <VisualState x:Name="Landscape" />
+                                <VisualState x:Name="Portrait" />
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                        <TextBox x:Name="TextBox"
+                                 Width="{TemplateBinding Width}"
+                                 Margin="0"
+                                 Canvas.ZIndex="0"
+                                 DesiredCandidateWindowAlignment="BottomEdge"
+                                 Header="{TemplateBinding Header}"
+                                 PlaceholderText="{TemplateBinding PlaceholderText}"
+                                 ScrollViewer.BringIntoViewOnFocusChange="False"
+                                 Style="{TemplateBinding TextBoxStyle}" />
+                        <Popup x:Name="SuggestionsPopup">
+                            <Border x:Name="SuggestionsContainer">
+                                <Border.RenderTransform>
+                                    <TranslateTransform x:Name="UpwardTransform" />
+                                </Border.RenderTransform>
+                                <ListView x:Name="SuggestionsList"
+                                          MaxHeight="{ThemeResource AutoSuggestListMaxHeight}"
+                                          Margin="{ThemeResource AutoSuggestListMargin}"
+                                          Padding="{ThemeResource AutoSuggestListPadding}"
+                                          BorderBrush="{ThemeResource VGtimeDividerBrush}"
+                                          BorderThickness="1,0,1,1"
+                                          DisplayMemberPath="{TemplateBinding DisplayMemberPath}"
+                                          IsItemClickEnabled="True"
+                                          ItemContainerStyle="{TemplateBinding ItemContainerStyle}"
+                                          ItemTemplate="{TemplateBinding ItemTemplate}"
+                                          ItemTemplateSelector="{TemplateBinding ItemTemplateSelector}">
+                                    <ListView.Background>
+                                        <brushes:AcrylicBrush TintColor="White"
+                                                              TintOpacity="0.5" />
+                                    </ListView.Background>
+                                    <ListView.Header>
+                                        <Border Padding="12,8,12,8"
+                                                BorderBrush="{ThemeResource VGtimeDividerBrush}"
+                                                BorderThickness="0,0,0,1">
+                                            <TextBlock Foreground="{ThemeResource VGtimeSecondaryTextBrush}"
+                                                       Text="热词" />
+                                        </Border>
+                                    </ListView.Header>
+                                    <ListView.ItemContainerTransitions>
+                                        <TransitionCollection />
+                                    </ListView.ItemContainerTransitions>
+                                </ListView>
+                            </Border>
+                        </Popup>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

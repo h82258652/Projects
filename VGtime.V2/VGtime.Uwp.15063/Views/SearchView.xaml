@@ -39,9 +39,11 @@
                 </interactivity:Interaction.Behaviors>
             </Button>
             <AutoSuggestBox Grid.Column="1"
+                            Margin="0,0,12,0"
                             VerticalAlignment="Center"
                             ItemsSource="{Binding Path=Hotword}"
-                            PlaceholderText="请输入搜索内容">
+                            PlaceholderText="请输入搜索内容"
+                            Style="{StaticResource VGtimeAutoSuggestBoxStyle}">
                 <interactivity:Interaction.Behaviors>
                     <core:EventTriggerBehavior EventName="QuerySubmitted">
                         <core:InvokeCommandAction Command="{Binding Path=SearchCommand}"
