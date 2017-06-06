@@ -141,9 +141,11 @@
                             Background="{ThemeResource VGtimeDividerBrush}" />
                     <localControls:GoNextButton Command="{Binding Path=ForumCommand}"
                                                 Content="{Binding Path=GameDetail.ShortPostCount}"
-                                                Text="俱乐部" />
+                                                Text="俱乐部"
+                                                Visibility="Collapsed" />
                     <Border Height="1"
-                            Background="{ThemeResource VGtimeDividerBrush}" />
+                            Background="{ThemeResource VGtimeDividerBrush}"
+                            Visibility="Collapsed" />
                     <localControls:GoNextButton Command="{Binding Path=PostCommand}"
                                                 Content="{Binding Path=GameDetail.LongPostCount}"
                                                 Text="文章和视频" />
@@ -151,9 +153,11 @@
                             Background="{ThemeResource VGtimeDividerBrush}" />
                     <localControls:GoNextButton Command="{Binding Path=QuestionCommand}"
                                                 Content="{Binding Path=GameDetail.QuestionCount}"
-                                                Text="提问" />
+                                                Text="提问"
+                                                Visibility="Collapsed" />
                     <Border Height="1"
-                            Background="{ThemeResource VGtimeDividerBrush}" />
+                            Background="{ThemeResource VGtimeDividerBrush}"
+                            Visibility="Collapsed" />
                     <localControls:GoNextButton Command="{Binding Path=ScoreCommand}"
                                                 Content="{Binding Path=GameDetail.ScoreCount}"
                                                 Text="评分" />
