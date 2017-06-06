@@ -30,9 +30,9 @@ namespace VGtime.Uwp.ViewModels
 
         public const string GameDetailViewKey = "GameDetail";
 
-        public const string GamePhotoViewKey = "GamePhoto";
+        public const string GamePostViewKey = "GamePost";
 
-        public const string GameRelationViewKey = "GameRelation";
+        public const string GamePhotoViewKey = "GamePhoto";
 
         public const string GameScoreViewKey = "GameScore";
 
@@ -66,7 +66,7 @@ namespace VGtime.Uwp.ViewModels
 
         public GamePhotoViewModel GamePhoto => ServiceLocator.Current.GetInstance<GamePhotoViewModel>();
 
-        public GameRelationViewModel GameRelation => ServiceLocator.Current.GetInstance<GameRelationViewModel>();
+        public GamePostViewModel GamePost => ServiceLocator.Current.GetInstance<GamePostViewModel>();
 
         public GameScoreViewModel GameScore => ServiceLocator.Current.GetInstance<GameScoreViewModel>();
 
@@ -144,6 +144,7 @@ namespace VGtime.Uwp.ViewModels
             containerBuilder.RegisterType<CommentViewModel>();
             containerBuilder.RegisterType<ImagePagerViewModel>();
             containerBuilder.RegisterType<ShowCoverViewModel>();
+            containerBuilder.RegisterType<GamePostViewModel>();
 
             return containerBuilder.Build();
         }
@@ -159,7 +160,7 @@ namespace VGtime.Uwp.ViewModels
             navigationService.Configure(GameStrategySetViewKey, typeof(GameStrategySetView));
             navigationService.Configure(ImagePagerViewKey, typeof(ImagePagerView));
             navigationService.Configure(SearchViewKey, typeof(SearchView));
-            navigationService.Configure(GameRelationViewKey, typeof(GameRelationView));
+            navigationService.Configure(GamePostViewKey, typeof(GamePostView));
             navigationService.Configure(AboutViewKey, typeof(AboutView));
             navigationService.Configure(SettingViewKey, typeof(SettingView));
             navigationService.Configure(ShowCoverViewKey, typeof(ShowCoverView));

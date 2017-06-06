@@ -171,9 +171,9 @@
     <Compile Include="Services\IAppToastService.cs" />
     <Compile Include="ViewModels\ArticleDetailViewModel.cs" />
     <Compile Include="ViewModels\CommentViewModel.cs" />
-    <Compile Include="ViewModels\GameRelationViewModel.cs" />
     <Compile Include="ViewModels\Games\GameDetailViewModel.cs" />
     <Compile Include="ViewModels\Games\GamePhotoViewModel.cs" />
+    <Compile Include="ViewModels\Games\GamePostViewModel.cs" />
     <Compile Include="ViewModels\Games\GameScoreViewModel.cs" />
     <Compile Include="ViewModels\Games\GameStrategySetViewModel.cs" />
     <Compile Include="ViewModels\Image\ImagePagerViewModel.cs" />
@@ -203,7 +203,6 @@
     <Compile Include="ViewParameters\ArticleDetailViewParameter.cs" />
     <Compile Include="ViewParameters\CommentViewParameter.cs" />
     <Compile Include="ViewParameters\GamePhotoViewParameter.cs" />
-    <Compile Include="ViewParameters\GameRelationViewParameter.cs" />
     <Compile Include="ViewParameters\ImagePagerViewParameter.cs" />
     <Compile Include="Views\AnimatedViewBase.cs" />
     <Compile Include="Views\ArticleDetailView.xaml.cs">
@@ -212,14 +211,14 @@
     <Compile Include="Views\CommentView.xaml.cs">
       <DependentUpon>CommentView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\GameRelationView.xaml.cs">
-      <DependentUpon>GameRelationView.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\Games\GameDetailView.xaml.cs">
       <DependentUpon>GameDetailView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Games\GamePhotoView.xaml.cs">
       <DependentUpon>GamePhotoView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Games\GamePostView.xaml.cs">
+      <DependentUpon>GamePostView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Games\GameScoreView.xaml.cs">
       <DependentUpon>GameScoreView.xaml</DependentUpon>
@@ -653,15 +652,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\GameRelationView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Views\Games\GameDetailView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Games\GamePhotoView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Games\GamePostView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

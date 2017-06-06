@@ -67,7 +67,8 @@ namespace VGtime.Uwp.ViewModels.Games
             {
                 _forumCommand = _forumCommand ?? new RelayCommand(() =>
                 {
-                    _navigationService.NavigateTo(ViewModelLocator.GameRelationViewKey, new GameRelationViewParameter(GameId, 1));
+                    // TODO in next version.
+                    //_navigationService.NavigateTo(ViewModelLocator.GameRelationViewKey, new GameRelationViewParameter(GameId, 1));
                 });
                 return _forumCommand;
             }
@@ -141,7 +142,7 @@ namespace VGtime.Uwp.ViewModels.Games
             {
                 _postCommand = _postCommand ?? new RelayCommand(() =>
                 {
-                    _navigationService.NavigateTo(ViewModelLocator.GameRelationViewKey, new GameRelationViewParameter(GameId, 2));
+                    _navigationService.NavigateTo(ViewModelLocator.GamePostViewKey, GameId);
                 });
                 return _postCommand;
             }
@@ -153,7 +154,8 @@ namespace VGtime.Uwp.ViewModels.Games
             {
                 _questionCommand = _questionCommand ?? new RelayCommand(() =>
                 {
-                    _navigationService.NavigateTo(ViewModelLocator.GameRelationViewKey, new GameRelationViewParameter(GameId, 3));
+                    // TODO in next version.
+                    //_navigationService.NavigateTo(ViewModelLocator.GameRelationViewKey, new GameRelationViewParameter(GameId, 3));
                 });
                 return _questionCommand;
             }

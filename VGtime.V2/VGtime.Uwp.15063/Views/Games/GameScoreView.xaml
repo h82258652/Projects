@@ -25,6 +25,8 @@
                     </core:EventTriggerBehavior>
                 </interactivity:Interaction.Behaviors>
             </Button>
+            <TextBlock Style="{StaticResource VGtimePageHeaderTextControlStyle}"
+                       Text="评分" />
         </Grid>
         <Grid Grid.Row="1">
             <ListView IsItemClickEnabled="False"

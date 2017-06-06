@@ -10,7 +10,6 @@
                       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                       xmlns:views="using:VGtime.Uwp.Views"
                       DataContext="{Binding Source={StaticResource Locator}, Path=ShowCover}"
-                      NavigationCacheMode="Required"
                       mc:Ignorable="d">
     <FrameworkElement.Resources>
         <ResourceDictionary>
