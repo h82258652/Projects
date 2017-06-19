@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26430.6
+VisualStudioVersion = 15.0.26430.13
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ImageEx", "ImageEx", "{11759603-49BA-4F66-8A27-76C3CD91A8F3}"
 EndProject
@@ -58,6 +58,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoftwareKobo.Controls.ImageEx.Uwp.15063", "SoftwareKobo.Controls.ImageEx.Uwp.15063\SoftwareKobo.Controls.ImageEx.Uwp.15063.csproj", "{5AF5D966-EE34-48CD-A100-28FD22B9D8B8}"
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "SoftwareKobo.Controls.ImageEx.Shared", "SoftwareKobo.Controls.ImageEx.Shared\SoftwareKobo.Controls.ImageEx.Shared.shproj", "{06FD7584-5424-48AA-A2AB-59AF83CC55F1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoftwareKobo.Utils.Wpf", "SoftwareKobo.Utils.Wpf\SoftwareKobo.Utils.Wpf.csproj", "{7EAA1BA6-8565-4426-A5DB-446ABE7BCF52}"
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
@@ -364,6 +366,22 @@ Global
 		{5AF5D966-EE34-48CD-A100-28FD22B9D8B8}.Release|x64.Build.0 = Release|x64
 		{5AF5D966-EE34-48CD-A100-28FD22B9D8B8}.Release|x86.ActiveCfg = Release|x86
 		{5AF5D966-EE34-48CD-A100-28FD22B9D8B8}.Release|x86.Build.0 = Release|x86
+		{7EAA1BA6-8565-4426-A5DB-446ABE7BCF52}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7EAA1BA6-8565-4426-A5DB-446ABE7BCF52}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7EAA1BA6-8565-4426-A5DB-446ABE7BCF52}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{7EAA1BA6-8565-4426-A5DB-446ABE7BCF52}.Debug|ARM.Build.0 = Debug|Any CPU
+		{7EAA1BA6-8565-4426-A5DB-446ABE7BCF52}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{7EAA1BA6-8565-4426-A5DB-446ABE7BCF52}.Debug|x64.Build.0 = Debug|Any CPU
+		{7EAA1BA6-8565-4426-A5DB-446ABE7BCF52}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{7EAA1BA6-8565-4426-A5DB-446ABE7BCF52}.Debug|x86.Build.0 = Debug|Any CPU
+		{7EAA1BA6-8565-4426-A5DB-446ABE7BCF52}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7EAA1BA6-8565-4426-A5DB-446ABE7BCF52}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7EAA1BA6-8565-4426-A5DB-446ABE7BCF52}.Release|ARM.ActiveCfg = Release|Any CPU
+		{7EAA1BA6-8565-4426-A5DB-446ABE7BCF52}.Release|ARM.Build.0 = Release|Any CPU
+		{7EAA1BA6-8565-4426-A5DB-446ABE7BCF52}.Release|x64.ActiveCfg = Release|Any CPU
+		{7EAA1BA6-8565-4426-A5DB-446ABE7BCF52}.Release|x64.Build.0 = Release|Any CPU
+		{7EAA1BA6-8565-4426-A5DB-446ABE7BCF52}.Release|x86.ActiveCfg = Release|Any CPU
+		{7EAA1BA6-8565-4426-A5DB-446ABE7BCF52}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -390,5 +408,6 @@ Global
 		{C48BD2CB-FB6A-4677-A2F0-B04F07360B6A} = {AD97817E-1BF4-4D34-89EE-1496D87A5B6C}
 		{5AF5D966-EE34-48CD-A100-28FD22B9D8B8} = {11759603-49BA-4F66-8A27-76C3CD91A8F3}
 		{06FD7584-5424-48AA-A2AB-59AF83CC55F1} = {11759603-49BA-4F66-8A27-76C3CD91A8F3}
+		{7EAA1BA6-8565-4426-A5DB-446ABE7BCF52} = {E02CFE8C-49EF-444E-AD2D-16F8D360E66A}
 	EndGlobalSection
 EndGlobal
