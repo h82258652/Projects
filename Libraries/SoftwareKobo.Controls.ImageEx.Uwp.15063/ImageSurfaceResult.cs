@@ -7,17 +7,13 @@ namespace SoftwareKobo.Controls
     {
         public ImageSurfaceResult(LoadedImageSurface imageSurface, LoadedImageSourceLoadStatus status)
         {
-            if (imageSurface == null)
-            {
-                throw new ArgumentNullException(nameof(imageSurface));
-            }
             if (!Enum.IsDefined(typeof(LoadedImageSourceLoadStatus), status))
             {
                 throw new ArgumentOutOfRangeException(nameof(status));
             }
 
             Value = imageSurface;
-            Status = status;
+            Status = imageSurface == null ? LoadedImageSourceLoadStatus.Other : status;
         }
 
         public LoadedImageSourceLoadStatus Status
