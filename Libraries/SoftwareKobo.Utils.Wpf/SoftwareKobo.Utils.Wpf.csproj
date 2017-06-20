@@ -58,6 +58,7 @@
     <Compile Include="Extensions\ButtonExtensions.cs" />
     <Compile Include="Extensions\PopupExtensions.cs" />
     <Compile Include="Extensions\VisualTreeHelperExtensions.cs" />
+    <Compile Include="Helpers\PasswordBoxHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
