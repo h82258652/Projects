@@ -1,0 +1,3 @@
+﻿class ArticleDetailDisadvantage {
+    defect: string;
+}

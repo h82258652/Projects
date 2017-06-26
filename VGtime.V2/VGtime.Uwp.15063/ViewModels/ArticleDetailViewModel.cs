@@ -29,6 +29,8 @@ namespace VGtime.Uwp.ViewModels
 
         private ArticleDetail _articleDetail;
 
+        private int _currentPage = 1;
+
         private bool _isLoading;
 
         private RelayCommand _moreCommentCommand;
@@ -69,6 +71,18 @@ namespace VGtime.Uwp.ViewModels
             }
         }
 
+        public int CurrentPage
+        {
+            get
+            {
+                return _currentPage;
+            }
+            private set
+            {
+                Set(ref _currentPage, value);
+            }
+        }
+
         public bool IsLoading
         {
             get
@@ -105,6 +119,7 @@ namespace VGtime.Uwp.ViewModels
                 {
                     _postId = value;
                     ArticleDetail = null;
+                    CurrentPage = 1;
                 }
             }
         }
@@ -209,6 +224,12 @@ namespace VGtime.Uwp.ViewModels
             LoadArticleDetail();
         }
 
+        public void LoadPage(int page)
+        {
+            CurrentPage = page;
+            LoadArticleDetail();
+        }
+
         private async void LoadArticleDetail()
         {
             try
@@ -216,7 +237,7 @@ namespace VGtime.Uwp.ViewModels
                 IsLoading = true;
 
                 var postId = PostId;
-                var result = await _postService.GetDetailAsync(postId, _type, _vgtimeSettings.UserInfo?.UserId);
+                var result = await _postService.GetDetailAsync(postId, _type, _vgtimeSettings.UserInfo?.UserId, CurrentPage);
                 if (postId == PostId)
                 {
                     if (result.Retcode == Constants.SuccessCode)

@@ -4,8 +4,12 @@ using GalaSoft.MvvmLight.Messaging;
 using VGtime.Uwp.Messages;
 using VGtime.Uwp.ViewParameters;
 using Windows.Foundation;
+using Windows.Foundation.Metadata;
+using Windows.System;
+using Windows.UI.Composition;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Hosting;
 using Windows.UI.Xaml.Navigation;
 using Newtonsoft.Json;
 using VGtime.Uwp.ViewModels;
@@ -18,6 +22,8 @@ namespace VGtime.Uwp.Views
         public ArticleDetailView()
         {
             InitializeComponent();
+
+            ConfigureVGtimePagerAnimation();
         }
 
         public ArticleDetailViewModel ViewModel => (ArticleDetailViewModel)DataContext;
@@ -36,9 +42,10 @@ namespace VGtime.Uwp.Views
             Messenger.Default.Register<ArticleDetailLoadedMessage>(this, async message =>
             {
                 await WebView.NavigateAsync(new Uri("ms-appx-web:///Assets/Html/article_detail.html"));
+                var json = JsonConvert.SerializeObject(message.ArticleDetail);
                 await WebView.InvokeScriptAsync("setArticleDetail", new[]
                 {
-                    JsonConvert.SerializeObject(message.ArticleDetail)
+                    json
                 });
             });
             Messenger.Default.Register<SinaWeiboShareSelectedMessage>(this, message =>
@@ -59,6 +66,29 @@ namespace VGtime.Uwp.Views
             }
         }
 
+        private void ConfigureVGtimePagerAnimation()
+        {
+            if (ApiInformation.IsMethodPresent("Windows.UI.Xaml.Hosting.ElementCompositionPreview", nameof(ElementCompositionPreview.GetElementVisual)))
+            {
+                var compositor = ElementCompositionPreview.GetElementVisual(this).Compositor;
+
+                var showAnimation = compositor.CreateScalarKeyFrameAnimation();
+                showAnimation.InsertKeyFrame(0f, 0);
+                showAnimation.InsertKeyFrame(1f, 1);
+                showAnimation.Duration = TimeSpan.FromSeconds(0.3);
+                showAnimation.Target = nameof(Visual.Opacity);
+
+                var hideAnimation = compositor.CreateScalarKeyFrameAnimation();
+                hideAnimation.InsertKeyFrame(0f, 1);
+                hideAnimation.InsertKeyFrame(1f, 0);
+                hideAnimation.Duration = TimeSpan.FromSeconds(0.3);
+                hideAnimation.Target = nameof(Visual.Opacity);
+
+                ElementCompositionPreview.SetImplicitShowAnimation(VGtimePager, showAnimation);
+                ElementCompositionPreview.SetImplicitHideAnimation(VGtimePager, hideAnimation);
+            }
+        }
+
         private async void ScrollToTopButton_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -70,6 +100,15 @@ namespace VGtime.Uwp.Views
             catch (Exception)
             {
                 // ignored
+            }
+        }
+
+        private async void ViewInBrowserButton_Click(object sender, RoutedEventArgs e)
+        {
+            var articleUrl = ViewModel.ArticleDetail?.ShareUrl;
+            if (!string.IsNullOrEmpty(articleUrl))
+            {
+                await Launcher.LaunchUriAsync(new Uri(articleUrl));
             }
         }
 
@@ -111,6 +150,14 @@ namespace VGtime.Uwp.Views
                     {
                         Frame.GoForward();
                     }
+                }
+                else if (action.Equals("scrollDown", StringComparison.OrdinalIgnoreCase))
+                {
+                    VGtimePager.Visibility = Visibility.Collapsed;
+                }
+                else if (action.Equals("scrollUp", StringComparison.OrdinalIgnoreCase))
+                {
+                    VGtimePager.Visibility = Visibility.Visible;
                 }
             }
             catch (ArgumentException)

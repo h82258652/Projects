@@ -1,0 +1,3 @@
+﻿class ArticleDetailAdvantage {
+    merit: string;
+}

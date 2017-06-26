@@ -134,6 +134,9 @@
     </Compile>
     <Compile Include="Controls\VGtimeGridView.cs" />
     <Compile Include="Controls\VGtimeLoadingControl.cs" />
+    <Compile Include="Controls\VGtimePager.cs" />
+    <Compile Include="Controls\VGtimePagerPageChangedEventArgs.cs" />
+    <Compile Include="Controls\VGtimePagerPageChangedEventHandler.cs" />
     <Compile Include="Controls\VGtimePivot.cs" />
     <Compile Include="Controls\VGtimePivotHeaderItemAssistButton.cs" />
     <Compile Include="Controls\VGtimePivotSelectedHeaderItemClickEventArgs.cs" />
@@ -208,6 +211,7 @@
     <Compile Include="Views\ArticleDetailView.xaml.cs">
       <DependentUpon>ArticleDetailView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\ArticleDetailViewTemp.cs" />
     <Compile Include="Views\CommentView.xaml.cs">
       <DependentUpon>CommentView.xaml</DependentUpon>
     </Compile>
@@ -463,6 +467,7 @@
     <Content Include="Assets\Html\img\zan.png" />
     <Content Include="Assets\Html\img\zan_1.png" />
     <Content Include="Assets\Html\js\article_detail.js" />
+    <Content Include="Assets\Html\js\temp\builder.js" />
     <Content Include="Assets\Images\about_logo.png" />
     <Content Include="Assets\Images\welcome_logo.png" />
     <Content Include="Assets\Images\share_system.png" />
@@ -537,6 +542,11 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\VGtimeLoadingControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Page>
+    <Page Include="Controls\VGtimePager.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -857,10 +867,13 @@
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Assets\Html\js\article_detail.ts" />
+    <TypeScriptCompile Include="Assets\Html\js\temp\builder.ts" />
     <TypeScriptCompile Include="Assets\Html\model\Advertising.ts" />
     <TypeScriptCompile Include="Assets\Html\model\article\ArticleDetail.ts" />
     <TypeScriptCompile Include="Assets\Html\model\article\ArticleDetailAblum.ts" />
+    <TypeScriptCompile Include="Assets\Html\model\article\ArticleDetailAdvantage.ts" />
     <TypeScriptCompile Include="Assets\Html\model\article\ArticleDetailAnchor.ts" />
+    <TypeScriptCompile Include="Assets\Html\model\article\ArticleDetailDisadvantage.ts" />
     <TypeScriptCompile Include="Assets\Html\model\article\ArticleDetailParentSource.ts" />
     <TypeScriptCompile Include="Assets\Html\model\article\ArticleDetailProgram.ts" />
     <TypeScriptCompile Include="Assets\Html\model\article\ArticleDetailVideo.ts" />
