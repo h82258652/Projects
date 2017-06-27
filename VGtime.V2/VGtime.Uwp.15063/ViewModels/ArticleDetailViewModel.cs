@@ -226,8 +226,11 @@ namespace VGtime.Uwp.ViewModels
 
         public void LoadPage(int page)
         {
-            CurrentPage = page;
-            LoadArticleDetail();
+            if (CurrentPage != page)
+            {
+                CurrentPage = page;
+                LoadArticleDetail();
+            }
         }
 
         private async void LoadArticleDetail()
@@ -237,8 +240,9 @@ namespace VGtime.Uwp.ViewModels
                 IsLoading = true;
 
                 var postId = PostId;
-                var result = await _postService.GetDetailAsync(postId, _type, _vgtimeSettings.UserInfo?.UserId, CurrentPage);
-                if (postId == PostId)
+                var currentPage = CurrentPage;
+                var result = await _postService.GetDetailAsync(postId, _type, _vgtimeSettings.UserInfo?.UserId, currentPage);
+                if (postId == PostId && currentPage == CurrentPage)
                 {
                     if (result.Retcode == Constants.SuccessCode)
                     {
