@@ -73,17 +73,9 @@ namespace SoftwareKobo.Extensions
             return lines.ToArray();
         }
 
-        public static async Task<string> ReadAllTextAsync(string path)
+        public static Task<string> ReadAllTextAsync(string path)
         {
-            if (path == null)
-            {
-                throw new ArgumentNullException(nameof(path));
-            }
-
-            using (var sr = File.OpenText(path))
-            {
-                return await sr.ReadToEndAsync();
-            }
+            return ReadAllTextAsync(path, Encoding.UTF8);
         }
 
         public static async Task<string> ReadAllTextAsync(string path, Encoding encoding)
