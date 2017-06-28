@@ -63,12 +63,13 @@
             <WebView x:Name="WebView"
                      DefaultBackgroundColor="Transparent"
                      ScriptNotify="WebView_ScriptNotify" />
-            <controls:VGtimePager x:Name="VGtimePager"
-                                  Margin="0,0,0,20"
-                                  VerticalAlignment="Bottom"
-                                  PageChanged="VGtimePager_PageChanged"
-                                  TotalPage="{Binding Path=ArticleDetail.ContentPage}"
-                                  Visibility="{Binding Path=ArticleDetail.ContentPage, Converter={StaticResource IntegerBiggerThanOneToVisibilityConverter}, TargetNullValue=Collapsed}" />
+            <Grid Visibility="{Binding Path=ArticleDetail.ContentPage, Converter={StaticResource IntegerBiggerThanOneToVisibilityConverter}, TargetNullValue=Collapsed}">
+                <controls:VGtimePager x:Name="VGtimePager"
+                                      Margin="0,0,0,20"
+                                      VerticalAlignment="Bottom"
+                                      PageChanged="VGtimePager_PageChanged"
+                                      TotalPage="{Binding Path=ArticleDetail.ContentPage}" />
+            </Grid>
             <controls:VGtimeLoadingControl IsLoading="{Binding Path=IsLoading}" />
         </Grid>
     </Grid>
