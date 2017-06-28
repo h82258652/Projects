@@ -147,6 +147,7 @@
     </Compile>
     <Compile Include="Converters\AutoSuggestBoxQuerySubmittedEventArgsConverter.cs" />
     <Compile Include="Converters\FileSizeToStringConverter.cs" />
+    <Compile Include="Converters\IntegerBiggerThanOneToVisibilityConverter.cs" />
     <Compile Include="Converters\IntegerToVisibilityConverter.cs" />
     <Compile Include="Converters\IsNullOrEmptyStringToVisibilityConverter.cs" />
     <Compile Include="Converters\ScoreToColorConverter.cs" />

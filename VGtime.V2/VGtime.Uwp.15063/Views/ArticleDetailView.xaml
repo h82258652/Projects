@@ -3,6 +3,7 @@
                       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                       xmlns:behaviors="using:SoftwareKobo.Behaviors"
                       xmlns:controls="using:VGtime.Uwp.Controls"
+                      xmlns:converters="using:VGtime.Uwp.Converters"
                       xmlns:core="using:Microsoft.Xaml.Interactions.Core"
                       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                       xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
@@ -11,6 +12,11 @@
                       DataContext="{Binding Source={StaticResource Locator}, Path=ArticleDetail}"
                       NavigationCacheMode="Required"
                       mc:Ignorable="d">
+    <FrameworkElement.Resources>
+        <ResourceDictionary>
+            <converters:IntegerBiggerThanOneToVisibilityConverter x:Key="IntegerBiggerThanOneToVisibilityConverter" />
+        </ResourceDictionary>
+    </FrameworkElement.Resources>
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -61,7 +67,8 @@
                                   Margin="0,0,0,20"
                                   VerticalAlignment="Bottom"
                                   PageChanged="VGtimePager_PageChanged"
-                                  TotalPage="{Binding Path=ArticleDetail.ContentPage}" />
+                                  TotalPage="{Binding Path=ArticleDetail.ContentPage}"
+                                  Visibility="{Binding Path=ArticleDetail.ContentPage, Converter={StaticResource IntegerBiggerThanOneToVisibilityConverter}, TargetNullValue=Collapsed}" />
             <controls:VGtimeLoadingControl IsLoading="{Binding Path=IsLoading}" />
         </Grid>
     </Grid>
