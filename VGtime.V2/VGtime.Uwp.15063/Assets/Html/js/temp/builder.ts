@@ -1,13 +1,13 @@
 ﻿class ArticleBuilder {
 }
 
-function createArticle(articleDetail: ArticleDetail): string {
+function createArticle(articleDetail: ArticleDetail, page: number): string {
     return `
 <div class="vgapp_article">
     <!-- 短文部分 -->
     ${createArticleShort(articleDetail)}
     <!-- 长文部分 -->
-    ${createArticleLong(articleDetail)}
+    ${createArticleLong(articleDetail, page)}
     <!-- 相关游戏 -->
     ${createArticleRelatedGame(articleDetail.games)}
     <!-- 相关新闻 -->
@@ -23,12 +23,11 @@ function createArticleAlbum(ablum: ArticleDetailAblum): string {
 </div>`;
 }
 
-function createArticleAnchor(anchors: ArticleDetailAnchor[]): string {
+function createArticleAnchor(anchors: ArticleDetailAnchor[], page: number): string {
     if (anchors != null && anchors.length > 0) {
         let str = "";
         for (let temp of anchors) {
-            // TODO
-            str = str + `<li data-page="${temp.page}" data-currentPage="${0}" data-num="${temp.num}">${temp.title}</li>`;
+            str = str + `<li data-page="${temp.page}" data-currentPage="${page}" data-num="${temp.num}">${temp.title}</li>`;
         }
         return `
 <ul class="vg_anchor">
@@ -138,13 +137,13 @@ function createArticleHotCommentsList(comments: ArticleDetail[]): string {
     return "";
 }
 
-function createArticleLong(articleDetail: ArticleDetail): string {
+function createArticleLong(articleDetail: ArticleDetail, page: number): string {
     return `
 <div class="vgapp_article_long">
     <h1>${articleDetail.title}</h1>
     ${createArticleLongAuthorEditor(articleDetail)}
     ${createArticleQues(articleDetail)}
-    ${createArticleAnchor(articleDetail.anchor)}
+    ${createArticleAnchor(articleDetail.anchor, page)}
     <article>${articleDetail.content}</article>
     ${createArticleEval(articleDetail)}
 </div>`;

@@ -249,7 +249,7 @@ namespace VGtime.Uwp.ViewModels
                         var articleDetail = result.Data.Data;
                         ArticleDetail = articleDetail;
 
-                        MessengerInstance.Send(new ArticleDetailLoadedMessage(articleDetail));
+                        MessengerInstance.Send(new ArticleDetailLoadedMessage(articleDetail, currentPage));
                     }
                     else
                     {

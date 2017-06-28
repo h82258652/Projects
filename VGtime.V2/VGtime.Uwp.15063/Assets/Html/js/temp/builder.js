@@ -3,19 +3,18 @@ var ArticleBuilder = (function () {
     }
     return ArticleBuilder;
 }());
-function createArticle(articleDetail) {
-    return "\n<div class=\"vgapp_article\">\n    <!-- \u77ED\u6587\u90E8\u5206 -->\n    " + createArticleShort(articleDetail) + "\n    <!-- \u957F\u6587\u90E8\u5206 -->\n    " + createArticleLong(articleDetail) + "\n    <!-- \u76F8\u5173\u6E38\u620F -->\n    " + createArticleRelatedGame(articleDetail.games) + "\n    <!-- \u76F8\u5173\u65B0\u95FB -->\n    " + createArticleRelatedNews(articleDetail.news) + "\n</div>";
+function createArticle(articleDetail, page) {
+    return "\n<div class=\"vgapp_article\">\n    <!-- \u77ED\u6587\u90E8\u5206 -->\n    " + createArticleShort(articleDetail) + "\n    <!-- \u957F\u6587\u90E8\u5206 -->\n    " + createArticleLong(articleDetail, page) + "\n    <!-- \u76F8\u5173\u6E38\u620F -->\n    " + createArticleRelatedGame(articleDetail.games) + "\n    <!-- \u76F8\u5173\u65B0\u95FB -->\n    " + createArticleRelatedNews(articleDetail.news) + "\n</div>";
 }
 function createArticleAlbum(ablum) {
     return "\n<div class=\"vg_album\" data-albumid=\"" + ablum.postId + "\">\n    <img src=\"" + ablum.cover + "\">\n    <span>" + ablum.imgCount + "</span>\n</div>";
 }
-function createArticleAnchor(anchors) {
+function createArticleAnchor(anchors, page) {
     if (anchors != null && anchors.length > 0) {
         var str = "";
         for (var _i = 0, anchors_1 = anchors; _i < anchors_1.length; _i++) {
             var temp = anchors_1[_i];
-            // TODO
-            str = str + ("<li data-page=\"" + temp.page + "\" data-currentPage=\"" + 0 + "\" data-num=\"" + temp.num + "\">" + temp.title + "</li>");
+            str = str + ("<li data-page=\"" + temp.page + "\" data-currentPage=\"" + page + "\" data-num=\"" + temp.num + "\">" + temp.title + "</li>");
         }
         return "\n<ul class=\"vg_anchor\">\n    " + str + "\n</ul>";
     }
@@ -66,8 +65,8 @@ function createArticleHotCommentsList(comments) {
     }
     return "";
 }
-function createArticleLong(articleDetail) {
-    return "\n<div class=\"vgapp_article_long\">\n    <h1>" + articleDetail.title + "</h1>\n    " + createArticleLongAuthorEditor(articleDetail) + "\n    " + createArticleQues(articleDetail) + "\n    " + createArticleAnchor(articleDetail.anchor) + "\n    <article>" + articleDetail.content + "</article>\n    " + createArticleEval(articleDetail) + "\n</div>";
+function createArticleLong(articleDetail, page) {
+    return "\n<div class=\"vgapp_article_long\">\n    <h1>" + articleDetail.title + "</h1>\n    " + createArticleLongAuthorEditor(articleDetail) + "\n    " + createArticleQues(articleDetail) + "\n    " + createArticleAnchor(articleDetail.anchor, page) + "\n    <article>" + articleDetail.content + "</article>\n    " + createArticleEval(articleDetail) + "\n</div>";
 }
 function createArticleLongAuthorEditor(articleDetail) {
     return "<div class=\"vgapp_article_editer\">\n    <span>\u4F5C\u8005\uFF1A" + articleDetail.author + " \u7F16\u8F91\uFF1A" + articleDetail.editor + "</span>\n</div>";

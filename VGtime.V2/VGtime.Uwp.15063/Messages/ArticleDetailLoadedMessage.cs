@@ -6,7 +6,7 @@ namespace VGtime.Uwp.Messages
 {
     public class ArticleDetailLoadedMessage : MessageBase
     {
-        public ArticleDetailLoadedMessage(ArticleDetail articleDetail)
+        public ArticleDetailLoadedMessage(ArticleDetail articleDetail, int page)
         {
             if (articleDetail == null)
             {
@@ -14,9 +14,15 @@ namespace VGtime.Uwp.Messages
             }
 
             ArticleDetail = articleDetail;
+            Page = page;
         }
 
         public ArticleDetail ArticleDetail
+        {
+            get;
+        }
+
+        public int Page
         {
             get;
         }

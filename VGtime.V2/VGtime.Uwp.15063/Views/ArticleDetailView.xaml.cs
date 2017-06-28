@@ -46,7 +46,7 @@ namespace VGtime.Uwp.Views
                 var json = JsonConvert.SerializeObject(message.ArticleDetail);
                 await WebView.InvokeScriptAsync("setArticleDetail", new[]
                 {
-                    json
+                    json, message.Page.ToString()
                 });
             });
             Messenger.Default.Register<SinaWeiboShareSelectedMessage>(this, message =>
