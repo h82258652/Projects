@@ -81,11 +81,51 @@ $(function () {
         else {
             window.external.notify("?action=commentPraise&isLike=0&postId=" + commentPostId + "&type=" + commentDetailType);
         }
+    })
+        .on("click", ".vgapp_comment_more", function () {
+        var vgappComment = $(this).parents(".vgapp_comment");
+        var postId = vgappComment.attr("data-postid");
+        var detailType = vgappComment.attr("data-detailtype");
+        // TODO parameter name.
+        window.external.notify("?action=showCommentList&postId=" + postId + "&detailType=" + detailType);
+    })
+        .on("click", ".vg_vote", function () {
+        var voteId = $(this).attr("data-voteid");
+        // TODO parameter name.
+        window.external.notify("?action=showVote&voteId=" + voteId);
+    })
+        .on("click", ".vg_album", function () {
+        var albumId = $(this).attr("data-albumid");
+        // TODO parameter name.
+        window.external.notify("?action=showAlbum&albumId=" + albumId);
+    })
+        .on("click", ".vg_anchor li", function () {
+        var page = parseInt($(this).attr("data-page"));
+        var currentPage = parseInt($(this).attr("data-currentPage"));
+        var pageNum = parseInt($(this).attr("data-num"));
+        if (page === currentPage) {
+            var scrollTop = $("article h4").eq(pageNum - 1).offset().top - 60;
+            $("body,html").animate({
+                scrollTop: scrollTop
+            }, 300);
+        }
+        else {
+            // TODO parameter name.
+            window.external.notify("?action=switchPage&page=" + page + "&pageNum=" + pageNum);
+        }
+    })
+        .on("click", ".vg_vlist", function () {
+        var programId = $(this).attr("data-programid");
+        // TODO parameter name.
+        window.external.notify("?action=showProgramList&programId=" + programId);
+    })
+        .on("click", ".vgapp_alist_item", function () {
+        var newsPostId = $(this).attr("data-postid");
+        var newsDetailType = $(this).attr("data-detailtype");
+        // TODO parameter name.
+        window.external.notify("?action=showNews&newsPostId=" + newsPostId + "&newsDetailType=" + newsDetailType);
     });
     // TODO
-    $(".vgapp_comment_more").click(function () {
-        window.external.notify("?action=moreComment");
-    });
     var hammertime = new Hammer(document.querySelector("html"));
     hammertime.on("swipeleft", function (e) {
         if (e.pointerType !== "mouse") {

@@ -124,25 +124,77 @@ namespace VGtime.Uwp.Views
             try
             {
                 var action = query.GetFirstValueByName("action");
-                if (action.Equals("relatedGame", StringComparison.OrdinalIgnoreCase))
+                if (action.Equals("showUserDetail", StringComparison.OrdinalIgnoreCase))
                 {
-                    if (int.TryParse(query.GetFirstValueByName("gameId"), out int gameId))
-                    {
-                        ViewModel.RelatedGameCommand.Execute(gameId);
-                    }
+                    // TODO
                 }
-                else if (action.Equals("relatedNews", StringComparison.OrdinalIgnoreCase))
+                else if (action.Equals("followAuthor", StringComparison.OrdinalIgnoreCase))
                 {
-                    if (int.TryParse(query.GetFirstValueByName("postId"), out int postId)
-                        && int.TryParse(query.GetFirstValueByName("detailType"), out int detailType))
-                    {
-                        ViewModel.RelatedNewsCommand.Execute((postId, detailType));
-                    }
+                    // TODO
                 }
-                else if (action.Equals("moreComment", StringComparison.OrdinalIgnoreCase))
+                else if (action.Equals("showRelationGame", StringComparison.OrdinalIgnoreCase))
                 {
-                    ViewModel.MoreCommentCommand.Execute(null);
+                    // TODO
                 }
+                else if (action.Equals("showCommentDetail", StringComparison.OrdinalIgnoreCase))
+                {
+                    // TODO
+                }
+                else if (action.Equals("showUserDetail", StringComparison.OrdinalIgnoreCase))
+                {
+                    // TODO
+                }
+                else if (action.Equals("showCommentEditor", StringComparison.OrdinalIgnoreCase))
+                {
+                    // TODO
+                }
+                else if (action.Equals("commentPraise", StringComparison.OrdinalIgnoreCase))
+                {
+                    // TODO
+                }
+                else if (action.Equals("showCommentList", StringComparison.OrdinalIgnoreCase))
+                {
+                    // TODO
+                }
+                else if (action.Equals("showVote", StringComparison.OrdinalIgnoreCase))
+                {
+                    // TODO
+                }
+                else if (action.Equals("showAlbum", StringComparison.OrdinalIgnoreCase))
+                {
+                    // TODO
+                }
+                else if (action.Equals("switchPage", StringComparison.OrdinalIgnoreCase))
+                {
+                    // TODO
+                }
+                else if (action.Equals("showProgramList", StringComparison.OrdinalIgnoreCase))
+                {
+                    // TODO
+                }
+                else if (action.Equals("showNews", StringComparison.OrdinalIgnoreCase))
+                {
+                    // TODO
+                }
+                //if (action.Equals("relatedGame", StringComparison.OrdinalIgnoreCase))
+                //{
+                //    if (int.TryParse(query.GetFirstValueByName("gameId"), out int gameId))
+                //    {
+                //        ViewModel.RelatedGameCommand.Execute(gameId);
+                //    }
+                //}
+                //else if (action.Equals("relatedNews", StringComparison.OrdinalIgnoreCase))
+                //{
+                //    if (int.TryParse(query.GetFirstValueByName("postId"), out int postId)
+                //        && int.TryParse(query.GetFirstValueByName("detailType"), out int detailType))
+                //    {
+                //        ViewModel.RelatedNewsCommand.Execute((postId, detailType));
+                //    }
+                //}
+                //else if (action.Equals("moreComment", StringComparison.OrdinalIgnoreCase))
+                //{
+                //    ViewModel.MoreCommentCommand.Execute(null);
+                //}
                 else if (action.Equals("goBack", StringComparison.OrdinalIgnoreCase))
                 {
                     if (Frame.CanGoBack)
