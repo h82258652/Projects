@@ -34,9 +34,8 @@ $(function () {
         .on("click", ".vgapp_user_box img,.vgapp_user_box .vgapp_ub_info .name", function () {
         var vgappUserBox = $(this).parents(".vgapp_user_box");
         var userId = vgappUserBox.attr("data-userid");
-        var username = vgappUserBox.attr("data-username");
-        // TODO parameter name.
-        window.external.notify("?action=showUserDetail&userId=" + userId + "&username=" + username);
+        var userName = vgappUserBox.attr("data-username");
+        window.external.notify("?action=showUserDetail&userId=" + userId + "&userName=" + userName);
     })
         .on("click", ".vgapp_user_box .vgapp_ub_op", function () {
         var targetId = $(this).parents(".vgapp_user_box").attr("data-userid");
@@ -46,22 +45,19 @@ $(function () {
     })
         .on("click", ".vgapp_game_item", function () {
         var gameId = $(this).attr("data-gameid");
-        // TODO parameter name.
         window.external.notify("?action=showRelationGame&gameId=" + gameId);
     })
         .on("click", ".vgapp_comment_item .vgapp_ci_content , .vgapp_comment_item .vgapp_ci_info .vgapp_ci_detail", function () {
         var vgappCommentItem = $(this).parents(".vgapp_comment_item");
-        var commentPostId = vgappCommentItem.attr("data-postid");
-        var commentDetailType = vgappCommentItem.attr("data-detailtype");
-        // TODO parameter name.
-        window.external.notify("?action=showCommentDetail&commentPostId=" + commentPostId + "&commentDetailType=" + commentDetailType);
+        var postId = vgappCommentItem.attr("data-postid");
+        var detailType = vgappCommentItem.attr("data-detailtype");
+        window.external.notify("?action=showCommentDetail&postId=" + postId + "&detailType=" + detailType);
     })
         .on("click", ".vgapp_comment_item .vgapp_ci_info img", function () {
         var vgappCommentItem = $(this).parents(".vgapp_comment_item");
-        var commentUserId = vgappCommentItem.attr("data-userid");
-        var commentUsername = vgappCommentItem.attr("data-username");
-        // TODO parameter name.
-        window.external.notify("?action=showUserDetail&commentUserId=" + commentUserId + "&commentUsername=" + commentUsername);
+        var userId = vgappCommentItem.attr("data-userid");
+        var userName = vgappCommentItem.attr("data-username");
+        window.external.notify("?action=showUserDetail&userId=" + userId + "&userName=" + userName);
     })
         .on("click", ".vgapp_comment_item .vgapp_ci_info .vgapp_ci_op .replay", function () {
         var vgappCommentItem = $(this).parents(".vgapp_comment_item");
@@ -86,17 +82,14 @@ $(function () {
         var vgappComment = $(this).parents(".vgapp_comment");
         var postId = vgappComment.attr("data-postid");
         var detailType = vgappComment.attr("data-detailtype");
-        // TODO parameter name.
         window.external.notify("?action=showCommentList&postId=" + postId + "&detailType=" + detailType);
     })
         .on("click", ".vg_vote", function () {
         var voteId = $(this).attr("data-voteid");
-        // TODO parameter name.
         window.external.notify("?action=showVote&voteId=" + voteId);
     })
         .on("click", ".vg_album", function () {
         var albumId = $(this).attr("data-albumid");
-        // TODO parameter name.
         window.external.notify("?action=showAlbum&albumId=" + albumId);
     })
         .on("click", ".vg_anchor li", function () {
@@ -116,7 +109,6 @@ $(function () {
     })
         .on("click", ".vg_vlist", function () {
         var programId = $(this).attr("data-programid");
-        // TODO parameter name.
         window.external.notify("?action=showProgramList&programId=" + programId);
     })
         .on("click", ".vgapp_alist_item", function () {
@@ -124,6 +116,10 @@ $(function () {
         var newsDetailType = $(this).attr("data-detailtype");
         // TODO parameter name.
         window.external.notify("?action=showNews&newsPostId=" + newsPostId + "&newsDetailType=" + newsDetailType);
+    });
+    // 防剧透
+    $(document).on("click", "article u", function () {
+        $(this).toggleClass("p_trailer");
     });
     // TODO
     var hammertime = new Hammer(document.querySelector("html"));

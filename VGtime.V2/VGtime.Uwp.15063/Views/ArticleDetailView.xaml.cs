@@ -134,7 +134,10 @@ namespace VGtime.Uwp.Views
                 }
                 else if (action.Equals("showRelationGame", StringComparison.OrdinalIgnoreCase))
                 {
-                    // TODO
+                    if (int.TryParse(query.GetFirstValueByName("gameId"), out int gameId))
+                    {
+                        ViewModel.ShowRelationGameCommand.Execute(gameId);
+                    }
                 }
                 else if (action.Equals("showCommentDetail", StringComparison.OrdinalIgnoreCase))
                 {
@@ -154,7 +157,7 @@ namespace VGtime.Uwp.Views
                 }
                 else if (action.Equals("showCommentList", StringComparison.OrdinalIgnoreCase))
                 {
-                    // TODO
+                    ViewModel.ShowCommentListCommand.Execute(null);
                 }
                 else if (action.Equals("showVote", StringComparison.OrdinalIgnoreCase))
                 {
@@ -180,7 +183,7 @@ namespace VGtime.Uwp.Views
                 //{
                 //    if (int.TryParse(query.GetFirstValueByName("gameId"), out int gameId))
                 //    {
-                //        ViewModel.RelatedGameCommand.Execute(gameId);
+                //        ViewModel.ShowRelationGameCommand.Execute(gameId);
                 //    }
                 //}
                 //else if (action.Equals("relatedNews", StringComparison.OrdinalIgnoreCase))
@@ -193,7 +196,7 @@ namespace VGtime.Uwp.Views
                 //}
                 //else if (action.Equals("moreComment", StringComparison.OrdinalIgnoreCase))
                 //{
-                //    ViewModel.MoreCommentCommand.Execute(null);
+                //    ViewModel.ShowCommentListCommand.Execute(null);
                 //}
                 else if (action.Equals("goBack", StringComparison.OrdinalIgnoreCase))
                 {

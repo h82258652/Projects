@@ -46,7 +46,7 @@
                     Click="ScrollToTopButton_Click"
                     Style="{StaticResource EmptyButtonStyle}" />
             <Button Grid.Column="2"
-                    Command="{Binding Path=MoreCommentCommand}"
+                    Command="{Binding Path=ShowCommentListCommand}"
                     Style="{StaticResource IconButtonStyle}">
                 <SymbolIcon Symbol="Comment" />
             </Button>

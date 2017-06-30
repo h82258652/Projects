@@ -1,9 +1,9 @@
-﻿using System;
-using GalaSoft.MvvmLight;
+﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Views;
 using SoftwareKobo.Controls;
 using SoftwareKobo.Social.SinaWeibo;
+using System;
 using VGtime.Configuration;
 using VGtime.Models.Article;
 using VGtime.Services;
@@ -33,16 +33,11 @@ namespace VGtime.Uwp.ViewModels
 
         private bool _isLoading;
 
-        private RelayCommand _moreCommentCommand;
-
         private int _postId;
-
-        private RelayCommand<int> _relatedGameCommand;
-
         private RelayCommand<(int gameId, int detailType)> _relatedNewsCommand;
-
         private RelayCommand _shareCommand;
-
+        private RelayCommand _showCommentListCommand;
+        private RelayCommand<int> _showRelationGameCommand;
         private RelayCommand _sinaWeiboShareCommand;
 
         private RelayCommand _systemShareCommand;
@@ -95,18 +90,6 @@ namespace VGtime.Uwp.ViewModels
             }
         }
 
-        public RelayCommand MoreCommentCommand
-        {
-            get
-            {
-                _moreCommentCommand = _moreCommentCommand ?? new RelayCommand(() =>
-                {
-                    _navigationService.NavigateTo(ViewModelLocator.CommentViewKey, new CommentViewParameter(PostId, _type));
-                });
-                return _moreCommentCommand;
-            }
-        }
-
         public int PostId
         {
             get
@@ -121,18 +104,6 @@ namespace VGtime.Uwp.ViewModels
                     ArticleDetail = null;
                     CurrentPage = 1;
                 }
-            }
-        }
-
-        public RelayCommand<int> RelatedGameCommand
-        {
-            get
-            {
-                _relatedGameCommand = _relatedGameCommand ?? new RelayCommand<int>(gameId =>
-                {
-                    _navigationService.NavigateTo(ViewModelLocator.GameDetailViewKey, gameId);
-                });
-                return _relatedGameCommand;
             }
         }
 
@@ -157,6 +128,30 @@ namespace VGtime.Uwp.ViewModels
                     MessengerInstance.Send(new ShowChooseShareDialogMessage());
                 });
                 return _shareCommand;
+            }
+        }
+
+        public RelayCommand ShowCommentListCommand
+        {
+            get
+            {
+                _showCommentListCommand = _showCommentListCommand ?? new RelayCommand(() =>
+                {
+                    _navigationService.NavigateTo(ViewModelLocator.CommentViewKey, new CommentViewParameter(PostId, _type));
+                });
+                return _showCommentListCommand;
+            }
+        }
+
+        public RelayCommand<int> ShowRelationGameCommand
+        {
+            get
+            {
+                _showRelationGameCommand = _showRelationGameCommand ?? new RelayCommand<int>(gameId =>
+                {
+                    _navigationService.NavigateTo(ViewModelLocator.GameDetailViewKey, gameId);
+                });
+                return _showRelationGameCommand;
             }
         }
 

@@ -38,9 +38,8 @@ $(() => {
         .on("click", ".vgapp_user_box img,.vgapp_user_box .vgapp_ub_info .name", function () {
             const vgappUserBox = $(this).parents(".vgapp_user_box");
             const userId = vgappUserBox.attr("data-userid");
-            const username = vgappUserBox.attr("data-username");
-            // TODO parameter name.
-            window.external.notify(`?action=showUserDetail&userId=${userId}&username=${username}`);
+            const userName = vgappUserBox.attr("data-username");
+            window.external.notify(`?action=showUserDetail&userId=${userId}&userName=${userName}`);
         })
         .on("click", ".vgapp_user_box .vgapp_ub_op", function () {
             const targetId = $(this).parents(".vgapp_user_box").attr("data-userid");
@@ -50,22 +49,19 @@ $(() => {
         })
         .on("click", ".vgapp_game_item", function () {
             const gameId = $(this).attr("data-gameid");
-            // TODO parameter name.
             window.external.notify(`?action=showRelationGame&gameId=${gameId}`);
         })
         .on("click", ".vgapp_comment_item .vgapp_ci_content , .vgapp_comment_item .vgapp_ci_info .vgapp_ci_detail", function () {
             const vgappCommentItem = $(this).parents(".vgapp_comment_item");
-            const commentPostId = vgappCommentItem.attr("data-postid");
-            const commentDetailType = vgappCommentItem.attr("data-detailtype");
-            // TODO parameter name.
-            window.external.notify(`?action=showCommentDetail&commentPostId=${commentPostId}&commentDetailType=${commentDetailType}`);
+            const postId = vgappCommentItem.attr("data-postid");
+            const detailType = vgappCommentItem.attr("data-detailtype");
+            window.external.notify(`?action=showCommentDetail&postId=${postId}&detailType=${detailType}`);
         })
         .on("click", ".vgapp_comment_item .vgapp_ci_info img", function () {
             const vgappCommentItem = $(this).parents(".vgapp_comment_item");
-            const commentUserId = vgappCommentItem.attr("data-userid");
-            const commentUsername = vgappCommentItem.attr("data-username");
-            // TODO parameter name.
-            window.external.notify(`?action=showUserDetail&commentUserId=${commentUserId}&commentUsername=${commentUsername}`);
+            const userId = vgappCommentItem.attr("data-userid");
+            const userName = vgappCommentItem.attr("data-username");
+            window.external.notify(`?action=showUserDetail&userId=${userId}&userName=${userName}`);
         })
         .on("click", ".vgapp_comment_item .vgapp_ci_info .vgapp_ci_op .replay", function () {
             const vgappCommentItem = $(this).parents(".vgapp_comment_item");
@@ -87,28 +83,25 @@ $(() => {
             }
         })
         .on("click", ".vgapp_comment_more", function () {
-            var vgappComment = $(this).parents(".vgapp_comment");
-            var postId = vgappComment.attr("data-postid");
-            var detailType = vgappComment.attr("data-detailtype");
-            // TODO parameter name.
+            const vgappComment = $(this).parents(".vgapp_comment");
+            const postId = vgappComment.attr("data-postid");
+            const detailType = vgappComment.attr("data-detailtype");
             window.external.notify(`?action=showCommentList&postId=${postId}&detailType=${detailType}`);
         })
         .on("click", ".vg_vote", function () {
-            var voteId = $(this).attr("data-voteid");
-            // TODO parameter name.
+            const voteId = $(this).attr("data-voteid");
             window.external.notify(`?action=showVote&voteId=${voteId}`);
         })
         .on("click", ".vg_album", function () {
-            var albumId = $(this).attr("data-albumid");
-            // TODO parameter name.
+            const albumId = $(this).attr("data-albumid");
             window.external.notify(`?action=showAlbum&albumId=${albumId}`);
         })
         .on("click", ".vg_anchor li", function () {
-            var page = parseInt($(this).attr("data-page"));
-            var currentPage = parseInt($(this).attr("data-currentPage"));
-            var pageNum = parseInt($(this).attr("data-num"));
+            const page = parseInt($(this).attr("data-page"));
+            const currentPage = parseInt($(this).attr("data-currentPage"));
+            const pageNum = parseInt($(this).attr("data-num"));
             if (page === currentPage) {
-                var scrollTop = $("article h4").eq(pageNum - 1).offset().top - 60;
+                const scrollTop = $("article h4").eq(pageNum - 1).offset().top - 60;
                 $("body,html").animate({
                     scrollTop: scrollTop
                 }, 300);
@@ -118,16 +111,20 @@ $(() => {
             }
         })
         .on("click", ".vg_vlist", function () {
-            var programId = $(this).attr("data-programid");
-            // TODO parameter name.
+            const programId = $(this).attr("data-programid");
             window.external.notify(`?action=showProgramList&programId=${programId}`);
         })
         .on("click", ".vgapp_alist_item", function () {
-            var newsPostId = $(this).attr("data-postid");
-            var newsDetailType = $(this).attr("data-detailtype");
+            const newsPostId = $(this).attr("data-postid");
+            const newsDetailType = $(this).attr("data-detailtype");
             // TODO parameter name.
             window.external.notify(`?action=showNews&newsPostId=${newsPostId}&newsDetailType=${newsDetailType}`);
         });
+
+    // 防剧透
+    $(document).on("click", "article u", function () {
+        $(this).toggleClass("p_trailer");
+    });
 
     // TODO
 
