@@ -5,6 +5,7 @@
         <ResourceDictionary Source="/Controls/ScoreItem.xaml" />
         <ResourceDictionary Source="/Controls/VGtimeLoadingControl.xaml" />
         <ResourceDictionary Source="/Controls/VGtimePager.xaml" />
+        <ResourceDictionary Source="/Controls/VGtimePagerHost.xaml" />
         <ResourceDictionary Source="/Controls/VGtimePivot.xaml" />
         <ResourceDictionary Source="/Controls/VGtimeProgressRing.xaml" />
     </ResourceDictionary.MergedDictionaries>

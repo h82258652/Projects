@@ -135,6 +135,7 @@
     <Compile Include="Controls\VGtimeGridView.cs" />
     <Compile Include="Controls\VGtimeLoadingControl.cs" />
     <Compile Include="Controls\VGtimePager.cs" />
+    <Compile Include="Controls\VGtimePagerHost.cs" />
     <Compile Include="Controls\VGtimePagerPageChangedEventArgs.cs" />
     <Compile Include="Controls\VGtimePagerPageChangedEventHandler.cs" />
     <Compile Include="Controls\VGtimePivot.cs" />
@@ -548,6 +549,11 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Page>
     <Page Include="Controls\VGtimePager.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Page>
+    <Page Include="Controls\VGtimePagerHost.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
