@@ -4,11 +4,42 @@ using System.IO;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using SoftwareKobo.Properties;
 
 namespace SoftwareKobo.Extensions
 {
     public static class FileExtensions
     {
+        public static Task CopyAsync(string sourceFileName, string destFileName)
+        {
+            return CopyAsync(sourceFileName, destFileName, false);
+        }
+
+        public static async Task CopyAsync(string sourceFileName, string destFileName, bool overwrite)
+        {
+            if (sourceFileName == null)
+            {
+                throw new ArgumentNullException(nameof(sourceFileName));
+            }
+            if (destFileName == null)
+            {
+                throw new ArgumentNullException(nameof(destFileName));
+            }
+            if (sourceFileName.Length <= 0)
+            {
+                throw new ArgumentException(Resources.EmptyStringExceptionMessage, nameof(sourceFileName));
+            }
+            if (destFileName.Length <= 0)
+            {
+                throw new ArgumentException(Resources.EmptyStringExceptionMessage, nameof(destFileName));
+            }
+
+            await Task.Run(() =>
+            {
+                File.Copy(sourceFileName, destFileName, overwrite);
+            });
+        }
+
         public static async Task DeleteAsync(string path)
         {
             if (path == null)
