@@ -27,7 +27,7 @@ namespace SoftwareKobo.Extensions
 
             var bytes = new List<byte>();
 
-            var bufferLength = 1024 * 1024;
+            const int bufferLength = 1024 * 1024;
             var buffer = new byte[bufferLength];
             while (true)
             {
