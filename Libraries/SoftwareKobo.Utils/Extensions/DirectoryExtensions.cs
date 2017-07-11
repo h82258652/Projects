@@ -26,6 +26,7 @@ namespace SoftwareKobo.Extensions
                 throw new ArgumentException(Resources.EmptyStringExceptionMessage, nameof(destDirName));
             }
 
+            Directory.CreateDirectory(destDirName);
             foreach (var sourceFilePath in Directory.GetFiles(sourceDirName))
             {
                 var fileName = Path.GetFileName(sourceFilePath);
