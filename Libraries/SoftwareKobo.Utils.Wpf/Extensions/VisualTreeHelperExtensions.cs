@@ -172,23 +172,7 @@ namespace SoftwareKobo.Extensions
             }
             else
             {
-                int childrenCount;
-
-                try
-                {
-                    if (start is UIElement)
-                    {
-                        childrenCount = VisualTreeHelper.GetChildrenCount(start);
-                    }
-                    else
-                    {
-                        childrenCount = 0;
-                    }
-                }
-                catch (Exception)
-                {
-                    childrenCount = 0;
-                }
+                var childrenCount = VisualTreeHelper.GetChildrenCount(start);
 
                 for (var i = 0; i < childrenCount; i++)
                 {
@@ -214,16 +198,7 @@ namespace SoftwareKobo.Extensions
                 }
                 else
                 {
-                    int childrenCount;
-
-                    try
-                    {
-                        childrenCount = VisualTreeHelper.GetChildrenCount(parent);
-                    }
-                    catch (Exception)
-                    {
-                        childrenCount = 0;
-                    }
+                    var childrenCount = VisualTreeHelper.GetChildrenCount(parent);
 
                     for (var i = 0; i < childrenCount; i++)
                     {
