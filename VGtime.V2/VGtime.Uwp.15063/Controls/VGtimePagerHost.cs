@@ -5,12 +5,14 @@ namespace VGtime.Uwp.Controls
 {
     [TemplateVisualState(GroupName = CommonStateGroupName, Name = VisibleStateName)]
     [TemplateVisualState(GroupName = CommonStateGroupName, Name = CollapsedStateName)]
-    public sealed class VGtimePagerHost : Control
+    public sealed class VGtimePagerHost : ContentControl
     {
         public static readonly DependencyProperty IsVisibleProperty = DependencyProperty.Register(nameof(IsVisible), typeof(bool), typeof(VGtimePagerHost), new PropertyMetadata(default(bool), OnIsVisibleChanged));
 
         private const string CollapsedStateName = "Collapsed";
+
         private const string CommonStateGroupName = "CommonStates";
+
         private const string VisibleStateName = "Visible";
 
         public VGtimePagerHost()
