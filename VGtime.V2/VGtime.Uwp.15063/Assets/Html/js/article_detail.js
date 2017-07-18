@@ -23,11 +23,149 @@ function setArticleDetail(json, strPage) {
     str = str + createArticle(articleDetail, page);
     str = str + createArticleHotComments(articleDetail);
     $("body").html(str);
+    uwpJs();
 }
 function scrollToTop() {
     $("body").animate({
         scrollTop: 0
     }, "fast");
+}
+function uwpJs() {
+    // li 保持正方形
+    $(".vgapp_as_pic li").height($(".vgapp_as_pic li").width());
+    // 根据图片高宽，填充 image
+    $(".vgapp_as_pic li").each(function () {
+        var w = $(this).find("img").width();
+        var h = $(this).find("img").height();
+        // 需要图片高宽比
+        if (w >= h) {
+            $(this).find("img").css({ "width": "auto", "height": "100%" });
+        }
+        else {
+            $(this).find("img").css({ "width": "100%", "height": "auto" });
+        }
+    });
+    var vw = $("article").width();
+    $("article iframe").css({ "width": vw, "height": vw * 9 / 16 });
+    // 圆桌会
+    $(".roundTable_op").remove();
+    $(".roundTable_add").remove();
+    $("article .vg_insert_video_cover,article .vg_insert_album_cover").remove();
+    var path = "http://www.vgtime.com";
+    // 斗鱼直播适配
+    var douyu = $(".vg_douyu");
+    if (douyu.length >= 1) {
+        douyu.each(function () {
+            var url = $(this).attr("src");
+            url = path + url;
+            $(this).attr("src", url);
+        });
+    }
+    douyu = $(".douyu");
+    if (douyu.length >= 1) {
+        douyu.each(function () {
+            var url = $(this).attr("src");
+            url = path + url;
+            $(this).attr("src", url);
+        });
+    }
+    // B 站视频适配
+    var bili = $(".vg_bilibili");
+    if (bili.length >= 1) {
+        bili.each(function () {
+            var biliW = $(".vg_bilibili").width();
+            var url = $(this).attr("src");
+            var av;
+            var h5Url;
+            if (url.match("index_")) {
+                av = url.replace("http://www.bilibili.com/video/av", "");
+                av = av.replace(".html", "");
+                av = av.replace("index_", "");
+                var aa = av.split("/");
+                var aid = aa[0];
+                var page = aa[1];
+                h5Url = path + "/resources/bili/bili.html?aid=" + aid + "&page=" + page + "#page=" + page;
+                var xh = biliW * 10 / 16 + 40;
+                var html5 = "<div class=\"bili_h5\" ><iframe id=\"av" + av + '" data-full="0" src="' + h5Url + '" class="bili_html5" frameborder="no" scrolling="no" allowfullscreen="true" allowfullscreeninteractive="true" width="' + biliW + '" height="' + xh + '" style="min-height:auto;height:100%;"></iframe></div>';
+                $(this).replaceWith(html5);
+                $(".bili_h5").css({ "height": $(".bili_h5").width() * 10 / 16, "overflow": "hidden" });
+                $(".bili_html5").height($(".bili_html5").width() * 10 / 16);
+            }
+            else {
+                av = url.replace("http://www.bilibili.com/video/", "");
+                av = av.replace("/", "");
+                av = av.replace("av", "");
+                h5Url = path + '/resources/bili/bili.html?aid=' + av + '&page=1';
+                var xh = biliW * 10 / 16 + 40;
+                var html5 = '<div class="bili_h5" ><iframe id="av' + av + '" data-full="0" src="' + h5Url + '" class="bili_html5" frameborder="no" scrolling="no" allowfullscreen="true" allowfullscreeninteractive="true" width="' + biliW + '" height="' + xh + '" style="min-height:auto;height:100%;"></iframe></div>';
+                $(this).replaceWith(html5);
+                $(".bili_h5").css({ "height": $(".bili_h5").width() * 10 / 16, "overflow": "hidden" });
+                $(".bili_html5").height($(".bili_html5").width() * 10 / 16);
+            }
+        });
+    }
+    bili = $(".bilibili");
+    if (bili.length >= 1) {
+        bili.each(function (i) {
+            var biliW = $(".bilibili").width();
+            var url = $(this).attr("src");
+            if (url.match("index_")) {
+                var av = url.replace("http://www.bilibili.com/video/av", "");
+                av = av.replace(".html", "");
+                av = av.replace("index_", "");
+                var aa = av.split("/");
+                var aid = aa[0];
+                var page = aa[1];
+                var h5_url = path + '/resources/bili/bili.html?aid=' + aid + '&page=' + page + '#page=' + page;
+                var xh = biliW * 10 / 16 + 40;
+                var html5 = '<div class="bili_h5" ><iframe id="av' +
+                    av +
+                    '" data-full="0" src="' +
+                    h5_url +
+                    '" class="bili_html5" frameborder="no" scrolling="no" allowfullscreen="true" allowfullscreeninteractive="true" width="' +
+                    biliW +
+                    '" height="' +
+                    xh +
+                    '" style="min-height:auto;height:100%;"></iframe></div>';
+                $(this).replaceWith(html5);
+                $(".bili_h5").css({ "height": $(".bili_h5").width() * 10 / 16, "overflow": "hidden" });
+                $(".bili_html5").height($(".bili_html5").width() * 10 / 16);
+            }
+            else {
+                var av = url.replace("http://www.bilibili.com/video/", "");
+                av = av.replace("/", "");
+                av = av.replace("av", "");
+                var h5_url = path + '/resources/bili/bili.html?aid=' + av + '&page=1';
+                var xh = biliW * 10 / 16 + 40;
+                var html5 = '<div class="bili_h5" ><iframe id="av' +
+                    av +
+                    '" data-full="0" src="' +
+                    h5_url +
+                    '" class="bili_html5" frameborder="no" scrolling="no" allowfullscreen="true" allowfullscreeninteractive="true" width="' +
+                    biliW +
+                    '" height="' +
+                    xh +
+                    '" style="min-height:auto;height:100%;"></iframe></div>';
+                $(this).replaceWith(html5);
+                $(".bili_h5").css({ "height": $(".bili_h5").width() * 10 / 16, "overflow": "hidden" });
+                $(".bili_html5").height($(".bili_html5").width() * 10 / 16);
+            }
+            //video_width();
+        });
+    }
+    $("*[contenteditable]").removeAttr("contenteditable");
+    $("article .editable").removeClass("editable");
+    $("article .editable").removeClass("editable_new");
+    $("article").find("[contenteditable]").removeAttr("contenteditable");
+    $("article .vg_insert_video_cover,article .vg_insert_album_cover").remove();
+    $("article .roundTable_op").remove();
+    $("article .editable").removeClass("editable");
+    $("article .editable").removeClass("editable_new");
+    $("article").find("[contenteditable]").removeAttr("contenteditable");
+    $("article .vg_insert_video_cover,article .vg_insert_album_cover").remove();
+    $("article .roundTable_op").remove();
+    var ifr_w = $("article iframe").width();
+    $("article iframe").height(ifr_w * 10 / 16);
 }
 $(function () {
     $(document)
