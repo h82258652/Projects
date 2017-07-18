@@ -1,9 +1,9 @@
-﻿using GalaSoft.MvvmLight;
+﻿using System;
+using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Views;
 using SoftwareKobo.Controls;
 using SoftwareKobo.Social.SinaWeibo;
-using System;
 using VGtime.Configuration;
 using VGtime.Models.Article;
 using VGtime.Services;
@@ -34,10 +34,15 @@ namespace VGtime.Uwp.ViewModels
         private bool _isLoading;
 
         private int _postId;
-        private RelayCommand<(int gameId, int detailType)> _relatedNewsCommand;
+
         private RelayCommand _shareCommand;
+
         private RelayCommand _showCommentListCommand;
+
+        private RelayCommand<(int newsPostId, int newsDetailType)> _showNewsCommand;
+
         private RelayCommand<int> _showRelationGameCommand;
+
         private RelayCommand _sinaWeiboShareCommand;
 
         private RelayCommand _systemShareCommand;
@@ -107,18 +112,6 @@ namespace VGtime.Uwp.ViewModels
             }
         }
 
-        public RelayCommand<(int gameId, int detailType)> RelatedNewsCommand
-        {
-            get
-            {
-                _relatedNewsCommand = _relatedNewsCommand ?? new RelayCommand<(int gameId, int detailType)>(tuple =>
-                {
-                    _navigationService.NavigateTo(ViewModelLocator.ArticleDetailViewKey, new ArticleDetailViewParameter(tuple.gameId, tuple.detailType));
-                });
-                return _relatedNewsCommand;
-            }
-        }
-
         public RelayCommand ShareCommand
         {
             get
@@ -140,6 +133,18 @@ namespace VGtime.Uwp.ViewModels
                     _navigationService.NavigateTo(ViewModelLocator.CommentViewKey, new CommentViewParameter(PostId, _type));
                 });
                 return _showCommentListCommand;
+            }
+        }
+
+        public RelayCommand<(int newsPostId, int newsDetailType)> ShowNewsCommand
+        {
+            get
+            {
+                _showNewsCommand = _showNewsCommand ?? new RelayCommand<(int newsPostId, int newsDetailType)>(tuple =>
+                {
+                    _navigationService.NavigateTo(ViewModelLocator.ArticleDetailViewKey, new ArticleDetailViewParameter(tuple.newsPostId, tuple.newsDetailType));
+                });
+                return _showNewsCommand;
             }
         }
 

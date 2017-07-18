@@ -328,6 +328,15 @@
     <None Include="Assets\Html\bower_components\jquery\external\sizzle\dist\sizzle.min.map" />
     <None Include="Assets\Html\bower_components\jquery\README.md" />
     <None Include="Assets\Html\bower_components\jquery\src\.eslintrc.json" />
+    <Content Include="Assets\Html\font\fontawesome-webfont.eot" />
+    <Content Include="Assets\Html\font\fontawesome-webfont.ttf" />
+    <Content Include="Assets\Html\font\fontawesome-webfont.woff" />
+    <Content Include="Assets\Html\font\fontawesome-webfont.woff2" />
+    <Content Include="Assets\Html\font\FontAwesome.otf" />
+    <Content Include="Assets\Html\font\vgnav.eot" />
+    <Content Include="Assets\Html\font\vgnav.ttf" />
+    <Content Include="Assets\Html\font\vgnav.woff" />
+    <Content Include="Assets\Html\font\vgnav.woff2" />
     <None Include="Assets\Html\js\article_detail.js.map" />
     <PRIResource Include="Strings\zh-CN\Resources.resw" />
     <None Include="VGtime.Uwp.15063_TemporaryKey.pfx" />
@@ -451,6 +460,9 @@
     <Content Include="Assets\Html\bower_components\jquery\src\var\toString.js" />
     <Content Include="Assets\Html\bower_components\jquery\src\wrap.js" />
     <Content Include="Assets\Html\css\article_detail.css" />
+    <Content Include="Assets\Html\font\font-awesome.css" />
+    <Content Include="Assets\Html\font\fontawesome-webfont.svg" />
+    <Content Include="Assets\Html\font\vgnav.svg" />
     <Content Include="Assets\Html\img\1.png" />
     <Content Include="Assets\Html\img\2.png" />
     <Content Include="Assets\Html\img\3.png" />

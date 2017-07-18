@@ -14,6 +14,7 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Hosting;
 using Windows.UI.Xaml.Navigation;
+using VGtime.Models.Article;
 using WinRTXamlToolkit.AwaitableUI;
 
 namespace VGtime.Uwp.Views
@@ -44,6 +45,12 @@ namespace VGtime.Uwp.Views
             {
                 await WebView.NavigateAsync(new Uri("ms-appx-web:///Assets/Html/article_detail.html"));
                 var json = JsonConvert.SerializeObject(message.ArticleDetail);
+                var articleDetail = JsonConvert.DeserializeObject<ArticleDetail>(json);// 用 json 作深克隆
+                var articleDetailContent = articleDetail.Content;
+                articleDetailContent = articleDetailContent.Replace("src=\"//", "src=\"http://")
+                                                           .Replace("src='//",  "src='http://");// 临时解决方案，下个版本得用 BuildLocalStreamUri 来解决
+                articleDetail.Content = articleDetailContent;
+                json = JsonConvert.SerializeObject(articleDetail);
                 await WebView.InvokeScriptAsync("setArticleDetail", new[]
                 {
                     json, message.Page.ToString()
@@ -177,7 +184,10 @@ namespace VGtime.Uwp.Views
                 }
                 else if (action.Equals("showNews", StringComparison.OrdinalIgnoreCase))
                 {
-                    // TODO
+                    if (int.TryParse(query.GetFirstValueByName("newsPostId"), out int newsPostId) && int.TryParse(query.GetFirstValueByName("newsDetailType"), out int newsDetailType))
+                    {
+                        ViewModel.ShowNewsCommand.Execute((newsPostId, newsDetailType));
+                    }
                 }
                 //if (action.Equals("relatedGame", StringComparison.OrdinalIgnoreCase))
                 //{

@@ -1,9 +1,10 @@
-﻿using System.Reflection;
+﻿using System;
+using System.Reflection;
 using System.Threading.Tasks;
+using VGtime.Uwp.Extensions;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
-using VGtime.Uwp.Extensions;
 using WinRTXamlToolkit.AwaitableUI;
 
 namespace VGtime.Uwp.Views
@@ -50,10 +51,19 @@ namespace VGtime.Uwp.Views
                     var previousPageHost = PreviousPageHost;
                     if (previousPageHost != null)
                     {
-                        previousPageHost.Content = previousPage;
-                        await previousPage.WaitForLoadedAsync();
-                        await previousPage.PlayLeaveAnimationAsync(e.NavigationMode);
-                        previousPageHost.Content = null;
+                        try
+                        {
+                            previousPageHost.Content = previousPage;
+                            await previousPage.WaitForLoadedAsync();
+                            await previousPage.PlayLeaveAnimationAsync(e.NavigationMode);
+                        }
+                        catch (ArgumentException)
+                        {
+                        }
+                        finally
+                        {
+                            previousPageHost.Content = null;
+                        }
                     }
                 }
                 finally
