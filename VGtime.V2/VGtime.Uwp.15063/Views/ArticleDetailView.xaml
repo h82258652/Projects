@@ -31,6 +31,7 @@
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
             <Button Grid.Column="0"
                     Style="{StaticResource NavigationBackButtonStyle}">
@@ -51,11 +52,16 @@
                 <SymbolIcon Symbol="Comment" />
             </Button>
             <Button Grid.Column="3"
+                    Command="{Binding Path=RefreshCommand}"
+                    Style="{StaticResource IconButtonStyle}">
+                <SymbolIcon Symbol="Refresh" />
+            </Button>
+            <Button Grid.Column="4"
                     Click="ViewInBrowserButton_Click"
                     Style="{StaticResource IconButtonStyle}">
                 <SymbolIcon Symbol="World" />
             </Button>
-            <Button Grid.Column="4"
+            <Button Grid.Column="5"
                     Command="{Binding Path=ShareCommand}"
                     Style="{StaticResource ShareButtonStyle}" />
         </Grid>

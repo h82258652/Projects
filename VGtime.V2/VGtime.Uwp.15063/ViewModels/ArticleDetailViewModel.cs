@@ -35,6 +35,8 @@ namespace VGtime.Uwp.ViewModels
 
         private int _postId;
 
+        private RelayCommand _refreshCommand;
+
         private RelayCommand _shareCommand;
 
         private RelayCommand _showCommentListCommand;
@@ -109,6 +111,15 @@ namespace VGtime.Uwp.ViewModels
                     ArticleDetail = null;
                     CurrentPage = 1;
                 }
+            }
+        }
+
+        public RelayCommand RefreshCommand
+        {
+            get
+            {
+                _refreshCommand = _refreshCommand ?? new RelayCommand(LoadArticleDetail);
+                return _refreshCommand;
             }
         }
 
