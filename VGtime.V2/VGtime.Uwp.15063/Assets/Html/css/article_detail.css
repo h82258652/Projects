@@ -12,9 +12,29 @@ body {
     padding: 0;
     background: #f7f7f7;
     word-break: break-all;
+    font-family: 'PingFang SC',"Open Sans","Helvetica Neue",Helvetica, Arial, sans-serif,"Hiragino Sans GB","Microsoft YaHei","WenQuanYi Micro Hei","Heiti SC",FontAwesome;
+}
+
+body {
     float: left;
     width: 100%;
     overflow: hidden;
+}
+
+@font-face {
+    font-family: 'vgfont';
+    src: url('../font/vgnav.eot');
+    src: url('../font/vgnav.eot?#iefix') format('embedded-opentype'), url('../font/vgnav.woff2') format('woff2'), url('../font/vgnav.woff') format('woff'), url('../font/vgnav.ttf') format('truetype'), url('../font/vgnav.svg#04b03b') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'FontAwesome';
+    src: url('../font/fontawesome-webfont.eot?v=4.1.0');
+    src: url('../font/fontawesome-webfont.eot?#iefix&v=4.1.0') format('embedded-opentype'), url('../font/fontawesome-webfont.woff?v=4.1.0') format('woff'), url('../font/fontawesome-webfont.ttf?v=4.1.0') format('truetype'), url('../font/fontawesome-webfont.svg?v=4.1.0#fontawesomeregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
 }
 
 /* 发布者 */
@@ -381,16 +401,16 @@ article {
             margin: 0;
         }
 
-        article .rtd_box .rtd_content:before {
-            content: "";
-            border: 10px #eee solid;
-            border-color: #fff #fff transparent transparent;
-            width: 0;
-            height: 0;
-            top: 0;
-            left: -10px;
-            position: absolute;
-        }
+    article .rtd_box .rtd_content:before {
+        content: "";
+        border: 10px #eee solid;
+        border-color: #fff #fff transparent transparent;
+        width: 0;
+        height: 0;
+        top: 0;
+        left: -10px;
+        position: absolute;
+    }
 
     article .rtd_right .rtd_pic, article .rtd_right .rtd_content {
         float: right;
@@ -408,7 +428,7 @@ article {
         }
 
     article table {
-        width: 100%;
+        width: 100%; 
         resize: both;
         table-layout: fixed;
         margin: 10px 0;
