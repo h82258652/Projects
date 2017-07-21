@@ -8,11 +8,11 @@
 
         public const string PasswordEncryptKey = "VgTime!#@2548934";
 
-        public const string SinaWeiboAppKey = "4154146479";
+        public const string SinaWeiboAppKey = "4062813010";
 
-        public const string SinaWeiboAppSecret = "364ff74f03dc5b27f6e7c798ba495708";
+        public const string SinaWeiboAppSecret = "223bc2adb60ab0d8f1fb6d3c2a767523";
 
-        public const string SinaWeiboRedirectUri = "http://www.u148.net/";
+        public const string SinaWeiboRedirectUri = "http://www.vgtime.com/";
 
         public const int SuccessCode = 200;
 
