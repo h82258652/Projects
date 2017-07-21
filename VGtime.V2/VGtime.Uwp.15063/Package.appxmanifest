@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest" xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10" IgnorableNamespaces="uap mp">
-  <Identity Name="de8836b0-432a-4f5a-b9fa-a4457e973f57" Publisher="CN=h8225" Version="1.0.0.0" />
-  <mp:PhoneIdentity PhoneProductId="de8836b0-432a-4f5a-b9fa-a4457e973f57" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
+  <Identity Name="18174h82258652.UWP" Publisher="CN=D8CBB42C-5DD4-4A02-8424-31AF9627DADA" Version="1.1.0.0" />
+  <mp:PhoneIdentity PhoneProductId="e6df1c17-b58f-4af7-b194-27c0413b7f0c" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
-    <DisplayName>VGtime.Uwp.15063</DisplayName>
-    <PublisherDisplayName>h8225</PublisherDisplayName>
+    <DisplayName>游戏时光UWP</DisplayName>
+    <PublisherDisplayName>h82258652</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
   <Dependencies>
