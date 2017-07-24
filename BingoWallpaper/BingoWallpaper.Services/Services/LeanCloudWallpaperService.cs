@@ -13,9 +13,39 @@ namespace BingoWallpaper.Services
 {
     public class LeanCloudWallpaperService : ILeanCloudWallpaperService
     {
-        public Task<LeanCloudResultCollection<Archive>> GetArchivesAsync(int pageIndex, int pageSize, params string[] areas)
+        public async Task<LeanCloudResultCollection<Archive>> GetArchivesAsync(int pageIndex = 1, int pageSize = 100, params string[] areas)
         {
-            throw new NotImplementedException();
+            if (pageIndex < 1)
+            {
+                throw new ArgumentOutOfRangeException(nameof(pageIndex));
+            }
+            if (pageSize < 1)
+            {
+                throw new ArgumentOutOfRangeException(nameof(pageSize));
+            }
+            if (pageSize > 1000)
+            {
+                throw new ArgumentOutOfRangeException(nameof(pageSize));
+            }
+
+            var requestUrl = $"{Constants.LeanCloudUrlBase}/1.1/classes/Archive?skip={pageSize * (pageIndex - 1)}&limit={pageSize}&order=-date";
+            if (areas?.Any() == true)
+            {
+                var where = new
+                {
+                    market = new Dictionary<string, string[]>()
+                    {
+                        ["$in"] = areas
+                    }
+                };
+                requestUrl += $"&where={WebUtility.UrlEncode(JsonConvert.SerializeObject(where))}";
+            }
+
+            using (var client = CreateHttpClient())
+            {
+                var json = await client.GetStringAsync(requestUrl);
+                return JsonConvert.DeserializeObject<LeanCloudResultCollection<Archive>>(json);
+            }
         }
 
         public virtual async Task<LeanCloudResultCollection<Archive>> GetArchivesInMonthAsync(int year, int month, string area)
