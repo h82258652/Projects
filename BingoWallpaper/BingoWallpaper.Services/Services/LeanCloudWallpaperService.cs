@@ -13,6 +13,11 @@ namespace BingoWallpaper.Services
 {
     public class LeanCloudWallpaperService : ILeanCloudWallpaperService
     {
+        public Task<LeanCloudResultCollection<Archive>> GetArchivesAsync(int pageIndex, int pageSize, params string[] areas)
+        {
+            throw new NotImplementedException();
+        }
+
         public virtual async Task<LeanCloudResultCollection<Archive>> GetArchivesInMonthAsync(int year, int month, string area)
         {
             var viewMonth = new DateTime(year, month, 1);
@@ -41,7 +46,7 @@ namespace BingoWallpaper.Services
                 }
             };
 
-            string requestUrl = $"{Constants.LeanCloudUrlBase}/1.1/classes/Archive?where={WebUtility.UrlEncode(JsonConvert.SerializeObject(where))}&order=-date";
+            var requestUrl = $"{Constants.LeanCloudUrlBase}/1.1/classes/Archive?where={WebUtility.UrlEncode(JsonConvert.SerializeObject(where))}&order=-date";
 
             using (var client = CreateHttpClient())
             {
@@ -61,7 +66,7 @@ namespace BingoWallpaper.Services
                 throw new ArgumentException(Resources.EmptyStringExceptionMessage, nameof(objectId));
             }
 
-            string requestUrl = $"{Constants.LeanCloudUrlBase}/1.1/classes/Image/{objectId}";
+            var requestUrl = $"{Constants.LeanCloudUrlBase}/1.1/classes/Image/{objectId}";
 
             using (var client = CreateHttpClient())
             {
@@ -88,7 +93,7 @@ namespace BingoWallpaper.Services
                 }
             };
 
-            string requestUrl = $"{Constants.LeanCloudUrlBase}/1.1/classes/Image?where={WebUtility.UrlEncode(JsonConvert.SerializeObject(where))}&order=-updatedAt";
+            var requestUrl = $"{Constants.LeanCloudUrlBase}/1.1/classes/Image?where={WebUtility.UrlEncode(JsonConvert.SerializeObject(where))}&order=-updatedAt";
 
             using (var client = CreateHttpClient())
             {

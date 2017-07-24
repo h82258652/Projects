@@ -6,6 +6,8 @@ namespace BingoWallpaper.Services
 {
     public interface ILeanCloudWallpaperService : IWallpaperService
     {
+        Task<LeanCloudResultCollection<Archive>> GetArchivesAsync(int pageIndex, int pageSize, params string[] areas);
+
         Task<LeanCloudResultCollection<Archive>> GetArchivesInMonthAsync(int year, int month, string area);
 
         Task<Image> GetImageAsync(string objectId);
