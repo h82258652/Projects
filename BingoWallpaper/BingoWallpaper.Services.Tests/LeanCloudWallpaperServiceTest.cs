@@ -17,22 +17,22 @@ namespace BingoWallpaper.Services.Tests
         }
 
         [Test]
-        public async Task TestGetArchivesAsync()
+        public async Task TestGetArchivesInMonthAsync()
         {
-            var archives = await _service.GetArchivesAsync(2015, 1, "zh-CN");
+            var archives = await _service.GetArchivesInMonthAsync(2015, 1, "zh-CN");
             Assert.AreEqual(archives.ErrorCode, 0);
             Assert.True(archives.Any());
             Assert.ThrowsAsync<ArgumentOutOfRangeException>(async () =>
             {
-                await _service.GetArchivesAsync(2014, 12, "zh-CN");
+                await _service.GetArchivesInMonthAsync(2014, 12, "zh-CN");
             });
             Assert.ThrowsAsync<ArgumentNullException>(async () =>
             {
-                await _service.GetArchivesAsync(2015, 1, null);
+                await _service.GetArchivesInMonthAsync(2015, 1, null);
             });
             Assert.ThrowsAsync<ArgumentException>(async () =>
             {
-                await _service.GetArchivesAsync(2015, 1, string.Empty);
+                await _service.GetArchivesInMonthAsync(2015, 1, string.Empty);
             });
         }
 

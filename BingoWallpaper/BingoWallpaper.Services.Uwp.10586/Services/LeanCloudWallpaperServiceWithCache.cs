@@ -40,7 +40,7 @@ namespace BingoWallpaper.Services
             });
         }
 
-        public override async Task<LeanCloudResultCollection<Archive>> GetArchivesAsync(int year, int month, string area)
+        public override async Task<LeanCloudResultCollection<Archive>> GetArchivesInMonthAsync(int year, int month, string area)
         {
             var viewMonth = new DateTime(year, month, 1);
             if (viewMonth < Constants.MinimumViewMonth)

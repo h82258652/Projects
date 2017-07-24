@@ -13,7 +13,7 @@ namespace BingoWallpaper.Services
 {
     public class LeanCloudWallpaperService : ILeanCloudWallpaperService
     {
-        public virtual async Task<LeanCloudResultCollection<Archive>> GetArchivesAsync(int year, int month, string area)
+        public virtual async Task<LeanCloudResultCollection<Archive>> GetArchivesInMonthAsync(int year, int month, string area)
         {
             var viewMonth = new DateTime(year, month, 1);
             if (viewMonth < Constants.MinimumViewMonth)
@@ -159,7 +159,7 @@ namespace BingoWallpaper.Services
                 throw new ArgumentException(Resources.EmptyStringExceptionMessage, nameof(area));
             }
 
-            var archives = (await GetArchivesAsync(year, month, area)).ToList();
+            var archives = (await GetArchivesInMonthAsync(year, month, area)).ToList();
             var imageIds = archives.Select(temp => temp.Image.ObjectId);
             var images = await GetImagesAsync(imageIds);
             return from archive in archives
