@@ -14,6 +14,6 @@ namespace BingoWallpaper.Services
 
         Task<LeanCloudResultCollection<Image>> GetImagesAsync(IEnumerable<string> objectIds);
 
-        Task<IEnumerable<Wallpaper>> GetWallpapersAsync(int year, int month, string area);
+        Task<IEnumerable<Wallpaper>> GetWallpapersInMonthAsync(int year, int month, string area);
     }
 }

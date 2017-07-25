@@ -71,7 +71,7 @@ namespace BingoWallpaper.Uwp.ViewModels
                     LoadingCollectionCount++;
                     try
                     {
-                        var wallpapers = await _leanCloudWallpaperService.GetWallpapersAsync(year, month, _settings.SelectedArea);
+                        var wallpapers = await _leanCloudWallpaperService.GetWallpapersInMonthAsync(year, month, _settings.SelectedArea);
                         FillWallpaperCollection(selectedWallpaperCollection, wallpapers);
                         _appToastService.ShowMessage(LocalizedStrings.RefreshSuccess);
                     }
@@ -157,7 +157,7 @@ namespace BingoWallpaper.Uwp.ViewModels
             LoadingCollectionCount++;
             try
             {
-                var wallpapers = await _leanCloudWallpaperService.GetWallpapersAsync(collection.Year, collection.Month, _settings.SelectedArea);
+                var wallpapers = await _leanCloudWallpaperService.GetWallpapersInMonthAsync(collection.Year, collection.Month, _settings.SelectedArea);
                 FillWallpaperCollection(collection, wallpapers);
             }
             catch (HttpRequestException ex)

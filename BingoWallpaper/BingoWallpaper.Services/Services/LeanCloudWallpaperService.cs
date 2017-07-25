@@ -178,7 +178,7 @@ namespace BingoWallpaper.Services
             return $"{Constants.ImageUrlBase}{image.UrlBase}_{size.Width}x{size.Height}.jpg";
         }
 
-        public async Task<IEnumerable<Wallpaper>> GetWallpapersAsync(int year, int month, string area)
+        public async Task<IEnumerable<Wallpaper>> GetWallpapersInMonthAsync(int year, int month, string area)
         {
             var viewMonth = new DateTime(year, month, 1);
             if (viewMonth < Constants.MinimumViewMonth)
