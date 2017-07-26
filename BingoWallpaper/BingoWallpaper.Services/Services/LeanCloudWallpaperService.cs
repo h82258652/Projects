@@ -178,6 +178,33 @@ namespace BingoWallpaper.Services
             return $"{Constants.ImageUrlBase}{image.UrlBase}_{size.Width}x{size.Height}.jpg";
         }
 
+        public async Task<IEnumerable<Wallpaper>> GetWallpapersAsync(int pageIndex = 1, int pageSize = 100, params string[] areas)
+        {
+            if (pageIndex < 1)
+            {
+                throw new ArgumentOutOfRangeException(nameof(pageIndex));
+            }
+            if (pageSize < 1)
+            {
+                throw new ArgumentOutOfRangeException(nameof(pageSize));
+            }
+            if (pageSize > 1000)
+            {
+                throw new ArgumentOutOfRangeException(nameof(pageSize));
+            }
+
+            var archives = (await GetArchivesAsync(pageIndex, pageSize, areas)).ToList();
+            var imageIds = archives.Select(temp => temp.Image.ObjectId);
+            var images = await GetImagesAsync(imageIds);
+            return from archive in archives
+                   let image = images.FirstOrDefault(temp => temp.ObjectId == archive.Image.ObjectId)
+                   select new Wallpaper()
+                   {
+                       Archive = archive,
+                       Image = image
+                   };
+        }
+
         public async Task<IEnumerable<Wallpaper>> GetWallpapersInMonthAsync(int year, int month, string area)
         {
             var viewMonth = new DateTime(year, month, 1);
