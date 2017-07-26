@@ -130,7 +130,7 @@
     <Content Include="Assets\Fonts\FontAwesome_4.7.0.otf" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Assets\Fonts\ionicons_2.1.0.ttf" />
+    <Content Include="Assets\Fonts\ionicons_2.0.1.ttf" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\Fonts\MaterialIcons-Regular_2.2.0.ttf" />
