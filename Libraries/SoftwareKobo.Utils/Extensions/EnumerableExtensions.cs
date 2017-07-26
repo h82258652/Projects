@@ -9,7 +9,7 @@ namespace SoftwareKobo.Extensions
         public static IEnumerable<long> Range(long start, long count)
         {
             var max = (BigInteger)start + count - 1;
-            if (count < 0 || max > int.MaxValue)
+            if (count < 0 || max > long.MaxValue)
             {
                 throw new ArgumentOutOfRangeException(nameof(count));
             }
