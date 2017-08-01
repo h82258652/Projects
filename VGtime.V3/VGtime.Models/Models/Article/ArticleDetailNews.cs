@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using VGtime.Models.Users;
 
 namespace VGtime.Models.Article
 {

@@ -1,20 +1,12 @@
 ﻿using Newtonsoft.Json;
 using VGtime.Models.Games;
-using VGtime.Models.Timeline;
 using VGtime.Models.Users;
 
-namespace VGtime.Models.Article
+namespace VGtime.Models.Timeline
 {
     [JsonObject]
-    public class ArticleDetail
+    public class TimeLineBase
     {
-        [JsonProperty("ablumList")]
-        public ArticleDetailAblum[] AblumList
-        {
-            get;
-            set;
-        }
-
         [JsonProperty("action")]
         public TimeLineAction Action
         {
@@ -22,29 +14,8 @@ namespace VGtime.Models.Article
             set;
         }
 
-        [JsonProperty("ad")]
-        public Advertising Ad
-        {
-            get;
-            set;
-        }
-
-        [JsonProperty("advantageList")]
-        public string AdvantageList
-        {
-            get;
-            set;
-        }
-
-        [JsonProperty("anchor")]
-        public ArticleDetailAnchor[] Anchor
-        {
-            get;
-            set;
-        }
-
-        [JsonProperty("author")]
-        public string Author
+        [JsonProperty("advertising")]
+        public Advertising Advertising
         {
             get;
             set;
@@ -58,7 +29,7 @@ namespace VGtime.Models.Article
         }
 
         [JsonProperty("comment")]
-        public ArticleDetail Comment
+        public TimeLineBase Comment
         {
             get;
             set;
@@ -71,29 +42,8 @@ namespace VGtime.Models.Article
             set;
         }
 
-        [JsonProperty("comments")]
-        public ArticleDetail[] Comments
-        {
-            get;
-            set;
-        }
-
         [JsonProperty("content")]
         public string Content
-        {
-            get;
-            set;
-        }
-
-        [JsonProperty("contentPage")]
-        public int ContentPage
-        {
-            get;
-            set;
-        }
-
-        [JsonProperty("cover")]
-        public string Cover
         {
             get;
             set;
@@ -106,15 +56,8 @@ namespace VGtime.Models.Article
             set;
         }
 
-        [JsonProperty("disadvantageList")]
-        public string DisadvantageList
-        {
-            get;
-            set;
-        }
-
-        [JsonProperty("editor")]
-        public string Editor
+        [JsonProperty("duration")]
+        public string Duration
         {
             get;
             set;
@@ -122,13 +65,6 @@ namespace VGtime.Models.Article
 
         [JsonProperty("game")]
         public GameBase Game
-        {
-            get;
-            set;
-        }
-
-        [JsonProperty("games")]
-        public ArticleRelatedGame[] Games
         {
             get;
             set;
@@ -155,22 +91,8 @@ namespace VGtime.Models.Article
             set;
         }
 
-        [JsonProperty("isQuestion")]
-        public bool IsQuestion
-        {
-            get;
-            set;
-        }
-
         [JsonProperty("isShort")]
         public bool IsShort
-        {
-            get;
-            set;
-        }
-
-        [JsonProperty("isSolve")]
-        public bool IsSolve
         {
             get;
             set;
@@ -190,22 +112,8 @@ namespace VGtime.Models.Article
             set;
         }
 
-        [JsonProperty("news")]
-        public ArticleDetail[] News
-        {
-            get;
-            set;
-        }
-
         [JsonProperty("originalPost")]
-        public ArticleDetail OriginalPost
-        {
-            get;
-            set;
-        }
-
-        [JsonProperty("parentSource")]
-        public ArticleDetailParentSource ParentSource
+        public TimeLineBase OriginalPost
         {
             get;
             set;
@@ -218,22 +126,15 @@ namespace VGtime.Models.Article
             set;
         }
 
-        [JsonProperty("programList")]
-        public ArticleDetailProgram[] ProgramList
-        {
-            get;
-            set;
-        }
-
         [JsonProperty("publishDate")]
-        public long PublishDate
+        public string PublishDate
         {
             get;
             set;
         }
 
         [JsonProperty("relatedGame")]
-        public ArticleRelatedGame[] RelatedGame
+        public GameBase[] RelatedGame
         {
             get;
             set;
@@ -295,22 +196,15 @@ namespace VGtime.Models.Article
             set;
         }
 
+        [JsonProperty("topicBean")]
+        public Topic.Topic TopicBean
+        {
+            get;
+            set;
+        }
+
         [JsonProperty("user")]
         public UserBase User
-        {
-            get;
-            set;
-        }
-
-        [JsonProperty("videoList")]
-        public ArticleDetailVideo[] VideoList
-        {
-            get;
-            set;
-        }
-
-        [JsonProperty("voteList")]
-        public ArticleDetailVote[] VoteList
         {
             get;
             set;

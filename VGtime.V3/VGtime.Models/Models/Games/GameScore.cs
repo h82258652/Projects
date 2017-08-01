@@ -1,10 +1,10 @@
 ﻿using Newtonsoft.Json;
 using VGtime.Models.Users;
 
-namespace VGtime.Models.Chat
+namespace VGtime.Models.Games
 {
     [JsonObject]
-    public class MessageDetail
+    public class GameScore
     {
         [JsonProperty("content")]
         public string Content
@@ -13,29 +13,15 @@ namespace VGtime.Models.Chat
             set;
         }
 
-        [JsonProperty("messageId")]
-        public long MessageId
+        [JsonProperty("publishDate")]
+        public string PublishDate
         {
             get;
             set;
         }
 
-        [JsonProperty("sendTime")]
-        public long SendTime
-        {
-            get;
-            set;
-        }
-
-        [JsonProperty("showDate")]
-        public bool ShowDate
-        {
-            get;
-            set;
-        }
-
-        [JsonProperty("status")]
-        public bool Status
+        [JsonProperty("score")]
+        public float Score
         {
             get;
             set;
