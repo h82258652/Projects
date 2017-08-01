@@ -39,6 +39,5 @@ namespace VGtime.Models
             get;
             set;
         }
-
     }
 }
