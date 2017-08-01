@@ -805,6 +805,9 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="Autofac">
+      <Version>4.6.1</Version>
+    </PackageReference>
     <PackageReference Include="Autofac.Extras.CommonServiceLocator">
       <Version>4.0.0</Version>
     </PackageReference>
