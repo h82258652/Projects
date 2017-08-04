@@ -18,6 +18,7 @@ namespace SoftwareKobo.Extensions
             }
 
             var response = await client.GetAsync(requestUri, HttpCompletionOption.ResponseHeadersRead);
+            response.EnsureSuccessStatusCode();
             return await response.Content.ReadAsByteArrayAsync(progress);
         }
 
