@@ -1,0 +1,13 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard1.3</TargetFramework>
+    <RootNamespace>VGtime</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\VGtime.Services.Abstractions\VGtime.Services.Abstractions.csproj" />
+    <ProjectReference Include="..\VGtime.Utils\VGtime.Utils.csproj" />
+  </ItemGroup>
+
+</Project>

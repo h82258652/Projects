@@ -12,13 +12,6 @@ namespace VGtime.Models
             set;
         }
 
-        [JsonProperty("data")]
-        public object Data
-        {
-            get;
-            set;
-        }
-
         [JsonProperty("message")]
         public string Message
         {
