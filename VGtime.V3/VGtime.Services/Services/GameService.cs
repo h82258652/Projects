@@ -21,6 +21,17 @@ namespace VGtime.Services
             }
         }
 
+        public async Task CancelplayAsync(int gameId, int userId)
+        {
+            var url = $"{Constants.UrlBase}/vgtime-app/api/v2/game/cancelplay.json?gameId={gameId}&userId={userId}";
+            using (var client = new HttpClient())
+            {
+                var json = await client.GetStringAsync(url);
+            }
+
+            throw new System.NotImplementedException();
+        }
+
         public async Task DetailAsync(int gameId, int? userId)
         {
             var url = $"{Constants.UrlBase}/vgtime-app/api/v2/game/detail.json?gameId={gameId}";
