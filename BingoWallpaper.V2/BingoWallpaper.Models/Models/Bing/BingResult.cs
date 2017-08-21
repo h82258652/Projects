@@ -6,7 +6,7 @@ namespace BingoWallpaper.Models.Bing
     public class BingResult
     {
         [JsonProperty("images")]
-        public object[] Images
+        public BingImage[] Images
         {
             get;
             set;
