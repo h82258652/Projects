@@ -1,15 +1,17 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26430.16
+VisualStudioVersion = 15.0.26730.8
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BingoWallpaper.Models", "BingoWallpaper.Models\BingoWallpaper.Models.csproj", "{6A82CDCE-451A-4D5D-9138-A2CB5B2B543A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BingoWallpaper.Models", "BingoWallpaper.Models\BingoWallpaper.Models.csproj", "{6A82CDCE-451A-4D5D-9138-A2CB5B2B543A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BingoWallpaper.Services", "BingoWallpaper.Services\BingoWallpaper.Services.csproj", "{367F0082-DC45-44F6-992A-C11155B23E51}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BingoWallpaper.Services", "BingoWallpaper.Services\BingoWallpaper.Services.csproj", "{367F0082-DC45-44F6-992A-C11155B23E51}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BingoWallpaper.Services.Abstractions", "BingoWallpaper.Services.Abstractions\BingoWallpaper.Services.Abstractions.csproj", "{30AB2AC5-8706-49A7-98D5-998AC95625A7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BingoWallpaper.Services.Abstractions", "BingoWallpaper.Services.Abstractions\BingoWallpaper.Services.Abstractions.csproj", "{30AB2AC5-8706-49A7-98D5-998AC95625A7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BingoWallpaper.Services.Tests", "BingoWallpaper.Services.Tests\BingoWallpaper.Services.Tests.csproj", "{D4C61D2A-B329-4FE9-B026-1927A42E4E6D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BingoWallpaper.Services.Tests", "BingoWallpaper.Services.Tests\BingoWallpaper.Services.Tests.csproj", "{D4C61D2A-B329-4FE9-B026-1927A42E4E6D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BingoWallpaper.Core", "BingoWallpaper.Core\BingoWallpaper.Core.csproj", "{79D0A1A1-8079-404E-8382-6754B485DCD8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,8 +35,15 @@ Global
 		{D4C61D2A-B329-4FE9-B026-1927A42E4E6D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D4C61D2A-B329-4FE9-B026-1927A42E4E6D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D4C61D2A-B329-4FE9-B026-1927A42E4E6D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{79D0A1A1-8079-404E-8382-6754B485DCD8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{79D0A1A1-8079-404E-8382-6754B485DCD8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{79D0A1A1-8079-404E-8382-6754B485DCD8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{79D0A1A1-8079-404E-8382-6754B485DCD8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3746546D-A396-4E80-BBD2-864C311CB7A0}
 	EndGlobalSection
 EndGlobal

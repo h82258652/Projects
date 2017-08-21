@@ -5,4 +5,8 @@
     <RootNamespace>BingoWallpaper</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\BingoWallpaper.Models\BingoWallpaper.Models.csproj" />
+  </ItemGroup>
+
 </Project>
