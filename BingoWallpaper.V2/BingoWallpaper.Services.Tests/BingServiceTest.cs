@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Threading.Tasks;
 using Xunit;
 
@@ -16,7 +17,16 @@ namespace BingoWallpaper.Services.Tests
         [Fact]
         public async Task TestGetAsync()
         {
-            var result = await _bingService.GetAsync(0, 10, "en-US");
+            await Assert.ThrowsAsync<ArgumentOutOfRangeException>(async () =>
+            {
+                await _bingService.GetAsync(0, 0, "zh-CN");
+            });
+            await Assert.ThrowsAsync<ArgumentNullException>(async () =>
+            {
+                await _bingService.GetAsync(0, 1, null);
+            });
+
+            var result = await _bingService.GetAsync(0, 10, "zh-CN");
             Assert.True(result.Images.Any());
         }
     }

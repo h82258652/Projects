@@ -1,6 +1,102 @@
-﻿namespace BingoWallpaper.Services
+﻿using System;
+using System.Collections.Generic;
+using System.Net;
+using System.Threading.Tasks;
+using BingoWallpaper.Models.LeanCloud;
+using Newtonsoft.Json;
+
+namespace BingoWallpaper.Services
 {
-    public class LeanCloudService : ILeanCloudService
+    public class LeanCloudService : LeanCloudServiceBase
     {
+        public override async Task<Archive> GetArchiveAsync(string objectId)
+        {
+            if (objectId == null)
+            {
+                throw new ArgumentNullException(nameof(objectId));
+            }
+            if (objectId.Length <= 0)
+            {
+                // TODO
+                throw new ArgumentException("", nameof(objectId));
+            }
+
+            var url = $"{Constants.LeanCloudUrlBase}/1.1/classes/Archive/{WebUtility.UrlEncode(objectId)}";
+            using (var client = CreateHttpClient())
+            {
+                var json = await client.GetStringAsync(url);
+                return JsonConvert.DeserializeObject<Archive>(json);
+            }
+        }
+
+        public override async Task<object> GetArchiveAsync(IEnumerable<string> objectIds)
+        {
+            if (objectIds == null)
+            {
+                throw new ArgumentNullException(nameof(objectIds));
+            }
+
+            var where = new
+            {
+                objectId = new Dictionary<string, IEnumerable<string>>()
+                {
+                    {
+                        "$in",
+                        objectIds
+                    }
+                }
+            };
+            var url = $"{Constants.LeanCloudUrlBase}/1.1/classes/Archive?where={WebUtility.UrlEncode(JsonConvert.SerializeObject(where))}&order=-updatedAt";
+            using (var client = CreateHttpClient())
+            {
+                var json = await client.GetStringAsync(url);
+                return JsonConvert.DeserializeObject(json);
+            }
+        }
+
+        public override async Task<Image> GetImageAsync(string objectId)
+        {
+            if (objectId == null)
+            {
+                throw new ArgumentNullException(nameof(objectId));
+            }
+            if (objectId.Length <= 0)
+            {
+                // TODO
+                throw new ArgumentException("", nameof(objectId));
+            }
+
+            var url = $"{Constants.LeanCloudUrlBase}/1.1/classes/Image/{WebUtility.UrlEncode(objectId)}";
+            using (var client = CreateHttpClient())
+            {
+                var json = await client.GetStringAsync(url);
+                return JsonConvert.DeserializeObject<Image>(json);
+            }
+        }
+
+        public override async Task<object> GetImagesAsync(IEnumerable<string> objectIds)
+        {
+            if (objectIds == null)
+            {
+                throw new ArgumentNullException(nameof(objectIds));
+            }
+
+            var where = new
+            {
+                objectId = new Dictionary<string, IEnumerable<string>>()
+                {
+                    {
+                        "$in",
+                        objectIds
+                    }
+                }
+            };
+            var url = $"{Constants.LeanCloudUrlBase}/1.1/classes/Image?where={WebUtility.UrlEncode(JsonConvert.SerializeObject(where))}&order=-updatedAt";
+            using (var client = CreateHttpClient())
+            {
+                var json = await client.GetStringAsync(url);
+                return JsonConvert.DeserializeObject(json);
+            }
+        }
     }
 }
