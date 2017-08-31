@@ -62,7 +62,7 @@ namespace BingoWallpaper.Models.Bing
         }
 
         [JsonProperty("wp")]
-        public bool Wp
+        public bool ExistWUXGA
         {
             get;
             set;

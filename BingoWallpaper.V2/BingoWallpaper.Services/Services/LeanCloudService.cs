@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Net;
 using System.Threading.Tasks;
 using BingoWallpaper.Models.LeanCloud;
+using BingoWallpaper.Properties;
 using Newtonsoft.Json;
 
 namespace BingoWallpaper.Services
@@ -17,8 +18,7 @@ namespace BingoWallpaper.Services
             }
             if (objectId.Length <= 0)
             {
-                // TODO
-                throw new ArgumentException("", nameof(objectId));
+                throw new ArgumentException(string.Format(Resources.EmptyStringExceptionMessage, nameof(objectId)), nameof(objectId));
             }
 
             var url = $"{Constants.LeanCloudUrlBase}/1.1/classes/Archive/{WebUtility.UrlEncode(objectId)}";
@@ -29,7 +29,7 @@ namespace BingoWallpaper.Services
             }
         }
 
-        public override async Task<object> GetArchiveAsync(IEnumerable<string> objectIds)
+        public override async Task<object> GetArchivesAsync(IEnumerable<string> objectIds)
         {
             if (objectIds == null)
             {
@@ -62,8 +62,7 @@ namespace BingoWallpaper.Services
             }
             if (objectId.Length <= 0)
             {
-                // TODO
-                throw new ArgumentException("", nameof(objectId));
+                throw new ArgumentException(string.Format(Resources.EmptyStringExceptionMessage, nameof(objectId)), nameof(objectId));
             }
 
             var url = $"{Constants.LeanCloudUrlBase}/1.1/classes/Image/{WebUtility.UrlEncode(objectId)}";

@@ -16,24 +16,26 @@ namespace BingoWallpaper.Services.Tests
         [InlineData("599beb0b570c350060983bd9")]
         public async Task TestGetArchiveAsync(string objectId)
         {
-            await _leanCloudService.GetArchiveAsync(objectId);
+            var archive = await _leanCloudService.GetArchiveAsync(objectId);
         }
 
         [Fact]
         public async Task TestGetArchivesAsync()
         {
+            await _leanCloudService.GetArchivesAsync(null);
         }
 
         [Theory]
         [InlineData("559d0e88e4b03bd51879a0de")]
         public async Task TestGetImageAsync(string objectId)
         {
-            await _leanCloudService.GetImageAsync(objectId);
+            var image = await _leanCloudService.GetImageAsync(objectId);
         }
 
         [Fact]
         public async Task TestGetImagesAsync()
         {
+            await _leanCloudService.GetImagesAsync(null);
         }
     }
 }

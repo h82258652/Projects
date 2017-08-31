@@ -8,7 +8,7 @@ namespace BingoWallpaper.Services
     {
         Task<Archive> GetArchiveAsync(string objectId);
 
-        Task<object> GetArchiveAsync(IEnumerable<string> objectIds);
+        Task<object> GetArchivesAsync(IEnumerable<string> objectIds);
 
         Task<Image> GetImageAsync(string objectId);
 
