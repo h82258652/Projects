@@ -1,4 +1,6 @@
-﻿namespace BingoWallpaper.Wpf.Views
+﻿using BingoWallpaper.ViewModels;
+
+namespace BingoWallpaper.Wpf.Views
 {
     public partial class DetailView
     {
@@ -6,5 +8,7 @@
         {
             InitializeComponent();
         }
+
+        public IDetailViewModel ViewModel => (IDetailViewModel)DataContext;
     }
 }
