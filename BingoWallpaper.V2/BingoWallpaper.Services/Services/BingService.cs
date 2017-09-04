@@ -2,6 +2,7 @@
 using System.Net.Http;
 using System.Threading.Tasks;
 using BingoWallpaper.Models.Bing;
+using BingoWallpaper.Properties;
 using Newtonsoft.Json;
 
 namespace BingoWallpaper.Services
@@ -20,8 +21,7 @@ namespace BingoWallpaper.Services
             }
             if (area.Length <= 0)
             {
-                // TODO
-                throw new ArgumentException();
+                throw new ArgumentException(string.Format(Resources.EmptyStringExceptionMessage, nameof(area)), nameof(area));
             }
 
             var url = $"{Constants.BingUrlBase}/hpimagearchive.aspx?format=js&idx={daysAgo}&n={count}&mkt={area}";

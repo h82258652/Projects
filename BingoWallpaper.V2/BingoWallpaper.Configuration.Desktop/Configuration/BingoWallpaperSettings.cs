@@ -6,8 +6,14 @@ namespace BingoWallpaper.Configuration
     {
         public bool IsAutoUpdateLockScreen
         {
-            get => throw new NotImplementedException();
-            set => throw new NotImplementedException();
+            get
+            {
+                throw new NotImplementedException();
+            }
+            set
+            {
+                throw new NotImplementedException();
+            }
         }
 
         public bool IsAutoUpdateWallpaper

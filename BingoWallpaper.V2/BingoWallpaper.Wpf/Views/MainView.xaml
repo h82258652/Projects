@@ -12,7 +12,9 @@
             <ItemsControl ItemsSource="{Binding Path=Wallpapers}">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <Image />
+                        <Button>
+                            <Image />
+                        </Button>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
                 <ItemsControl.ItemsPanel>
