@@ -139,9 +139,29 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BingoWallpaper.Configuration.Abstractions\BingoWallpaper.Configuration.Abstractions.csproj">
+      <Project>{329cf02f-c518-441b-801d-dea36e8d3e0b}</Project>
+      <Name>BingoWallpaper.Configuration.Abstractions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BingoWallpaper.Configuration.Desktop\BingoWallpaper.Configuration.Desktop.csproj">
+      <Project>{14e62ee8-d673-46ab-ae2e-ea2b35591982}</Project>
+      <Name>BingoWallpaper.Configuration.Desktop</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BingoWallpaper.Services.Abstractions\BingoWallpaper.Services.Abstractions.csproj">
+      <Project>{30ab2ac5-8706-49a7-98d5-998ac95625a7}</Project>
+      <Name>BingoWallpaper.Services.Abstractions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BingoWallpaper.Services\BingoWallpaper.Services.csproj">
+      <Project>{367f0082-dc45-44f6-992a-c11155b23e51}</Project>
+      <Name>BingoWallpaper.Services</Name>
+    </ProjectReference>
     <ProjectReference Include="..\BingoWallpaper.ViewModels.Abstractions\BingoWallpaper.ViewModels.Abstractions.csproj">
       <Project>{5c6ad794-500a-44e7-92b3-8a7c54d3f343}</Project>
       <Name>BingoWallpaper.ViewModels.Abstractions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BingoWallpaper.ViewModels.Temp\BingoWallpaper.ViewModels.Temp.csproj">
+      <Project>{e228a1a2-7dc2-43e2-b70e-9497b67f16c0}</Project>
+      <Name>BingoWallpaper.ViewModels.Temp</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

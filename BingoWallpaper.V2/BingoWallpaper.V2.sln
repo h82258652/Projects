@@ -25,6 +25,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BingoWallpaper.Wpf", "Bingo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BingoWallpaper.ViewModels.Temp", "BingoWallpaper.ViewModels.Temp\BingoWallpaper.ViewModels.Temp.csproj", "{E228A1A2-7DC2-43E2-B70E-9497B67F16C0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BingoWallpaper.ViewModels.Tests", "BingoWallpaper.ViewModels.Tests\BingoWallpaper.ViewModels.Tests.csproj", "{8DF1A3F2-9E1D-4E54-B39E-A86A52744C07}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BingoWallpaper.Services.Desktop", "BingoWallpaper.Services.Desktop\BingoWallpaper.Services.Desktop.csproj", "{3430E107-E8B0-4C9F-8E85-2716D025D53E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BingoWallpaper.Configuration.Desktop", "BingoWallpaper.Configuration.Desktop\BingoWallpaper.Configuration.Desktop.csproj", "{14E62EE8-D673-46AB-AE2E-EA2B35591982}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -67,6 +73,18 @@ Global
 		{E228A1A2-7DC2-43E2-B70E-9497B67F16C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E228A1A2-7DC2-43E2-B70E-9497B67F16C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E228A1A2-7DC2-43E2-B70E-9497B67F16C0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8DF1A3F2-9E1D-4E54-B39E-A86A52744C07}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8DF1A3F2-9E1D-4E54-B39E-A86A52744C07}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8DF1A3F2-9E1D-4E54-B39E-A86A52744C07}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8DF1A3F2-9E1D-4E54-B39E-A86A52744C07}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3430E107-E8B0-4C9F-8E85-2716D025D53E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3430E107-E8B0-4C9F-8E85-2716D025D53E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3430E107-E8B0-4C9F-8E85-2716D025D53E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3430E107-E8B0-4C9F-8E85-2716D025D53E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{14E62EE8-D673-46AB-AE2E-EA2B35591982}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{14E62EE8-D673-46AB-AE2E-EA2B35591982}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{14E62EE8-D673-46AB-AE2E-EA2B35591982}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{14E62EE8-D673-46AB-AE2E-EA2B35591982}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -81,6 +99,9 @@ Global
 		{5C6AD794-500A-44E7-92B3-8A7C54D3F343} = {D8309761-7075-4652-A07F-3ECF725E9907}
 		{355CEC6F-ACD3-4871-8159-67C830008E27} = {D8309761-7075-4652-A07F-3ECF725E9907}
 		{E228A1A2-7DC2-43E2-B70E-9497B67F16C0} = {D8309761-7075-4652-A07F-3ECF725E9907}
+		{8DF1A3F2-9E1D-4E54-B39E-A86A52744C07} = {8AC712DD-7DCA-4C5E-989D-DD329AA37F00}
+		{3430E107-E8B0-4C9F-8E85-2716D025D53E} = {D8309761-7075-4652-A07F-3ECF725E9907}
+		{14E62EE8-D673-46AB-AE2E-EA2B35591982} = {D8309761-7075-4652-A07F-3ECF725E9907}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3746546D-A396-4E80-BBD2-864C311CB7A0}

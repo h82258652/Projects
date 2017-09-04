@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Input;
+using BingoWallpaper.Models.LeanCloud;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 
@@ -22,6 +23,14 @@ namespace BingoWallpaper.ViewModels
                     throw new NotImplementedException();
                 });
                 return _saveCommand;
+            }
+        }
+
+        public Wallpaper Wallpaper
+        {
+            get
+            {
+                throw new NotImplementedException();
             }
         }
     }

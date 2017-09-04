@@ -7,5 +7,8 @@
              d:DesignWidth="{Binding Source={x:Static SystemParameters.WorkArea}, Path=Width}"
              DataContext="{Binding Source={StaticResource Locator}, Path=Detail}"
              mc:Ignorable="d">
-    <Grid />
+    <Grid>
+        <Image />
+        <Button Command="{Binding Path=SaveCommand}" />
+    </Grid>
 </UserControl>

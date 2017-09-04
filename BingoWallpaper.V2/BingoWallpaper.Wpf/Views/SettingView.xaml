@@ -7,5 +7,9 @@
              d:DesignWidth="{Binding Source={x:Static SystemParameters.WorkArea}, Path=Width}"
              DataContext="{Binding Source={StaticResource Locator}, Path=Setting}"
              mc:Ignorable="d">
-    <Grid />
+    <Grid>
+        <ToggleButton IsChecked="{Binding Path=IsAutoUpdateLockScreen, Mode=TwoWay}"
+                      Style="{StaticResource MaterialDesignSwitchToggleButton}" />
+        <ToggleButton IsChecked="{Binding Path=IsAutoUpdateWallpaper, Mode=TwoWay}" />
+    </Grid>
 </UserControl>
