@@ -13,5 +13,9 @@ namespace BingoWallpaper.Services
         Task<Image> GetImageAsync(string objectId);
 
         Task<object> GetImagesAsync(IEnumerable<string> objectIds);
+
+        Task<Wallpaper> GetWallpaperAsync(string objectId);
+
+        Task<object> GetWallpapersAsync(IEnumerable<string> objectIds);
     }
 }

@@ -23,6 +23,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BingoWallpaper.ViewModels.A
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BingoWallpaper.Wpf", "BingoWallpaper.Wpf\BingoWallpaper.Wpf.csproj", "{355CEC6F-ACD3-4871-8159-67C830008E27}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BingoWallpaper.ViewModels.Temp", "BingoWallpaper.ViewModels.Temp\BingoWallpaper.ViewModels.Temp.csproj", "{E228A1A2-7DC2-43E2-B70E-9497B67F16C0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -61,6 +63,10 @@ Global
 		{355CEC6F-ACD3-4871-8159-67C830008E27}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{355CEC6F-ACD3-4871-8159-67C830008E27}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{355CEC6F-ACD3-4871-8159-67C830008E27}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E228A1A2-7DC2-43E2-B70E-9497B67F16C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E228A1A2-7DC2-43E2-B70E-9497B67F16C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E228A1A2-7DC2-43E2-B70E-9497B67F16C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E228A1A2-7DC2-43E2-B70E-9497B67F16C0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -74,6 +80,7 @@ Global
 		{329CF02F-C518-441B-801D-DEA36E8D3E0B} = {D8309761-7075-4652-A07F-3ECF725E9907}
 		{5C6AD794-500A-44E7-92B3-8A7C54D3F343} = {D8309761-7075-4652-A07F-3ECF725E9907}
 		{355CEC6F-ACD3-4871-8159-67C830008E27} = {D8309761-7075-4652-A07F-3ECF725E9907}
+		{E228A1A2-7DC2-43E2-B70E-9497B67F16C0} = {D8309761-7075-4652-A07F-3ECF725E9907}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3746546D-A396-4E80-BBD2-864C311CB7A0}

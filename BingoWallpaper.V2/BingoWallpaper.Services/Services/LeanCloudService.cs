@@ -97,5 +97,21 @@ namespace BingoWallpaper.Services
                 return JsonConvert.DeserializeObject(json);
             }
         }
+
+        public override async Task<Wallpaper> GetWallpaperAsync(string objectId)
+        {
+            var archiveTask = GetArchiveAsync(objectId);
+            var imageTask = GetImageAsync(objectId);
+            return new Wallpaper()
+            {
+                Archive = await archiveTask,
+                Image = await imageTask
+            };
+        }
+
+        public override Task<object> GetWallpapersAsync(IEnumerable<string> objectIds)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

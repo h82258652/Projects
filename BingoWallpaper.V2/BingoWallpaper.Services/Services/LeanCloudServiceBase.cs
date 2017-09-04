@@ -15,6 +15,10 @@ namespace BingoWallpaper.Services
 
         public abstract Task<object> GetImagesAsync(IEnumerable<string> objectIds);
 
+        public abstract Task<Wallpaper> GetWallpaperAsync(string objectId);
+
+        public abstract Task<object> GetWallpapersAsync(IEnumerable<string> objectIds);
+
         protected HttpClient CreateHttpClient()
         {
             var client = new HttpClient();
