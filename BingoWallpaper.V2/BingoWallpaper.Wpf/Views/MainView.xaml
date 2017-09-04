@@ -8,6 +8,7 @@
              DataContext="{Binding Source={StaticResource Locator}, Path=Main}"
              mc:Ignorable="d">
     <Grid>
+        <ToggleButton />
         <ScrollViewer VerticalScrollBarVisibility="Auto">
             <ItemsControl ItemsSource="{Binding Path=Wallpapers}">
                 <ItemsControl.ItemTemplate>
