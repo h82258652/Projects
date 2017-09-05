@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Input;
 using BingoWallpaper.Models.LeanCloud;
+using BingoWallpaper.Services;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 
@@ -8,12 +9,15 @@ namespace BingoWallpaper.ViewModels
 {
     public class DetailViewModel : ViewModelBase, IDetailViewModel
     {
+        private readonly IBingoWallpaperFileService _bingoWallpaperFileService;
+
         private RelayCommand _saveCommand;
 
         private Wallpaper _wallpaper;
 
-        public DetailViewModel()
+        public DetailViewModel(IBingoWallpaperFileService bingoWallpaperFileService)
         {
+            _bingoWallpaperFileService = bingoWallpaperFileService;
         }
 
         public ICommand SaveCommand
