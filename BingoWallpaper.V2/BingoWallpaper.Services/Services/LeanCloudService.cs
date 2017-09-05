@@ -30,7 +30,7 @@ namespace BingoWallpaper.Services
             }
         }
 
-        public override async Task<object> GetArchivesAsync(IEnumerable<string> objectIds)
+        public override async Task<LeanCloudResultCollection<Archive>> GetArchivesAsync(IEnumerable<string> objectIds)
         {
             if (objectIds == null)
             {
@@ -51,7 +51,7 @@ namespace BingoWallpaper.Services
             using (var client = CreateHttpClient())
             {
                 var json = await client.GetStringAsync(url);
-                return JsonConvert.DeserializeObject(json);
+                return JsonConvert.DeserializeObject<LeanCloudResultCollection<Archive>>(json);
             }
         }
 
@@ -74,7 +74,7 @@ namespace BingoWallpaper.Services
             }
         }
 
-        public override async Task<object> GetImagesAsync(IEnumerable<string> objectIds)
+        public override async Task<LeanCloudResultCollection<Image>> GetImagesAsync(IEnumerable<string> objectIds)
         {
             if (objectIds == null)
             {
@@ -95,35 +95,37 @@ namespace BingoWallpaper.Services
             using (var client = CreateHttpClient())
             {
                 var json = await client.GetStringAsync(url);
-                return JsonConvert.DeserializeObject(json);
+                return JsonConvert.DeserializeObject<LeanCloudResultCollection<Image>>(json);
             }
         }
 
         public override async Task<Wallpaper> GetWallpaperAsync(string objectId)
         {
-            var archiveTask = GetArchiveAsync(objectId);
-            var imageTask = GetImageAsync(objectId);
+            var archive = await GetArchiveAsync(objectId);
+            var image = await GetImageAsync(archive.Image.ObjectId);
             return new Wallpaper()
             {
-                Archive = await archiveTask,
-                Image = await imageTask
+                Archive = archive,
+                Image = image
             };
         }
 
-        public override async Task<object> GetWallpapersAsync(IEnumerable<string> objectIds)
+        public override async Task<IEnumerable<Wallpaper>> GetWallpapersAsync(IEnumerable<string> objectIds)
         {
             if (objectIds == null)
             {
                 throw new ArgumentNullException(nameof(objectIds));
             }
 
-            var objectIdList = objectIds.ToList();
-            var archivesTask = GetArchivesAsync(objectIdList);
-            var imagesTask = GetImagesAsync(objectIdList);
-            var archives = await archivesTask;
-            var images = await imagesTask;
-            
-            throw new NotImplementedException();
+            var archives = await GetArchivesAsync(objectIds);
+            var images = await GetImagesAsync(archives.Select(temp => temp.Image.ObjectId));
+            return from archive in archives
+                   let image = images.Single(temp => temp.ObjectId == archive.Image.ObjectId)
+                   select new Wallpaper()
+                   {
+                       Archive = archive,
+                       Image = image
+                   };
         }
     }
 }

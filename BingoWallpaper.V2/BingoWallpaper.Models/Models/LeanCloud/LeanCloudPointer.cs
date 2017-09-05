@@ -1,13 +1,12 @@
-﻿using System;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 
 namespace BingoWallpaper.Models.LeanCloud
 {
     [JsonObject]
-    public class AVObject : LeanCloudResultBase
+    public class LeanCloudPointer
     {
-        [JsonProperty("createdAt")]
-        public DateTime CreatedAt
+        [JsonProperty("className")]
+        public string ClassName
         {
             get;
             set;
@@ -20,8 +19,8 @@ namespace BingoWallpaper.Models.LeanCloud
             set;
         }
 
-        [JsonProperty("updatedAt")]
-        public DateTime UpdatedAt
+        [JsonProperty("__type")]
+        public string Type
         {
             get;
             set;

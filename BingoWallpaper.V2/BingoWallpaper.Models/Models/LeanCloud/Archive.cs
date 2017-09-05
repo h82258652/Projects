@@ -27,7 +27,7 @@ namespace BingoWallpaper.Models.LeanCloud
         }
 
         [JsonProperty("image")]
-        public object Image
+        public LeanCloudPointer Image
         {
             get;
             set;
