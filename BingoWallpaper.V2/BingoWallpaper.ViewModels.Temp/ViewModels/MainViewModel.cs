@@ -16,6 +16,8 @@ namespace BingoWallpaper.ViewModels
 
         private RelayCommand _loadMoreCommand;
 
+        private RelayCommand<Wallpaper> _wallpaperClickCommand;
+
         public MainViewModel(ILeanCloudService leanCloudService)
         {
             _leanCloudService = leanCloudService;
@@ -39,7 +41,25 @@ namespace BingoWallpaper.ViewModels
             {
                 _loadMoreCommand = _loadMoreCommand ?? new RelayCommand(() =>
                 {
-                    throw new NotImplementedException();
+                    if (IsLoading)
+                    {
+                        return;
+                    }
+
+                    try
+                    {
+                        IsLoading = true;
+
+                        throw new NotImplementedException();
+                    }
+                    catch (Exception ex)
+                    {
+                        // TODO
+                    }
+                    finally
+                    {
+                        IsLoading = false;
+                    }
                 });
                 return _loadMoreCommand;
             }
@@ -49,7 +69,12 @@ namespace BingoWallpaper.ViewModels
         {
             get
             {
-                throw new NotImplementedException();
+                _wallpaperClickCommand = _wallpaperClickCommand ?? new RelayCommand<Wallpaper>(wallpaper =>
+                {
+                    // TODO
+                    throw new NotImplementedException();
+                });
+                return _wallpaperClickCommand;
             }
         }
 

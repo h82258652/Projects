@@ -10,6 +10,8 @@ namespace BingoWallpaper.ViewModels
     {
         private RelayCommand _saveCommand;
 
+        private Wallpaper _wallpaper;
+
         public DetailViewModel()
         {
         }
@@ -30,7 +32,11 @@ namespace BingoWallpaper.ViewModels
         {
             get
             {
-                throw new NotImplementedException();
+                return _wallpaper;
+            }
+            set
+            {
+                Set(ref _wallpaper, value);
             }
         }
     }
