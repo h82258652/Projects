@@ -11,6 +11,11 @@ namespace BingoWallpaper.ViewModels
             get;
         }
 
+        ICommand WallpaperClickCommand
+        {
+            get;
+        }
+
         ObservableCollection<Wallpaper> Wallpapers
         {
             get;

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 using BingoWallpaper.Models.LeanCloud;
@@ -109,8 +110,19 @@ namespace BingoWallpaper.Services
             };
         }
 
-        public override Task<object> GetWallpapersAsync(IEnumerable<string> objectIds)
+        public override async Task<object> GetWallpapersAsync(IEnumerable<string> objectIds)
         {
+            if (objectIds == null)
+            {
+                throw new ArgumentNullException(nameof(objectIds));
+            }
+
+            var objectIdList = objectIds.ToList();
+            var archivesTask = GetArchivesAsync(objectIdList);
+            var imagesTask = GetImagesAsync(objectIdList);
+            var archives = await archivesTask;
+            var images = await imagesTask;
+            
             throw new NotImplementedException();
         }
     }

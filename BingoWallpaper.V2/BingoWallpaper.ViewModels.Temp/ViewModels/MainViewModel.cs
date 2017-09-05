@@ -45,6 +45,14 @@ namespace BingoWallpaper.ViewModels
             }
         }
 
+        public ICommand WallpaperClickCommand
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+        }
+
         public ObservableCollection<Wallpaper> Wallpapers
         {
             get
