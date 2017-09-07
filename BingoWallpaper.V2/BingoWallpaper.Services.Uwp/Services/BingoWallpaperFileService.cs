@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Windows.Storage;
 using Windows.Storage.Pickers;
@@ -15,6 +16,12 @@ namespace BingoWallpaper.Services
             }
 
             var fileSavePicker = new FileSavePicker();
+            fileSavePicker.FileTypeChoices.Add(".jpg", new List<string>()
+            {
+                ".jpg"
+            });
+            fileSavePicker.SuggestedFileName = suggestedFileName;
+            fileSavePicker.SuggestedStartLocation = PickerLocationId.PicturesLibrary;
 
             var file = await fileSavePicker.PickSaveFileAsync();
 
