@@ -159,6 +159,10 @@
       <Project>{30ab2ac5-8706-49a7-98d5-998ac95625a7}</Project>
       <Name>BingoWallpaper.Services.Abstractions</Name>
     </ProjectReference>
+    <ProjectReference Include="..\BingoWallpaper.Services.Desktop\BingoWallpaper.Services.Desktop.csproj">
+      <Project>{3430e107-e8b0-4c9f-8e85-2716d025d53e}</Project>
+      <Name>BingoWallpaper.Services.Desktop</Name>
+    </ProjectReference>
     <ProjectReference Include="..\BingoWallpaper.Services\BingoWallpaper.Services.csproj">
       <Project>{367f0082-dc45-44f6-992a-c11155b23e51}</Project>
       <Name>BingoWallpaper.Services</Name>

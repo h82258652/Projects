@@ -30,6 +30,7 @@ namespace BingoWallpaper.Wpf.ViewModels
             containerBuilder.RegisterType<BingoWallpaperSettings>().As<IBingoWallpaperSettings>();
 
             containerBuilder.RegisterType<LeanCloudService>().As<ILeanCloudService>();
+            containerBuilder.RegisterType<BingoWallpaperFileService>().As<IBingoWallpaperFileService>();
 
             containerBuilder.RegisterType<MainViewModel>().As<IMainViewModel>();
             containerBuilder.RegisterType<DetailViewModel>().As<IDetailViewModel>();
