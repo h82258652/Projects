@@ -18,7 +18,7 @@ namespace BingoWallpaper.Services.Tests
         public async Task TestGetArchiveAsync(string objectId)
         {
             var archive = await _leanCloudService.GetArchiveAsync(objectId);
-            Assert.True(archive.ErrorCode == 0);
+            Assert.True(archive.ErrorCode == Constants.LeanCloudApiSuccessCode);
         }
 
         [Fact]
@@ -29,12 +29,12 @@ namespace BingoWallpaper.Services.Tests
                 {
                     "599beb0b570c350060983bd9"
                 });
-                Assert.True(archives.ErrorCode == 0);
+                Assert.True(archives.ErrorCode == Constants.LeanCloudApiSuccessCode);
             }
 
             {
                 var archives = await _leanCloudService.GetArchivesAsync();
-                Assert.True(archives.ErrorCode == 0);
+                Assert.True(archives.ErrorCode == Constants.LeanCloudApiSuccessCode);
             }
         }
 
@@ -43,7 +43,7 @@ namespace BingoWallpaper.Services.Tests
         public async Task TestGetImageAsync(string objectId)
         {
             var image = await _leanCloudService.GetImageAsync(objectId);
-            Assert.True(image.ErrorCode == 0);
+            Assert.True(image.ErrorCode == Constants.LeanCloudApiSuccessCode);
         }
 
         [Fact]
@@ -53,7 +53,7 @@ namespace BingoWallpaper.Services.Tests
             {
                 "559d0e88e4b03bd51879a0de"
             });
-            Assert.True(images.ErrorCode == 0);
+            Assert.True(images.ErrorCode == Constants.LeanCloudApiSuccessCode);
         }
 
         [Theory]

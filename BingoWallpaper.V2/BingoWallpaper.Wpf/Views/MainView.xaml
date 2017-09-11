@@ -26,20 +26,22 @@
             </materialDesign:DrawerHost.LeftDrawerContent>
             <materialDesign:DrawerHost.Content>
                 <Grid>
-                    <ItemsControl ItemsSource="{Binding Path=Wallpapers}">
-                        <ItemsControl.ItemTemplate>
-                            <DataTemplate>
-                                <Button Style="{StaticResource EmptyButtonStyle}">
-                                    <Image Source="{Binding Path=Image.UrlBase, Converter={StaticResource WallpaperUrlConverter}}" />
-                                </Button>
-                            </DataTemplate>
-                        </ItemsControl.ItemTemplate>
-                        <ItemsControl.ItemsPanel>
-                            <ItemsPanelTemplate>
-                                <WrapPanel Orientation="Horizontal" />
-                            </ItemsPanelTemplate>
-                        </ItemsControl.ItemsPanel>
-                    </ItemsControl>
+                    <ScrollViewer VerticalScrollBarVisibility="Auto">
+                        <ItemsControl ItemsSource="{Binding Path=Wallpapers}">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Button Style="{StaticResource EmptyButtonStyle}">
+                                        <Image Source="{Binding Path=Image.UrlBase, Converter={StaticResource WallpaperUrlConverter}}" />
+                                    </Button>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <WrapPanel Orientation="Horizontal" />
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                        </ItemsControl>
+                    </ScrollViewer>
                     <ToggleButton x:Name="MenuToggleButton"
                                   HorizontalAlignment="Left"
                                   VerticalAlignment="Top"
