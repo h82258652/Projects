@@ -24,11 +24,18 @@ namespace BingoWallpaper.Services.Tests
         [Fact]
         public async Task TestGetArchivesAsync()
         {
-            var archives = await _leanCloudService.GetArchivesAsync(new[]
             {
-                "599beb0b570c350060983bd9"
-            });
-            Assert.True(archives.ErrorCode == 0);
+                var archives = await _leanCloudService.GetArchivesAsync(new[]
+                {
+                    "599beb0b570c350060983bd9"
+                });
+                Assert.True(archives.ErrorCode == 0);
+            }
+
+            {
+                var archives = await _leanCloudService.GetArchivesAsync();
+                Assert.True(archives.ErrorCode == 0);
+            }
         }
 
         [Theory]
@@ -60,11 +67,18 @@ namespace BingoWallpaper.Services.Tests
         [Fact]
         public async Task TestGetWallpapersAsync()
         {
-            var wallpapers = await _leanCloudService.GetWallpapersAsync(new[]
             {
-                "599beb0b570c350060983bd9"
-            });
-            Assert.True(wallpapers.Any());
+                var wallpapers = await _leanCloudService.GetWallpapersAsync(new[]
+                {
+                    "599beb0b570c350060983bd9"
+                });
+                Assert.True(wallpapers.Any());
+            }
+
+            {
+                var wallpapers = await _leanCloudService.GetWallpapersAsync();
+                Assert.True(wallpapers.Any());
+            }
         }
     }
 }

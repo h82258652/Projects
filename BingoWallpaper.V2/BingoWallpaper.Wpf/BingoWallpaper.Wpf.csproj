@@ -69,6 +69,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Converters\WallpaperUrlConverter.cs" />
     <Compile Include="ViewModels\ViewModelLocator.cs" />
     <Compile Include="Views\AboutView.xaml.cs">
       <DependentUpon>AboutView.xaml</DependentUpon>
@@ -155,6 +156,10 @@
       <Project>{14e62ee8-d673-46ab-ae2e-ea2b35591982}</Project>
       <Name>BingoWallpaper.Configuration.Desktop</Name>
     </ProjectReference>
+    <ProjectReference Include="..\BingoWallpaper.Core\BingoWallpaper.Core.csproj">
+      <Project>{79d0a1a1-8079-404e-8382-6754b485dcd8}</Project>
+      <Name>BingoWallpaper.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\BingoWallpaper.Services.Abstractions\BingoWallpaper.Services.Abstractions.csproj">
       <Project>{30ab2ac5-8706-49a7-98d5-998ac95625a7}</Project>
       <Name>BingoWallpaper.Services.Abstractions</Name>
@@ -176,8 +181,6 @@
       <Name>BingoWallpaper.ViewModels.Temp</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Converters\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

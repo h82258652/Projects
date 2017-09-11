@@ -39,7 +39,7 @@ namespace BingoWallpaper.ViewModels
         {
             get
             {
-                _loadMoreCommand = _loadMoreCommand ?? new RelayCommand(() =>
+                _loadMoreCommand = _loadMoreCommand ?? new RelayCommand(async () =>
                 {
                     if (IsLoading)
                     {
@@ -49,6 +49,8 @@ namespace BingoWallpaper.ViewModels
                     try
                     {
                         IsLoading = true;
+
+                        await _leanCloudService.GetWallpapersAsync(null);
 
                         throw new NotImplementedException();
                     }

@@ -17,5 +17,7 @@
         public const string SinaWeiboRedirectUri = "http://bing.coding.io/";
 
         public const string UmengAppKey = "56137ba2e0f55adb22005d2b";
+
+        public const string WallpaperUrlBase = "https://wpdn.bohan.co";
     }
 }

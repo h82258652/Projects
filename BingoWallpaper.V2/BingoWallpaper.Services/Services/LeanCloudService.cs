@@ -47,7 +47,41 @@ namespace BingoWallpaper.Services
                     }
                 }
             };
-            var url = $"{Constants.LeanCloudUrlBase}/1.1/classes/Archive?where={WebUtility.UrlEncode(JsonConvert.SerializeObject(where))}&order=-updatedAt";
+            var url = $"{Constants.LeanCloudUrlBase}/1.1/classes/Archive?where={WebUtility.UrlEncode(JsonConvert.SerializeObject(where))}&order=-createdAt";
+            using (var client = CreateHttpClient())
+            {
+                var json = await client.GetStringAsync(url);
+                return JsonConvert.DeserializeObject<LeanCloudResultCollection<Archive>>(json);
+            }
+        }
+
+        public override async Task<LeanCloudResultCollection<Archive>> GetArchivesAsync(int page = 1, int pageSize = 20, string[] areas = null)
+        {
+            if (page < 1)
+            {
+                throw new ArgumentOutOfRangeException(nameof(page));
+            }
+            if (pageSize < 1)
+            {
+                throw new ArgumentOutOfRangeException(nameof(pageSize));
+            }
+
+            var url = $"{Constants.LeanCloudUrlBase}/1.1/classes/Archive?";
+            if (areas != null)
+            {
+                var where = new
+                {
+                    market = new Dictionary<string, IEnumerable<string>>()
+                    {
+                        {
+                            "$in",
+                            areas
+                        }
+                    }
+                };
+                url = url + $"where={WebUtility.UrlEncode(JsonConvert.SerializeObject(where))}&";
+            }
+            url = url + $"order=-createdAt&skip={pageSize * (page - 1)}&limit={pageSize}";
             using (var client = CreateHttpClient())
             {
                 var json = await client.GetStringAsync(url);
@@ -91,7 +125,7 @@ namespace BingoWallpaper.Services
                     }
                 }
             };
-            var url = $"{Constants.LeanCloudUrlBase}/1.1/classes/Image?where={WebUtility.UrlEncode(JsonConvert.SerializeObject(where))}&order=-updatedAt";
+            var url = $"{Constants.LeanCloudUrlBase}/1.1/classes/Image?where={WebUtility.UrlEncode(JsonConvert.SerializeObject(where))}&order=-createdAt";
             using (var client = CreateHttpClient())
             {
                 var json = await client.GetStringAsync(url);
@@ -118,6 +152,19 @@ namespace BingoWallpaper.Services
             }
 
             var archives = await GetArchivesAsync(objectIds);
+            var images = await GetImagesAsync(archives.Select(temp => temp.Image.ObjectId));
+            return from archive in archives
+                   let image = images.Single(temp => temp.ObjectId == archive.Image.ObjectId)
+                   select new Wallpaper()
+                   {
+                       Archive = archive,
+                       Image = image
+                   };
+        }
+
+        public override async Task<IEnumerable<Wallpaper>> GetWallpapersAsync(int page = 1, int pageSize = 20, string[] areas = null)
+        {
+            var archives = await GetArchivesAsync(page, pageSize, areas);
             var images = await GetImagesAsync(archives.Select(temp => temp.Image.ObjectId));
             return from archive in archives
                    let image = images.Single(temp => temp.ObjectId == archive.Image.ObjectId)
