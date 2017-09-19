@@ -1,7 +1,6 @@
 ﻿using System;
 using System.IO;
 using System.Net.Http;
-using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Media.Imaging;
 using SoftwareKobo.Extensions;
@@ -12,8 +11,6 @@ namespace SoftwareKobo.Controls
     public sealed partial class DefaultImageLoader
     {
         private static readonly WeakValueDictionary<string, BitmapImage> CacheBitmapImages = new WeakValueDictionary<string, BitmapImage>();
-
-        private static readonly SemaphoreSlim SemaphoreSlim = new SemaphoreSlim(1);
 
         public async Task<BitmapResult> GetBitmapAsync(string source)
         {
@@ -37,13 +34,17 @@ namespace SoftwareKobo.Controls
                     var cacheFilePath = GetCacheFilePath(uriSource);
                     if (File.Exists(cacheFilePath))
                     {
-                        await SemaphoreSlim.WaitAsync();
                         try
                         {
-                            bitmap = new BitmapImage();
-                            bitmap.BeginInit();
-                            bitmap.UriSource = new Uri(cacheFilePath);
-                            bitmap.EndInit();
+                            bitmap = await Task.Run(() =>
+                            {
+                                var asyncBitmap = new BitmapImage();
+                                asyncBitmap.BeginInit();
+                                asyncBitmap.UriSource = new Uri(cacheFilePath);
+                                asyncBitmap.EndInit();
+                                asyncBitmap.Freeze();
+                                return asyncBitmap;
+                            });
                             // 放入内存缓存。
                             CacheBitmapImages[source] = bitmap;
 
@@ -70,11 +71,6 @@ namespace SoftwareKobo.Controls
 
                             return new BitmapResult(ex);
                         }
-                        finally
-                        {
-                            await Task.Delay(1);// 防止同时加载大量图片时，UI 线程卡死。
-                            SemaphoreSlim.Release();
-                        }
                     }
                     else
                     {
@@ -96,13 +92,17 @@ namespace SoftwareKobo.Controls
                             return new BitmapResult(ex);
                         }
 
-                        await SemaphoreSlim.WaitAsync();
                         try
                         {
-                            bitmap = new BitmapImage();
-                            bitmap.BeginInit();
-                            bitmap.StreamSource = new MemoryStream(bytes);
-                            bitmap.EndInit();
+                            bitmap = await Task.Run(() =>
+                            {
+                                var asyncBitmap = new BitmapImage();
+                                asyncBitmap.BeginInit();
+                                asyncBitmap.StreamSource = new MemoryStream(bytes);
+                                asyncBitmap.EndInit();
+                                asyncBitmap.Freeze();
+                                return asyncBitmap;
+                            });
                             // 放入内存缓存。
                             CacheBitmapImages[source] = bitmap;
 
@@ -131,22 +131,21 @@ namespace SoftwareKobo.Controls
                             ImageDownloadTasks.TryRemove(source, out imageDownloadTask);
                             return new BitmapResult(ex);
                         }
-                        finally
-                        {
-                            await Task.Delay(1);// 防止同时加载大量图片时，UI 线程卡死。
-                            SemaphoreSlim.Release();
-                        }
                     }
                 }
                 else
                 {
-                    await SemaphoreSlim.WaitAsync();
                     try
                     {
-                        bitmap = new BitmapImage();
-                        bitmap.BeginInit();
-                        bitmap.UriSource = uriSource;
-                        bitmap.EndInit();
+                        bitmap = await Task.Run(() =>
+                        {
+                            var asyncBitmap = new BitmapImage();
+                            asyncBitmap.BeginInit();
+                            asyncBitmap.UriSource = uriSource;
+                            asyncBitmap.EndInit();
+                            asyncBitmap.Freeze();
+                            return asyncBitmap;
+                        });
                         // 放入内存缓存。
                         CacheBitmapImages[source] = bitmap;
 
@@ -163,11 +162,6 @@ namespace SoftwareKobo.Controls
                     catch (NotSupportedException ex)
                     {
                         return new BitmapResult(ex);
-                    }
-                    finally
-                    {
-                        await Task.Delay(1);// 防止同时加载大量图片时，UI 线程卡死。
-                        SemaphoreSlim.Release();
                     }
                 }
             }
@@ -198,13 +192,17 @@ namespace SoftwareKobo.Controls
 
                     Action asyncAction = async () =>
                     {
-                        await SemaphoreSlim.WaitAsync();
                         try
                         {
-                            var bitmap = new BitmapImage();
-                            bitmap.BeginInit();
-                            bitmap.StreamSource = new MemoryStream(bytes);
-                            bitmap.EndInit();
+                            var bitmap = await Task.Run(() =>
+                            {
+                                var asyncBitmap = new BitmapImage();
+                                asyncBitmap.BeginInit();
+                                asyncBitmap.StreamSource = new MemoryStream(bytes);
+                                asyncBitmap.EndInit();
+                                asyncBitmap.Freeze();
+                                return asyncBitmap;
+                            });
                             // 放入内存缓存。
                             CacheBitmapImages[source] = bitmap;
 
@@ -213,11 +211,6 @@ namespace SoftwareKobo.Controls
                         }
                         catch (NotSupportedException)
                         {
-                        }
-                        finally
-                        {
-                            await Task.Delay(1);// 防止同时加载大量图片时，UI 线程卡死。
-                            SemaphoreSlim.Release();
                         }
                     };
                     asyncAction.Invoke();
