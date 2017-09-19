@@ -4,6 +4,6 @@ namespace BingoWallpaper.Services
 {
     public interface IBingoWallpaperFileService
     {
-        Task SaveFileAsync(string suggestedFileName, byte[] bytes);
+        Task<bool> SaveFileAsync(string suggestedFileName, byte[] bytes);
     }
 }

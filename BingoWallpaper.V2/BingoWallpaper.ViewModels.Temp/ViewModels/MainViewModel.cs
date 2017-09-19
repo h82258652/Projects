@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
+using BingoWallpaper.Configuration;
 using BingoWallpaper.Models.LeanCloud;
 using BingoWallpaper.Services;
 using GalaSoft.MvvmLight;
@@ -10,7 +11,13 @@ namespace BingoWallpaper.ViewModels
 {
     public class MainViewModel : ViewModelBase, IMainViewModel
     {
+        private readonly IAppToastService _appToastService;
+
+        private readonly IBingoWallpaperSettings _bingoWallpaperSettings;
+
         private readonly ILeanCloudService _leanCloudService;
+
+        private int _currentPage = 1;
 
         private bool _isLoading;
 
@@ -18,9 +25,15 @@ namespace BingoWallpaper.ViewModels
 
         private RelayCommand<Wallpaper> _wallpaperClickCommand;
 
-        public MainViewModel(ILeanCloudService leanCloudService)
+        private ObservableCollection<Wallpaper> _wallpapers;
+
+        public MainViewModel(ILeanCloudService leanCloudService, IBingoWallpaperSettings bingoWallpaperSettings, IAppToastService appToastService)
         {
             _leanCloudService = leanCloudService;
+            _bingoWallpaperSettings = bingoWallpaperSettings;
+            _appToastService = appToastService;
+
+            LoadMoreCommand.Execute(null);
         }
 
         public bool IsLoading
@@ -50,13 +63,17 @@ namespace BingoWallpaper.ViewModels
                     {
                         IsLoading = true;
 
-                        await _leanCloudService.GetWallpapersAsync(null);
+                        var wallpapers = await _leanCloudService.GetWallpapersAsync(_currentPage, areas: _bingoWallpaperSettings.SelectedAreas);
+                        foreach (var wallpaper in wallpapers)
+                        {
+                            Wallpapers.Add(wallpaper);
+                        }
 
-                        throw new NotImplementedException();
+                        _currentPage++;
                     }
                     catch (Exception ex)
                     {
-                        // TODO
+                        _appToastService.ShowError(ex.Message);
                     }
                     finally
                     {
@@ -84,7 +101,8 @@ namespace BingoWallpaper.ViewModels
         {
             get
             {
-                throw new NotImplementedException();
+                _wallpapers = _wallpapers ?? new ObservableCollection<Wallpaper>();
+                return _wallpapers;
             }
         }
     }
