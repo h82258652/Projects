@@ -13,7 +13,7 @@ namespace SoftwareKobo.Controls
     {
         public static readonly DependencyProperty DurationProperty = DependencyProperty.Register(nameof(Duration), typeof(Duration), typeof(ToastPrompt), new PropertyMetadata(default(Duration), OnDurationChanged));
 
-        public static readonly DependencyProperty IconProperty = DependencyProperty.Register(nameof(Icon), typeof(ContentPresenter), typeof(ToastPrompt), new PropertyMetadata(default(ContentPresenter)));
+        public static readonly DependencyProperty IconProperty = DependencyProperty.Register(nameof(Icon), typeof(object), typeof(ToastPrompt), new PropertyMetadata(default(object)));
 
         public static readonly DependencyProperty MessageProperty = DependencyProperty.Register(nameof(Message), typeof(string), typeof(ToastPrompt), new PropertyMetadata(default(string)));
 
@@ -42,11 +42,11 @@ namespace SoftwareKobo.Controls
             }
         }
 
-        public ContentPresenter Icon
+        public object Icon
         {
             get
             {
-                return (ContentPresenter)GetValue(IconProperty);
+                return GetValue(IconProperty);
             }
             set
             {
