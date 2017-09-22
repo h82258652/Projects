@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard1.1</TargetFramework>
+    <RootNamespace>BingoWallpaper</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BingoWallpaper.Core\BingoWallpaper.Core.csproj" />
+    <ProjectReference Include="..\BingoWallpaper.Models\BingoWallpaper.Models.csproj" />
+    <ProjectReference Include="..\BingoWallpaper.Services.Abstractions\BingoWallpaper.Services.Abstractions.csproj" />
+  </ItemGroup>
+
+</Project>
