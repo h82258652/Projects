@@ -13,12 +13,26 @@ namespace BingoWallpaper.ViewModels
 
         private readonly ILeanCloudService _leanCloudService;
 
+        private ICommand _loadMoreCommand;
+
         private ICommand _wallpaperClickCommand;
 
         public MainViewModel(IAppNavigationService appNavigationService, ILeanCloudService leanCloudService)
         {
             _appNavigationService = appNavigationService;
             _leanCloudService = leanCloudService;
+        }
+
+        public ICommand LoadMoreCommand
+        {
+            get
+            {
+                _loadMoreCommand = _loadMoreCommand ?? new RelayCommand(() =>
+                {
+                    // TODO
+                });
+                return _loadMoreCommand;
+            }
         }
 
         public ICommand WallpaperClickCommand

@@ -6,6 +6,11 @@ namespace BingoWallpaper.ViewModels
 {
     public interface IMainViewModel
     {
+        ICommand LoadMoreCommand
+        {
+            get;
+        }
+
         ICommand WallpaperClickCommand
         {
             get;

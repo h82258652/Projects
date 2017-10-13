@@ -6,5 +6,9 @@ namespace BingoWallpaper.Services
     public interface ILeanCloudService
     {
         Task<Archive> GetArchiveAsync(string objectId);
+
+        Task<Image> GetImageAsync(string objectId);
+
+        Task<Wallpaper> GetWallpaperAsync(string objectId);
     }
 }
