@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
 using System.Windows.Input;
 using BingoWallpaper.Models.LeanCloud;
 using BingoWallpaper.Services;
@@ -13,14 +14,32 @@ namespace BingoWallpaper.ViewModels
 
         private readonly ILeanCloudService _leanCloudService;
 
+        private int _currentPage;
+
+        private bool _isLoading;
+
         private ICommand _loadMoreCommand;
 
         private ICommand _wallpaperClickCommand;
+
+        private ObservableCollection<Wallpaper> _wallpapers;
 
         public MainViewModel(IAppNavigationService appNavigationService, ILeanCloudService leanCloudService)
         {
             _appNavigationService = appNavigationService;
             _leanCloudService = leanCloudService;
+        }
+
+        public bool IsLoading
+        {
+            get
+            {
+                return _isLoading;
+            }
+            private set
+            {
+                Set(ref _isLoading, value);
+            }
         }
 
         public ICommand LoadMoreCommand
@@ -29,7 +48,25 @@ namespace BingoWallpaper.ViewModels
             {
                 _loadMoreCommand = _loadMoreCommand ?? new RelayCommand(() =>
                 {
-                    // TODO
+                    if (IsLoading)
+                    {
+                        return;
+                    }
+
+                    try
+                    {
+                        IsLoading = true;
+
+                        // TODO
+                    }
+                    catch (Exception ex)
+                    {
+                        // TODO
+                    }
+                    finally
+                    {
+                        IsLoading = false;
+                    }
                 });
                 return _loadMoreCommand;
             }
@@ -51,13 +88,11 @@ namespace BingoWallpaper.ViewModels
         {
             get
             {
-                // TODO
-                return new ObservableCollection<Wallpaper>()
-                {
-                    new Wallpaper(),
-                    new Wallpaper(),
-                    new Wallpaper()
-                };
+                _wallpapers = _wallpapers ?? new ObservableCollection<Wallpaper>();
+                _wallpapers.Add(new Wallpaper());
+                _wallpapers.Add(new Wallpaper());
+                _wallpapers.Add(new Wallpaper());
+                return _wallpapers;
             }
         }
     }

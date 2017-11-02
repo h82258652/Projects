@@ -4,6 +4,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Animation;
 using SoftwareKobo.Controls.Extensions;
+using SoftwareKobo.Extensions;
 
 namespace SoftwareKobo.Controls
 {

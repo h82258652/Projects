@@ -3,7 +3,7 @@ using Autofac.Extras.CommonServiceLocator;
 using BingoWallpaper.Services;
 using BingoWallpaper.ViewModels;
 using BingoWallpaper.Wpf.Views;
-using Microsoft.Practices.ServiceLocation;
+using CommonServiceLocator;
 
 namespace BingoWallpaper.Wpf.ViewModels
 {

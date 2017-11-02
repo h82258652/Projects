@@ -3,7 +3,7 @@
 namespace BingoWallpaper.Models.LeanCloud
 {
     [JsonObject]
-    public class Image : AVObject
+    public class Image : AVObject, IImage
     {
         [JsonProperty("name")]
         public string Name

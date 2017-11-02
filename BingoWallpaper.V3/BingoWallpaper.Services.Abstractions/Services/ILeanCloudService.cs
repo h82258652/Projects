@@ -3,7 +3,7 @@ using BingoWallpaper.Models.LeanCloud;
 
 namespace BingoWallpaper.Services
 {
-    public interface ILeanCloudService
+    public interface ILeanCloudService : IWallpaperService
     {
         Task<Archive> GetArchiveAsync(string objectId);
 

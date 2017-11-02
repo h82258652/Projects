@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard1.1</TargetFramework>
+    <RootNamespace>BingoWallpaper</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="reactiveui" Version="8.0.0-alpha0108" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BingoWallpaper.Configuration.Abstractions\BingoWallpaper.Configuration.Abstractions.csproj" />
+    <ProjectReference Include="..\BingoWallpaper.Services.Abstractions\BingoWallpaper.Services.Abstractions.csproj" />
+    <ProjectReference Include="..\BingoWallpaper.ViewModels.Abstractions\BingoWallpaper.ViewModels.Abstractions.csproj" />
+  </ItemGroup>
+
+</Project>

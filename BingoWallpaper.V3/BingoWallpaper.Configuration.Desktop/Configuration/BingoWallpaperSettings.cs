@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace BingoWallpaper.Configuration
+﻿namespace BingoWallpaper.Configuration
 {
     public class BingoWallpaperSettings : IBingoWallpaperSettings
     {

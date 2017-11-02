@@ -2,11 +2,11 @@
 using System.Threading.Tasks;
 using System.Windows.Media.Animation;
 
-namespace SoftwareKobo.Controls.Extensions
+namespace SoftwareKobo.Extensions
 {
-    internal static class StoryboardExtensions
+    public static class StoryboardExtensions
     {
-        internal static Task BeginAsync(this Storyboard storyboard)
+        public static Task BeginAsync(this Storyboard storyboard)
         {
             if (storyboard == null)
             {
@@ -14,14 +14,16 @@ namespace SoftwareKobo.Controls.Extensions
             }
 
             var tcs = new TaskCompletionSource<object>();
+
             EventHandler handler = null;
-            handler = delegate
+            handler = (sender, e) =>
             {
                 storyboard.Completed -= handler;
                 tcs.SetResult(null);
             };
             storyboard.Completed += handler;
             storyboard.Begin();
+
             return tcs.Task;
         }
     }

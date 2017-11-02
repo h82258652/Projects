@@ -1,0 +1,29 @@
+﻿<Page x:Class="BingoWallpaper.Uwp.Views.MainView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:core="using:Microsoft.Xaml.Interactions.Core"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      DataContext="{Binding Source={StaticResource Locator}, Path=Main}"
+      mc:Ignorable="d">
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <NavigationView>
+            <NavigationView.MenuItems>
+                <NavigationViewItem />
+            </NavigationView.MenuItems>
+            <GridView ItemsSource="{Binding Path=Wallpapers}">
+                <interactivity:Interaction.Behaviors>
+                    <core:EventTriggerBehavior EventName="ItemClick">
+                        <core:InvokeCommandAction Command="{Binding WallpaperClickCommand}" />
+                    </core:EventTriggerBehavior>
+                </interactivity:Interaction.Behaviors>
+                <GridView.ItemTemplate>
+                    <DataTemplate>
+                        <Image Source="{Binding Path=Image.UrlBase}" />
+                    </DataTemplate>
+                </GridView.ItemTemplate>
+            </GridView>
+        </NavigationView>
+    </Grid>
+</Page>

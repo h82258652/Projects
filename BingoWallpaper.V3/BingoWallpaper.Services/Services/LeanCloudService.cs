@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Net;
 using System.Threading.Tasks;
+using BingoWallpaper.Models;
 using BingoWallpaper.Models.LeanCloud;
 using Newtonsoft.Json;
 
@@ -46,6 +47,16 @@ namespace BingoWallpaper.Services
                 var json = await client.GetStringAsync(url);
                 return JsonConvert.DeserializeObject<Image>(json);
             }
+        }
+
+        public override string GetUrl(IImage image, WallpaperSize size)
+        {
+            if (image == null)
+            {
+                throw new ArgumentNullException(nameof(image));
+            }
+
+            throw new NotImplementedException();
         }
 
         public override async Task<Wallpaper> GetWallpaperAsync(string objectId)
