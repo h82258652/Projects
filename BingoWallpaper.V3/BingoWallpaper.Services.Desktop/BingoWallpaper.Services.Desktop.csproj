@@ -45,6 +45,10 @@
     <Compile Include="Services\BingoWallpaperFileService.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BingoWallpaper.Core\BingoWallpaper.Core.csproj">
+      <Project>{10821607-4431-4715-889F-126FA3CA1A06}</Project>
+      <Name>BingoWallpaper.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\BingoWallpaper.Services.Abstractions\BingoWallpaper.Services.Abstractions.csproj">
       <Project>{1f69ffea-e718-457d-9d55-0d9012336a5e}</Project>
       <Name>BingoWallpaper.Services.Abstractions</Name>

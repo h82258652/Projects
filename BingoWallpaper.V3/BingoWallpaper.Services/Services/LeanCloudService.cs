@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Net;
 using System.Threading.Tasks;
 using BingoWallpaper.Models;
 using BingoWallpaper.Models.LeanCloud;
+using BingoWallpaper.Properties;
 using Newtonsoft.Json;
 
 namespace BingoWallpaper.Services
@@ -17,8 +19,7 @@ namespace BingoWallpaper.Services
             }
             if (objectId.Length <= 0)
             {
-                // TODO
-                throw new ArgumentException("");
+                throw new ArgumentException(string.Format(Resources.EmptyStringExceptionMessage, nameof(objectId)), nameof(objectId));
             }
 
             var url = $"{Constants.LeanCloudUrlBase}/1.1/classes/Archive/{WebUtility.UrlEncode(objectId)}";
@@ -26,6 +27,31 @@ namespace BingoWallpaper.Services
             {
                 var json = await client.GetStringAsync(url);
                 return JsonConvert.DeserializeObject<Archive>(json);
+            }
+        }
+
+        public override async Task<LeanCloudResultCollection<Archive>> GetArchivesAsync(IEnumerable<string> objectIds)
+        {
+            if (objectIds == null)
+            {
+                throw new ArgumentNullException(nameof(objectIds));
+            }
+
+            var where = new
+            {
+                objectIds = new Dictionary<string, IEnumerable<string>>()
+                {
+                    {
+                        "$in",
+                        objectIds
+                    }
+                }
+            };
+            var url = $"{Constants.LeanCloudUrlBase}/1.1/classes/Archive?where={WebUtility.UrlEncode(JsonConvert.SerializeObject(where))}&order=-createdAt";
+            using (var client = CreateHttpClient())
+            {
+                var json = await client.GetStringAsync(url);
+                return JsonConvert.DeserializeObject<LeanCloudResultCollection<Archive>>(json);
             }
         }
 
@@ -37,8 +63,7 @@ namespace BingoWallpaper.Services
             }
             if (objectId.Length <= 0)
             {
-                // TODO
-                throw new ArgumentException("");
+                throw new ArgumentException(string.Format(Resources.EmptyStringExceptionMessage, nameof(objectId)), nameof(objectId));
             }
 
             var url = $"{Constants.LeanCloudUrlBase}/1.1/classes/Image/{WebUtility.UrlEncode(objectId)}";
@@ -46,6 +71,31 @@ namespace BingoWallpaper.Services
             {
                 var json = await client.GetStringAsync(url);
                 return JsonConvert.DeserializeObject<Image>(json);
+            }
+        }
+
+        public override async Task<LeanCloudResultCollection<Image>> GetImagesAsync(IEnumerable<string> objectIds)
+        {
+            if (objectIds == null)
+            {
+                throw new ArgumentNullException(nameof(objectIds));
+            }
+
+            var where = new
+            {
+                objectId = new Dictionary<string, IEnumerable<string>>()
+                {
+                    {
+                        "$in",
+                        objectIds
+                    }
+                }
+            };
+            var url = $"{Constants.LeanCloudUrlBase}/1.1/classes/Image?where={WebUtility.UrlEncode(JsonConvert.SerializeObject(where))}&order=-createdAt";
+            using (var client = CreateHttpClient())
+            {
+                var json = await client.GetStringAsync(url);
+                return JsonConvert.DeserializeObject<LeanCloudResultCollection<Image>>(json);
             }
         }
 
@@ -68,6 +118,11 @@ namespace BingoWallpaper.Services
                 Archive = archive,
                 Image = image
             };
+        }
+
+        public override Task<IEnumerable<Wallpaper>> GetWallpapersAsync(IEnumerable<string> objectIds)
+        {
+            throw new NotImplementedException();
         }
     }
 }

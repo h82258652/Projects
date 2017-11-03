@@ -35,6 +35,7 @@
                                 <DataTemplate DataType="leanCloud:Wallpaper">
                                     <Button Command="{Binding ElementName=Root, Path=DataContext.WallpaperClickCommand}"
                                             CommandParameter="{Binding}"
+                                            Click="ImageButton_Click"
                                             Style="{StaticResource EmptyButtonStyle}">
                                         <Image Width="400"
                                                Height="300"

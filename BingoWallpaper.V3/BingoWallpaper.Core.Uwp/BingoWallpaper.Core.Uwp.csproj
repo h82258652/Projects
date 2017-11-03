@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{B9C29F95-2FD5-4035-80A6-122B0D5845FE}</ProjectGuid>
+    <ProjectGuid>{CC935423-F6A7-4627-949C-FB6722B05938}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>BingoWallpaper</RootNamespace>
-    <AssemblyName>BingoWallpaper.Controls.Uwp</AssemblyName>
+    <AssemblyName>BingoWallpaper.Core.Uwp</AssemblyName>
     <DefaultLanguage>zh-CN</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
     <TargetPlatformVersion Condition=" '$(TargetPlatformVersion)' == '' ">10.0.10240.0</TargetPlatformVersion>
@@ -106,35 +106,14 @@
     <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Controls\AnimatedNumber.cs" />
-    <Compile Include="Controls\AnimatedNumberBridge.xaml.cs">
-      <DependentUpon>AnimatedNumberBridge.xaml</DependentUpon>
-    </Compile>
+    <Compile Include="Converters\ItemClickEventArgsConverter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Properties\BingoWallpaper.Controls.Uwp.rd.xml" />
+    <EmbeddedResource Include="Properties\BingoWallpaper.Core.Uwp.rd.xml" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
       <Version>6.0.1</Version>
     </PackageReference>
-    <PackageReference Include="WinRTXamlToolkit.UWP">
-      <Version>2.3.0</Version>
-    </PackageReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Page Include="Controls\AnimatedNumber.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Page>
-    <Page Include="Controls\AnimatedNumberBridge.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Themes\Generic.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>

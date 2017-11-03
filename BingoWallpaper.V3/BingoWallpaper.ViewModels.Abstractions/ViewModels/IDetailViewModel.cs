@@ -5,7 +5,22 @@ namespace BingoWallpaper.ViewModels
 {
     public interface IDetailViewModel
     {
+        ICommand GoBackCommand
+        {
+            get;
+        }
+
         ICommand SaveCommand
+        {
+            get;
+        }
+
+        ICommand SetAsLockScreenCommand
+        {
+            get;
+        }
+
+        ICommand SetAsWallpaperCommand
         {
             get;
         }

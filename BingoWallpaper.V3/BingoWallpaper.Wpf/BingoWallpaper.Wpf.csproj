@@ -197,6 +197,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Behaviors\" />
+    <Folder Include="Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

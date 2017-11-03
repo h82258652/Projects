@@ -8,9 +8,22 @@
              DataContext="{Binding Source={StaticResource Locator}, Path=Detail}"
              mc:Ignorable="d">
     <Grid>
-        <Image Source="https://images2017.cnblogs.com/news/66372/201711/66372-20171102151244701-408309088.jpg" />
-        <Button HorizontalAlignment="Center"
-                VerticalAlignment="Center"
-                Command="{Binding Path=SaveCommand}" />
+        <Panel.Background>
+            <SolidColorBrush Opacity="0.7"
+                             Color="Black" />
+        </Panel.Background>
+        <Button Click="GoBackButton_Click"
+                Command="{Binding Path=GoBackCommand}"
+                Style="{StaticResource EmptyButtonStyle}" />
+        <Grid HorizontalAlignment="Center"
+              VerticalAlignment="Center">
+            <Image x:Name="Image"
+                   Loaded="Image_Loaded"
+                   Source="https://images2017.cnblogs.com/news/66372/201711/66372-20171102151244701-408309088.jpg"
+                   Stretch="None" />
+            <Button HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Command="{Binding Path=SaveCommand}" />
+        </Grid>
     </Grid>
 </UserControl>

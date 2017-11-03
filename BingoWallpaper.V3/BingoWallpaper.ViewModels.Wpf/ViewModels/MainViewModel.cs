@@ -14,7 +14,7 @@ namespace BingoWallpaper.ViewModels
 
         private readonly ILeanCloudService _leanCloudService;
 
-        private int _currentPage;
+        private int _currentPage = 1;
 
         private bool _isLoading;
 
@@ -46,7 +46,7 @@ namespace BingoWallpaper.ViewModels
         {
             get
             {
-                _loadMoreCommand = _loadMoreCommand ?? new RelayCommand(() =>
+                _loadMoreCommand = _loadMoreCommand ?? new RelayCommand(async () =>
                 {
                     if (IsLoading)
                     {
@@ -58,6 +58,12 @@ namespace BingoWallpaper.ViewModels
                         IsLoading = true;
 
                         // TODO
+                        var wallpapers = await _leanCloudService.GetWallpapersAsync(new[] { "" });
+                        foreach (var wallpaper in wallpapers)
+                        {
+                            Wallpapers.Add(wallpaper);
+                        }
+                        _currentPage++;
                     }
                     catch (Exception ex)
                     {
@@ -78,7 +84,7 @@ namespace BingoWallpaper.ViewModels
             {
                 _wallpaperClickCommand = _wallpaperClickCommand ?? new RelayCommand<Wallpaper>(wallpaper =>
                 {
-                    _appNavigationService.NavigateTo(ViewModelLocatorBase.DetailViewKey, wallpaper);
+                    //_appNavigationService.NavigateTo(ViewModelLocatorBase.DetailViewKey, wallpaper);
                 });
                 return _wallpaperClickCommand;
             }

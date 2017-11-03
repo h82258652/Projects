@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27004.2005
+VisualStudioVersion = 15.0.27004.2006
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{167921A3-ADA9-4EB8-9118-BEFFCCD8D652}"
 EndProject
@@ -43,7 +43,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BingoWallpaper.Core.Desktop
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BingoWallpaper.ViewModels.Uwp", "BingoWallpaper.ViewModels.Uwp\BingoWallpaper.ViewModels.Uwp.csproj", "{66B05475-6D71-40B0-9958-91984764263F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BingoWallpaper.ViewModels.StandardTest", "BingoWallpaper.ViewModels.StandardTest\BingoWallpaper.ViewModels.StandardTest.csproj", "{755D4022-9679-4E16-962D-8CB49156C0FB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BingoWallpaper.ViewModels.StandardTest", "BingoWallpaper.ViewModels.StandardTest\BingoWallpaper.ViewModels.StandardTest.csproj", "{755D4022-9679-4E16-962D-8CB49156C0FB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BingoWallpaper.Core.Uwp", "BingoWallpaper.Core.Uwp\BingoWallpaper.Core.Uwp.csproj", "{CC935423-F6A7-4627-949C-FB6722B05938}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -365,6 +367,22 @@ Global
 		{755D4022-9679-4E16-962D-8CB49156C0FB}.Release|x64.Build.0 = Release|Any CPU
 		{755D4022-9679-4E16-962D-8CB49156C0FB}.Release|x86.ActiveCfg = Release|Any CPU
 		{755D4022-9679-4E16-962D-8CB49156C0FB}.Release|x86.Build.0 = Release|Any CPU
+		{CC935423-F6A7-4627-949C-FB6722B05938}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CC935423-F6A7-4627-949C-FB6722B05938}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CC935423-F6A7-4627-949C-FB6722B05938}.Debug|ARM.ActiveCfg = Debug|ARM
+		{CC935423-F6A7-4627-949C-FB6722B05938}.Debug|ARM.Build.0 = Debug|ARM
+		{CC935423-F6A7-4627-949C-FB6722B05938}.Debug|x64.ActiveCfg = Debug|x64
+		{CC935423-F6A7-4627-949C-FB6722B05938}.Debug|x64.Build.0 = Debug|x64
+		{CC935423-F6A7-4627-949C-FB6722B05938}.Debug|x86.ActiveCfg = Debug|x86
+		{CC935423-F6A7-4627-949C-FB6722B05938}.Debug|x86.Build.0 = Debug|x86
+		{CC935423-F6A7-4627-949C-FB6722B05938}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CC935423-F6A7-4627-949C-FB6722B05938}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CC935423-F6A7-4627-949C-FB6722B05938}.Release|ARM.ActiveCfg = Release|ARM
+		{CC935423-F6A7-4627-949C-FB6722B05938}.Release|ARM.Build.0 = Release|ARM
+		{CC935423-F6A7-4627-949C-FB6722B05938}.Release|x64.ActiveCfg = Release|x64
+		{CC935423-F6A7-4627-949C-FB6722B05938}.Release|x64.Build.0 = Release|x64
+		{CC935423-F6A7-4627-949C-FB6722B05938}.Release|x86.ActiveCfg = Release|x86
+		{CC935423-F6A7-4627-949C-FB6722B05938}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -389,6 +407,7 @@ Global
 		{ABBDFD72-442E-45F9-A43D-5F0546724D86} = {167921A3-ADA9-4EB8-9118-BEFFCCD8D652}
 		{66B05475-6D71-40B0-9958-91984764263F} = {167921A3-ADA9-4EB8-9118-BEFFCCD8D652}
 		{755D4022-9679-4E16-962D-8CB49156C0FB} = {167921A3-ADA9-4EB8-9118-BEFFCCD8D652}
+		{CC935423-F6A7-4627-949C-FB6722B05938} = {167921A3-ADA9-4EB8-9118-BEFFCCD8D652}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {CA7AB9B1-3452-4BCE-8C46-11F161EA0868}

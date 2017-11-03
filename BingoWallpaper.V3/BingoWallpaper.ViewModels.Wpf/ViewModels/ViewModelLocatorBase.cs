@@ -8,5 +8,15 @@
         {
             get;
         }
+
+        public abstract IDetailViewModel Detail
+        {
+            get;
+        }
+
+        public abstract ISettingViewModel Setting
+        {
+            get;
+        }
     }
 }

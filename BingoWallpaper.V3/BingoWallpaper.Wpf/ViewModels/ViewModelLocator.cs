@@ -15,20 +15,23 @@ namespace BingoWallpaper.Wpf.ViewModels
             ServiceLocator.SetLocatorProvider(() => autofacServiceLocator);
         }
 
-        public IDetailViewModel Detail => ServiceLocator.Current.GetInstance<IDetailViewModel>();
+        public override IDetailViewModel Detail => ServiceLocator.Current.GetInstance<IDetailViewModel>();
 
         public override IMainViewModel Main => ServiceLocator.Current.GetInstance<IMainViewModel>();
+
+        public override ISettingViewModel Setting => ServiceLocator.Current.GetInstance<ISettingViewModel>();
 
         private static IContainer ConfigureAutofacContainer()
         {
             var containerBuilder = new ContainerBuilder();
 
             containerBuilder.RegisterInstance(CreateNavigationService());
-            containerBuilder.RegisterType<LeanCloudService>().As<ILeanCloudService>();
+            containerBuilder.RegisterType<LeanCloudService>().As<ILeanCloudService>().As<IWallpaperService>();
             containerBuilder.RegisterType<BingoWallpaperFileService>().As<IBingoWallpaperFileService>();
 
             containerBuilder.RegisterType<MainViewModel>().As<IMainViewModel>();
             containerBuilder.RegisterType<DetailViewModel>().As<IDetailViewModel>();
+            containerBuilder.RegisterType<SettingViewModel>().As<ISettingViewModel>();
 
             return containerBuilder.Build();
         }

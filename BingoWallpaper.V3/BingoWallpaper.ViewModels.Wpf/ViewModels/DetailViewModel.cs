@@ -10,6 +10,8 @@ namespace BingoWallpaper.ViewModels
     {
         private readonly IBingoWallpaperFileService _bingoWallpaperFileService;
 
+        private ICommand _goBackCommand;
+
         private ICommand _saveCommand;
 
         private Wallpaper _wallpaper;
@@ -17,6 +19,18 @@ namespace BingoWallpaper.ViewModels
         public DetailViewModel(IBingoWallpaperFileService bingoWallpaperFileService)
         {
             _bingoWallpaperFileService = bingoWallpaperFileService;
+        }
+
+        public ICommand GoBackCommand
+        {
+            get
+            {
+                _goBackCommand = _goBackCommand ?? new RelayCommand(() =>
+                {
+                    // TODO
+                });
+                return _goBackCommand;
+            }
         }
 
         public ICommand SaveCommand
@@ -40,6 +54,24 @@ namespace BingoWallpaper.ViewModels
             set
             {
                 Set(ref _wallpaper, value);
+            }
+        }
+
+        public ICommand SetAsLockScreenCommand
+        {
+            get
+            {
+                // TODO
+                return null;
+            }
+        }
+
+        public ICommand SetAsWallpaperCommand
+        {
+            get
+            {
+                // TODO
+                return null;
             }
         }
     }

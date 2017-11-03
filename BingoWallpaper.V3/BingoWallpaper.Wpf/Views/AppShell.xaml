@@ -15,9 +15,15 @@
     <Grid>
         <Frame x:Name="RootFrame"
                NavigationUIVisibility="Hidden">
+            <Control.Background>
+                <SolidColorBrush Opacity="0.7"
+                                 Color="Black" />
+            </Control.Background>
             <Frame.Content>
                 <views:MainView />
             </Frame.Content>
         </Frame>
+        <ContentControl x:Name="DetailHost" />
+        <Canvas x:Name="ConnectedAnimationHostCanvas" />
     </Grid>
 </mahapps:MetroWindow>

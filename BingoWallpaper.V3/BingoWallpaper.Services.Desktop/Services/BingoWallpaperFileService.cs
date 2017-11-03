@@ -2,6 +2,7 @@
 using System.IO;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using BingoWallpaper.Extensions;
 
 namespace BingoWallpaper.Services
 {
@@ -23,8 +24,7 @@ namespace BingoWallpaper.Services
             {
                 if (saveFileDialog.ShowDialog() == DialogResult.OK)
                 {
-                    // TODO
-                    File.WriteAllBytes(saveFileDialog.FileName, bytes);
+                    await FileExtensions.WriteAllBytesAsync(saveFileDialog.FileName, bytes);
                     return true;
                 }
                 else

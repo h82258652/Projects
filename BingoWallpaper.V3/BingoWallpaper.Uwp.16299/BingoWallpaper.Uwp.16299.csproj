@@ -101,6 +101,9 @@
     <Compile Include="Views\AboutView.xaml.cs">
       <DependentUpon>AboutView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\DetailView.xaml.cs">
+      <DependentUpon>DetailView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\MainView.xaml.cs">
       <DependentUpon>MainView.xaml</DependentUpon>
     </Compile>
@@ -147,6 +150,10 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BingoWallpaper.Core.Uwp\BingoWallpaper.Core.Uwp.csproj">
+      <Project>{cc935423-f6a7-4627-949c-fb6722b05938}</Project>
+      <Name>BingoWallpaper.Core.Uwp</Name>
+    </ProjectReference>
     <ProjectReference Include="..\BingoWallpaper.Models\BingoWallpaper.Models.csproj">
       <Project>{5f72a07d-0400-4de4-97f9-f172b955e841}</Project>
       <Name>BingoWallpaper.Models</Name>
@@ -166,6 +173,10 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="Views\AboutView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DetailView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
