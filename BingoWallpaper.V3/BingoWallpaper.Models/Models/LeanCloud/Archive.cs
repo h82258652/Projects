@@ -30,7 +30,6 @@ namespace BingoWallpaper.Models.LeanCloud
         public LeanCloudPointer Image
         {
             get;
-
             set;
         }
 
